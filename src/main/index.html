@@ -1,0 +1,71 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>job-desk</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <!-- build:css assets/styles/main.css -->
+  <link rel="stylesheet" href="bower_components/alv-ch-ng.style/dist/css/alv-ch-ng.bootstrap.css">
+  <link rel="stylesheet" href="bower_components/alv-ch-ng.scroll/dist/css/scroll.css">
+  <link rel="stylesheet" href="bower_components/alv-ch-ng.forms/dist/css/forms.css">
+  <link rel="stylesheet" href="assets/styles/main.css">
+  <!-- endbuild -->
+</head>
+
+<body ng-app="job-desk">
+<div id="topper" scroll-fix></div>
+
+<div ui-view="navbar" scroll-fix="topper" ></div>
+
+<div ui-view="content"></div>
+
+<div ui-view="footer"></div>
+
+<!-- build:js scripts/vendor.js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-translate/angular-translate.js"></script>
+<script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+<script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
+<script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+<script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular-ui-bootstrap/src/typeahead/typeahead.js"></script>
+<script src="bower_components/angular-ui-bootstrap/src/position/position.js"></script>
+<script src="bower_components/angular-ui-bootstrap/src/bindHtml/bindHtml.js"></script>
+<script src="bower_components/angular-ui-bootstrap/src/tooltip/tooltip.js"></script>
+<script src="bower_components/alv-ch-ng.core/dist/alv-ch-ng.core.js"></script>
+<script src="bower_components/alv-ch-ng.forms/dist/alv-ch-ng.forms.js"></script>
+<script src="bower_components/alv-ch-ng.security/dist/alv-ch-ng.security.js"></script>
+<script src="bower_components/alv-ch-ng.scroll/dist/alv-ch-ng.scroll.js"></script>
+<!-- endbuild -->
+
+<!-- build:js scripts/app.js -->
+<script src="scripts/app/app.js"></script>
+<script src="scripts/app/app.config.js"></script>
+<script src="scripts/aspects/i18n.js"></script>
+<script src="scripts/aspects/navigation.js"></script>
+<script src="scripts/app/main/main.js"></script>
+<script src="scripts/app/main/main.controller.js"></script>
+<script src="scripts/components/books/books.js"></script>
+<script src="scripts/components/books/books.service.js"></script>
+<script src="scripts/components/books/books.controller.js"></script>
+<!-- endbuild -->
+</body>
+</html>
