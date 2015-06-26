@@ -5,16 +5,6 @@ var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
 
 // usemin custom step
 var path = require('path');
-var useminAutoprefixer = {
-  name: 'autoprefixer',
-  createConfig: function(context, block) {
-    if(block.src.length === 0) {
-      return {};
-    } else {
-      return require('grunt-usemin/lib/config/cssmin').createConfig(context, block) // Reuse cssmins createConfig
-    }
-  }
-};
 
 module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
