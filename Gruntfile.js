@@ -7,20 +7,12 @@ var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
 var path = require('path');
 var useminAutoprefixer = {
   name: 'autoprefixer',
-  createConfig: function (context, block) {
-    var cfg = {files: []};
-    var outfile = path.join(context.outDir, block.dest);
-
-    var files = {};
-    files.dest = outfile;
-    files.src = [];
-    context.inFiles.forEach(function (f) {
-      files.src.push(path.join(context.inDir, f));
-    });
-    cfg.files.push(files);
-    context.outFiles = [block.dest];
-
-    return cfg;
+  createConfig: function(context, block) {
+    if(block.src.length === 0) {
+      return {};
+    } else {
+      return require('grunt-usemin/lib/config/cssmin').createConfig(context, block) // Reuse cssmins createConfig
+    }
   }
 };
 
@@ -246,7 +238,7 @@ module.exports = function (grunt) {
           html: {
             steps: {
               js: ['concat', 'uglifyjs'],
-              css: ['concat', useminAutoprefixer, 'cssmin']
+              css: ['concat', 'cssmin']
             },
             post: {}
           }
@@ -285,6 +277,11 @@ module.exports = function (grunt) {
           src: '**/*.svg',
           dest: 'dist/assets/images'
         }]
+      }
+    },
+    wiredep: {
+      task: {
+        src: ['src/main/index.html']
       }
     },
     cssmin: {
@@ -476,7 +473,6 @@ module.exports = function (grunt) {
     'ngtemplates',
     'concurrent:dist',
     'concat',
-    'autoprefixer',
     'copy:dist',
     'ngAnnotate',
     'cssmin',

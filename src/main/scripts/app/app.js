@@ -13,8 +13,7 @@
     'alv-ch-ng.security',
     'alv-ch-ng.scroll',
     'alv-ch-ng.forms',
-    'job-desk.i18n',
-    'job-desk.navigation'
+    'job-desk.i18n'
   ]);
 
   app.config(["$httpProvider", function($httpProvider) {
@@ -67,7 +66,7 @@
         },
         resolve: {
           mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
-            $translatePartialLoader.addPart('error');
+            $translatePartialLoader.addPart('errors');
             return $translate.refresh();
           }]
         },

@@ -55,7 +55,7 @@
       'de', 'fr', 'it', 'en'
     ];
 
-    var _defaultParts = ['global', 'language', 'error', 'login'];
+    var _defaultParts = ['global', 'languages', 'errors'];
 
     this.setLanguages = function(languages) {
       _languages = languages;
