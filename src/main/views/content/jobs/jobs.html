@@ -1,4 +1,78 @@
-<div class="col-md-12">
-  <h1 style="margin-top: 10px; margin-bottom: 5px;" translate="jobs.title"></h1>
-  <hr style="margin-top: 5px;" />
+<div class="navigation filter row" id="filter">
+  <div class="col-md-3" ng-hide="searchParams.search==='jobs'">
+    <br />
+    <a ng-click="searchParams.search='jobs'" class="btn btn-block btn-plain jobs" glyph-icon="home"> <strong translate="global.jobs"></strong></a>
+  </div>
+  <div class="col-md-3" ng-hide="searchParams.search==='courses'">
+    <br />
+    <a ng-click="searchParams.search='courses'" class="btn btn-default btn-block btn-plain wab" glyph-icon="arrow-top" admin-symbol> <strong translate="global.educations"></strong></a>
+  </div>
+  <div class="col-md-3" ng-hide="searchParams.search==='lenas'">
+    <br />
+    <a ng-click="searchParams.search='lenas'" class="btn btn-default btn-block btn-plain lena" glyph-icon="arrow-top" admin-symbol> <strong translate="global.apprenticeships"></strong></a>
+  </div>
+  <div class="col-md-6">
+    <div class="navbar-right">
+      <language-switcher></language-switcher>
+    </div>
+  </div>
+</div>
+
+<div class="category">
+  <div class="row category-groups no-filter">
+    <div class="col-md-4">
+      <a class="category-group" ng-click="setIscoGroup('1')"><img src="assets/images/512/family3.png" alt="toggeli 1" /></a><br />
+      <strong translate="isco.category1"></strong>
+    </div>
+    <div class="col-md-4">
+      <a class="category-group" ng-click="setIscoGroup('2')"><img src="assets/images/512/graduated.png" alt="toggeli 2" /></a><br />
+      <strong translate="isco.category2"></strong>
+    </div>
+    <div class="col-md-4">
+      <a class="category-group" ng-click="setIscoGroup('3')"><img src="assets/images/512/tool36.png" alt="toggeli 3" /></a><br />
+      <strong translate="isco.category3"></strong>
+    </div>
+  </div>
+
+  <div class="row category-groups">
+    <div class="col-md-4">
+      <a class="category-group" ng-click="setIscoGroup('4')"><img src="assets/images/512/paperclip.png" alt="toggeli 4" /></a><br />
+      <strong translate="isco.category4"></strong>
+    </div>
+    <div class="col-md-4 ">
+      <a class="category-group" ng-click="setIscoGroup('5')"><img src="assets/images/512/shop31.png" alt="toggeli 5" /></a><br />
+      <strong translate="isco.category5"></strong>
+    </div>
+    <div class="col-md-4 ">
+      <a class="category-group" ng-click="setIscoGroup('6')"><img src="assets/images/512/tractor6.png" alt="toggeli 6" /></a><br />
+      <strong translate="isco.category6"></strong>
+    </div>
+  </div>
+
+  <div class="row category-groups">
+    <div class="col-md-4 ">
+      <a class="category-group" ng-click="setIscoGroup('7')"><img src="assets/images/512/work26.png" alt="toggeli 7" /></a><br />
+      <strong translate="isco.category7"></strong>
+    </div>
+    <div class="col-md-4 ">
+      <a class="category-group" ng-click="setIscoGroup('8')"><img src="assets/images/512/construction16.png" alt="toggeli 8" /></a><br />
+      <strong translate="isco.category8"></strong>
+    </div>
+    <div class="col-md-4 ">
+      <a class="category-group" ng-click="setIscoGroup('9')"><img src="assets/images/512/clean9.png" alt="toggeli 9" /></a><br />
+      <strong translate="isco.category9"></strong>
+    </div>
+  </div>
+</div>
+
+<div class="row navigation bottom" id="navbottom">
+  <div class="col-md-offset-1 col-md-2" align="center">
+    <a class="btn btn-default btn-plain btn-block" href="#/frontpage" glyph-icon="info-sign"> <span translate="global.localInfo"></span></a>
+  </div>
+  <div class="col-md-offset-6 col-md-2" align="center">
+    <a class="btn btn-default btn-primary btn-plain btn-block" href="#/job-search" ng-show="searchParams.search==='jobs'" translate="global.navigation.search"></a>
+  </div>
+  <div class="col-md-1" align="right">
+    <help></help>
+  </div>
 </div>

@@ -1,9 +1,12 @@
 {
   "global": {
-    "title": "job-desk",
+    "title": "Job-Desk",
     "apprenticeships": "Lehrstellen",
     "educations": "Weiterbildungen",
     "jobs": "Jobs",
-    "localInfo": "Informationen"
+    "localInfo": "Informationen",
+    "navigation": {
+      "search":"Suche"
+    }
   }
 }

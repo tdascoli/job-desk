@@ -49,8 +49,11 @@
     "angularjs-geolocation": "~0.1.1",
     "angular-leaflet-directive": "~0.8.4",
     "angular-flowtype": "*",
-    "angular-hotkeys": "~0.2.2",
-    "angular-translate-storage-local": "~2.7.2"
+    "angular-hotkeys": "git://github.com/chieffancypants/angular-hotkeys.git",
+    "angular-translate-storage-local": "~2.7.2",
+    "d3": "3.5.5",
+    "topojson": "1.6.19",
+    "angularjs-geolocation":"0.1.1"
   },
   "devDependencies": {
     "angular-mocks": "1.3.4",
@@ -59,7 +62,11 @@
   "resolutions": {
     "angular": "1.3.4",
     "angular-translate": "2.4.2",
-    "jquery": "2.1.1"
+    "jquery": "2.1.1",
+    "angular-translate-storage-cookie": "~2.7.2",
+    "alv-ch-ng.core": "0.2.1",
+    "angular-route": "1.3.14",
+    "bootstrap": "v3.3.5"
   },
   "overrides": {
     "angular-ui-bootstrap": {
@@ -72,20 +79,17 @@
     },
     "alv-ch-ng.core": {
       "main": [
-        "dist/alv-ch-ng.core.js",
-        "dist/css/core.css"
+        "dist/alv-ch-ng.core.js"
       ]
     },
     "alv-ch-ng.forms": {
       "main": [
-        "dist/alv-ch-ng.forms.js",
-        "dist/css/forms.css"
+        "dist/alv-ch-ng.forms.js"
       ]
     },
     "alv-ch-ng.scroll": {
       "main": [
-        "dist/alv-ch-ng.scroll.js",
-        "dist/css/scroll.css"
+        "dist/alv-ch-ng.scroll.js"
       ]
     },
     "alv-ch-ng.security": {
@@ -95,21 +99,17 @@
     },
     "alv-ch-ng.selectpicker": {
       "main": [
-        "dist/alv-ch-ng.selectpicker.js",
-        "dist/css/selectpicker.css"
+        "dist/alv-ch-ng.selectpicker.js"
       ]
     },
     "alv-ch-ng.style": {
       "main": [
-        "dist/css/admin-symbols.css",
-        "dist/css/alv-ch-ng.bootstrap.css",
-        "dist/css/frutiger.css"
+        "dist/css/alv-ch-ng.bootstrap.css"
       ]
     },
     "alv-ch-ng.text-truncate": {
       "main": [
-        "alv-ch-ng.textTruncate.js",
-        "dist/css/textTruncate.css"
+        "alv-ch-ng.textTruncate.js"
       ]
     },
     "angular-leaflet-directive": {
@@ -119,7 +119,32 @@
     },
     "angular-hotkeys": {
       "main": [
-        "angular-hotkeys.js"
+        "src/hotkeys.js"
+      ]
+    },
+    "d3": {
+      "main": [
+        "d3.min.js"
+      ]
+    },
+    "leaflet": {
+      "main": [
+        "dist/leaflet.js"
+      ]
+    },
+    "topojson": {
+      "main": [
+        "topojson.js"
+      ]
+    },
+    "angularjs-geolocation": {
+      "main": [
+        "dist/angularjs-geolocation.min.js"
+      ]
+    },
+    "seiyria-bootstrap-slider": {
+      "main": [
+        "dist/bootstrap-slider.min.js"
       ]
     }
   }

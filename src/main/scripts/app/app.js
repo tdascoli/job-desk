@@ -4,16 +4,21 @@
   var app = angular.module('job-desk', [
     'LocalStorageModule',
     'tmh.dynamicLocale',
-    'ngResource',
     'ui.router',
+    'ui.bootstrap-slider',
+    'ngResource',
     'ngCookies',
+    'ngFlowtype',
+    'ngKeypad',
     'pascalprecht.translate',
     'ngCacheBuster',
+    'geolocation',
     'alv-ch-ng.core',
     'alv-ch-ng.security',
     'alv-ch-ng.scroll',
     'alv-ch-ng.forms',
-    'job-desk.i18n'
+    'job-desk.i18n',
+    'job-desk.directive'
   ]);
 
   app.config(["$httpProvider", function($httpProvider) {
@@ -72,7 +77,21 @@
         },
         hidden: true
       })
+      .state('frontpage', {
+        parent: 'site',
+        url: '/frontpage',
+        views: {
+          'content@': {
+            templateUrl: 'views/content/localInfo/localInfo.html'
+          }
+        }
+      })
+  });
 
+  app.run(function(geolocation,$rootScope){
+    geolocation.getLocation().then(function(data){
+      $rootScope.myCoords = {lat:data.coords.latitude, lng:data.coords.longitude};
+    });
   });
 
 }());

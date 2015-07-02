@@ -1,0 +1,35 @@
+<div class="navigation filter row" id="filter" flowtype min-font="1" max-font="9999" font-ratio="100" line-ratio="1.45" minimum="1" maximum="9999">
+  <div class="col-md-4">
+    <strong class="fake-label" translate="job.result.sorting"></strong>
+    <div class="dropdown">
+      <button id="dLabel" type="button" class="btn-block btn-plain" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span ng-if="sort===null" translate="common_i18n_select_noneSelectedText"></span>
+        <span ng-if="sort>-1" translate="{{sortList[sort].text}}"></span>
+        <span class="caret"></span>
+      </button>
+      <ul class="job-sort dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <li role="presentation" ng-repeat="item in sortList"><a role="menuitem" ng-click="sortResultList($index)" translate="{{item.text}}"></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <strong class="fake-label"><span translate="job.result.favorites"></span> ({{favorite.length}})</strong>
+    <button class="btn-block btn-plain" ng-click="showFavorite()" translate="job.result.showAll"></button>
+  </div>
+</div>
+
+<div class="job-results list-group">
+  <div class="list-group-item" ng-class="{'visited' : visited(job.id)}" ng-repeat="result in resultCollection" ng-include="getResult()"></div>
+</div>
+
+<div class="row navigation bottom" id="navbottom" hotkey="{b: ssiKeySearch}">
+  <div class="col-md-offset-1 col-md-2">
+    <a class="btn btn-default btn-plain btn-block" href="#/search" glyph-icon="arrow-left" admin-symbol> <span translate="common.navigation.search"></span></a>
+  </div>
+  <div class="col-md-offset-2 col-md-2">
+    <a class="btn btn-default btn-plain btn-block" ng-click="unshowFavorite()" glyph-icon="arrow-bottom" admin-symbol ng-show="favoritePage"> <span translate="common.navigation.results"></span></a>
+  </div>
+  <div class="col-md-offset-4 col-md-1" align="right">
+    <help></help>
+  </div>
+</div>

@@ -9,14 +9,6 @@
 
   <title translate="global.title">Job-Desk</title>
 
-  <!-- TRACKJS --
-    <script type="text/javascript">window._trackJs = {
-        token: '913d0ea564ea4f468f34d360bacb0d05',
-        application: 'ssi-novus'
-    };</script>
-    <script type="text/javascript" src="//d2zah9y47r7bi2.cloudfront.net/releases/current/tracker.js" crossorigin="anonymous"></script>
-    <!-- /TRACKJS -->
-
   <!-- webfontloader -->
   <script>
     WebFontConfig = {
@@ -37,63 +29,36 @@
   </script>
   <!-- /webfontloader -->
 
-  <!-- inspectlet -->
-  <script type="text/javascript" id="inspectletjs">
-    window.__insp = window.__insp || [];
-    __insp.push(['wid', 2015630645]);
-    (function () {
-      function __ldinsp() {
-        var insp = document.createElement('script');
-        insp.type = 'text/javascript';
-        insp.async = true;
-        insp.id = "inspsync";
-        insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js';
-        var x = document.getElementsByTagName('script')[0];
-        x.parentNode.insertBefore(insp, x);
-      }
-
-      if (window.attachEvent) {
-        window.attachEvent('onload', __ldinsp);
-      } else {
-        window.addEventListener('load', __ldinsp, false);
-      }
-    })();
-  </script>
-  <!-- /inspectlet -->
-
-  <!-- build:css assets/styles/app.css -->
-  <link rel="stylesheet" href="assets/styles/main.css">
+  <!-- build:css assets/styles/typo.css -->
+  <link rel="stylesheet" href="assets/styles/frutiger.css" />
+  <link rel="stylesheet" href="assets/styles/admin-symbols.css" />
   <!-- endbuild -->
 
   <!-- build:css assets/styles/vendor.css -->
   <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-  <link rel="stylesheet" href="bower_components/alv-ch-ng.core/dist/css/core.css" />
-  <link rel="stylesheet" href="bower_components/bootstrap-datepicker/css/datepicker.css" />
-  <link rel="stylesheet" href="bower_components/bootstrap-datepicker/css/datepicker3.css" />
-  <link rel="stylesheet" href="bower_components/alv-ch-ng.forms/dist/css/forms.css" />
-  <link rel="stylesheet" href="bower_components/alv-ch-ng.scroll/dist/css/scroll.css" />
-  <link rel="stylesheet" href="bower_components/alv-ch-ng.style/dist/css/admin-symbols.css" />
   <link rel="stylesheet" href="bower_components/alv-ch-ng.style/dist/css/alv-ch-ng.bootstrap.css" />
-  <link rel="stylesheet" href="bower_components/alv-ch-ng.style/dist/css/frutiger.css" />
-  <link rel="stylesheet" href="bower_components/bootstrap-tour/build/css/bootstrap-tour.css" />
-  <link rel="stylesheet" href="bower_components/bootstrap-tour/build/css/bootstrap-tour-standalone.css" />
-  <link rel="stylesheet" href="bower_components/bootstrap-select/dist/css/bootstrap-select.css" />
-  <link rel="stylesheet" href="bower_components/alv-ch-ng.selectpicker/dist/css/selectpicker.css" />
-  <link rel="stylesheet" href="bower_components/alv-ch-ng.text-truncate/dist/css/textTruncate.css" />
-  <link rel="stylesheet" href="bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.css" />
-  <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
   <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:css assets/styles/app.css -->
+  <link rel="stylesheet" href="assets/styles/main.css">
+  <link rel="stylesheet" href="assets/styles/slider.css">
+  <link rel="stylesheet" href="assets/styles/jobdesk.css">
   <!-- endbuild -->
 </head>
 
-<body class="fluid search-{{params.search}}">
+<body class="fluid search-{{params.searchParams}}">
 <div  id="topnav" class="topnav">
   <!-- /.navbar -->
   <div class="navbar navbar-inverse" role="navigation">
     <div class="container">
       <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
         <div class="navbar-brand">
           <a href="#/" glyph-icon="home">
             <span translate="global.title"></span>
@@ -149,15 +114,16 @@
 <script src="bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
 <script src="bower_components/alv-ch-ng.selectpicker/dist/alv-ch-ng.selectpicker.js"></script>
 <script src="bower_components/jquery-bridget/jquery.bridget.js"></script>
-<script src="bower_components/seiyria-bootstrap-slider/js/bootstrap-slider.js"></script>
+<script src="bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
 <script src="bower_components/angular-bootstrap-slider/slider.js"></script>
-<script src="bower_components/angularjs-geolocation/src/geolocation.js"></script>
+<script src="bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
 <script src="bower_components/leaflet/dist/leaflet.js"></script>
-<script src="bower_components/leaflet/dist/leaflet-src.js"></script>
 <script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
 <script src="bower_components/angular-flowtype/angular-flowtype.js"></script>
-<script src="bower_components/angular-hotkeys/angular-hotkeys.js"></script>
+<script src="bower_components/angular-hotkeys/src/hotkeys.js"></script>
 <script src="bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+<script src="bower_components/d3/d3.min.js"></script>
+<script src="bower_components/topojson/topojson.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
@@ -165,6 +131,7 @@
 <script src="scripts/app/app.js"></script>
 <script src="scripts/app/app.config.js"></script>
 <script src="scripts/aspects/i18n.js"></script>
+<script src="scripts/aspects/directive.js"></script>
 <script src="scripts/app/localInfo/localInfo.js"></script>
 <script src="scripts/app/localInfo/localInfo.controller.js"></script>
 <script src="scripts/app/apprenticeships/apprenticeships.js"></script>
@@ -176,7 +143,11 @@
 <script src="scripts/app/jobs/jobs.js"></script>
 <script src="scripts/app/jobs/jobs.service.js"></script>
 <script src="scripts/app/jobs/jobs.controller.js"></script>
+<script src="scripts/app/jobs/jobs.directive.js"></script>
 <script src="scripts/components/codes/codes.service.js"></script>
+<script src="scripts/aspects/ngKeypad/ngKey.js"></script>
+<script src="scripts/aspects/ngKeypad/ngKeypad.js"></script>
+<script src="scripts/aspects/ngKeypad/ngKeypadInput.js"></script>
 <!-- endbuild -->
 
 </body>
