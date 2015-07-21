@@ -3,24 +3,23 @@
   'use strict';
 
   angular.module('job-desk')
-    .factory('JobsService', function ($http, $resource, baseUrl) {
+    .factory('JobsService', function ($http, baseUrl, $rootScope) {
 
       var params = {
-        areaType:1,
         km:30,
-        time:60,
         history:5,
         fulltime:true,
         isco:'',
         isco2:'',
-        locations:[],
-        search:'jobs'
+        locations:[]
       };
 
-      function find(cb) {
+      function find() {
         $http.post(baseUrl+'/jobs/getJobs', {plz: params.locations, isco: params.isco, isco2: params.isco2, fulltime: params.fulltime, history: params.history}).success(function(result){
-          //console.log(jobs);
-          cb(result);
+          $rootScope.jobs=result.jobs;
+        })
+        .error(function(error){
+          console.log(error);
         });
       }
 
@@ -43,10 +42,20 @@
         });
       }
 
+      function getJob(jobId) {
+        $http.get(baseUrl+'/jobdetails/'+jobId).success(function(result){
+          $rootScope.job=result;
+        })
+        .error(function(error){
+          console.log(error);
+        });
+      }
+
       return {
         find: find,
         count: count,
-        params: params
+        params: params,
+        getJob: getJob
       }
 
     });

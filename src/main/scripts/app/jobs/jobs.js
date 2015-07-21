@@ -49,12 +49,15 @@ angular.module('job-desk')
                 mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                   $translatePartialLoader.addPart('jobs');
                   return $translate.refresh();
+                }],
+                jobsLoader: ['JobsService', function (JobsService) {
+                  JobsService.find();
                 }]
               }
             })
             .state('job-detail', {
               parent: 'site',
-              url: '/job-detail',
+              url: '/job-detail/:jobId',
               views: {
                 'content@': {
                   templateUrl: 'views/content/jobs/detail.html',
@@ -65,6 +68,9 @@ angular.module('job-desk')
                 mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                   $translatePartialLoader.addPart('jobs');
                   return $translate.refresh();
+                }],
+                jobDetailLoader: ['$stateParams','JobsService', function ($stateParams, JobsService) {
+                  JobsService.getJob($stateParams.jobId);
                 }]
               }
             })

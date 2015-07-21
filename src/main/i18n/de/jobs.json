@@ -48,6 +48,7 @@
       "title": "Jobdetails",
       "titlecompany": "Unternehmen",
       "titlecontact": "Kontaktperson",
+      "titlelanguages":"Sprachen",
       "titleelectronic": "Elektronische Bewerbung",
       "titleletter": "Schriftliche Bewerbung",
       "titlespecification": "Bewerbungsformen",
@@ -56,7 +57,8 @@
       "untStrasse": "Strasse / Nummer",
       "vertragsdauer": "Anstellungsdauer",
       "print":"Stelle drucken",
-      "favorite":"Stelle merken"
+      "spoken":"mündlich",
+      "written":"schriftlich"
     }
   }
 }

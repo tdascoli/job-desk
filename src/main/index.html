@@ -48,7 +48,7 @@
   <!-- endbuild -->
 </head>
 
-<body class="fluid search-{{params.searchParams}}">
+<body class="fluid search-{{searchType}}">
 <div  id="topnav" class="topnav">
   <!-- /.navbar -->
   <div class="navbar navbar-inverse" role="navigation">
@@ -61,7 +61,7 @@
           <span class="icon-bar"></span>
         </button>
         <div class="navbar-brand">
-          <a href="#/" glyph-icon="home">
+          <a href="#/{{searchType}}" glyph-icon="home">
             <span translate="global.title"></span>
           </a>
         </div>
@@ -94,6 +94,7 @@
 <script src="bower_components/mailcheck/src/mailcheck.js"></script>
 <script src="bower_components/alv-ch-ng.forms/dist/alv-ch-ng.forms.js"></script>
 <script src="bower_components/alv-ch-ng.scroll/dist/alv-ch-ng.scroll.js"></script>
+<script src="bower_components/alv-ch-ng.text-truncate/dist/alv-ch-ng.textTruncate.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>

@@ -4,9 +4,21 @@
     "apprenticeships": "Lehrstellen",
     "educations": "Weiterbildungen",
     "jobs": "Jobs",
-    "localInfo": "Informationen",
     "navigation": {
-      "search":"Suche"
+      "localInfo": "Informationen",
+      "startpage":"Startseite",
+      "search":"Suche",
+      "results":"Trefferliste",
+      "showJobs":"Stellen anzeigen"
+    },
+    "sort": {
+      "neuste":"Neuste Jobs zuerst",
+      "unbefristet":"Unbefristete Jobs zuerst",
+      "befristet":"Befristete Jobs zuerst",
+      "pensum_100":"Arbeitspensum - niedrigste zuerst",
+      "pensum_0":"Arbeitspensum - höchste zuerst",
+      "jobtitel_az":"Jobtitel - A-Z",
+      "jobtitel_za":"Jobtitel - Z-A"
     }
   },
   "common_i18n_select_noneSelectedText":"Bitte wählen"

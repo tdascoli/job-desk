@@ -5,7 +5,8 @@
   angular.module('job-desk')
     .controller('EducationsCtrl', function ($scope, $rootScope, EducationsService) {
 
-      $scope.searchParams = {};
+      $rootScope.searchType='educations';
+      $scope.searchParams = EducationsService.params;
 
       $scope.educations = $rootScope.educations;
 

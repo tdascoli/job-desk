@@ -1,10 +1,10 @@
 <div class="navigation filter row" id="filter" flowtype min-font="1" max-font="9999" font-ratio="100" line-ratio="1.45" minimum="1" maximum="9999">
   <div class="col-md-4">
-    <div ng-if="!searchParams.isco">
-      <selectpicker form-label="jobs.search.jobgroup" id="isco" options="iscoCategory" label-attribute="'text'" value-attribute="'code'" i18n-label="true" ng-model="searchParams.isco" ng-change="countStellen()"></selectpicker>
+    <div ng-if="!params.swissdoc">
+      <selectpicker form-label="job.search.jobgroup" id="swissdoc" options="swissdocCategory" label-attribute="'text'" value-attribute="'code'" i18n-label="true" ng-model="searchParams.swissdoc" ng-change="countStellen()"></selectpicker>
     </div>
-    <div ng-if="searchParams.isco">
-      <selectpicker form-label="isco.category{{searchParams.isco}}" id="subisco" options="isco[searchParams.isco]" label-attribute="'text'" value-attribute="'code'" i18n-label="true" ng-model="searchParams.isco2" ng-change="countStellen()"></selectpicker>
+    <div ng-if="params.swissdoc">
+      <selectpicker form-label="swissdoc.category{{params.swissdoc}}" id="subswissdoc" options="swissdoc[params.swissdoc]" label-attribute="'text'" value-attribute="'code'" i18n-label="true" ng-model="searchParams.swissdoc2" ng-change="countStellen()"></selectpicker>
     </div>
   </div>
   <div class="col-md-2 location-plz">
@@ -12,19 +12,9 @@
   </div>
   <div class="col-md-2">
     <div class="form-group">
-      <label for="umkreis"><span translate="jobs.search.distance" class="ng-scope"></span> {{showDistanceInKM()}}</label>
+      <label for="umkreis"><span translate="job.search.distance" class="ng-scope"></span> {{showDistanceInKM()}}</label>
       <slider id="umkreis" ng-model="searchParams.km" ng-mouseup="countStellen()" min="kmOptions.min" step="kmOptions.step" max="kmOptions.max" value="kmOptions.value"></slider>
     </div>
-  </div>
-  <div class="col-md-2">
-    <div class="form-group">
-      <label for="history"><span translate="jobs.search.onlineSince"></span> {{searchParams.history}} <span ng-show="searchParams.history<2" translate="jobs.search.day"></span><span ng-show="searchParams.history>1" translate="jobs.search.days"></span></label>
-      <slider id="history" ng-model="searchParams.history" ng-mouseup="countStellen()" min="historyOptions.min" step="historyOptions.step" max="historyOptions.max" value="historyOptions.value"></slider>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <input type="radio" ng-model="searchParams.fulltime" name="vollzeit" value="1" id="vollzeit" form-label="jobs.search.all" ng-change="countStellen()" />
-    <input type="radio" ng-model="searchParams.fulltime" name="vollzeit" value="0" id="teilzeit" form-label="jobs.search.parttime" ng-change="countStellen()" />
   </div>
 </div>
 

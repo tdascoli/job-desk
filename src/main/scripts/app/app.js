@@ -18,6 +18,7 @@
     'alv-ch-ng.scroll',
     'alv-ch-ng.forms',
     'alv-ch-ng.selectpicker',
+    'alv-ch-ng.text-truncate',
     'job-desk.i18n',
     'job-desk.directive'
   ]);

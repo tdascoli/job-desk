@@ -1,15 +1,11 @@
 <div class="navigation filter row" id="filter">
-  <div class="col-md-3" ng-hide="searchParams.search==='jobs'">
+  <div class="col-md-3">
     <br />
-    <a ng-click="searchParams.search='jobs'" class="btn btn-block btn-plain jobs" glyph-icon="home"> <strong translate="global.jobs"></strong></a>
+    <a href="#/educations" class="btn btn-default btn-block btn-plain wab" glyph-icon="arrow-top" admin-symbol> <strong translate="global.educations"></strong></a>
   </div>
-  <div class="col-md-3" ng-hide="searchParams.search==='courses'">
+  <div class="col-md-3">
     <br />
-    <a ng-click="searchParams.search='courses'" class="btn btn-default btn-block btn-plain wab" glyph-icon="arrow-top" admin-symbol> <strong translate="global.educations"></strong></a>
-  </div>
-  <div class="col-md-3" ng-hide="searchParams.search==='lenas'">
-    <br />
-    <a ng-click="searchParams.search='lenas'" class="btn btn-default btn-block btn-plain lena" glyph-icon="arrow-top" admin-symbol> <strong translate="global.apprenticeships"></strong></a>
+    <a href="#/apprenticeships" class="btn btn-default btn-block btn-plain lena" glyph-icon="arrow-top" admin-symbol> <strong translate="global.apprenticeships"></strong></a>
   </div>
   <div class="col-md-6">
     <div class="navbar-right">
@@ -67,7 +63,7 @@
 
 <div class="row navigation bottom" id="navbottom">
   <div class="col-md-offset-1 col-md-2" align="center">
-    <a class="btn btn-default btn-plain btn-block" href="#/frontpage" glyph-icon="info-sign"> <span translate="global.localInfo"></span></a>
+    <a class="btn btn-default btn-plain btn-block" href="#/frontpage" glyph-icon="info-sign"> <span translate="global.navigation.localInfo"></span></a>
   </div>
   <div class="col-md-offset-6 col-md-2" align="center">
     <a class="btn btn-default btn-primary btn-plain btn-block" href="#/job-search" ng-show="searchParams.search==='jobs'" translate="global.navigation.search"></a>

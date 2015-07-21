@@ -19,5 +19,21 @@ angular.module('job-desk')
                         return $translate.refresh();
                     }]
                 }
+            })
+            .state('apprenticeship-search', {
+              parent: 'site',
+              url: '/apprenticeship-search',
+              views: {
+                'content@': {
+                  templateUrl: 'views/content/apprenticeships/search.html',
+                  controller: 'ApprenticeshipsCtrl'
+                }
+              },
+              resolve: {
+                mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                  $translatePartialLoader.addPart('jobs');
+                  return $translate.refresh();
+                }]
+              }
             });
     });

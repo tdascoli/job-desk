@@ -5,6 +5,10 @@
   angular.module('job-desk')
     .factory('EducationsService', function ($http) {
 
+      var params = {
+        search:'educations'
+      };
+
       var path = 'resource/educations';
 
       function all() {
@@ -31,7 +35,8 @@
 
       return {
         all: all,
-        find: find
+        find: find,
+        params: params
       }
 
     });
