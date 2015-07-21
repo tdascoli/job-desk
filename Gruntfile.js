@@ -1,4 +1,3 @@
-// Generated on 2015-03-01 using generator-jhipster 2.0.0
 'use strict';
 
 var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
@@ -33,24 +32,12 @@ module.exports = function (grunt) {
         ]
       }
     },
-    autoprefixer: {
-      // not used since Uglify task does autoprefixer,
-      //    options: ['last 1 version'],
-      //    dist: {
-      //        files: [{
-      //            expand: true,
-      //            cwd: '.tmp/styles/',
-      //            src: '**/*.css',
-      //            dest: '.tmp/styles/'
-      //        }]
-      //    }
-    },
     connect: {
       proxies: [
         {
-          context: '/uaa',
+          context: '/jobs',
           host: 'localhost',
-          port: 9999,
+          port: 9200,
           https: false,
           changeOrigin: false
         },
