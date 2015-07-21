@@ -8,5 +8,6 @@
     "navigation": {
       "search":"Suche"
     }
-  }
+  },
+  "common_i18n_select_noneSelectedText":"Bitte wählen"
 }

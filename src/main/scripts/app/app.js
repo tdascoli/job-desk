@@ -17,6 +17,7 @@
     'alv-ch-ng.security',
     'alv-ch-ng.scroll',
     'alv-ch-ng.forms',
+    'alv-ch-ng.selectpicker',
     'job-desk.i18n',
     'job-desk.directive'
   ]);

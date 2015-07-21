@@ -3,60 +3,41 @@
   'use strict';
 
   angular.module('job-desk')
-    .controller('JobsCtrl', function ($scope, $rootScope, $state, JobsService) {
+    .controller('JobsCtrl', function ($scope, $rootScope, $state, JobsService, lodash) {
 
-      $scope.searchParams = {
-        areaType:1,
-        km:30,
-        time:60,
-        history:5,
-        fulltime:true,
-        isco:'',
-        isco2:'',
-        search:'jobs'
-      };
+      $scope.searchParams = JobsService.params;
 
       $scope.kmOptions = {min:10,max:150,step:10,value:30};
       $scope.hourOptions = {min:10,max:240,step:5,value:60};
       $scope.historyOptions = {min:1,max:60,step:1,value:5};
+      $scope.iscoCategory=[{text:'isco.category1',code:'1'},{text:'isco.category2',code:'2'},{text:'isco.category3',code:'3'},{text:'isco.category4',code:'4'},{text:'isco.category5',code:'5'},{text:'isco.category6',code:'6'},{text:'isco.category7',code:'7'},{text:'isco.category8',code:'8'},{text:'isco.category9',code:'9'}];
 
       $scope.idle=false;
       $scope.count=0;
       $scope.nearestZip='';
 
-      $scope.jobs = $rootScope.jobs;
+      $scope.jobs = [];
 
-      $scope.currentCoords = $rootScope.myCoords;
+      $scope.currentCoords=undefined;
 
       $scope.executeSearch = function() {
-        JobsService.find($scope.searchParams).success(function(result) {
-          $scope.jobs = result;
-        })
+
+        $state.go('job-result');
+
+        $scope.idle=true;
+
+        $scope.getJobs();
+
+        $scope.idle=false;
       };
 
-      $scope.find=function(){
-        $scope.idle=true;
-        var param = {};
 
-        if ($scope.params.search==='jobs') {
-          var isco = $scope.params.isco || '';
-          var isco2 = $scope.params.isco2 || '';
-          param = {
-            plz: $scope.locations,
-            isco: isco,
-            isco2: isco2,
-            fulltime: $scope.params.fulltime,
-            history: $scope.params.history
-          };
-        }
-        else if ($scope.params.search==='lenas'){
-          param = {plz: $scope.locations, swissdoc: $scope.params.swissdoc};
-        }
-        $http.post(baseUrl+'/'+$scope.params.search+'/getJobs', param).success(function(result){
-          $rootScope.resultCollection = result.jobs;
+
+      $scope.getJobs=function(){
+        JobsService.find(function(jobs){
+          $scope.jobs=jobs;
+          console.log($scope.jobs);
         });
-        $scope.idle=false;
-        $location.path('/results');
       };
 
       $scope.setIscoGroup=function(isco){
@@ -85,13 +66,18 @@
       };
 
       $scope.countStellen=function(){
-        // Service...
         $scope.idle=true;
-        JobsService.count($scope.currentCoords, $scope.searchParams, function(count,nearestZip){
+        JobsService.count($scope.currentCoords, function(count,locations,nearestZip){
           $scope.count=count;
           $scope.nearestZip=nearestZip;
+          $scope.searchParams.locations=locations;
           $scope.idle=false;
         });
+      };
+
+      $scope.setCurrentCoords=function(coords){
+        $scope.currentCoords=coords;
+        $scope.$digest();
       };
 
       $scope.$watch('currentCoords', function(){
@@ -99,6 +85,32 @@
           $scope.countStellen();
         }
       });
+
+      $scope.$watch('myCoords', function(){
+        if ($rootScope.myCoords!==undefined){
+          $scope.currentCoords=$rootScope.myCoords;
+        }
+      });
+
+      $scope.$watchCollection('jobs', function(oldVal, newVal){
+        console.log('watch',oldVal, newVal);
+      });
+
+      // todo wip
+      $scope.sortList=[
+        {code:{field:'ONLINE_SEIT',order:false}, text:'search.sort.neuste'},
+        {code:{field:'UNBEFRISTET_B',order:true}, text:'search.sort.unbefristet'},
+        {code:{field:'UNBEFRISTET_B',order:false}, text:'search.sort.befristet'},
+        {code:{field:'PENSUM_BIS',order:true}, text:'search.sort.pensum_0'},
+        {code:{field:'PENSUM_BIS',order:false}, text:'search.sort.pensum_100'},
+        {code:{field:'BEZEICHNUNG',order:false}, text:'search.sort.jobtitel_az'},
+        {code:{field:'BEZEICHNUNG',order:true}, text:'search.sort.jobtitel_za'}
+      ];
+      $scope.sort=null;
+      $scope.sortResultList=function(sort){
+        $scope.sort=sort;
+        $rootScope.resultCollection = orderBy($rootScope.resultCollection, $scope.sortList[sort].code.field, $scope.sortList[sort].code.order);
+      };
 
       // SSI Tastatur
       $scope.ssiKeyStart=function(){
@@ -340,7 +352,19 @@
       $scope.ssiKeyBack=function(){
         $scope.navigateToJob(false);
       };
-      */
+
+
+       areaType:1,
+       km:30,
+       time:60,
+       history:5,
+       fulltime:true,
+       isco:'',
+       isco2:'',
+       search:'jobs'
+
+
+       */
     });
 
 

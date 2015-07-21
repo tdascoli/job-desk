@@ -129,8 +129,6 @@
                 setUmkreisInternal(false);
               }
             });
-
-
           }
 
           function setUmkreisInternal(location) {
@@ -225,24 +223,23 @@
             $('.my-location').remove();
             setCities();
             setMyLocation();
-            setUmkreisInternal(false);
           }
 
           d3.select(window).on('resize', resize());
 
           d3.select("svg").on("mousedown.log", function () {
             var coords = projection.invert(d3.mouse(this));
-            scope.currentCoords={lng: coords[0], lat: coords[1]};
-            //scope.countStellen();
-            setUmkreisInternal(false);
+            scope.setCurrentCoords({lng: coords[0], lat: coords[1]});
           });
-
-          scope.setUmkreis = function (location) {
-            setUmkreisInternal(location);
-          };
 
           scope.$watch('searchParams.km', function () {
             $('.radius').attr('r', (scope.searchParams.km * 2));
+          });
+
+          scope.$watch('currentCoords', function () {
+            if (scope.currentCoords!==undefined) {
+              setUmkreisInternal(false);
+            }
           });
         });
       }

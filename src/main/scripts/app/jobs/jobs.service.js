@@ -3,34 +3,28 @@
   'use strict';
 
   angular.module('job-desk')
-    .factory('JobsService', function ($http, baseUrl) {
+    .factory('JobsService', function ($http, $resource, baseUrl) {
 
-      var path = 'resource/jobs';
+      var params = {
+        areaType:1,
+        km:30,
+        time:60,
+        history:5,
+        fulltime:true,
+        isco:'',
+        isco2:'',
+        locations:[],
+        search:'jobs'
+      };
 
-      function all() {
-        return $http.get(path);
+      function find(cb) {
+        $http.post(baseUrl+'/jobs/getJobs', {plz: params.locations, isco: params.isco, isco2: params.isco2, fulltime: params.fulltime, history: params.history}).success(function(result){
+          //console.log(jobs);
+          cb(result);
+        });
       }
 
-      function find(params) {
-        var path = path;
-
-        var counter = 0;
-        for (var param in params) {
-          if (params[param] || params[param] === false) {
-            if (counter > 0) {
-              path = path + '&'
-            } else {
-              path = path + '?';
-            }
-            path = path + param + '=' + params[param];
-            counter++;
-          }
-        }
-        return $http.get(path);
-      }
-
-
-      function count(coords, params, cb){
+      function count(coords, cb){
 
         $http.post(baseUrl+'/locations/area', {coord: coords, radius: params.km}).success(function(result){
           var nearestZip='', locations=[], i=0;
@@ -44,15 +38,15 @@
           });
 
           $http.post(baseUrl+'/jobs/countJobs', {plz: locations, isco: params.isco, isco2: params.isco2, fulltime: params.fulltime, history: params.history}).success(function(result){
-            cb(result.count,nearestZip);
+            cb(result.count,locations,nearestZip);
           });
         });
       }
 
       return {
-        all: all,
         find: find,
-        count: count
+        count: count,
+        params: params
       }
 
     });

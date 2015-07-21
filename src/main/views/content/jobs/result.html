@@ -12,24 +12,29 @@
       </ul>
     </div>
   </div>
-  <div class="col-md-3">
-    <strong class="fake-label"><span translate="job.result.favorites"></span> ({{favorite.length}})</strong>
-    <button class="btn-block btn-plain" ng-click="showFavorite()" translate="job.result.showAll"></button>
-  </div>
 </div>
-
+                                    {{ jobs | json }}
+<button ng-click="getJobs()">search</button>
 <div class="job-results list-group">
-  <div class="list-group-item" ng-class="{'visited' : visited(job.id)}" ng-repeat="result in resultCollection" ng-include="getResult()"></div>
+  <div class="list-group-item" ng-class="{'visited' : visited(result.id)}" ng-repeat="result in jobs">
+    <div class="row">
+      <a href="#/detail/{{result.id}}" class="job-result col-md-10">
+        <strong class="fake-label">{{result.BEZEICHNUNG}} / #{{result.id}} / Online seit {{result.ONLINE_SEIT}} Tag(en) / {{result.PENSUM_BIS}}%</strong>
+        <p ng-text-truncate="result.BESCHREIBUNG" ng-tt-chars-threshold="200" ng-tt-no-toggling></p>
+      </a>
+      <div class="cold-md-2" align="center">
+        <button glyph-icon="print" admin-symbol class="result-button btn-plain"></button>
+        <button ng-click="star(result.id)" glyph-icon="star" admin-symbol class="result-button btn-plain" ng-class="{favorite: isStarred(result.id)}"></button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="row navigation bottom" id="navbottom" hotkey="{b: ssiKeySearch}">
   <div class="col-md-offset-1 col-md-2">
     <a class="btn btn-default btn-plain btn-block" href="#/search" glyph-icon="arrow-left" admin-symbol> <span translate="common.navigation.search"></span></a>
   </div>
-  <div class="col-md-offset-2 col-md-2">
-    <a class="btn btn-default btn-plain btn-block" ng-click="unshowFavorite()" glyph-icon="arrow-bottom" admin-symbol ng-show="favoritePage"> <span translate="common.navigation.results"></span></a>
-  </div>
-  <div class="col-md-offset-4 col-md-1" align="right">
+  <div class="col-md-offset-8 col-md-1" align="right">
     <help></help>
   </div>
 </div>

@@ -9,12 +9,11 @@
   </div>
   <div class="col-md-2 location-plz">
     <input type="text" readonly="true" maxlength="4" name="plz" id="plz" form-input form-label="jobs.search.where" ng-model="nearestZip" form-inset="search" form-inset-action="showPLZNumpad()" form-inset-btn />
-
   </div>
   <div class="col-md-2">
     <div class="form-group">
       <label for="umkreis"><span translate="jobs.search.distance" class="ng-scope"></span> {{showDistanceInKM()}}</label>
-      <slider id="umkreis" ng-model="searchParams.km" min="kmOptions.min" step="kmOptions.step" max="kmOptions.max" value="kmOptions.value"></slider>
+      <slider id="umkreis" ng-model="searchParams.km" ng-mouseup="countStellen()" min="kmOptions.min" step="kmOptions.step" max="kmOptions.max" value="kmOptions.value"></slider>
     </div>
   </div>
   <div class="col-md-2">
@@ -45,7 +44,7 @@
     <a class="btn btn-default btn-plain btn-block" href="#/startpage" glyph-icon="arrow-left" admin-symbol> <span translate="common.navigation.startpage"></span></a>
   </div>
   <div class="col-md-offset-6 col-md-2" align="center">
-    <button primary="true" class="btn-plain btn-block" ng-click="find()" ng-disabled="stellen===0 || idle">
+    <button primary="true" class="btn-plain btn-block" ng-click="executeSearch()" ng-disabled="stellen===0 || idle">
       <span translate="common.label.jobs"></span>&nbsp;
       <span translate="common.navigation.show"></span>
     </button>
