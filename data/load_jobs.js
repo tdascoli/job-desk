@@ -17,7 +17,7 @@
     .lines
     .forEach(function(line){
       if (!skipFirstLine || (skipFirstLine && counter > 0)) {
-        var lineString = line.toString().replace(/['"]+/g, '')
+        var lineString = line.toString().replace(/['"]+/g, '');
         var lineData = lineString.toString().split(';');
         client.index({
           index: index,
@@ -37,12 +37,13 @@
               "it": '[IT] ' + lineData[6],
               "en": '[EN] ' + lineData[6]
             },
-            "jobGroup": 1,
+            "iscoMajorGroup": lineData[118],
+            "iscoGroupLevel2": lineData[119],
             "locations": [
               {
                 "coords": {
-                  "lng": 22,
-                  "lat": 33
+                  "lon": lineData[120],
+                  "lat": lineData[121]
                 },
                 "zip": lineData[28],
                 "remarks": {
@@ -53,7 +54,9 @@
                 }
               }
             ],
-            "onlineSince": lineData[36],
+            "fulltime": lineData[115],
+            "externalSource": lineData[116],
+            "onlineSince": lineData[117],
             "quotaFrom": lineData[13],
             "quotaTo": lineData[14],
             "startDate": lineData[10],
