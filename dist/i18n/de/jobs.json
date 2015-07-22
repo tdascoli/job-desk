@@ -1,0 +1,64 @@
+{
+  "jobs": {
+    "navigation": {
+      "nextJob":"nächste Stelle",
+      "previousJob":"vorherige Stelle"
+    },
+    "search": {
+      "jobgroup":"Was (Berufsgruppe)",
+      "where":"Wo (PLZ)",
+      "distance":"Distanz",
+      "traveltime":"Reisedauer",
+      "onlineSince":"Online seit",
+      "day":"Tag",
+      "days":"Tagen",
+      "all":"Alle Stellen",
+      "parttime":"Nur Teilzeit Stellen",
+      "foundJobs":"Gefundene Stellen"
+    },
+    "result": {
+      "sorting":"Sortierung",
+      "favorites":"Gemerkte Stellen",
+      "showAll":"Alle Anzeigen"
+    },
+    "detail": {
+      "anmeldedatum": "online seit",
+      "anredeCode": "Anrede",
+      "anredeM": "Herr",
+      "anredeW": "Frau",
+      "arbeitsortText": "Arbeitsort, Bemerkung",
+      "avam": "AVAM",
+      "beschreibung": "Tätigkeiten, Anforderungen",
+      "feedback": "Hier können Sie die Detaildaten der ausgewählten Stelle einsehen.",
+      "foreignWorkplace": "Ausland",
+      "formular": "Online-Bewerbung",
+      "geschlechtscode": "Anrede",
+      "jobNumber": "Stellennummer",
+      "jobRoom": "Job-Room",
+      "kpEmail": "E-Mail",
+      "kpName": "Nachname",
+      "kpVorname": "Vorname",
+      "letterApplication": "siehe Adresse des Unternehmens",
+      "moreinfo": "Ergänzende Angaben",
+      "pensum": "Arbeitspensum",
+      "phonebe": "Telefonische Bewerbung",
+      "postfach": "Postfach",
+      "stellenantritt": "Stellenantritt",
+      "TelefonNr": "Telefon",
+      "title": "Jobdetails",
+      "titlecompany": "Unternehmen",
+      "titlecontact": "Kontaktperson",
+      "titlelanguages":"Sprachen",
+      "titleelectronic": "Elektronische Bewerbung",
+      "titleletter": "Schriftliche Bewerbung",
+      "titlespecification": "Bewerbungsformen",
+      "untName": "Unternehmen",
+      "untplz": "PLZ / Ort",
+      "untStrasse": "Strasse / Nummer",
+      "vertragsdauer": "Anstellungsdauer",
+      "print":"Stelle drucken",
+      "spoken":"mündlich",
+      "written":"schriftlich"
+    }
+  }
+}

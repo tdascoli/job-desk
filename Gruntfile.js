@@ -4,8 +4,8 @@ var fs = require('fs');
 // usemin custom step
 var useminAutoprefixer = {
   name: 'autoprefixer',
-  createConfig: function(context, block) {
-    if(block.src.length === 0) {
+  createConfig: function (context, block) {
+    if (block.src.length === 0) {
       return {};
     } else {
       return require('grunt-usemin/lib/config/cssmin').createConfig(context, block) // Reuse cssmins createConfig
@@ -44,13 +44,20 @@ module.exports = function (grunt) {
     browserSync: {
       dev: {
         bsFiles: {
-          src : [
+          src: [
             'src/main/**/*.html',
             'src/main/**/*.json',
             'src/main/assets/styles/**/*.css',
             'src/main/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}',
             'src/main/scripts/**/*.js',
             'tmp/**/*.{css,js}'
+          ]
+        }
+      },
+      dist: {
+        bsFiles: {
+          src: [
+            'dist/**/*.*'
           ]
         }
       },
@@ -151,7 +158,7 @@ module.exports = function (grunt) {
     cssmin: {
       // src and dest is configured in a subtask called "generated" by usemin
     },
-    ngtemplates:    {
+    ngtemplates: {
       dist: {
         cwd: 'src/main',
         src: ['scripts/app/**/*.html', 'scripts/components/**/*.html',],
@@ -159,7 +166,7 @@ module.exports = function (grunt) {
         options: {
           module: 'job-desk',
           usemin: 'scripts/app.js',
-          htmlmin:  {
+          htmlmin: {
             removeCommentsFromCDATA: true,
             // https://github.com/yeoman/grunt-usemin/issues/44
             collapseWhitespace: true,
@@ -210,25 +217,60 @@ module.exports = function (grunt) {
         }]
       },
       dist: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: 'src/main',
-          dest: '<%= yeoman.dist %>',
-          src: [
-            '*.html',
-            'scripts/**/*.html',
-            'assets/images/**/*.{png,gif,webp,jpg,jpeg,svg}',
-            'assets/fonts/*'
-          ]
-        }, {
-          expand: true,
-          cwd: '.tmp/assets/images',
-          dest: '<%= yeoman.dist %>/assets/images',
-          src: [
-            'generated/*'
-          ]
-        }]
+        files: [
+          {
+            expand: true,
+            dot: true,
+            cwd: 'src/main',
+            dest: '<%= yeoman.dist %>',
+            src: [
+              '*.html',
+              'scripts/**/*.html',
+              'assets/images/**/*.{png,gif,webp,jpg,jpeg,svg}',
+              'assets/fonts/*'
+            ]
+          },
+          {
+            expand: true,
+            cwd: '.tmp/assets/images',
+            dest: '<%= yeoman.dist %>/assets/images',
+            src: [
+              'generated/*'
+            ]
+          },
+          {
+            expand: true,
+            cwd: 'src/main/i18n',
+            dest: '<%= yeoman.dist %>/i18n',
+            src: [
+              '**/*.json'
+            ]
+          },
+          {
+            expand: true,
+            cwd: 'src/main/views',
+            dest: '<%= yeoman.dist %>/views',
+            src: [
+              '*.html', '**/*.html'
+            ]
+          },
+          {
+            expand: true,
+            cwd: 'src/main/assets/templates',
+            dest: '<%= yeoman.dist %>/assets/templates',
+            src: [
+              '*.html', '**/*.html'
+            ]
+          },
+          {
+            expand: true,
+            cwd: 'src/main/assets/topojson',
+            dest: '<%= yeoman.dist %>/assets/topojson',
+            src: [
+              '*.json'
+            ]
+          },
+        ]
       }
     },
     ngAnnotate: {
@@ -253,7 +295,7 @@ module.exports = function (grunt) {
         },
         constants: {
           ENV: 'dev',
-          VERSION: parseVersionFromPomXml()
+          VERSION: '<%= yeoman.app.version %>'
         }
       },
       prod: {
@@ -262,7 +304,7 @@ module.exports = function (grunt) {
         },
         constants: {
           ENV: 'prod',
-          VERSION: parseVersionFromPomXml()
+          VERSION: '<%= yeoman.app.version %>'
         }
       }
     }
