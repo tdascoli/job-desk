@@ -1,0 +1,39 @@
+<div class="navigation filter row" id="filter" flowtype min-font="1" max-font="9999" font-ratio="100" line-ratio="1.45" minimum="1" maximum="9999">
+  <div class="col-md-4">
+    <strong class="fake-label" translate="jobs.result.sorting"></strong>
+    <div class="dropdown">
+      <button id="dLabel" type="button" class="btn-block btn-plain" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span ng-if="sort===null" translate="common_i18n_select_noneSelectedText"></span>
+        <span ng-if="sort>-1" translate="{{sortList[sort].text}}"></span>
+        <span class="caret"></span>
+      </button>
+      <ul class="job-sort dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <li role="presentation" ng-repeat="item in sortList"><a role="menuitem" ng-click="sortResultList($index)" translate="{{item.text}}"></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="job-results list-group">
+  <div class="list-group-item" ng-class="{'visited' : visited(result.id)}" ng-repeat="result in jobs">
+    <div class="row">
+      <a href="#/job-detail/{{result.id}}" class="job-result col-md-10">
+        <strong class="fake-label">{{result.BEZEICHNUNG}} / #{{result.id}} / Online seit {{result.ONLINE_SEIT}} Tag(en) / {{result.PENSUM_BIS}}%</strong>
+        <p ng-hide="result.EXTERN" ng-text-truncate="result.BESCHREIBUNG" ng-tt-chars-threshold="200" ng-tt-no-toggling></p>
+        <p ng-show="result.EXTERN">QUELLE EXTERN</p>
+      </a>
+      <div class="cold-md-2" align="center">
+        <button glyph-icon="print" admin-symbol class="btn-plain"> <span translate="jobs.detail.print"></span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row navigation bottom" id="navbottom" hotkey="{b: ssiKeySearch}">
+  <div class="col-md-offset-1 col-md-2">
+    <a class="btn btn-default btn-plain btn-block" href="#/job-search" glyph-icon="arrow-left" admin-symbol> <span translate="global.navigation.search"></span></a>
+  </div>
+  <div class="col-md-offset-8 col-md-1" align="right">
+    <help></help>
+  </div>
+</div>

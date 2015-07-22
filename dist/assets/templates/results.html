@@ -1,0 +1,10 @@
+<div class="row">
+    <a href="#/detail/{{job.id}}" class="job-result col-md-10">
+            <strong class="fake-label">{{job.BEZEICHNUNG}} / #{{job.id}} / Online seit {{job.ONLINE_SEIT}} Tag(en) / {{job.PENSUM_BIS}}%</strong>
+            <p ng-text-truncate="job.BESCHREIBUNG" ng-tt-chars-threshold="200" ng-tt-no-toggling></p>
+    </a>
+    <div class="cold-md-2" align="center">
+        <button glyph-icon="print" admin-symbol class="result-button btn-plain"></button>
+        <button ng-click="star(job.id)" glyph-icon="star" admin-symbol class="result-button btn-plain" ng-class="{favorite: isStarred(job.id)}"></button>
+    </div>
+</div>
