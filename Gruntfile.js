@@ -286,11 +286,20 @@ module.exports = function (grunt) {
             src: [
               '*.json'
             ]
-          },
+          }
         ]
       }
     },
     connect: {
+      proxies: [
+        {
+          context: '/jobdesk',
+          host: 'localhost',
+          port: 9200,
+          https: false,
+          changeOrigin: false
+        }
+      ],
       options: {
         port: 9000,
         // Change this to 'localhost' to deny access to the server from outside.
@@ -311,16 +320,7 @@ module.exports = function (grunt) {
               connect.static('src/main'),
             ];
           }
-        },
-        proxies: [
-          {
-            context: '/jobsearch',
-            host: 'localhost',
-            port: 9200,
-            https: false,
-            changeOrigin: false
-          }
-        ]
+        }
       },
       test: {
         options: {
@@ -390,6 +390,7 @@ module.exports = function (grunt) {
     'clean:server',
     'wiredep',
     'ngconstant:dev',
+    'configureProxies',
     'connect:livereload',
     'watch'
   ]);
