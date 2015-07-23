@@ -295,7 +295,9 @@ module.exports = function (grunt) {
         },
         constants: {
           ENV: 'dev',
-          VERSION: '<%= yeoman.app.version %>'
+          VERSION: '<%= yeoman.app.version %>',
+          baseUrl: 'http://localhost:4000/api',
+          supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
       prod: {
@@ -304,7 +306,9 @@ module.exports = function (grunt) {
         },
         constants: {
           ENV: 'prod',
-          VERSION: '<%= yeoman.app.version %>'
+          VERSION: '<%= yeoman.app.version %>',
+          baseUrl: 'http://ssiapi-alvchegov.rhcloud.com/api',
+          supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       }
     }
