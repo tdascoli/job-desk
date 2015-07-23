@@ -18,8 +18,8 @@
     },
     "result": {
       "sorting":"Sortierung",
-      "favorites":"Gemerkte Stellen",
-      "showAll":"Alle Anzeigen"
+      "onlineSince":"Online seit {{value}} Tagen",
+      "onlineSinceOneDay":"Online seit 1 Tag"
     },
     "detail": {
       "anmeldedatum": "online seit",

@@ -1,0 +1,71 @@
+<!--<p ng-text-truncate="jobDetail.BESCHREIBUNG" ng-tt-words-threshold="50" ng-tt-no-toggling></p>-->
+<p>{{jobDetail.BESCHREIBUNG}}</p>
+<div class="row">
+  <!-- INSERATE TEXT -->
+  <div class="col-md-3">
+    <strong class="fake-label" translate="jobs.detail.arbeitsortText"></strong>
+    <p>{{jobDetail.ARBEITSORT_TEXT}}</p>
+
+    <strong class="fake-label" translate="jobs.detail.stellenantritt"></strong>
+    <p ng-if="jobDetail.AB_SOFORT_B" translate="aux.Stellenantritt.1"></p>
+    <p ng-if="!jobDetail.AB_SOFORT_B && jobDetail.STELLENANTRITT">{{jobDetail.STELLENANTRITT}}</p>
+    <p ng-if="!jobDetail.AB_SOFORT_B && !jobDetail.STELLENANTRITT" translate="aux.Stellenantritt.0"></p>
+
+    <strong class="fake-label" translate="jobs.detail.vertragsdauer"></strong>
+    <p ng-if="!jobDetail.UNBEFRISTET_B && jobDetail.VERTRAGSDAUER">befristet bis {{jobDetail.VERTRAGSDAUER}}</p>
+    <p ng-if="!jobDetail.UNBEFRISTET_B && !jobDetail.VERTRAGSDAUER" translate="aux.Anstellungsdauer.0"></p>
+    <p ng-if="jobDetail.UNBEFRISTET_B" translate="aux.Anstellungsdauer.1"></p>
+  </div>
+
+  <!-- Sprachen -->
+  <div class="col-md-3">
+    <div ng-if="jobDetail.SK1_SPRACHE_CODE">
+      <strong class="fake-label" translate="aux.STESSPRACHE.{{jobDetail.SK1_SPRACHE_CODE}}"></strong><br />
+      (<span translate="jobs.detail.spoken"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK1_MUENDLICH_CODE}}"></span> / <span translate="jobs.detail.written"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK1_SCHRIFTLICH_CODE}}"></span>)
+    </div>
+    <div ng-if="jobDetail.SK2_SPRACHE_CODE">
+      <strong class="fake-label" translate="aux.STESSPRACHE.{{job.SK2_SPRACHE_CODE}}"></strong><br />
+      (<span translate="jobs.detail.spoken"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK2_MUENDLICH_CODE}}"></span> / <span translate="jobs.detail.written"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK2_SCHRIFTLICH_CODE}}"></span>)
+    </div>
+    <div ng-if="jobDetail.SK3_SPRACHE_CODE">
+      <strong class="fake-label" translate="aux.STESSPRACHE.{{job.SK3_SPRACHE_CODE}}"></strong><br />
+      (<span translate="jobs.detail.spoken"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK3_MUENDLICH_CODE}}"></span> / <span translate="jobs.detail.written"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK3_SCHRIFTLICH_CODE}}"></span>)
+    </div>
+    <div ng-if="jobDetail.SK4_SPRACHE_CODE">
+      <strong class="fake-label" translate="aux.STESSPRACHE.{{job.SK4_SPRACHE_CODE}}"></strong><br />
+      (<span translate="jobs.detail.spoken"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK4_MUENDLICH_CODE}}"></span> / <span translate="jobs.detail.written"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK4_SCHRIFTLICH_CODE}}"></span>)
+    </div>
+    <div ng-if="jobDetail.SK5_SPRACHE_CODE">
+      <strong class="fake-label" translate="aux.STESSPRACHE.{{job.SK5_SPRACHE_CODE}}"></strong><br />
+      (<span translate="jobs.detail.spoken"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK5_MUENDLICH_CODE}}"></span> / <span translate="jobs.detail.written"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK5_SCHRIFTLICH_CODE}}"></span>)
+    </div>
+  </div>
+
+  <!-- Bewerbung -->
+  <div class="col-md-3">
+    <div ng-if="jobDetail.BEWER_SCHRIFTLICH_B">
+      <strong class="fake-label" translate="jobs.detail.titleletter"></strong>
+      <p translate="jobs.detail.letterApplication"></p>
+    </div>
+    <div ng-if="jobDetail.BEWER_ELEKTRONISCH_B">
+      <strong class="fake-label" translate="jobs.detail.titleelectronic"></strong>
+      <p>{{jobDetail.KP_EMAIL}} <span ng-if="jobDetail.UNT_URL">/ {{jobDetail.UNT_URL}}</span></p>
+    </div>
+    <div ng-if="jobDetail.BEWER_TELEFONISCH_B">
+      <strong class="fake-label" translate="jobs.detail.phonebe"></strong>
+      <p>{{jobDetail.KP_TELEFON_NR}}</p>
+    </div>
+  </div>
+  <div class="col-md-3" ng-if="!jobDetail.WWW_ANONYM_B">
+    <span>{{jobDetail.UNT_NAME}}<br /></span>
+    <span>{{jobDetail.UNT_STRASSE}} {{jobDetail.UNT_HAUS_NR}}<br /></span>
+    <span>{{jobDetail.UNT_PLZ}} {{jobDetail.UNT_ORT}}</span>
+    <span ng-if="jobDetail.UNT_POSTFACH"><br />Postfach {{jobDetail.UNT_POSTFACH}}<br /></span>
+    <span ng-if="jobDetail.UNT_POSTFACH">{{jobDetail.UNT_POSTFACH_PLZ}} {{jobDetail.UNT_POSTFACH_ORT}}</span>
+
+    <span translate="aux.ANREDE.{{jobDetail.KP_ANREDE_CODE}}"><br /></span>
+    <span>{{jobDetail.KP_VORNAME}} {{jobDetail.KP_NAME}}<br /></span>
+    <span>{{jobDetail.KP_TELEFON_NR}}<br /></span>
+    <span>{{jobDetail.KP_EMAIL}}</span>
+  </div>
+</div>

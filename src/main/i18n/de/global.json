@@ -21,5 +21,7 @@
       "jobtitel_za":"Jobtitel - Z-A"
     }
   },
-  "common_i18n_select_noneSelectedText":"Bitte wählen"
+  "common_i18n_select_noneSelectedText":"Bitte wählen",
+  "common_text_truncate_more":"Mehr anzeigen",
+  "common_text_truncate_less":"Schliessen"
 }

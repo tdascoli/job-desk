@@ -369,6 +369,7 @@ module.exports = function (grunt) {
           ENV: 'dev',
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://localhost:4000/api',
+          elasticUrl: 'http://localhost:9000/jobdesk',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },

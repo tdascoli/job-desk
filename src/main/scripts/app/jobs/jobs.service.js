@@ -1,61 +1,69 @@
-;(function() {
+;(function () {
 
   'use strict';
 
   angular.module('job-desk')
-    .factory('JobsService', function ($http, baseUrl, $rootScope) {
+    .factory('JobsService', function ($http, elasticUrl) {
 
       var params = {
-        km:30,
-        history:5,
-        fulltime:true,
-        isco:'',
-        isco2:'',
-        locations:[]
+        distance: 30,
+        onlineSince: 5,
+        fulltime: true,
+        iscoMajorGroup: '',
+        iscoGroupLevel2: ''
       };
 
-      function find() {
-        $http.post(baseUrl+'/jobs/getJobs', {plz: params.locations, isco: params.isco, isco2: params.isco2, fulltime: params.fulltime, history: params.history}).success(function(result){
-          $rootScope.jobs=result.jobs;
-        })
-        .error(function(error){
-          console.log(error);
-        });
-      }
-
-      function count(coords, cb){
-
-        $http.post(baseUrl+'/locations/area', {coord: coords, radius: params.km}).success(function(result){
-          var nearestZip='', locations=[], i=0;
-          angular.forEach(result.areas, function(location){
-            if (i===0){
-              nearestZip=location.CODE+' ('+location.TEXT+')';
+      function find(coords) {
+        var filter = {
+          "query": {
+            "filtered": {
+            "query": {
+              "match_all": {}
+            },
+            "filter": {
+              "and" : [
+                {
+                  "range": {
+                    "onlineSince": {
+                      "lte": params.onlineSince
+                    }
+                  }
+                },
+                {
+                  "nested": {
+                    "path": "locations",
+                    "filter":{
+                      "geo_distance": {
+                        "distance": params.distance + "km",
+                        "locations.coords": {
+                          "lat": coords.lat,
+                          "lon": coords.lng
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
             }
-            if (locations.indexOf(location.CODE)===-1) {
-              locations.push(location.CODE);
-            }
-          });
+          }
+        }
+      };
 
-          $http.post(baseUrl+'/jobs/countJobs', {plz: locations, isco: params.isco, isco2: params.isco2, fulltime: params.fulltime, history: params.history}).success(function(result){
-            cb(result.count,locations,nearestZip);
-          });
-        });
+      if (!params.fulltime) {
+        filter.query.filtered.filter.and.push({"term":{"fulltime": false}});
       }
-
-      function getJob(jobId) {
-        $http.get(baseUrl+'/jobdetails/'+jobId).success(function(result){
-          $rootScope.job=result;
-        })
-        .error(function(error){
-          console.log(error);
-        });
+      if (params.iscoMajorGroup!=='') {
+        filter.query.filtered.filter.and.push({"term":{"iscoMajorGroup": params.iscoMajorGroup}});
       }
+      if (params.iscoGroupLevel2!=='') {
+        filter.query.filtered.filter.and.push({"term":{"iscoGroupLevel2": params.iscoGroupLevel2}});
+      }
+      return $http.post(elasticUrl + '/jobs/_search', filter);
+    }
 
       return {
         find: find,
-        count: count,
-        params: params,
-        getJob: getJob
+        params: params
       }
 
     });

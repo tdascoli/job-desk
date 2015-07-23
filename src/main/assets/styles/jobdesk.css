@@ -78,7 +78,7 @@ body.search-educations .navigation.bottom {
   padding-bottom: 1.5%;
 }
 body {
-  font-family: 'Frutiger Neue', 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 h4 {
   font-size: 1.2em;
@@ -99,14 +99,12 @@ h4 {
   width: 960px;
   height: 500px;
 }
-#umkreis:focus,
-#umkreis-time:focus,
-#history:focus {
+#distance:focus,
+#onlineSince:focus {
   outline: none;
 }
-#umkreis .slider-selection,
-#umkreis-time .slider-selection,
-#history .slider-selection {
+#distance .slider-selection,
+#onlineSince .slider-selection {
   background: #BABABA;
 }
 .job-results {
@@ -386,4 +384,10 @@ text {
   -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px;
   -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px;
   box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px;
+}
+.strong {
+  display: block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
 }

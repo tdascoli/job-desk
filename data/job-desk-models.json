@@ -1,67 +1,85 @@
 {
-  "job": {
+  "jobs": {
     "properties": {
-      "id": {
+      "fingerprint": {
         "type": "string"
       },
       "title": {
-        "de": {
-          "type": "string"
-        },
-        "fr": {
-          "type": "string"
-        },
-        "it": {
-          "type": "string"
-        },
-        "en": {
-          "type": "string"
+        "type":"object",
+        "properties": {
+          "de": {
+            "type": "string"
+          },
+          "fr": {
+            "type": "string"
+          },
+          "it": {
+            "type": "string"
+          },
+          "en": {
+            "type": "string"
+          }
         }
       },
       "description": {
-        "de": {
-          "type": "string"
-        },
-        "fr": {
-          "type": "string"
-        },
-        "it": {
-          "type": "string"
-        },
-        "en": {
-          "type": "string"
+        "type":"object",
+        "properties": {
+          "de": {
+            "type": "string"
+          },
+          "fr": {
+            "type": "string"
+          },
+          "it": {
+            "type": "string"
+          },
+          "en": {
+            "type": "string"
+          }
         }
       },
-      "jobGroup": {
-        "type": "integer"
+      "iscoMajorGroup": {
+        "type": "string"
       },
-      "locations": [
-        {
+      "iscoGroupLevel2": {
+        "type": "string"
+      },
+      "locations": {
+        "type":"nested",
+        "properties": {
           "coords": {
-            "type": "geopoint"
+            "type": "geo_point"
           },
           "zip": {
             "type": "integer"
           },
           "remarks": {
-            "de": {
-              "type": "string"
-            },
-            "fr": {
-              "type": "string"
-            },
-            "it": {
-              "type": "string"
-            },
-            "en": {
-              "type": "string"
+            "type": "object",
+            "properties": {
+              "de": {
+                "type": "string"
+              },
+              "fr": {
+                "type": "string"
+              },
+              "it": {
+                "type": "string"
+              },
+              "en": {
+                "type": "string"
+              }
             }
           }
         }
-      ],
+      },
+      "fulltime": {
+        "type": "boolean"
+      },
+      "externalSource": {
+        "type": "boolean"
+      },
       "onlineSince": {
-        "type": "date",
-        "format": "DD.MM.YYYY"
+        "type": "integer"
       },
       "quotaFrom": {
         "type": "short"
@@ -70,85 +88,110 @@
         "type": "short"
       },
       "startDate": {
-        "type": "date",
-        "format": "DD.MM.YYYY"
+        "type": "string"
       },
       "endDate": {
-        "type": "date",
-        "format": "DD.MM.YYYY"
+        "type": "string"
       },
-      "languages": [],
+      "languages": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "written": {
+            "type": "string"
+          },
+          "spoken": {
+            "type": "string"
+          }
+        }
+      },
       "application": {
-        "written": {
-          "type": "boolean"
-        },
-        "electronical": {
-          "type": "boolean"
-        },
-        "electronicalAddress": {
-          "type": "string"
-        },
-        "phone": {
-          "type": "boolean"
-        },
-        "phoneNumber": {
-          "type": "string"
-        },
-        "personal": {
-          "type": "boolean"
+        "type":"object",
+        "properties": {
+          "written": {
+            "type": "boolean"
+          },
+          "electronical": {
+            "type": "boolean"
+          },
+          "electronicalAddress": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "boolean"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "personal": {
+            "type": "boolean"
+          }
         }
       },
       "company": {
-        "name": {
-          "type": "string"
-        },
-        "address": {
-          "street": {
+        "type":"object",
+        "properties": {
+          "name": {
             "type": "string"
           },
-          "streetAppendix": {
-            "type": "string"
-          },
-          "zip": {
-            "type": "string"
-          },
-          "location": {
-            "type": "string"
-          },
-          "country": {
-            "type": "string"
+          "address": {
+            "type":"object",
+            "properties": {
+              "street": {
+                "type": "string"
+              },
+              "streetAppendix": {
+                "type": "string"
+              },
+              "zip": {
+                "type": "string"
+              },
+              "location": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              }
+            }
           }
         },
         "poAddress": {
-          "poBox": {
-            "type": "string"
-          },
-          "zip": {
-            "type": "string"
-          },
-          "location": {
-            "type": "string"
-          },
-          "country": {
-            "type": "string"
+          "type":"object",
+          "properties": {
+            "poBox": {
+              "type": "string"
+            },
+            "zip": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            }
           }
         }
       },
       "contact": {
-        "gender": {
-          "type": "string"
-        },
-        "firstName": {
-          "type": "string"
-        },
-        "lastName": {
-          "type": "string"
-        },
-        "phone": {
-          "type": "string"
-        },
-        "eMail": {
-          "type": "string"
+        "type":"object",
+        "properties": {
+          "gender": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "eMail": {
+            "type": "string"
+          }
         }
       }
     }

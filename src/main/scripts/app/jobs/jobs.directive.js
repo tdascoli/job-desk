@@ -68,6 +68,17 @@
     };
   }]);
 
+  module.directive('jobDetail', [function(){
+    return {
+      priority: 10,
+      restrict: 'A',
+      scope: {
+        jobDetail: '='
+      },
+      templateUrl: 'assets/templates/job-detail.html'
+    };
+  }]);
+
   module.directive('navigation', ['$window', function($window){
     return {
       priority: 10,

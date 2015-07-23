@@ -13,12 +13,12 @@
 
   var counter = 0;
 
-  new lazy(fs.createReadStream('./oste_x28.csv'))
+  new lazy(fs.createReadStream('./jobs.csv'))
     .lines
     .forEach(function(line){
       if (!skipFirstLine || (skipFirstLine && counter > 0)) {
         var lineString = line.toString().replace(/['"]+/g, '');
-        var lineData = lineString.toString().split(';');
+        var lineData = lineString.toString().split('|');
         client.index({
           index: index,
           type: type,

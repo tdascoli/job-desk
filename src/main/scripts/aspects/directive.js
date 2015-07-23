@@ -160,7 +160,7 @@
                 .attr({
                   cx: xy[0],
                   cy: xy[1],
-                  r: (scope.searchParams.km * 2)
+                  r: (scope.searchParams.distance * 2)
                 }).attr("class", "radius").attr("id", classRadius);
             }
           }
@@ -232,8 +232,8 @@
             scope.setCurrentCoords({lng: coords[0], lat: coords[1]});
           });
 
-          scope.$watch('searchParams.km', function () {
-            $('.radius').attr('r', (scope.searchParams.km * 2));
+          scope.$watch('searchParams.distance', function () {
+            $('.radius').attr('r', (scope.searchParams.distance * 2));
           });
 
           scope.$watch('currentCoords', function () {
