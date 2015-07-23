@@ -1,5 +1,7 @@
 'use strict';
 var fs = require('fs');
+var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
+
 
 // usemin custom step
 var useminAutoprefixer = {
@@ -23,22 +25,29 @@ module.exports = function (grunt) {
       app: require('./bower.json').appPath || 'app',
       dist: 'dist'
     },
-    watch: {
-      bower: {
-        files: ['bower.json'],
-        tasks: ['wiredep']
-      },
-      ngconstant: {
-        files: ['Gruntfile.js'],
-        tasks: ['ngconstant:dev']
-      }
-    },
-    autoprefixer: {
+   autoprefixer: {
       // src and dest is configured in a subtask called "generated" by usemin
     },
     wiredep: {
       app: {
         src: ['src/main/index.html']
+      }
+    },
+    watch: {
+      styles: {
+        files: ['src/main/assets/styles/**/*.css']
+      },
+      livereload: {
+        options: {
+          livereload: 35729
+        },
+        files: [
+          'src/main/**/*.html',
+          'src/main/**/*.json',
+          '{.tmp/,}src/main/assets/styles/**/*.css',
+          '{.tmp/,}src/main/scripts/**/*.js',
+          'src/main/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
+        ]
       }
     },
     browserSync: {
@@ -59,11 +68,19 @@ module.exports = function (grunt) {
           src: [
             'dist/**/*.*'
           ]
+        },
+        options: {
+          watchTask: true,
+          injectChanges: true,
+          open: true,
+          port: 3000,
+          ui: {
+            port: 3001
+          }
         }
       },
       options: {
-        watchTask: true,
-        proxy: "localhost:8080"
+        watchTask: true
       }
     },
     clean: {
@@ -273,6 +290,61 @@ module.exports = function (grunt) {
         ]
       }
     },
+    connect: {
+      options: {
+        port: 9000,
+        // Change this to 'localhost' to deny access to the server from outside.
+        hostname: 'localhost',
+        livereload: 35729
+      },
+      livereload: {
+        options: {
+          open: true,
+          base: [
+            '.tmp',
+            'src/main'
+          ],
+          middleware: function (connect) {
+            return [
+              proxySnippet,
+              connect.static('.tmp'),
+              connect.static('src/main'),
+            ];
+          }
+        },
+        proxies: [
+          {
+            context: '/jobsearch',
+            host: 'localhost',
+            port: 9200,
+            https: false,
+            changeOrigin: false
+          }
+        ]
+      },
+      test: {
+        options: {
+          port: 9001,
+          base: [
+            '.tmp',
+            'test',
+            'src/main'
+          ]
+        }
+      },
+      dist: {
+        options: {
+          open: true,
+          base: 'dist',
+          middleware: function (connect) {
+            return [
+              proxySnippet,
+              connect.static('dist')
+            ];
+          }
+        }
+      }
+    },
     ngAnnotate: {
       dist: {
         files: [{
@@ -318,7 +390,7 @@ module.exports = function (grunt) {
     'clean:server',
     'wiredep',
     'ngconstant:dev',
-    'browserSync',
+    'connect:livereload',
     'watch'
   ]);
 
@@ -352,36 +424,6 @@ module.exports = function (grunt) {
     'rev',
     'usemin',
     'htmlmin'
-  ]);
-
-  grunt.registerTask('appendSkipBower', 'Force skip of bower for Gradle', function () {
-
-    if (!grunt.file.exists(filepath)) {
-      // Assume this is a maven project
-      return true;
-    }
-
-    var fileContent = grunt.file.read(filepath);
-    var skipBowerIndex = fileContent.indexOf("skipBower=true");
-
-    if (skipBowerIndex != -1) {
-      return true;
-    }
-
-    grunt.file.write(filepath, fileContent + "\nskipBower=true\n");
-  });
-
-  grunt.registerTask('buildOpenshift', [
-    'test',
-    'build',
-    'copy:generateOpenshiftDirectory',
-  ]);
-
-  grunt.registerTask('deployOpenshift', [
-    'test',
-    'build',
-    'copy:generateOpenshiftDirectory',
-    'buildcontrol:openshift'
   ]);
 
   grunt.registerTask('default', [
