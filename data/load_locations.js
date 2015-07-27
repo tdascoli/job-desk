@@ -29,7 +29,7 @@
             municipalityName: lineData[3],
             canton: lineData[4],
             geoLocation: {
-              lng: lineData[5],
+              lon: lineData[5],
               lat: lineData[6]
             }
           }

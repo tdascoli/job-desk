@@ -6,9 +6,7 @@ angular.module('job-desk')
 
 .constant('VERSION', 'src/main')
 
-.constant('baseUrl', 'http://localhost:4000/api')
-
-.constant('elasticUrl', 'http://localhost:9000/jobdesk')
+.constant('baseUrl', 'http://localhost:9000/jobdesk')
 
 .constant('supportedLanguages', ['de','fr','it','en'])
 

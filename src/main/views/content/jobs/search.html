@@ -1,30 +1,33 @@
 <div class="navigation filter row" id="filter" flowtype min-font="1" max-font="9999" font-ratio="100" line-ratio="1.45" minimum="1" maximum="9999">
   <div class="col-md-4">
-    <div ng-if="!searchParams.isco">
-      <selectpicker form-label="jobs.search.jobgroup" id="isco" options="iscoCategory" label-attribute="'text'" value-attribute="'code'" i18n-label="true" ng-model="searchParams.iscoMajorGroup" ng-change="countStellen()"></selectpicker>
+    <div ng-if="!searchParams.iscoMajorGroup">
+      <selectpicker form-label="jobs.search.jobgroup" id="iscoMajorGroup" options="iscoMajorGroup" label-attribute="'text'" value-attribute="'code'" i18n-label="true" ng-model="searchParams.iscoMajorGroup" ng-change="countStellen()"></selectpicker>
     </div>
-    <div ng-if="searchParams.isco">
-      <selectpicker form-label="isco.category{{searchParams.isco}}" id="subisco" options="isco[searchParams.isco]" label-attribute="'text'" value-attribute="'code'" i18n-label="true" ng-model="searchParams.iscoGroupLevel2" ng-change="countStellen()"></selectpicker>
+    <div ng-if="searchParams.iscoMajorGroup">
+      <selectpicker form-label="isco.category{{searchParams.iscoMajorGroup}}" id="iscoGroupLevel2" options="iscoGroupLevel2[searchParams.iscoMajorGroup]" label-attribute="'text'" value-attribute="'code'" i18n-label="true" ng-model="searchParams.iscoGroupLevel2" ng-change="countStellen()"></selectpicker>
     </div>
   </div>
   <div class="col-md-2 location-plz">
-    <input type="text" readonly="true" maxlength="4" name="plz" id="plz" form-input form-label="jobs.search.where" ng-model="nearestZip" form-inset="search" form-inset-action="showPLZNumpad()" form-inset-btn />
+    <input type="text" readonly="true" maxlength="4" name="plz" id="plz" form-input form-label="jobs.search.location" ng-model="nearestZip" form-inset="search" form-inset-action="showPLZNumpad()" form-inset-btn />
   </div>
   <div class="col-md-2">
     <div class="form-group">
-      <label for="distance"><span translate="jobs.search.distance" class="ng-scope"></span> {{searchParams.distance}} km</label>
+      <label for="distance" translate="jobs.search.distance" translate-values="{value:searchParams.distance}"></label>
       <slider id="distance" ng-model="searchParams.distance" ng-mouseup="countStellen()" min="distanceOptions.min" step="distanceOptions.step" max="distanceOptions.max" value="distanceOptions.value"></slider>
     </div>
   </div>
   <div class="col-md-2">
     <div class="form-group">
-      <label for="onlineSince"><span translate="jobs.search.onlineSince"></span> {{searchParams.onlineSince}} <span ng-show="searchParams.distance<2" translate="jobs.search.day"></span><span ng-show="searchParams.distance>1" translate="jobs.search.days"></span></label>
+      <label for="onlineSince">
+        <span ng-show="searchParams.distance>1" translate="jobs.search.onlineSince" translate-values="{value:searchParams.onlineSince}"></span>
+        <span ng-show="searchParams.distance<2" translate="jobs.search.onlineSinceOneDay"></span>
+      </label>
       <slider id="onlineSince" ng-model="searchParams.onlineSince" ng-mouseup="countStellen()" min="onlineSinceOptions.min" step="onlineSinceOptions.step" max="onlineSinceOptions.max" value="onlineSinceOptions.value"></slider>
     </div>
   </div>
   <div class="col-md-2">
-    <input type="radio" ng-model="searchParams.fulltime" name="vollzeit" value="1" id="vollzeit" form-label="jobs.search.all" ng-change="countStellen()" />
-    <input type="radio" ng-model="searchParams.fulltime" name="vollzeit" value="0" id="teilzeit" form-label="jobs.search.parttime" ng-change="countStellen()" />
+    <input type="radio" ng-model="searchParams.fulltime" name="fulltime" value="1" id="fulltime" form-label="jobs.search.allJobs" ng-change="countStellen()" />
+    <input type="radio" ng-model="searchParams.fulltime" name="fulltime" value="0" id="parttime" form-label="jobs.search.parttimeJobs" ng-change="countStellen()" />
   </div>
 </div>
 <div class="row">
@@ -43,7 +46,7 @@
     <a class="btn btn-default btn-plain btn-block" href="#/{{searchType}}" glyph-icon="arrow-left" admin-symbol> <span translate="global.navigation.startpage"></span></a>
   </div>
   <div class="col-md-offset-6 col-md-2" align="center">
-    <a href="#/job-result" class="btn btn-default btn-primary btn-plain btn-block" ng-disabled="count===0 || idle">
+    <a href="#/job-results" class="btn btn-default btn-primary btn-plain btn-block" ng-disabled="count===0 || idle">
       <span translate="global.navigation.showJobs"></span>
     </a>
   </div>

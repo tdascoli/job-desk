@@ -6,24 +6,7 @@
 </div>
 
 <div class="job-results list-group">
-  <div class="list-group-item" ng-class="{'visited' : visited(jobDetail.id)}" ng-repeat="jobDetail in jobs">
-    <div class="row">
-      <span class="job-result col-md-10">
-        <h4 class="strong">{{jobDetail.BEZEICHNUNG}}</h4>
-        <strong>Online seit {{jobDetail.ONLINE_SEIT}} Tag(en)</strong>
-        <strong translate="jobs.detail.pensum"></strong>
-        <span ng-if="jobDetail.PENSUM_VON!==jobDetail.PENSUM_BIS">{{jobDetail.PENSUM_VON}} - {{jobDetail.PENSUM_BIS}}%</span>
-        <span ng-if="jobDetail.PENSUM_VON===jobDetail.PENSUM_BIS">{{jobDetail.PENSUM_BIS}}%</span>
-        <span ng-hide="jobDetail.EXTERN">
-          <div job-detail="result"></div>
-        </span>
-        <p ng-show="jobDetail.EXTERN">QUELLE EXTERN</p>
-      </span>
-
-      <div class="cold-md-2" align="center">
-        <button glyph-icon="print" admin-symbol class="btn-plain"><span translate="jobs.detail.print"></span></button>
-      </div>
-    </div>
+  <div job-detail="jobDetail" class="list-group-item" ng-repeat="jobDetail in jobs">
   </div>
 </div>
 

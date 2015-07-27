@@ -7,6 +7,7 @@
     'ui.router',
     'ui.bootstrap-slider',
     'ngResource',
+    'ngSanitize',
     'ngCookies',
     'ngFlowtype',
     'ngKeypad',
@@ -91,16 +92,10 @@
       })
   });
 
-  app.run(function($http, geolocation,$rootScope){
+  app.run(function($http, geolocation, $rootScope){
     geolocation.getLocation().then(function(data){
       $rootScope.myCoords = {lat:data.coords.latitude, lng:data.coords.longitude};
     });
-
-    $http.get('/jobs/_search?pretty=true&q=*:*').success(function(result) {
-      console.log(result);
-    });
-
-
   });
 
 }());

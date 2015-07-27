@@ -75,7 +75,15 @@
       scope: {
         jobDetail: '='
       },
-      templateUrl: 'assets/templates/job-detail.html'
+      templateUrl: 'assets/templates/job-detail.html',
+      link: function(scope, element){
+        scope.showDetailContent=false;
+
+        scope.showDetail=function(){
+          element.addClass('visited');
+          scope.showDetailContent=!scope.showDetailContent;
+        };
+      }
     };
   }]);
 

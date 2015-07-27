@@ -48,9 +48,9 @@
                 "zip": lineData[28],
                 "remarks": {
                   "de": lineData[8],
-                  "fr": '[FR] ' + lineData[8],
-                  "it": '[FR] ' + lineData[8],
-                  "en": '[FR] ' + lineData[8]
+                  "fr": '[FR] ' + lineData[26],
+                  "it": '[FR] ' + lineData[26],
+                  "en": '[FR] ' + lineData[26]
                 }
               }
             ],
@@ -59,15 +59,43 @@
             "onlineSince": lineData[117],
             "quotaFrom": lineData[13],
             "quotaTo": lineData[14],
-            "startDate": lineData[10],
+            "availableNow": lineData[10],
+            "permanentJob": lineData[12],
+            "startDate": lineData[9],
             "endDate": lineData[11],
-            "languages": [],
+            "languages": [
+              {
+                "languageCode": lineData[89],
+                "writtenCode": lineData[90],
+                "spokenCode": lineData[91]
+              },
+              {
+                "languageCode": lineData[94],
+                "writtenCode": lineData[95],
+                "spokenCode": lineData[96]
+              },
+              {
+                "languageCode": lineData[99],
+                "writtenCode": lineData[100],
+                "spokenCode": lineData[101]
+              },
+              {
+                "languageCode": lineData[104],
+                "writtenCode": lineData[105],
+                "spokenCode": lineData[106]
+              },
+              {
+                "languageCode": lineData[109],
+                "writtenCode": lineData[110],
+                "spokenCode": lineData[111]
+              }
+            ],
             "application": {
               "written": lineData[53],
               "electronical": lineData[54],
-              "electronicalAddress": "tbi",
+              "electronicalAddress": lineData[73],
               "phone": lineData[55],
-              "phoneNumber": "tbi",
+              "phoneNumber": lineData[72],
               "personal": lineData[56]
             },
             "company": {
@@ -83,7 +111,10 @@
                 "poBox": lineData[62],
                 "zip": lineData[63],
                 "location": lineData[64]
-              }
+              },
+              "phone": lineData[66],
+              "eMail": lineData[67],
+              "url": lineData[68]
             },
             "contact": {
               "gender": lineData[69],

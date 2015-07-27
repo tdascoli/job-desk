@@ -1,71 +1,80 @@
-<!--<p ng-text-truncate="jobDetail.BESCHREIBUNG" ng-tt-words-threshold="50" ng-tt-no-toggling></p>-->
-<p>{{jobDetail.BESCHREIBUNG}}</p>
 <div class="row">
-  <!-- INSERATE TEXT -->
-  <div class="col-md-3">
-    <strong class="fake-label" translate="jobs.detail.arbeitsortText"></strong>
-    <p>{{jobDetail.ARBEITSORT_TEXT}}</p>
+      <span class="job-result col-md-10" ng-click="showDetail()">
+        <h4 class="strong">{{jobDetail._source.title.de}}</h4>
 
-    <strong class="fake-label" translate="jobs.detail.stellenantritt"></strong>
-    <p ng-if="jobDetail.AB_SOFORT_B" translate="aux.Stellenantritt.1"></p>
-    <p ng-if="!jobDetail.AB_SOFORT_B && jobDetail.STELLENANTRITT">{{jobDetail.STELLENANTRITT}}</p>
-    <p ng-if="!jobDetail.AB_SOFORT_B && !jobDetail.STELLENANTRITT" translate="aux.Stellenantritt.0"></p>
+        <strong ng-show="jobDetail._source.onlineSince>1" translate="jobs.result.onlineSince" translate-values="{value: jobDetail._source.onlineSince}"></strong>
+        <strong ng-show="jobDetail._source.onlineSince===1" translate="jobs.result.onlineSinceOneDay"></strong>
+        /
+        <strong translate="jobs.result.workload"></strong>
+        <strong ng-if="jobDetail._source.quotaFrom!==jobDetail._source.quotaTo">{{jobDetail._source.quotaFrom}} - {{jobDetail._source.quotaTo}}%</strong>
+        <strong ng-if="jobDetail._source.quotaFrom===jobDetail._source.quotaTo">{{jobDetail._source.quotaTo}}%</strong>
 
-    <strong class="fake-label" translate="jobs.detail.vertragsdauer"></strong>
-    <p ng-if="!jobDetail.UNBEFRISTET_B && jobDetail.VERTRAGSDAUER">befristet bis {{jobDetail.VERTRAGSDAUER}}</p>
-    <p ng-if="!jobDetail.UNBEFRISTET_B && !jobDetail.VERTRAGSDAUER" translate="aux.Anstellungsdauer.0"></p>
-    <p ng-if="jobDetail.UNBEFRISTET_B" translate="aux.Anstellungsdauer.1"></p>
-  </div>
+        <span ng-hide="jobDetail._source.externalSource===true">
+          <p ng-show="!showDetailContent" ng-text-truncate="jobDetail._source.description.de" ng-tt-words-threshold="20" ng-tt-no-toggling></p>
+          <div ng-show="showDetailContent">
+            <p ng-bind-html="jobDetail._source.description.de"></p>
+            <div class="row">
+              <div class="col-md-3">
+                <strong class="fake-label" translate="jobs.result.jobLocation"></strong>
+                <p ng-repeat="location in jobDetail._source.locations">{{location.remarks.de}}</p>
 
-  <!-- Sprachen -->
-  <div class="col-md-3">
-    <div ng-if="jobDetail.SK1_SPRACHE_CODE">
-      <strong class="fake-label" translate="aux.STESSPRACHE.{{jobDetail.SK1_SPRACHE_CODE}}"></strong><br />
-      (<span translate="jobs.detail.spoken"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK1_MUENDLICH_CODE}}"></span> / <span translate="jobs.detail.written"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK1_SCHRIFTLICH_CODE}}"></span>)
-    </div>
-    <div ng-if="jobDetail.SK2_SPRACHE_CODE">
-      <strong class="fake-label" translate="aux.STESSPRACHE.{{job.SK2_SPRACHE_CODE}}"></strong><br />
-      (<span translate="jobs.detail.spoken"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK2_MUENDLICH_CODE}}"></span> / <span translate="jobs.detail.written"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK2_SCHRIFTLICH_CODE}}"></span>)
-    </div>
-    <div ng-if="jobDetail.SK3_SPRACHE_CODE">
-      <strong class="fake-label" translate="aux.STESSPRACHE.{{job.SK3_SPRACHE_CODE}}"></strong><br />
-      (<span translate="jobs.detail.spoken"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK3_MUENDLICH_CODE}}"></span> / <span translate="jobs.detail.written"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK3_SCHRIFTLICH_CODE}}"></span>)
-    </div>
-    <div ng-if="jobDetail.SK4_SPRACHE_CODE">
-      <strong class="fake-label" translate="aux.STESSPRACHE.{{job.SK4_SPRACHE_CODE}}"></strong><br />
-      (<span translate="jobs.detail.spoken"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK4_MUENDLICH_CODE}}"></span> / <span translate="jobs.detail.written"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK4_SCHRIFTLICH_CODE}}"></span>)
-    </div>
-    <div ng-if="jobDetail.SK5_SPRACHE_CODE">
-      <strong class="fake-label" translate="aux.STESSPRACHE.{{job.SK5_SPRACHE_CODE}}"></strong><br />
-      (<span translate="jobs.detail.spoken"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK5_MUENDLICH_CODE}}"></span> / <span translate="jobs.detail.written"></span>: <span translate="aux.SPRACHKENNTNISSE.{{jobDetail.SK5_SCHRIFTLICH_CODE}}"></span>)
-    </div>
-  </div>
+                <strong class="fake-label" translate="jobs.result.entryDate"></strong>
+                <p ng-if="jobDetail._source.availableNow" translate="jobs.result.availableNow"></p>
+                <p ng-if="!jobDetail._source.availableNow && jobDetail._source.startDate" translate="jobs.result.availableFromDate" translate-values="{value: jobDetail._source.startDate}"></p>
+                <p ng-if="!jobDetail._source.availableNow && !jobDetail._source.startDate" translate="jobs.result.availableByAppointment"></p>
 
-  <!-- Bewerbung -->
-  <div class="col-md-3">
-    <div ng-if="jobDetail.BEWER_SCHRIFTLICH_B">
-      <strong class="fake-label" translate="jobs.detail.titleletter"></strong>
-      <p translate="jobs.detail.letterApplication"></p>
-    </div>
-    <div ng-if="jobDetail.BEWER_ELEKTRONISCH_B">
-      <strong class="fake-label" translate="jobs.detail.titleelectronic"></strong>
-      <p>{{jobDetail.KP_EMAIL}} <span ng-if="jobDetail.UNT_URL">/ {{jobDetail.UNT_URL}}</span></p>
-    </div>
-    <div ng-if="jobDetail.BEWER_TELEFONISCH_B">
-      <strong class="fake-label" translate="jobs.detail.phonebe"></strong>
-      <p>{{jobDetail.KP_TELEFON_NR}}</p>
-    </div>
-  </div>
-  <div class="col-md-3" ng-if="!jobDetail.WWW_ANONYM_B">
-    <span>{{jobDetail.UNT_NAME}}<br /></span>
-    <span>{{jobDetail.UNT_STRASSE}} {{jobDetail.UNT_HAUS_NR}}<br /></span>
-    <span>{{jobDetail.UNT_PLZ}} {{jobDetail.UNT_ORT}}</span>
-    <span ng-if="jobDetail.UNT_POSTFACH"><br />Postfach {{jobDetail.UNT_POSTFACH}}<br /></span>
-    <span ng-if="jobDetail.UNT_POSTFACH">{{jobDetail.UNT_POSTFACH_PLZ}} {{jobDetail.UNT_POSTFACH_ORT}}</span>
+                <strong class="fake-label" translate="jobs.result.contractDuration"></strong>
+                <p ng-if="!jobDetail._source.permanentJob && jobDetail._source.endDate" translate="untilDate" translate-values="{value: jobDetail._source.endDate}"></p>
+                <p ng-if="!jobDetail._source.permanentJob && !jobDetail._source.endDate" translate="jobs.result.nonPermanent"></p>
+                <p ng-if="jobDetail._source.permanentJob" translate="jobs.result.permanent"></p>
+              </div>
 
-    <span translate="aux.ANREDE.{{jobDetail.KP_ANREDE_CODE}}"><br /></span>
-    <span>{{jobDetail.KP_VORNAME}} {{jobDetail.KP_NAME}}<br /></span>
-    <span>{{jobDetail.KP_TELEFON_NR}}<br /></span>
-    <span>{{jobDetail.KP_EMAIL}}</span>
+              <!-- Sprachen -->
+              <div class="col-md-3">
+                <div ng-repeat="language in jobDetail._source.languages" ng-show="language.languageCode">
+                  <strong class="fake-label" translate="language.jobs.{{language.languageCode}}"></strong><br />
+                  (<span translate="jobs.result.spoken"></span>: <span translate="global.codes.languages.skills.{{language.spokenCode}}"></span> / <span translate="jobs.result.written"></span>: <span translate="global.codes.languages.skills.{{language.writtenCode}}"></span>)
+                </div>
+              </div>
+
+              <!-- Bewerbung -->
+              <div class="col-md-3">
+                <div ng-if="jobDetail._source.application.written">
+                  <strong class="fake-label" translate="jobs.result.titleWrittenApplication"></strong>
+                  <p translate="jobs.result.letterApplication"></p>
+                </div>
+                <div ng-if="jobDetail._source.application.electronical">
+                  <strong class="fake-label" translate="jobs.result.titleElectronicApplication"></strong>
+                  <p>{{jobDetail._source.contact.eMail}} <span ng-if="jobDetail._source.company.url">/ {{jobDetail._source.company.url}}</span></p>
+                </div>
+                <div ng-if="jobDetail._source.application.phone">
+                  <strong class="fake-label" translate="jobs.result.titlePhoneApplication"></strong>
+                  <p>{{jobDetail._source.contact.phone}}</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <strong>{{jobDetail._source.company.name}}<br /></strong>
+                <span>{{jobDetail._source.company.address.street}}<br /></span>
+                <span>{{jobDetail._source.company.address.zip}} {{jobDetail._source.company.address.location}}<br /></span>
+                <span ng-if="jobDetail._source.company.poAddress.poBox"><br /><span translate="jobs.result.poBox" translate-values="{value: jobDetail._source.company.poAddress.poBox}"></span><br /></span>
+                <span ng-if="jobDetail._source.company.poAddress.poBox">{{jobDetail._source.company.poAddress.zip}} {{jobDetail._source.company.poAddress.location}}</span>
+
+                <br />
+                <strong><span translate="global.codes.salutations.{{jobDetail._source.contact.gender}}"></span> {{jobDetail._source.contact.firstName}} {{jobDetail._source.contact.lastName}}<br /></strong>
+                <span ng-if="jobDetail._source.contact.phone">{{jobDetail._source.contact.phone}}<br /></span>
+                <span ng-if="jobDetail._source.contact.eMail">{{jobDetail._source.contact.eMail}}</span>
+              </div>
+            </div>
+          </div>
+        </span>
+
+        <p ng-show="jobDetail._source.externalSource===true">QUELLE EXTERN</p>
+      </span>
+
+  <div class="col-md-2" align="center">
+    <button glyph-icon="search" admin-symbol class="btn-plain btn-block" ng-click="showDetail()" ng-show="!showDetailContent">&nbsp;<span translate="jobs.result.showMore"></span></button>
+    <button glyph-icon="close" admin-symbol class="btn-plain btn-block" ng-click="showDetail()" ng-show="showDetailContent">&nbsp;<span translate="jobs.result.showLess"></span></button>
+    <p></p>
+    <button glyph-icon="print" admin-symbol class="btn-plain btn-block">&nbsp;<span translate="jobs.result.print"></span></button>
   </div>
 </div>

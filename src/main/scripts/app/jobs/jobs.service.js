@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('job-desk')
-    .factory('JobsService', function ($http, elasticUrl) {
+    .factory('JobsService', function ($http, baseUrl) {
 
       var params = {
         distance: 30,
@@ -58,7 +58,7 @@
       if (params.iscoGroupLevel2!=='') {
         filter.query.filtered.filter.and.push({"term":{"iscoGroupLevel2": params.iscoGroupLevel2}});
       }
-      return $http.post(elasticUrl + '/jobs/_search', filter);
+      return $http.post(baseUrl + '/jobs/_search', filter);
     }
 
       return {

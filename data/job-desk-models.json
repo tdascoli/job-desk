@@ -87,6 +87,12 @@
       "quotaTo": {
         "type": "short"
       },
+      "availableNow": {
+        "type":"boolean"
+      },
+      "permanentJob": {
+        "type":"boolean"
+      },
       "startDate": {
         "type": "string"
       },
@@ -95,14 +101,14 @@
       },
       "languages": {
         "properties": {
-          "name": {
-            "type": "string"
+          "languageCode": {
+            "type": "short"
           },
-          "written": {
-            "type": "string"
+          "writtenCode": {
+            "type": "short"
           },
-          "spoken": {
-            "type": "string"
+          "spokenCode": {
+            "type": "short"
           }
         }
       },
@@ -154,6 +160,15 @@
                 "type": "string"
               }
             }
+          },
+          "phone": {
+            "type":"string"
+          },
+          "eMail": {
+            "type":"string"
+          },
+          "url": {
+            "type":"string"
           }
         },
         "poAddress": {
@@ -193,6 +208,28 @@
             "type": "string"
           }
         }
+      }
+    }
+  },
+  "locations":{
+    "properties": {
+      "name": {
+        "type":"string"
+      },
+      "zip": {
+        "type":"integer"
+      },
+      "additionalNumber": {
+        "type":"short"
+      },
+      "municipalityName": {
+        "type":"string"
+      },
+      "canton": {
+        "type":"string"
+      },
+      "geoLocation": {
+        "type": "geo_point"
       }
     }
   }
