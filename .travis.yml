@@ -5,10 +5,10 @@ install: npm install
 before_install: npm install -g grunt-cli
 before_script: bower install
 script: grunt build
-#addons:
-#  code_climate:
-#    repo_token:
-#      secure: Z1Bgklztdj5gNXcKG/ZLhjeu/hwz0Gk0hXwph8i/2l1WGt57gKNv/DPLavip4Ptn1JYgtUmVDVU+ggeB+bbW3eiB69DY8LVrn6h2irPkJf+J1YpcK8dsS2r587nAFz2MJQPJ2BDZ01fJgJFjOowHexYndIe/hknP3FGhf+6rR9U=
+addons:
+  code_climate:
+    repo_token:
+      secure: Z1Bgklztdj5gNXcKG/ZLhjeu/hwz0Gk0hXwph8i/2l1WGt57gKNv/DPLavip4Ptn1JYgtUmVDVU+ggeB+bbW3eiB69DY8LVrn6h2irPkJf+J1YpcK8dsS2r587nAFz2MJQPJ2BDZ01fJgJFjOowHexYndIe/hknP3FGhf+6rR9U=
 #  sauce_connect:
 #    username: bblseco
 #    access_key:

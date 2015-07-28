@@ -75,7 +75,10 @@
       $scope.idle=false;
       $scope.count=0;
       $scope.nearestZip='';
+      $scope.currentZip='';
       $scope.currentCoords=undefined;
+
+      $scope.locationError=false;
 
       $scope.showResults = function() {
         $state.go('job-result');
@@ -87,61 +90,44 @@
         $state.go('job-search');
       };
 
-/*      $scope.showTimeInH=function(){
-        var hour = Math.floor($scope.searchParams.time/60);
-        var minute = $scope.searchParams.time-(hour*60);
-        if (minute<10){
-          minute=minute+'0';
-        }
-        if ($scope.searchParams.areaType===2){
-          return hour+":"+minute+' h';
-        }
-        return '';
-      };*/
-
       $scope.countStellen=function(){
         JobsService.find($scope.currentCoords).success(function(result){
           $rootScope.jobs = result.hits.hits;
           $scope.count = result.hits.total;
         })
         .error(function (error) {
+            // todo error handling
           console.log(error);
         });
       };
 
-      $scope.setCurrentCoords=function(coords){
-        $scope.currentCoords=coords;
-        $scope.$digest();
-      };
+      function setNewCoords(coords){
+        LocationsService.getLocation(coords).success(function(nearestZip){
+          if (nearestZip.hits.total>0) {
+            $scope.currentCoords=coords;
+            $scope.nearestZip = nearestZip.hits.hits[0]._source.zip + ' (' + nearestZip.hits.hits[0]._source.name + ')';
+            $scope.currentZip = nearestZip.hits.hits[0]._source.zip;
+            $scope.locationError = false;
+            $scope.countStellen();
+          }
+          else {
+            $scope.locationError = true;
+            //$scope.setCurrentZip($scope.currentZip);
+          }
+        })
+          .error(function(error){
+            // todo error handling
+            console.log(error);
+          });
+      }
 
-/*      $scope.navigateToJob=function(nextJob){
-        var index = lodash.findIndex($rootScope.jobs,{'_id':$rootScope.job._id});
-        if (nextJob){
-          index++;
-          if (index===$rootScope.jobs.length){
-            index=0;
-          }
-        }
-        else {
-          if (index===0){
-            index=$rootScope.jobs.length;
-          }
-          index--;
-        }
-        $state.go('job-detail',{jobId:$rootScope.jobs[index].id});
-      };*/
+      $scope.setCurrentCoords=function(coords){
+        setNewCoords(coords);
+      };
 
       $scope.$watch('currentCoords', function(){
         if ($scope.currentCoords!==undefined){
-          // todo nearestZip
-          $scope.countStellen();
-          LocationsService.getLocation($scope.currentCoords).success(function(nearestZip){
-            //console.log(nearestZip.hits.hits[0]._source);
-            $scope.nearestZip=nearestZip.hits.hits[0]._source.zip+' ('+nearestZip.hits.hits[0]._source.name+')';
-          })
-          .error(function(error){
-            console.log(error);
-          });
+          setNewCoords($scope.currentCoords);
         }
       });
 
@@ -150,6 +136,21 @@
           $scope.currentCoords=$rootScope.myCoords;
         }
       });
+      $scope.setCurrentZip=function(zip){
+        LocationsService.getLocationFromZip(zip).success(function(nearestZip){
+          if (nearestZip.hits.total>0) {
+            setNewCoords(nearestZip.hits.hits[0]._source.geoLocation);
+          }
+          else {
+            // todo error handling
+            $scope.locationError=true;
+          }
+        })
+          .error(function(error){
+            // todo error handling
+            console.log(error);
+          });
+      };
 
       var orderBy = $filter('orderBy');
       $scope.sortList=[

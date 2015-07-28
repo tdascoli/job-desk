@@ -59,7 +59,7 @@
             scale = width*17;
           }
 
-          var interpolateColor = d3.interpolateHcl("#94BF8B", "#F5F4F2");
+          var interpolateColor = d3.interpolateHcl('#94BF8B', '#F5F4F2');
 
           var color = d3.scale.threshold()
             .domain(thresholds)
@@ -76,42 +76,42 @@
 
           var path = d3.geo.path().projection(projection);
 
-          var svg = d3.select("#map").append("svg")
-            .attr("width", width)
-            .attr("height", height);
+          var svg = d3.select('#map').append('svg')
+            .attr('width', width)
+            .attr('height', height);
 
-          var map = svg.append("g");
+          var map = svg.append('g');
 
-          d3.json("assets/topojson/ch-contours.json", function (error, topology) {
-            contour = map.append("svg")
-              .attr("id", "contours")
-              .selectAll(".contour")
+          d3.json('assets/topojson/ch-contours.json', function (error, topology) {
+            contour = map.append('svg')
+              .attr('id', 'contours')
+              .selectAll('.contour')
               .data(topojson.feature(topology, topology.objects.contours).features)
-              .enter().append("path")
-              .attr("class", "contour")
-              .attr("d", path)
-              .style("fill", function (d) {
+              .enter().append('path')
+              .attr('class', 'contour')
+              .attr('d', path)
+              .style('fill', function (d) {
                 return color(d.id);
               });
           });
 
-          d3.json("assets/topojson/ch.json", function (error, ch) {
-            map.append("svg")
-              .attr("id", "cantons")
-              .selectAll("path")
+          d3.json('assets/topojson/ch.json', function (error, ch) {
+            map.append('svg')
+              .attr('id', 'cantons')
+              .selectAll('path')
               .data(topojson.feature(ch, ch.objects.cantons).features)
-              .enter().append("path")
-              .attr("class", "canton-boundaries")
-              .attr("id", function (d) {
+              .enter().append('path')
+              .attr('class', 'canton-boundaries')
+              .attr('id', function (d) {
                 return d.properties.abbr;
               })
-              .attr("d", path);
+              .attr('d', path);
 
-            map.append("path")
-              .attr("id", "lakes")
+            map.append('path')
+              .attr('id', 'lakes')
               .datum(topojson.mesh(ch, ch.objects.lakes))
-              .attr("class", "lakes")
-              .attr("d", path);
+              .attr('class', 'lakes')
+              .attr('d', path);
           });
 
 
@@ -119,13 +119,13 @@
             $rootScope.$watch('myCoords', function () {
               if ($rootScope.myCoords!==undefined) {
                 var classLocation = 'my-location';
-                var xy = projection([$rootScope.myCoords.lng, $rootScope.myCoords.lat]);
-                svg.append("circle")
+                var xy = projection([$rootScope.myCoords.lon, $rootScope.myCoords.lat]);
+                svg.append('circle')
                   .attr({
                     cx: xy[0],
                     cy: xy[1],
                     r: 3
-                  }).attr("class", classLocation).attr("id", classLocation);
+                  }).attr('class', classLocation).attr('id', classLocation);
                 setUmkreisInternal(false);
               }
             });
@@ -148,20 +148,20 @@
                 radiusLocation = 3;
               }
 
-              var xy = projection([scope.currentCoords.lng, scope.currentCoords.lat]);
+              var xy = projection([scope.currentCoords.lon, scope.currentCoords.lat]);
 
-              svg.append("circle")
+              svg.append('circle')
                 .attr({
                   cx: xy[0],
                   cy: xy[1],
                   r: radiusLocation
-                }).attr("class", classLocation).attr("id", classLocation);
-              svg.append("circle")
+                }).attr('class', classLocation).attr('id', classLocation);
+              svg.append('circle')
                 .attr({
                   cx: xy[0],
                   cy: xy[1],
                   r: (scope.searchParams.distance * 2)
-                }).attr("class", "radius").attr("id", classRadius);
+                }).attr('class', 'radius').attr('id', classRadius);
             }
           }
 
@@ -180,9 +180,9 @@
                   .attr('class', 'city-boundaries')
                   .text(cities[i].properties.name);
 
-                svg.append("text")
-                  .attr("transform", "translate(" + projection(cities[i].geometry.coordinates) + ")")
-                  .attr("dy", "1.25em")
+                svg.append('text')
+                  .attr('transform', 'translate(' + projection(cities[i].geometry.coordinates) + ')')
+                  .attr('dy', '1.25em')
                   .attr('class', 'city-text')
                   .text(cities[i].properties.name);
               }
@@ -227,9 +227,9 @@
 
           d3.select(window).on('resize', resize());
 
-          d3.select("svg").on("mousedown.log", function () {
+          d3.select('svg').on('mousedown.log', function () {
             var coords = projection.invert(d3.mouse(this));
-            scope.setCurrentCoords({lng: coords[0], lat: coords[1]});
+            scope.setCurrentCoords({lon: coords[0], lat: coords[1]});
           });
 
           scope.$watch('searchParams.distance', function () {

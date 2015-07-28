@@ -10,7 +10,6 @@
     'ngSanitize',
     'ngCookies',
     'ngFlowtype',
-    'ngKeypad',
     'pascalprecht.translate',
     'ngCacheBuster',
     'geolocation',
@@ -94,7 +93,7 @@
 
   app.run(function($http, geolocation, $rootScope){
     geolocation.getLocation().then(function(data){
-      $rootScope.myCoords = {lat:data.coords.latitude, lng:data.coords.longitude};
+      $rootScope.myCoords = {lat:data.coords.latitude, lon:data.coords.longitude};
     });
   });
 

@@ -31,6 +31,9 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         src: ['src/main/index.html']
+      },
+      test: {
+        src: ['src/main/index.html']
       }
     },
     watch: {
@@ -379,8 +382,8 @@ module.exports = function (grunt) {
         constants: {
           ENV: 'prod',
           VERSION: '<%= yeoman.app.version %>',
-          baseUrl: 'http://ssiapi-alvchegov.rhcloud.com/api',
-          supportedLanguages: ['de', 'fr', 'it', 'en']
+          baseUrl: 'http://jobdesk-alvchegov.rhcloud.com/jobdesk',
+          supportedLanguages: ['de', 'fr']
         }
       }
     }

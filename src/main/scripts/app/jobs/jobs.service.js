@@ -8,7 +8,7 @@
       var params = {
         distance: 30,
         onlineSince: 5,
-        fulltime: true,
+        fulltime: 1,
         iscoMajorGroup: '',
         iscoGroupLevel2: ''
       };
@@ -17,40 +17,37 @@
         var filter = {
           "query": {
             "filtered": {
-            "query": {
-              "match_all": {}
-            },
-            "filter": {
-              "and" : [
-                {
-                  "range": {
-                    "onlineSince": {
-                      "lte": params.onlineSince
+              "query": {
+                "match_all": {}
+              },
+              "filter": {
+                "and" : [
+                  {
+                    "range": {
+                      "onlineSince": {
+                        "lte": params.onlineSince
+                      }
                     }
-                  }
-                },
-                {
-                  "nested": {
-                    "path": "locations",
-                    "filter":{
-                      "geo_distance": {
-                        "distance": params.distance + "km",
-                        "locations.coords": {
-                          "lat": coords.lat,
-                          "lon": coords.lng
+                  },
+                  {
+                    "nested": {
+                      "path": "locations",
+                      "filter":{
+                        "geo_distance": {
+                          "distance": params.distance + "km",
+                          "locations.coords": coords
                         }
                       }
                     }
                   }
-                }
-              ]
+                ]
+              }
             }
           }
-        }
-      };
+        };
 
-      if (!params.fulltime) {
-        filter.query.filtered.filter.and.push({"term":{"fulltime": false}});
+      if (params.fulltime==='2') {
+        filter.query.filtered.filter.and.push({"term":{"fulltime": "false"}});
       }
       if (params.iscoMajorGroup!=='') {
         filter.query.filtered.filter.and.push({"term":{"iscoMajorGroup": params.iscoMajorGroup}});

@@ -15,10 +15,7 @@
               "filter": {
                 "geo_distance": {
                   "distance": "10km",
-                  "geoLocation": {
-                    "lat": coords.lat,
-                    "lon": coords.lng
-                  }
+                  "geoLocation": coords
                 }
               }
             }
@@ -26,10 +23,7 @@
           "sort": [
             {
               "_geo_distance": {
-                "geoLocation": {
-                  "lat": coords.lat,
-                  "lon": coords.lng
-                },
+                "geoLocation": coords,
                 "order": "asc",
                 "unit": "km",
                 "distance_type": "plane"
@@ -41,8 +35,26 @@
         return $http.post(baseUrl + '/locations/_search', filter);
       }
 
+      function getLocationFromZip(zip) {
+        var filter = {
+          "query": {
+            "filtered": {
+              "query": {
+                "term": {"zip":zip }
+              },
+              "filter": {
+                "term": { "additionalNumber":0 }
+              }
+            }
+          }
+        };
+
+        return $http.post(baseUrl + '/locations/_search', filter);
+      }
+
       return {
-        getLocation: getLocation
+        getLocation: getLocation,
+        getLocationFromZip: getLocationFromZip
       }
 
     });

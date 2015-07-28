@@ -15,7 +15,10 @@
       "days":"Tagen",
       "allJobs":"Alle Stellen",
       "parttimeJobs":"Nur Teilzeit Stellen",
-      "foundJobs":"Gefundene Stellen"
+      "foundJobs":"Gefundene Stellen: {{value}}",
+      "error": {
+        "noValidZip":"Die Eingegebene PLZ ist nicht gültig."
+      }
     },
     "result": {
       "sorting":"Sortierung",
