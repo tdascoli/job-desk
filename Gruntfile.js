@@ -16,7 +16,9 @@ var useminAutoprefixer = {
 };
 
 module.exports = function (grunt) {
-  require('load-grunt-tasks')(grunt);
+  require('load-grunt-tasks')(grunt, {
+    pattern: ['grunt-*', '!grunt-template-jasmine-istanbul']
+  });
   require('time-grunt')(grunt);
 
   grunt.initConfig({
@@ -25,14 +27,11 @@ module.exports = function (grunt) {
       app: require('./bower.json').appPath || 'app',
       dist: 'dist'
     },
-   autoprefixer: {
+    autoprefixer: {
       // src and dest is configured in a subtask called "generated" by usemin
     },
     wiredep: {
       app: {
-        src: ['src/main/index.html']
-      },
-      test: {
         src: ['src/main/index.html']
       }
     },
@@ -181,7 +180,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         cwd: 'src/main',
-        src: ['scripts/app/**/*.html', 'scripts/components/**/*.html',],
+        src: ['assets/templates/**/*.html'],
         dest: '.tmp/templates/templates.js',
         options: {
           module: 'job-desk',
@@ -197,6 +196,14 @@ module.exports = function (grunt) {
             useShortDoctype: true,
             removeEmptyAttributes: true
           }
+        }
+      },
+      test: {
+        cwd: 'src/main/',
+        src: ['assets/templates/**/*.html','views/**/*.html'],
+        dest: 'src/test/templates/templates.js',
+        options: {
+          module: 'job-desk'
         }
       }
     },
@@ -320,7 +327,7 @@ module.exports = function (grunt) {
             return [
               proxySnippet,
               connect.static('.tmp'),
-              connect.static('src/main'),
+              connect.static('src/main')
             ];
           }
         }
@@ -386,6 +393,74 @@ module.exports = function (grunt) {
           supportedLanguages: ['de', 'fr']
         }
       }
+    },
+    jasmine: {
+      unit: {
+        src: [
+          'src/main/scripts/app/app.js',
+          'src/main/scripts/app/app.constants.js',
+          'src/main/scripts/aspects/i18n.js',
+          'src/main/scripts/aspects/directive.js',
+          'src/main/scripts/app/localInfo/localInfo.js',
+          'src/main/scripts/app/localInfo/localInfo.controller.js',
+          'src/main/scripts/app/apprenticeships/apprenticeships.js',
+          'src/main/scripts/app/apprenticeships/apprenticeships.service.js',
+          'src/main/scripts/app/apprenticeships/apprenticeships.controller.js',
+          'src/main/scripts/app/educations/educations.js',
+          'src/main/scripts/app/educations/educations.service.js',
+          'src/main/scripts/app/educations/educations.controller.js',
+          'src/main/scripts/app/jobs/jobs.js',
+          'src/main/scripts/app/jobs/jobs.service.js',
+          'src/main/scripts/app/jobs/jobs.controller.js',
+          'src/main/scripts/app/jobs/jobs.directive.js',
+          'src/main/scripts/components/locations/locations.service.js',
+          'src/test/templates/templates.js'
+        ],
+        options: {
+          specs: ['src/test/unit/**/*.unit.spec.js'],
+          vendor: [
+            'dist/scripts/*.vendor.js',
+            'src/main/bower_components/angular-mocks/angular-mocks.js'
+          ],
+          version: '2.0.0',
+          template: require('grunt-template-jasmine-istanbul'),
+          templateOptions: {
+            coverage: 'build/coverage/coverage.json',
+            report: [
+              {
+                type: 'html',
+                options: {
+                  dir: 'build/coverage/reports/html'
+                }
+              },
+              {
+                type: 'lcov',
+                options: {
+                  dir: 'build/coverage/reports/lcov'
+                }
+              },
+              {
+                type: 'text-summary'
+              }
+            ]
+          }
+        }
+      }
+    },
+    protractor: {
+      options: {
+        keepAlive: true,
+        configFile: "test/protractor.conf.js"
+      },
+      run: {}
+    },
+    protractor_webdriver: {
+      start: {
+        options: {
+          path: 'node_modules/protractor/bin/',
+          command: 'webdriver-manager start'
+        }
+      }
     }
   });
 
@@ -404,9 +479,21 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('test', [
+    'ngtemplates:test',
+    'wiredep:app',
+    'jasmine'
+  ]);
+
+  grunt.registerTask('protractor', [
     'clean:server',
-    'wiredep:test',
-    'ngconstant:dev'
+    'wiredep:app',
+    'ngconstant:dev',
+    'concurrent:test',
+    'autoprefixer',
+    'connect:test',
+    'karma',
+    'protractor_webdriver',
+    'protractor:run'
   ]);
 
   grunt.registerTask('build', [
@@ -414,7 +501,7 @@ module.exports = function (grunt) {
     'wiredep:app',
     'ngconstant:prod',
     'useminPrepare',
-    'ngtemplates',
+    'ngtemplates:dist',
     'imagemin',
     'svgmin',
     'concat',

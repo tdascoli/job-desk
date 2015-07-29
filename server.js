@@ -13,7 +13,7 @@ server.app = (function() {
 var ipaddr  = process.env.OPENSHIFT_NODEJS_IP || "localhost";
 var port    = process.env.OPENSHIFT_NODEJS_PORT || 9000;
 
-server.app.use(express.static(process.cwd() + '/src/main/'));
+server.app.use(express.static(process.cwd() + '/dist/'));
 
 http.createServer(server.app).listen(port, ipaddr);
 
