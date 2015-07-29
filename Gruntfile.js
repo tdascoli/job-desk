@@ -236,10 +236,20 @@ module.exports = function (grunt) {
           expand: true,
           dot: true,
           flatten: true,
-          cwd: 'src/main/assets',
-          dest: '<%= yeoman.dist %>/fonts',
+          cwd: 'src/main',
+          dest: '<%= yeoman.dist %>/assets/fonts',
           src: [
             'bower_components/bootstrap/fonts/*.*'
+          ]
+        },
+        {
+          expand: true,
+          dot: true,
+          flatten: true,
+          cwd: 'src/main/private/fonts',
+          dest: '<%= yeoman.dist %>/private/fonts/adminchsymbols',
+          src: [
+            'adminchsymbols/*.*'
           ]
         }]
       },
