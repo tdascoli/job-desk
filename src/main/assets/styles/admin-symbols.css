@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Admin Symbols';
-    src: url('../fonts/adminchsymbols/adminch_symbols?#iefix') format('embedded-opentype'), url('../fonts/adminchsymbols/adminch_symbols.woff') format('woff'), url('../fonts/adminchsymbols/adminch_symbols.ttf') format('truetype'), url('../fonts/adminchsymbols/adminch_symbols.svg#icomoon') format('svg');
+    src: url('../fonts/adminch_symbols?#iefix') format('embedded-opentype'), url('../fonts/adminch_symbols.woff') format('woff'), url('../fonts/adminch_symbols.ttf') format('truetype'), url('../fonts/adminch_symbols.svg#icomoon') format('svg');
 }
 /* Use the following CSS code if you want to use data attributes for inserting your icons */
 [data-icon]:before {

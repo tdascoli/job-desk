@@ -120,7 +120,7 @@ module.exports = function (grunt) {
             '<%= yeoman.dist %>/scripts/**/*.js',
             '<%= yeoman.dist %>/assets/styles/**/*.css',
             '<%= yeoman.dist %>/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}',
-            '<%= yeoman.dist %>/assets/fonts/**/*'
+            '<%= yeoman.dist %>/assets/fonts/*'
           ]
         }
       }
@@ -247,7 +247,7 @@ module.exports = function (grunt) {
           dot: true,
           flatten: true,
           cwd: 'src/main/private/fonts',
-          dest: '<%= yeoman.dist %>/assets/fonts/adminchsymbols',
+          dest: '<%= yeoman.dist %>/assets/fonts',
           src: [
             'adminchsymbols/*.*'
           ]
@@ -389,7 +389,7 @@ module.exports = function (grunt) {
           ENV: 'dev',
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://jobdesk-alvchegov.rhcloud.com/jobdesk',
-          supportedLanguages: ['de', 'fr']
+          supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
       prod: {
