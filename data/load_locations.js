@@ -3,7 +3,7 @@
   var lazy = require("lazy");
   var fs = require("fs");
   var client = new elasticsearch.Client({
-    host: 'http://jobdesk-alvchegov.rhcloud.com/jobdesk',
+    host: 'http://jobdesk-alvchegov.rhcloud.com',
     log: 'trace'
   });
 
