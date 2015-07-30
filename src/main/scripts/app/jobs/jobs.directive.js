@@ -68,7 +68,7 @@
     };
   }]);
 
-  module.directive('jobDetail', [function(){
+  module.directive('jobDetail', ['$translate', function($translate){
     return {
       priority: 10,
       restrict: 'A',
@@ -78,6 +78,10 @@
       templateUrl: 'assets/templates/job-detail.html',
       link: function(scope, element){
         scope.showDetailContent=false;
+
+        scope.getMultiLanguageText=function(text){
+          return text[$translate.use()];
+        };
 
         scope.showDetail=function(){
           element.addClass('visited');
@@ -174,7 +178,7 @@
         var severity = attrs.alertSeverity || "info";
         var dismissable = attrs.alertDismissable || false;
         var dismissableText = attrs.alertDismissableText || false;
-        var alert=angular.element('<alert ng-show="'+trigger+'" alert-severity="'+severity+'" alert-dismissable="'+dismissable+'"><span translate="'+attrs.formAlert+'"></span></alert>');
+        var alert=angular.element('<alert ng-show="'+trigger+'" alert-severity="'+severity+'" alert-dismissable="'+dismissable+'"><strong translate="'+attrs.formAlert+'"></strong></alert>');
         if (dismissableText){
           alert.attr('alert-dismissable-text',dismissableText);
         }
@@ -183,6 +187,28 @@
         element.after(alert);
       }
     };
+  }]);
+
+  module.directive('alertDismissableOnTimeout', ['$timeout', function($timeout){
+    return {
+      priority: 20,
+      restrict: 'A',
+      link: function(scope, element, attrs){
+        var dismissTimeout = attrs.alertDismissableOnTimeout || 5000;
+        var alertTrigger = attrs.alertDismissableTrigger || false;
+
+          scope.$watch(alertTrigger, function () {
+            if (scope[alertTrigger]) {
+              scope.timer = $timeout(function () {
+                  scope[alertTrigger] = false;
+              }, dismissTimeout);
+            }
+            else {
+              $timeout.cancel(scope.timer);
+            }
+          });
+      }
+    }
   }]);
 
 }());

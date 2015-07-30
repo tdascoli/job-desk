@@ -365,11 +365,13 @@ text {
   box-shadow: 0 0 0 0 rgba(0,0,0,.5);
 }
 
-.form-alert {
+.form-alert,
+.alert-overlay {
   position: absolute;
   z-index: 2000;
   margin-top: -10px;
 }
+
 .form-alert:after {
   bottom: 100%;
   left: 50%;

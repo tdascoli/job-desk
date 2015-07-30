@@ -17,7 +17,8 @@
       "parttimeJobs":"Nur Teilzeit Stellen",
       "foundJobs":"Gefundene Stellen: {{value}}",
       "error": {
-        "noValidZip":"Die Eingegebene PLZ ist nicht gültig."
+        "noValidZip":"Die Eingegebene PLZ ist nicht gültig.",
+        "noValidCoords":"Bitte wählen Sie einen Ort innerhalb der Schweizerkarte."
       }
     },
     "result": {

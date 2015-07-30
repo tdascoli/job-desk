@@ -3,7 +3,7 @@
   var lazy = require("lazy");
   var fs = require("fs");
   var client = new elasticsearch.Client({
-    host: 'http://jobdesk-alvchegov.rhcloud.com',
+    host: 'localhost:9200',
     log: 'trace'
   });
 
@@ -47,10 +47,10 @@
                 },
                 "zip": lineData[28],
                 "remarks": {
-                  "de": lineData[8],
+                  "de": lineData[26],
                   "fr": '[FR] ' + lineData[26],
-                  "it": '[FR] ' + lineData[26],
-                  "en": '[FR] ' + lineData[26]
+                  "it": '[IT] ' + lineData[26],
+                  "en": '[EN] ' + lineData[26]
                 }
               }
             ],

@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('job-desk')
-    .controller('JobsCtrl', function ($scope, $rootScope, $state, $filter, JobsService, LocationsService, lodash) {
+    .controller('JobsCtrl', function ($scope, $rootScope, $state, $filter, $translate, JobsService, LocationsService, lodash) {
 
       $rootScope.searchType='jobs';
       $scope.searchParams = JobsService.params;
@@ -79,6 +79,7 @@
       $scope.currentCoords=undefined;
 
       $scope.locationError=false;
+      $scope.coordsError=false;
 
       $scope.showResults = function() {
         $state.go('job-result');
@@ -108,17 +109,17 @@
             $scope.nearestZip = nearestZip.hits.hits[0]._source.zip + ' (' + nearestZip.hits.hits[0]._source.name + ')';
             $scope.currentZip = nearestZip.hits.hits[0]._source.zip;
             $scope.locationError = false;
+            $scope.coordsError = false;
             $scope.countStellen();
           }
           else {
-            $scope.locationError = true;
-            //$scope.setCurrentZip($scope.currentZip);
+            $scope.coordsError = true;
           }
         })
-          .error(function(error){
-            // todo error handling
-            console.log(error);
-          });
+        .error(function(error){
+          // todo error handling
+          console.log(error);
+        });
       }
 
       $scope.setCurrentCoords=function(coords){
@@ -147,10 +148,10 @@
             $scope.locationError=true;
           }
         })
-          .error(function(error){
-            // todo error handling
-            console.log(error);
-          });
+        .error(function(error){
+          // todo error handling
+          console.log(error);
+        });
       };
 
       var orderBy = $filter('orderBy');

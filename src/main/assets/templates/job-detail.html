@@ -1,6 +1,6 @@
 <div class="row">
       <span class="job-result col-md-10" ng-click="showDetail()">
-        <h4 class="strong">{{jobDetail._source.title.de}}</h4>
+        <h4 class="strong">{{getMultiLanguageText(jobDetail._source.title)}}</h4>
 
         <strong ng-show="jobDetail._source.onlineSince>1" translate="jobs.result.onlineSince" translate-values="{value: jobDetail._source.onlineSince}"></strong>
         <strong ng-show="jobDetail._source.onlineSince===1" translate="jobs.result.onlineSinceOneDay"></strong>
@@ -10,13 +10,13 @@
         <strong ng-if="jobDetail._source.quotaFrom===jobDetail._source.quotaTo">{{jobDetail._source.quotaTo}}%</strong>
 
         <span ng-hide="jobDetail._source.externalSource===true">
-          <p ng-show="!showDetailContent" ng-text-truncate="jobDetail._source.description.de" ng-tt-words-threshold="20" ng-tt-no-toggling></p>
+          <p ng-show="!showDetailContent" ng-text-truncate="getMultiLanguageText(jobDetail._source.description)" ng-tt-words-threshold="20" ng-tt-no-toggling></p>
           <div ng-show="showDetailContent">
-            <p ng-bind-html="jobDetail._source.description.de"></p>
+            <p ng-bind-html="getMultiLanguageText(jobDetail._source.description)"></p>
             <div class="row">
               <div class="col-md-3">
                 <strong class="fake-label" translate="jobs.result.jobLocation"></strong>
-                <p ng-repeat="location in jobDetail._source.locations">{{location.remarks.de}}</p>
+                <p ng-repeat="location in jobDetail._source.locations">{{getMultiLanguageText(location.remarks)}}</p>
 
                 <strong class="fake-label" translate="jobs.result.entryDate"></strong>
                 <p ng-if="jobDetail._source.availableNow" translate="jobs.result.availableNow"></p>
