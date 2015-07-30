@@ -247,7 +247,7 @@ module.exports = function (grunt) {
           dot: true,
           flatten: true,
           cwd: 'src/main/private/fonts',
-          dest: '<%= yeoman.dist %>/private/fonts/adminchsymbols',
+          dest: '<%= yeoman.dist %>/assets/fonts/adminchsymbols',
           src: [
             'adminchsymbols/*.*'
           ]
@@ -388,8 +388,8 @@ module.exports = function (grunt) {
         constants: {
           ENV: 'dev',
           VERSION: '<%= yeoman.app.version %>',
-          baseUrl: 'http://localhost:9000/jobdesk',
-          supportedLanguages: ['de', 'fr', 'it', 'en']
+          baseUrl: 'http://jobdesk-alvchegov.rhcloud.com/jobdesk',
+          supportedLanguages: ['de', 'fr']
         }
       },
       prod: {
