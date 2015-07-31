@@ -4,7 +4,7 @@ rm -r $OPENSHIFT_DATA_DIR/dist
 cp -r $OPENSHIFT_REPO_DIR/dist $OPENSHIFT_DATA_DIR
 
 # create an nginx conf with help of the corresponding template
-sed -e "s,`echo '$OPENSHIFT_IP:$OPENSHIFT_PORT'`,`echo $OPENSHIFT_DIY_IP:$OPENSHIFT_DIY_PORT`," -e "s,`echo '$OPENSHIFT_DATA'`,`echo $OPENSHIFT_DATA_DIR`," -e "s,`echo '$OPENSHIFT_IP'`,`echo $OPENSHIFT_DIY_IP`," $OPENSHIFT_DATA_DIR/conf/nginx.conf.template > $OPENSHIFT_DATA_DIR/conf/nginx.conf
+sed -e "s,`echo '$OPENSHIFT_IP:$OPENSHIFT_PORT'`,`echo $OPENSHIFT_DIY_IP:$OPENSHIFT_DIY_PORT`," -e "s,`echo '$OPENSHIFT_DATA'`,`echo $OPENSHIFT_DATA_DIR`," -e "s,`echo '$OPENSHIFT_IP'`,`echo $OPENSHIFT_DIY_IP`," $OPENSHIFT_DATA_DIR/nginx/conf/nginx.conf.template > $OPENSHIFT_DATA_DIR/nginx/conf/nginx.conf
 # start elasticsearch server
 nohup $OPENSHIFT_DATA_DIR/elasticsearch/bin/elasticsearch -d
 # start nginx
