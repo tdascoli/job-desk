@@ -312,6 +312,28 @@ module.exports = function (grunt) {
             ]
           }
         ]
+      },
+      ngconstants: {
+        files: [{
+          expand: true,
+          dot: true,
+          flatten: true,
+          cwd: '.tmp/scripts/app',
+          dest: '<%= yeoman.dist %>/scripts',
+          src: [
+            '**'
+          ]
+        },
+          {
+            expand: true,
+            dot: true,
+            flatten: true,
+            cwd: 'src/main/private/fonts',
+            dest: '<%= yeoman.dist %>/assets/fonts',
+            src: [
+              'adminchsymbols/*.*'
+            ]
+          }]
       }
     },
     connect: {
@@ -392,19 +414,19 @@ module.exports = function (grunt) {
         constants: {
           ENV: 'dev',
           VERSION: '<%= yeoman.app.version %>',
-          baseUrl: 'http://jobdesk-alvchegov.rhcloud.com/jobdesk',
+          baseUrl: 'http://localhost/jobdesk',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
       prod: {
         options: {
-          dest: '.tmp/scripts/app/app.constants.js'
+          dest: 'src/main/scripts/app/app.constants.js'
         },
         constants: {
           ENV: 'prod',
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://jobdesk-alvchegov.rhcloud.com/jobdesk',
-          supportedLanguages: ['de', 'fr']
+          supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       }
     },
@@ -521,6 +543,7 @@ module.exports = function (grunt) {
     'concat',
     'copy:fonts',
     'copy:dist',
+    'copy:ngconstants',
     'ngAnnotate',
     'cssmin',
     'autoprefixer',
