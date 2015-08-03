@@ -1,1 +1,0 @@
-"use strict";angular.module("job-desk").constant("ENV","dev").constant("VERSION","src/main").constant("baseUrl","http://localhost/jobdesk").constant("supportedLanguages",["de","fr","it","en"]);
