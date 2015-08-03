@@ -98,8 +98,7 @@
         getCurrent: getCurrent,
         getDefaultParts: getDefaultParts
       };
-    }
-
-  })
+    };
+  });
 
 }());

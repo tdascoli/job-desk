@@ -7,26 +7,26 @@
 
       function getLocation(coords) {
         var filter = {
-          "query": {
-            "filtered": {
-              "query": {
-                "match_all": {}
+          'query': {
+            'filtered': {
+              'query': {
+                'match_all': {}
               },
-              "filter": {
-                "geo_distance": {
-                  "distance": "10km",
-                  "geoLocation": coords
+              'filter': {
+                'geo_distance': {
+                  'distance': '10km',
+                  'geoLocation': coords
                 }
               }
             }
           },
-          "sort": [
+          'sort': [
             {
-              "_geo_distance": {
-                "geoLocation": coords,
-                "order": "asc",
-                "unit": "km",
-                "distance_type": "plane"
+              '_geo_distance': {
+                'geoLocation': coords,
+                'order': 'asc',
+                'unit': 'km',
+                'distance_type': 'plane'
               }
             }
           ]
@@ -37,13 +37,13 @@
 
       function getLocationFromZip(zip) {
         var filter = {
-          "query": {
-            "filtered": {
-              "query": {
-                "term": {"zip":zip }
+          'query': {
+            'filtered': {
+              'query': {
+                'term': {'zip':zip }
               },
-              "filter": {
-                "term": { "additionalNumber":0 }
+              'filter': {
+                'term': { 'additionalNumber':0 }
               }
             }
           }
@@ -55,7 +55,7 @@
       return {
         getLocation: getLocation,
         getLocationFromZip: getLocationFromZip
-      }
+      };
 
     });
 

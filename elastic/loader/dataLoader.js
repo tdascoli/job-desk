@@ -5,9 +5,9 @@
   var lazy = require("lazy");
   var fs = require("fs");
   var models = require("./models.js");
-  var objectMapper = require("./objectMapper.js")
+  var objectMapper = require("./objectMapper.js");
   var client = new elasticsearch.Client({
-    host: 'jobdesk-alvchegov.rhcloud.com/',
+    host: 'localhost:9200/',
     log: 'trace'
   });
 
@@ -30,7 +30,7 @@
     var jobStream = fs.createReadStream(dataFile);
     var index = 'jobdesk';
     var mapperFn = objectMapper['map' + type];
-    var finalDelimiter = delimiter || ";"
+    var finalDelimiter = delimiter || ";";
     var counter = 0;
     var finalBulkSize = bulkSize || 100;
 

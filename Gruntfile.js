@@ -39,6 +39,10 @@ module.exports = function (grunt) {
       styles: {
         files: ['src/main/assets/styles/**/*.css']
       },
+      jshint: {
+        files: 'src/main/scripts/**/*.js',
+        tasks: ['jshint']
+      },
       livereload: {
         options: {
           livereload: 35729

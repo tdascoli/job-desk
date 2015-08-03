@@ -6,8 +6,19 @@
         "fingerprint": {
           "type": "string"
         },
+        "identifier": {
+          "type":"object",
+          "properties": {
+            "avam": {
+              "type":"string"
+            },
+            "egov": {
+              "type":"string"
+            }
+          }
+        },
         "title": {
-          "type": "object",
+          "type":"object",
           "properties": {
             "de": {
               "type": "string"
@@ -24,7 +35,7 @@
           }
         },
         "description": {
-          "type": "object",
+          "type":"object",
           "properties": {
             "de": {
               "type": "string"
@@ -40,20 +51,36 @@
             }
           }
         },
-        "iscoMajorGroup": {
-          "type": "string"
-        },
-        "iscoGroupLevel2": {
-          "type": "string"
+        "isco": {
+          "type":"object",
+          "properties": {
+            "majorGroup": {
+              "type": "string"
+            },
+            "groupLevel2": {
+              "type": "string"
+            },
+            "groupLevel3": {
+              "type": "string"
+            },
+            "groupLevel4": {
+              "type": "string"
+            }
+          }
         },
         "locations": {
-          "type": "nested",
-          "properties": {
-            "coords": {
-              "type": "geo_point"
-            },
-            "zip": {
-              "type": "integer"
+          "type":"object",
+          "properties":{
+            "location": {
+              "type":"nested",
+              "properties": {
+                "coords": {
+                  "type": "geo_point"
+                },
+                "zip": {
+                  "type": "integer"
+                }
+              }
             },
             "remarks": {
               "type": "object",
@@ -77,8 +104,11 @@
         "fulltime": {
           "type": "boolean"
         },
-        "externalSource": {
+        "external": {
           "type": "boolean"
+        },
+        "source": {
+          "type": "string"
         },
         "onlineSince": {
           "type": "integer"
@@ -90,10 +120,10 @@
           "type": "short"
         },
         "availableNow": {
-          "type": "boolean"
+          "type":"boolean"
         },
         "permanentJob": {
-          "type": "boolean"
+          "type":"boolean"
         },
         "startDate": {
           "type": "string"
@@ -115,7 +145,7 @@
           }
         },
         "application": {
-          "type": "object",
+          "type":"object",
           "properties": {
             "written": {
               "type": "boolean"
@@ -138,13 +168,13 @@
           }
         },
         "company": {
-          "type": "object",
+          "type":"object",
           "properties": {
             "name": {
               "type": "string"
             },
             "address": {
-              "type": "object",
+              "type":"object",
               "properties": {
                 "street": {
                   "type": "string"
@@ -164,17 +194,17 @@
               }
             },
             "phone": {
-              "type": "string"
+              "type":"string"
             },
             "eMail": {
-              "type": "string"
+              "type":"string"
             },
             "url": {
-              "type": "string"
+              "type":"string"
             }
           },
           "poAddress": {
-            "type": "object",
+            "type":"object",
             "properties": {
               "poBox": {
                 "type": "string"
@@ -192,7 +222,7 @@
           }
         },
         "contact": {
-          "type": "object",
+          "type":"object",
           "properties": {
             "gender": {
               "type": "string"
@@ -213,7 +243,7 @@
         }
       }
     }
-  }
+  };
 
   exports.locations = {
     "locations":{
@@ -238,7 +268,7 @@
         }
       }
     }
-  }
+  };
 
   exports.codes = {
     "codes":{

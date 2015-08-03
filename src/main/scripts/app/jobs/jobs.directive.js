@@ -189,28 +189,6 @@
     };
   }]);
 
-  module.directive('alertDismissableOnTimeout', ['$timeout', function($timeout){
-    return {
-      priority: 20,
-      restrict: 'A',
-      link: function(scope, element, attrs){
-        var dismissTimeout = attrs.alertDismissableOnTimeout || 5000;
-        var alertTrigger = attrs.alertDismissableTrigger || false;
-
-          scope.$watch(alertTrigger, function () {
-            if (scope[alertTrigger]) {
-              scope.timer = $timeout(function () {
-                  scope[alertTrigger] = false;
-              }, dismissTimeout);
-            }
-            else {
-              $timeout.cancel(scope.timer);
-            }
-          });
-      }
-    }
-  }]);
-
 }());
 
 

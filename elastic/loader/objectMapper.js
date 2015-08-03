@@ -4,6 +4,10 @@
   exports.mapjobs = function (data) {
     return {
       "fingerprint": data.FINGERPRINT,
+      "identifier": {
+        "avam":  data.STELLENNUMMER_AVAM,
+        "egov":  data.STELLENNUMMER_EGOV
+      },
       "title": {
         "de": data.BEZEICHNUNG,
         "fr": '[FR] ' + data.BEZEICHNUNG,
@@ -16,25 +20,32 @@
         "it": '[IT] ' + data.BESCHREIBUNG,
         "en": '[EN] ' + data.BESCHREIBUNG
       },
-      "iscoMajorGroup": data.ISCO_08_GROUP1,
-      "iscoGroupLevel2": data.ISCO_08_GROUP2,
-      "locations": [
-        {
-          "coords": {
-            "lon": data.LON,
-            "lat": data.LAT
-          },
-          "zip": data.ARBEITSORT_PLZ,
-          "remarks": {
-            "de": data.ARBEITSORT_TEXT,
-            "fr": '[FR] ' + data.ARBEITSORT_TEXT,
-            "it": '[IT] ' + data.ARBEITSORT_TEXT,
-            "en": '[EN] ' + data.ARBEITSORT_TEXT
+      "isco":{
+        "majorGroup": data.ISCO_08_GROUP1,
+        "groupLevel2": data.ISCO_08_GROUP2,
+        "groupLevel3": data.ISCO_08_GROUP3,
+        "groupLevel4": data.ISCO_08_GROUP4
+      },
+      "locations": {
+        "location": [
+          {
+            "coords": {
+              "lon": data.LON,
+              "lat": data.LAT
+            },
+            "zip": data.ARBEITSORT_PLZ
           }
+        ],
+        "remarks": {
+          "de": data.ARBEITSORT_TEXT,
+          "fr": '[FR] ' + data.ARBEITSORT_TEXT,
+          "it": '[IT] ' + data.ARBEITSORT_TEXT,
+          "en": '[EN] ' + data.ARBEITSORT_TEXT
         }
-      ],
+      },
       "fulltime": data.FULLTIME,
-      "externalSource": data.EXTERN,
+      "external": data.EXTERN,
+      "source": data.SOURCE,
       "onlineSince": data.ONLINE_SEIT,
       "quotaFrom": data.PENSUM_VON,
       "quotaTo": data.PENSUM_BIS,

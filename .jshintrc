@@ -24,5 +24,6 @@
         "angular": false,
         "define": false,
         "document":false
-    }
+    },
+    "predef": ["$","window","topojson"]
 }
