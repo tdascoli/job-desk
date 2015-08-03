@@ -175,7 +175,7 @@
       restrict: 'A',
       link: function(scope, element, attrs){
         var trigger = attrs.formAlertTrigger || true;
-        var severity = attrs.alertSeverity || "info";
+        var severity = attrs.alertSeverity || 'info';
         var dismissable = attrs.alertDismissable || false;
         var dismissableText = attrs.alertDismissableText || false;
         var alert=angular.element('<alert ng-show="'+trigger+'" alert-severity="'+severity+'" alert-dismissable="'+dismissable+'"><strong translate="'+attrs.formAlert+'"></strong></alert>');

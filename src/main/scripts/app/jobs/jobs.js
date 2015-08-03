@@ -70,5 +70,5 @@ angular.module('job-desk')
                   JobsService.getJob($stateParams.jobId);
                 }]
               }
-            })
+            });
     });

@@ -13,8 +13,8 @@
       $scope.executeSearch = function() {
         EducationsService.find($scope.searchParams).success(function(result) {
           $scope.educations = result;
-        })
-      }
+        });
+      };
 
     });
 

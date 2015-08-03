@@ -22,7 +22,7 @@
         for (var param in params) {
           if (params[param] || params[param] === false) {
             if (counter > 0) {
-              path = path + '&'
+              path = path + '&';
             } else {
               path = path + '?';
             }
@@ -37,7 +37,7 @@
         all: all,
         find: find,
         params: params
-      }
+      };
 
     });
 

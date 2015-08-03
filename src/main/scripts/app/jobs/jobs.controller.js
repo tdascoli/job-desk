@@ -140,7 +140,6 @@
       $scope.setCurrentZip=function(zip){
         LocationsService.getLocationFromZip(zip).success(function(nearestZip){
           if (nearestZip.hits.total>0) {
-            var location = nearestZip.hits.hits[0]._source;
             setNewCoords(nearestZip.hits.hits[0]._source.geoLocation);
           }
           else {

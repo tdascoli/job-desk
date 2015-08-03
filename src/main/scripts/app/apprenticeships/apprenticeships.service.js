@@ -12,10 +12,6 @@
         locations:[]
       };
 
-      function find(params) {
-
-      }
-
       function count(coords, cb){
 
         $http.post(baseUrl+'/locations/area', {coord: coords, radius: params.km}).success(function(result){
@@ -36,10 +32,9 @@
       }
 
       return {
-        find: find,
         count: count,
         params: params
-      }
+      };
 
     });
 

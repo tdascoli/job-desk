@@ -23,7 +23,7 @@
     'job-desk.directive'
   ]);
 
-  app.config(["$httpProvider", function($httpProvider) {
+  app.config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.headers.useXDomain = true;
     $httpProvider.defaults.withCredentials = true;
     $httpProvider.interceptors.push('authInterceptor');
@@ -88,7 +88,7 @@
             templateUrl: 'views/content/localInfo/localInfo.html'
           }
         }
-      })
+      });
   });
 
   app.run(function($http, geolocation, $rootScope){

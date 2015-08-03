@@ -23,7 +23,7 @@
       $scope.executeSearch = function() {
         ApprenticeshipsService.find($scope.searchParams).success(function(result) {
           $scope.apprenticeships = result;
-        })
+        });
       };
 
       $scope.setSwissdocGroup=function(swissdoc){
