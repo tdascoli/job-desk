@@ -7,8 +7,8 @@
   var models = require("./models.js");
   var objectMapper = require("./objectMapper.js");
   var client = new elasticsearch.Client({
-    host: 'localhost:9200/',
-    log: 'trace'
+    host: 'jobdesk-alvchegov.rhcloud.com/',
+    log: 'error'
   });
 
   function isFunction(functionToCheck) {
@@ -22,7 +22,7 @@
     var logger = new (winston.Logger)({
       transports: [
         new (winston.transports.Console)(),
-        new (winston.transports.File)({ filename: type + '-import_' + new Date().getMilliseconds() + '.log' })
+        new (winston.transports.File)({ filename: type + '-import_' + new Date().getTime() + '.log' })
       ]
     });
 
@@ -63,9 +63,9 @@
                 }, function (err, resp) {
                   if (err) {
                     logger.warn(err, resp);
-                  } else {
+                  } /*else {
                     logger.info(resp);
-                  }
+                  }*/
 
                 });
                 counter = 0;
@@ -85,9 +85,9 @@
               }, function (err, resp) {
                 if (err) {
                   logger.warn(err, resp);
-                } else {
+                } /*else {
                   logger.info(resp);
-                }
+                }*/
               });
               logger.info("done");
             })
