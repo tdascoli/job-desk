@@ -6,7 +6,7 @@ angular.module('job-desk')
 
 .constant('VERSION', 'src/main')
 
-.constant('baseUrl', 'http://jobdesk-alvchegov.rhcloud.com/jobdesk')
+.constant('baseUrl', 'http://localhost/jobdesk')
 
 .constant('supportedLanguages', ['de','fr','it','en'])
 
