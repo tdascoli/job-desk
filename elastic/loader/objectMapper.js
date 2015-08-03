@@ -118,14 +118,16 @@
 
   exports.maplocations = function (data) {
     return {
-      name: data.Ortschaftsname,
-      zip: data.PLZ,
-      additionalNumber: data.Zusatzziffer,
-      municipalityName: data.Gemeindename,
-      canton: data['Kantonskürzel'],
+      name: data.TEXT,
+      zip: data.CODE,
+      additionalNumber: data.ZUSATZZIFFER,
+      municipalityName: data.GEMEINDE,
+      municipalityNumber: data.BFS_NR,
+      region: data.AVAM_SUCHREGION,
+      canton: data.KANTON,
       geoLocation: {
-        lon: data.E,
-        lat: data.N
+        lon: data.LONGITUDE,
+        lat: data.LATITUDE
       }
     };
   };
@@ -139,7 +141,7 @@
         de: data.TEXT_DE,
         fr: data.TEXT_FR,
         it: data.TEXT_IT,
-        de: '[EN] ' + data.TEXT_DE
+        en: '[EN] ' + data.TEXT_DE
       }
     };
   };

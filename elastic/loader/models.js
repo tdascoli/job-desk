@@ -260,6 +260,12 @@
         "municipalityName": {
           "type":"string"
         },
+        "municipalityNumber": {
+          "type":"integer"
+        },
+        "region": {
+          "type":"string"
+        },
         "canton": {
           "type":"string"
         },
