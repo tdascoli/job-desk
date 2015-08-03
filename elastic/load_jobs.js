@@ -1,6 +1,6 @@
 ;(function () {
   var loader = require('./loader/dataLoader.js');
 
-  loader.createAndLoad('jobs', 'FINGERPRINT', 'data/jobs.csv', '|');
+  loader.createAndLoad('jobs', 'FINGERPRINT', 'data/jobs.csv', '|', 400);
 
 }());

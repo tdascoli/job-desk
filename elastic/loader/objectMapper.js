@@ -21,8 +21,8 @@
       "locations": [
         {
           "coords": {
-            "lon": data.LAT,
-            "lat": data.LON
+            "lon": data.LON,
+            "lat": data.LAT
           },
           "zip": data.ARBEITSORT_PLZ,
           "remarks": {
