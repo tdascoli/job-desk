@@ -441,7 +441,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "  </div>\n" +
     "</div>\n" +
     "\n" +
-    "<div class=\"category\">\n" +
+    "<div class=\"job-results category\">\n" +
     "  <div class=\"row category-groups no-filter\">\n" +
     "    <div class=\"col-md-4\">\n" +
     "      <a class=\"category-group\" ng-click=\"setIscoGroup('1')\"><img src=\"assets/images/512/family3.png\" alt=\"toggeli 1\" /></a><br />\n" +

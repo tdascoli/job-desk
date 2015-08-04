@@ -37,12 +37,16 @@
   display: block;
   background-color: #DDDDDD;
 }
+.navigation {
+  padding: 10px 0;
+}
 .navigation.bottom {
   position: fixed;
   bottom: 0;
   width: 100%;
   background-color: #005ba1;
   border-top: 4px solid #004f8d;
+  padding: 0;
 }
 .navigation.bottom div {
   padding-top: 1.5%;
@@ -83,12 +87,21 @@ body {
 h4 {
   font-size: 1.2em;
 }
+.category {
+  padding: 10px 0;
+}
+.category-groups {
+  height: 33%;
+  padding: 10px 0;
+  text-align: center;
+}
 .category-groups div {
-  height: 20%;
+  height: 100%;
   text-align: center;
 }
 .category-group img {
-  height: inherit !important;
+  height: calc(100% - 25px) !important;
+  width: auto;
 }
 .container,
 .container-fluid {
@@ -198,9 +211,6 @@ h4 {
 .wab:hover {
   background-color: #c77800;
   color: #fff;
-}
-.category {
-  margin-top: 2%;
 }
 .radius {
   fill: #fff;

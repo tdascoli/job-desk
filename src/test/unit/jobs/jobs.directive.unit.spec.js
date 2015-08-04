@@ -167,6 +167,51 @@
         );
       });
 
+      describe("formAlert directive", function() {
+        var $scope;
+        var elem;
+
+        beforeEach(inject(function($compile,$rootScope,$state) {
+          state = $state;
+          //initialize other stuff
+
+          $scope = $rootScope.$new();
+          $scope.formAlert=false;
+          elem  = angular.element('<div><input type="text" name="testAlert" id="testAlert" form-alert="testAlert" form-alert-trigger="formAlert" /></div>');
+          $compile(elem)($scope);
+          $scope.$apply();
+        }));
+
+        it('renders the element as required',
+          inject(function(){
+            expect(elem.find('#testAlert')).toBeTruthy();
+            expect(elem.find('#testAlert').children('div.form-alert')).toBeTruthy();
+            expect(elem.find('#testAlert').children('div.alert-dismissable')).toBeTruthy();
+            expect(elem.find('#testAlert').children('div.ng-hide')).toBeTruthy();
+
+            $scope.formAlert=true;
+            $scope.$apply();
+
+            expect(elem.find('#testAlert').children('div.ng-show')).toBeTruthy();
+          })
+        );
+
+
+        it('renders the element as required with no trigger and a dismissable-text',
+          inject(function($compile){
+            elem  = angular.element('<div><input type="text" name="testAlert" id="testAlert" form-alert="testAlert" alert-dismissable-text="CLOSE" /></div>');
+            $compile(elem)($scope);
+            $scope.$apply();
+
+            expect(elem.find('#testAlert')).toBeTruthy();
+            expect(elem.find('#testAlert').children('div.form-alert')).toBeTruthy();
+            expect(elem.find('#testAlert').children('div.alert-dismissable')).toBeTruthy();
+            expect(elem.find('#testAlert').children('div.ng-show')).toBeTruthy();
+
+            expect(elem.children('div.form-alert').children('button')).toContainText('CLOSE');
+          })
+        );
+      });
     });
 
 }());

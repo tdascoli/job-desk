@@ -17,27 +17,6 @@
     };
   });
 
-  module.directive('categoryGroup', ['$window', function($window){
-    return {
-      priority: 10,
-      restrict: 'C',
-      link: function(scope, element){
-        var height = ($window.innerHeight / 5) - 20;
-        element.css('height',height);
-
-        scope.$on('$viewContentLoaded' ,function(){
-          height = ($window.innerHeight / 5) - 20;
-          element.css('height',height);
-        });
-
-        $($window).resize(function(){
-          height = ($window.innerHeight / 5) - 20;
-          element.css('height',height);
-        });
-      }
-    };
-  }]);
-
   module.directive('jobResults', ['$window', function($window){
     return {
       priority: 10,
@@ -87,27 +66,6 @@
           element.addClass('visited');
           scope.showDetailContent=!scope.showDetailContent;
         };
-      }
-    };
-  }]);
-
-  module.directive('navigation', ['$window', function($window){
-    return {
-      priority: 10,
-      restrict: 'C',
-      link: function(scope, element){
-        var height = ($window.innerHeight / 5)/2;
-        element.css('height',height);
-
-        scope.$on('$viewContentLoaded' ,function(){
-          height = ($window.innerHeight / 5)/2;
-          element.css('height',height);
-        });
-
-        $($window).resize(function(){
-          height = ($window.innerHeight / 5)/2;
-          element.css('height',height);
-        });
       }
     };
   }]);
