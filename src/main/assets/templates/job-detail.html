@@ -16,7 +16,7 @@
             <div class="row">
               <div class="col-md-3">
                 <strong class="fake-label" translate="jobs.result.jobLocation"></strong>
-                <p ng-repeat="location in jobDetail._source.locations">{{getMultiLanguageText(location.remarks)}}</p>
+                <p>{{getMultiLanguageText(jobDetail._source.locations.remarks)}}</p>
 
                 <strong class="fake-label" translate="jobs.result.entryDate"></strong>
                 <p ng-if="jobDetail._source.availableNow" translate="jobs.result.availableNow"></p>

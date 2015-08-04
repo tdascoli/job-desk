@@ -204,7 +204,7 @@ module.exports = function (grunt) {
       test: {
         cwd: 'src/main/',
         src: ['assets/templates/**/*.html','views/**/*.html'],
-        dest: 'src/test/templates/templates.js',
+        dest: 'src/test/helpers/templates.js',
         options: {
           module: 'job-desk'
         }
@@ -429,57 +429,15 @@ module.exports = function (grunt) {
         }
       }
     },
-    jasmine: {
+    karma: {
       unit: {
-        src: [
-          'src/main/scripts/app/app.js',
-          'src/main/scripts/app/app.constants.js',
-          'src/main/scripts/aspects/i18n.js',
-          'src/main/scripts/aspects/directive.js',
-          'src/main/scripts/app/localInfo/localInfo.js',
-          'src/main/scripts/app/localInfo/localInfo.controller.js',
-          'src/main/scripts/app/apprenticeships/apprenticeships.js',
-          'src/main/scripts/app/apprenticeships/apprenticeships.service.js',
-          'src/main/scripts/app/apprenticeships/apprenticeships.controller.js',
-          'src/main/scripts/app/educations/educations.js',
-          'src/main/scripts/app/educations/educations.service.js',
-          'src/main/scripts/app/educations/educations.controller.js',
-          'src/main/scripts/app/jobs/jobs.js',
-          'src/main/scripts/app/jobs/jobs.service.js',
-          'src/main/scripts/app/jobs/jobs.controller.js',
-          'src/main/scripts/app/jobs/jobs.directive.js',
-          'src/main/scripts/components/locations/locations.service.js',
-          'src/test/templates/templates.js'
-        ],
-        options: {
-          specs: ['src/test/unit/**/*.unit.spec.js'],
-          vendor: [
-            'dist/scripts/*.vendor.js',
-            'src/main/bower_components/angular-mocks/angular-mocks.js'
-          ],
-          version: '2.0.0',
-          template: require('grunt-template-jasmine-istanbul'),
-          templateOptions: {
-            coverage: 'build/coverage/coverage.json',
-            report: [
-              {
-                type: 'html',
-                options: {
-                  dir: 'build/coverage/reports/html'
-                }
-              },
-              {
-                type: 'lcov',
-                options: {
-                  dir: 'build/coverage/reports/lcov'
-                }
-              },
-              {
-                type: 'text-summary'
-              }
-            ]
-          }
-        }
+        configFile: 'src/test/karma.conf.js'
+      },
+      dist: {
+        configFile: 'src/test/karma.conf.js',
+        singleRun: true,
+        browsers: ['PhantomJS'],
+        logLevel: 'ERROR'
       }
     },
     protractor: {
@@ -516,7 +474,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'ngtemplates:test',
     'wiredep:app',
-    'jasmine'
+    'karma:dist'
   ]);
 
   grunt.registerTask('protractor', [

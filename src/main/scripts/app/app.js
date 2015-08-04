@@ -49,9 +49,6 @@
         'navbar@': {
           templateUrl: 'views/navbar/navbar.html',
           controller: 'NavbarCtrl'
-        },
-        'footer@': {
-          templateUrl: 'views/footer/footer.html'
         }
       }
     });

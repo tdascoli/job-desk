@@ -25,5 +25,5 @@
         "define": false,
         "document":false
     },
-    "predef": ["$","window","topojson"]
+    "predef": ["$","window","topojson","module"]
 }
