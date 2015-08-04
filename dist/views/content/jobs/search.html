@@ -1,0 +1,57 @@
+<alert ng-show="coordsError" alert-severity="danger" alert-overlay="true" alert-dismissable="coordsError=false" alert-dismissable-on-timeout="5000" alert-dismissable-trigger="coordsError"><strong translate="jobs.search.error.noValidCoords"></strong></alert>
+<div class="navigation filter row" id="filter" flowtype min-font="1" max-font="9999" font-ratio="100" line-ratio="1.45" minimum="1" maximum="9999">
+  <div class="col-md-4">
+    <div ng-if="!searchParams.iscoMajorGroup">
+      <selectpicker form-label="jobs.search.jobgroup" id="iscoMajorGroup" options="iscoMajorGroup" label-attribute="'text'" value-attribute="'code'" i18n-label="true" ng-model="searchParams.iscoMajorGroup" ng-change="countStellen()"></selectpicker>
+    </div>
+    <div ng-if="searchParams.iscoMajorGroup">
+      <selectpicker form-label="isco.category{{searchParams.iscoMajorGroup}}" id="iscoGroupLevel2" options="iscoGroupLevel2[searchParams.iscoMajorGroup]" label-attribute="'text'" value-attribute="'code'" i18n-label="true" ng-model="searchParams.iscoGroupLevel2" ng-change="countStellen()"></selectpicker>
+    </div>
+  </div>
+  <div class="col-md-2 location-plz">
+    <input class="keyboard" type="text" name="location" id="location" form-input form-label="jobs.search.location" ng-model="nearestZip" form-inset="search" form-inset-btn form-alert="jobs.search.error.noValidZip" form-alert-trigger="locationError" alert-severity="danger" alert-dismissable="true" />
+  </div>
+  <div class="col-md-2">
+    <div class="form-group">
+      <label for="distance" translate="jobs.search.distance" translate-values="{value:searchParams.distance}"></label>
+      <slider id="distance" ng-model="searchParams.distance" ng-mouseup="countStellen()" min="distanceOptions.min" step="distanceOptions.step" max="distanceOptions.max" value="distanceOptions.value"></slider>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="form-group">
+      <label for="onlineSince">
+        <span ng-show="searchParams.distance>1" translate="jobs.search.onlineSince" translate-values="{value:searchParams.onlineSince}"></span>
+        <span ng-show="searchParams.distance<2" translate="jobs.search.onlineSinceOneDay"></span>
+      </label>
+      <slider id="onlineSince" ng-model="searchParams.onlineSince" ng-mouseup="countStellen()" min="onlineSinceOptions.min" step="onlineSinceOptions.step" max="onlineSinceOptions.max" value="onlineSinceOptions.value"></slider>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <input type="radio" ng-model="searchParams.fulltime" name="fulltime" value="1" id="fulltime" form-label="jobs.search.allJobs" ng-change="countStellen()" />
+    <input type="radio" ng-model="searchParams.fulltime" name="fulltime" value="2" id="parttime" form-label="jobs.search.parttimeJobs" ng-change="countStellen()" />
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <strong>
+      <span translate="jobs.search.foundJobs" translate-values="{value: count}"></span><img ng-if="idle" alt="idle" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    </strong>
+  </div>
+  <div class="col-md-10">
+    <swiss-map id="map"></swiss-map>
+  </div>
+</div>
+
+<div class="navigation bottom row" id="navbottom" hotkey="{b: ssiKeyStart}">
+  <div class="col-md-offset-1 col-md-2">
+    <a class="btn btn-default btn-plain btn-block" href="#/{{searchType}}" glyph-icon="arrow-left" admin-symbol> <span translate="global.navigation.startpage"></span></a>
+  </div>
+  <div class="col-md-offset-6 col-md-2" align="center">
+    <a href="#/job-results" class="btn btn-default btn-primary btn-plain btn-block" ng-disabled="count===0 || idle">
+      <span translate="global.navigation.showJobs"></span>
+    </a>
+  </div>
+  <div class="col-md-1" align="right">
+    <help></help>
+  </div>
+</div>

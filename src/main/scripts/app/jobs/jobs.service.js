@@ -31,11 +31,11 @@
                   },
                   {
                     'nested': {
-                      'path': 'locations',
+                      'path': 'locations.location',
                       'filter':{
                         'geo_distance': {
                           'distance': params.distance + 'km',
-                          'locations.coords': coords
+                          'locations.location.coords': coords
                         }
                       }
                     }
@@ -50,10 +50,10 @@
         filter.query.filtered.filter.and.push({'term':{'fulltime': 'false'}});
       }
       if (params.iscoMajorGroup!=='') {
-        filter.query.filtered.filter.and.push({'term':{'iscoMajorGroup': params.iscoMajorGroup}});
+        filter.query.filtered.filter.and.push({'term':{'isco.majorGroup': params.iscoMajorGroup}});
       }
       if (params.iscoGroupLevel2!=='') {
-        filter.query.filtered.filter.and.push({'term':{'iscoGroupLevel2': params.iscoGroupLevel2}});
+        filter.query.filtered.filter.and.push({'term':{'isco.groupLevel2': params.iscoGroupLevel2}});
       }
       return $http.post(baseUrl + '/jobs/_search', filter);
     }

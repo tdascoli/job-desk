@@ -1,0 +1,19 @@
+<div class="navigation filter row" id="filter" flowtype min-font="1" max-font="9999" font-ratio="100" line-ratio="1.45"
+     minimum="1" maximum="9999">
+  <div class="col-md-4">
+    <selectpicker form-label="jobs.result.sorting" id="sorting" options="sortList" label-attribute="'text'" i18n-label="true" ng-model="sort" ng-change="sortResultList()"></selectpicker>
+  </div>
+</div>
+
+<div class="job-results list-group">
+  <div job-detail="jobDetail" class="list-group-item" ng-repeat="jobDetail in jobs"></div>
+</div>
+
+<div class="row navigation bottom" id="navbottom" hotkey="{b: ssiKeySearch}">
+  <div class="col-md-offset-1 col-md-2">
+    <a class="btn btn-default btn-plain btn-block" href="#/job-search" glyph-icon="arrow-left" admin-symbol>&nbsp;<span translate="global.navigation.search"></span></a>
+  </div>
+  <div class="col-md-offset-8 col-md-1" align="right">
+    <help></help>
+  </div>
+</div>
