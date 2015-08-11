@@ -1,74 +1,71 @@
-<div class="navigation filter row" id="filter">
-  <div class="col-md-3">
-    <br />
-    <a href="#/educations" class="btn btn-default btn-block btn-plain wab" glyph-icon="arrow-top" admin-symbol> <strong translate="global.educations"></strong></a>
-  </div>
-  <div class="col-md-3">
-    <br />
-    <a href="#/apprenticeships" class="btn btn-default btn-block btn-plain lena" glyph-icon="arrow-top" admin-symbol> <strong translate="global.apprenticeships"></strong></a>
-  </div>
-  <div class="col-md-6">
-    <div class="navbar-right">
-      <language-switcher></language-switcher>
-    </div>
-  </div>
+<div id="filter" layout="row" layout-align="start center">
+    <md-button href="#/educations"><md-icon>launch</md-icon> <strong translate="global.educations"></strong></md-button>
+    <md-button href="#/apprenticeships"><md-icon>launch</md-icon> <strong translate="global.apprenticeships"></strong></md-button>
 </div>
 
-<div class="job-results category">
-  <div class="row category-groups no-filter">
-    <div class="col-md-4">
-      <a class="category-group" ng-click="setIscoGroup('1')"><img src="assets/images/512/family3.png" alt="toggeli 1" /></a><br />
-      <strong translate="isco.category1"></strong>
-    </div>
-    <div class="col-md-4">
-      <a class="category-group" ng-click="setIscoGroup('2')"><img src="assets/images/512/graduated.png" alt="toggeli 2" /></a><br />
-      <strong translate="isco.category2"></strong>
-    </div>
-    <div class="col-md-4">
-      <a class="category-group" ng-click="setIscoGroup('3')"><img src="assets/images/512/tool36.png" alt="toggeli 3" /></a><br />
-      <strong translate="isco.category3"></strong>
-    </div>
-  </div>
+<div layout="column">
+  <md-grid-list md-cols-sm="1" md-cols="3" md-gutter="{{searchRowGutter}}" md-row-height="{{searchRowHeight}}">
 
-  <div class="row category-groups">
-    <div class="col-md-4">
-      <a class="category-group" ng-click="setIscoGroup('4')"><img src="assets/images/512/paperclip.png" alt="toggeli 4" /></a><br />
-      <strong translate="isco.category4"></strong>
-    </div>
-    <div class="col-md-4 ">
-      <a class="category-group" ng-click="setIscoGroup('5')"><img src="assets/images/512/shop31.png" alt="toggeli 5" /></a><br />
-      <strong translate="isco.category5"></strong>
-    </div>
-    <div class="col-md-4 ">
-      <a class="category-group" ng-click="setIscoGroup('6')"><img src="assets/images/512/tractor6.png" alt="toggeli 6" /></a><br />
-      <strong translate="isco.category6"></strong>
-    </div>
-  </div>
+    <md-grid-tile ng-click="setIscoGroup('1')">
+      <img class="category" src="assets/images/512/family3.png" alt="toggeli 1" />
+      <md-grid-tile-footer>
+        <h3 translate="isco.category1"></h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+    <md-grid-tile ng-click="setIscoGroup('2')">
+      <img class="category" src="assets/images/512/graduated.png" alt="toggeli 1" />
+      <md-grid-tile-footer>
+        <h3 translate="isco.category2"></h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+    <md-grid-tile ng-click="setIscoGroup('3')">
+      <img class="category" src="assets/images/512/tool36.png" alt="toggeli 1" />
+      <md-grid-tile-footer>
+        <h3 translate="isco.category3"></h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
 
-  <div class="row category-groups">
-    <div class="col-md-4 ">
-      <a class="category-group" ng-click="setIscoGroup('7')"><img src="assets/images/512/work26.png" alt="toggeli 7" /></a><br />
-      <strong translate="isco.category7"></strong>
-    </div>
-    <div class="col-md-4 ">
-      <a class="category-group" ng-click="setIscoGroup('8')"><img src="assets/images/512/construction16.png" alt="toggeli 8" /></a><br />
-      <strong translate="isco.category8"></strong>
-    </div>
-    <div class="col-md-4 ">
-      <a class="category-group" ng-click="setIscoGroup('9')"><img src="assets/images/512/clean9.png" alt="toggeli 9" /></a><br />
-      <strong translate="isco.category9"></strong>
-    </div>
-  </div>
+    <md-grid-tile ng-click="setIscoGroup('4')">
+      <img class="category" src="assets/images/512/paperclip.png" alt="toggeli 1" />
+      <md-grid-tile-footer>
+        <h3 translate="isco.category4"></h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+    <md-grid-tile ng-click="setIscoGroup('5')">
+      <img class="category" src="assets/images/512/shop31.png" alt="toggeli 1" />
+      <md-grid-tile-footer>
+        <h3 translate="isco.category5"></h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+    <md-grid-tile ng-click="setIscoGroup('6')">
+      <img class="category iscoIcon" src="assets/images/jobs/isco6.png" alt="toggeli 1" />
+      <md-grid-tile-footer>
+        <h3 translate="isco.category6"></h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+
+    <md-grid-tile ng-click="setIscoGroup('7')">
+      <img class="category" src="assets/images/512/work26.png" alt="toggeli 1" />
+      <md-grid-tile-footer>
+        <h3 translate="isco.category7"></h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+    <md-grid-tile ng-click="setIscoGroup('8')">
+      <img class="category" src="assets/images/512/construction16.png" alt="toggeli 1" />
+      <md-grid-tile-footer>
+        <h3 translate="isco.category8"></h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+    <md-grid-tile ng-click="setIscoGroup('9')">
+      <img class="category" src="assets/images/512/clean9.png" alt="toggeli 1" />
+      <md-grid-tile-footer>
+        <h3 translate="isco.category9"></h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+
+  </md-grid-list>
 </div>
 
-<div class="row navigation bottom" id="navbottom">
-  <div class="col-md-offset-1 col-md-2" align="center">
-    <a class="btn btn-default btn-plain btn-block" href="#/frontpage" glyph-icon="info-sign"> <span translate="global.navigation.localInfo"></span></a>
-  </div>
-  <div class="col-md-offset-6 col-md-2" align="center">
-    <a class="btn btn-default btn-primary btn-plain btn-block" href="#/job-search" translate="global.navigation.search"></a>
-  </div>
-  <div class="col-md-1" align="right">
-    <help></help>
-  </div>
-</div>
+<md-button href="#/job-search" class="md-fab md-primary md-fab-bottom-right" aria-label="global.navigation.search">
+  <md-icon>arrow_forward</md-icon>
+</md-button>

@@ -8,6 +8,9 @@
       $rootScope.searchType='jobs';
       $scope.searchParams = JobsService.params;
 
+      $scope.searchRowGutter=20;
+      $scope.searchRowHeight=(($(window).outerHeight(true)-$('#topnav').outerHeight(true)-$('#filter').outerHeight(true))/3)-$scope.searchRowGutter;
+
       $scope.distanceOptions = {min:10,max:150,step:10,value:30};
       $scope.onlineSinceOptions = {min:1,max:60,step:1,value:5};
       $scope.iscoMajorGroup=[{text:'isco.category1',code:'1'},{text:'isco.category2',code:'2'},{text:'isco.category3',code:'3'},{text:'isco.category4',code:'4'},{text:'isco.category5',code:'5'},{text:'isco.category6',code:'6'},{text:'isco.category7',code:'7'},{text:'isco.category8',code:'8'},{text:'isco.category9',code:'9'}];

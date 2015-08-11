@@ -5,19 +5,19 @@
     'LocalStorageModule',
     'tmh.dynamicLocale',
     'ui.router',
+    'ui.router.stateHelper',
     'ui.bootstrap-slider',
     'ngResource',
     'ngSanitize',
     'ngCookies',
     'ngFlowtype',
+    'ngMaterial',
+    'ngLodash',
     'pascalprecht.translate',
     'ngCacheBuster',
     'geolocation',
     'alv-ch-ng.core',
     'alv-ch-ng.security',
-    'alv-ch-ng.scroll',
-    'alv-ch-ng.forms',
-    'alv-ch-ng.selectpicker',
     'alv-ch-ng.text-truncate',
     'job-desk.i18n',
     'job-desk.directive'
@@ -31,7 +31,7 @@
     $httpProvider.defaults.headers.common['If-Modified-Since'] = '01 Jan 1970 00:00:00 GMT';
   }]);
 
-  app.config(function ($stateProvider, $urlRouterProvider, httpRequestInterceptorCacheBusterProvider, SecurityConfigProvider) {
+  app.config(function ($stateProvider, $urlRouterProvider, httpRequestInterceptorCacheBusterProvider, SecurityConfigProvider, $mdThemingProvider) {
 
     SecurityConfigProvider.setClientId('job-desk');
     SecurityConfigProvider.setClientSecret('job-deskSecret');
@@ -43,16 +43,10 @@
     $urlRouterProvider.otherwise('/');
 
     $stateProvider.state('site', {
-
-      'abstract': true,
-      views: {
-        'navbar@': {
-          templateUrl: 'views/navbar/navbar.html',
-          controller: 'NavbarCtrl'
-        }
-      }
+      'abstract': true
     });
 
+    $mdThemingProvider.theme('default').primaryPalette('blue').accentPalette('blue-grey');
   });
 
   app.config(function ($stateProvider) {
@@ -88,10 +82,14 @@
       });
   });
 
-  app.run(function($http, geolocation, $rootScope){
+  app.run(function($http, geolocation, $rootScope, $state){
     geolocation.getLocation().then(function(data){
       $rootScope.myCoords = {lat:data.coords.latitude, lon:data.coords.longitude};
     });
+
+    $rootScope.back=function(){
+      return $state.$current.url.source;
+    };
   });
 
 }());

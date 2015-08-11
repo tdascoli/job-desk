@@ -9,7 +9,7 @@
       priority: 10,
       restrict: 'E',
       replace: true,
-      templateUrl: 'assets/templates/help.html',
+      templateUrl: 'template/help.html',
       link: function(scope, element){
         element.addClass('example');
 
@@ -54,7 +54,7 @@
       scope: {
         jobDetail: '='
       },
-      templateUrl: 'assets/templates/job-detail.html',
+      templateUrl: 'template/job-detail.html',
       link: function(scope, element){
         scope.showDetailContent=false;
 
