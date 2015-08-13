@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('job-desk')
-    .config(function ($stateProvider) {
+    .config(function ($stateProvider, $mdThemingProvider) {
+        $mdThemingProvider.theme('default').primaryPalette('blue').accentPalette('blue-grey');
+
         $stateProvider
             .state('jobs', {
                 parent: 'site',
@@ -17,7 +19,10 @@ angular.module('job-desk')
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                         $translatePartialLoader.addPart('jobs');
                         return $translate.refresh();
-                    }]
+                    }]/*,
+                    resetSearchParams: ['JobsService', function(JobsService){
+                        JobsService.resetSearchParams();
+                    }]*/
                 }
             })
             .state('job-search', {
@@ -49,25 +54,6 @@ angular.module('job-desk')
                 mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                   $translatePartialLoader.addPart('jobs');
                   return $translate.refresh();
-                }]
-              }
-            })
-            .state('job-detail', {
-              parent: 'site',
-              url: '/job-detail/:jobId',
-              views: {
-                'content@': {
-                  templateUrl: 'views/content/jobs/detail.html',
-                  controller: 'JobsCtrl'
-                }
-              },
-              resolve: {
-                mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
-                  $translatePartialLoader.addPart('jobs');
-                  return $translate.refresh();
-                }],
-                jobDetailLoader: ['$stateParams','JobsService', function ($stateParams, JobsService) {
-                  JobsService.getJob($stateParams.jobId);
                 }]
               }
             });

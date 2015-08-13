@@ -9,9 +9,11 @@
     <strong ng-if="jobDetail._source.quotaFrom!==jobDetail._source.quotaTo">{{jobDetail._source.quotaFrom}} - {{jobDetail._source.quotaTo}}%</strong>
     <strong ng-if="jobDetail._source.quotaFrom===jobDetail._source.quotaTo">{{jobDetail._source.quotaTo}}%</strong>
 
-    <span ng-hide="jobDetail._source.externalSource===true">
-      <p ng-show="!showDetailContent" ng-text-truncate="getMultiLanguageText(jobDetail._source.description)" ng-tt-words-threshold="20" ng-tt-no-toggling></p>
-      <div ng-show="showDetailContent">
+    <p ng-show="!showDetailContent" ng-text-truncate="getMultiLanguageText(jobDetail._source.description)" ng-tt-words-threshold="20" ng-tt-no-toggling></p>
+
+
+    <div ng-show="showDetailContent">
+      <span ng-hide="jobDetail._source.external==='true'">
         <p ng-bind-html="getMultiLanguageText(jobDetail._source.description)"></p>
         <div layout="row" layout-wrap layout-align="space-between start">
           <div flex="25" flex-sm="100">
@@ -66,10 +68,11 @@
             <span ng-if="jobDetail._source.contact.eMail">{{jobDetail._source.contact.eMail}}</span>
           </div>
         </div>
-      </div>
-    </span>
+      </span>
 
-    <p ng-show="jobDetail._source.externalSource===true">QUELLE EXTERN</p>
+      <iframe class="job-result" ng-show="jobDetail._source.external==='true'" ng-src="{{getExternalUrl(jobDetail._source.url)}}"></iframe>
+    </div>
+
   </div>
   <div flex="15" hide-sm>
     <md-button ng-click="showDetail()">

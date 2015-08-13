@@ -47,7 +47,7 @@
     };
   }]);
 
-  module.directive('jobDetail', ['$translate', function($translate){
+  module.directive('jobDetail', ['$translate','$sce', function($translate,$sce){
     return {
       priority: 10,
       restrict: 'A',
@@ -60,6 +60,10 @@
 
         scope.getMultiLanguageText=function(text){
           return text[$translate.use()];
+        };
+
+        scope.getExternalUrl=function(link){
+          return $sce.trustAsResourceUrl(link);
         };
 
         scope.showDetail=function(){
@@ -106,8 +110,6 @@
             scope.setCurrentZip(scope.currentZip);
           },
           beforeVisible: function(){
-            // reset error
-            scope.locationError=false;
             // set keyboard x/y according to element
             $('#location_keyboard').css('top',offset.top+element.outerHeight(true));
             $('#location_keyboard').css('left',offset.left+4);

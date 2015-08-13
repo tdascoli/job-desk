@@ -1,29 +1,22 @@
-<alert ng-show="coordsError" alert-severity="danger" alert-overlay="true" alert-dismissable="coordsError=false"
-       alert-dismissable-on-timeout="5000" alert-dismissable-trigger="coordsError"><strong
-  translate="jobs.search.error.noValidCoords"></strong></alert>
-
-<div id="filter" layout="row" layout-wrap layout-align="space-between center" style="height: 5em; max-height: 7em;">
+<div id="filter" layout="row" layout-wrap layout-margin layout-align="start center" class="md-whiteframe-z2 jd-floating-toolbar jd-floating-toolbar-fill-sm">
 
   <div flex="15" flex-sm="100">
-      <strong translate="jobs.search.foundJobs" translate-values="{value: count}"></strong><img ng-if="idle" alt="idle"
-                                                                                            src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+      <strong translate="jobs.search.foundJobs" translate-values="{value: count}"></strong>
   </div>
 
   <div flex="25" flex-sm="100" class="form-block">
 
-    <md-input-container class="md-select-has-label" ng-if="!searchParams.iscoMajorGroup">
-      <label translate="jobs.search.jobgroup"></label>
-      <md-select ng-model="searchParams.iscoMajorGroup" ng-change="countStellen()">
-        <md-option ng-repeat="isco in iscoMajorGroup" value="{{isco.code}}"><span translate="{{isco.text}}"></span>
-        </md-option>
-      </md-select>
-    </md-input-container>
+    <md-select ng-model="searchParams.iscoMajorGroup" ng-change="countStellen()" ng-if="!searchParams.iscoMajorGroup">
+      <md-select-label ng-if="!searchParams.iscoMajorGroup"><span translate="jobs.search.jobgroup"></span></md-select-label>
+      <md-option ng-repeat="isco in iscoMajorGroup" value="{{isco.code}}"><span translate="{{isco.text}}"></span></md-option>
+    </md-select>
 
     <md-input-container class="md-select-has-label" ng-if="searchParams.iscoMajorGroup">
       <label translate="isco.category{{searchParams.iscoMajorGroup}}"></label>
+
       <md-select ng-model="searchParams.iscoGroupLevel2" ng-change="countStellen()">
-        <md-option ng-repeat="isco2 in iscoGroupLevel2[searchParams.iscoMajorGroup]" value="{{isco2.code}}"><span
-          translate="{{isco2.text}}"></span></md-option>
+        <md-option value=""><span translate="jobs.search.allSubGroups"></span></md-option>
+        <md-option ng-repeat="isco2 in iscoGroupLevel2[searchParams.iscoMajorGroup]" value="{{isco2.code}}"><span translate="{{isco2.text}}"></span></md-option>
       </md-select>
     </md-input-container>
 
@@ -32,8 +25,7 @@
   <div flex="15" flex-sm="100">
     <md-input-container>
       <label translate="jobs.search.location"></label>
-      <input class="keyboard" type="text" name="location" id="location" ng-model="nearestZip"
-             alert-severity="danger"/>
+      <input class="keyboard" type="text" name="location" id="location" ng-model="nearestZip" />
     </md-input-container>
   </div>
 
@@ -68,6 +60,6 @@
   <swiss-map id="map"></swiss-map>
 </div>
 
-<md-button href="#/job-results" class="md-fab md-primary md-fab-bottom-right" aria-label="global.navigation.search" ng-disabled="count===0 || idle">
+<md-button href="#/job-results" class="md-fab md-primary md-fab-bottom-right jd-floating-fab" aria-label="global.navigation.search" ng-disabled="count===0">
   <md-icon>arrow_forward</md-icon>
 </md-button>

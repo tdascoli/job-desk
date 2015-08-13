@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('job-desk')
-    .controller('JobsCtrl', function ($scope, $rootScope, $state, $filter, $translate, JobsService, LocationsService, lodash) {
+    .controller('JobsCtrl', function ($scope, $rootScope, $state, $filter, $translate, JobsService, LocationsService, $mdDialog) {
 
       $rootScope.searchType='jobs';
       $scope.searchParams = JobsService.params;
@@ -75,14 +75,10 @@
         {code:'96', text:'isco.9.96'}
       ];
 
-      $scope.idle=false;
       $scope.count=0;
       $scope.nearestZip='';
       $scope.currentZip='';
       $scope.currentCoords=undefined;
-
-      $scope.locationError=false;
-      $scope.coordsError=false;
 
       $scope.showResults = function() {
         $state.go('job-result');
@@ -111,12 +107,10 @@
             $scope.currentCoords=coords;
             $scope.nearestZip = nearestZip.hits.hits[0]._source.zip + ' (' + nearestZip.hits.hits[0]._source.name + ')';
             $scope.currentZip = nearestZip.hits.hits[0]._source.zip;
-            $scope.locationError = false;
-            $scope.coordsError = false;
             $scope.countStellen();
           }
           else {
-            $scope.coordsError = true;
+            $scope.locationError('jobs.search.error.noValidCoords');
           }
         })
         .error(function(error){
@@ -147,7 +141,8 @@
           }
           else {
             // todo error handling
-            $scope.locationError=true;
+            $scope.setCurrentZip($scope.currentZip);
+            $scope.locationError('jobs.search.error.noValidZip');
           }
         })
         .error(function(error){
@@ -156,6 +151,17 @@
         });
       };
 
+      $scope.locationError=function(errorKey){
+        $mdDialog.show(
+          $mdDialog.alert()
+            .parent(angular.element(document.body))
+            .content($translate.instant(errorKey))
+            .ariaLabel('Alert Dialog Demo')
+            .ok('OK')
+        );
+      };
+
+      $scope.sort=0;
       var orderBy = $filter('orderBy');
       $scope.sortList=[
         {code:{field:'_source.onlineSince',order:false}, text:'global.sort.neuste'},
@@ -165,8 +171,8 @@
         {code:{field:'_source.title.de',order:true}, text:'global.sort.jobtitel_za'}
       ];
       $scope.sortResultList=function(){
-        var sort = lodash.findIndex($scope.sortList,$scope.sort);
-        $rootScope.jobs = orderBy($rootScope.jobs, $scope.sortList[sort].code.field, $scope.sortList[sort].code.order);
+        //var sort = lodash.findIndex($scope.sortList,$scope.sort);
+        $rootScope.jobs = orderBy($rootScope.jobs, $scope.sortList[$scope.sort].code.field, $scope.sortList[$scope.sort].code.order);
       };
 
       // SSI Tastatur

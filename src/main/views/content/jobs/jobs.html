@@ -1,13 +1,8 @@
-<div id="filter" layout="row" layout-align="start center">
-    <md-button href="#/educations"><md-icon>launch</md-icon> <strong translate="global.educations"></strong></md-button>
-    <md-button href="#/apprenticeships"><md-icon>launch</md-icon> <strong translate="global.apprenticeships"></strong></md-button>
-</div>
-
 <div layout="column">
   <md-grid-list md-cols-sm="1" md-cols="3" md-gutter="{{searchRowGutter}}" md-row-height="{{searchRowHeight}}">
 
     <md-grid-tile ng-click="setIscoGroup('1')">
-      <img class="category" src="assets/images/512/family3.png" alt="toggeli 1" />
+      <img id="step5" class="category" src="assets/images/512/family3.png" alt="toggeli 1" />
       <md-grid-tile-footer>
         <h3 translate="isco.category1"></h3>
       </md-grid-tile-footer>
@@ -66,6 +61,6 @@
   </md-grid-list>
 </div>
 
-<md-button href="#/job-search" class="md-fab md-primary md-fab-bottom-right" aria-label="global.navigation.search">
+<md-button href="#/job-search" class="md-fab md-primary md-fab-bottom-right jd-floating-fab" aria-label="global.navigation.search">
   <md-icon>arrow_forward</md-icon>
 </md-button>

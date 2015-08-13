@@ -47,23 +47,25 @@
   <!-- endbuild -->
 </head>
 
-<body layout="column" class="fluid search-{{searchType}}">
+<body layout="column">
 
-<md-toolbar layout="column" id="topnav" class="mmd-whiteframe-z4">
+<md-toolbar layout="column" id="topnav" class="md-whiteframe-z4">
   <div class="md-toolbar-tools">
     <md-button ng-click="back()" class="md-icon-button">
-      <md-icon ng-hide="back()==='/'">keyboard_arrow_left</md-icon>
-      <md-icon ng-show="back()==='/'">info_outline</md-icon>
+      <md-icon ng-hide="current()==='/'">keyboard_arrow_left</md-icon>
+      <md-icon ng-show="current()==='/'">info_outline</md-icon>
     </md-button>
     <h1><span translate="global.title"></span></h1>
+    <md-button hide-sm href="#/jobs" ng-hide="searchType==='jobs'"><md-icon>launch</md-icon> <span translate="global.jobs"></span></md-button>
+    <md-button hide-sm href="#/educations" ng-hide="searchType==='educations'"><md-icon>launch</md-icon> <span translate="global.educations"></span></md-button>
+    <md-button hide-sm href="#/apprenticeships" ng-hide="searchType==='apprenticeships'"><md-icon>launch</md-icon> <span translate="global.apprenticeships"></span></md-button>
     <span flex></span>
     <language-switcher></language-switcher>
+    <md-button hide-sm class="md-icon-button"><md-icon>help_outline</md-icon></md-button>
   </div>
 </md-toolbar>
 
 <md-content id="main" layout="column" flex ui-view="content" ng-view></md-content>
-
-<!--<md-toolbar id="footer" layout="row" class="md-whiteframe-z1 toolbar-inverse" ui-view="footer"></md-toolbar>-->
 <!--./container -->
 
 <!-- build:js scripts/vendor.js -->
@@ -94,8 +96,6 @@
 <script src="bower_components/angular-ui-router.stateHelper/statehelper.js"></script>
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script src="bower_components/bootstrap-tour/build/js/bootstrap-tour.js"></script>
-<script src="bower_components/angular-bootstrap-tour/dist/angular-bootstrap-tour.js"></script>
 <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
 <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
 <script src="bower_components/angular-ui-bootstrap/src/typeahead/typeahead.js"></script>

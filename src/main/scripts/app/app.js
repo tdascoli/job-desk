@@ -83,12 +83,25 @@
   });
 
   app.run(function($http, geolocation, $rootScope, $state){
+
+    $rootScope.current=function(){
+      return $state.$current.url.source;
+    };
+
     geolocation.getLocation().then(function(data){
       $rootScope.myCoords = {lat:data.coords.latitude, lon:data.coords.longitude};
     });
 
     $rootScope.back=function(){
-      return $state.$current.url.source;
+      if ($state.$current.url.source==='/'){
+        $state.go('localInfo');
+      }
+      else if ($state.$current.url.source==='/job-search'){
+        $state.go('jobs');
+      }
+      else if ($state.$current.url.source==='/job-results'){
+        $state.go('job-search');
+      }
     };
   });
 

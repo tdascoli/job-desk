@@ -1,4 +1,5 @@
-;(function() {
+;
+(function () {
 
   'use strict';
 
@@ -6,33 +7,43 @@
     .factory('ApprenticeshipsService', function ($http, baseUrl) {
 
       var params = {
-        km:30,
-        swissdoc:'',
-        swissdoc2:'',
-        locations:[]
+        distance: 10,
+        swissdocMajorGroup: '',
+        swissdocGroupLevel2: ''
       };
 
-      function count(coords, cb){
-
-        $http.post(baseUrl+'/locations/area', {coord: coords, radius: params.km}).success(function(result){
-          var nearestZip='', locations=[], i=0;
-          angular.forEach(result.areas, function(location){
-            if (i===0){
-              nearestZip=location.CODE+' ('+location.TEXT+')';
+      function find(coords) {
+        var filter = {
+          'query': {
+            'filtered': {
+              'query': {
+                'match_all': {}
+              },
+              'filter': {
+                'and': [
+                  {
+                    'geo_distance': {
+                      'distance': params.distance + 'km',
+                      'geoLocation': coords
+                    }
+                  }
+                ]
+              }
             }
-            if (locations.indexOf(location.CODE)===-1) {
-              locations.push(location.CODE);
-            }
-          });
+          }
+        };
 
-          $http.post(baseUrl+'/lenas/countJobs', {plz: locations, swissdoc: params.swissdoc, swissdoc2: params.swissdoc2}).success(function(result){
-            cb(result.count,locations,nearestZip);
-          });
-        });
+        if (params.swissdocMajorGroup !== '') {
+          filter.query.filtered.filter.and.push({'prefix': {'swissdoc': '0.' + params.swissdocMajorGroup}});
+        }
+        if (params.swissdocGroupLevel2 !== '') {
+          filter.query.filtered.filter.and.push({'term': {'swissdoc': '0.' + params.swissdocGroupLevel2}});
+        }
+        return $http.post(baseUrl + '/apprenticeships/_search', filter);
       }
 
       return {
-        count: count,
+        find: find,
         params: params
       };
 
