@@ -23,8 +23,7 @@
 
         it('renders the element as required',
           inject(function(){
-            expect(elem.find('#help')).toBeTruthy();
-            expect(elem.find('.example')).toBeTruthy();
+            expect(elem.hasClass('example')).toBeTruthy();
           })
         );
       });
@@ -154,14 +153,14 @@
         it('renders the element as required',
           inject(function(){
             var isolatedScope = elem.isolateScope();
-            expect(elem.find('.row')).toBeTruthy();
+            expect(elem.children('.row')).toBeTruthy();
             expect(isolatedScope.showDetailContent).toBeFalsy();
 
             isolatedScope.showDetail();
             $scope.$apply();
 
             expect(isolatedScope.showDetailContent).toBeTruthy();
-            expect(elem.find('.visited')).toBeTruthy();
+            expect(elem.children('.visited')).toBeTruthy();
 
           })
         );
@@ -184,15 +183,15 @@
 
         it('renders the element as required',
           inject(function(){
-            expect(elem.find('#testAlert')).toBeTruthy();
-            expect(elem.find('#testAlert').children('div.form-alert')).toBeTruthy();
-            expect(elem.find('#testAlert').children('div.alert-dismissable')).toBeTruthy();
-            expect(elem.find('#testAlert').children('div.ng-hide')).toBeTruthy();
+
+            expect(elem.children().hasClass('form-alert')).toBeTruthy();
+            expect(elem.children().hasClass('alert-dismissable')).toBeTruthy();
+            expect(elem.children().hasClass('ng-hide')).toBeTruthy();
 
             $scope.formAlert=true;
             $scope.$apply();
 
-            expect(elem.find('#testAlert').children('div.ng-show')).toBeTruthy();
+            expect(elem.children().hasClass('ng-hide')).toBeFalsy();
           })
         );
 
@@ -203,12 +202,31 @@
             $compile(elem)($scope);
             $scope.$apply();
 
-            expect(elem.find('#testAlert')).toBeTruthy();
-            expect(elem.find('#testAlert').children('div.form-alert')).toBeTruthy();
-            expect(elem.find('#testAlert').children('div.alert-dismissable')).toBeTruthy();
-            expect(elem.find('#testAlert').children('div.ng-show')).toBeTruthy();
+            expect(elem.children().hasClass('form-alert')).toBeTruthy();
+            expect(elem.children().hasClass('alert-dismissable')).toBeTruthy();
+            expect(elem.children().hasClass('ng-show')).toBeFalsy();
+            expect(elem.children().children('button')).toContainText('CLOSE');
+          })
+        );
+      });
 
-            expect(elem.children('div.form-alert').children('button')).toContainText('CLOSE');
+      describe("jobResults directive", function() {
+        var $scope;
+        var elem;
+
+        beforeEach(inject(function($compile,$rootScope,$state) {
+          state = $state;
+          //initialize other stuff
+
+          $scope = $rootScope.$new();
+          elem  = angular.element('<div><div style="height: 10px;" id="topnav">TOPNAV</div><div style="height: 10px;" id="filter">FILTER</div><div class="job-results">CONTENT</div><div style="height: 25px;" id="navbotom">NAVBOTTOM</div></div>');
+          $compile(elem)($scope);
+          $scope.$digest();
+        }));
+
+        it('renders the element as required',
+          inject(function($window){
+            expect(elem.children('.job-results').attr('style')).toBeTruthy();
           })
         );
       });
