@@ -1,0 +1,65 @@
+<div id="filter" layout="row" layout-wrap layout-margin layout-align="start center" class="md-whiteframe-z2 jd-floating-toolbar jd-floating-toolbar-fill-sm">
+
+  <div flex="15" flex-sm="100">
+      <strong translate="jobs.search.foundJobs" translate-values="{value: count}"></strong>
+  </div>
+
+  <div flex="25" flex-sm="100" class="form-block">
+
+    <md-select ng-model="searchParams.iscoMajorGroup" ng-change="countStellen()" ng-if="!searchParams.iscoMajorGroup">
+      <md-select-label ng-if="!searchParams.iscoMajorGroup"><span translate="jobs.search.jobgroup"></span></md-select-label>
+      <md-option ng-repeat="isco in iscoMajorGroup" value="{{isco.code}}"><span translate="{{isco.text}}"></span></md-option>
+    </md-select>
+
+    <md-input-container class="md-select-has-label" ng-if="searchParams.iscoMajorGroup">
+      <label translate="isco.category{{searchParams.iscoMajorGroup}}"></label>
+
+      <md-select ng-model="searchParams.iscoGroupLevel2" ng-change="countStellen()">
+        <md-option value=""><span translate="jobs.search.allSubGroups"></span></md-option>
+        <md-option ng-repeat="isco2 in iscoGroupLevel2[searchParams.iscoMajorGroup]" value="{{isco2.code}}"><span translate="{{isco2.text}}"></span></md-option>
+      </md-select>
+    </md-input-container>
+
+  </div>
+
+  <div flex="15" flex-sm="100">
+    <md-input-container>
+      <label translate="jobs.search.location"></label>
+      <input class="keyboard" type="text" name="location" id="location" ng-model="nearestZip" />
+    </md-input-container>
+  </div>
+
+  <div flex="10" flex-sm="50">
+    <md-input-container flex class="md-slider-has-label">
+      <label translate="jobs.search.distance" translate-values="{value:searchParams.distance}"></label>
+      <md-slider ng-model="searchParams.distance" step="{{distanceOptions.step}}" min="{{distanceOptions.min}}"
+                 max="{{distanceOptions.max}}" aria-label="distance" ng-change="countStellen()"></md-slider>
+    </md-input-container>
+  </div>
+
+  <div flex="10" flex-sm="50">
+    <md-input-container flex class="md-slider-has-label">
+      <label ng-show="searchParams.distance>1" translate="jobs.search.onlineSince"
+             translate-values="{value:searchParams.onlineSince}"></label>
+      <label ng-show="searchParams.distance<2" translate="jobs.search.onlineSinceOneDay"></label>
+      <md-slider ng-model="searchParams.onlineSince" step="{{onlineSinceOptions.step}}"
+                 min="{{onlineSinceOptions.min}}" max="{{onlineSinceOptions.max}}" aria-label="onlineSince"
+                 ng-change="countStellen()"></md-slider>
+    </md-input-container>
+  </div>
+
+  <div flex="15" flex-sm="100">
+    <md-radio-group ng-model="searchParams.fulltime" ng-change="countStellen()">
+      <md-radio-button value="1"><span translate="jobs.search.allJobs"></span></md-radio-button>
+      <md-radio-button value="2"><span translate="jobs.search.parttimeJobs"></span></md-radio-button>
+    </md-radio-group>
+  </div>
+</div>
+
+<div align="center" hide-sm>
+  <swiss-map id="map"></swiss-map>
+</div>
+
+<md-button href="#/job-results" class="md-fab md-primary md-fab-bottom-right jd-floating-fab" aria-label="global.navigation.search" ng-disabled="count===0">
+  <md-icon>arrow_forward</md-icon>
+</md-button>

@@ -1,0 +1,4 @@
+<md-select ng-model="currentLanguage">
+  <md-select-label><span translate="global.language"></span></md-select-label>
+  <md-option ng-click="setTranslationLanguage(language)" ng-value="language" ng-repeat="language in allLanguages">{{ language }}</md-option>
+</md-select>

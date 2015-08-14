@@ -1,0 +1,15 @@
+<!DOCTYPE html> <html ng-app=job-desk> <head> <meta charset=utf-8> <meta http-equiv=X-UA-Compatible content="IE=edge"/> <meta name=viewport content="minimal-ui,width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/> <meta name=apple-mobile-web-app-capable content="yes"/> <meta name=web-app-status-bar content="black"/> <title translate=global.title>Job-Desk</title> <!-- webfontloader --> <script>WebFontConfig = {
+      custom: {
+        families: ['Admin Icons']
+      },
+      google: {families: ['Open+Sans:400italic,700italic,400,700:latin','Material+Icons']}
+    };
+    (function () {
+      var wf = document.createElement('script');
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })();</script> <!-- /webfontloader --> <link rel=stylesheet href=assets/styles/d2c76df2.typo.css> <link rel=stylesheet href=assets/styles/b73f178e.vendor.css> <link rel=stylesheet href=assets/styles/02814cb7.app.css> </head> <body layout=column> <md-toolbar layout=column id=topnav class=md-whiteframe-z4> <div class=md-toolbar-tools> <md-button ng-click=back() class=md-icon-button> <md-icon>{{current()}}</md-icon> </md-button> <h1><span translate=global.title></span></h1> <md-button hide-sm href=#/jobs ng-hide="searchType==='jobs'"><md-icon>launch</md-icon> <span translate=global.jobs></span></md-button> <md-button hide-sm href=#/educations ng-hide="searchType==='educations'"><md-icon>launch</md-icon> <span translate=global.educations></span></md-button> <md-button hide-sm href=#/apprenticeships ng-hide="searchType==='apprenticeships'"><md-icon>launch</md-icon> <span translate=global.apprenticeships></span></md-button> <span flex></span> <language-switcher></language-switcher> <md-button hide-sm class=md-icon-button><md-icon>help_outline</md-icon></md-button> </div> </md-toolbar> <md-content id=main layout=column flex ui-view=content ng-view></md-content> <!--./container --> <script src=scripts/de506d42.vendor.js></script> <script src=scripts/12ad78db.app.js></script> </body> </html>

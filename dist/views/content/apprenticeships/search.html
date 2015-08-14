@@ -1,0 +1,48 @@
+<div id="filter" layout="row" layout-wrap layout-margin layout-align="start center" class="md-whiteframe-z2 jd-floating-toolbar jd-floating-toolbar-fill-sm">
+
+  <div flex="15" flex-sm="100">
+      <strong translate="apprenticeships.search.foundJobs" translate-values="{value: count}"></strong>
+  </div>
+
+  <div flex="25" flex-sm="100" class="form-block">
+
+    <md-select ng-model="searchParams.swissdocMajorGroup" ng-change="countStellen()" ng-if="!searchParams.swissdocMajorGroup">
+      <md-select-label ng-if="!searchParams.swissdocMajorGroup"><span translate="apprenticeships.search.swissdocGroup"></span></md-select-label>
+      <md-option ng-repeat="swissdoc in swissdocMajorGroup" value="{{swissdoc.code}}"><span translate="{{swissdoc.text}}"></span></md-option>
+    </md-select>
+
+    <md-input-container class="md-select-has-label" ng-if="searchParams.swissdocMajorGroup">
+      <label translate="swissdoc.category{{searchParams.swissdocMajorGroup}}"></label>
+
+      <md-select ng-model="searchParams.swissdocGroupLevel2" ng-change="countStellen()">
+        <md-option value=""><span translate="apprenticeships.search.allSubGroups"></span></md-option>
+        <md-option ng-repeat="swissdoc2 in swissdocGroupLevel2[searchParams.iscoMajorGroup]" value="{{swissdoc2.code}}"><span translate="{{swissdoc2.text}}"></span></md-option>
+      </md-select>
+    </md-input-container>
+
+  </div>
+
+  <div flex="15" flex-sm="100">
+    <md-input-container>
+      <label translate="apprenticeships.search.location"></label>
+      <input class="keyboard" type="text" name="location" id="location" ng-model="nearestZip" />
+    </md-input-container>
+  </div>
+
+  <div flex="10" flex-sm="50">
+    <md-input-container flex class="md-slider-has-label">
+      <label translate="apprenticeships.search.distance" translate-values="{value:searchParams.distance}"></label>
+      <md-slider ng-model="searchParams.distance" step="{{distanceOptions.step}}" min="{{distanceOptions.min}}"
+                 max="{{distanceOptions.max}}" aria-label="distance" ng-change="countStellen()"></md-slider>
+    </md-input-container>
+  </div>
+
+</div>
+
+<div align="center" hide-sm>
+  <swiss-map id="map"></swiss-map>
+</div>
+
+<md-button href="#/apprenticeship-results" class="md-fab md-primary md-fab-bottom-right jd-floating-fab" aria-label="global.navigation.search" ng-disabled="count===0">
+  <md-icon>arrow_forward</md-icon>
+</md-button>
