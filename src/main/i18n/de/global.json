@@ -4,6 +4,7 @@
     "apprenticeships": "Lehrstellen",
     "educations": "Weiterbildungen",
     "jobs": "Jobs",
+    "language":"Sprache",
     "navigation": {
       "localInfo": "Informationen",
       "startpage":"Startseite",
@@ -18,7 +19,9 @@
       "pensum_100":"Arbeitspensum - niedrigste zuerst",
       "pensum_0":"Arbeitspensum - höchste zuerst",
       "jobtitel_az":"Jobtitel - A-Z",
-      "jobtitel_za":"Jobtitel - Z-A"
+      "jobtitel_za":"Jobtitel - Z-A",
+      "location_1000":"Arbeitsort - niedrigste PLZ zuerst",
+      "location_9999":"Arbeitsort - höchste PLZ zuerst"
     },
     "codes": {
       "salutations": {

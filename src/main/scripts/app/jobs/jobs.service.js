@@ -58,10 +58,21 @@
       return $http.post(baseUrl + '/jobs/_search', filter);
     }
 
-      return {
-        find: find,
-        params: params
+    function resetSearchParams(){
+      params = {
+        distance: 30,
+        onlineSince: 5,
+        fulltime: 1,
+        iscoMajorGroup: '',
+        iscoGroupLevel2: ''
       };
+    }
+
+    return {
+      find: find,
+      params: params,
+      resetSearchParams: resetSearchParams
+    };
 
     });
 

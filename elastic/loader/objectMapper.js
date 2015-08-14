@@ -1,5 +1,4 @@
-;
-(function () {
+;(function () {
 
   exports.mapjobs = function (data) {
     return {
@@ -8,6 +7,7 @@
         "avam":  data.STELLENNUMMER_AVAM,
         "egov":  data.STELLENNUMMER_EGOV
       },
+      "url":data.URL,
       "title": {
         "de": data.BEZEICHNUNG,
         "fr": '[FR] ' + data.BEZEICHNUNG,
@@ -114,6 +114,50 @@
         "eMail": data.KP_EMAIL
       }
     };
+  };
+
+  exports.mapapprenticeships = function(data){
+    return {
+          id: data.ID,
+          titleM: {
+              de: data.PROFESSIONMDE,
+              fr: data.PROFESSIONMFR,
+              it: data.PROFESSIONMIT
+          },
+          titleW: {
+            de: data.PROFESSIONFDE,
+            fr: data.PROFESSIONFFR,
+            it: data.PROFESSIONFIT
+          },
+          description: {
+              de: data.DESCRIPTION,
+              fr: '[FR] '+data.DESCRIPTION,
+              it: '[IT] '+data.DESCRIPTION
+          },
+          amount: data.PLACES,
+          company: {
+              id: data.ID_LECTURES,
+              name: data.LECTURENAME,
+              nameAppendix: data.ORGANISATIONNAMEADDON1,
+              address: {
+                  street: data.FULLADDRESS,
+                  zip: data.ZIPCODE,
+                  location: data.LOCALITY
+              },
+              contact:{
+                  fullName: data.FULLNAME,
+                  phone: data.PHONE,
+                  eMail: data.EMAIL
+              },
+              url: data.URL
+          },
+          swissdoc: data.SWISSDOC,
+          languages: data.LANGUAGES,
+          geoLocation: {
+            "lon": data.LON,
+            "lat": data.LAT
+          }
+        }
   };
 
   exports.maplocations = function (data) {

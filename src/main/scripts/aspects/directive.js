@@ -49,7 +49,7 @@
             scale = width*17,
             mapRatio = 0.625,
             height = width * mapRatio,
-            maxHeight = $(window).height()-($('#topnav').height()+$('#filter').height()+$('#navbottom').height()),
+            maxHeight = $(window).height()-($('#topnav').outerHeight(true)+$('#filter').outerHeight(true)),
             thresholds = [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000],
             contour;
 

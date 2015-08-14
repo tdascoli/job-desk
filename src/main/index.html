@@ -15,7 +15,7 @@
       custom: {
         families: ['Admin Icons']
       },
-      google: {families: ['Open+Sans:400italic,700italic,400,700:latin']}
+      google: {families: ['Open+Sans:400italic,700italic,400,700:latin','Material+Icons']}
     };
     (function () {
       var wf = document.createElement('script');
@@ -36,8 +36,7 @@
   <!-- build:css assets/styles/vendor.css -->
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/keyboard/dist/css/keyboard.min.css" />
-  <link rel="stylesheet" href="bower_components/alv-ch-ng.style/dist/css/alv-ch-ng.bootstrap.css" />
-  <link rel="stylesheet" href="bower_components/alv-ch-ng.selectpicker/dist/css/selectpicker.min.css" />
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -48,31 +47,24 @@
   <!-- endbuild -->
 </head>
 
-<body class="fluid search-{{searchType}}">
-<div id="topnav" class="topnav">
-  <!-- /.navbar -->
-  <div class="navbar navbar-inverse" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <div class="navbar-brand">
-          <a href="#/{{searchType}}" glyph-icon="home">
-            <span translate="global.title"></span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<body layout="column">
 
-<div class="container" hotkey="{a: ssiKeyStart, c: ssiKeyInfo}">
-  <div id="main" ui-view="content" ng-view class="ng-cloak"></div>
-</div>
+<md-toolbar layout="column" id="topnav" class="md-whiteframe-z4">
+  <div class="md-toolbar-tools">
+    <md-button ng-click="back()" class="md-icon-button">
+      <md-icon>{{current()}}</md-icon>
+    </md-button>
+    <h1><span translate="global.title"></span></h1>
+    <md-button hide-sm href="#/jobs" ng-hide="searchType==='jobs'"><md-icon>launch</md-icon> <span translate="global.jobs"></span></md-button>
+    <md-button hide-sm href="#/educations" ng-hide="searchType==='educations'"><md-icon>launch</md-icon> <span translate="global.educations"></span></md-button>
+    <md-button hide-sm href="#/apprenticeships" ng-hide="searchType==='apprenticeships'"><md-icon>launch</md-icon> <span translate="global.apprenticeships"></span></md-button>
+    <span flex></span>
+    <language-switcher></language-switcher>
+    <md-button hide-sm class="md-icon-button"><md-icon>help_outline</md-icon></md-button>
+  </div>
+</md-toolbar>
+
+<md-content id="main" layout="column" flex ui-view="content" ng-view></md-content>
 <!--./container -->
 
 <!-- build:js scripts/vendor.js -->
@@ -83,21 +75,15 @@
 <script src="bower_components/keyboard/dist/layouts/keyboard-layouts-combined.min.js"></script>
 <script src="bower_components/keyboard/dist/layouts/keyboard-layouts-greywyvern.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
 <script src="bower_components/angular-translate/angular-translate.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="bower_components/bootstrapaccessibilityplugin/plugins/js/bootstrap-accessibility.js"></script>
 <script src="bower_components/ng-lodash/build/ng-lodash.js"></script>
 <script src="bower_components/detect-mobile-browser/detectmobilebrowser.js"></script>
 <script src="bower_components/alv-ch-ng.core/dist/alv-ch-ng.core.js"></script>
-<script src="bower_components/underscore/underscore.js"></script>
-<script src="bower_components/angular-ui-bootstrap/src/typeahead/typeahead.js"></script>
-<script src="bower_components/angular-ui-bootstrap/src/tooltip/tooltip.js"></script>
-<script src="bower_components/angular-ui-bootstrap/src/position/position.js"></script>
-<script src="bower_components/angular-ui-bootstrap/src/bindHtml/bindHtml.js"></script>
-<script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-<script src="bower_components/mailcheck/src/mailcheck.js"></script>
-<script src="bower_components/alv-ch-ng.forms/dist/alv-ch-ng.forms.js"></script>
-<script src="bower_components/alv-ch-ng.scroll/dist/alv-ch-ng.scroll.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
@@ -105,17 +91,18 @@
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="bower_components/alv-ch-ng.security/dist/alv-ch-ng.security.js"></script>
 <script src="bower_components/alv-ch-ng.text-truncate/dist/alv-ch-ng.textTruncate.js"></script>
-<script src="bower_components/alv-ch-ng.selectpicker/dist/alv-ch-ng.selectpicker.js"></script>
 <script src="bower_components/Flowtype.js/flowtype.js"></script>
+<script src="bower_components/angular-ui-router.stateHelper/statehelper.js"></script>
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script src="bower_components/bootstrap-tour/build/js/bootstrap-tour.js"></script>
-<script src="bower_components/angular-bootstrap-tour/dist/angular-bootstrap-tour.js"></script>
 <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
 <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
+<script src="bower_components/angular-ui-bootstrap/src/typeahead/typeahead.js"></script>
+<script src="bower_components/angular-ui-bootstrap/src/tooltip/tooltip.js"></script>
+<script src="bower_components/angular-ui-bootstrap/src/position/position.js"></script>
+<script src="bower_components/angular-ui-bootstrap/src/bindHtml/bindHtml.js"></script>
 <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
 <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
-<script src="bower_components/angular-aria/angular-aria.js"></script>
 <script src="bower_components/angular-scroll/angular-scroll.js"></script>
 <script src="bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
 <script src="bower_components/jquery-bridget/jquery.bridget.js"></script>
@@ -142,6 +129,7 @@
 <script src="scripts/app/apprenticeships/apprenticeships.js"></script>
 <script src="scripts/app/apprenticeships/apprenticeships.service.js"></script>
 <script src="scripts/app/apprenticeships/apprenticeships.controller.js"></script>
+<script src="scripts/app/apprenticeships/apprenticeships.directive.js"></script>
 <script src="scripts/app/educations/educations.js"></script>
 <script src="scripts/app/educations/educations.service.js"></script>
 <script src="scripts/app/educations/educations.controller.js"></script>
@@ -150,6 +138,7 @@
 <script src="scripts/app/jobs/jobs.controller.js"></script>
 <script src="scripts/app/jobs/jobs.directive.js"></script>
 <script src="scripts/components/locations/locations.service.js"></script>
+<script src="scripts/aspects/templates.js"></script>
 <!-- endbuild -->
 
 </body>

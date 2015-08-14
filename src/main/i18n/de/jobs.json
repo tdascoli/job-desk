@@ -1,11 +1,8 @@
 {
   "jobs": {
-    "navigation": {
-      "nextJob":"nächste Stelle",
-      "previousJob":"vorherige Stelle"
-    },
     "search": {
       "jobgroup":"Was (Berufsgruppe)",
+      "allSubGroups":"Alle Untergruppen",
       "location":"Wo (PLZ)",
       "distance":"Distanz {{value}} km",
       "traveltime":"Reisedauer",

@@ -39,8 +39,12 @@ module.exports = function (grunt) {
         files: ['src/main/assets/styles/**/*.css']
       },
       jshint: {
-        files: 'src/main/scripts/**/*.js',
+        files: ['src/main/scripts/**/*.js'],
         tasks: ['jshint']
+      },
+      templates: {
+        files: ['src/main/views/template/**/*.html'],
+        tasks: ['ngtemplates:dev']
       },
       livereload: {
         options: {
@@ -107,7 +111,8 @@ module.exports = function (grunt) {
       },
       all: [
         'Gruntfile.js',
-        'src/main/scripts/**/*.js'
+        'src/main/scripts/**/*.js',
+        '!src/main/scripts/aspects/templates.js'
       ]
     },
     concat: {
@@ -199,6 +204,14 @@ module.exports = function (grunt) {
             useShortDoctype: true,
             removeEmptyAttributes: true
           }
+        }
+      },
+      dev: {
+        cwd: 'src/main/views/',
+        src: ['template/**/*.html'],
+        dest: 'src/main/scripts/aspects/templates.js',
+        options: {
+          module: 'job-desk'
         }
       },
       test: {

@@ -17,6 +17,9 @@
             }
           }
         },
+        "url": {
+          "type":"string"
+        },
         "title": {
           "type":"object",
           "properties": {
@@ -240,6 +243,124 @@
               "type": "string"
             }
           }
+        }
+      }
+    }
+  };
+
+  exports.apprenticeships = {
+    "apprenticeships": {
+      "properties": {
+        "id": {
+          "type":"integer"
+        },
+        "titleM": {
+          "type":"object",
+          "properties": {
+            "de": {
+              "type": "string"
+            },
+            "fr": {
+              "type": "string"
+            },
+            "it": {
+              "type": "string"
+            },
+            "en": {
+              "type": "string"
+            }
+          }
+        },
+        "titleW": {
+          "type":"object",
+          "properties": {
+            "de": {
+              "type": "string"
+            },
+            "fr": {
+              "type": "string"
+            },
+            "it": {
+              "type": "string"
+            },
+            "en": {
+              "type": "string"
+            }
+          }
+        },
+        "description": {
+          "type":"object",
+          "properties": {
+            "de": {
+              "type": "string"
+            },
+            "fr": {
+              "type": "string"
+            },
+            "it": {
+              "type": "string"
+            },
+            "en": {
+              "type": "string"
+            }
+          }
+        },
+        "amount": {
+          "type": "integer"
+        },
+        "company": {
+          "type":"object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "nameAppendix": {
+              "type": "string"
+            },
+            "address": {
+              "type":"object",
+              "properties": {
+                "street": {
+                  "type": "string"
+                },
+                "zip": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "string"
+                }
+              }
+            },
+            "contact":{
+              "type":"object",
+              "properties": {
+                "fullName": {
+                  "type":"string"
+                },
+                "phone": {
+                  "type":"string"
+                },
+                "eMail": {
+                  "type":"string"
+                }
+              }
+            },
+            "url": {
+              "type":"string"
+            }
+          }
+        },
+        "swissdoc": {
+          "type": "string"
+        },
+        "languages": {
+          "type": "string"
+        },
+        "geoLocation": {
+          "type": "geo_point"
         }
       }
     }

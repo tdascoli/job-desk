@@ -1,7 +1,10 @@
 'use strict';
 
 angular.module('job-desk')
-    .config(function ($stateProvider) {
+    .config(function ($stateProvider, $mdThemingProvider) {
+
+        $mdThemingProvider.theme('default').primaryPalette('orange').accentPalette('blue-grey');
+
         $stateProvider
             .state('apprenticeships', {
                 parent: 'site',
@@ -31,7 +34,23 @@ angular.module('job-desk')
               },
               resolve: {
                 mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
-                  $translatePartialLoader.addPart('jobs');
+                  $translatePartialLoader.addPart('apprenticeships');
+                  return $translate.refresh();
+                }]
+              }
+            })
+            .state('apprenticeship-results', {
+              parent: 'site',
+              url: '/apprenticeship-results',
+              views: {
+                'content@': {
+                  templateUrl: 'views/content/apprenticeships/result.html',
+                  controller: 'ApprenticeshipsCtrl'
+                }
+              },
+              resolve: {
+                mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                  $translatePartialLoader.addPart('apprenticeships');
                   return $translate.refresh();
                 }]
               }
