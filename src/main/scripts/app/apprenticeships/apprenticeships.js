@@ -39,9 +39,9 @@ angular.module('job-desk')
                 }]
               }
             })
-            .state('apprenticeship-result', {
+            .state('apprenticeship-results', {
               parent: 'site',
-              url: '/apprenticeship-result',
+              url: '/apprenticeship-results',
               views: {
                 'content@': {
                   templateUrl: 'views/content/apprenticeships/result.html',

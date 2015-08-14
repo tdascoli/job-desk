@@ -85,7 +85,10 @@
   app.run(function($http, geolocation, $rootScope, $state){
 
     $rootScope.current=function(){
-      return $state.$current.url.source;
+      if ($state.$current.url.source==='/' || $state.$current.url.source==='/jobs' || $state.$current.url.source==='/apprenticeships' || $state.$current.url.source==='/educations'){
+        return 'info_outline';
+      }
+      return 'keyboard_arrow_left';
     };
 
     geolocation.getLocation().then(function(data){
@@ -93,14 +96,22 @@
     });
 
     $rootScope.back=function(){
-      if ($state.$current.url.source==='/'){
+      if ($state.$current.url.source==='/' || $state.$current.url.source==='/jobs' || $state.$current.url.source==='/apprenticeships' || $state.$current.url.source==='/educations'){
         $state.go('localInfo');
       }
+      // Jobs
       else if ($state.$current.url.source==='/job-search'){
         $state.go('jobs');
       }
       else if ($state.$current.url.source==='/job-results'){
         $state.go('job-search');
+      }
+      // Apprenticeship
+      else if ($state.$current.url.source==='/apprenticeship-search'){
+        $state.go('apprenticeships');
+      }
+      else if ($state.$current.url.source==='/apprenticeship-results'){
+        $state.go('apprenticeship-search');
       }
     };
   });

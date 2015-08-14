@@ -167,8 +167,8 @@
         {code:{field:'_source.onlineSince',order:false}, text:'global.sort.neuste'},
         {code:{field:'_source.quotaTo',order:true}, text:'global.sort.pensum_0'},
         {code:{field:'_source.quotaTo',order:false}, text:'global.sort.pensum_100'},
-        {code:{field:'_source.title.de',order:false}, text:'global.sort.jobtitel_az'},
-        {code:{field:'_source.title.de',order:true}, text:'global.sort.jobtitel_za'}
+        {code:{field:'_source.title.'+$translate.use(),order:false}, text:'global.sort.jobtitel_az'},
+        {code:{field:'_source.title.'+$translate.use(),order:true}, text:'global.sort.jobtitel_za'}
       ];
       $scope.sortResultList=function(){
         //var sort = lodash.findIndex($scope.sortList,$scope.sort);

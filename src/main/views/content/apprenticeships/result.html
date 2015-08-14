@@ -1,7 +1,7 @@
 <div id="filter" layout="row" layout-margin layout-align="space-between center" class="md-whiteframe-z2 jd-floating-toolbar">
   <div flex="25" flex-sm="100">
     <md-input-container class="md-select-has-label">
-      <label translate="jobs.result.sorting"></label>
+      <label translate="apprenticeships.result.sorting"></label>
       <md-select ng-model="sort" ng-change="sortResultList()">
         <md-option ng-repeat="sort in sortList" value="{{$index}}"><span translate="{{sort.text}}"></span></md-option>
       </md-select>
@@ -9,4 +9,4 @@
   </div>
 </div>
 
-<div job-detail="jobDetail" ng-repeat="jobDetail in jobs"></div>
+<div apprenticeship-detail="detail" ng-repeat="detail in apprenticeships"></div>

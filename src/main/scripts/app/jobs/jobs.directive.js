@@ -17,36 +17,6 @@
     };
   });
 
-  module.directive('jobResults', ['$window', function($window){
-    return {
-      priority: 10,
-      restrict: 'C',
-      link: function(scope, element){
-        var filter = $('#filter').outerHeight(true) || 0;
-        var bottom = $('#navbottom').outerHeight(true) || 0;
-        var topnav = $('#topnav').outerHeight(true) || 0;
-        var height = $window.innerHeight - (filter+bottom+topnav);
-        element.css('height',height);
-
-        scope.$on('$viewContentLoaded' ,function(){
-          filter = $('#filter').outerHeight(true) || 0;
-          bottom = $('#navbottom').outerHeight(true) || 0;
-          topnav = $('#topnav').outerHeight(true) || 0;
-          height = $window.innerHeight - (filter+bottom+topnav);
-          element.css('height',height);
-        });
-
-        $($window).resize(function(){
-          filter = $('#filter').outerHeight(true) || 0;
-          bottom = $('#navbottom').outerHeight(true) || 0;
-          topnav = $('#topnav').outerHeight(true) || 0;
-          height = $window.innerHeight - (filter+bottom+topnav);
-          element.css('height',height);
-        });
-      }
-    };
-  }]);
-
   module.directive('jobDetail', ['$translate','$sce', function($translate,$sce){
     return {
       priority: 10,
