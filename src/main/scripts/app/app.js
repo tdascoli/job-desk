@@ -46,7 +46,13 @@
       'abstract': true
     });
 
-    $mdThemingProvider.theme('default').primaryPalette('blue').accentPalette('blue-grey');
+    $mdThemingProvider.theme('jobs').primaryPalette('blue').accentPalette('blue-grey');
+
+    $mdThemingProvider.theme('educations').primaryPalette('orange').accentPalette('blue-grey');
+
+    $mdThemingProvider.theme('apprenticeships').primaryPalette('light-green').accentPalette('blue-grey');
+
+    $mdThemingProvider.setDefaultTheme('jobs');
   });
 
   app.config(function ($stateProvider) {

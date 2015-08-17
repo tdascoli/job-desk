@@ -154,10 +154,55 @@
           swissdoc: data.SWISSDOC,
           languages: data.LANGUAGES,
           geoLocation: {
-            "lon": data.LON,
-            "lat": data.LAT
+            lon: data.LON,
+            lat: data.LAT
           }
         }
+  };
+
+  exports.mapeducations=function(data){
+    return {
+        id:data.ID,
+        title:data.TITLE,
+        content:data.CONTENT,
+        target:data.TARGET,
+        comments:{
+            offers:data.COMMENTS_OFFERS,
+            class:data.COMMENTS_CLASS
+        },
+        swissdoc: data.SWISSDOC,
+        precondtions:data.PRECONDITIONS,
+        languages:data.LANGUAGES,
+        activity:data.ACTIVITY,
+        cost:data.COST,
+        duration:data.DURATIONTEXT,
+        startText:data.STARTTEXT,
+        endDate:data.ENDDATE,
+        location:{
+            name:data.LOCATION_NAME,
+            zip:data.ZIP,
+            coords:{
+              lon: data.LON,
+              lat: data.LAT
+            }
+        },
+        provider:{
+            email:data.PROVIDER_EMAIL,
+            fax:data.PROVIDER_FAX,
+            name:data.PROVIDER_INSTITUTE,
+            mobile:data.PROVIDER_MOBILE,
+            phone:data.PROVIDER_PHONE,
+            url:data.PROVIDER_URL,
+            address:{
+                street:data.PROVIDER_ADDRESS1,
+                streetAppendix:data.PROVIDER_ADDRESS2
+            },
+            contact:{
+                firstName:data.PROVIDER_FIRSTNAME,
+                lastName:data.PROVIDER_LASTNAME
+            }
+        }
+    };
   };
 
   exports.maplocations = function (data) {

@@ -3,38 +3,41 @@
   'use strict';
 
   angular.module('job-desk')
-    .factory('EducationsService', function ($http) {
+    .factory('EducationsService', function ($http, baseUrl) {
 
       var params = {
-        search:'educations'
+        distance: 30,
+        educationGroup: ''
       };
 
-      var path = 'resource/educations';
-
-      function all() {
-        return $http.get(path);
-      }
-
-      function find(params) {
-        var path = path;
-
-        var counter = 0;
-        for (var param in params) {
-          if (params[param] || params[param] === false) {
-            if (counter > 0) {
-              path = path + '&';
-            } else {
-              path = path + '?';
+      function find(coords) {
+        var filter = {
+          'query': {
+            'filtered': {
+              'query': {
+                'match_all': {}
+              },
+              'filter': {
+                'and': [
+                  {
+                    'geo_distance': {
+                      'distance': params.distance + 'km',
+                      'location.coords': coords
+                    }
+                  }
+                ]
+              }
             }
-            path = path + param + '=' + params[param];
-            counter++;
           }
+        };
+
+        if (params.educationGroup !== '') {
+          filter.query.filtered.filter.and.push({'prefix': {'swissdoc': '0.' + params.swissdocMajorGroup}});
         }
-        return $http.get(path);
+        return $http.post(baseUrl + '/educations/_search', filter);
       }
 
       return {
-        all: all,
         find: find,
         params: params
       };

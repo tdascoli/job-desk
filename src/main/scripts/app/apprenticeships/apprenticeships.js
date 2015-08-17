@@ -1,9 +1,7 @@
 'use strict';
 
 angular.module('job-desk')
-    .config(function ($stateProvider, $mdThemingProvider) {
-
-        $mdThemingProvider.theme('default').primaryPalette('orange').accentPalette('blue-grey');
+    .config(function ($stateProvider) {
 
         $stateProvider
             .state('apprenticeships', {

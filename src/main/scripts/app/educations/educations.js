@@ -19,5 +19,37 @@ angular.module('job-desk')
                         return $translate.refresh();
                     }]
                 }
-            });
+            })
+          .state('education-search', {
+            parent: 'site',
+            url: '/education-search',
+            views: {
+              'content@': {
+                templateUrl: 'views/content/educations/search.html',
+                controller: 'EducationsCtrl'
+              }
+            },
+            resolve: {
+              mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                $translatePartialLoader.addPart('educations');
+                return $translate.refresh();
+              }]
+            }
+          })
+          .state('education-results', {
+            parent: 'site',
+            url: '/education-results',
+            views: {
+              'content@': {
+                templateUrl: 'views/content/educations/result.html',
+                controller: 'EducationsCtrl'
+              }
+            },
+            resolve: {
+              mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                $translatePartialLoader.addPart('educations');
+                return $translate.refresh();
+              }]
+            }
+          });
     });

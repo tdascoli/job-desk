@@ -13,6 +13,10 @@ body.search-educations .navigation.bottom {
   background-color: #e68a00;
   border-color: #d27e00;
 }
+.section-button {
+  width: 16.6%;
+  text-align: left;
+}
 #filter {
   /*padding: 10px;*/
 }

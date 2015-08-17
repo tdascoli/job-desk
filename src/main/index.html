@@ -47,17 +47,17 @@
   <!-- endbuild -->
 </head>
 
-<body layout="column">
+<body layout="column" md-theme="{{searchType}}">
 
-<md-toolbar layout="column" id="topnav" class="md-whiteframe-z4">
+<md-toolbar layout="column" id="topnav" class="md-whiteframe-z4" md-theme-watch="true">
   <div class="md-toolbar-tools">
     <md-button ng-click="back()" class="md-icon-button">
       <md-icon>{{current()}}</md-icon>
     </md-button>
     <h1><span translate="global.title"></span></h1>
-    <md-button hide-sm href="#/jobs" ng-hide="searchType==='jobs'"><md-icon>launch</md-icon> <span translate="global.jobs"></span></md-button>
-    <md-button hide-sm href="#/educations" ng-hide="searchType==='educations'"><md-icon>launch</md-icon> <span translate="global.educations"></span></md-button>
-    <md-button hide-sm href="#/apprenticeships" ng-hide="searchType==='apprenticeships'"><md-icon>launch</md-icon> <span translate="global.apprenticeships"></span></md-button>
+    <md-button hide-sm class="md-raised md-primary section-button" md-theme="jobs" href="#/jobs" ng-hide="searchType==='jobs'"><md-icon>launch</md-icon> <span translate="global.jobs"></span></md-button>
+    <md-button hide-sm class="md-raised md-primary section-button" md-theme="educations" href="#/educations" ng-hide="searchType==='educations'"><md-icon>launch</md-icon> <span translate="global.educations"></span></md-button>
+    <md-button hide-sm class="md-raised md-primary section-button" md-theme="apprenticeships" href="#/apprenticeships" ng-hide="searchType==='apprenticeships'"><md-icon>launch</md-icon> <span translate="global.apprenticeships"></span></md-button>
     <span flex></span>
     <language-switcher></language-switcher>
     <md-button hide-sm class="md-icon-button"><md-icon>help_outline</md-icon></md-button>
@@ -133,6 +133,7 @@
 <script src="scripts/app/educations/educations.js"></script>
 <script src="scripts/app/educations/educations.service.js"></script>
 <script src="scripts/app/educations/educations.controller.js"></script>
+<script src="scripts/app/educations/educations.directive.js"></script>
 <script src="scripts/app/jobs/jobs.js"></script>
 <script src="scripts/app/jobs/jobs.service.js"></script>
 <script src="scripts/app/jobs/jobs.controller.js"></script>

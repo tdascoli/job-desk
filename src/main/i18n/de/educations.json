@@ -1,5 +1,19 @@
 {
   "educations": {
-    "title": "Weiterbildungen"
+    "title": "Weiterbildungen",
+    "search": {
+      "educationGroup":"Was (Kursart)",
+      "location":"Wo (PLZ)",
+      "distance":"Distanz {{value}} km",
+      "foundJobs":"Gefundene Kurse: {{value}}",
+      "error": {
+        "noValidZip":"Die Eingegebene PLZ ist nicht gültig.",
+        "noValidCoords":"Bitte wählen Sie einen Ort innerhalb der Schweizerkarte."
+      }
+    },
+    "result": {
+      "sorting":"Sortierung",
+      "print":"Kurs Drucken"
+    }
   }
 }
