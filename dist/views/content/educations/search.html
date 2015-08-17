@@ -1,0 +1,39 @@
+<div id="filter" layout="row" layout-wrap layout-margin layout-align="start center" class="md-whiteframe-z2 jd-floating-toolbar jd-floating-toolbar-fill-sm">
+
+  <div flex="15" flex-sm="100">
+      <strong translate="educations.search.foundJobs" translate-values="{value: count}"></strong>
+  </div>
+
+  <div flex="25" flex-sm="100" class="form-block">
+
+    <md-select ng-model="searchParams.educationGroup" ng-change="countStellen()">
+      <md-select-label ng-if="!searchParams.educationGroup"><span translate="educations.search.educationGroup"></span></md-select-label>
+      <md-option ng-repeat="swissdoc in educationGroups" value="{{swissdoc.code}}"><span translate="{{swissdoc.text}}"></span></md-option>
+    </md-select>
+
+  </div>
+
+  <div flex="15" flex-sm="100">
+    <md-input-container>
+      <label translate="educations.search.location"></label>
+      <input class="keyboard" type="text" name="location" id="location" ng-model="nearestZip" />
+    </md-input-container>
+  </div>
+
+  <div flex="10" flex-sm="50">
+    <md-input-container flex class="md-slider-has-label">
+      <label translate="educations.search.distance" translate-values="{value:searchParams.distance}"></label>
+      <md-slider ng-model="searchParams.distance" step="{{distanceOptions.step}}" min="{{distanceOptions.min}}"
+                 max="{{distanceOptions.max}}" aria-label="distance" ng-change="countStellen()"></md-slider>
+    </md-input-container>
+  </div>
+
+</div>
+
+<div align="center" hide-sm>
+  <swiss-map id="map"></swiss-map>
+</div>
+
+<md-button href="#/education-results" class="md-fab md-primary md-fab-bottom-right jd-floating-fab" aria-label="global.navigation.search" ng-disabled="count===0" md-theme-watch="true">
+  <md-icon>arrow_forward</md-icon>
+</md-button>

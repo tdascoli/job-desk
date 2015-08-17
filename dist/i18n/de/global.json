@@ -20,6 +20,8 @@
       "pensum_0":"Arbeitspensum - höchste zuerst",
       "jobtitel_az":"Jobtitel - A-Z",
       "jobtitel_za":"Jobtitel - Z-A",
+      "coursetitle_az":"Kurstitel - A-Z",
+      "coursetitle_za":"Kurstitel - Z-A",
       "location_1000":"Arbeitsort - niedrigste PLZ zuerst",
       "location_9999":"Arbeitsort - höchste PLZ zuerst"
     },
