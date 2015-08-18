@@ -12,11 +12,11 @@
     </md-select>
 
     <md-input-container class="md-select-has-label" ng-if="searchParams.swissdocMajorGroup">
-      <label translate="swissdoc.category{{searchParams.swissdocMajorGroup}}"></label>
+      <label translate="swissdoc.0-{{searchParams.swissdocMajorGroup}}00-0-0"></label>
 
       <md-select ng-model="searchParams.swissdocGroupLevel2" ng-change="countStellen()">
         <md-option value=""><span translate="apprenticeships.search.allSubGroups"></span></md-option>
-        <md-option ng-repeat="swissdoc2 in swissdocGroupLevel2[searchParams.iscoMajorGroup]" value="{{swissdoc2.code}}"><span translate="{{swissdoc2.text}}"></span></md-option>
+        <md-option ng-repeat="swissdoc2 in swissdocGroupLevel2[searchParams.swissdocMajorGroup]" value="{{swissdoc2.code}}"><span translate="{{swissdoc2.text}}"></span></md-option>
       </md-select>
     </md-input-container>
 

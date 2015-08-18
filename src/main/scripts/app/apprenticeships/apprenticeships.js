@@ -17,6 +17,7 @@ angular.module('job-desk')
                 resolve: {
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                         $translatePartialLoader.addPart('apprenticeships');
+                        $translatePartialLoader.addPart('swissdoc');
                         return $translate.refresh();
                     }]
                 }
@@ -33,6 +34,7 @@ angular.module('job-desk')
               resolve: {
                 mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                   $translatePartialLoader.addPart('apprenticeships');
+                  $translatePartialLoader.addPart('swissdoc');
                   return $translate.refresh();
                 }]
               }
@@ -49,6 +51,7 @@ angular.module('job-desk')
               resolve: {
                 mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                   $translatePartialLoader.addPart('apprenticeships');
+                  $translatePartialLoader.addPart('swissdoc');
                   return $translate.refresh();
                 }]
               }

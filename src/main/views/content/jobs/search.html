@@ -12,7 +12,7 @@
     </md-select>
 
     <md-input-container class="md-select-has-label" ng-if="searchParams.iscoMajorGroup">
-      <label translate="isco.category{{searchParams.iscoMajorGroup}}"></label>
+      <label translate="isco.{{searchParams.iscoMajorGroup}}000"></label>
 
       <md-select ng-model="searchParams.iscoGroupLevel2" ng-change="countStellen()">
         <md-option value=""><span translate="jobs.search.allSubGroups"></span></md-option>

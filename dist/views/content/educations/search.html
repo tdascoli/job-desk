@@ -6,10 +6,19 @@
 
   <div flex="25" flex-sm="100" class="form-block">
 
-    <md-select ng-model="searchParams.educationGroup" ng-change="countStellen()">
-      <md-select-label ng-if="!searchParams.educationGroup"><span translate="educations.search.educationGroup"></span></md-select-label>
-      <md-option ng-repeat="swissdoc in educationGroups" value="{{swissdoc.code}}"><span translate="{{swissdoc.text}}"></span></md-option>
+    <md-select ng-model="searchParams.swissdocMajorGroup" ng-change="countStellen()" ng-if="!searchParams.swissdocMajorGroup">
+      <md-select-label ng-if="!searchParams.swissdocMajorGroup"><span translate="educations.search.educationGroup"></span></md-select-label>
+      <md-option ng-repeat="swissdoc in swissdocMajorGroup" value="{{swissdoc.code}}"><span translate="{{swissdoc.text}}"></span></md-option>
     </md-select>
+
+    <md-input-container class="md-select-has-label" ng-if="searchParams.swissdocMajorGroup">
+      <label translate="swissdoc.0-{{searchParams.swissdocMajorGroup}}00-0-0"></label>
+
+      <md-select ng-model="searchParams.swissdocGroupLevel2" ng-change="countStellen()">
+        <md-option value=""><span translate="educations.search.allSubGroups"></span></md-option>
+        <md-option ng-repeat="swissdoc2 in swissdocGroupLevel2[searchParams.swissdocMajorGroup]" value="{{swissdoc2.code}}"><span translate="{{swissdoc2.text}}"></span></md-option>
+      </md-select>
+    </md-input-container>
 
   </div>
 

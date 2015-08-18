@@ -13,6 +13,9 @@ body.search-educations .navigation.bottom {
   background-color: #e68a00;
   border-color: #d27e00;
 }
+.topnav-title {
+  padding-right: 2em;
+}
 .section-button {
   width: 16.6%;
   text-align: left;

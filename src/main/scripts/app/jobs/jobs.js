@@ -18,6 +18,7 @@ angular.module('job-desk')
                 resolve: {
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                         $translatePartialLoader.addPart('jobs');
+                        $translatePartialLoader.addPart('isco');
                         return $translate.refresh();
                     }]/*,
                     resetSearchParams: ['JobsService', function(JobsService){
@@ -37,6 +38,7 @@ angular.module('job-desk')
               resolve: {
                 mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                   $translatePartialLoader.addPart('jobs');
+                  $translatePartialLoader.addPart('isco');
                   return $translate.refresh();
                 }]
               }
@@ -53,6 +55,7 @@ angular.module('job-desk')
               resolve: {
                 mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                   $translatePartialLoader.addPart('jobs');
+                  $translatePartialLoader.addPart('isco');
                   return $translate.refresh();
                 }]
               }

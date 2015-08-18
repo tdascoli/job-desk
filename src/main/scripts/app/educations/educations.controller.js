@@ -19,8 +19,64 @@
       $scope.currentCoords=undefined;
       $scope.sort=0;
 
-      $scope.educationGroups=[{text:'swissdoc.category1',code:'1'},{text:'swissdoc.category2',code:'2'},{text:'swissdoc.category3',code:'3'},{text:'swissdoc.category4',code:'4'},{text:'swissdoc.category5',code:'5'},{text:'swissdoc.category6',code:'6'},{text:'swissdoc.category7',code:'7'},{text:'swissdoc.category8',code:'8'}];
+      $scope.swissdocMajorGroup=[{text:'swissdoc.0-100-0-0',code:'1'},{text:'swissdoc.0-200-0-0',code:'2'},{text:'swissdoc.0-300-0-0',code:'3'},{text:'swissdoc.0-400-0-0',code:'4'},{text:'swissdoc.0-500-0-0',code:'5'},{text:'swissdoc.0-600-0-0',code:'6'},{text:'swissdoc.0-700-0-0',code:'7'},{text:'swissdoc.0-800-0-0',code:'8'}];
 
+      $scope.swissdocGroupLevel2=[];
+      $scope.swissdocGroupLevel2['1']=[
+        {code:'11', text:'swissdoc.0-110-0-0'},
+        {code:'12', text:'swissdoc.0-120-0-0'},
+        {code:'13', text:'swissdoc.0-130-0-0'},
+        {code:'14', text:'swissdoc.0-140-0-0'},
+        {code:'15', text:'swissdoc.0-150-0-0'},
+        {code:'16', text:'swissdoc.0-160-0-0'},
+        {code:'17', text:'swissdoc.0-170-0-0'}
+      ];
+      $scope.swissdocGroupLevel2['2']=[
+        {code:'21', text:'swissdoc.0-210-0-0'},
+        {code:'22', text:'swissdoc.0-220-0-0'},
+        {code:'23', text:'swissdoc.0-230-0-0'}
+      ];
+      $scope.swissdocGroupLevel2['3']=[
+        {code:'31', text:'swissdoc.0-310-0-0'},
+        {code:'32', text:'swissdoc.0-320-0-0'},
+        {code:'33', text:'swissdoc.0-330-0-0'},
+        {code:'34', text:'swissdoc.0-340-0-0'},
+        {code:'35', text:'swissdoc.0-350-0-0'}
+      ];
+      $scope.swissdocGroupLevel2['4']=[
+        {code:'41', text:'swissdoc.0-410-0-0'},
+        {code:'42', text:'swissdoc.0-420-0-0'},
+        {code:'43', text:'swissdoc.0-430-0-0'},
+        {code:'44', text:'swissdoc.0-440-0-0'},
+        {code:'45', text:'swissdoc.0-450-0-0'}
+      ];
+      $scope.swissdocGroupLevel2['5']=[
+        {code:'51', text:'swissdoc.0-510-0-0'},
+        {code:'52', text:'swissdoc.0-520-0-0'},
+        {code:'53', text:'swissdoc.0-530-0-0'},
+        {code:'54', text:'swissdoc.0-540-0-0'},
+        {code:'55', text:'swissdoc.0-550-0-0'},
+        {code:'56', text:'swissdoc.0-560-0-0'},
+        {code:'57', text:'swissdoc.0-570-0-0'},
+        {code:'58', text:'swissdoc.0-580-0-0'},
+        {code:'59', text:'swissdoc.0-590-0-0'}
+      ];
+      $scope.swissdocGroupLevel2['6']=[
+        {code:'61', text:'swissdoc.0-610-0-0'},
+        {code:'62', text:'swissdoc.0-620-0-0'},
+        {code:'63', text:'swissdoc.0-630-0-0'},
+        {code:'64', text:'swissdoc.0-640-0-0'}
+      ];
+      $scope.swissdocGroupLevel2['7']=[
+        {code:'71', text:'swissdoc.0-710-0-0'},
+        {code:'72', text:'swissdoc.0-720-0-0'},
+        {code:'73', text:'swissdoc.0-730-0-0'}
+      ];
+      $scope.swissdocGroupLevel2['8']=[
+        {code:'81', text:'swissdoc.0-810-0-0'},
+        {code:'82', text:'swissdoc.0-820-0-0'},
+        {code:'83', text:'swissdoc.0-830-0-0'}
+      ];
 
       $scope.countStellen=function(){
         EducationsService.find($scope.currentCoords).success(function(result){

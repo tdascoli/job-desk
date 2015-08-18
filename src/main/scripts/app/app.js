@@ -48,9 +48,9 @@
 
     $mdThemingProvider.theme('jobs').primaryPalette('blue').accentPalette('blue-grey');
 
-    $mdThemingProvider.theme('educations').primaryPalette('orange').accentPalette('blue-grey');
+    $mdThemingProvider.theme('educations').primaryPalette('indigo').accentPalette('blue-grey');
 
-    $mdThemingProvider.theme('apprenticeships').primaryPalette('light-green').accentPalette('blue-grey');
+    $mdThemingProvider.theme('apprenticeships').primaryPalette('teal').accentPalette('blue-grey');
 
     $mdThemingProvider.setDefaultTheme('jobs');
   });
@@ -118,6 +118,17 @@
       }
       else if ($state.$current.url.source==='/apprenticeship-results'){
         $state.go('apprenticeship-search');
+      }
+      // Education
+      else if ($state.$current.url.source==='/education-search'){
+        $state.go('educations');
+      }
+      else if ($state.$current.url.source==='/education-results'){
+        $state.go('education-search');
+      }
+      // Infopage
+      else if ($state.$current.url.source==='/localInfo'){
+        $state.go($rootScope.searchType);
       }
     };
   });

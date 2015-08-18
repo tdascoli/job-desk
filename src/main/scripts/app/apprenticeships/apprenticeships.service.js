@@ -36,7 +36,7 @@
           filter.query.filtered.filter.and.push({'prefix': {'swissdoc': '0.' + params.swissdocMajorGroup}});
         }
         if (params.swissdocGroupLevel2 !== '') {
-          filter.query.filtered.filter.and.push({'term': {'swissdoc': '0.' + params.swissdocGroupLevel2}});
+          filter.query.filtered.filter.and.push({'prefix': {'swissdoc': '0.' + params.swissdocGroupLevel2}});
         }
         return $http.post(baseUrl + '/apprenticeships/_search', filter);
       }

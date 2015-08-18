@@ -445,7 +445,7 @@
           "type":"string"
         },
         "endDate":{
-          "type":"date"
+          "type":"string"
         },
         "location":{
           "type":"object",

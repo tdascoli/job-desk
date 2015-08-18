@@ -6,8 +6,9 @@
     .factory('EducationsService', function ($http, baseUrl) {
 
       var params = {
-        distance: 30,
-        educationGroup: ''
+        distance: 10,
+        swissdocMajorGroup: '',
+        swissdocGroupLevel2: ''
       };
 
       function find(coords) {
@@ -31,8 +32,11 @@
           }
         };
 
-        if (params.educationGroup !== '') {
-          filter.query.filtered.filter.and.push({'prefix': {'swissdoc': '0.' + params.swissdocMajorGroup}});
+        if (params.swissdocMajorGroup !== '') {
+          filter.query.filtered.filter.and.push({'prefix': {'swissdoc': '9.' + params.swissdocMajorGroup}});
+        }
+        if (params.swissdocGroupLevel2 !== '') {
+          filter.query.filtered.filter.and.push({'term': {'swissdoc': '9.' + params.swissdocGroupLevel2}});
         }
         return $http.post(baseUrl + '/educations/_search', filter);
       }

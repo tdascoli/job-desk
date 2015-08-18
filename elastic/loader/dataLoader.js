@@ -7,7 +7,7 @@
   var models = require("./models.js");
   var objectMapper = require("./objectMapper.js");
   var client = new elasticsearch.Client({
-    host: 'localhost:9200/',
+    host: 'jobdesk-alvchegov.rhcloud.com/',
     log: 'error'
   });
 

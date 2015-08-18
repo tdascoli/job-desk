@@ -3,6 +3,7 @@
     "title": "Weiterbildungen",
     "search": {
       "educationGroup":"Was (Kursart)",
+      "allSubGroups":"Alle Untergruppen",
       "location":"Wo (PLZ)",
       "distance":"Distanz {{value}} km",
       "foundJobs":"Gefundene Kurse: {{value}}",
@@ -13,7 +14,24 @@
     },
     "result": {
       "sorting":"Sortierung",
-      "print":"Kurs Drucken"
+      "print":"Kurs Drucken",
+      "content":"Inhalt",
+      "target":"Ziel",
+      "preconditions":"Vorraussetzungen",
+      "degree":"Abschluss",
+      "comments":"Bemerkungen",
+      "language":"Unterrichtssprache",
+      "provider":"Anbieter",
+      "details":"Details zur Durchführung",
+      "location":"Kursort",
+      "start":"Kursbeginn",
+      "duration":"Dauer",
+      "cost":"Kosten",
+      "activity":"Zeitliche Belastung",
+      "showMore":"Mehr anzeigen",
+      "showLess":"Schliessen",
+      "phone":"Telefon {{value}}",
+      "fax":"Fax {{value}}"
     }
   }
 }

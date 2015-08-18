@@ -12,10 +12,16 @@
         educationDetail: '='
       },
       templateUrl: 'template/education-detail.html',
-      link: function(scope){
+      link: function(scope, element){
+        scope.showDetailContent=false;
 
         scope.getMultiLanguageText=function(text){
           return text[$translate.use()];
+        };
+
+        scope.showDetail=function(){
+          element.addClass('visited');
+          scope.showDetailContent=!scope.showDetailContent;
         };
       }
     };
