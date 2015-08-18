@@ -41,9 +41,18 @@
         return $http.post(baseUrl + '/apprenticeships/_search', filter);
       }
 
+      function resetSearchParams(){
+        return {
+          distance: 10,
+          swissdocMajorGroup: '',
+          swissdocGroupLevel2: ''
+        };
+      }
+
       return {
         find: find,
-        params: params
+        params: params,
+        resetSearchParams:resetSearchParams
       };
 
     });

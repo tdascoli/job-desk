@@ -19,6 +19,8 @@
       $scope.currentCoords=undefined;
       $scope.sort=0;
 
+      $scope.courseLanguages=[{text:'educations.result.languages.ger',code:'ger'},{text:'educations.result.languages.fre',code:'fre'},{text:'educations.result.languages.ita',code:'ita'},{text:'educations.result.languages.eng',code:'eng'},{text:'educations.result.languages.other',code:'other'}];
+
       $scope.swissdocMajorGroup=[{text:'swissdoc.0-100-0-0',code:'1'},{text:'swissdoc.0-200-0-0',code:'2'},{text:'swissdoc.0-300-0-0',code:'3'},{text:'swissdoc.0-400-0-0',code:'4'},{text:'swissdoc.0-500-0-0',code:'5'},{text:'swissdoc.0-600-0-0',code:'6'},{text:'swissdoc.0-700-0-0',code:'7'},{text:'swissdoc.0-800-0-0',code:'8'}];
 
       $scope.swissdocGroupLevel2=[];
@@ -103,7 +105,7 @@
             $scope.countStellen();
           }
           else {
-            $scope.locationError('apprenticeships.search.error.noValidCoords');
+            $scope.locationError('global.error.noValidCoords');
           }
         })
           .error(function(error){
@@ -136,7 +138,7 @@
           else {
             // todo error handling
             $scope.setCurrentZip($scope.currentZip);
-            $scope.locationError('apprenticeships.search.error.noValidZip');
+            $scope.locationError('global.error.noValidZip');
           }
         })
           .error(function(error){
@@ -165,6 +167,10 @@
       ];
       $scope.sortResultList=function(){
         $rootScope.educations = orderBy($rootScope.educations, $scope.sortList[$scope.sort].code.field, $scope.sortList[$scope.sort].code.order);
+      };
+
+      $scope.resetSearchParams=function(){
+        return EducationsService.resetSearchParams();
       };
 
     });

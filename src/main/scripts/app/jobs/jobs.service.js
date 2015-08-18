@@ -66,6 +66,7 @@
         iscoMajorGroup: '',
         iscoGroupLevel2: ''
       };
+      return params;
     }
 
     return {

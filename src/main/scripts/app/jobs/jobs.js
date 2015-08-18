@@ -20,10 +20,7 @@ angular.module('job-desk')
                         $translatePartialLoader.addPart('jobs');
                         $translatePartialLoader.addPart('isco');
                         return $translate.refresh();
-                    }]/*,
-                    resetSearchParams: ['JobsService', function(JobsService){
-                        JobsService.resetSearchParams();
-                    }]*/
+                    }]
                 }
             })
             .state('job-search', {

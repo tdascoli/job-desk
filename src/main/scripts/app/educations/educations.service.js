@@ -1,4 +1,4 @@
-;(function() {
+;(function () {
 
   'use strict';
 
@@ -8,10 +8,30 @@
       var params = {
         distance: 10,
         swissdocMajorGroup: '',
-        swissdocGroupLevel2: ''
+        swissdocGroupLevel2: '',
+        language: ''
       };
 
       function find(coords) {
+
+        var test = {
+          "query": {
+            "filtered": {
+              "query": {
+                "term": {"languages": "fre"}
+              },
+              "filter": {
+                "and": [{
+                  "geo_distance": {
+                    "distance": "10km",
+                    "location.coords": {"lon": 8.681032429901357, "lat": 47.09921328761504}
+                  }
+                }]
+              }
+            }
+          }
+        };
+
         var filter = {
           'query': {
             'filtered': {
@@ -26,7 +46,8 @@
                       'location.coords': coords
                     }
                   }
-                ]
+                ],
+                'or': []
               }
             }
           }
@@ -36,14 +57,37 @@
           filter.query.filtered.filter.and.push({'prefix': {'swissdoc': '9.' + params.swissdocMajorGroup}});
         }
         if (params.swissdocGroupLevel2 !== '') {
-          filter.query.filtered.filter.and.push({'term': {'swissdoc': '9.' + params.swissdocGroupLevel2}});
+          filter.query.filtered.filter.and.push({'prefix': {'swissdoc': '9.' + params.swissdocGroupLevel2}});
+        }
+        if (params.language !== '') {
+          if (params.language!=='other') {
+            filter.query.filtered.filter.or.push({'term': {'languages': params.language}});
+            if (params.language === 'ger') {
+              filter.query.filtered.filter.or.push({'term': {'languages': 'de'}});
+            }
+            else {
+              filter.query.filtered.filter.or.push({'term': {'languages': params.language.substr(0, 2)}});
+            }
+          }
+          else {
+            filter.query.filtered.filter.and.push({'not': {'terms': {'languages':['ger','de','fre','fr','ita','it','eng','en']}}});
+          }
         }
         return $http.post(baseUrl + '/educations/_search', filter);
       }
 
+      function resetSearchParams() {
+        return {
+          distance: 10,
+          swissdocMajorGroup: '',
+          swissdocGroupLevel2: ''
+        };
+      }
+
       return {
         find: find,
-        params: params
+        params: params,
+        resetSearchParams: resetSearchParams
       };
 
     });

@@ -23,6 +23,13 @@
           element.addClass('visited');
           scope.showDetailContent=!scope.showDetailContent;
         };
+
+        scope.checkLanguage=function(lang){
+          if (lang!=='ger' && lang!=='de' && lang!=='eng' && lang!=='en' && lang!=='fre' && lang!=='fr' && lang!=='ita' && lang!=='it'){
+            return 'other';
+          }
+          return lang;
+        };
       }
     };
   }]);

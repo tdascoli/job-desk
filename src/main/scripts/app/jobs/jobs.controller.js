@@ -110,7 +110,7 @@
             $scope.countStellen();
           }
           else {
-            $scope.locationError('jobs.search.error.noValidCoords');
+            $scope.locationError('global.error.noValidCoords');
           }
         })
         .error(function(error){
@@ -142,7 +142,7 @@
           else {
             // todo error handling
             $scope.setCurrentZip($scope.currentZip);
-            $scope.locationError('jobs.search.error.noValidZip');
+            $scope.locationError('global.error.noValidZip');
           }
         })
         .error(function(error){

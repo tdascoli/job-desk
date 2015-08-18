@@ -105,7 +105,7 @@
             $scope.countStellen();
           }
           else {
-            $scope.locationError('apprenticeships.search.error.noValidCoords');
+            $scope.locationError('global.error.noValidCoords');
           }
         })
           .error(function(error){
@@ -138,7 +138,7 @@
           else {
             // todo error handling
             $scope.setCurrentZip($scope.currentZip);
-            $scope.locationError('apprenticeships.search.error.noValidZip');
+            $scope.locationError('global.error.noValidZip');
           }
         })
           .error(function(error){
@@ -168,6 +168,10 @@
       $scope.sortResultList=function(){
         //var sort = lodash.findIndex($scope.sortList,$scope.sort);
         $rootScope.apprenticeships = orderBy($rootScope.apprenticeships, $scope.sortList[$scope.sort].code.field, $scope.sortList[$scope.sort].code.order);
+      };
+
+      $scope.resetSearchParams=function(){
+        return ApprenticeshipsService.resetSearchParams();
       };
 
     });

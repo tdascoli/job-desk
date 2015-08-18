@@ -16,7 +16,7 @@ angular.module('job-desk')
                 resolve: {
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                         $translatePartialLoader.addPart('educations');
-                      $translatePartialLoader.addPart('swissdoc');
+                        $translatePartialLoader.addPart('swissdoc');
                         return $translate.refresh();
                     }]
                 }
