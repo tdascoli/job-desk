@@ -25,6 +25,10 @@
       "location_1000":"Arbeitsort - niedrigste PLZ zuerst",
       "location_9999":"Arbeitsort - höchste PLZ zuerst"
     },
+    "error": {
+      "noValidZip":"Die Eingegebene PLZ ist nicht gültig.",
+      "noValidCoords":"Bitte wählen Sie einen Ort innerhalb der Schweizerkarte."
+    },
     "codes": {
       "salutations": {
         "1": "Herr",

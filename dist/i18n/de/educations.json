@@ -7,10 +7,8 @@
       "location":"Wo (PLZ)",
       "distance":"Distanz {{value}} km",
       "foundJobs":"Gefundene Kurse: {{value}}",
-      "error": {
-        "noValidZip":"Die Eingegebene PLZ ist nicht gültig.",
-        "noValidCoords":"Bitte wählen Sie einen Ort innerhalb der Schweizerkarte."
-      }
+      "language":"Kurssprache",
+      "allLanguages":"Alle Sprachen"
     },
     "result": {
       "sorting":"Sortierung",
@@ -31,7 +29,19 @@
       "showMore":"Mehr anzeigen",
       "showLess":"Schliessen",
       "phone":"Telefon {{value}}",
-      "fax":"Fax {{value}}"
+      "fax":"Fax {{value}}",
+      "language":"Kurssprache",
+      "languages": {
+        "ger":"Deutsch",
+        "de":"Deutsch",
+        "fre":"Französisch",
+        "fr":"Französisch",
+        "ita":"Italienisch",
+        "it":"Italienisch",
+        "eng":"Englisch",
+        "en":"Englisch",
+        "other":"andere"
+      }
     }
   }
 }

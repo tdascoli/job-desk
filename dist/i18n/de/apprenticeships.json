@@ -6,11 +6,7 @@
       "allSubGroups":"Alle Untergruppen",
       "location":"Wo (PLZ)",
       "distance":"Distanz {{value}} km",
-      "foundJobs":"Gefundene Lehrstellen: {{value}}",
-      "error": {
-        "noValidZip":"Die Eingegebene PLZ ist nicht gültig.",
-        "noValidCoords":"Bitte wählen Sie einen Ort innerhalb der Schweizerkarte."
-      }
+      "foundJobs":"Gefundene Lehrstellen: {{value}}"
     },
     "result": {
       "sorting":"Sortierung",

@@ -26,6 +26,7 @@
           <div ng-if="educationDetail._source.duration"><strong translate="educations.result.duration"></strong> <span ng-bind-html="educationDetail._source.duration"></span></div>
           <div ng-if="educationDetail._source.activity"><strong translate="educations.result.activity"></strong> <span ng-bind-html="educationDetail._source.activity"></span></div>
           <div ng-if="educationDetail._source.cost"><strong translate="educations.result.cost"></strong> <span ng-bind-html="educationDetail._source.cost"></span></div>
+        <div ng-if="educationDetail._source.languages"><strong translate="educations.result.language"></strong> <span translate="educations.result.languages.{{checkLanguage(educationDetail._source.languages)}}"></span></div>
       </div>
 
       <div flex="25" flex-sm="100">

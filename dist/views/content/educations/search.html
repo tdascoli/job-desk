@@ -37,6 +37,17 @@
     </md-input-container>
   </div>
 
+  <div flex="10" flex-sm="50" class="form-block">
+    <md-input-container class="md-select-has-label">
+      <label translate="educations.search.language"></label>
+
+      <md-select ng-model="searchParams.language" ng-change="countStellen()">
+        <md-option value=""><span translate="educations.search.allLanguages"></span></md-option>
+        <md-option ng-repeat="lang in courseLanguages" value="{{lang.code}}"><span translate="{{lang.text}}"></span></md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+
 </div>
 
 <div align="center" hide-sm>
