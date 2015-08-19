@@ -170,7 +170,7 @@
             offers:data.COMMENTS_OFFERS,
             class:data.COMMENTS_CLASS
         },
-        swissdoc: data.SWISSDOC,
+        categories: [{swissdoc: data.SWISSDOC}],
         precondtions:data.PRECONDITIONS,
         languages:data.LANGUAGES,
         activity:data.ACTIVITY,
@@ -205,18 +205,23 @@
     };
   };
 
+  exports.mapeducationsSwissdoc=function(data){
+    return {
+      id:data.ID,
+      categories: [{swissdoc: data.SWISSDOC}]
+    };
+  };
+
   exports.maplocations = function (data) {
     return {
       name: data.TEXT,
       zip: data.CODE,
       additionalNumber: data.ZUSATZZIFFER,
       municipalityName: data.GEMEINDE,
-      municipalityNumber: data.BFS_NR,
-      region: data.AVAM_SUCHREGION,
       canton: data.KANTON,
       geoLocation: {
-        lon: data.LONGITUDE,
-        lat: data.LATITUDE
+        lon: data.E,
+        lat: data.N
       }
     };
   };

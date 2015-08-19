@@ -176,26 +176,8 @@
       };
 
       // SSI Tastatur
-      $scope.ssiKeyStart=function(){
-        $state.go('startpage');
-      };
-      $scope.ssiKeyInfo=function(){
-        $state.go('frontpage');
-      };
-      function ssiKeyBack(location){
-        $state.go(location);
-      }
-      $scope.ssiKeySearch=function(){
-        ssiKeyBack('job-search');
-      };
-      $scope.ssiKeyResults=function(){
-        ssiKeyBack('job-result');
-      };
-      $scope.ssiKeyNext=function(){
-        $scope.navigateToJob(true);
-      };
-      $scope.ssiKeyBack=function(){
-        $scope.navigateToJob(false);
+      $scope.ssiKeyPrint=function(){
+        alert('print?');
       };
     });
 

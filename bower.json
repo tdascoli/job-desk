@@ -96,11 +96,6 @@
         "dist/angular-leaflet-directive.js"
       ]
     },
-    "angular-hotkeys": {
-      "main": [
-        "src/hotkeys.js"
-      ]
-    },
     "d3": {
       "main": [
         "d3.min.js"
@@ -155,6 +150,11 @@
         "dist/css/keyboard.min.css",
         "dist/layouts/keyboard-layouts-combined.min.js",
         "dist/layouts/keyboard-layouts-greywyvern.min.js"
+      ]
+    },
+    "angular-hotkeys": {
+      "main": [
+        "build/hotkeys.min.js"
       ]
     },
     "jquery-ui": {

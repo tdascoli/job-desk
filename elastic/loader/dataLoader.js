@@ -7,7 +7,7 @@
   var models = require("./models.js");
   var objectMapper = require("./objectMapper.js");
   var client = new elasticsearch.Client({
-    host: 'jobdesk-alvchegov.rhcloud.com/',
+    host: 'localhost:9200/',
     log: 'error'
   });
 
@@ -90,11 +90,70 @@
                 }*/
               });
               logger.info("done");
-            })
-          ;
+            });
         jobStream.pipe(csvStream);
       });
     });
+  };
+
+
+  exports.updateEducations = function (type, idParam, dataFile, delimiter, bulkSize) {
+
+    var logger = new (winston.Logger)({
+      transports: [
+        new (winston.transports.Console)(),
+        new (winston.transports.File)({ filename: type + '-import_' + new Date().getTime() + '.log' })
+      ]
+    });
+
+    var csv = require("fast-csv");
+    var jobStream = fs.createReadStream(dataFile);
+    var index = 'jobdesk';
+    var mapperFn = objectMapper['map' + type];
+    var finalDelimiter = delimiter || ";";
+    var counter = 0;
+    var finalBulkSize = bulkSize || 100;
+
+    var csvStream = csv({
+      delimiter: finalDelimiter,
+      headers: true,
+      trim: true,
+      quote: '"'
+    })
+      .on("data", function (data) {
+        var id;
+        if (isFunction(idParam)) {
+          id = idParam(data);
+        } else {
+          id = data[idParam];
+        }
+
+        if (counter >= finalBulkSize) {
+          client.update({
+            index: index,
+            type: 'educations',
+            id: id,
+            body: {
+              doc: {
+                categories: [{swissdoc:data.SWISSDOC}]
+              }
+            }
+          }, function (error, response) {
+            logger.warn(error, response);
+          });
+          counter = 0;
+        } else {
+          counter++;
+        }
+      })
+      .on('error', function (error) {
+        logger.error("Catch an invalid csv file! Error: {}", error);
+      })
+      .on("end", function () {
+        logger.info("done");
+      });
+    jobStream.pipe(csvStream);
+
   };
 
 }());

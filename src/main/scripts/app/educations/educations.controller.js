@@ -173,6 +173,11 @@
         return EducationsService.resetSearchParams();
       };
 
+      // SSI Tastatur
+      $scope.ssiKeyPrint=function(){
+        alert('print?');
+      };
+
     });
 
 

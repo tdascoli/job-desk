@@ -16,6 +16,7 @@
     'pascalprecht.translate',
     'ngCacheBuster',
     'geolocation',
+    'cfp.hotkeys',
     'alv-ch-ng.core',
     'alv-ch-ng.security',
     'alv-ch-ng.text-truncate',
@@ -55,7 +56,7 @@
     $mdThemingProvider.setDefaultTheme('jobs');
   });
 
-  app.config(function ($stateProvider) {
+  app.config(function ($stateProvider, hotkeysProvider) {
     $stateProvider
       .state('error', {
         parent: 'site',
@@ -86,6 +87,9 @@
           }
         }
       });
+
+    //hotkeys configuration
+    hotkeysProvider.includeCheatSheet = false;
   });
 
   app.run(function($http, geolocation, $rootScope, $state){
@@ -131,6 +135,15 @@
         $state.go($rootScope.searchType);
       }
     };
+
+    // SSI Tastatur
+    $rootScope.ssiKeyStart=function(){
+      $state.go('jobs');
+    };
+    $rootScope.ssiKeyInfo=function(){
+      $state.go('localInfo');
+    };
+
   });
 
 }());

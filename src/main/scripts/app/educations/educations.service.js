@@ -13,25 +13,6 @@
       };
 
       function find(coords) {
-
-        var test = {
-          "query": {
-            "filtered": {
-              "query": {
-                "term": {"languages": "fre"}
-              },
-              "filter": {
-                "and": [{
-                  "geo_distance": {
-                    "distance": "10km",
-                    "location.coords": {"lon": 8.681032429901357, "lat": 47.09921328761504}
-                  }
-                }]
-              }
-            }
-          }
-        };
-
         var filter = {
           'query': {
             'filtered': {

@@ -381,12 +381,6 @@
         "municipalityName": {
           "type":"string"
         },
-        "municipalityNumber": {
-          "type":"integer"
-        },
-        "region": {
-          "type":"string"
-        },
         "canton": {
           "type":"string"
         },
@@ -423,8 +417,13 @@
             }
           }
         },
-        "swissdoc": {
-          "type":"string"
+        "categories": {
+          "type":"nested",
+          "properties": {
+            "swissdoc": {
+              "type": "string"
+            }
+          }
         },
         "precondtions":{
           "type":"string"
