@@ -46,17 +46,17 @@
         d3Service.d3().then(function (d3) {
 
           var width = $('#map').parent().width(),
-            scale = width*17,
+            scale = width * 17,
             mapRatio = 0.625,
             height = width * mapRatio,
-            maxHeight = $(window).height()-($('#topnav').outerHeight(true)+$('#filter').outerHeight(true)),
+            maxHeight = $(window).height() - ($('#topnav').outerHeight(true) + $('#filter').outerHeight(true)),
             thresholds = [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000],
             contour;
 
-          if (height>maxHeight) {
+          if (height > maxHeight) {
             height = maxHeight;
             width = height / mapRatio;
-            scale = width*17;
+            scale = width * 17;
           }
 
           var interpolateColor = d3.interpolateHcl('#94BF8B', '#F5F4F2');
@@ -114,10 +114,9 @@
               .attr('d', path);
           });
 
-
           function setMyLocation() {
             $rootScope.$watch('myCoords', function () {
-              if ($rootScope.myCoords!==undefined) {
+              if ($rootScope.myCoords !== undefined) {
                 var classLocation = 'my-location';
                 var xy = projection([$rootScope.myCoords.lon, $rootScope.myCoords.lat]);
                 svg.append('circle')
@@ -132,7 +131,7 @@
           }
 
           function setUmkreisInternal(location) {
-            if (scope.currentCoords!==undefined) {
+            if (scope.currentCoords !== undefined) {
               // remove circle from dom
               $('#current-radius').remove();
               $('#current-location').remove();
@@ -189,7 +188,7 @@
             });
           }
 
-          window.onresize = function(){
+          window.onresize = function () {
             resize();
           };
 
@@ -198,16 +197,16 @@
             width = $('#map').parent().width();
             height = width * mapRatio;
 
-            if (height>maxHeight) {
+            if (height > maxHeight) {
               height = maxHeight;
               width = height / mapRatio;
-              scale = width*17;
+              scale = width * 17;
             }
 
             // update projection
             projection
               .translate([width / 2, height / 2])
-              .scale(width*15);
+              .scale(width * 15);
 
             // resize the map container
             svg
@@ -233,11 +232,113 @@
           });
 
           scope.$watch('searchParams.distance', function () {
+            $('#heatmap').remove();
+            $('.radius').show();
             $('.radius').attr('r', (scope.searchParams.distance * 2));
           });
 
+          //** ALL AREA MAP
+          scope.$watch('heatmap', function () {
+            if (scope.heatmap !== undefined) {
+              var geometries = [];
+              var coordinates = [[], []];
+              var type = 'MultiPolygon';
+
+              angular.forEach(scope.heatmap.areas, function (area, id) {
+                // calculate polygon
+                var polygons = area.polygons.sort(function (a, b) {
+                  return b[0] - a[0];
+                });
+
+                // reset coordinates
+                coordinates = [[], []];
+
+                angular.forEach(polygons, function (polygon) {
+                  var i, exterior=[],interior=[];
+
+                  for (i = 1; i < polygon.length; i += 2) {
+                    if (polygon[0] === 1) {
+                      exterior.push([polygon[i], polygon[i + 1]]);
+                    }
+                    else {
+                      interior.push([polygon[i], polygon[i + 1]]);
+                    }
+                  }
+
+                  if (type==='Polygon') {
+                    //** Polygon
+                    exterior.reverse();
+                    exterior.push(exterior[0]);
+                    coordinates.push(exterior);
+                  }
+                  else {
+                    //** MultiPolygon
+                    if (polygon[0] === 1) {
+                      if (exterior.length > 0) {
+                        //** exterior ring
+                        if (id===0) {
+                          exterior.reverse();
+                        }
+
+                        exterior.push(exterior[0]);
+                        coordinates[0].push(exterior);
+                      }
+                    }
+                    else {
+                      if (interior.length > 0) {
+                        //** interior ring
+                        interior.push(interior[0]);
+                        if (id===6) {
+                          coordinates[1].push(interior);
+                        }
+                      }
+                    }
+                  }
+                });
+
+                var polygon = {
+                  'type': type,
+                  'properties': {
+                    'id': id
+                  },
+                  'coordinates': coordinates
+                };
+                geometries.push(polygon);
+
+              });
+
+              var geoJSON = {
+                'type': 'GeometryCollection',
+                'bbox': [scope.heatmap.bbox.xmin, scope.heatmap.bbox.ymin, scope.heatmap.bbox.xmax, scope.heatmap.bbox.ymax],
+                'geometries': geometries
+              };
+              console.log(geoJSON);
+              addPolygon(geoJSON, scope.heatmap.areas.length);
+            }
+          });
+
+          function addPolygon(geoJSON, outline) {
+            $('#heatmap').remove();
+            $('.radius').hide();
+
+            map.append('svg')
+              .attr('id', 'heatmap')
+              .selectAll('g')
+              .data(geoJSON.geometries)
+              .enter().append('path')
+              .attr('class', function (d) {
+                if (d.properties.id === outline - 1) {
+                  return 'heatmap heatmap-outline';
+                }
+                else {
+                  return 'heatmap area' + d.properties.id;
+                }
+              })
+              .attr('d', path);
+          }
+
           scope.$watch('currentCoords', function () {
-            if (scope.currentCoords!==undefined) {
+            if (scope.currentCoords !== undefined) {
               setUmkreisInternal(false);
             }
           });

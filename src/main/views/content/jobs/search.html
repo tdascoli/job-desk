@@ -4,7 +4,7 @@
       <strong translate="jobs.search.foundJobs" translate-values="{value: count}"></strong>
   </div>
 
-  <div flex="25" flex-sm="100" class="form-block">
+  <div flex="20" flex-sm="100" class="form-block">
 
     <md-select ng-model="searchParams.iscoMajorGroup" ng-change="countStellen()" ng-if="!searchParams.iscoMajorGroup">
       <md-select-label ng-if="!searchParams.iscoMajorGroup"><span translate="jobs.search.jobgroup"></span></md-select-label>
@@ -22,18 +22,32 @@
 
   </div>
 
-  <div flex="15" flex-sm="100">
+  <div flex="10" flex-sm="100">
     <md-input-container>
       <label translate="jobs.search.location"></label>
       <input class="keyboard" type="text" name="location" id="location" ng-model="nearestZip" />
     </md-input-container>
   </div>
 
+
+  <div flex="10" flex-sm="500">
+    <md-radio-group ng-model="distanceType">
+      <md-radio-button value="distance"><span translate="jobs.search.distanceTypeDistance"></span></md-radio-button>
+      <md-radio-button value="travelTime"><span translate="jobs.search.distanceTypeTravelTime"></span></md-radio-button>
+    </md-radio-group>
+  </div>
+
   <div flex="10" flex-sm="50">
-    <md-input-container flex class="md-slider-has-label">
+    <md-input-container flex class="md-slider-has-label" ng-if="distanceType==='distance'">
       <label translate="jobs.search.distance" translate-values="{value:searchParams.distance}"></label>
       <md-slider ng-model="searchParams.distance" step="{{distanceOptions.step}}" min="{{distanceOptions.min}}"
                  max="{{distanceOptions.max}}" aria-label="distance" ng-change="countStellen()"></md-slider>
+    </md-input-container>
+
+    <md-input-container flex class="md-slider-has-label" ng-if="distanceType==='travelTime'">
+      <label translate="jobs.search.travelTime" translate-values="{value:showTimeInH(searchParams.travelTime)}"></label>
+      <md-slider ng-model="searchParams.travelTime" step="{{travelTimeOptions.step}}" min="{{travelTimeOptions.min}}"
+                 max="{{travelTimeOptions.max}}" aria-label="travelTime" ng-change="arrleeCountStellen()"></md-slider>
     </md-input-container>
   </div>
 

@@ -50,7 +50,7 @@
     "angular-flowtype": "*",
     "angular-hotkeys": "git://github.com/chieffancypants/angular-hotkeys.git",
     "angular-translate-storage-local": "~2.7.2",
-    "d3": "3.5.5",
+    "d3": "3.5.6",
     "topojson": "1.6.19"
   },
   "devDependencies": {

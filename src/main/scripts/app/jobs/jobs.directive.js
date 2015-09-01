@@ -82,8 +82,7 @@
           beforeVisible: function(){
             // set keyboard x/y according to element
             $('#location_keyboard').css('top',offset.top+element.outerHeight(true));
-            $('#location_keyboard').css('left',offset.left+4);
-            $('#location_keyboard').css('width',element.outerWidth(true));
+            $('#location_keyboard').css('left',offset.left);
             // reset value
             ngModelCtrl.$setViewValue(null);
             ngModelCtrl.$render();
