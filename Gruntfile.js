@@ -349,6 +349,12 @@ module.exports = function (grunt) {
       }
     },
     connect: {
+      options: {
+        port: 9000,
+        // Change this to 'localhost' to deny access to the server from outside.
+        hostname: 'localhost',
+        livereload: 35729
+      },
       proxies: [
         {
           context: '/jobdesk',
@@ -356,14 +362,14 @@ module.exports = function (grunt) {
           port: 9200,
           https: false,
           changeOrigin: false
+        },
+        {
+          context: '/ajax',
+          host: 'www.arrlee.ch',
+          https: false,
+          changeOrigin: false
         }
       ],
-      options: {
-        port: 9000,
-        // Change this to 'localhost' to deny access to the server from outside.
-        hostname: 'localhost',
-        livereload: 35729
-      },
       livereload: {
         options: {
           open: true,
