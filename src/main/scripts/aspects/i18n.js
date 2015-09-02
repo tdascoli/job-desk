@@ -10,11 +10,14 @@
     });
     $translateProvider.useCookieStorage();
     $translateProvider.preferredLanguage('de');
+    $translateProvider.determinePreferredLanguage();
     tmhDynamicLocaleProvider.localeLocationPattern('bower_components/angular-i18n/angular-locale_{{locale}}.js');
     tmhDynamicLocaleProvider.useCookieStorage('NG_TRANSLATE_LANG_KEY');
   });
 
   module.run(function($rootScope, $translate, LanguageService, $translatePartialLoader) {
+    $rootScope.currentLanguage=false;
+
     $rootScope.changeLanguage = function (languageKey) {
       $translate.use(languageKey);
     };
@@ -27,6 +30,7 @@
     $rootScope.$on('$stateChangeStart', function () {
       // Update the language
       LanguageService.getCurrent().then(function (language) {
+        $rootScope.currentLanguage=language;
         $translate.use(language);
       });
     });

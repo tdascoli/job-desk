@@ -6,7 +6,10 @@
       "allSubGroups":"Alle Untergruppen",
       "location":"Wo (PLZ)",
       "distance":"Distanz {{value}} km",
+      "travelTime":"Reisedauer {{value}} h",
       "foundJobs":"Gefundene Kurse: {{value}}",
+      "distanceTypeDistance":"Distanz in km",
+      "distanceTypeTravelTime":"Reisedauer in h",
       "language":"Kurssprache",
       "allLanguages":"Alle Sprachen"
     },

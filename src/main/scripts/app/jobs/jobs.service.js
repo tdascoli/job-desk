@@ -6,28 +6,19 @@
     .factory('JobsService', function ($http, baseUrl) {
 
       var params = {
+        distanceType: 'distance',
         distance: 30,
         travelTime: 30,
         onlineSince: 5,
         fulltime: 1,
         iscoMajorGroup: '',
         iscoGroupLevel2: '',
-        zips: undefined
+        zips: undefined,
+        currentZip: '',
+        currentCoords: undefined
       };
 
-
-      var arrleeParams = {
-        start_zip: '',
-        start_country: 'CH',
-        'start-time': 7,
-        year: 0,
-        month: 7,
-        day: 25,
-        max_travel_time: 30,
-        edgeLength: 2.25
-      };
-
-      function find(coords) {
+      function find() {
         var filter = {
           'query': {
             'filtered': {
@@ -49,14 +40,14 @@
           }
         };
 
-        if (params.zips === undefined) {
+        if (params.distanceType === 'distance') {
           filter.query.filtered.filter.and.push({
             'nested': {
               'path': 'locations.location',
               'filter': {
                 'geo_distance': {
                   'distance': params.distance + 'km',
-                  'locations.location.coords': coords
+                  'locations.location.coords': params.currentCoords
                 }
               }
             }
@@ -87,32 +78,18 @@
         return $http.post(baseUrl + '/jobs/_search', filter);
       }
 
-      function arrleeHeatmap(currentZip) {
-        arrleeParams.start_zip = currentZip;
-        arrleeParams.max_travel_time = params.travelTime;
-
-        var arrleeParamsString = '';
-        for (var key in arrleeParams) {
-          if (arrleeParamsString !== '') {
-            arrleeParamsString += '&';
-          }
-          arrleeParamsString += key + '=' + encodeURIComponent(arrleeParams[key]);
-        }
-
-        return $http.get('http://localhost:9000/ajax/heatmap?' + arrleeParamsString);
-      }
-
-      function arrleeZips() {
-        return $http.get('http://localhost:9000/ajax/poi?poi_types=PLZCH&max_tt=' + params.travelTime);
-      }
-
       function resetSearchParams() {
         params = {
+          distanceType: 'distance',
           distance: 30,
+          travelTime: 30,
           onlineSince: 5,
           fulltime: 1,
           iscoMajorGroup: '',
-          iscoGroupLevel2: ''
+          iscoGroupLevel2: '',
+          zips: undefined,
+          currentZip: '',
+          currentCoords: undefined
         };
         return params;
       }
@@ -120,9 +97,7 @@
       return {
         find: find,
         params: params,
-        resetSearchParams: resetSearchParams,
-        arrleeHeatmap: arrleeHeatmap,
-        arrleeZips: arrleeZips
+        resetSearchParams: resetSearchParams
       };
 
     });

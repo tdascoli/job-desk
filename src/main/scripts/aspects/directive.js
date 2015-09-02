@@ -131,7 +131,9 @@
           }
 
           function setUmkreisInternal(location) {
-            if (scope.currentCoords !== undefined) {
+            if (scope.searchParams.currentCoords !== undefined) {
+              $('#heatmap').remove();
+
               // remove circle from dom
               $('#current-radius').remove();
               $('#current-location').remove();
@@ -147,7 +149,7 @@
                 radiusLocation = 3;
               }
 
-              var xy = projection([scope.currentCoords.lon, scope.currentCoords.lat]);
+              var xy = projection([scope.searchParams.currentCoords.lon, scope.searchParams.currentCoords.lat]);
 
               svg.append('circle')
                 .attr({
@@ -155,12 +157,15 @@
                   cy: xy[1],
                   r: radiusLocation
                 }).attr('class', classLocation).attr('id', classLocation);
-              svg.append('circle')
-                .attr({
-                  cx: xy[0],
-                  cy: xy[1],
-                  r: (scope.searchParams.distance * 2)
-                }).attr('class', 'radius').attr('id', classRadius);
+
+              if (scope.searchParams.distanceType==='distance') {
+                svg.append('circle')
+                  .attr({
+                    cx: xy[0],
+                    cy: xy[1],
+                    r: (scope.searchParams.distance * 2)
+                  }).attr('class', 'radius').attr('id', classRadius);
+              }
             }
           }
 
@@ -217,6 +222,7 @@
             svg.selectAll('.canton-boundaries').attr('d', path);
             svg.selectAll('.contour').attr('d', path);
             svg.selectAll('.lakes').attr('d', path);
+            svg.selectAll('.heatmap').attr('d', path);
 
 
             $('.my-location').remove();
@@ -312,7 +318,6 @@
                 'bbox': [scope.heatmap.bbox.xmin, scope.heatmap.bbox.ymin, scope.heatmap.bbox.xmax, scope.heatmap.bbox.ymax],
                 'geometries': geometries
               };
-              console.log(geoJSON);
               addPolygon(geoJSON, scope.heatmap.areas.length);
             }
           });
@@ -337,8 +342,12 @@
               .attr('d', path);
           }
 
-          scope.$watch('currentCoords', function () {
-            if (scope.currentCoords !== undefined) {
+          scope.$watch('searchParams.currentCoords', function () {
+              setUmkreisInternal(false);
+          });
+
+          scope.$watch('searchParams.distanceType', function (newValue, oldValue) {
+            if (newValue!==oldValue && scope.searchParams.distanceType==='distance') {
               setUmkreisInternal(false);
             }
           });
@@ -347,4 +356,57 @@
     };
   }]);
 
+  module.directive('keyboard',function(){
+    return {
+      priority: 100,
+      require : '?ngModel',
+      restrict : 'C',
+      link : function(scope,element,attrs,ngModelCtrl){
+        // get element x/y
+        var offset = element.offset();
+        if(!ngModelCtrl){
+          return;
+        }
+
+        element.click(function(){
+          element.getkeyboard().reveal();
+        });
+
+        $(element).keyboard({
+          layout : 'custom',
+          customLayout: {'default':[
+            '{clear} {b}',
+            '7 8 9',
+            '4 5 6',
+            '1 2 3',
+            '0 {a} {c}'
+          ]},
+          accepted : function(event, keyboard, el){
+            var zip = el.value;
+            if (zip.length<4){
+              zip=scope.searchParams.currentZip;
+            }
+            scope.setCurrentZip(zip);
+          },
+          canceled : function(){
+            scope.setCurrentZip(scope.searchParams.currentZip);
+          },
+          beforeVisible: function(){
+            // set keyboard x/y according to element
+            $('#location_keyboard').css('top',offset.top+element.outerHeight(true));
+            $('#location_keyboard').css('left',offset.left);
+            // reset value
+            ngModelCtrl.$setViewValue(null);
+            ngModelCtrl.$render();
+          },
+          maxLength: 4,
+          restrictInput : true, // Prevent keys not in the displayed keyboard from being typed in
+          preventPaste : true,  // prevent ctrl-v and right click
+          autoAccept : false,
+          usePreview: false,
+          stayOpen : true
+        });
+      }
+    };
+  });
 }());

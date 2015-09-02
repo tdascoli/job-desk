@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('job-desk')
-    .controller('EducationsCtrl', function ($scope, $rootScope, $state, $filter, $translate, EducationsService, LocationsService, $mdDialog) {
+    .controller('EducationsCtrl', function ($scope, $rootScope, $state, $filter, $translate, EducationsService, LocationsService, ArrleeService, $mdDialog) {
 
       $rootScope.searchType='educations';
       $scope.searchParams = EducationsService.params;
@@ -12,11 +12,10 @@
       $scope.searchRowHeight=(($(window).outerHeight(true)-$('#topnav').outerHeight(true)-$('#filter').outerHeight(true))/3)-$scope.searchRowGutter;
 
       $scope.distanceOptions = {min:10,max:150,step:10,value:30};
+      $scope.travelTimeOptions = {min: 10, max: 60, step: 5, value: 30};
 
       $scope.count=0;
       $scope.nearestZip='';
-      $scope.currentZip='';
-      $scope.currentCoords=undefined;
       $scope.sort=0;
 
       $scope.courseLanguages=[{text:'educations.result.languages.ger',code:'ger'},{text:'educations.result.languages.fre',code:'fre'},{text:'educations.result.languages.ita',code:'ita'},{text:'educations.result.languages.eng',code:'eng'},{text:'educations.result.languages.other',code:'other'}];
@@ -80,15 +79,57 @@
         {code:'83', text:'swissdoc.0-830-0-0'}
       ];
 
-      $scope.countStellen=function(){
-        EducationsService.find($scope.currentCoords).success(function(result){
-          $rootScope.educations = result.hits.hits;
-          $scope.count = result.hits.total;
+      $scope.countJobs = function () {
+        $scope.idle=true;
+
+        if ($scope.searchParams.distanceType==='travelTime') {
+          //** countJobs with travelTime parameter
+          findByTravelTime();
+        }
+        else {
+          //** countJobs with distance parameter
+          find();
+        }
+      };
+
+      function findByTravelTime(){
+        ArrleeService.getHeatmap($scope.searchParams.currentZip,$scope.searchParams.travelTime).success(function (result) {
+          $scope.heatmap = result.heatmap;
+          ArrleeService.getZips($scope.searchParams.travelTime).success(function (result) {
+            $scope.searchParams.zips = lodash.pluck(result.POI, 'name');
+            //** find Jobs with searchParams
+            find();
+          })
+            .error(function (error) {
+              // todo error handling
+              console.log(error);
+            });
         })
           .error(function (error) {
             // todo error handling
             console.log(error);
           });
+      }
+
+      function find(){
+        EducationsService.find().success(function(result){
+          $rootScope.educations = result.hits.hits;
+          $scope.count = result.hits.total;
+        })
+        .error(function (error) {
+          // todo error handling
+          console.log(error);
+        });
+      }
+
+
+      $scope.showTimeInH=function(time){
+        var hour = Math.floor(time/60);
+        var minute = time-(hour*60);
+        if (minute<10){
+          minute='0'+minute;
+        }
+        return hour+':'+minute;
       };
 
       $scope.setSwissdocGroup=function(swissdoc){
@@ -99,10 +140,10 @@
       function setNewCoords(coords){
         LocationsService.getLocation(coords).success(function(nearestZip){
           if (nearestZip.hits.total>0) {
-            $scope.currentCoords=coords;
+            $scope.searchParams.currentCoords=coords;
             $scope.nearestZip = nearestZip.hits.hits[0]._source.zip + ' (' + nearestZip.hits.hits[0]._source.name + ')';
-            $scope.currentZip = nearestZip.hits.hits[0]._source.zip;
-            $scope.countStellen();
+            $scope.searchParams.currentZip = nearestZip.hits.hits[0]._source.zip;
+            $scope.countJobs();
           }
           else {
             $scope.locationError('global.error.noValidCoords');
@@ -118,15 +159,21 @@
         setNewCoords(coords);
       };
 
-      $scope.$watch('myCoords', function(){
-        if ($rootScope.myCoords!==undefined){
-          $scope.currentCoords=$rootScope.myCoords;
+      $scope.$watch('searchParams.currentCoords', function () {
+        if ($scope.searchParams.currentCoords !== undefined) {
+          setNewCoords($scope.searchParams.currentCoords);
         }
       });
 
-      $scope.$watch('currentCoords', function(){
-        if ($scope.currentCoords!==undefined){
-          setNewCoords($scope.currentCoords);
+      $scope.$watch('myCoords', function () {
+        if ($rootScope.myCoords !== undefined && $scope.searchParams.currentCoords===undefined) {
+          $scope.searchParams.currentCoords = $rootScope.myCoords;
+        }
+      });
+
+      $scope.$watch('searchParams.distanceType', function (newValue, oldValue) {
+        if (newValue!==oldValue){
+          $scope.countJobs();
         }
       });
 
@@ -137,7 +184,7 @@
           }
           else {
             // todo error handling
-            $scope.setCurrentZip($scope.currentZip);
+            $scope.setCurrentZip($scope.searchParams.currentZip);
             $scope.locationError('global.error.noValidZip');
           }
         })

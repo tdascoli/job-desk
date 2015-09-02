@@ -102,7 +102,9 @@
     };
 
     geolocation.getLocation().then(function(data){
-      $rootScope.myCoords = {lat:data.coords.latitude, lon:data.coords.longitude};
+      if ($rootScope.myCoords===undefined) {
+        $rootScope.myCoords = {lat: data.coords.latitude, lon: data.coords.longitude};
+      }
     });
 
     $rootScope.back=function(){

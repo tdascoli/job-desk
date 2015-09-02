@@ -384,28 +384,34 @@ text {
 
 .form-block md-input-container,
 .form-block md-select,
-.form-block md-select > md-select-label{
+.form-block label{
   width: 100%;
 }
-
-md-input-container > md-select,
+/*
+md-input-container > md-select,*/
 md-input-container > md-slider {
   flex: 1;
   order: 2;
   margin: 0;
   width: 100%;
 }
+/*
 md-input-container.md-input-has-value > md-select {
-  padding: 0px 2px 1px;
+  padding: 0 2px 1px;
 }
 
 md-input-container > md-select > md-select-label {
   width: 100%;
 }
 
-md-input-container.md-select-has-label label {
+md-input-container.md-select-has-label label,*/
+.jd-floating-toolbar md-radio-button .md-label {
   font-size: 0.75em;
   color: rgba(0,0,0,0.54);
+}
+
+.jd-floating-toolbar md-radio-button {
+  margin: 5px;
 }
 
 md-input-container.md-slider-has-label label {

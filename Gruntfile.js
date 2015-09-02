@@ -362,12 +362,6 @@ module.exports = function (grunt) {
           port: 9200,
           https: false,
           changeOrigin: false
-        },
-        {
-          context: '/ajax',
-          host: 'www.arrlee.ch',
-          https: false,
-          changeOrigin: false
         }
       ],
       livereload: {
