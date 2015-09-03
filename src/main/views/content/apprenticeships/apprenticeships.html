@@ -1,58 +1,10 @@
-<div layout="column">
-  <md-grid-list md-cols-sm="1" md-cols="3" md-gutter="{{searchRowGutter}}" md-row-height="{{searchRowHeight}}">
+<div layout="row" layout-wrap layout-padding layout-align="start start" class="jd-categories">
 
-    <md-grid-tile ng-click="setSwissdocGroup('1')">
-      <img id="step5" class="category" src="assets/images/512/family3.png" alt="toggeli 1" />
-      <md-grid-tile-footer>
-        <h3 translate="swissdoc.0-100-0-0"></h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-    <md-grid-tile ng-click="setSwissdocGroup('2')">
-      <img class="category" src="assets/images/512/graduated.png" alt="toggeli 1" />
-      <md-grid-tile-footer>
-        <h3 translate="swissdoc.0-200-0-0"></h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-    <md-grid-tile ng-click="setSwissdocGroup('3')">
-      <img class="category" src="assets/images/512/tool36.png" alt="toggeli 1" />
-      <md-grid-tile-footer>
-        <h3 translate="swissdoc.0-300-0-0"></h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
+  <div class="category" flex="33" flex-sm="100" ng-click="setSwissdocGroup(swissdoc.code)" ng-repeat="swissdoc in swissdocMajorGroup">
+    <img class="iscoIcon" src="assets/images/{{swissdoc.img}}" alt="swissdoc" />
+    <div class="category-title"><span class="md-title" translate="{{swissdoc.text}}"></span></div>
+  </div>
 
-    <md-grid-tile ng-click="setSwissdocGroup('4')">
-      <img class="category" src="assets/images/512/paperclip.png" alt="toggeli 1" />
-      <md-grid-tile-footer>
-        <h3 translate="swissdoc.0-400-0-0"></h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-    <md-grid-tile ng-click="setSwissdocGroup('5')">
-      <img class="category" src="assets/images/512/shop31.png" alt="toggeli 1" />
-      <md-grid-tile-footer>
-        <h3 translate="swissdoc.0-500-0-0"></h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-    <md-grid-tile ng-click="setSwissdocGroup('6')">
-      <img class="category iscoIcon" src="assets/images/jobs/isco6.png" alt="toggeli 1" />
-      <md-grid-tile-footer>
-        <h3 translate="swissdoc.0-600-0-0"></h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-
-    <md-grid-tile ng-click="setSwissdocGroup('7')">
-      <img class="category" src="assets/images/512/work26.png" alt="toggeli 1" />
-      <md-grid-tile-footer>
-        <h3 translate="swissdoc.0-700-0-0"></h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-    <md-grid-tile ng-click="setSwissdocGroup('8')">
-      <img class="category" src="assets/images/512/construction16.png" alt="toggeli 1" />
-      <md-grid-tile-footer>
-        <h3 translate="swissdoc.0-800-0-0"></h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-
-  </md-grid-list>
 </div>
 
 <md-button href="#/apprenticeship-search" class="md-fab md-primary md-fab-bottom-right jd-floating-fab" aria-label="global.navigation.search" md-theme-watch="true">

@@ -8,19 +8,22 @@
       $rootScope.searchType = 'jobs';
       $scope.searchParams = JobsService.params;
 
-      $scope.searchRowGutter = 20;
-      $scope.searchRowHeight = (($(window).outerHeight(true) - $('#topnav').outerHeight(true) - $('#filter').outerHeight(true)) / 3) - $scope.searchRowGutter;
-
       $scope.distanceOptions = {min: 10, max: 150, step: 10, value: 30};
       $scope.travelTimeOptions = {min: 10, max: 120, step: 5, value: 30};
       $scope.onlineSinceOptions = {min: 1, max: 60, step: 1, value: 5};
-      $scope.iscoMajorGroup = [{text: 'isco.1000', code: '1'}, {text: 'isco.2000', code: '2'}, {
+      $scope.iscoMajorGroup = [
+        {text: 'isco.1000', code: '1',img:'jobs/isco6.png'},
+        {text: 'isco.2000', code: '2',img:'jobs/isco6.png'}, {
         text: 'isco.3000',
-        code: '3'
-      }, {text: 'isco.4000', code: '4'}, {text: 'isco.5000', code: '5'}, {
+        code: '3',img:'jobs/isco6.png'
+      },
+        {text: 'isco.4000', code: '4',img:'jobs/isco6.png'},
+        {text: 'isco.5000', code: '5',img:'jobs/isco6.png'}, {
         text: 'isco.6000',
-        code: '6'
-      }, {text: 'isco.7000', code: '7'}, {text: 'isco.8000', code: '8'}, {text: 'isco.9000', code: '9'}];
+        code: '6',img:'jobs/isco6.png'
+      }, {text: 'isco.7000', code: '7',img:'jobs/isco6.png'},
+        {text: 'isco.8000', code: '8',img:'jobs/isco6.png'},
+        {text: 'isco.9000', code: '9',img:'jobs/isco6.png'}];
 
       $scope.iscoGroupLevel2 = [];
       $scope.iscoGroupLevel2['1'] = [
@@ -151,7 +154,7 @@
         LocationsService.getLocation(coords).success(function (nearestZip) {
           if (nearestZip.hits.total > 0) {
             $scope.searchParams.currentCoords = coords;
-            $scope.searchParams.currentZip = nearestZip.hits.hits[0]._source.zip;
+            $scope.searchParams.currentZip = parseInt(nearestZip.hits.hits[0]._source.zip,10);
             $scope.nearestZip = nearestZip.hits.hits[0]._source.zip + ' (' + nearestZip.hits.hits[0]._source.name + ')';
 
             $scope.countJobs();
@@ -218,11 +221,11 @@
       $scope.sort = 0;
       var orderBy = $filter('orderBy');
       $scope.sortList = [
-        {code: {field: '_source.onlineSince', order: false}, text: 'global.sort.neuste'},
-        {code: {field: '_source.quotaTo', order: true}, text: 'global.sort.pensum_0'},
-        {code: {field: '_source.quotaTo', order: false}, text: 'global.sort.pensum_100'},
-        {code: {field: '_source.title.' + $translate.use(), order: false}, text: 'global.sort.jobtitel_az'},
-        {code: {field: '_source.title.' + $translate.use(), order: true}, text: 'global.sort.jobtitel_za'}
+        {code: {field: '_source.onlineSince', order: false}, text: 'global.sort.newest'},
+        {code: {field: '_source.quotaTo', order: true}, text: 'global.sort.workload_0'},
+        {code: {field: '_source.quotaTo', order: false}, text: 'global.sort.workload_100'},
+        {code: {field: '_source.title.' + $translate.use(), order: false}, text: 'global.sort.jobtitle_az'},
+        {code: {field: '_source.title.' + $translate.use(), order: true}, text: 'global.sort.jobtitle_za'}
       ];
       $scope.sortResultList = function () {
         $rootScope.jobs = orderBy($rootScope.jobs, $scope.sortList[$scope.sort].code.field, $scope.sortList[$scope.sort].code.order);

@@ -1,64 +1,10 @@
-<div layout="column">
-  <md-grid-list md-cols-sm="1" md-cols="3" md-gutter="{{searchRowGutter}}" md-row-height="{{searchRowHeight}}">
+<div layout="row" layout-wrap layout-padding layout-align="start start" class="jd-categories">
 
-    <md-grid-tile ng-click="setIscoGroup('1')">
-      <img id="step5" class="category" src="assets/images/512/family3.png" alt="toggeli 1" />
-      <md-grid-tile-footer>
-        <h3 translate="isco.1000"></h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-    <md-grid-tile ng-click="setIscoGroup('2')">
-      <img class="category" src="assets/images/512/graduated.png" alt="toggeli 1" />
-      <md-grid-tile-footer>
-        <h3 translate="isco.2000"></h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-    <md-grid-tile ng-click="setIscoGroup('3')">
-      <img class="category" src="assets/images/512/tool36.png" alt="toggeli 1" />
-      <md-grid-tile-footer>
-        <h3 translate="isco.3000"></h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
+  <div class="category" flex="33" flex-sm="100" ng-click="setIscoGroup(isco.code)" ng-repeat="isco in iscoMajorGroup">
+    <img class="iscoIcon" src="assets/images/{{isco.img}}" alt="isco" />
+    <div class="category-title"><span class="md-title" translate="{{isco.text}}"></span></div>
+  </div>
 
-    <md-grid-tile ng-click="setIscoGroup('4')">
-      <img class="category" src="assets/images/512/paperclip.png" alt="toggeli 1" />
-      <md-grid-tile-footer>
-        <h3 translate="isco.4000"></h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-    <md-grid-tile ng-click="setIscoGroup('5')">
-      <img class="category" src="assets/images/512/shop31.png" alt="toggeli 1" />
-      <md-grid-tile-footer>
-        <h3 translate="isco.5000"></h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-    <md-grid-tile ng-click="setIscoGroup('6')">
-      <img class="category iscoIcon" src="assets/images/jobs/isco6.png" alt="toggeli 1" />
-      <md-grid-tile-footer>
-        <h3 translate="isco.6000"></h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-
-    <md-grid-tile ng-click="setIscoGroup('7')">
-      <img class="category" src="assets/images/512/work26.png" alt="toggeli 1" />
-      <md-grid-tile-footer>
-        <h3 translate="isco.7000"></h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-    <md-grid-tile ng-click="setIscoGroup('8')">
-      <img class="category" src="assets/images/512/construction16.png" alt="toggeli 1" />
-      <md-grid-tile-footer>
-        <h3 translate="isco.8000"></h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-    <md-grid-tile ng-click="setIscoGroup('9')">
-      <img class="category" src="assets/images/512/clean9.png" alt="toggeli 1" />
-      <md-grid-tile-footer>
-        <h3 translate="isco.9000"></h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-
-  </md-grid-list>
 </div>
 
 <md-button href="#/job-search" class="md-fab md-primary md-fab-bottom-right jd-floating-fab" aria-label="global.navigation.search" md-theme-watch="true">

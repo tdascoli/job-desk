@@ -3,13 +3,10 @@
   'use strict';
 
   angular.module('job-desk')
-    .controller('ApprenticeshipsCtrl', function ($scope, $rootScope, $state, $filter, $translate, ApprenticeshipsService, LocationsService, ArrleeService, $mdDialog) {
+    .controller('ApprenticeshipsCtrl', function ($scope, $rootScope, $state, $filter, $translate, ApprenticeshipsService, LocationsService, ArrleeService, $mdDialog, lodash) {
 
       $rootScope.searchType='apprenticeships';
       $scope.searchParams = ApprenticeshipsService.params;
-
-      $scope.searchRowGutter=20;
-      $scope.searchRowHeight=(($(window).outerHeight(true)-$('#topnav').outerHeight(true)-$('#filter').outerHeight(true))/3)-$scope.searchRowGutter;
 
       $scope.distanceOptions = {min:5,max:50,step:5,value:10};
       $scope.travelTimeOptions = {min: 10, max: 60, step: 5, value: 30};
@@ -18,7 +15,7 @@
       $scope.nearestZip='';
       $scope.sort=0;
 
-      $scope.swissdocMajorGroup=[{text:'swissdoc.0-100-0-0',code:'1'},{text:'swissdoc.0-200-0-0',code:'2'},{text:'swissdoc.0-300-0-0',code:'3'},{text:'swissdoc.0-400-0-0',code:'4'},{text:'swissdoc.0-500-0-0',code:'5'},{text:'swissdoc.0-600-0-0',code:'6'},{text:'swissdoc.0-700-0-0',code:'7'},{text:'swissdoc.0-800-0-0',code:'8'}];
+      $scope.swissdocMajorGroup=[{text:'swissdoc.0-100-0-0',code:'1',img:'jobs/isco6.png'},{text:'swissdoc.0-200-0-0',code:'2',img:'jobs/isco6.png'},{text:'swissdoc.0-300-0-0',code:'3',img:'jobs/isco6.png'},{text:'swissdoc.0-400-0-0',code:'4',img:'jobs/isco6.png'},{text:'swissdoc.0-500-0-0',code:'5',img:'jobs/isco6.png'},{text:'swissdoc.0-600-0-0',code:'6',img:'jobs/isco6.png'},{text:'swissdoc.0-700-0-0',code:'7',img:'jobs/isco6.png'},{text:'swissdoc.0-800-0-0',code:'8',img:'jobs/isco6.png'}];
 
       $scope.swissdocGroupLevel2=[];
       $scope.swissdocGroupLevel2['1']=[
@@ -206,8 +203,8 @@
       $scope.sort=0;
       var orderBy = $filter('orderBy');
       $scope.sortList=[
-        {code:{field:'_source.titleM.'+$translate.use(),order:false}, text:'global.sort.jobtitel_az'},
-        {code:{field:'_source.titleM.'+$translate.use(),order:true}, text:'global.sort.jobtitel_za'},
+        {code:{field:'_source.titleM.'+$translate.use(),order:false}, text:'global.sort.apprenticeshipstitle_az'},
+        {code:{field:'_source.titleM.'+$translate.use(),order:true}, text:'global.sort.apprenticeshipstitle_za'},
         {code:{field:'_source.company.address.zip',order:false}, text:'global.sort.location_1000'},
         {code:{field:'_source.company.address.zip',order:true}, text:'global.sort.location_9999'}
       ];

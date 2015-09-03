@@ -101,6 +101,16 @@
       return 'keyboard_arrow_left';
     };
 
+    var menuEv;
+    $rootScope.openMenu=function($mdOpenMenu, ev){
+      menuEv = ev;
+      $mdOpenMenu(ev);
+    };
+    $rootScope.closeMenu=function(target){
+      menuEv=null;
+      $state.go(target);
+    };
+
     geolocation.getLocation().then(function(data){
       if ($rootScope.myCoords===undefined) {
         $rootScope.myCoords = {lat: data.coords.latitude, lon: data.coords.longitude};

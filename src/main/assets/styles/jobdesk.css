@@ -33,34 +33,62 @@ body {
 h4 {
   font-size: 1.2em;
 }
-.category {
-  height: calc(100% - 68px);
-  vertical-align: top;
-
-  margin-bottom: 48px;
+.jd-categories  {
+  position: fixed;
+  height: calc(100% - 84px);
 }
-.category.iscoIcon {
+@media (max-width: 599px) {
+  .jd-categories  {
+    position: static;
+    height: 100%;
+  }
+}
+
+.jd-categories .category-title {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.18);
+  height: 64px;
+
+  -webkit-font-smoothing: antialiased;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-image: none;
+  background-origin: padding-box;
+  background-size: auto;
+  bottom: 0;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.jd-categories .category-title span {
+  margin: 0 0 0 16px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #fff;
+}
+.category {
+   height: calc(33% - 64px);
+   vertical-align: top;
+   width: auto;
+}
+.category img {
+  height: 200px;
+  vertical-align: top;
+  width: auto;
+}
+.category .iscoIcon {
   height: auto;
   width: 100%;
-  margin-top: auto;
 }
-.container,
-.container-fluid {
-  height: auto;
-  min-height: inherit;
-}
+
 #map {
   width: 960px;
   height: 500px;
 }
-#distance:focus,
-#onlineSince:focus {
-  outline: none;
-}
-#distance .slider-selection,
-#onlineSince .slider-selection {
-  background: #BABABA;
-}
+
 .job-results {
   overflow: scroll;
 }
@@ -82,77 +110,13 @@ h4 {
   background: #c6d7bf !important;
 }
 
-.result-button .icon,
-.result-button .glyphicon {
-  font-size: 1.25em;
-}
 .fake-label {
   display: inline-block;
   max-width: 100%;
   margin-bottom: 5px;
   font-weight: bold;
 }
-.btn-plain,
-.btn-plain:active {
-  transition: none;
-  -webkit-transform: none;
-  -moz-transform: none;
-  -ms-transform: none;
-  -o-transform: none;
-  transform: none;
-  -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-  -moz-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-  top: 0;
-  margin-bottom: 0;
-  text-align: left;
-}
-.btn-plain .caret {
-  position: absolute;
-  top: 50%;
-  right: 12px;
-  margin-top: -2px;
-  vertical-align: middle;
-}
-.job-sort.dropdown-menu {
-  width: 100%;
-}
-.location-plz input,
-.location-plz input:focus,
-.location-plz .input-group-addon,
-.location-plz button {
-  border-color: #eee;
-  background-color: #eee;
-}
-.location-plz button:active,
-.location-plz button:focus,
-.location-plz button:hover {
-  background-color: #eee;
-}
-.jobs {
-  background-color: #005ba1;
-  color: #fff;
-}
-.lena {
-  background-color: #009933;
-  color: #fff;
-}
-.wab {
-  background-color: #e68a00;
-  color: #fff;
-}
-.jobs:hover {
-  background-color: #004a82;
-  color: #fff;
-}
-.lena:hover {
-  background-color: #007a29;
-  color: #fff;
-}
-.wab:hover {
-  background-color: #c77800;
-  color: #fff;
-}
+
 .radius {
   fill: #fff;
   opacity: 0.5;
@@ -418,6 +382,7 @@ md-input-container.md-slider-has-label label {
   -webkit-transform: translate3d(0, 1em, 0) scale(0.75);
   transform: translate3d(0, 1em, 0) scale(0.75);
   color: rgba(0,0,0,0.54);
+  width: 100%;
 }
 
 .toolbar-inverse md-icon {
@@ -434,7 +399,7 @@ iframe.job-result {
   height: 5em;
   max-height: 7em;
   margin-top: 1em;
-  width: 99%;
+  width: calc(100% - 16px);
   position: fixed;
   background-color: #fff;
   z-index: 10;

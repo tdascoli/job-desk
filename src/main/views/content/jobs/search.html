@@ -1,10 +1,10 @@
 <div id="filter" layout="row" layout-wrap layout-margin layout-align="start center" class="md-whiteframe-z2 jd-floating-toolbar jd-floating-toolbar-fill-sm">
 
-  <div flex="15" flex-sm="100">
+  <div flex="15" flex-sm="90">
       <strong translate="jobs.search.foundJobs" translate-values="{value: count}"></strong><img ng-if="idle" alt="idle" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
   </div>
 
-  <div flex="20" flex-sm="100" class="form-block">
+  <div flex="20" flex-sm="90" class="form-block">
 
     <md-input-container ng-if="!searchParams.iscoMajorGroup">
       <label><span translate="jobs.search.jobgroup"></span></label>
@@ -23,22 +23,29 @@
 
   </div>
 
-  <div flex="10" flex-sm="100">
+  <div flex="10" flex-sm="90" hide-sm>
     <md-input-container>
       <label translate="jobs.search.location"></label>
       <input class="keyboard" type="text" name="location" id="location" ng-model="nearestZip" />
     </md-input-container>
   </div>
 
+  <div flex-sm="40"  hide-gt-sm>
+    <md-input-container>
+      <label translate="jobs.search.location"></label>
+      <input type="number" min="1000" max="9999" name="location-sm" id="location-sm" ng-model="searchParams.currentZip" />
+    </md-input-container>
+  </div>
 
-  <div flex="10" flex-sm="500">
+
+  <div flex="10" flex-sm="40">
     <md-radio-group ng-model="searchParams.distanceType" ng-change="countJobs()">
       <md-radio-button value="distance"><span translate="jobs.search.distanceTypeDistance"></span></md-radio-button>
       <md-radio-button value="travelTime"><span translate="jobs.search.distanceTypeTravelTime"></span></md-radio-button>
     </md-radio-group>
   </div>
 
-  <div flex="10" flex-sm="50">
+  <div flex="10" flex-sm="40">
     <md-input-container flex class="md-slider-has-label" ng-if="searchParams.distanceType==='distance'">
       <label translate="jobs.search.distance" translate-values="{value:searchParams.distance}"></label>
       <md-slider ng-model="searchParams.distance" step="{{distanceOptions.step}}" min="{{distanceOptions.min}}"
@@ -52,18 +59,19 @@
     </md-input-container>
   </div>
 
-  <div flex="10" flex-sm="50">
+  <div flex="10" flex-sm="40">
     <md-input-container flex class="md-slider-has-label">
-      <label ng-show="searchParams.distance>1" translate="jobs.search.onlineSince"
+      <label ng-if="searchParams.onlineSince!==1" translate="jobs.search.onlineSince"
              translate-values="{value:searchParams.onlineSince}"></label>
-      <label ng-show="searchParams.distance<2" translate="jobs.search.onlineSinceOneDay"></label>
+      <label ng-if="searchParams.onlineSince===1" translate="jobs.search.onlineSinceOneDay"></label>
+
       <md-slider ng-model="searchParams.onlineSince" step="{{onlineSinceOptions.step}}"
                  min="{{onlineSinceOptions.min}}" max="{{onlineSinceOptions.max}}" aria-label="onlineSince"
                  ng-change="countJobs()"></md-slider>
     </md-input-container>
   </div>
 
-  <div flex="15" flex-sm="100">
+  <div flex="15" flex-sm="40">
     <md-radio-group ng-model="searchParams.fulltime" ng-change="countJobs()">
       <md-radio-button value="1"><span translate="jobs.search.allJobs"></span></md-radio-button>
       <md-radio-button value="2"><span translate="jobs.search.parttimeJobs"></span></md-radio-button>
