@@ -1,28 +1,22 @@
 {
   "educations": {
-    "title": "Weiterbildungen",
     "search": {
       "educationGroup":"Was (Kursart)",
-      "allSubGroups":"Alle Untergruppen",
       "location":"Wo (PLZ)",
       "distance":"Distanz {{value}} km",
+      "travelTime":"Reisedauer {{value}} h",
       "foundJobs":"Gefundene Kurse: {{value}}",
+      "distanceTypeDistance":"Distanz in km",
+      "distanceTypeTravelTime":"Reisedauer in h",
       "language":"Kurssprache",
       "allLanguages":"Alle Sprachen"
     },
     "result": {
       "sorting":"Sortierung",
       "print":"Kurs Drucken",
-      "content":"Inhalt",
-      "target":"Ziel",
-      "preconditions":"Vorraussetzungen",
-      "degree":"Abschluss",
-      "comments":"Bemerkungen",
-      "language":"Unterrichtssprache",
-      "provider":"Anbieter",
-      "details":"Details zur Durchführung",
       "location":"Kursort",
       "start":"Kursbeginn",
+      "degree":"Abschluss",
       "duration":"Dauer",
       "cost":"Kosten",
       "activity":"Zeitliche Belastung",

@@ -70,7 +70,7 @@
         </div>
       </span>
 
-      <iframe class="job-result" ng-show="jobDetail._source.external==='true'" ng-src="{{getExternalUrl(jobDetail._source.url)}}"></iframe>
+      <strong ng-show="jobDetail._source.external==='true'">{{jobDetail._source.url}}</strong>
     </div>
 
   </div>

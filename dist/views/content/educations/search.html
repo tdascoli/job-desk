@@ -5,17 +5,18 @@
   </div>
 
   <div flex="25" flex-sm="100" class="form-block">
+    <md-input-container ng-if="!searchParams.swissdocMajorGroup">
+      <label><span translate="educations.search.educationGroup"></span></label>
 
-    <md-select ng-model="searchParams.swissdocMajorGroup" ng-change="countStellen()" ng-if="!searchParams.swissdocMajorGroup">
-      <md-select-label ng-if="!searchParams.swissdocMajorGroup"><span translate="educations.search.educationGroup"></span></md-select-label>
-      <md-option ng-repeat="swissdoc in swissdocMajorGroup" value="{{swissdoc.code}}"><span translate="{{swissdoc.text}}"></span></md-option>
-    </md-select>
+      <md-select ng-model="searchParams.swissdocMajorGroup" ng-change="countJobs()">
+        <md-option ng-repeat="swissdoc in swissdocMajorGroup" value="{{swissdoc.code}}"><span translate="{{swissdoc.text}}"></span></md-option>
+      </md-select>
+    </md-input-container>
 
-    <md-input-container class="md-select-has-label" ng-if="searchParams.swissdocMajorGroup">
-      <label translate="swissdoc.0-{{searchParams.swissdocMajorGroup}}00-0-0"></label>
+    <md-input-container ng-if="searchParams.swissdocMajorGroup">
+      <label><span translate="swissdoc.0-{{searchParams.swissdocMajorGroup}}00-0-0"></span></label>
 
-      <md-select ng-model="searchParams.swissdocGroupLevel2" ng-change="countStellen()">
-        <md-option value=""><span translate="educations.search.allSubGroups"></span></md-option>
+      <md-select ng-model="searchParams.swissdocGroupLevel2" ng-change="countJobs()">
         <md-option ng-repeat="swissdoc2 in swissdocGroupLevel2[searchParams.swissdocMajorGroup]" value="{{swissdoc2.code}}"><span translate="{{swissdoc2.text}}"></span></md-option>
       </md-select>
     </md-input-container>
@@ -29,11 +30,24 @@
     </md-input-container>
   </div>
 
+  <div flex="10" flex-sm="500">
+    <md-radio-group ng-model="searchParams.distanceType" ng-change="countJobs()">
+      <md-radio-button value="distance"><span translate="educations.search.distanceTypeDistance"></span></md-radio-button>
+      <md-radio-button value="travelTime"><span translate="educations.search.distanceTypeTravelTime"></span></md-radio-button>
+    </md-radio-group>
+  </div>
+
   <div flex="10" flex-sm="50">
-    <md-input-container flex class="md-slider-has-label">
+    <md-input-container flex class="md-slider-has-label" ng-if="searchParams.distanceType==='distance'">
       <label translate="educations.search.distance" translate-values="{value:searchParams.distance}"></label>
       <md-slider ng-model="searchParams.distance" step="{{distanceOptions.step}}" min="{{distanceOptions.min}}"
-                 max="{{distanceOptions.max}}" aria-label="distance" ng-change="countStellen()"></md-slider>
+                 max="{{distanceOptions.max}}" aria-label="distance" ng-change="countJobs()"></md-slider>
+    </md-input-container>
+
+    <md-input-container flex class="md-slider-has-label" ng-if="searchParams.distanceType==='travelTime'">
+      <label translate="educations.search.travelTime" translate-values="{value:showTimeInH(searchParams.travelTime)}"></label>
+      <md-slider ng-model="searchParams.travelTime" step="{{travelTimeOptions.step}}" min="{{travelTimeOptions.min}}"
+                 max="{{travelTimeOptions.max}}" aria-label="travelTime" ng-change="countJobs()"></md-slider>
     </md-input-container>
   </div>
 
@@ -41,7 +55,7 @@
     <md-input-container class="md-select-has-label">
       <label translate="educations.search.language"></label>
 
-      <md-select ng-model="searchParams.language" ng-change="countStellen()">
+      <md-select ng-model="searchParams.language" ng-change="countJobs()">
         <md-option value=""><span translate="educations.search.allLanguages"></span></md-option>
         <md-option ng-repeat="lang in courseLanguages" value="{{lang.code}}"><span translate="{{lang.text}}"></span></md-option>
       </md-select>
