@@ -1,7 +1,7 @@
 <div layout="row" layout-wrap layout-padding layout-align="start start" class="jd-categories">
 
   <div class="category" flex="33" flex-sm="100" ng-click="setIscoGroup(isco.code)" ng-repeat="isco in iscoMajorGroup">
-    <img class="iscoIcon" src="assets/images/{{isco.img}}" alt="isco" />
+    <img class="iscoIcon" ng-src="assets/images/{{isco.img}}" alt="isco" />
     <div class="category-title"><span class="md-title" translate="{{isco.text}}"></span></div>
   </div>
 
