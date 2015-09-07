@@ -37,9 +37,6 @@
   <!-- webfontloader -->
   <script>
     WebFontConfig = {
-      custom: {
-        families: ['Admin Icons']
-      },
       google: {families: ['Open+Sans:400italic,700italic,400,700:latin','Material+Icons']}
     };
     (function () {
@@ -53,10 +50,6 @@
     })();
   </script>
   <!-- /webfontloader -->
-
-  <!-- build:css assets/styles/typo.css -->
-  <link rel="stylesheet" href="assets/styles/admin-symbols.css" />
-  <!-- endbuild -->
 
   <!-- build:css assets/styles/vendor.css -->
   <!-- bower:css -->
@@ -85,8 +78,6 @@
     <md-button hide-sm class="md-raised md-primary section-button" md-theme="apprenticeships" href="#/apprenticeships" ng-hide="searchType==='apprenticeships'"><md-icon>launch</md-icon> <span translate="global.apprenticeships"></span></md-button>
     <span flex></span>
     <language-switcher></language-switcher>
-    <md-button hide-sm class="md-icon-button"><md-icon>help_outline</md-icon></md-button>
-
     <md-menu md-position-mode="target-right target" hide-gt-sm>
       <md-button aria-label="Open Menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu,$event)">
         <md-icon md-menu-origin>more_vert</md-icon>
@@ -108,6 +99,9 @@
 
 <md-content id="main" ui-view="content" ng-view></md-content>
 <!--./container -->
+
+<!-- 3rd-party -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
 <!-- build:js scripts/vendor.js -->
 <!-- bower:js -->
@@ -158,6 +152,9 @@
 <script src="bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
 <script src="bower_components/d3/d3.min.js"></script>
 <script src="bower_components/topojson/topojson.js"></script>
+<script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+<script src="bower_components/angular-ui-map/ui-map.js"></script>
+<script src="bower_components/angular-ui-event/dist/event.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
@@ -180,6 +177,9 @@
 <script src="scripts/app/jobs/jobs.service.js"></script>
 <script src="scripts/app/jobs/jobs.controller.js"></script>
 <script src="scripts/app/jobs/jobs.directive.js"></script>
+<script src="scripts/app/config/config.js"></script>
+<script src="scripts/app/config/config.service.js"></script>
+<script src="scripts/app/config/config.controller.js"></script>
 <script src="scripts/components/locations/locations.service.js"></script>
 <script src="scripts/components/locations/arrlee.service.js"></script>
 <script src="scripts/aspects/templates.js"></script>

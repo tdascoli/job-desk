@@ -24,6 +24,10 @@
       "noValidCoords":"Bitte wählen Sie einen Ort innerhalb der Schweizerkarte."
     },
     "codes": {
+      "salutations": {
+        "1": "Herr",
+        "2": "Frau"
+      },
       "languages": {
         "skills": {
           "1": "sehr gut",

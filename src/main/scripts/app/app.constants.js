@@ -8,6 +8,10 @@ angular.module('job-desk')
 
 .constant('baseUrl', 'http://jobdesk-alvchegov.rhcloud.com/jobdesk')
 
+.constant('arrleeUrl', 'http://localhost:9000/ajax')
+
+.constant('geocodeUrl', 'http://localhost:9000/maps')
+
 .constant('supportedLanguages', ['de','fr','it','en'])
 
 ;

@@ -126,6 +126,13 @@ text {
   font-weight: 700;
   pointer-events: none;
 }
+@media (max-width: 599px) {
+  text {
+    font-size: 10px;
+    font-weight: 700;
+    pointer-events: none;
+  }
+}
 .contour {
   stroke: none;
   stroke-width: 0.5;

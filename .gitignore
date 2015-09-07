@@ -7,3 +7,5 @@ node_modules
 **/private
 
 src/test/coverage
+
+src/main/scripts/app/app.constants.secure.js

@@ -7,6 +7,7 @@
     'ui.router',
     'ui.router.stateHelper',
     'ui.bootstrap-slider',
+    'ui.map',
     'ngResource',
     'ngSanitize',
     'ngCookies',
@@ -92,7 +93,9 @@
     hotkeysProvider.includeCheatSheet = false;
   });
 
-  app.run(function($http, geolocation, $rootScope, $state){
+  app.run(function($http, geolocation, $rootScope, $state, $cookies){
+
+    $rootScope.mobile=$.browser.mobile;
 
     $rootScope.current=function(){
       if ($state.$current.url.source==='/' || $state.$current.url.source==='/jobs' || $state.$current.url.source==='/apprenticeships' || $state.$current.url.source==='/educations'){
@@ -111,11 +114,17 @@
       $state.go(target);
     };
 
-    geolocation.getLocation().then(function(data){
-      if ($rootScope.myCoords===undefined) {
-        $rootScope.myCoords = {lat: data.coords.latitude, lon: data.coords.longitude};
-      }
-    });
+    var config = $cookies.getObject('config');
+    if (!angular.isObject(config)) {
+      geolocation.getLocation().then(function (data) {
+        if ($rootScope.myCoords === undefined) {
+          $rootScope.myCoords = {lat: data.coords.latitude, lon: data.coords.longitude};
+        }
+      });
+    }
+    else {
+      $rootScope.myCoords=config.coords;
+    }
 
     $rootScope.back=function(){
       if ($state.$current.url.source==='/' || $state.$current.url.source==='/jobs' || $state.$current.url.source==='/apprenticeships' || $state.$current.url.source==='/educations'){

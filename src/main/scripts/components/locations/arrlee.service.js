@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('job-desk')
-    .factory('ArrleeService', function ($http) {
+    .factory('ArrleeService', function ($http, arrleeUrl) {
 
       var arrleeParams = {
         start_zip: '',
@@ -28,11 +28,11 @@
           arrleeParamsString += key + '=' + encodeURIComponent(arrleeParams[key]);
         }
 
-        return $http.get('http://localhost:9000/ajax/heatmap?' + arrleeParamsString);
+        return $http.get(arrleeUrl + '/heatmap?' + arrleeParamsString);
       }
 
       function getZips(travelTime) {
-        return $http.get('http://localhost:9000/ajax/poi?poi_types=PLZCH&max_tt=' + travelTime);
+        return $http.get(arrleeUrl + '/poi?poi_types=PLZCH&max_tt=' + travelTime);
       }
 
       return {

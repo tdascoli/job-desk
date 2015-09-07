@@ -16,6 +16,10 @@ http://www.swissdoc.sdbb.ch/
 # GeoJSON
 http://geojson.org/
 
+# Radius km/px calculation
+* Calculated from: http://www.freemaptools.com/how-far-is-it-between-bern_-schweiz-and-zürich_-schweiz.htm
+* JavaScript from: http://stackoverflow.com/questions/27928/how-do-i-calculate-distance-between-two-latitude-longitude-points
+
 # PLZ and Coordinates
 http://www.cadastre.ch/internet/kataster/de/home/services/service/plz.html Choose 'CSV (Excel) WGS84'
 

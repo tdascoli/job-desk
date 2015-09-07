@@ -127,7 +127,7 @@ module.exports = function (grunt) {
           src: [
             '<%= yeoman.dist %>/scripts/**/*.js',
             '<%= yeoman.dist %>/assets/styles/**/*.css',
-            '<%= yeoman.dist %>/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}',
+            //'<%= yeoman.dist %>/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}',
             '<%= yeoman.dist %>/assets/fonts/*'
           ]
         }
@@ -153,12 +153,7 @@ module.exports = function (grunt) {
       css: ['<%= yeoman.dist %>/assets/styles/**/*.css'],
       js: ['<%= yeoman.dist %>/scripts/**/*.js'],
       options: {
-        assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/assets/styles', '<%= yeoman.dist %>/assets/images', '<%= yeoman.dist %>/assets/fonts'],
-        patterns: {
-          js: [
-            [/(assets\/images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']
-          ]
-        },
+        assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/assets/styles', '<%= yeoman.dist %>/assets/fonts'],
         dirs: ['<%= yeoman.dist %>']
       }
     },
@@ -427,6 +422,8 @@ module.exports = function (grunt) {
           ENV: 'dev',
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://localhost:9000/jobdesk',
+          arrleeUrl: 'http://localhost:9000/ajax',
+          geocodeUrl: 'http://localhost:9000/geocode',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
@@ -438,6 +435,8 @@ module.exports = function (grunt) {
           ENV: 'prod',
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://jobdesk-alvchegov.rhcloud.com/jobdesk',
+          arrleeUrl: 'http://localhost:9000/ajax',
+          geocodeUrl: 'http://localhost:9000/maps',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       }

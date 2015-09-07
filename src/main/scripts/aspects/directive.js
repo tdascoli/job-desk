@@ -49,7 +49,7 @@
             scale = width * 17,
             mapRatio = 0.625,
             height = width * mapRatio,
-            maxHeight = $(window).height() - ($('#topnav').outerHeight(true) + $('#filter').outerHeight(true)),
+            maxHeight = $(window).height() - ($('#topnav').outerHeight()+$('#filter').outerHeight()),
             thresholds = [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000],
             contour;
 
@@ -73,6 +73,38 @@
             .scale(scale)
             .translate([width / 2, height / 2])
             .precision(0.1);
+
+          function calcKmPerPixel(){
+            //Bern
+            var bern=[7.461928,46.953525], projPoint1 = projection(bern);
+            //Zürich
+            var zurich=[8.541336,47.372047], projPoint2 = projection(zurich);
+            //Distances
+            var distancePixels = (Math.sqrt( ((projPoint2[0]-projPoint1[0])*(projPoint2[0]-projPoint1[0])) + ((projPoint2[1]-projPoint1[1])*(projPoint2[1]-projPoint1[1]))  ));
+            /*
+             Calculated from: http://www.freemaptools.com/how-far-is-it-between-bern_-schweiz-and-zürich_-schweiz.htm
+             JavaScript from: http://stackoverflow.com/questions/27928/how-do-i-calculate-distance-between-two-latitude-longitude-points
+             function distance(lat1, lon1, lat2, lon2) {
+              var deg2rad = 0.017453292519943295; // === Math.PI / 180
+              var cos = Math.cos;
+              lat1 *= deg2rad;
+              lon1 *= deg2rad;
+              lat2 *= deg2rad;
+              lon2 *= deg2rad;
+              var diam = 12742; // Diameter of the earth in km (2 * 6371)
+              var dLat = lat2 - lat1;
+              var dLon = lon2 - lon1;
+              var a = (
+                        (1 - cos(dLat)) +
+                        (1 - cos(dLon)) * cos(lat1) * cos(lat2)
+                      ) / 2;
+              return diam * Math.asin(Math.sqrt(a));
+             }
+            */
+            var distanceKM = 94.936;
+            return (distanceKM/distancePixels);
+          }
+          var kmPerPixel=calcKmPerPixel();
 
           var path = d3.geo.path().projection(projection);
 
@@ -163,7 +195,7 @@
                   .attr({
                     cx: xy[0],
                     cy: xy[1],
-                    r: (scope.searchParams.distance * 2)
+                    r: (scope.searchParams.distance/kmPerPixel)
                   }).attr('class', 'radius').attr('id', classRadius);
               }
             }
@@ -193,9 +225,6 @@
             });
           }
 
-          window.onresize = function () {
-            resize();
-          };
 
           function resize() {
             // adjust things when the window size changes
@@ -212,6 +241,8 @@
             projection
               .translate([width / 2, height / 2])
               .scale(width * 15);
+
+            kmPerPixel=calcKmPerPixel();
 
             // resize the map container
             svg
@@ -230,6 +261,10 @@
             setMyLocation();
           }
 
+          window.onresize = function () {
+            resize();
+          };
+
           d3.select(window).on('resize', resize());
 
           d3.select('svg').on('mousedown.log', function () {
@@ -240,8 +275,28 @@
           scope.$watch('searchParams.distance', function () {
             $('#heatmap').remove();
             $('.radius').show();
-            $('.radius').attr('r', (scope.searchParams.distance * 2));
+            $('.radius').attr('r', (scope.searchParams.distance/kmPerPixel));
           });
+
+          function addPolygon(geoJSON, outline) {
+            $('#heatmap').remove();
+            $('.radius').hide();
+
+            map.append('svg')
+              .attr('id', 'heatmap')
+              .selectAll('g')
+              .data(geoJSON.geometries)
+              .enter().append('path')
+              .attr('class', function (d) {
+                if (d.properties.id === outline - 1) {
+                  return 'heatmap heatmap-outline';
+                }
+                else {
+                  return 'heatmap area' + d.properties.id;
+                }
+              })
+              .attr('d', path);
+          }
 
           //** ALL AREA MAP
           scope.$watch('heatmap', function () {
@@ -321,26 +376,6 @@
               addPolygon(geoJSON, scope.heatmap.areas.length);
             }
           });
-
-          function addPolygon(geoJSON, outline) {
-            $('#heatmap').remove();
-            $('.radius').hide();
-
-            map.append('svg')
-              .attr('id', 'heatmap')
-              .selectAll('g')
-              .data(geoJSON.geometries)
-              .enter().append('path')
-              .attr('class', function (d) {
-                if (d.properties.id === outline - 1) {
-                  return 'heatmap heatmap-outline';
-                }
-                else {
-                  return 'heatmap area' + d.properties.id;
-                }
-              })
-              .attr('d', path);
-          }
 
           scope.$watch('searchParams.currentCoords', function () {
               setUmkreisInternal(false);
