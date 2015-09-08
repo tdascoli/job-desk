@@ -12,18 +12,18 @@
       $scope.travelTimeOptions = {min: 10, max: 120, step: 5, value: 30};
       $scope.onlineSinceOptions = {min: 1, max: 60, step: 1, value: 5};
       $scope.iscoMajorGroup = [
-        {text: 'isco.1000', code: '1',img:'jobs/isco6.png'},
-        {text: 'isco.2000', code: '2',img:'jobs/isco6.png'}, {
+        {text: 'isco.1000', code: '1',img:'jobs/isco1.png'},
+        {text: 'isco.2000', code: '2',img:'jobs/isco2.png'}, {
         text: 'isco.3000',
-        code: '3',img:'jobs/isco6.png'
+        code: '3',img:'jobs/isco3.png'
       },
-        {text: 'isco.4000', code: '4',img:'jobs/isco6.png'},
-        {text: 'isco.5000', code: '5',img:'jobs/isco6.png'}, {
+        {text: 'isco.4000', code: '4',img:'jobs/isco4.png'},
+        {text: 'isco.5000', code: '5',img:'jobs/isco5.png'}, {
         text: 'isco.6000',
         code: '6',img:'jobs/isco6.png'
-      }, {text: 'isco.7000', code: '7',img:'jobs/isco6.png'},
-        {text: 'isco.8000', code: '8',img:'jobs/isco6.png'},
-        {text: 'isco.9000', code: '9',img:'jobs/isco6.png'}];
+      }, {text: 'isco.7000', code: '7',img:'jobs/isco7.png'},
+        {text: 'isco.8000', code: '8',img:'jobs/isco8.png'},
+        {text: 'isco.9000', code: '9',img:'jobs/isco9.png'}];
 
       $scope.iscoGroupLevel2 = [];
       $scope.iscoGroupLevel2['1'] = [
