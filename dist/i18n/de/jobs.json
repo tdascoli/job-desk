@@ -6,12 +6,12 @@
       "distance":"Distanz {{value}} km",
       "travelTime":"Reisedauer {{value}} h",
       "distanceTypeDistance":"Distanz in km",
-      "distanceTypeTravelTime":"Reisedauer in h",
+      "distanceTypeTravelTime":"Reisedauer ÖV in Stunden",
       "onlineSince":"Online seit {{value}} Tagen",
       "onlineSinceOneDay":"Online seit 1 Tag",
-      "allJobs":"Alle Stellen",
-      "parttimeJobs":"Nur Teilzeit Stellen",
-      "foundJobs":"Gefundene Stellen: {{value}}"
+      "allJobs":"Alle Jobs",
+      "parttimeJobs":"Nur Teilzeit Jobs",
+      "foundJobs":"Gefundene Jobs: {{value}}"
     },
     "result": {
       "sorting":"Sortierung",
@@ -34,7 +34,7 @@
       "titlePhoneApplication": "Telefonische Bewerbung",
       "titleApplications": "Bewerbungsformen",
       "contractDuration": "Anstellungsdauer",
-      "print":"Stelle drucken",
+      "print":"Job drucken",
       "spoken":"mündlich",
       "written":"schriftlich",
       "showMore":"Mehr anzeigen",

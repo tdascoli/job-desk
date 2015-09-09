@@ -423,7 +423,6 @@ module.exports = function (grunt) {
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://localhost:9000/jobdesk',
           arrleeUrl: 'http://localhost:9000/ajax',
-          geocodeUrl: 'http://localhost:9000/geocode',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
@@ -436,10 +435,18 @@ module.exports = function (grunt) {
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://jobdesk-alvchegov.rhcloud.com/jobdesk',
           arrleeUrl: 'http://localhost:9000/ajax',
-          geocodeUrl: 'http://localhost:9000/maps',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
-      }
+      },
+      i18n: {
+          options: {
+            name: 'job-desk.i18n',
+            dest: 'src/main/scripts/aspects/i18n.constants.js'
+          },
+          constants: {
+            supportedLanguages: ['de', 'fr', 'it', 'en']
+          }
+        }
     },
     karma: {
       unit: {
@@ -473,6 +480,7 @@ module.exports = function (grunt) {
     'clean:server',
     'wiredep',
     'ngconstant:dev',
+    'ngconstant:i18n',
     'configureProxies',
     'connect:livereload',
     'watch'
@@ -493,6 +501,7 @@ module.exports = function (grunt) {
     'clean:server',
     'wiredep:app',
     'ngconstant:dev',
+    'ngconstant:i18n',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
@@ -505,6 +514,7 @@ module.exports = function (grunt) {
     'clean:dist',
     'wiredep:app',
     'ngconstant:prod',
+    'ngconstant:i18n',
     'useminPrepare',
     'ngtemplates:dist',
     'imagemin',

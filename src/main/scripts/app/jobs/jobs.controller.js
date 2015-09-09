@@ -87,6 +87,7 @@
 
       $scope.count = 0;
       $scope.nearestZip = '';
+      $scope.currentZip = $scope.searchParams.currentZip;
       $scope.heatmap = undefined;
       $scope.idle=false;
 
@@ -155,6 +156,7 @@
           if (nearestZip.hits.total > 0) {
             $scope.searchParams.currentCoords = coords;
             $scope.searchParams.currentZip = parseInt(nearestZip.hits.hits[0]._source.zip,10);
+            $scope.currentZip=$scope.searchParams.currentZip;
             $scope.nearestZip = nearestZip.hits.hits[0]._source.zip + ' (' + nearestZip.hits.hits[0]._source.name + ')';
 
             $scope.countJobs();
@@ -168,6 +170,10 @@
           console.log(error);
         });
       }
+
+      $scope.setMyLocation = function () {
+        setNewCoords($rootScope.myCoords);
+      };
 
       $scope.setCurrentCoords = function (coords) {
         setNewCoords(coords);

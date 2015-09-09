@@ -1,4 +1,4 @@
-<div id="filter" layout="row" layout-margin layout-align="space-between center" class="md-whiteframe-z2 jd-floating-toolbar">
+<div id="filter" layout="row" layout-margin layout-align="start center" class="md-whiteframe-z2 jd-floating-toolbar">
   <div flex="25" flex-sm="90">
     <md-input-container class="md-select-has-label">
       <label translate="jobs.result.sorting"></label>
@@ -6,6 +6,11 @@
         <md-option ng-repeat="sort in sortList" value="{{$index}}"><span translate="{{sort.text}}"></span></md-option>
       </md-select>
     </md-input-container>
+  </div>
+  <div flex="15" hide-sm>
+    <md-switch ng-model="searchParams.fulltime" translate-a-r-i-a---l-a-b-e-l="jobs.search.parttimeJobs" ng-true-value="'2'" ng-false-value="'1'" ng-change="countJobs()">
+      <span translate="jobs.search.parttimeJobs"></span>
+    </md-switch>
   </div>
 </div>
 

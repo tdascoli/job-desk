@@ -3,11 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="web-app-status-bar" content="black" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-  <title translate="global.title"></title>
+  <title>Job-Desk</title>
 
   <!-- google analytics -->
   <script>
@@ -59,8 +57,6 @@
   <!-- endbuild -->
 
   <!-- build:css assets/styles/app.css -->
-  <link rel="stylesheet" href="assets/styles/main.css">
-  <link rel="stylesheet" href="assets/styles/slider.css">
   <link rel="stylesheet" href="assets/styles/jobdesk.css">
   <!-- endbuild -->
 </head>
@@ -105,7 +101,6 @@
 
 <!-- build:js scripts/vendor.js -->
 <!-- bower:js -->
-<script src="bower_components/modernizr/modernizr.js"></script>
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/keyboard/dist/js/jquery.keyboard.min.js"></script>
 <script src="bower_components/keyboard/dist/layouts/keyboard-layouts-combined.min.js"></script>
@@ -114,47 +109,33 @@
 <script src="bower_components/angular-animate/angular-animate.js"></script>
 <script src="bower_components/angular-aria/angular-aria.js"></script>
 <script src="bower_components/angular-material/angular-material.js"></script>
-<script src="bower_components/angular-translate/angular-translate.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="bower_components/bootstrapaccessibilityplugin/plugins/js/bootstrap-accessibility.js"></script>
-<script src="bower_components/ng-lodash/build/ng-lodash.js"></script>
-<script src="bower_components/detect-mobile-browser/detectmobilebrowser.js"></script>
-<script src="bower_components/alv-ch-ng.core/dist/alv-ch-ng.core.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
 <script src="bower_components/angular-utf8-base64/angular-utf8-base64.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="bower_components/alv-ch-ng.security/dist/alv-ch-ng.security.js"></script>
+<script src="bower_components/angular-translate/angular-translate.js"></script>
+<script src="bower_components/bootstrapaccessibilityplugin/plugins/js/bootstrap-accessibility.js"></script>
+<script src="bower_components/ng-lodash/build/ng-lodash.js"></script>
 <script src="bower_components/alv-ch-ng.text-truncate/dist/alv-ch-ng.textTruncate.js"></script>
-<script src="bower_components/Flowtype.js/flowtype.js"></script>
 <script src="bower_components/angular-ui-router.stateHelper/statehelper.js"></script>
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
 <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
-<script src="bower_components/angular-ui-bootstrap/src/typeahead/typeahead.js"></script>
-<script src="bower_components/angular-ui-bootstrap/src/tooltip/tooltip.js"></script>
-<script src="bower_components/angular-ui-bootstrap/src/position/position.js"></script>
-<script src="bower_components/angular-ui-bootstrap/src/bindHtml/bindHtml.js"></script>
 <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
 <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
 <script src="bower_components/angular-scroll/angular-scroll.js"></script>
-<script src="bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
-<script src="bower_components/jquery-bridget/jquery.bridget.js"></script>
-<script src="bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
-<script src="bower_components/angular-bootstrap-slider/slider.js"></script>
 <script src="bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
+<script src="bower_components/angular-simple-logger/dist/index.js"></script>
 <script src="bower_components/leaflet/dist/leaflet.js"></script>
 <script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
-<script src="bower_components/angular-flowtype/angular-flowtype.js"></script>
 <script src="bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
 <script src="bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
 <script src="bower_components/d3/d3.min.js"></script>
 <script src="bower_components/topojson/topojson.js"></script>
-<script src="bower_components/angular-ui-utils/ui-utils.js"></script>
-<script src="bower_components/angular-ui-map/ui-map.js"></script>
-<script src="bower_components/angular-ui-event/dist/event.js"></script>
+<script src="bower_components/detect-mobile-browser/detectmobilebrowser.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
@@ -162,6 +143,7 @@
 <script src="scripts/app/app.js"></script>
 <script src="scripts/app/app.constants.js"></script>
 <script src="scripts/aspects/i18n.js"></script>
+<script src="scripts/aspects/i18n.constants.js"></script>
 <script src="scripts/aspects/directive.js"></script>
 <script src="scripts/app/localInfo/localInfo.js"></script>
 <script src="scripts/app/localInfo/localInfo.controller.js"></script>

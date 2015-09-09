@@ -3,13 +3,22 @@
 
   var module = angular.module('job-desk.i18n', ['pascalprecht.translate', 'LocalStorageModule', 'tmh.dynamicLocale']);
 
-  module.config(function($translateProvider, tmhDynamicLocaleProvider) {
+  module.config(function($translateProvider, tmhDynamicLocaleProvider, supportedLanguages) {
     // Initialize angular-translate
+    $translateProvider.registerAvailableLanguageKeys(supportedLanguages, {
+      'en_US': 'en',
+      'en_UK': 'en',
+      'de_DE': 'de',
+      'de_CH': 'de',
+      'fr_CH': 'fr',
+      'it_CH': 'it',
+      'fr_FR': 'fr',
+      'it_IT': 'it'
+    });
     $translateProvider.useLoader('$translatePartialLoader', {
       urlTemplate: 'i18n/{lang}/{part}.json'
     });
     $translateProvider.useCookieStorage();
-    $translateProvider.preferredLanguage('de');
     $translateProvider.determinePreferredLanguage();
     tmhDynamicLocaleProvider.localeLocationPattern('bower_components/angular-i18n/angular-locale_{{locale}}.js');
     tmhDynamicLocaleProvider.useCookieStorage('NG_TRANSLATE_LANG_KEY');

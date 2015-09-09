@@ -6,7 +6,7 @@
       "distance":"Distanz {{value}} km",
       "travelTime":"Reisedauer {{value}} h",
       "distanceTypeDistance":"Distanz in km",
-      "distanceTypeTravelTime":"Reisedauer in h",
+      "distanceTypeTravelTime":"Reisedauer ÖV in Stunden",
       "foundJobs":"Gefundene Lehrstellen: {{value}}"
     },
     "result": {

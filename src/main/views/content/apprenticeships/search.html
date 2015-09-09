@@ -1,10 +1,10 @@
-<div id="filter" layout="row" layout-wrap layout-margin layout-align="start center" class="md-whiteframe-z2 jd-floating-toolbar jd-floating-toolbar-fill-sm">
+<div id="filter" layout="row" layout-wrap layout-margin layout-align="start center" class="jd-floating-toolbar jd-floating-toolbar-fill-sm" ng-class="{'md-whiteframe-z2':!mobile}">
 
-  <div flex="15" flex-sm="100">
+  <div flex="15" flex-sm="90">
       <strong translate="apprenticeships.search.foundJobs" translate-values="{value: count}"></strong>
   </div>
 
-  <div flex="25" flex-sm="100" class="form-block">
+  <div flex="25" flex-sm="90" class="form-block">
     <md-input-container ng-if="!searchParams.swissdocMajorGroup">
       <label><span translate="apprenticeships.search.swissdocGroup"></span></label>
       <md-select ng-model="searchParams.swissdocMajorGroup" ng-change="countJobs()">
@@ -22,21 +22,33 @@
 
   </div>
 
-  <div flex="15" flex-sm="100">
-    <md-input-container>
+  <div flex="15" flex-sm="90" layout="row" layout-align="start center">
+    <md-button class="md-icon-button jd-icon-button" ng-click="setMyLocation()">
+      <md-icon>my_location</md-icon>
+    </md-button>
+
+    <md-input-container hide-sm>
       <label translate="apprenticeships.search.location"></label>
       <input class="keyboard" type="text" name="location" id="location" ng-model="nearestZip" />
     </md-input-container>
+
+    <md-input-container flex hide-gt-sm>
+      <label translate="apprenticeships.search.location"></label>
+      <input type="number" min="1000" max="9999" name="location-sm" id="location-sm" ng-model="currentZip" />
+    </md-input-container>
+    <md-button class="md-icon-button jd-icon-button" hide-gt-sm ng-click="setCurrentZip(currentZip)">
+      <md-icon>check</md-icon>
+    </md-button>
   </div>
 
-  <div flex="10" flex-sm="500">
+  <div flex="10" flex-sm="40">
     <md-radio-group ng-model="searchParams.distanceType" ng-change="countJobs()">
       <md-radio-button value="distance"><span translate="apprenticeships.search.distanceTypeDistance"></span></md-radio-button>
       <md-radio-button value="travelTime"><span translate="apprenticeships.search.distanceTypeTravelTime"></span></md-radio-button>
     </md-radio-group>
   </div>
 
-  <div flex="10" flex-sm="50">
+  <div flex="10" flex-sm="40">
     <md-input-container flex class="md-slider-has-label" ng-if="searchParams.distanceType==='distance'">
       <label translate="apprenticeships.search.distance" translate-values="{value:searchParams.distance}"></label>
       <md-slider ng-model="searchParams.distance" step="{{distanceOptions.step}}" min="{{distanceOptions.min}}"

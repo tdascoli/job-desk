@@ -23,10 +23,8 @@
     "keyboard": "v1.23.5",
     "angular": "1.4.5",
     "angular-material": "v0.11.0",
-    "alv-ch-ng.core": "0.2.3",
     "alv-ch-ng.security": "0.2.1",
     "alv-ch-ng.text-truncate": "0.2.0",
-    "Flowtype.js": "1.1.0",
     "angular-ui-router": "0.2.13",
     "angular-ui-router.stateHelper":"1.3.1",
     "angular-resource": "1.4.5",
@@ -43,17 +41,13 @@
     "angular-aria": "1.4.5",
     "angular-animate": "1.4.5",
     "angular-scroll": "~0.7.1",
-    "bootstrap-select": "~1.7.3",
-    "angular-bootstrap-slider": "~0.1.3",
     "angularjs-geolocation": "0.1.1",
     "angular-leaflet-directive": "~0.8.4",
-    "angular-flowtype": "*",
     "angular-hotkeys": "git://github.com/chieffancypants/angular-hotkeys.git",
     "angular-translate-storage-local": "~2.7.2",
     "d3": "3.5.6",
     "topojson": "1.6.19",
-    "angular-ui-map":"v0.5.0",
-    "angular-ui-event":"v1.0.0"
+    "detect-mobile-browser":"0.0.1"
   },
   "devDependencies": {
     "angular-mocks": "1.4.5",
@@ -65,24 +59,10 @@
     "jquery": "2.1.1",
     "angular-translate-storage-cookie": "~2.7.2",
     "alv-ch-ng.core": "0.2.3",
-    "bootstrap": "v3.3.5",
     "angular-resource": "1.4.5",
     "angular-aria": "1.4.5"
   },
   "overrides": {
-    "angular-ui-bootstrap": {
-      "main": [
-        "src/typeahead/typeahead.js",
-        "src/tooltip/tooltip.js",
-        "src/position/position.js",
-        "src/bindHtml/bindHtml.js"
-      ]
-    },
-    "alv-ch-ng.core": {
-      "main": [
-        "dist/alv-ch-ng.core.js"
-      ]
-    },
     "alv-ch-ng.security": {
       "main": [
         "dist/alv-ch-ng.security.js"
@@ -123,29 +103,6 @@
         "dist/angularjs-geolocation.min.js"
       ]
     },
-    "seiyria-bootstrap-slider": {
-      "main": [
-        "dist/bootstrap-slider.min.js"
-      ]
-    },
-    "bootstrap": {
-      "main": [
-        "dist/js/bootstrap.js"
-      ]
-    },
-    "bootstrap-datepicker": {
-      "main": [
-        "js/bootstrap-datepicker.js"
-      ]
-    },
-    "bootstrap-select": {
-      "main": [
-        "dist/js/bootstrap-select.js"
-      ]
-    },
-    "font-awesome": {
-      "main": []
-    },
     "keyboard": {
       "main": [
         "dist/js/jquery.keyboard.min.js",
@@ -160,6 +117,12 @@
       ]
     },
     "jquery-ui": {
+      "main": []
+    },
+    "bootstrap": {
+      "main": []
+    },
+    "bootstrap-accessibility-plugin": {
       "main": []
     }
   }

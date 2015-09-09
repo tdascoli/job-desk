@@ -13,6 +13,7 @@
 
       $scope.count=0;
       $scope.nearestZip='';
+      $scope.currentZip=$scope.searchParams.currentZip;
       $scope.sort=0;
 
       $scope.swissdocMajorGroup=[{text:'swissdoc.0-100-0-0',code:'1',img:'jobs/isco6.png'},{text:'swissdoc.0-200-0-0',code:'2',img:'jobs/isco6.png'},{text:'swissdoc.0-300-0-0',code:'3',img:'jobs/isco6.png'},{text:'swissdoc.0-400-0-0',code:'4',img:'jobs/isco6.png'},{text:'swissdoc.0-500-0-0',code:'5',img:'jobs/isco6.png'},{text:'swissdoc.0-600-0-0',code:'6',img:'jobs/isco6.png'},{text:'swissdoc.0-700-0-0',code:'7',img:'jobs/isco6.png'},{text:'swissdoc.0-800-0-0',code:'8',img:'jobs/isco6.png'}];
@@ -129,7 +130,8 @@
           if (nearestZip.hits.total>0) {
             $scope.searchParams.currentCoords=coords;
             $scope.nearestZip = nearestZip.hits.hits[0]._source.zip + ' (' + nearestZip.hits.hits[0]._source.name + ')';
-            $scope.searchParams.currentZip = nearestZip.hits.hits[0]._source.zip;
+            $scope.searchParams.currentZip = parseInt(nearestZip.hits.hits[0]._source.zip,10);
+            $scope.currentZip = $scope.searchParams.currentZip;
             $scope.countJobs();
           }
           else {
@@ -149,6 +151,11 @@
           minute='0'+minute;
         }
         return hour+':'+minute;
+      };
+
+
+      $scope.setMyLocation = function () {
+        setNewCoords($rootScope.myCoords);
       };
 
       $scope.setCurrentCoords=function(coords){

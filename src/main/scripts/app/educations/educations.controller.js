@@ -13,6 +13,7 @@
 
       $scope.count=0;
       $scope.nearestZip='';
+      $scope.currentZip=$scope.searchParams.currentZip;
       $scope.sort=0;
 
       $scope.courseLanguages=[{text:'educations.result.languages.ger',code:'ger'},{text:'educations.result.languages.fre',code:'fre'},{text:'educations.result.languages.ita',code:'ita'},{text:'educations.result.languages.eng',code:'eng'},{text:'educations.result.languages.other',code:'other'}];
@@ -139,7 +140,8 @@
           if (nearestZip.hits.total>0) {
             $scope.searchParams.currentCoords=coords;
             $scope.nearestZip = nearestZip.hits.hits[0]._source.zip + ' (' + nearestZip.hits.hits[0]._source.name + ')';
-            $scope.searchParams.currentZip = nearestZip.hits.hits[0]._source.zip;
+            $scope.searchParams.currentZip = parseInt(nearestZip.hits.hits[0]._source.zip,10);
+            $scope.currentZip = $scope.searchParams.currentZip;
             $scope.countJobs();
           }
           else {
@@ -151,6 +153,11 @@
             console.log(error);
           });
       }
+
+
+      $scope.setMyLocation = function () {
+        setNewCoords($rootScope.myCoords);
+      };
 
       $scope.setCurrentCoords=function(coords){
         setNewCoords(coords);

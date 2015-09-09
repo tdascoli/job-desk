@@ -7,7 +7,7 @@
       "travelTime":"Reisedauer {{value}} h",
       "foundJobs":"Gefundene Kurse: {{value}}",
       "distanceTypeDistance":"Distanz in km",
-      "distanceTypeTravelTime":"Reisedauer in h",
+      "distanceTypeTravelTime":"Reisedauer ÖV in Stunden",
       "language":"Kurssprache",
       "allLanguages":"Alle Sprachen"
     },
