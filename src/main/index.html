@@ -70,8 +70,8 @@
     </md-button>
     <h1 class="topnav-title"><span translate="global.title"></span></h1>
     <md-button hide-sm class="md-raised md-primary section-button" md-theme="jobs" href="#/jobs" ng-hide="searchType==='jobs'"><md-icon>launch</md-icon> <span translate="global.jobs"></span></md-button>
-    <md-button hide-sm class="md-raised md-primary section-button" md-theme="educations" href="#/educations" ng-hide="searchType==='educations'"><md-icon>launch</md-icon> <span translate="global.educations"></span></md-button>
-    <md-button hide-sm class="md-raised md-primary section-button" md-theme="apprenticeships" href="#/apprenticeships" ng-hide="searchType==='apprenticeships'"><md-icon>launch</md-icon> <span translate="global.apprenticeships"></span></md-button>
+    <md-button hide-sm class="md-raised md-primary section-button" md-theme="educations" href="#/educations" ng-hide="searchType==='educations' || !appConfig.educations "><md-icon>launch</md-icon> <span translate="global.educations"></span></md-button>
+    <md-button hide-sm class="md-raised md-primary section-button" md-theme="apprenticeships" href="#/apprenticeships" ng-hide="searchType==='apprenticeships' || !appConfig.apprenticeships"><md-icon>launch</md-icon> <span translate="global.apprenticeships"></span></md-button>
     <span flex></span>
     <language-switcher></language-switcher>
     <md-menu md-position-mode="target-right target" hide-gt-sm>

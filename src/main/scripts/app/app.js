@@ -92,6 +92,10 @@
   app.run(function($http, geolocation, $rootScope, $state, $cookies){
 
     $rootScope.mobile=$.browser.mobile;
+    $rootScope.appConfig={
+      educations:true,
+      apprenticeships:true
+    };
 
     $rootScope.current=function(){
       if ($state.$current.url.source==='/' || $state.$current.url.source==='/jobs' || $state.$current.url.source==='/apprenticeships' || $state.$current.url.source==='/educations'){
@@ -119,6 +123,7 @@
       });
     }
     else {
+      $rootScope.appConfig=config;
       $rootScope.myCoords=config.coords;
     }
 

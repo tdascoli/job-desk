@@ -9,8 +9,8 @@
         address:'',
         zip:undefined,
         coords:undefined,
-        wab:true,
-        lena:true,
+        educations:true,
+        apprenticeships:true,
         localInfo:''
       };
 
@@ -19,10 +19,12 @@
         if (cookieConfig){
           config = cookieConfig;
         }
+        return config;
       }
 
       function persist(){
         var now = new Date();
+        $cookies.remove('config');
         $cookies.putObject('config',config,{expires:new Date(now.getFullYear()+10,now.getMonth())});
       }
 

@@ -8,9 +8,7 @@
       $scope.lookupCoords=false;
       $scope.idle=false;
 
-      $scope.config=ConfigService.config;
-
-      ConfigService.init();
+      $scope.config=ConfigService.init();
 
       $scope.$watch('myCoords', function () {
         if ($rootScope.myCoords !== undefined && $scope.config.coords === undefined) {
@@ -45,6 +43,7 @@
             $scope.config.coords = coords;
             $scope.config.zip = parseInt(results[0].address_components[plzIndex].long_name, 10);
             $scope.idle=false;
+            $scope.$digest();
           }
         });
       };
@@ -52,6 +51,7 @@
       $scope.saveConfig=function(){
         ConfigService.persist();
         $rootScope.myCoords=$scope.config.coords;
+        $rootScope.appConfig=$scope.config;
       };
 
       function initCoords() {
