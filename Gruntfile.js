@@ -347,17 +347,7 @@ module.exports = function (grunt) {
           src: [
             '**'
           ]
-        },
-          {
-            expand: true,
-            dot: true,
-            flatten: true,
-            cwd: 'src/main/private/fonts',
-            dest: '<%= yeoman.dist %>/assets/fonts',
-            src: [
-              'adminchsymbols/*.*'
-            ]
-          }]
+        }]
       }
     },
     connect: {

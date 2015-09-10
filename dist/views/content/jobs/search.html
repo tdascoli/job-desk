@@ -5,7 +5,7 @@
   </div>
 
   <div flex="25" flex-sm="90" class="form-block">
-
+    <!-- todo menu instead of select or height===100% -->
     <md-input-container ng-if="!searchParams.iscoMajorGroup">
       <label><span translate="jobs.search.jobgroup"></span></label>
       <md-select ng-model="searchParams.iscoMajorGroup" ng-change="countJobs()">
@@ -17,13 +17,16 @@
     <md-input-container ng-if="searchParams.iscoMajorGroup">
       <label><span translate="isco.{{searchParams.iscoMajorGroup}}000"></span></label>
       <md-select ng-model="searchParams.iscoGroupLevel2" ng-change="countJobs()">
+        <md-option value=""><span translate="jobs.search.allSubGroups"></span></md-option>
         <md-option ng-repeat="isco2 in iscoGroupLevel2[searchParams.iscoMajorGroup]" value="{{isco2.code}}"><span translate="{{isco2.text}}"></span></md-option>
+        <md-option value="-1" ng-click="searchParams.iscoMajorGroup='';searchParams.iscoGroupLevel2=''"><md-icon>keyboard_arrow_left</md-icon><span class="jd-select-reset" translate="jobs.search.disableGroup"></span></md-option>
       </md-select>
     </md-input-container>
 
   </div>
 
   <div flex="15" flex-sm="90" layout="row" layout-align="start center">
+    <!-- todo when gps is turned off, hide -->
     <md-button class="md-icon-button jd-icon-button" ng-click="setMyLocation()">
       <md-icon>my_location</md-icon>
     </md-button>

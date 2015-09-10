@@ -2,6 +2,8 @@
   "jobs": {
     "search": {
       "jobgroup":"Was (Berufsgruppe)",
+      "allSubGroups":"Alle Untergruppen",
+      "disableGroup":"Andere Berufsgruppe",
       "location":"Wo (PLZ)",
       "distance":"Distanz {{value}} km",
       "travelTime":"Reisedauer {{value}} h",
