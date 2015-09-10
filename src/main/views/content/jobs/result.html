@@ -8,9 +8,15 @@
     </md-input-container>
   </div>
   <div flex="15" hide-sm>
-    <md-switch ng-model="searchParams.fulltime" translate-a-r-i-a---l-a-b-e-l="jobs.search.parttimeJobs" ng-true-value="'2'" ng-false-value="'1'" ng-change="countJobs()">
+    <!--
+    <md-switch ng-model="searchParams.fulltime" translate-a-r-i-a---l-a-b-e-l="jobs.search.parttimeJobs" ng-true-value="'2'" ng-false-value="'1'" ng-change="countJobs()" class="md-warn">
       <span translate="jobs.search.parttimeJobs"></span>
     </md-switch>
+    -->
+    <md-radio-group ng-model="searchParams.fulltime" ng-change="countJobs()">
+      <md-radio-button value="1" class="md-primary"><span translate="jobs.search.allJobs"></span></md-radio-button>
+      <md-radio-button value="2" class="md-primary"><span translate="jobs.search.parttimeJobs"></span></md-radio-button>
+    </md-radio-group>
   </div>
 </div>
 

@@ -44,8 +44,8 @@
 
   <div flex="15" flex-sm="40">
     <md-radio-group ng-model="searchParams.distanceType" ng-change="countJobs()">
-      <md-radio-button value="distance"><span translate="jobs.search.distanceTypeDistance"></span></md-radio-button>
-      <md-radio-button value="travelTime"><span translate="jobs.search.distanceTypeTravelTime"></span></md-radio-button>
+      <md-radio-button value="distance" class="md-primary"><span translate="jobs.search.distanceTypeDistance"></span></md-radio-button>
+      <md-radio-button value="travelTime" class="md-primary"><span translate="jobs.search.distanceTypeTravelTime"></span></md-radio-button>
     </md-radio-group>
   </div>
 
@@ -53,32 +53,34 @@
     <md-input-container flex class="md-slider-has-label" ng-if="searchParams.distanceType==='distance'">
       <label translate="jobs.search.distance" translate-values="{value:searchParams.distance}"></label>
       <md-slider ng-model="searchParams.distance" step="{{distanceOptions.step}}" min="{{distanceOptions.min}}"
-                 max="{{distanceOptions.max}}" aria-label="distance" ng-change="countJobs()"></md-slider>
+                 max="{{distanceOptions.max}}" aria-label="distance" ng-change="countJobs()" class="md-primary"></md-slider>
     </md-input-container>
 
     <md-input-container flex class="md-slider-has-label" ng-if="searchParams.distanceType==='travelTime'">
       <label translate="jobs.search.travelTime" translate-values="{value:showTimeInH(searchParams.travelTime)}"></label>
       <md-slider ng-model="searchParams.travelTime" step="{{travelTimeOptions.step}}" min="{{travelTimeOptions.min}}"
-                 max="{{travelTimeOptions.max}}" aria-label="travelTime" ng-change="countJobs()"></md-slider>
+                 max="{{travelTimeOptions.max}}" aria-label="travelTime" ng-change="countJobs()" class="md-primary"></md-slider>
     </md-input-container>
   </div>
 
   <div flex="12" flex-sm="40">
     <md-input-container flex class="md-slider-has-label">
-      <label ng-if="searchParams.onlineSince!==1" translate="jobs.search.onlineSince"
-             translate-values="{value:searchParams.onlineSince}"></label>
-      <label ng-if="searchParams.onlineSince===1" translate="jobs.search.onlineSinceOneDay"></label>
+      <label>
+        <span ng-hide="searchParams.onlineSince===1" translate="jobs.search.onlineSince"
+                                                          translate-values="{value:searchParams.onlineSince}"></span>
+        <span ng-show="searchParams.onlineSince===1" translate="jobs.search.onlineSinceOneDay"></span>
+      </label>
 
       <md-slider ng-model="searchParams.onlineSince" step="{{onlineSinceOptions.step}}"
                  min="{{onlineSinceOptions.min}}" max="{{onlineSinceOptions.max}}" aria-label="onlineSince"
-                 ng-change="countJobs()"></md-slider>
+                 ng-change="countJobs()" class="md-primary"></md-slider>
     </md-input-container>
   </div>
 
   <div flex-sm="40" hide-gt-sm>
     <md-radio-group ng-model="searchParams.fulltime" ng-change="countJobs()">
-      <md-radio-button value="2"><span translate="jobs.search.parttimeJobs"></span></md-radio-button>
-      <md-radio-button value="1"><span translate="jobs.search.allJobs"></span></md-radio-button>
+      <md-radio-button value="2" class="md-primary"><span translate="jobs.search.parttimeJobs"></span></md-radio-button>
+      <md-radio-button value="1" class="md-primary"><span translate="jobs.search.allJobs"></span></md-radio-button>
     </md-radio-group>
   </div>
 </div>

@@ -443,7 +443,7 @@ module.exports = function (grunt) {
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
-      prod: {
+      openshift: {
         options: {
           dest: 'src/main/scripts/app/app.constants.js'
         },
@@ -451,7 +451,19 @@ module.exports = function (grunt) {
           ENV: 'prod',
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://jobdesk-alvchegov.rhcloud.com/jobdesk',
-          arrleeUrl: 'http://localhost:9000/ajax',
+          arrleeUrl: 'http://jobdesk-alvchegov.rhcloud.com/ajax',
+          supportedLanguages: ['de', 'fr', 'it', 'en']
+        }
+      },
+      prod: {
+        options: {
+          dest: 'src/main/scripts/app/app.constants.js'
+        },
+        constants: {
+          ENV: 'prod',
+          VERSION: '<%= yeoman.app.version %>',
+          baseUrl: 'http://jobdesk.job-room.ch/jobdesk',
+          arrleeUrl: 'http://jobdesk.job-room.ch/ajax',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },

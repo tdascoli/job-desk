@@ -6,9 +6,9 @@ angular.module('job-desk')
 
 .constant('VERSION', 'src/main')
 
-.constant('baseUrl', 'http://jobdesk-alvchegov.rhcloud.com/jobdesk')
+.constant('baseUrl', 'http://jobdesk.job-room.ch/jobdesk')
 
-.constant('arrleeUrl', 'http://localhost:9000/ajax')
+.constant('arrleeUrl', 'http://jobdesk.job-room.ch/ajax')
 
 .constant('supportedLanguages', ['de','fr','it','en'])
 
