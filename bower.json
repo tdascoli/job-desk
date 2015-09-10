@@ -33,7 +33,6 @@
     "angular-translate": "2.4.2",
     "angular-translate-storage-cookie": "2.4.2",
     "angular-translate-loader-partial": "2.4.2",
-    "angular-ui-bootstrap": "0.12.0",
     "angular-dynamic-locale": "0.1.21",
     "angular-local-storage": "0.1.5",
     "angular-i18n": "1.4.5",
@@ -58,11 +57,13 @@
     "angular-translate": "2.4.2",
     "jquery": "2.1.1",
     "angular-translate-storage-cookie": "~2.7.2",
-    "alv-ch-ng.core": "0.2.3",
     "angular-resource": "1.4.5",
     "angular-aria": "1.4.5"
   },
   "overrides": {
+    "alv-ch-ng.core": {
+      "main": []
+    },
     "alv-ch-ng.security": {
       "main": [
         "dist/alv-ch-ng.security.js"
@@ -124,6 +125,12 @@
     },
     "bootstrap-accessibility-plugin": {
       "main": []
+    },
+    "bootstrapaccessibilityplugin": {
+      "main": []
+    },
+    "angular-dynamic-locale": {
+      "main": ["tmhDynamicLocale.min.js"]
     }
   }
 }
