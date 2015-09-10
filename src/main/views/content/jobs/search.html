@@ -36,13 +36,15 @@
       <input class="keyboard" type="text" name="location" id="location" ng-model="nearestZip" />
     </md-input-container>
 
-    <md-input-container flex hide-gt-sm>
-      <label translate="jobs.search.location"></label>
-      <input type="number" min="1000" max="9999" name="location-sm" id="location-sm" ng-model="currentZip" />
-    </md-input-container>
-    <md-button class="md-icon-button jd-icon-button" hide-gt-sm ng-click="setCurrentZip(currentZip)">
-      <md-icon>check</md-icon>
-    </md-button>
+    <form ng-submit="setCurrentZip(currentZip)" hide-gt-sm layout="row" layout-align="start center" flex>
+      <md-input-container flex>
+        <label translate="jobs.search.location"></label>
+        <input type="number" min="1000" max="9999" name="location-sm" id="location-sm" ng-model="currentZip" />
+      </md-input-container>
+      <md-button class="md-icon-button jd-icon-button">
+        <md-icon>check</md-icon>
+      </md-button>
+    </form>
   </div>
 
   <div flex="15" flex-sm="40">

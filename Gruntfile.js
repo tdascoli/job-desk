@@ -130,9 +130,8 @@ module.exports = function (grunt) {
         files: {
           src: [
             '<%= yeoman.dist %>/scripts/**/*.js',
-            '<%= yeoman.dist %>/assets/styles/**/*.css',
-            //'<%= yeoman.dist %>/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}',
-            '<%= yeoman.dist %>/assets/fonts/*'
+            '<%= yeoman.dist %>/assets/styles/**/*.css'
+            //'<%= yeoman.dist %>/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
           ]
         }
       }
@@ -157,7 +156,7 @@ module.exports = function (grunt) {
       css: ['<%= yeoman.dist %>/assets/styles/**/*.css'],
       js: ['<%= yeoman.dist %>/scripts/**/*.js'],
       options: {
-        assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/assets/styles', '<%= yeoman.dist %>/assets/fonts'],
+        assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/assets/styles'],
         dirs: ['<%= yeoman.dist %>']
       }
     },
@@ -259,28 +258,6 @@ module.exports = function (grunt) {
     },
     // Put files not handled in other tasks here
     copy: {
-      fonts: {
-        files: [{
-          expand: true,
-          dot: true,
-          flatten: true,
-          cwd: 'src/main',
-          dest: '<%= yeoman.dist %>/assets/fonts',
-          src: [
-            'bower_components/bootstrap/fonts/*.*'
-          ]
-        },
-        {
-          expand: true,
-          dot: true,
-          flatten: true,
-          cwd: 'src/main/private/fonts',
-          dest: '<%= yeoman.dist %>/assets/fonts',
-          src: [
-            'adminchsymbols/*.*'
-          ]
-        }]
-      },
       dist: {
         files: [
           {
@@ -291,8 +268,7 @@ module.exports = function (grunt) {
             src: [
               '*.html',
               'scripts/**/*.html',
-              'assets/images/**/*.{png,gif,webp,jpg,jpeg,svg}',
-              'assets/fonts/*'
+              'assets/images/**/*.{png,gif,webp,jpg,jpeg,svg}'
             ]
           },
           {
@@ -542,7 +518,6 @@ module.exports = function (grunt) {
     'imagemin',
     'svgmin',
     'concat',
-    'copy:fonts',
     'copy:dist',
     'copy:ngconstants',
     'ngAnnotate',
