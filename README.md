@@ -28,8 +28,8 @@ https://material.angularjs.org
 
 # Material Design
 * General: https://design.google.com/
-* Spec: https://www.google.com/design/icons/
-* Icons: https://www.google.com/design/spec/material-design/introduction.html
+* Icons: https://www.google.com/design/icons/
+* Spec: https://www.google.com/design/spec/material-design/introduction.html
 
 # Arrlee
 http://www.arrlee.ch
