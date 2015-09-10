@@ -2,7 +2,7 @@
 
   <div class="category" flex="33" flex-sm="100" ng-click="setIscoGroup(isco.code)" ng-repeat="isco in iscoMajorGroup">
     <img class="iscoIcon" ng-src="assets/images/{{isco.img}}" alt="isco" />
-    <div class="category-title"><span class="md-title" translate="{{isco.text}}"></span></div>
+    <div class="category-title isco{{isco.code}}"><span class="md-title" translate="{{isco.text}}"></span></div>
   </div>
 
 </div>

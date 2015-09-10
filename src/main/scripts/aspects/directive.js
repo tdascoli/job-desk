@@ -444,4 +444,37 @@
       }
     };
   });
+
+  module.directive('languageSwitcher', ['$translate', 'supportedLanguages', function ($translate,supportedLanguages) {
+    return {
+      restrict: 'E',
+      templateUrl: 'template/core/language-switcher.html',
+      replace: true,
+      link: function (scope, element, attrs) {
+        scope.styleClass = element.attr('class');
+        scope.style = element.attr('style');
+
+        // put supported languages into allLanguages array
+        scope.allLanguages = [];
+
+        if (attrs.languages) {
+          var tokens = attrs.languages.split(',');
+          for (var i = 0; i < tokens.length; i++) {
+            scope.allLanguages[i] = tokens[i].trim();
+          }
+        } else {
+          scope.allLanguages = supportedLanguages;
+        }
+
+
+        scope.getTranslationLanguage = function () {
+          return $translate.use();
+        };
+
+        scope.setTranslationLanguage = function (language) {
+          $translate.use(language);
+        };
+      }
+    };
+  }]);
 }());

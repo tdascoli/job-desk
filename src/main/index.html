@@ -74,7 +74,7 @@
     <md-button hide-sm class="md-raised md-primary section-button" md-theme="apprenticeships" href="#/apprenticeships" ng-hide="searchType==='apprenticeships' || !appConfig.apprenticeships"><md-icon>launch</md-icon> <span translate="global.apprenticeships"></span></md-button>
     <span flex></span>
     <language-switcher></language-switcher>
-    <md-menu md-position-mode="target-right target" hide-gt-sm>
+    <md-menu md-position-mode="target-right target" hide-gt-sm ng-hide="!appConfig.educations && !appConfig.apprenticeships">
       <md-button aria-label="Open Menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu,$event)">
         <md-icon md-menu-origin>more_vert</md-icon>
       </md-button>
@@ -82,10 +82,10 @@
         <md-menu-item ng-hide="searchType==='jobs'">
           <md-button ng-click="closeMenu('jobs')"><span translate="global.jobs"></span></md-button>
         </md-menu-item>
-        <md-menu-item ng-hide="searchType==='educations'">
+        <md-menu-item ng-hide="searchType==='educations' ||  !appConfig.educations">
           <md-button ng-click="closeMenu('educations')"><span translate="global.educations"></span></md-button>
         </md-menu-item>
-        <md-menu-item ng-hide="searchType==='apprenticeships'">
+        <md-menu-item ng-hide="searchType==='apprenticeships' || !appConfig.apprenticeships">
           <md-button ng-click="closeMenu('apprenticeships')"><span translate="global.apprenticeships"></span></md-button>
         </md-menu-item>
       </md-menu-content>

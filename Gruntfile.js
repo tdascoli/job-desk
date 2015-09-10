@@ -38,6 +38,10 @@ module.exports = function (grunt) {
       styles: {
         files: ['src/main/assets/styles/**/*.css']
       },
+      lessFiles: {
+        files: ['src/main/assets/less/**/*.less'],
+        tasks: ['less']
+      },
       jshint: {
         files: ['src/main/scripts/**/*.js'],
         tasks: ['jshint']
@@ -179,6 +183,19 @@ module.exports = function (grunt) {
     },
     cssmin: {
       // src and dest is configured in a subtask called "generated" by usemin
+    },
+    less: {
+      main: {
+        options: {
+          paths: ['src/main/assets/less'],
+          compress: false,
+          cleancss: true,
+          ieCompat: true
+        },
+        files: {
+          'src/main/assets/styles/jobdesk.css': ['src/main/assets/less/main.less']
+        }
+      }
     },
     ngtemplates: {
       dist: {
@@ -478,6 +495,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve', [
     'clean:server',
+    'less',
     'wiredep',
     'ngconstant:dev',
     'ngconstant:i18n',
@@ -499,6 +517,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('protractor', [
     'clean:server',
+    'less',
     'wiredep:app',
     'ngconstant:dev',
     'ngconstant:i18n',
@@ -512,6 +531,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'less',
     'wiredep:app',
     'ngconstant:prod',
     'ngconstant:i18n',
