@@ -132,7 +132,7 @@
         $state.go('localInfo');
       }
       // Jobs
-      else if ($state.$current.url.source==='/job-search'){
+      else if ($state.$current.url.source==='/job-search' || $state.$current.url.source==='/config'){
         $state.go('jobs');
       }
       else if ($state.$current.url.source==='/job-results'){

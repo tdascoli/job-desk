@@ -340,6 +340,12 @@ module.exports = function (grunt) {
           port: 9200,
           https: false,
           changeOrigin: false
+        },
+        {
+          context: '/arrlee',
+          host: 'arrlee.jobarea.ch',
+          https: false,
+          changeOrigin: false
         }
       ],
       livereload: {
@@ -405,7 +411,7 @@ module.exports = function (grunt) {
           ENV: 'dev',
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://localhost:9000/jobdesk',
-          arrleeUrl: 'http://localhost:9000/ajax',
+          arrleeUrl: 'http://localhost:9000/arrlee',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
@@ -417,7 +423,7 @@ module.exports = function (grunt) {
           ENV: 'prod',
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://jobdesk-alvchegov.rhcloud.com/jobdesk',
-          arrleeUrl: 'http://jobdesk-alvchegov.rhcloud.com/ajax',
+          arrleeUrl: 'http://jobdesk-alvchegov.rhcloud.com/arrlee',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
@@ -429,7 +435,7 @@ module.exports = function (grunt) {
           ENV: 'prod',
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://jobdesk.job-room.ch/jobdesk',
-          arrleeUrl: 'http://jobdesk.job-room.ch/ajax',
+          arrleeUrl: 'http://jobdesk.job-room.ch/arrlee',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },

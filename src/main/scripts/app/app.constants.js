@@ -8,7 +8,7 @@ angular.module('job-desk')
 
 .constant('baseUrl', 'http://jobdesk.job-room.ch/jobdesk')
 
-.constant('arrleeUrl', 'http://jobdesk.job-room.ch/ajax')
+.constant('arrleeUrl', 'http://jobdesk.job-room.ch/arrlee')
 
 .constant('supportedLanguages', ['de','fr','it','en'])
 
