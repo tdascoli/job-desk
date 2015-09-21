@@ -1,0 +1,7 @@
+@media (max-width: 599px) {
+  md-content {
+    -webkit-overflow-scrolling: inherit !important;
+  }
+
+
+}
