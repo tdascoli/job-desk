@@ -30,9 +30,9 @@
 
       //** todo HANDLING?!??
       $scope.receiveCoords=function(){
-        var geocoder = new google.maps.Geocoder();
+        //var geocoder = new google.maps.Geocoder();
         $scope.idle=true;
-
+        /*
         geocoder.geocode( { 'address': $scope.config.address+' '+$scope.config.zip }, function(results, status) {
           if (status === google.maps.GeocoderStatus.OK && results.length > 0) {
             var coords={
@@ -46,6 +46,22 @@
             $scope.$digest();
           }
         });
+        */
+        LocationsService.getLocationFromZip($scope.config.zip).success(function (nearestZip) {
+          if (nearestZip.hits.total > 0) {
+            $scope.config.coords = nearestZip.hits.hits[0]._source.geoLocation;
+          }
+          else {
+            // todo error handling
+            $scope.locationError=true;
+          }
+          $scope.idle=false;
+        })
+        .error(function (error) {
+          // todo error handling
+          console.log(error);
+            $scope.idle=false;
+        });
       };
 
       $scope.saveConfig=function(){
@@ -55,16 +71,19 @@
       };
 
       function initCoords() {
+        $scope.idle=true;
         if (!$scope.config.coords){
           $scope.config.coords=$rootScope.myCoords;
         }
         LocationsService.getLocation($scope.config.coords).success(function (nearestZip) {
-           $scope.config.zip = parseInt(nearestZip.hits.hits[0]._source.zip,10);
+          $scope.config.zip = parseInt(nearestZip.hits.hits[0]._source.zip,10);
+          $scope.idle=false;
         })
-        .error(function (error) {
-          // todo error handling
-          console.log(error);
-        });
+          .error(function (error) {
+            // todo error handling
+            console.log(error);
+            $scope.idle=false;
+          });
       }
     });
 
