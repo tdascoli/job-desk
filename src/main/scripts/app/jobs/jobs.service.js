@@ -72,7 +72,7 @@
         if (params.iscoMajorGroup !== '') {
           filter.query.filtered.filter.and.push({'term': {'isco.majorGroup': params.iscoMajorGroup}});
         }
-        if (params.iscoGroupLevel2 !== '') {
+        if (params.iscoGroupLevel2 !== '' && params.iscoGroupLevel2 !== 0) {
           filter.query.filtered.filter.and.push({'term': {'isco.groupLevel2': params.iscoGroupLevel2}});
         }
         return $http.post(baseUrl + '/jobs/_search', filter);

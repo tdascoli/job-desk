@@ -1,9 +1,41 @@
 {
   "global": {
-    "title": "job-desk",
-    "apprenticeships": "[FR] Lehrstellen",
-    "educations": "[FR] Weiterbildungen",
-    "jobs": "[FR] Jobs",
-    "localInfo": "[FR] Informationen"
+    "title": "Job-Desk",
+    "apprenticeships": "Places d'apprentissage",
+    "educations": "Cours de formation continue",
+    "jobs": "Emplois",
+    "sort": {
+      "newest":"Emplois les plus récents d'abord",
+      "workload_100":"Taux d'occupation - le plus bas d'abord",
+      "workload_0":"Taux d'occupation - le plus haut d'abord",
+      "jobtitle_az":"Intitulé du poste - A-Z",
+      "jobtitle_za":"Intitulé du poste  - Z-A",
+      "apprenticeshipstitle_az":"Intitulé de la place d'apprentissage - A-Z",
+      "apprenticeshipstitle_za":"Intitulé de la place d'apprentissage - Z-A",
+      "coursetitle_az":"Intitulé du cours - A-Z",
+      "coursetitle_za":"Intitulé du cours - Z-A",
+      "location_1000":"Lieu de travail - NPA le moins élevé d'abord",
+      "location_9999":"Lieu de travail - NPA le plus élevé d'abord",
+      "courseLocation_1000":"Lieu du cours - NPA le moins élevé d'abord",
+      "courseLocation_9999":"Lieu du cours - NPA le plus élevé d'abord"
+    },
+    "error": {
+      "noValidZip":"Le NPA saisi n'est pas valable.",
+      "noValidCoords":"Prière de sélectionner une localité sur la carte de la Suisse"
+    },
+    "codes": {
+      "salutations": {
+        "1": "Herr",
+        "2": "Frau"
+      },
+      "languages": {
+        "skills": {
+          "1": "très bonnes",
+          "2": "bonnes",
+          "3": "Connaissances de base",
+          "4": "Aucune connaissance"
+        }
+      }
+    }
   }
 }

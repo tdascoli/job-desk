@@ -1,5 +1,20 @@
 {
   "apprenticeships": {
-    "title": "[FR] Lehrstellen"
+    "search": {
+      "swissdocGroup":"Quoi (catégorie professionnelle)",
+      "allSubGroups":"[FR] Alle Untergruppen",
+      "disableGroup":"[FR] Andere Berufsgruppe",
+      "location":"Où (NPA)",
+      "distance":"Distance {{value}} km",
+      "travelTime":"Durée du trajet {{value}} h",
+      "distanceTypeDistance":"Distance en km",
+      "distanceTypeTravelTime":"Durée du trajet en TP en heures",
+      "foundJobs":"Places d'apprentissage trouvées {{value}}"
+    },
+    "result": {
+      "sorting":"Tri",
+      "print":"Imprimer la place d'apprentissage",
+      "apprenticeshipAmount":"({{value}} places d'apprentissage)"
+    }
   }
 }
