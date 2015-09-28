@@ -1,9 +1,8 @@
 {
   "errors": {
-    "title": "Fehlerseite!",
     "msg": {
-      "noValidZip": "Die Eingegebene PLZ ist nicht gültig.",
-      "noValidCoords": "Bitte wählen Sie einen Ort innerhalb der Schweizerkarte."
+      "noValidZip": "Le NPA saisi n'est pas valable.",
+      "noValidCoords": "Prière de sélectionner une localité sur la carte de la Suisse"
     }
   }
 }

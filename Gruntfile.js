@@ -436,7 +436,7 @@ module.exports = function (grunt) {
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://jobdesk.job-room.ch/jobdesk',
           arrleeUrl: 'http://jobdesk.job-room.ch/arrlee',
-          supportedLanguages: ['de', 'fr', 'it', 'en']
+          supportedLanguages: ['de', 'fr']
         }
       },
       i18n: {

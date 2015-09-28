@@ -26,14 +26,14 @@
       "fax":"No de fax {{value}}",
       "language":"Langue du cours",
       "languages": {
-        "ger":"[FR] Deutsch",
-        "de":"[FR] Deutsch",
-        "fre":"[FR] Französisch",
-        "fr":"[FR] Französisch",
-        "ita":"[FR] Italienisch",
-        "it":"[FR] Italienisch",
-        "eng":"[FR] Englisch",
-        "en":"[FR] Englisch",
+        "ger":"allemand",
+        "de":"allemand",
+        "fre":"français",
+        "fr":"français",
+        "ita":"italien",
+        "it":"italien",
+        "eng":"anglais",
+        "en":"anglais",
         "other":"autre"
       }
     }
