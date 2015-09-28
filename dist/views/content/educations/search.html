@@ -17,7 +17,9 @@
       <label><span translate="swissdoc.0-{{searchParams.swissdocMajorGroup}}00-0-0"></span></label>
 
       <md-select ng-model="searchParams.swissdocGroupLevel2" ng-change="countJobs()">
+        <md-option value="0"><span translate="educations.search.allSubGroups"></span></md-option>
         <md-option ng-repeat="swissdoc2 in swissdocGroupLevel2[searchParams.swissdocMajorGroup]" value="{{swissdoc2.code}}"><span translate="{{swissdoc2.text}}"></span></md-option>
+        <md-option value="-1" ng-click="searchParams.swissdocMajorGroup='';searchParams.swissdocGroupLevel2='';countJobs()"><md-icon>keyboard_arrow_left</md-icon><span class="jd-select-reset" translate="educations.search.disableGroup"></span></md-option>
       </md-select>
     </md-input-container>
 

@@ -17,7 +17,7 @@
     };
   });
 
-  module.directive('jobDetail', ['$translate','$sce', function($translate,$sce){
+  module.directive('jobDetail', ['$translate','$sce','$mdDialog', function($translate,$sce,$mdDialog){
     return {
       priority: 10,
       restrict: 'A',
@@ -32,34 +32,67 @@
           return text[$translate.use()];
         };
 
-        scope.getExternalUrl=function(link){
-          return $sce.trustAsResourceUrl(link);
+        scope.showDetail=function(ev,jobObject){
+          if (jobObject.external==='false') {
+            scope.showInternalJob();
+          }
+          else {
+            scope.showExternalJob(ev,jobObject);
+          }
         };
 
-        scope.showDetail=function(){
+        scope.showInternalJob=function(){
           element.addClass('visited');
           scope.showDetailContent=!scope.showDetailContent;
         };
+
+        scope.showExternalJob = function(ev,jobObject) {
+          $mdDialog.show({
+            controller: DialogController,
+            templateUrl: 'views/template/external-job-detail.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:true,
+            locals: {
+              language: $translate.use(),
+              jobDetail: jobObject
+            }
+          });
+        };
+
+        function DialogController($scope, $mdDialog, $sce, language, jobDetail) {
+          $scope.jobDetail=jobDetail;
+          $scope.language=language;
+
+          $scope.getExternalUrl=function(link){
+            return $sce.trustAsResourceUrl(link);
+          };
+
+          $scope.cancel = function() {
+            $mdDialog.cancel();
+          };
+        }
       }
     };
   }]);
 
-  module.directive('formAlert', ['$compile',function($compile){
+  module.directive('jdExternalDetail', ['$window',function($window){
     return {
       priority: 5,
-      restrict: 'A',
-      link: function(scope, element, attrs){
-        var trigger = attrs.formAlertTrigger || true;
-        var severity = attrs.alertSeverity || 'info';
-        var dismissable = attrs.alertDismissable || false;
-        var dismissableText = attrs.alertDismissableText || false;
-        var alert=angular.element('<alert ng-show="'+trigger+'" alert-severity="'+severity+'" alert-dismissable="'+dismissable+'"><strong translate="'+attrs.formAlert+'"></strong></alert>');
-        if (dismissableText){
-          alert.attr('alert-dismissable-text',dismissableText);
+      restrict: 'C',
+      link: function(scope, element){
+        var viewportWidth = $($window).width()*0.8;
+        var viewportHeight = $($window).height()*0.8;
+
+        if (viewportWidth>768 && viewportWidth<=1024){
+          viewportWidth=1024;
         }
-        alert.addClass('form-alert');
-        $compile(alert)(scope);
-        element.after(alert);
+        else if (viewportWidth>1024){
+          viewportWidth=1200;
+        }
+
+        element.css('height',viewportHeight);
+        element.css('width',viewportWidth);
       }
     };
   }]);

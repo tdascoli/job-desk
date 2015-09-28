@@ -3,7 +3,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('template/apprenticeship-detail.html',
     "<div layout=\"row\" layout-wrap layout-align=\"space-between start\" style=\"padding: 10px;\">\n" +
-    "  <div flex=\"80\" flex-sm=\"100\">\n" +
+    "  <div flex flex-sm=\"100\">\n" +
     "    <h4 class=\"strong\">{{getMultiLanguageText(apprenticeshipDetail._source.titleM)}}/{{getMultiLanguageText(apprenticeshipDetail._source.titleW)}} <span ng-if=\"apprenticeshipDetail._source.amount>1\" translate=\"apprenticeships.results.apprenticeshipAmount\" translate-values=\"{value: apprenticeshipDetail._source.amount}\"></span></h4>\n" +
     "\n" +
     "    <p ng-bind-html=\"getMultiLanguageText(apprenticeshipDetail._source.description)\"></p>\n" +
@@ -18,7 +18,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "    </div>\n" +
     "\n" +
     "  </div>\n" +
-    "  <div flex=\"15\" hide-sm>\n" +
+    "  <div flex=\"20\" hide-sm>\n" +
     "    <md-button><md-icon>print</md-icon>&nbsp;<span translate=\"apprenticeships.result.print\"></span></md-button>\n" +
     "  </div>\n" +
     "</div>\n" +
@@ -35,7 +35,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('template/education-detail.html',
     "<div layout=\"row\" layout-wrap layout-align=\"space-between start\" style=\"padding: 10px;\">\n" +
-    "  <div flex=\"80\" flex-sm=\"100\" ng-click=\"showDetail()\">\n" +
+    "  <div flex flex-sm=\"100\" ng-click=\"showDetail()\">\n" +
     "    <h4 class=\"strong\">{{educationDetail._source.title}}</h4>\n" +
     "    <strong><span translate=\"educations.result.location\"></span> {{educationDetail._source.location.zip}} {{educationDetail._source.location.name}}</strong>\n" +
     "    <div ng-show=\"!showDetailContent\">\n" +
@@ -88,7 +88,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "      </div>\n" +
     "    </div>\n" +
     "  </div>\n" +
-    "  <div flex=\"15\" hide-sm>\n" +
+    "  <div flex=\"20\" hide-sm>\n" +
     "    <md-button ng-click=\"showDetail()\">\n" +
     "      <span ng-show=\"!showDetailContent\">\n" +
     "        <md-icon>search</md-icon>&nbsp;<span translate=\"educations.result.showMore\"></span>\n" +
@@ -102,6 +102,29 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "  </div>\n" +
     "</div>\n" +
     "<md-divider></md-divider>\n"
+  );
+
+
+  $templateCache.put('template/external-job-detail.html',
+    "<md-dialog aria-label=\"{{jobDetail.title[language]}}\">\n" +
+    "  <form>\n" +
+    "    <md-toolbar>\n" +
+    "      <div class=\"md-toolbar-tools\">\n" +
+    "        <h2>{{jobDetail.title[language]}}</h2>\n" +
+    "        <span flex></span>\n" +
+    "        <md-button class=\"md-icon-button\" ng-click=\"cancel()\">\n" +
+    "          <md-icon aria-label=\"Close dialog\">close</md-icon>\n" +
+    "        </md-button>\n" +
+    "      </div>\n" +
+    "    </md-toolbar>\n" +
+    "    <iframe ng-src=\"{{getExternalUrl(jobDetail.url)}}\" class=\"jd-iframe jd-external-detail\"></iframe>\n" +
+    "    <div class=\"md-actions\" layout=\"row\">\n" +
+    "      <md-button ng-click=\"cancel()\" >\n" +
+    "        <span translate=\"jobs.result.showLess\"></span>\n" +
+    "      </md-button>\n" +
+    "    </div>\n" +
+    "  </form>\n" +
+    "</md-dialog>\n"
   );
 
 
@@ -129,83 +152,80 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('template/job-detail.html',
     "<div layout=\"row\" layout-wrap layout-align=\"space-between start\" style=\"padding: 10px;\">\n" +
-    "<div flex=\"80\" flex-sm=\"100\" ng-click=\"showDetail()\">\n" +
-    "    <h4 class=\"strong\">{{getMultiLanguageText(jobDetail._source.title)}}</h4>\n" +
+    "  <div flex flex-sm=\"100\" ng-click=\"showDetail($event,jobDetail._source)\">\n" +
+    "      <h4 class=\"strong\">{{getMultiLanguageText(jobDetail._source.title)}}</h4>\n" +
     "\n" +
-    "    <strong ng-show=\"jobDetail._source.onlineSince>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: jobDetail._source.onlineSince}\"></strong>\n" +
-    "    <strong ng-show=\"jobDetail._source.onlineSince===1\" translate=\"jobs.result.onlineSinceOneDay\"></strong>\n" +
-    "    /\n" +
-    "    <strong translate=\"jobs.result.workload\"></strong>\n" +
-    "    <strong ng-if=\"jobDetail._source.quotaFrom!==jobDetail._source.quotaTo\">{{jobDetail._source.quotaFrom}} - {{jobDetail._source.quotaTo}}%</strong>\n" +
-    "    <strong ng-if=\"jobDetail._source.quotaFrom===jobDetail._source.quotaTo\">{{jobDetail._source.quotaTo}}%</strong>\n" +
+    "      <strong ng-show=\"jobDetail._source.onlineSince>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: jobDetail._source.onlineSince}\"></strong>\n" +
+    "      <strong ng-show=\"jobDetail._source.onlineSince===1\" translate=\"jobs.result.onlineSinceOneDay\"></strong>\n" +
+    "      /\n" +
+    "      <strong translate=\"jobs.result.workload\"></strong>\n" +
+    "      <strong ng-if=\"jobDetail._source.quotaFrom!==jobDetail._source.quotaTo\">{{jobDetail._source.quotaFrom}} - {{jobDetail._source.quotaTo}}%</strong>\n" +
+    "      <strong ng-if=\"jobDetail._source.quotaFrom===jobDetail._source.quotaTo\">{{jobDetail._source.quotaTo}}%</strong>\n" +
     "\n" +
-    "    <p ng-show=\"!showDetailContent\" ng-text-truncate=\"getMultiLanguageText(jobDetail._source.description)\" ng-tt-words-threshold=\"20\" ng-tt-no-toggling></p>\n" +
+    "      <p ng-show=\"!showDetailContent\" ng-text-truncate=\"getMultiLanguageText(jobDetail._source.description)\" ng-tt-words-threshold=\"20\" ng-tt-no-toggling></p>\n" +
     "\n" +
+    "      <div ng-show=\"showDetailContent\">\n" +
+    "        <span ng-hide=\"jobDetail._source.external==='true'\">\n" +
+    "          <p ng-bind-html=\"getMultiLanguageText(jobDetail._source.description)\"></p>\n" +
+    "          <div layout=\"row\" layout-wrap layout-align=\"space-between start\">\n" +
+    "            <div flex=\"25\" flex-sm=\"100\">\n" +
+    "              <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong><br />\n" +
+    "              <span>{{getMultiLanguageText(jobDetail._source.locations.remarks)}}</span><br />\n" +
     "\n" +
-    "    <div ng-show=\"showDetailContent\">\n" +
-    "      <span ng-hide=\"jobDetail._source.external==='true'\">\n" +
-    "        <p ng-bind-html=\"getMultiLanguageText(jobDetail._source.description)\"></p>\n" +
-    "        <div layout=\"row\" layout-wrap layout-align=\"space-between start\">\n" +
-    "          <div flex=\"25\" flex-sm=\"100\">\n" +
-    "            <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong><br />\n" +
-    "            <span>{{getMultiLanguageText(jobDetail._source.locations.remarks)}}</span><br />\n" +
+    "              <strong class=\"fake-label\" translate=\"jobs.result.entryDate\"></strong><br />\n" +
+    "              <span ng-if=\"jobDetail._source.availableNow\" translate=\"jobs.result.availableNow\"></span>\n" +
+    "              <span ng-if=\"!jobDetail._source.availableNow && jobDetail._source.startDate\" translate=\"jobs.result.availableFromDate\" translate-values=\"{value: jobDetail._source.startDate}\"></span>\n" +
+    "              <span ng-if=\"!jobDetail._source.availableNow && !jobDetail._source.startDate\" translate=\"jobs.result.availableByAppointment\"></span>\n" +
+    "              <br />\n" +
     "\n" +
-    "            <strong class=\"fake-label\" translate=\"jobs.result.entryDate\"></strong><br />\n" +
-    "            <span ng-if=\"jobDetail._source.availableNow\" translate=\"jobs.result.availableNow\"></span>\n" +
-    "            <span ng-if=\"!jobDetail._source.availableNow && jobDetail._source.startDate\" translate=\"jobs.result.availableFromDate\" translate-values=\"{value: jobDetail._source.startDate}\"></span>\n" +
-    "            <span ng-if=\"!jobDetail._source.availableNow && !jobDetail._source.startDate\" translate=\"jobs.result.availableByAppointment\"></span>\n" +
-    "            <br />\n" +
+    "              <strong class=\"fake-label\" translate=\"jobs.result.contractDuration\"></strong><br />\n" +
+    "              <span ng-if=\"!jobDetail._source.permanentJob && jobDetail._source.endDate\" translate=\"untilDate\" translate-values=\"{value: jobDetail._source.endDate}\"></span>\n" +
+    "              <span ng-if=\"!jobDetail._source.permanentJob && !jobDetail._source.endDate\" translate=\"jobs.result.nonPermanent\"></span>\n" +
+    "              <span ng-if=\"jobDetail._source.permanentJob\" translate=\"jobs.result.permanent\"></span>\n" +
+    "            </div>\n" +
     "\n" +
-    "            <strong class=\"fake-label\" translate=\"jobs.result.contractDuration\"></strong><br />\n" +
-    "            <span ng-if=\"!jobDetail._source.permanentJob && jobDetail._source.endDate\" translate=\"untilDate\" translate-values=\"{value: jobDetail._source.endDate}\"></span>\n" +
-    "            <span ng-if=\"!jobDetail._source.permanentJob && !jobDetail._source.endDate\" translate=\"jobs.result.nonPermanent\"></span>\n" +
-    "            <span ng-if=\"jobDetail._source.permanentJob\" translate=\"jobs.result.permanent\"></span>\n" +
-    "          </div>\n" +
+    "            <!-- Sprachen -->\n" +
+    "            <div flex=\"25\" flex-sm=\"100\">\n" +
+    "              <div ng-repeat=\"language in jobDetail._source.languages\" ng-show=\"language.languageCode\">\n" +
+    "                <strong class=\"fake-label\" translate=\"language.jobs.{{language.languageCode}}\"></strong><br />\n" +
+    "                (<span translate=\"jobs.result.spoken\"></span>: <span translate=\"global.codes.languages.skills.{{language.spokenCode}}\"></span> / <span translate=\"jobs.result.written\"></span>: <span translate=\"global.codes.languages.skills.{{language.writtenCode}}\"></span>)\n" +
+    "              </div>\n" +
+    "            </div>\n" +
     "\n" +
-    "          <!-- Sprachen -->\n" +
-    "          <div flex=\"25\" flex-sm=\"100\">\n" +
-    "            <div ng-repeat=\"language in jobDetail._source.languages\" ng-show=\"language.languageCode\">\n" +
-    "              <strong class=\"fake-label\" translate=\"language.jobs.{{language.languageCode}}\"></strong><br />\n" +
-    "              (<span translate=\"jobs.result.spoken\"></span>: <span translate=\"global.codes.languages.skills.{{language.spokenCode}}\"></span> / <span translate=\"jobs.result.written\"></span>: <span translate=\"global.codes.languages.skills.{{language.writtenCode}}\"></span>)\n" +
+    "            <!-- Bewerbung -->\n" +
+    "            <div flex=\"25\" flex-sm=\"100\">\n" +
+    "              <div ng-if=\"jobDetail._source.application.written\">\n" +
+    "                <strong class=\"fake-label\" translate=\"jobs.result.titleWrittenApplication\"></strong><br />\n" +
+    "                <span translate=\"jobs.result.letterApplication\"></span>\n" +
+    "              </div>\n" +
+    "              <div ng-if=\"jobDetail._source.application.electronical\">\n" +
+    "                <strong class=\"fake-label\" translate=\"jobs.result.titleElectronicApplication\"></strong><br />\n" +
+    "                <span>{{jobDetail._source.contact.eMail}} <span ng-if=\"jobDetail._source.company.url\">/ {{jobDetail._source.company.url}}</span></span>\n" +
+    "              </div>\n" +
+    "              <div ng-if=\"jobDetail._source.application.phone\">\n" +
+    "                <strong class=\"fake-label\" translate=\"jobs.result.titlePhoneApplication\"></strong><br />\n" +
+    "                <span>{{jobDetail._source.contact.phone}}</span>\n" +
+    "              </div>\n" +
+    "            </div>\n" +
+    "            <div flex=\"25\" flex-sm=\"100\">\n" +
+    "              <strong>{{jobDetail._source.company.name}}</strong><br />\n" +
+    "              <span>{{jobDetail._source.company.address.street}}</span><br />\n" +
+    "              <span>{{jobDetail._source.company.address.zip}} {{jobDetail._source.company.address.location}}</span><br />\n" +
+    "              <span ng-if=\"jobDetail._source.company.poAddress.poBox\"><br /><span translate=\"jobs.result.poBox\" translate-values=\"{value: jobDetail._source.company.poAddress.poBox}\"></span><br /></span>\n" +
+    "              <span ng-if=\"jobDetail._source.company.poAddress.poBox\">{{jobDetail._source.company.poAddress.zip}} {{jobDetail._source.company.poAddress.location}}</span>\n" +
+    "\n" +
+    "              <br />\n" +
+    "              <strong><span translate=\"global.codes.salutations.{{jobDetail._source.contact.gender}}\"></span> {{jobDetail._source.contact.firstName}} {{jobDetail._source.contact.lastName}}</strong><br />\n" +
+    "              <span ng-if=\"jobDetail._source.contact.phone\">{{jobDetail._source.contact.phone}}<br /></span>\n" +
+    "              <span ng-if=\"jobDetail._source.contact.eMail\">{{jobDetail._source.contact.eMail}}</span>\n" +
     "            </div>\n" +
     "          </div>\n" +
+    "        </span>\n" +
+    "      </div>\n" +
     "\n" +
-    "          <!-- Bewerbung -->\n" +
-    "          <div flex=\"25\" flex-sm=\"100\">\n" +
-    "            <div ng-if=\"jobDetail._source.application.written\">\n" +
-    "              <strong class=\"fake-label\" translate=\"jobs.result.titleWrittenApplication\"></strong><br />\n" +
-    "              <span translate=\"jobs.result.letterApplication\"></span>\n" +
-    "            </div>\n" +
-    "            <div ng-if=\"jobDetail._source.application.electronical\">\n" +
-    "              <strong class=\"fake-label\" translate=\"jobs.result.titleElectronicApplication\"></strong><br />\n" +
-    "              <span>{{jobDetail._source.contact.eMail}} <span ng-if=\"jobDetail._source.company.url\">/ {{jobDetail._source.company.url}}</span></span>\n" +
-    "            </div>\n" +
-    "            <div ng-if=\"jobDetail._source.application.phone\">\n" +
-    "              <strong class=\"fake-label\" translate=\"jobs.result.titlePhoneApplication\"></strong><br />\n" +
-    "              <span>{{jobDetail._source.contact.phone}}</span>\n" +
-    "            </div>\n" +
-    "          </div>\n" +
-    "          <div flex=\"25\" flex-sm=\"100\">\n" +
-    "            <strong>{{jobDetail._source.company.name}}</strong><br />\n" +
-    "            <span>{{jobDetail._source.company.address.street}}</span><br />\n" +
-    "            <span>{{jobDetail._source.company.address.zip}} {{jobDetail._source.company.address.location}}</span><br />\n" +
-    "            <span ng-if=\"jobDetail._source.company.poAddress.poBox\"><br /><span translate=\"jobs.result.poBox\" translate-values=\"{value: jobDetail._source.company.poAddress.poBox}\"></span><br /></span>\n" +
-    "            <span ng-if=\"jobDetail._source.company.poAddress.poBox\">{{jobDetail._source.company.poAddress.zip}} {{jobDetail._source.company.poAddress.location}}</span>\n" +
-    "\n" +
-    "            <br />\n" +
-    "            <strong><span translate=\"global.codes.salutations.{{jobDetail._source.contact.gender}}\"></span> {{jobDetail._source.contact.firstName}} {{jobDetail._source.contact.lastName}}</strong><br />\n" +
-    "            <span ng-if=\"jobDetail._source.contact.phone\">{{jobDetail._source.contact.phone}}<br /></span>\n" +
-    "            <span ng-if=\"jobDetail._source.contact.eMail\">{{jobDetail._source.contact.eMail}}</span>\n" +
-    "          </div>\n" +
-    "        </div>\n" +
-    "      </span>\n" +
-    "\n" +
-    "      <strong ng-show=\"jobDetail._source.external==='true'\">{{jobDetail._source.url}}</strong>\n" +
     "    </div>\n" +
-    "\n" +
-    "  </div>\n" +
-    "  <div flex=\"15\" hide-sm>\n" +
-    "    <md-button ng-click=\"showDetail()\">\n" +
+    "  <div flex=\"20\" hide-sm>\n" +
+    "    <md-button ng-click=\"showDetail($event,jobDetail._source)\">\n" +
     "      <span ng-show=\"!showDetailContent\">\n" +
     "        <md-icon>search</md-icon>&nbsp;<span translate=\"jobs.result.showMore\"></span>\n" +
     "      </span>\n" +

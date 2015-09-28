@@ -2,6 +2,8 @@
   "educations": {
     "search": {
       "educationGroup":"Was (Kursart)",
+      "allSubGroups":"Alle Untergruppen",
+      "disableGroup":"Andere Kursart",
       "location":"Wo (PLZ)",
       "distance":"Distanz {{value}} km",
       "travelTime":"Reisedauer {{value}} h",

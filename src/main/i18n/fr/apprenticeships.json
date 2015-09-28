@@ -3,7 +3,7 @@
     "search": {
       "swissdocGroup":"Quoi (catégorie professionnelle)",
       "allSubGroups":"[FR] Alle Untergruppen",
-      "disableGroup":"[FR] Andere Berufsgruppe",
+      "disableGroup":"[FR] Andere Kursart",
       "location":"Où (NPA)",
       "distance":"Distance {{value}} km",
       "travelTime":"Durée du trajet {{value}} h",

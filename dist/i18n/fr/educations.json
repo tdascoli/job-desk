@@ -2,6 +2,8 @@
   "educations": {
     "search": {
       "educationGroup":"Quoi (genre de cours)",
+      "allSubGroups":"[FR] Alle Untergruppen",
+      "disableGroup":"[FR] Andere Berufsgruppe",
       "location":"Où (NPA)",
       "distance":"Distance {{value}} km",
       "travelTime":"Durée du trajet {{value}} h",
