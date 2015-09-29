@@ -271,7 +271,7 @@ md-input-container.md-slider-has-label label {
   height: 5em;
   max-height: 7em;
   margin-top: 1em;
-  width: calc(100% - 26px);
+  width: calc(100% - 16px);
   position: fixed;
   background-color: #fff;
   z-index: 10;

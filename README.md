@@ -41,5 +41,6 @@ http://www.arrlee.ch
 * Printer Spec for pilot (Star TSP700II): http://www.starmicronics.com/printer/thermal_printers/tsp700ii
 
 #AngularJS-PDF
+(wip using the internal rendering engine, cause of cross-site scripting error)
 * angularjs-pdf: https://github.com/sayanee/angularjs-pdf
 
