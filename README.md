@@ -34,3 +34,8 @@ https://material.angularjs.org
 # Arrlee
 http://www.arrlee.ch
 
+#webPRNT
+* Sample Program: http://www.starmicronics.com/support/mannualfolder/en/_sampleprogram.htm
+* Homepage: http://www.webprnt.com/webPRNT/
+* Printer Spec for pilot (Star TSP700II): http://www.starmicronics.com/printer/thermal_printers/tsp700ii
+

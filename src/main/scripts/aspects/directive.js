@@ -114,37 +114,40 @@
 
           var map = svg.append('g');
 
-          d3.json('assets/topojson/ch-contours.json', function (error, topology) {
-            contour = map.append('svg')
-              .attr('id', 'contours')
-              .selectAll('.contour')
-              .data(topojson.feature(topology, topology.objects.contours).features)
-              .enter().append('path')
-              .attr('class', 'contour')
-              .attr('d', path)
-              .style('fill', function (d) {
-                return color(d.id);
-              });
-          });
+            d3.json('assets/topojson/ch-contours.json', function (error, topology) {
+              contour = map.append('svg')
+                .attr('id', 'contours')
+                .selectAll('.contour')
+                .data(topojson.feature(topology, topology.objects.contours).features)
+                .enter().append('path')
+                .attr('class', 'contour')
+                .attr('d', path)
+                .style('fill', function (d) {
+                  return color(d.id);
+                });
+            });
 
-          d3.json('assets/topojson/ch.json', function (error, ch) {
-            map.append('svg')
-              .attr('id', 'cantons')
-              .selectAll('path')
-              .data(topojson.feature(ch, ch.objects.cantons).features)
-              .enter().append('path')
-              .attr('class', 'canton-boundaries')
-              .attr('id', function (d) {
-                return d.properties.abbr;
-              })
-              .attr('d', path);
 
-            map.append('path')
-              .attr('id', 'lakes')
-              .datum(topojson.mesh(ch, ch.objects.lakes))
-              .attr('class', 'lakes')
-              .attr('d', path);
-          });
+            d3.json('assets/topojson/ch.json', function (error, ch) {
+              map.append('svg')
+                .attr('id', 'cantons')
+                .selectAll('path')
+                .data(topojson.feature(ch, ch.objects.cantons).features)
+                .enter().append('path')
+                .attr('class', 'canton-boundaries')
+                .attr('id', function (d) {
+                  return d.properties.abbr;
+                })
+                .attr('d', path);
+
+              map.append('path')
+                .attr('id', 'lakes')
+                .datum(topojson.mesh(ch, ch.objects.lakes))
+                .attr('class', 'lakes')
+                .attr('d', path);
+
+              setCities();
+            });
 
           function setMyLocation() {
             $rootScope.$watch('myCoords', function () {
@@ -157,49 +160,53 @@
                     cy: xy[1],
                     r: 3
                   }).attr('class', classLocation).attr('id', classLocation);
-                setUmkreisInternal(false);
+                setUmkreisInternal();
               }
             });
           }
 
-          function setUmkreisInternal(location) {
+          function setCurrentLocation(location){
+            $('.current-location').remove();
+
+            svg.append('circle')
+              .attr({
+                cx: location[0],
+                cy: location[1],
+                r: 3
+              }).attr('class', 'current-location');
+
+            svg.append("svg:image")
+              .attr('class','current-location')
+              .attr('width', 20)
+              .attr('height', 20)
+              .attr("xlink:href","/assets/images/map-marker-icon.png")
+              .attr("transform", "translate(" + location + ")")
+              .attr("x", -10).attr("y", -20);
+          }
+
+          function setUmkreisInternal() {
             if (scope.searchParams.currentCoords !== undefined) {
               $('#heatmap').remove();
-
-              // remove circle from dom
               $('#current-radius').remove();
-              $('#current-location').remove();
-              // remove radius from current location
               $('#my-radius').remove();
 
-              var classLocation = 'current-location';
-              var classRadius = 'current-radius';
-              var radiusLocation = 2;
-              if (location) {
-                classLocation = 'my-location';
-                classRadius = 'my-radius';
-                radiusLocation = 3;
-              }
-
               var xy = projection([scope.searchParams.currentCoords.lon, scope.searchParams.currentCoords.lat]);
-
-              svg.append('circle')
-                .attr({
-                  cx: xy[0],
-                  cy: xy[1],
-                  r: radiusLocation
-                }).attr('class', classLocation).attr('id', classLocation);
-
+              // Set Umkreis
               if (scope.searchParams.distanceType==='distance') {
                 svg.append('circle')
                   .attr({
                     cx: xy[0],
                     cy: xy[1],
                     r: (scope.searchParams.distance/kmPerPixel)
-                  }).attr('class', 'radius').attr('id', classRadius);
+                  }).attr('class', 'radius').attr('id', 'current-radius');
               }
+
+              // Set Marker
+              setCurrentLocation(xy);
             }
           }
+
+
 
           function setCities() {
             // remove circle from dom
@@ -207,21 +214,30 @@
             $('.city-text').remove();
 
             d3.json('assets/topojson/cities.json', function (cities) {
-              for (var i = 0; i < cities.length; i++) {
-                var coordinates = projection(cities[i].geometry.coordinates);
-                svg.append('svg:circle')
-                  .attr('cx', coordinates[0])
-                  .attr('cy', coordinates[1])
-                  .attr('r', 3)
-                  .attr('class', 'city-boundaries')
-                  .text(cities[i].properties.name);
+              var cityMap = map.append('svg')
+                .attr('id', 'cities');
 
-                svg.append('text')
-                  .attr('transform', 'translate(' + projection(cities[i].geometry.coordinates) + ')')
+
+              cityMap.selectAll('g')
+                .data(cities.geometries)
+                .enter().append('svg:circle')
+                .attr('transform', function(d) {
+                  return 'translate(' + projection(d.coordinates) + ')';
+                })
+                .attr('r', 3)
+                .attr('class', 'city-boundaries');
+
+              cityMap.selectAll('g')
+                .data(cities.geometries)
+                .enter().append('text')
+                  .attr('transform', function(d) {
+                    return 'translate(' + projection(d.coordinates) + ')';
+                  })
                   .attr('dy', '1.25em')
                   .attr('class', 'city-text')
-                  .text(cities[i].properties.name);
-              }
+                  .text(function (d) {
+                    return d.properties.name;
+                  });
             });
           }
 
@@ -250,14 +266,15 @@
               .style('height', height + 'px');
 
             // resize the map
-            svg.selectAll('.canton-boundaries').attr('d', path);
             svg.selectAll('.contour').attr('d', path);
+            svg.selectAll('.canton-boundaries').attr('d', path);
             svg.selectAll('.lakes').attr('d', path);
             svg.selectAll('.heatmap').attr('d', path);
 
+            svg.selectAll('.city-boundaries').attr('d', path);
+            svg.selectAll('.city-text').attr('d', path);
 
             $('.my-location').remove();
-            setCities();
             setMyLocation();
           }
 
@@ -378,12 +395,12 @@
           });
 
           scope.$watch('searchParams.currentCoords', function () {
-              setUmkreisInternal(false);
+              setUmkreisInternal();
           });
 
           scope.$watch('searchParams.distanceType', function (newValue, oldValue) {
             if (newValue!==oldValue && scope.searchParams.distanceType==='distance') {
-              setUmkreisInternal(false);
+              setUmkreisInternal();
             }
           });
         });

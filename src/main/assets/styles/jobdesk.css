@@ -104,6 +104,7 @@ body {
   fill: #ffffff;
   stroke: #000000;
   stroke-width: 1.5;
+  z-index: 1900;
 }
 .lakes {
   fill: #c6ecff;
@@ -114,14 +115,20 @@ body {
   fill: #ff0000;
   stroke: #000000;
   stroke-width: 1.5;
+  z-index: 2000;
 }
 .current-location {
-  fill: #ff0000;
+  fill: transparent;
+  stroke: #000000;
+  stroke-width: 1;
+  z-index: 2000;
 }
 text {
   font-size: 12px;
   font-weight: 700;
   pointer-events: none;
+  opacity: 0.66;
+  z-index: 2100;
 }
 @media (max-width: 599px) {
   text {

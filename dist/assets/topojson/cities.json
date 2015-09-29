@@ -1,160 +1,120 @@
-[{
-  "type": "Feature",
-  "geometry": {
-    "type": "Point",
-    "coordinates": [7.461928,46.953525]
-  },
-  "properties": {
-    "name": "Bern"
-  }
-},
 {
-  "type": "Feature",
-  "geometry": {
-    "type": "Point",
-    "coordinates": [8.541336,47.372047]
-  },
-  "properties": {
-    "name": "Zürich"
-  }
-},
-  {
-    "type": "Feature",
-    "geometry": {
+  "type": "GeometryCollection",
+  "geometries": [
+    {
       "type": "Point",
-      "coordinates": [6.146619,46.210286]
+      "coordinates": [7.461928,46.953525],
+      "properties": {
+        "name": "Bern"
+      }
     },
-    "properties": {
-      "name": "Géneve"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
+    {
       "type": "Point",
-      "coordinates": [7.588872,47.556361]
+      "coordinates": [
+        8.541336,
+        47.372047
+      ],
+      "properties": {
+        "name": "Zürich"
+      }
     },
-    "properties": {
-      "name": "Basel"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
+    {
       "type": "Point",
-      "coordinates": [6.642517,46.519858]
+      "coordinates": [6.146619,46.210286],
+      "properties": {
+        "name": "Géneve"
+      }
     },
-    "properties": {
-      "name": "Lausanne"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
+    {
       "type": "Point",
-      "coordinates": [8.297008,47.050058]
+      "coordinates": [7.588872,47.556361],
+      "properties": {
+        "name": "Basel"
+      }
     },
-    "properties": {
-      "name": "Luzern"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
+    {
       "type": "Point",
-      "coordinates": [9.362217,47.423642]
+      "coordinates": [6.642517,46.519858],
+      "properties": {
+        "name": "Lausanne"
+      }
     },
-    "properties": {
-      "name": "St. Gallen"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
+    {
       "type": "Point",
-      "coordinates": [9.024150,46.196967]
+      "coordinates": [8.297008,47.050058],
+      "properties": {
+        "name": "Luzern"
+      }
     },
-    "properties": {
-      "name": "Bellinzona"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
+    {
       "type": "Point",
-      "coordinates": [7.162800,46.806186]
+      "coordinates": [9.362217,47.423642],
+      "properties": {
+        "name": "St. Gallen"
+      }
     },
-    "properties": {
-      "name": "Fribourg"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
+    {
       "type": "Point",
-      "coordinates": [8.636278,47.696517]
+      "coordinates": [9.024150,46.196967],
+      "properties": {
+        "name": "Bellinzona"
+      }
     },
-    "properties": {
-      "name": "Schaffhausen"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
+    {
       "type": "Point",
-      "coordinates": [9.532789,46.848175]
+      "coordinates": [7.162800,46.806186],
+      "properties": {
+        "name": "Fribourg"
+      }
     },
-    "properties": {
-      "name": "Chur"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
+    {
       "type": "Point",
-      "coordinates": [6.926369,46.992044]
+      "coordinates": [8.636278,47.696517],
+      "properties": {
+        "name": "Schaffhausen"
+      }
     },
-    "properties": {
-      "name": "Neuchâtel"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
+    {
       "type": "Point",
-      "coordinates": [7.356742,46.229539]
+      "coordinates": [9.532789,46.848175],
+      "properties": {
+        "name": "Chur"
+      }
     },
-    "properties": {
-      "name": "Sion"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
+    {
       "type": "Point",
-      "coordinates": [8.046036,47.395886]
+      "coordinates": [6.926369,46.992044],
+      "properties": {
+        "name": "Neuchâtel"
+      }
     },
-    "properties": {
-      "name": "Aarau"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
+    {
       "type": "Point",
-      "coordinates": [7.631258,46.758742]
+      "coordinates": [7.356742,46.229539],
+      "properties": {
+        "name": "Sion"
+      }
     },
-    "properties": {
-      "name": "Thun"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
+    {
       "type": "Point",
-      "coordinates": [7.996536,46.316478]
+      "coordinates": [8.046036,47.395886],
+      "properties": {
+        "name": "Aarau"
+      }
     },
-    "properties": {
-      "name": "Brig"
+    {
+      "type": "Point",
+      "coordinates": [7.631258,46.758742],
+      "properties": {
+        "name": "Thun"
+      }
+    },
+    {
+      "type": "Point",
+      "coordinates": [7.996536,46.316478],
+      "properties": {
+        "name": "Brig"
+      }
     }
-  }]
+  ]
+}

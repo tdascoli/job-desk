@@ -18,7 +18,8 @@
     'alv-ch-ng.security',
     'alv-ch-ng.text-truncate',
     'job-desk.i18n',
-    'job-desk.directive'
+    'job-desk.directive',
+    'pdf'
   ]);
 
   app.config(['$httpProvider', function($httpProvider) {

@@ -124,6 +124,7 @@ body {
   fill: @topo-city-boundaries-fill;
   stroke: @topo-city-boundaries-stroke;
   stroke-width: 1.5;
+  z-index: 1900;
 }
 .lakes {
   fill: @topo-lakes-fill;
@@ -134,14 +135,20 @@ body {
   fill: @map-my-location-fill;
   stroke: @map-my-location-stroke;
   stroke-width: 1.5;
+  z-index: 2000;
 }
 .current-location {
-  fill: @map-current-location-fill;
+  fill: transparent;
+  stroke: @map-current-location-fill;
+  stroke-width: 1;
+  z-index: 2000;
 }
 text {
   font-size: 12px;
   font-weight: 700;
   pointer-events: none;
+  opacity: 0.66;
+  z-index: 2100;
 }
 @media (max-width: 599px) {
   text {
