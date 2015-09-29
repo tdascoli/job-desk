@@ -21,7 +21,8 @@ http://geojson.org/
 * JavaScript from: http://stackoverflow.com/questions/27928/how-do-i-calculate-distance-between-two-latitude-longitude-points
 
 # PLZ and Coordinates
-http://www.cadastre.ch/internet/kataster/de/home/services/service/plz.html Choose 'CSV (Excel) WGS84'
+* Cadastre.ch - PLZ/Coordinates (Choose 'CSV (Excel) WGS84'): http://www.cadastre.ch/internet/kataster/de/home/services/service/plz.html
+* Räumliche Topologien (bfs.admin.ch > Regional > Statistische Grundlagen > Räumliche Gliederungen > Räumliche Topologien): http://www.bfs.admin.ch/bfs/portal/de/index/regionen/11/geo/raeumliche_typologien/00.html
 
 # Angular Material
 https://material.angularjs.org
@@ -38,4 +39,7 @@ http://www.arrlee.ch
 * Sample Program: http://www.starmicronics.com/support/mannualfolder/en/_sampleprogram.htm
 * Homepage: http://www.webprnt.com/webPRNT/
 * Printer Spec for pilot (Star TSP700II): http://www.starmicronics.com/printer/thermal_printers/tsp700ii
+
+#AngularJS-PDF
+* angularjs-pdf: https://github.com/sayanee/angularjs-pdf
 
