@@ -45,5 +45,5 @@ http://www.arrlee.ch
 * angularjs-pdf: https://github.com/sayanee/angularjs-pdf
 
 #AngularPrint
-Simplify printing only sepcific elements of the page
+Simplify printing only specific elements of the page
 * https://github.com/samwiseduzer/angularPrint
