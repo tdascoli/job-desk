@@ -44,3 +44,6 @@ http://www.arrlee.ch
 (wip using the internal rendering engine, cause of cross-site scripting error)
 * angularjs-pdf: https://github.com/sayanee/angularjs-pdf
 
+#AngularPrint
+Simplify printing only sepcific elements of the page
+* https://github.com/samwiseduzer/angularPrint
