@@ -47,6 +47,7 @@ body {
   height: calc(33% - 64px);
   vertical-align: top;
   width: auto;
+  padding-bottom: 10px;
 }
 .category img {
   height: 200px;

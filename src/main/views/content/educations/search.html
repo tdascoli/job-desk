@@ -1,10 +1,10 @@
-<div id="filter" layout="row" layout-wrap layout-margin layout-align="start center" class="jd-floating-toolbar jd-floating-toolbar-fill-sm" ng-class="{'md-whiteframe-z2':!mobile}">
+<div id="filter" layout="row" layout-wrap layout-margin layout-padding layout-align="start center" class="jd-floating-toolbar jd-floating-toolbar-fill-sm" ng-class="{'md-whiteframe-z2':!mobile}">
 
-  <div flex="15" flex-sm="90">
+  <div flex="15" flex-sm="100">
       <strong translate="educations.search.foundJobs" translate-values="{value: count}"></strong>
   </div>
 
-  <div flex="25" flex-sm="90" class="form-block">
+  <div flex="25" flex-sm="100" class="form-block">
     <md-input-container ng-if="!searchParams.swissdocMajorGroup">
       <label><span translate="educations.search.educationGroup"></span></label>
 
@@ -25,7 +25,7 @@
 
   </div>
 
-  <div flex="15" flex-sm="90" layout="row" layout-align="start center">
+  <div flex="15" flex-sm="100" layout="row" layout-align="start center">
     <md-button class="md-icon-button jd-icon-button" ng-click="setMyLocation()">
       <md-icon>my_location</md-icon>
     </md-button>
@@ -46,14 +46,14 @@
     </form>
   </div>
 
-  <div flex="10" flex-sm="40">
+  <div flex="15" flex-sm="50">
     <md-radio-group ng-model="searchParams.distanceType" ng-change="countJobs()">
       <md-radio-button value="distance"><span translate="educations.search.distanceTypeDistance"></span></md-radio-button>
       <md-radio-button value="travelTime"><span translate="educations.search.distanceTypeTravelTime"></span></md-radio-button>
     </md-radio-group>
   </div>
 
-  <div flex="10" flex-sm="40">
+  <div flex="15" flex-sm="50">
     <md-input-container flex class="md-slider-has-label" ng-if="searchParams.distanceType==='distance'">
       <label translate="educations.search.distance" translate-values="{value:searchParams.distance}"></label>
       <md-slider ng-model="searchParams.distance" step="{{distanceOptions.step}}" min="{{distanceOptions.min}}"
@@ -67,7 +67,7 @@
     </md-input-container>
   </div>
 
-  <div flex="10" flex-sm="60" class="form-block">
+  <div flex="15" flex-sm="100" class="form-block">
     <md-input-container class="md-select-has-label">
       <label translate="educations.search.language"></label>
 
