@@ -236,11 +236,6 @@
       $scope.sortResultList = function () {
         $rootScope.jobs = orderBy($rootScope.jobs, $scope.sortList[$scope.sort].code.field, $scope.sortList[$scope.sort].code.order);
       };
-
-      // SSI Tastatur
-      $scope.ssiKeyPrint = function () {
-        alert('print?');
-      };
     });
 
 

@@ -223,12 +223,6 @@
       $scope.resetSearchParams=function(){
         return ApprenticeshipsService.resetSearchParams();
       };
-
-      // SSI Tastatur
-      $scope.ssiKeyPrint=function(){
-        alert('print?');
-      };
-
     });
 
 

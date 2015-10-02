@@ -175,13 +175,13 @@
                 r: 2
               }).attr('class', 'current-location');
 
-            svg.append("svg:image")
+            svg.append('svg:image')
               .attr('class','current-location')
               .attr('width', 20)
               .attr('height', 20)
-              .attr("xlink:href","/assets/images/map-marker-icon.png")
-              .attr("transform", "translate(" + location + ")")
-              .attr("x", -10).attr("y", -20);
+              .attr('xlink:href','/assets/images/map-marker-icon.png')
+              .attr('transform', 'translate(' + location + ')')
+              .attr('x', -10).attr('y', -20);
           }
 
           function setUmkreisInternal() {
@@ -242,15 +242,15 @@
           function getMunicipalitiesFromCoords(municipalityMap){
             MunicipalitiesService.getMunicipalities(scope.searchParams.currentCoords,scope.searchParams.distance).success(function(result){
               var geoJSON = {
-                'type': 'GeometryCollection',
-                'geometries': []
+                type: 'GeometryCollection',
+                geometries: []
               };
               angular.forEach(result.hits.hits, function (municipality) {
                 var point={
-                  "type": "Point",
-                  "coordinates": [municipality._source.locations.geoLocation[0].coords.lon,municipality._source.locations.geoLocation[0].coords.lat],
-                  "properties": {
-                    "name": municipality._source.name
+                  type: 'Point',
+                  coordinates: [municipality._source.locations.geoLocation[0].coords.lon,municipality._source.locations.geoLocation[0].coords.lat],
+                  properties: {
+                    name: municipality._source.name
                   }
                 };
 
@@ -269,15 +269,15 @@
           function getMunicipalitiesFromZips(municipalityMap){
             MunicipalitiesService.getMunicipalitiesFromZips(scope.searchParams.zips).success(function(result){
               var geoJSON = {
-                'type': 'GeometryCollection',
-                'geometries': []
+                type: 'GeometryCollection',
+                geometries: []
               };
               angular.forEach(result.hits.hits, function (municipality) {
                 var point={
-                  "type": "Point",
-                  "coordinates": [municipality._source.locations.geoLocation[0].coords.lon,municipality._source.locations.geoLocation[0].coords.lat],
-                  "properties": {
-                    "name": municipality._source.name
+                  type: 'Point',
+                  coordinates: [municipality._source.locations.geoLocation[0].coords.lon,municipality._source.locations.geoLocation[0].coords.lat],
+                  properties: {
+                    name: municipality._source.name
                   }
                 };
 

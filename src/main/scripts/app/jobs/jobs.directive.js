@@ -17,7 +17,7 @@
     };
   });
 
-  module.directive('jobDetail', ['$translate','$sce','$mdDialog', '$window', function($translate,$sce,$mdDialog,$window){
+  module.directive('jobDetail', ['$translate','$sce','$mdDialog', function($translate,$sce,$mdDialog){
     return {
       priority: 10,
       restrict: 'A',
