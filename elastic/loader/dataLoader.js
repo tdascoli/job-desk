@@ -8,6 +8,7 @@
   var objectMapper = require("./objectMapper.js");
   var client = new elasticsearch.Client({
     host: 'localhost:9200/',
+    //host: 'http://jobdesk.job-room.ch/jobdesk',
     log: 'error'
   });
 

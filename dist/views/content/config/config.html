@@ -33,13 +33,21 @@
     <md-checkbox ng-model="config.educations" aria-label="Weiterbildungsangebote" flex="33">
       Weiterbildungsangebote
     </md-checkbox>
+
     <md-checkbox ng-model="config.apprenticeships" aria-label="Lehrstellen" flex="33">
       Lehrstellen
+    </md-checkbox>
+
+    <strong class="md-title" flex="100">Suchkriterien</strong>
+
+    <md-checkbox ng-model="config.showMunicipalities" aria-label="Gemeinden" flex="33">
+      Benachbarte Gemeinde anzeigen (innerhalb des Suchradius)
     </md-checkbox>
 
     <div flex="100">
       <md-button class="md-raised md-primary" ng-click="saveConfig()">save</md-button>
       <md-button class="md-raised" ng-click="receiveCoords()">lookup</md-button>
+      <md-button class="md-raised md-warn" ng-click="resetCoords()">reset</md-button>
     </div>
 
   </form>

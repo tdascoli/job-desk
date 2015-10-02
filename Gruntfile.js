@@ -192,7 +192,8 @@ module.exports = function (grunt) {
           ieCompat: true
         },
         files: {
-          'src/main/assets/styles/jobdesk.css': ['src/main/assets/less/main.less']
+          'src/main/assets/styles/jobdesk.css': ['src/main/assets/less/main.less'],
+          'src/main/assets/styles/material-icons.css': ['src/main/assets/less/material-design-iconfont.less']
         }
       }
     },
@@ -309,6 +310,14 @@ module.exports = function (grunt) {
             dest: '<%= yeoman.dist %>/assets/topojson',
             src: [
               '*.json'
+            ]
+          },
+          {
+            expand: true,
+            cwd: 'src/main/assets/fonts',
+            dest: '<%= yeoman.dist %>/assets/fonts',
+            src: [
+              '*'
             ]
           }
         ]
@@ -436,7 +445,7 @@ module.exports = function (grunt) {
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://jobdesk.job-room.ch/jobdesk',
           arrleeUrl: 'http://jobdesk.job-room.ch/arrlee',
-          supportedLanguages: ['de', 'fr']
+          supportedLanguages: ['de', 'fr','en']
         }
       },
       i18n: {

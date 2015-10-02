@@ -1,10 +1,10 @@
-<div id="filter" layout="row" layout-wrap layout-margin layout-align="start center" class="jd-floating-toolbar jd-floating-toolbar-fill-sm" ng-class="{'md-whiteframe-z2':!mobile}">
+<div id="filter" layout="row" layout-wrap layout-margin layout-padding layout-align="start center" class="jd-floating-toolbar jd-floating-toolbar-fill-sm" ng-class="{'md-whiteframe-z2':!mobile}">
 
-  <div flex="15" flex-sm="90">
+  <div flex="15" flex-sm="100">
       <strong translate="jobs.search.foundJobs" translate-values="{value: count}"></strong><img ng-if="idle" alt="idle" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
   </div>
 
-  <div flex="25" flex-sm="90" class="form-block">
+  <div flex="25" flex-sm="100" class="form-block">
     <md-input-container ng-if="!searchParams.iscoMajorGroup">
       <label><span translate="jobs.search.jobgroup"></span></label>
       <md-select ng-model="searchParams.iscoMajorGroup" ng-change="countJobs()">
@@ -24,7 +24,7 @@
 
   </div>
 
-  <div flex="15" flex-sm="90" layout="row" layout-align="start center">
+  <div flex="15" flex-sm="100" layout="row" layout-align="start center">
     <!-- todo when gps is turned off, hide -->
     <md-button class="md-icon-button jd-icon-button" ng-click="setMyLocation()">
       <md-icon>my_location</md-icon>
@@ -46,14 +46,14 @@
     </form>
   </div>
 
-  <div flex="15" flex-sm="40">
+  <div flex="15" flex-sm="50">
     <md-radio-group ng-model="searchParams.distanceType" ng-change="countJobs()">
       <md-radio-button value="distance" class="md-primary"><span translate="jobs.search.distanceTypeDistance"></span></md-radio-button>
       <md-radio-button value="travelTime" class="md-primary"><span translate="jobs.search.distanceTypeTravelTime"></span></md-radio-button>
     </md-radio-group>
   </div>
 
-  <div flex="12" flex-sm="40">
+  <div flex="15" flex-sm="50">
     <md-input-container flex class="md-slider-has-label" ng-if="searchParams.distanceType==='distance'">
       <label translate="jobs.search.distance" translate-values="{value:searchParams.distance}"></label>
       <md-slider ng-model="searchParams.distance" step="{{distanceOptions.step}}" min="{{distanceOptions.min}}"
@@ -67,7 +67,7 @@
     </md-input-container>
   </div>
 
-  <div flex="12" flex-sm="40">
+  <div flex="15" flex-sm="50">
     <md-input-container flex class="md-slider-has-label">
       <label>
         <span ng-hide="searchParams.onlineSince===1" translate="jobs.search.onlineSince"
@@ -81,7 +81,7 @@
     </md-input-container>
   </div>
 
-  <div flex-sm="40" hide-gt-sm>
+  <div flex-sm="50" hide-gt-sm>
     <md-radio-group ng-model="searchParams.fulltime" ng-change="countJobs()">
       <md-radio-button value="2" class="md-primary"><span translate="jobs.search.parttimeJobs"></span></md-radio-button>
       <md-radio-button value="1" class="md-primary"><span translate="jobs.search.allJobs"></span></md-radio-button>

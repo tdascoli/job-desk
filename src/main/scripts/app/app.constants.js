@@ -10,6 +10,6 @@ angular.module('job-desk')
 
 .constant('arrleeUrl', 'http://jobdesk.job-room.ch/arrlee')
 
-.constant('supportedLanguages', ['de','fr'])
+.constant('supportedLanguages', ['de','fr','en'])
 
 ;

@@ -1,5 +1,46 @@
 {
   "jobs": {
-    "title": "[EN] Jobs"
+    "search": {
+      "jobgroup":"What (vocational group)",
+      "allSubGroups":"All subgroups",
+      "disableGroup":"Other vocational group",
+      "location":"Where (postal code)",
+      "distance":"Distance {{value}} km",
+      "travelTime":"Travel time {{value}} hrs",
+      "distanceTypeDistance":"Distance in km",
+      "distanceTypeTravelTime":"Public transport travel time in hrs",
+      "onlineSince":"Online since {{value}} days",
+      "onlineSinceOneDay":"Online since 1 day ago",
+      "allJobs":"All jobs",
+      "parttimeJobs":"Only part-time jobs",
+      "foundJobs":"Jobs found {{value}}"
+    },
+    "result": {
+      "sorting":"Sorting",
+      "onlineSince":"Online since {{value}} days",
+      "onlineSinceOneDay":"Online since 1 day ago",
+      "availableNow":"as of now",
+      "availableFromDate":"as of {{value}}",
+      "availableByAppointment":"by arrangement",
+      "untilDate":"fixed term until {{value}}",
+      "permanent":"open-ended",
+      "nonPermanent":"fixed term",
+      "jobLocation": " remark regarding job location",
+      "letterApplication": "see company address",
+      "workload": "working hours",
+      "poBox": "P.O. Box {{value}}",
+      "entryDate": "The successful applicant will take up the appointment on",
+      "phoneNumber": "Tel.",
+      "titleElectronicApplication": "Electronic application",
+      "titleWrittenApplication": "Written application",
+      "titlePhoneApplication": "Telephone application",
+      "titleApplications": "Application types",
+      "contractDuration": "Duration of employment",
+      "print":"Print job",
+      "spoken":"verbally",
+      "written":"in writing",
+      "showMore":"Show more",
+      "showLess":"Close"
+    }
   }
 }
