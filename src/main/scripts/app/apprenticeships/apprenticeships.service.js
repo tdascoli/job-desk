@@ -56,7 +56,7 @@
         if (params.swissdocGroupLevel2 !== '') {
           filter.query.filtered.filter.and.push({'prefix': {'swissdoc': '0.' + params.swissdocGroupLevel2}});
         }
-        return $http.post(baseUrl + '/apprenticeships/_search', filter);
+        return $http.post(baseUrl + '/apprenticeships/_search?size=5000', filter);
       }
 
       function resetSearchParams(){

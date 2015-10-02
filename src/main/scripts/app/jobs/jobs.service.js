@@ -75,7 +75,7 @@
         if (params.iscoGroupLevel2 !== '' && params.iscoGroupLevel2 !== 0) {
           filter.query.filtered.filter.and.push({'term': {'isco.groupLevel2': params.iscoGroupLevel2}});
         }
-        return $http.post(baseUrl + '/jobs/_search', filter);
+        return $http.post(baseUrl + '/jobs/_search?size=5000', filter);
       }
 
       function resetSearchParams() {

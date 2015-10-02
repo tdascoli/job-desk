@@ -72,7 +72,7 @@
             filter.query.filtered.filter.and.push({'not': {'terms': {'languages':['ger','de','fre','fr','ita','it','eng','en']}}});
           }
         }
-        return $http.post(baseUrl + '/educations/_search', filter);
+        return $http.post(baseUrl + '/educations/_search?size=5000', filter);
       }
 
       function resetSearchParams() {

@@ -5,6 +5,8 @@
   angular.module('job-desk')
     .factory('LocationsService', function ($http, baseUrl) {
 
+      // todo ?size=1 da nur eines benutzt wird...
+
       function getLocation(coords) {
         var filter = {
           'query': {
