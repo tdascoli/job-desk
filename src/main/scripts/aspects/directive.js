@@ -38,7 +38,7 @@
       };
     }]);
 
-  module.directive('swissMap', ['d3Service', '$window', '$rootScope', function (d3Service, $window, $rootScope) {
+  module.directive('swissMap', ['d3Service', '$window', '$rootScope', 'MunicipalitiesService', function (d3Service, $window, $rootScope, MunicipalitiesService) {
     return {
       priority: 10,
       restrict: 'E',
@@ -172,7 +172,7 @@
               .attr({
                 cx: location[0],
                 cy: location[1],
-                r: 3
+                r: 2
               }).attr('class', 'current-location');
 
             svg.append("svg:image")
@@ -201,12 +201,15 @@
                   }).attr('class', 'radius').attr('id', 'current-radius');
               }
 
+              // Set Municipalities
+              if ($rootScope.appConfig.showMunicipalities) {
+                setMunicipalities();
+              }
+
               // Set Marker
               setCurrentLocation(xy);
             }
           }
-
-
 
           function setCities() {
             // remove circle from dom
@@ -217,30 +220,100 @@
               var cityMap = map.append('svg')
                 .attr('id', 'cities');
 
-
-              cityMap.selectAll('g')
-                .data(cities.geometries)
-                .enter().append('svg:circle')
-                .attr('transform', function(d) {
-                  return 'translate(' + projection(d.coordinates) + ')';
-                })
-                .attr('r', 3)
-                .attr('class', 'city-boundaries');
-
-              cityMap.selectAll('g')
-                .data(cities.geometries)
-                .enter().append('text')
-                  .attr('transform', function(d) {
-                    return 'translate(' + projection(d.coordinates) + ')';
-                  })
-                  .attr('dy', '1.25em')
-                  .attr('class', 'city-text')
-                  .text(function (d) {
-                    return d.properties.name;
-                  });
+              drawLocations(cities,cityMap,'city');
             });
           }
 
+          function setMunicipalities() {
+            // remove circle from dom
+            $('#municipalities').remove();
+
+            var municipalityMap = map.append('svg')
+              .attr('id', 'municipalities');
+
+            if (scope.searchParams.distanceType==='distance'){
+              getMunicipalitiesFromCoords(municipalityMap);
+            }
+            else {
+              getMunicipalitiesFromZips(municipalityMap);
+            }
+          }
+
+          function getMunicipalitiesFromCoords(municipalityMap){
+            MunicipalitiesService.getMunicipalities(scope.searchParams.currentCoords,scope.searchParams.distance).success(function(result){
+              var geoJSON = {
+                'type': 'GeometryCollection',
+                'geometries': []
+              };
+              angular.forEach(result.hits.hits, function (municipality) {
+                var point={
+                  "type": "Point",
+                  "coordinates": [municipality._source.locations.geoLocation[0].coords.lon,municipality._source.locations.geoLocation[0].coords.lat],
+                  "properties": {
+                    "name": municipality._source.name
+                  }
+                };
+
+                geoJSON.geometries.push(point);
+              });
+              drawLocations(geoJSON,municipalityMap,'municipality');
+            })
+              .error(function(error){
+                // todo error handling
+                console.log(error);
+                return false;
+              });
+          }
+
+
+          function getMunicipalitiesFromZips(municipalityMap){
+            MunicipalitiesService.getMunicipalitiesFromZips(scope.searchParams.zips).success(function(result){
+              var geoJSON = {
+                'type': 'GeometryCollection',
+                'geometries': []
+              };
+              angular.forEach(result.hits.hits, function (municipality) {
+                var point={
+                  "type": "Point",
+                  "coordinates": [municipality._source.locations.geoLocation[0].coords.lon,municipality._source.locations.geoLocation[0].coords.lat],
+                  "properties": {
+                    "name": municipality._source.name
+                  }
+                };
+
+                geoJSON.geometries.push(point);
+              });
+              drawLocations(geoJSON,municipalityMap,'municipality');
+            })
+              .error(function(error){
+                // todo error handling
+                console.log(error);
+                return false;
+              });
+          }
+
+          function drawLocations(cities,cityMap,classPrefix){
+            cityMap.selectAll('g')
+              .data(cities.geometries)
+              .enter().append('svg:circle')
+              .attr('transform', function(d) {
+                return 'translate(' + projection(d.coordinates) + ')';
+              })
+              .attr('r', 3)
+              .attr('class', classPrefix+'-boundaries');
+
+            cityMap.selectAll('g')
+              .data(cities.geometries)
+              .enter().append('text')
+              .attr('transform', function(d) {
+                return 'translate(' + projection(d.coordinates) + ')';
+              })
+              .attr('dy', '1.25em')
+              .attr('class', classPrefix+'-text')
+              .text(function (d) {
+                return d.properties.name;
+              });
+          }
 
           function resize() {
             // adjust things when the window size changes
@@ -293,6 +366,10 @@
             $('#heatmap').remove();
             $('.radius').show();
             $('.radius').attr('r', (scope.searchParams.distance/kmPerPixel));
+            // Set Municipalities
+            if ($rootScope.appConfig.showMunicipalities) {
+              setMunicipalities();
+            }
           });
 
           function addPolygon(geoJSON, outline) {

@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('job-desk')
-    .controller('ConfigCtrl', function ($scope, $rootScope, ConfigService, LocationsService, lodash) {
+    .controller('ConfigCtrl', function ($scope, $rootScope, ConfigService, LocationsService, lodash, geolocation) {
 
       $scope.lookupCoords=false;
       $scope.idle=false;
@@ -28,25 +28,19 @@
         $scope.lookupCoords=false;
       };
 
-      //** todo HANDLING?!??
-      $scope.receiveCoords=function(){
-        //var geocoder = new google.maps.Geocoder();
+      $scope.resetCoords=function(){
         $scope.idle=true;
-        /*
-        geocoder.geocode( { 'address': $scope.config.address+' '+$scope.config.zip }, function(results, status) {
-          if (status === google.maps.GeocoderStatus.OK && results.length > 0) {
-            var coords={
-              lon:results[0].geometry.location.K,
-              lat:results[0].geometry.location.G
-            };
-            var plzIndex=lodash.findIndex(results[0].address_components,{types:['postal_code']});
-            $scope.config.coords = coords;
-            $scope.config.zip = parseInt(results[0].address_components[plzIndex].long_name, 10);
-            $scope.idle=false;
-            $scope.$digest();
-          }
+        $scope.config.coords=undefined;
+        $scope.config.zip='';
+        geolocation.getLocation().then(function (data) {
+          $rootScope.myCoords = {lat: data.coords.latitude, lon: data.coords.longitude};
         });
-        */
+        $scope.$digest();
+        initCoords();
+      };
+
+      $scope.receiveCoords=function(){
+        $scope.idle=true;
         LocationsService.getLocationFromZip($scope.config.zip).success(function (nearestZip) {
           if (nearestZip.hits.total > 0) {
             $scope.config.coords = nearestZip.hits.hits[0]._source.geoLocation;

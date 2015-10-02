@@ -11,7 +11,8 @@
         coords:undefined,
         educations:true,
         apprenticeships:true,
-        localInfo:''
+        localInfo:'',
+        showMunicipalities:true
       };
 
       function init(){

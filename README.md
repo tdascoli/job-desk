@@ -22,6 +22,7 @@ http://geojson.org/
 
 # PLZ and Coordinates
 * Cadastre.ch - PLZ/Coordinates (Choose 'CSV (Excel) WGS84'): http://www.cadastre.ch/internet/kataster/de/home/services/service/plz.html
+* PLZ -> Gemeinde Zuordnung - Ortschaftenverzeichnis der Schweiz: http://www.bfs.admin.ch/bfs/portal/de/index/infothek/nomenklaturen/blank/blank/gem_liste/04.html
 * Räumliche Topologien (bfs.admin.ch > Regional > Statistische Grundlagen > Räumliche Gliederungen > Räumliche Topologien): http://www.bfs.admin.ch/bfs/portal/de/index/regionen/11/geo/raeumliche_typologien/00.html
 
 # Angular Material
@@ -30,6 +31,7 @@ https://material.angularjs.org
 # Material Design
 * General: https://design.google.com/
 * Icons: https://www.google.com/design/icons/
+* Iconfont: https://github.com/google/material-design-icons/tree/master/iconfont
 * Spec: https://www.google.com/design/spec/material-design/introduction.html
 
 # Arrlee

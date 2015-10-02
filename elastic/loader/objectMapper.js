@@ -239,4 +239,27 @@
       }
     };
   };
+
+  exports.mapmunicipalities = function (data) {
+    return {
+      bfsnr: data.BFSNR,
+      name: data.GEMEINDENAME,
+      languageRegion: data.SPRACHREGION,
+      communitySize: data.GEMEINDE_GROESSE,
+      city: data.STADT,
+      initial: data.INITIAL,
+      locations: {
+        "geoLocation": [
+          {
+            "coords": {
+              "lon": data.LON,
+              "lat": data.LAT
+            },
+            "zip": data.PLZ
+          }
+        ]
+      }
+    };
+  };
+
 }());

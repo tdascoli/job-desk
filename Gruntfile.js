@@ -192,7 +192,8 @@ module.exports = function (grunt) {
           ieCompat: true
         },
         files: {
-          'src/main/assets/styles/jobdesk.css': ['src/main/assets/less/main.less']
+          'src/main/assets/styles/jobdesk.css': ['src/main/assets/less/main.less'],
+          'src/main/assets/styles/material-icons.css': ['src/main/assets/less/material-design-iconfont.less']
         }
       }
     },
@@ -309,6 +310,14 @@ module.exports = function (grunt) {
             dest: '<%= yeoman.dist %>/assets/topojson',
             src: [
               '*.json'
+            ]
+          },
+          {
+            expand: true,
+            cwd: 'src/main/assets/fonts',
+            dest: '<%= yeoman.dist %>/assets/fonts',
+            src: [
+              '*'
             ]
           }
         ]

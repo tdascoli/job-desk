@@ -540,7 +540,48 @@
         }
       }
     }
-  }
+  };
+
+  exports.municipalities = {
+    "municipalities":{
+      "properties": {
+        "bfsnr": {
+          "type":"integer"
+        },
+        "name": {
+          "type":"string"
+        },
+        "languageRegion": {
+          "type":"short"
+        },
+        "communitySize": {
+          "type":"short"
+        },
+        "city": {
+          "type":"boolean"
+        },
+        "initial": {
+          "type":"boolean"
+        },
+        "locations": {
+          "type":"object",
+          "properties":{
+            "geoLocation": {
+              "type":"nested",
+              "properties": {
+                "coords": {
+                  "type": "geo_point"
+                },
+                "zip": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  };
 
 }());
 
