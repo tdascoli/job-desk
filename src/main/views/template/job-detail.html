@@ -81,7 +81,9 @@
       </span>
     </md-button>
     <p></p>
-    <md-button><md-icon>print</md-icon>&nbsp;<span translate="jobs.result.print"></span></md-button>
+    <md-button ng-click="printJob(jobDetail._id)" ng-hide="jobDetail._source.external==='true'"><md-icon>print</md-icon>&nbsp;<span translate="jobs.result.print"></span></md-button>
   </div>
 </div>
+
+<job-print ng-show="false" id="{{jobDetail._id}}" job="jobDetail"></job-print>
 <md-divider></md-divider>

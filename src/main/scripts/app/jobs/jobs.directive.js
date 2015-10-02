@@ -17,7 +17,7 @@
     };
   });
 
-  module.directive('jobDetail', ['$translate','$sce','$mdDialog', function($translate,$sce,$mdDialog){
+  module.directive('jobDetail', ['$translate','$sce','$mdDialog', '$window', function($translate,$sce,$mdDialog,$window){
     return {
       priority: 10,
       restrict: 'A',
@@ -60,15 +60,22 @@
           });
         };
 
-        function DialogController($scope, $mdDialog, $sce, language, jobDetail) {
-          $scope.jobDetail=jobDetail;
-          $scope.language=language;
+        scope.printJob = function(jobId) {
+          var innerContent = document.getElementById(jobId).innerHTML;
+          var popup = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+          popup.document.write('<html><head></head><body onload="window.print();window.close()">' + innerContent + '</html>');
+          popup.document.close();
+        };
 
-          $scope.getExternalUrl=function(link){
+        function DialogController($scope, $mdDialog, $sce, language, jobDetail) {
+          $scope.jobDetail = jobDetail;
+          $scope.language = language;
+
+          $scope.getExternalUrl = function (link) {
             return $sce.trustAsResourceUrl(link);
           };
 
-          $scope.cancel = function() {
+          $scope.cancel = function () {
             $mdDialog.cancel();
           };
         }
@@ -93,6 +100,22 @@
 
         element.css('height',viewportHeight);
         element.css('width',viewportWidth);
+      }
+    };
+  }]);
+
+  module.directive('jobPrint', ['$translate',function($translate){
+    return {
+      priority: 10,
+      restrict: 'E',
+      scope: {
+        job: '='
+      },
+      templateUrl: 'template/job-print.html',
+      link: function(scope){
+        scope.getMultiLanguageText=function(text){
+          return text[$translate.use()];
+        };
       }
     };
   }]);
