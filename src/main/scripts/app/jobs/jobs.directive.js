@@ -60,13 +60,6 @@
           });
         };
 
-        scope.printJob = function(jobId) {
-          var innerContent = document.getElementById(jobId).innerHTML;
-          var popup = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
-          popup.document.write('<html><head></head><body onload="window.print();window.close()">' + innerContent + '</html>');
-          popup.document.close();
-        };
-
         function DialogController($scope, $mdDialog, $sce, language, jobDetail) {
           $scope.jobDetail = jobDetail;
           $scope.language = language;
@@ -78,6 +71,25 @@
           $scope.cancel = function () {
             $mdDialog.cancel();
           };
+        }
+
+        scope.showPrintDialog = function() {
+          $mdDialog.show({
+            parent: angular.element(document.body),
+            templateUrl: 'views/template/job-print.html',
+            clickOutsideToClose: true,
+            locals: {
+              jobDetail: scope.jobDetail,
+              getMultiLanguageText: scope.getMultiLanguageText
+            },
+            controller: function PrintDialogController($scope, jobDetail, getMultiLanguageText) {
+              $scope.jobDetail = jobDetail;
+              $scope.getMultiLanguageText = getMultiLanguageText;
+              $scope.cancel = function() {
+                $mdDialog.cancel();
+              };
+            }
+          });
         }
       }
     };
@@ -100,22 +112,6 @@
 
         element.css('height',viewportHeight);
         element.css('width',viewportWidth);
-      }
-    };
-  }]);
-
-  module.directive('jobPrint', ['$translate',function($translate){
-    return {
-      priority: 10,
-      restrict: 'E',
-      scope: {
-        job: '='
-      },
-      templateUrl: 'template/job-print.html',
-      link: function(scope){
-        scope.getMultiLanguageText=function(text){
-          return text[$translate.use()];
-        };
       }
     };
   }]);
