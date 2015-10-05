@@ -1,7 +1,7 @@
 <div>
   <h2>{{getMultiLanguageText(job._source.title)}}</h2>
-  <strong ng-show="job._source.onlineSince>1" translate="jobs.result.onlineSince" translate-values="{value: job._source.onlineSince}"></strong>
-  <strong ng-show="job._source.onlineSince===1" translate="jobs.result.onlineSinceOneDay"></strong>
+  <strong ng-if="job._source.onlineSince>1" translate="jobs.result.onlineSince" translate-values="{value: job._source.onlineSince}"></strong>
+  <strong ng-if="job._source.onlineSince===1" translate="jobs.result.onlineSinceOneDay"></strong>
   /
   <strong translate="jobs.result.workload"></strong>
   <strong ng-if="job._source.quotaFrom!==job._source.quotaTo">{{job._source.quotaFrom}} - {{job._source.quotaTo}}%</strong>
@@ -23,7 +23,7 @@
   <span ng-if="job._source.permanentJob" translate="jobs.result.permanent"></span>
 
 <!-- Sprachen -->
-  <div ng-repeat="language in job._source.languages" ng-show="language.languageCode">
+  <div ng-repeat="language in job._source.languages" ng-if="language.languageCode">
     <strong class="fake-label" translate="language.jobs.{{language.languageCode}}"></strong><br />
     (<span translate="jobs.result.spoken"></span>: <span translate="global.codes.languages.skills.{{language.spokenCode}}"></span> / <span translate="jobs.result.written"></span>: <span translate="global.codes.languages.skills.{{language.writtenCode}}"></span>)
   </div>
