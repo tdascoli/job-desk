@@ -1,0 +1,43 @@
+{
+  "educations": {
+    "search": {
+      "educationGroup":"Quoi (genre de cours)",
+      "allSubGroups":"[FR] Alle Untergruppen",
+      "disableGroup":"[FR] Andere Berufsgruppe",
+      "location":"Où (NPA)",
+      "distance":"Distance {{value}} km",
+      "travelTime":"Durée du trajet {{value}} h",
+      "foundJobs":"Cours trouvés {{value}}",
+      "distanceTypeDistance":"Distance en km",
+      "distanceTypeTravelTime":"Durée du trajet en TP en heures",
+      "language":"Langue du cours",
+      "allLanguages":"Toutes les langues"
+    },
+    "result": {
+      "sorting":"Tri",
+      "print":"Imprimer le cours",
+      "location":"Lieu du cours",
+      "start":"Début du cours",
+      "degree":"Diplôme",
+      "duration":"Durée",
+      "cost":"Frais",
+      "activity":"Temps à investir",
+      "showMore":"Afficher plus d'informations",
+      "showLess":"Fermer",
+      "phone":"No de tél. {{value}}",
+      "fax":"No de fax {{value}}",
+      "language":"Langue du cours",
+      "languages": {
+        "ger":"allemand",
+        "de":"allemand",
+        "fre":"français",
+        "fr":"français",
+        "ita":"italien",
+        "it":"italien",
+        "eng":"anglais",
+        "en":"anglais",
+        "other":"autre"
+      }
+    }
+  }
+}

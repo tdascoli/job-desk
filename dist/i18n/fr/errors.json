@@ -1,0 +1,8 @@
+{
+  "errors": {
+    "msg": {
+      "noValidZip": "Le NPA saisi n'est pas valable.",
+      "noValidCoords": "Prière de sélectionner une localité sur la carte de la Suisse"
+    }
+  }
+}

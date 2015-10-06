@@ -1,0 +1,67 @@
+<md-dialog>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2><span translate="jobs.result.print"></span></h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <div id="printableArea">
+      <strong>{{::getMultiLanguageText(jobDetail._source.title)}}</strong><br />
+      <span ng-if="jobDetail._source.onlineSince>1" translate="jobs.result.onlineSince" translate-values="{value: jobDetail._source.onlineSince}"></span>
+      <span ng-if="jobDetail._source.onlineSince===1" translate="jobs.result.onlineSinceOneDay"></span>
+      /
+      <span translate="jobs.result.workload"></span>
+      <span ng-if="jobDetail._source.quotaFrom!==jobDetail._source.quotaTo">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</span>
+      <span ng-if="jobDetail._source.quotaFrom===jobDetail._source.quotaTo">{{::jobDetail._source.quotaTo}}%</span>
+
+      <p ng-bind-html="formatText(getMultiLanguageText(jobDetail._source.description))"></p>
+      <strong class="fake-label" translate="jobs.result.jobLocation"></strong> :
+      <span>{{::getMultiLanguageText(jobDetail._source.locations.remarks)}}</span><br />
+
+      <strong class="fake-label" translate="jobs.result.entryDate"></strong> :
+      <span ng-if="jobDetail._source.availableNow" translate="jobs.result.availableNow"></span>
+      <span ng-if="!jobDetail._source.availableNow && jobDetail._source.startDate" translate="jobs.result.availableFromDate" translate-values="{value: jobDetail._source.startDate}"></span>
+      <span ng-if="!jobDetail._source.availableNow && !jobDetail._source.startDate" translate="jobs.result.availableByAppointment"></span>
+      <br />
+
+      <strong class="fake-label" translate="jobs.result.contractDuration"></strong> :
+      <span ng-if="!jobDetail._source.permanentJob && jobDetail._source.endDate" translate="untilDate" translate-values="{value: jobDetail._source.endDate}"></span>
+      <span ng-if="!jobDetail._source.permanentJob && !jobDetail._source.endDate" translate="jobs.result.nonPermanent"></span>
+      <span ng-if="jobDetail._source.permanentJob" translate="jobs.result.permanent"></span>
+
+    <!-- Sprachen -->
+      <div ng-repeat="language in jobDetail._source.languages" ng-if="language.languageCode">
+        <strong class="fake-label" translate="language.jobs.{{language.languageCode}}"></strong> :
+        (<span translate="jobs.result.spoken"></span>: <span translate="global.codes.languages.skills.{{language.spokenCode}}"></span> / <span translate="jobs.result.written"></span>: <span translate="global.codes.languages.skills.{{language.writtenCode}}"></span>)
+      </div>
+
+    <!-- Bewerbung -->
+      <div ng-if="jobDetail._source.application.written">
+        <strong class="fake-label" translate="jobs.result.titleWrittenApplication"></strong> :
+        <span translate="jobs.result.letterApplication"></span>
+      </div>
+      <div ng-if="jobDetail._source.application.electronical">
+        <strong class="fake-label" translate="jobs.result.titleElectronicApplication"></strong> :
+        <span>{{::jobDetail._source.contact.eMail}} <span ng-if="jobDetail._source.company.url">/ {{::jobDetail._source.company.url}}</span></span>
+      </div>
+      <div ng-if="jobDetail._source.application.phone">
+        <strong class="fake-label" translate="jobs.result.titlePhoneApplication"></strong> :
+        <span>{{::jobDetail._source.contact.phone}}</span>
+      </div>
+
+      <strong>{{::jobDetail._source.company.name}}</strong><br />
+      <span>{{::jobDetail._source.company.address.street}}</span><br />
+      <span>{{::jobDetail._source.company.address.zip}} {{::jobDetail._source.company.address.location}}</span><br />
+      <span ng-if="jobDetail._source.company.poAddress.poBox"><br /><span translate="jobs.result.poBox" translate-values="{value: jobDetail._source.company.poAddress.poBox}"></span><br /></span>
+      <span ng-if="jobDetail._source.company.poAddress.poBox">{{::jobDetail._source.company.poAddress.zip}} {{::jobDetail._source.company.poAddress.location}}</span>
+
+      <strong><span translate="global.codes.salutations.{{jobDetail._source.contact.gender}}"></span> {{::jobDetail._source.contact.firstName}} {{::jobDetail._source.contact.lastName}}</strong><br />
+      <span ng-if="jobDetail._source.contact.phone">{{::jobDetail._source.contact.phone}}<br /></span>
+      <span ng-if="jobDetail._source.contact.eMail">{{::jobDetail._source.contact.eMail}}</span>
+    </div>
+    <div layout="row" layout-sm="column" layout-align="space-around">
+      <md-progress-circular md-mode="indeterminate" md-diameter="60"></md-progress-circular>
+    </div>
+  </md-dialog-content>
+</md-dialog>

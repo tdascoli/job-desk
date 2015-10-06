@@ -1,0 +1,20 @@
+{
+  "apprenticeships": {
+    "search": {
+      "swissdocGroup":"Was (Berufsgruppe)",
+      "allSubGroups":"Alle Untergruppen",
+      "disableGroup":"Andere Berufsgruppe",
+      "location":"Wo (PLZ)",
+      "distance":"Distanz {{value}} km",
+      "travelTime":"Reisedauer {{value}} h",
+      "distanceTypeDistance":"Distanz in km",
+      "distanceTypeTravelTime":"Reisedauer ÖV in Stunden",
+      "foundJobs":"Gefundene Lehrstellen: {{value}}"
+    },
+    "result": {
+      "sorting":"Sortierung",
+      "print":"Lehrstelle drucken",
+      "apprenticeshipAmount":"({{value}} Lehrstellen)"
+    }
+  }
+}

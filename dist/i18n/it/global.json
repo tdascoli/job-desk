@@ -1,0 +1,9 @@
+{
+  "global": {
+    "title": "job-desk",
+    "apprenticeships": "[IT] Lehrstellen",
+    "educations": "[IT] Weiterbildungen",
+    "jobs": "[IT] Jobs",
+    "localInfo": "[IT] Informationen"
+  }
+}

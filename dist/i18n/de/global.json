@@ -1,0 +1,41 @@
+{
+  "global": {
+    "title": "Job-Desk",
+    "apprenticeships": "Lehrstellen",
+    "educations": "Weiterbildungen",
+    "jobs": "Jobs",
+    "sort": {
+      "newest":"Neuste Jobs zuerst",
+      "workload_100":"Arbeitspensum - niedrigste zuerst",
+      "workload_0":"Arbeitspensum - höchste zuerst",
+      "jobtitle_az":"Jobtitel - A-Z",
+      "jobtitle_za":"Jobtitel - Z-A",
+      "apprenticeshipstitle_az":"Lehrstellentitel - A-Z",
+      "apprenticeshipstitle_za":"Lehrstellentitel - Z-A",
+      "coursetitle_az":"Kurstitel - A-Z",
+      "coursetitle_za":"Kurstitel - Z-A",
+      "location_1000":"Arbeitsort - niedrigste PLZ zuerst",
+      "location_9999":"Arbeitsort - höchste PLZ zuerst",
+      "courseLocation_1000":"Kursort - niedrigste PLZ zuerst",
+      "courseLocation_9999":"Kursort - höchste PLZ zuerst"
+    },
+    "error": {
+      "noValidZip":"Die Eingegebene PLZ ist nicht gültig.",
+      "noValidCoords":"Bitte wählen Sie einen Ort innerhalb der Schweizerkarte."
+    },
+    "codes": {
+      "salutations": {
+        "1": "Herr",
+        "2": "Frau"
+      },
+      "languages": {
+        "skills": {
+          "1": "sehr gut",
+          "2": "gut",
+          "3": "Grundkenntnisse",
+          "4": "keine Kenntnisse"
+        }
+      }
+    }
+  }
+}

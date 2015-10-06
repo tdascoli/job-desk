@@ -1,0 +1,68 @@
+<div layout="row" layout-wrap layout-align="space-between start" style="padding: 10px;">
+  <div flex flex-sm="100" ng-click="showDetail()">
+    <h4 class="strong">{{educationDetail._source.title}}</h4>
+    <strong><span translate="educations.result.location"></span> {{educationDetail._source.location.zip}} {{educationDetail._source.location.name}}</strong>
+    <div ng-if="!showDetailContent">
+      <p ng-text-truncate="educationDetail._source.content" ng-tt-words-threshold="20" ng-tt-no-toggling></p>
+    </div>
+
+    <div ng-if="showDetailContent" layout="row" layout-wrap layout-align="space-between start">
+
+      <p flex="100" ng-bind-html="educationDetail._source.content"></p>
+
+      <div flex="25" flex-sm="100">
+        <strong>{{educationDetail._source.provider.name}}</strong><br />
+        <strong ng-if="educationDetail._source.provider.contact.firstName">{{educationDetail._source.provider.contact.firstName}} {{educationDetail._source.provider.contact.lastName}}<br /></strong>
+        <span>{{educationDetail._source.provider.address.street}}</span><br />
+        <span>{{educationDetail._source.location.zip}} {{educationDetail._source.location.name}}</span><br />
+        <span ng-if="educationDetail._source.provider.phone"><span translate="educations.result.phone" translate-values="{value: educationDetail._source.provider.phone}"></span><br /></span>
+        <span ng-if="educationDetail._source.provider.fax"><span translate="educations.result.fax" translate-values="{value: educationDetail._source.provider.fax}"></span><br /></span>
+        <span ng-if="educationDetail._source.provider.eMail">{{educationDetail._source.provider.eMail}}<br /></span>
+        <span ng-if="educationDetail._source.provider.url">{{educationDetail._source.provider.url}}</span>
+      </div>
+
+      <div flex="25" flex-sm="100">
+          <div ng-if="educationDetail._source.startText"><strong translate="educations.result.start"></strong> <span ng-bind-html="educationDetail._source.startText"></span></div>
+          <div ng-if="educationDetail._source.duration"><strong translate="educations.result.duration"></strong> <span ng-bind-html="educationDetail._source.duration"></span></div>
+          <div ng-if="educationDetail._source.activity"><strong translate="educations.result.activity"></strong> <span ng-bind-html="educationDetail._source.activity"></span></div>
+          <div ng-if="educationDetail._source.cost"><strong translate="educations.result.cost"></strong> <span ng-bind-html="educationDetail._source.cost"></span></div>
+        <div ng-if="educationDetail._source.languages"><strong translate="educations.result.language"></strong> <span translate="educations.result.languages.{{checkLanguage(educationDetail._source.languages)}}"></span></div>
+      </div>
+
+      <div flex="25" flex-sm="100">
+        <div ng-if="educations.result.target">
+          <strong translate="educations.result.target"></strong>
+          <p ng-bind-html="educationDetail._source.target"></p>
+        </div>
+        <div ng-if="educations.result.preconditions">
+          <strong translate="educations.result.preconditions"></strong>
+          <p ng-bind-html="educationDetail._source.preconditions"></p>
+        </div>
+        <div>
+          <strong translate="educations.result.degree"></strong>
+        </div>
+      </div>
+
+      <div flex="25" flex-sm="100">
+        <div ng-if="educationDetail._source.comments.class || educationDetail._source.comments.offers">
+          <strong translate="educations.result.comments"></strong>
+          <p ng-bind-html="educationDetail._source.comments.class"></p>
+          <p ng-bind-html="educationDetail._source.comments.offers"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div flex="20" hide-sm>
+    <md-button ng-click="showDetail()">
+      <span ng-if="!showDetailContent">
+        <md-icon>search</md-icon>&nbsp;<span translate="educations.result.showMore"></span>
+      </span>
+      <span ng-if="showDetailContent">
+        <md-icon>close</md-icon>&nbsp;<span translate="educations.result.showLess"></span>
+      </span>
+    </md-button>
+    <p></p>
+    <md-button><md-icon>print</md-icon>&nbsp;<span translate="educations.result.print"></span></md-button>
+  </div>
+</div>
+<md-divider></md-divider>

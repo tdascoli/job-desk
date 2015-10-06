@@ -1,0 +1,46 @@
+{
+  "jobs": {
+    "search": {
+      "jobgroup":"Was (Berufsgruppe)",
+      "allSubGroups":"Alle Untergruppen",
+      "disableGroup":"Andere Berufsgruppe",
+      "location":"Wo (PLZ)",
+      "distance":"Distanz {{value}} km",
+      "travelTime":"Reisedauer {{value}} h",
+      "distanceTypeDistance":"Distanz in km",
+      "distanceTypeTravelTime":"Reisedauer ÖV in Stunden",
+      "onlineSince":"Online seit {{value}} Tagen",
+      "onlineSinceOneDay":"Online seit 1 Tag",
+      "allJobs":"Alle Jobs",
+      "parttimeJobs":"Nur Teilzeit Jobs",
+      "foundJobs":"Gefundene Jobs: {{value}}"
+    },
+    "result": {
+      "sorting":"Sortierung",
+      "onlineSince":"Online seit {{value}} Tagen",
+      "onlineSinceOneDay":"Online seit 1 Tag",
+      "availableNow":"ab Sofort",
+      "availableFromDate":"ab {{value}}",
+      "availableByAppointment":"nach Vereinbarung",
+      "untilDate":"befristet bis {{value}}",
+      "permanent":"unbefristet",
+      "nonPermanent":"befristet",
+      "jobLocation": "Arbeitsort, Bemerkung",
+      "letterApplication": "siehe Adresse des Unternehmens",
+      "workload": "Arbeitspensum",
+      "poBox": "Postfach {{value}}",
+      "entryDate": "Stellenantritt",
+      "phoneNumber": "Telefon",
+      "titleElectronicApplication": "Elektronische Bewerbung",
+      "titleWrittenApplication": "Schriftliche Bewerbung",
+      "titlePhoneApplication": "Telefonische Bewerbung",
+      "titleApplications": "Bewerbungsformen",
+      "contractDuration": "Anstellungsdauer",
+      "print":"Job drucken",
+      "spoken":"mündlich",
+      "written":"schriftlich",
+      "showMore":"Mehr anzeigen",
+      "showLess":"Schliessen"
+    }
+  }
+}

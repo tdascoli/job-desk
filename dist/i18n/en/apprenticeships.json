@@ -1,0 +1,20 @@
+{
+  "apprenticeships": {
+    "search": {
+      "swissdocGroup":"What (vocational group)",
+      "allSubGroups":"All subgroups",
+      "disableGroup":"Other vocational group",
+      "location":"Where (postal code)",
+      "distance":"Distance {{value}} km",
+      "travelTime":"Travel time {{value}} hrs",
+      "distanceTypeDistance":"Distance in km",
+      "distanceTypeTravelTime":"Public transport travel time in hrs",
+      "foundJobs":"Apprenticeships found {{value}}"
+    },
+    "result": {
+      "sorting":"Sorting",
+      "print":"Print apprenticeships",
+      "apprenticeshipAmount":"({{value}} apprenticeships)"
+    }
+  }
+}

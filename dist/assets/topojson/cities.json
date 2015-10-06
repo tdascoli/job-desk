@@ -1,0 +1,120 @@
+{
+  "type": "GeometryCollection",
+  "geometries": [
+    {
+      "type": "Point",
+      "coordinates": [7.461928,46.953525],
+      "properties": {
+        "name": "Bern"
+      }
+    },
+    {
+      "type": "Point",
+      "coordinates": [
+        8.541336,
+        47.372047
+      ],
+      "properties": {
+        "name": "Zürich"
+      }
+    },
+    {
+      "type": "Point",
+      "coordinates": [6.146619,46.210286],
+      "properties": {
+        "name": "Genève"
+      }
+    },
+    {
+      "type": "Point",
+      "coordinates": [7.588872,47.556361],
+      "properties": {
+        "name": "Basel"
+      }
+    },
+    {
+      "type": "Point",
+      "coordinates": [6.642517,46.519858],
+      "properties": {
+        "name": "Lausanne"
+      }
+    },
+    {
+      "type": "Point",
+      "coordinates": [8.297008,47.050058],
+      "properties": {
+        "name": "Luzern"
+      }
+    },
+    {
+      "type": "Point",
+      "coordinates": [9.362217,47.423642],
+      "properties": {
+        "name": "St. Gallen"
+      }
+    },
+    {
+      "type": "Point",
+      "coordinates": [9.024150,46.196967],
+      "properties": {
+        "name": "Bellinzona"
+      }
+    },
+    {
+      "type": "Point",
+      "coordinates": [7.162800,46.806186],
+      "properties": {
+        "name": "Fribourg"
+      }
+    },
+    {
+      "type": "Point",
+      "coordinates": [8.636278,47.696517],
+      "properties": {
+        "name": "Schaffhausen"
+      }
+    },
+    {
+      "type": "Point",
+      "coordinates": [9.532789,46.848175],
+      "properties": {
+        "name": "Chur"
+      }
+    },
+    {
+      "type": "Point",
+      "coordinates": [6.926369,46.992044],
+      "properties": {
+        "name": "Neuchâtel"
+      }
+    },
+    {
+      "type": "Point",
+      "coordinates": [7.356742,46.229539],
+      "properties": {
+        "name": "Sion"
+      }
+    },
+    {
+      "type": "Point",
+      "coordinates": [8.046036,47.395886],
+      "properties": {
+        "name": "Aarau"
+      }
+    },
+    {
+      "type": "Point",
+      "coordinates": [7.631258,46.758742],
+      "properties": {
+        "name": "Thun"
+      }
+    },
+    {
+      "type": "Point",
+      "coordinates": [7.996536,46.316478],
+      "properties": {
+        "name": "Brig"
+      }
+    }
+  ]
+}

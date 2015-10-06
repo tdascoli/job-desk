@@ -1,0 +1,98 @@
+<div id="filter" layout="row" layout-wrap layout-margin layout-padding layout-align="start center" class="jd-floating-toolbar jd-floating-toolbar-fill-sm" ng-class="{'md-whiteframe-z2':!mobile}">
+
+  <div flex="15" flex-sm="100">
+      <strong translate="jobs.search.foundJobs" translate-values="{value: count}"></strong><img ng-if="idle" alt="idle" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+  </div>
+
+  <div flex="25" flex-sm="100" class="form-block">
+    <md-input-container ng-if="!searchParams.iscoMajorGroup">
+      <label><span translate="jobs.search.jobgroup"></span></label>
+      <md-select ng-model="searchParams.iscoMajorGroup" ng-change="countJobs()">
+        <md-option ng-repeat="isco in iscoMajorGroup" value="{{isco.code}}"><span translate="{{isco.text}}"></span></md-option>
+      </md-select>
+    </md-input-container>
+
+
+    <md-input-container ng-if="searchParams.iscoMajorGroup">
+      <label><span translate="isco.{{searchParams.iscoMajorGroup}}000"></span></label>
+      <md-select ng-model="searchParams.iscoGroupLevel2" ng-change="countJobs()">
+        <md-option value="0"><span translate="jobs.search.allSubGroups"></span></md-option>
+        <md-option ng-repeat="isco2 in iscoGroupLevel2[searchParams.iscoMajorGroup]" value="{{isco2.code}}"><span translate="{{isco2.text}}"></span></md-option>
+        <md-option value="-1" ng-click="searchParams.iscoMajorGroup='';searchParams.iscoGroupLevel2='';countJobs()"><md-icon>keyboard_arrow_left</md-icon><span class="jd-select-reset" translate="jobs.search.disableGroup"></span></md-option>
+      </md-select>
+    </md-input-container>
+
+  </div>
+
+  <div flex="15" flex-sm="100" layout="row" layout-align="start center">
+    <!-- todo when gps is turned off, hide -->
+    <md-button class="md-icon-button jd-icon-button" ng-click="setMyLocation()">
+      <md-icon>my_location</md-icon>
+    </md-button>
+
+    <md-input-container hide-sm>
+      <label translate="jobs.search.location"></label>
+      <input class="keyboard" type="text" name="location" id="location" ng-model="nearestZip" />
+    </md-input-container>
+
+    <form ng-submit="setCurrentZip(currentZip)" hide-gt-sm layout="row" layout-align="start center" flex>
+      <md-input-container flex>
+        <label translate="jobs.search.location"></label>
+        <input type="number" min="1000" max="9999" name="location-sm" id="location-sm" ng-model="currentZip" />
+      </md-input-container>
+      <md-button class="md-icon-button jd-icon-button">
+        <md-icon>check</md-icon>
+      </md-button>
+    </form>
+  </div>
+
+  <div flex="15" flex-sm="50">
+    <md-radio-group ng-model="searchParams.distanceType" ng-change="countJobs()">
+      <md-radio-button value="distance" class="md-primary"><span translate="jobs.search.distanceTypeDistance"></span></md-radio-button>
+      <md-radio-button value="travelTime" class="md-primary"><span translate="jobs.search.distanceTypeTravelTime"></span></md-radio-button>
+    </md-radio-group>
+  </div>
+
+  <div flex="15" flex-sm="50">
+    <md-input-container flex class="md-slider-has-label" ng-if="searchParams.distanceType==='distance'">
+      <label translate="jobs.search.distance" translate-values="{value:searchParams.distance}"></label>
+      <md-slider ng-model="searchParams.distance" step="{{distanceOptions.step}}" min="{{distanceOptions.min}}"
+                 max="{{distanceOptions.max}}" aria-label="distance" ng-change="countJobs()" class="md-primary"></md-slider>
+    </md-input-container>
+
+    <md-input-container flex class="md-slider-has-label" ng-if="searchParams.distanceType==='travelTime'">
+      <label translate="jobs.search.travelTime" translate-values="{value:showTimeInH(searchParams.travelTime)}"></label>
+      <md-slider ng-model="searchParams.travelTime" step="{{travelTimeOptions.step}}" min="{{travelTimeOptions.min}}"
+                 max="{{travelTimeOptions.max}}" aria-label="travelTime" ng-change="countJobs()" class="md-primary"></md-slider>
+    </md-input-container>
+  </div>
+
+  <div flex="15" flex-sm="50">
+    <md-input-container flex class="md-slider-has-label">
+      <label>
+        <span ng-if="searchParams.onlineSince>1" translate="jobs.search.onlineSince"
+                                                          translate-values="{value:searchParams.onlineSince}"></span>
+        <span ng-if="searchParams.onlineSince===1" translate="jobs.search.onlineSinceOneDay"></span>
+      </label>
+
+      <md-slider ng-model="searchParams.onlineSince" step="{{onlineSinceOptions.step}}"
+                 min="{{onlineSinceOptions.min}}" max="{{onlineSinceOptions.max}}" aria-label="onlineSince"
+                 ng-change="countJobs()" class="md-primary"></md-slider>
+    </md-input-container>
+  </div>
+
+  <div flex-sm="50" hide-gt-sm>
+    <md-radio-group ng-model="searchParams.fulltime" ng-change="countJobs()">
+      <md-radio-button value="2" class="md-primary"><span translate="jobs.search.parttimeJobs"></span></md-radio-button>
+      <md-radio-button value="1" class="md-primary"><span translate="jobs.search.allJobs"></span></md-radio-button>
+    </md-radio-group>
+  </div>
+</div>
+
+<div align="center" hide-sm>
+  <swiss-map id="map"></swiss-map>
+</div>
+
+<md-button href="#/job-results" class="md-fab md-primary md-fab-bottom-right jd-floating-fab" aria-label="global.navigation.search" ng-disabled="count===0" md-theme-watch="true">
+  <md-icon>arrow_forward</md-icon>
+</md-button>
