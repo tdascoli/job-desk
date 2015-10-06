@@ -175,6 +175,9 @@ text {
 .area5 {
   fill: #ffff00;
 }
+.keyboard {
+  width: 100% !important;
+}
 .ui-keyboard {
   background: #eeeeee;
   width: 188px !important;
@@ -302,6 +305,7 @@ md-input-container.md-slider-has-label label {
 }
 .jd-icon-button {
   width: auto !important;
+  min-width: 24px !important;
   border-radius: 0 !important;
 }
 .jd-iframe {
@@ -314,6 +318,12 @@ md-input-container.md-slider-has-label label {
 .jd-warn {
   background-color: #e11a27;
   color: #fff;
+}
+body #printableArea {
+  display: none;
+}
+label {
+  width: 100% !important;
 }
 @media print {
   body #topnav,
@@ -341,8 +351,16 @@ md-input-container.md-slider-has-label label {
     background-color: white;
     align-items: flex-start;
   }
+  body md-progress-circular {
+    display: none;
+  }
   body #printableArea {
+    display: block;
     visibility: visible;
     font-size: 9px;
+    padding-left: 10px;
+    padding-right: 20px;
+    padding-top: 10px;
+    color: black;
   }
 }
