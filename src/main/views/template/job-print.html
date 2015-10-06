@@ -3,9 +3,6 @@
     <div class="md-toolbar-tools">
       <h2><span translate="jobs.result.print"></span></h2>
       <span flex></span>
-      <md-button class="md-icon-button" ng-click="cancel()">
-        <md-icon aria-label="Close dialog">close</md-icon>
-      </md-button>
     </div>
   </md-toolbar>
   <md-dialog-content>
@@ -63,15 +60,8 @@
       <span ng-if="jobDetail._source.contact.phone">{{::jobDetail._source.contact.phone}}<br /></span>
       <span ng-if="jobDetail._source.contact.eMail">{{::jobDetail._source.contact.eMail}}</span>
     </div>
+    <div layout="row" layout-sm="column" layout-align="space-around">
+      <md-progress-circular md-mode="indeterminate" md-diameter="60"></md-progress-circular>
+    </div>
   </md-dialog-content>
-  <div class="md-actions" layout="row">
-    <md-button ng-click="printJob()">
-      <md-icon>print</md-icon>
-      <span translate="jobs.result.print"></span>
-    </md-button>
-    <md-button ng-click="cancel()" >
-      <span translate="jobs.result.showLess"></span>
-    </md-button>
-  </div>
-
 </md-dialog>

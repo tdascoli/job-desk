@@ -17,7 +17,7 @@
     };
   });
 
-  module.directive('jobDetail', ['$translate','$sce','$mdDialog', function($translate,$sce,$mdDialog){
+  module.directive('jobDetail', ['$translate','$sce','$mdDialog', '$timeout', function($translate,$sce,$mdDialog, $timeout){
     return {
       priority: 10,
       restrict: 'A',
@@ -77,21 +77,20 @@
           $mdDialog.show({
             parent: angular.element(document.body),
             templateUrl: 'views/template/job-print.html',
-            clickOutsideToClose: true,
             locals: {
               jobDetail: scope.jobDetail,
               getMultiLanguageText: scope.getMultiLanguageText
             },
+            escapeToClose: false,
+            onComplete: function() {
+              window.print();
+              $timeout(function () {
+                $mdDialog.hide();
+              }, 3000);
+            },
             controller: function PrintDialogController($scope, jobDetail, getMultiLanguageText) {
               $scope.jobDetail = jobDetail;
               $scope.getMultiLanguageText = getMultiLanguageText;
-              $scope.cancel = function() {
-                $mdDialog.cancel();
-              };
-              $scope.printJob = function() {
-                window.print();
-                $mdDialog.hide();
-              }
               $scope.formatText = function(text) {
                 text = text.replace(/(<|&lt;)br\s*\/*(>|&gt;)/g,' ');
                 return text;
