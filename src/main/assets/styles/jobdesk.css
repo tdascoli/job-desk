@@ -175,9 +175,6 @@ text {
 .area5 {
   fill: #ffff00;
 }
-.keyboard {
-  width: 100% !important;
-}
 .ui-keyboard {
   background: #eeeeee;
   width: 188px !important;
@@ -305,7 +302,6 @@ md-input-container.md-slider-has-label label {
 }
 .jd-icon-button {
   width: auto !important;
-  min-width: 24px !important;
   border-radius: 0 !important;
 }
 .jd-iframe {
@@ -321,9 +317,6 @@ md-input-container.md-slider-has-label label {
 }
 body #printableArea {
   display: none;
-}
-label {
-  width: 100% !important;
 }
 @media print {
   body #topnav,

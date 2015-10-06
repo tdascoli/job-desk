@@ -1,9 +1,0 @@
-{
-  "errors": {
-    "title": "Fehlerseite!",
-    "msg": {
-      "noValidZip": "Die Eingegebene PLZ ist nicht gültig.",
-      "noValidCoords": "Bitte wählen Sie einen Ort innerhalb der Schweizerkarte."
-    }
-  }
-}
