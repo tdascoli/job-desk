@@ -9,4 +9,9 @@
   </div>
 </div>
 
-<div education-detail="detail" ng-repeat="detail in educations"></div>
+<div class="infinite-scroll" infinite-scroll="loadMoreResults()" infinte-scroll-item=".jd-detail">
+  <div class="jd-detail" education-detail="detail" ng-repeat="detail in educations track by detail._id"></div>
+  <div ng-if="idle" layout="row" layout-sm="column" layout-align="space-around">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
+</div>

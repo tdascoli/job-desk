@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <h1 translate="errors.title">Error Page!</h1>
 
-            <div ng-show="errorMessage">
+            <div ng-if="errorMessage">
                 <div class="alert alert-danger" translate="{{errorMessage}}" >
                 </div>
             </div>

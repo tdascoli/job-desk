@@ -1,6 +1,12 @@
+// MAIN CSS FOR JOB-DESK
+// LESS
+
+//** GLOBAL
 body {
   font-family: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
 }
+
+//**** TOPNAV
 .topnav-title {
   padding-right: 2em;
 }
@@ -8,20 +14,24 @@ body {
   width: 16.6%;
   text-align: left;
 }
-.jd-categories {
+
+//**** CATEGORIES
+.jd-categories  {
   position: fixed;
-  height: calc(100% - 84px);
+  height: calc(~'100% - 84px');
 }
 @media (max-width: 599px) {
-  .jd-categories {
+  .jd-categories  {
     position: static;
     height: 100%;
   }
 }
+
 .jd-categories .category-title {
   align-items: center;
   background: rgba(0, 0, 0, 0.18);
   height: 64px;
+
   -webkit-font-smoothing: antialiased;
   background-attachment: scroll;
   background-clip: border-box;
@@ -30,7 +40,7 @@ body {
   background-size: auto;
   bottom: 0;
   box-sizing: border-box;
-  color: #ffffff;
+  color: rgb(255, 255, 255);
   display: flex;
   flex-direction: row;
   overflow-x: hidden;
@@ -41,10 +51,10 @@ body {
   box-sizing: border-box;
   font-size: 14px;
   font-weight: 700;
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(0,0,0,0.54);
 }
 .category {
-  height: calc(33% - 64px);
+  height: calc(~'33% - 64px');
   vertical-align: top;
   width: auto;
   padding-bottom: 10px;
@@ -58,6 +68,8 @@ body {
   height: auto;
   width: 100%;
 }
+
+//**** ISCO COLOURS
 /*
 .jd-categories .category-title.isco1 {
   background-color: @material-color-deep-purple;
@@ -87,29 +99,32 @@ body {
 .jd-categories .category-title.isco9 {
   background-color: @material-color-cyan;
 } */
+
+//**** MAP
 #map {
   width: 960px;
   height: 500px;
 }
 .radius {
-  fill: #ffffff;
+  fill: @map-radius-fill;
   opacity: 0.25;
 }
 .canton-boundaries {
-  fill: transparent;
-  stroke: #ffffff;
+  fill: @topo-canton-boundaries-fill;
+  stroke: @topo-canton-boundaries-stroke;
   stroke-width: 1;
   shape-rendering: crispEdges;
 }
+
 .city-boundaries {
-  fill: #ffffff;
-  stroke: #000000;
+  fill: @topo-city-boundaries-fill;
+  stroke: @topo-city-boundaries-stroke;
   stroke-width: 1.5;
   z-index: 1900;
 }
 .municipality-boundaries {
-  fill: #ffffff;
-  stroke: #000000;
+  fill: @topo-city-boundaries-fill;
+  stroke: @topo-city-boundaries-stroke;
   stroke-width: 1;
 }
 .municipality-text {
@@ -120,19 +135,19 @@ body {
   text-anchor: end;
 }
 .lakes {
-  fill: #c6ecff;
-  stroke: none;
+  fill: @topo-lakes-fill;
+  stroke: @topo-lakes-stroke;
   z-index: 4000;
 }
 .my-location {
-  fill: #ff0000;
-  stroke: #000000;
+  fill: @map-my-location-fill;
+  stroke: @map-my-location-stroke;
   stroke-width: 1.5;
   z-index: 2000;
 }
 .current-location {
   fill: transparent;
-  stroke: #000000;
+  stroke: @map-current-location-stroke;
   stroke-width: 1;
 }
 text {
@@ -149,6 +164,7 @@ text {
     pointer-events: none;
   }
 }
+
 .heatmap {
   opacity: 0.66;
   fill-rule: nonzero;
@@ -157,26 +173,29 @@ text {
   fill: transparent;
   stroke: transparent;
 }
+
 .area0 {
-  fill: #de9900;
+  fill: @arrlee-area0;
 }
 .area1 {
-  fill: #e5ad00;
+  fill: @arrlee-area1;
 }
 .area2 {
-  fill: #ebc200;
+  fill: @arrlee-area2;
 }
 .area3 {
-  fill: #f2d600;
+  fill: @arrlee-area3;
 }
 .area4 {
-  fill: #f8eb00;
+  fill: @arrlee-area4;
 }
 .area5 {
-  fill: #ffff00;
+  fill: @arrlee-area5;
 }
+
+//**** KEYBOARD
 .ui-keyboard {
-  background: #eeeeee;
+  background: @keyboard-border;
   width: 188px !important;
   border: none !important;
   padding: 0 !important;
@@ -195,7 +214,7 @@ text {
   position: absolute;
   pointer-events: none;
   border-color: rgba(238, 238, 238, 0);
-  border-bottom-color: #eeeeee;
+  border-bottom-color: @keyboard-border;
   border-width: 15px;
   margin-left: -15px;
 }
@@ -205,11 +224,11 @@ text {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #e5e5e5));
-  background-image: -webkit-linear-gradient(#ffffff, #e5e5e5);
-  background-image: -moz-linear-gradient(#ffffff, #e5e5e5);
-  background-image: -o-linear-gradient(#ffffff, #e5e5e5);
-  background-image: linear-gradient(#ffffff, #e5e5e5);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, @keyboard-button));
+  background-image: -webkit-linear-gradient(#ffffff, @keyboard-button);
+  background-image: -moz-linear-gradient(#ffffff, @keyboard-button);
+  background-image: -o-linear-gradient(#ffffff, @keyboard-button);
+  background-image: linear-gradient(#ffffff, @keyboard-button);
   -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 3px 10px;
   -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 3px 10px;
   box-shadow: rgba(0, 0, 0, 0.3) 0 3px 10px;
@@ -236,18 +255,20 @@ text {
 }
 .ui-keyboard-button:active {
   top: 4px;
-  -webkit-transform: translate(0, 4px);
-  -moz-transform: translate(0, 4px);
-  -ms-transform: translate(0, 4px);
-  -o-transform: translate(0, 4px);
-  transform: translate(0, 4px);
-  -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
+  -webkit-transform: translate(0,4px);
+  -moz-transform: translate(0,4px);
+  -ms-transform: translate(0,4px);
+  -o-transform: translate(0,4px);
+  transform: translate(0,4px);
+  -webkit-box-shadow: 0 0 0 0 rgba(0,0,0,.5);
+  -moz-box-shadow: 0 0 0 0 rgba(0,0,0,.5);
+  box-shadow: 0 0 0 0 rgba(0,0,0,.5);
 }
+
+//**** FILTER
 .form-block md-input-container,
 .form-block md-select,
-.form-block label {
+.form-block label{
   width: 100%;
 }
 md-input-container > md-slider {
@@ -256,93 +277,76 @@ md-input-container > md-slider {
   margin: 0;
   width: 100%;
 }
+
 md-select-menu,
 md-select-menu md-content {
   max-height: inherit;
 }
+
 .jd-select-reset {
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(0,0,0,0.54);
 }
+
 .jd-floating-toolbar md-radio-button .md-label {
   font-size: 0.75em;
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(0,0,0,0.54);
 }
+
 .jd-floating-toolbar md-radio-button {
   margin: 5px;
 }
+
 md-input-container.md-slider-has-label label {
   -webkit-transform: translate3d(0, 1em, 0) scale(0.75);
   transform: translate3d(0, 1em, 0) scale(0.75);
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(0,0,0,0.54);
   width: 100%;
 }
+
 .toolbar-inverse md-icon {
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(0,0,0,0.54);
 }
+
 .jd-floating-toolbar {
   height: 5em;
   max-height: 7em;
   margin-top: 1em;
-  width: calc(100% - 16px);
+  width: calc(~'100% - 16px');
   position: fixed;
   background-color: #fff;
   z-index: 10;
 }
+
 @media (max-width: 599px) {
   .jd-floating-toolbar-fill-sm {
     height: auto;
     max-height: inherit;
   }
 }
+
 .jd-floating-fab {
   position: fixed !important;
 }
+
 #filter + div {
   margin-top: 6em;
 }
+
 .jd-icon-button {
   width: auto !important;
   border-radius: 0 !important;
 }
+
 .jd-iframe {
   border: none;
   width: 100%;
 }
+
 .infinite-scroll {
   overflow: scroll;
 }
+
 .jd-warn {
-  background-color: #e11a27;
+  background-color: @ch-red;
   color: #fff;
-}
-@media print {
-  body #topnav,
-  body #main {
-    visibility: hidden;
-    background-color: transparent;
-    box-shadow: none !important;
-  }
-  body .md-actions {
-    display: none;
-  }
-  body md-dialog {
-    box-shadow: none !important;
-    max-width: 100%;
-    max-height: 100%;
-  }
-  body md-toolbar {
-    display: none;
-  }
-  body md-dialog-content {
-    padding: 0;
-    overflow: hidden;
-  }
-  body .md-dialog-container {
-    background-color: white;
-    align-items: flex-start;
-  }
-  body #printableArea {
-    visibility: visible;
-    font-size: 9px;
-  }
 }

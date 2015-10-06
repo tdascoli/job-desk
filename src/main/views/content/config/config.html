@@ -1,4 +1,7 @@
-<strong translate="global.error.noValidZip" ng-show="locationError"></strong>
+<h2 class="md-toolbar-tools jd-warn" ng-if="locationError">
+  <strong translate="global.error.noValidZip" flex></strong>
+  <md-button ng-click="closeError()"><md-icon>close</md-icon></md-button>
+</h2>
 <md-content layout-padding>
   <h1 translate="config.title"></h1>
 

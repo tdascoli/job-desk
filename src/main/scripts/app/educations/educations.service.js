@@ -6,6 +6,8 @@
     .factory('EducationsService', function ($http, baseUrl) {
 
       var params = {
+        from: 0,
+        size: 20,
         distanceType: 'distance',
         distance: 30,
         travelTime: 30,
@@ -19,6 +21,8 @@
 
       function find() {
         var filter = {
+          'from' : params.from,
+          'size' : params.size,
           'query': {
             'filtered': {
               'query': {
@@ -72,7 +76,7 @@
             filter.query.filtered.filter.and.push({'not': {'terms': {'languages':['ger','de','fre','fr','ita','it','eng','en']}}});
           }
         }
-        return $http.post(baseUrl + '/educations/_search?size=5000', filter);
+        return $http.post(baseUrl + '/educations/_search', filter);
       }
 
       function resetSearchParams() {

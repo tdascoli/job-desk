@@ -6,6 +6,8 @@
     .factory('JobsService', function ($http, baseUrl) {
 
       var params = {
+        from: 0,
+        size: 20,
         distanceType: 'distance',
         distance: 30,
         travelTime: 30,
@@ -20,6 +22,8 @@
 
       function find() {
         var filter = {
+          'from' : params.from,
+          'size' : params.size,
           'query': {
             'filtered': {
               'query': {
@@ -75,7 +79,7 @@
         if (params.iscoGroupLevel2 !== '' && params.iscoGroupLevel2 !== 0) {
           filter.query.filtered.filter.and.push({'term': {'isco.groupLevel2': params.iscoGroupLevel2}});
         }
-        return $http.post(baseUrl + '/jobs/_search?size=5000', filter);
+        return $http.post(baseUrl + '/jobs/_search', filter);
       }
 
       function resetSearchParams() {

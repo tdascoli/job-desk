@@ -1,0 +1,36 @@
+@media print {
+  body #topnav, body #main {
+    visibility: hidden;
+    background-color: transparent;
+    box-shadow: none !important;
+  }
+
+  body .md-actions {
+    display: none;
+  }
+
+  body md-dialog {
+    box-shadow: none !important;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  body md-toolbar {
+    display: none;
+  }
+
+  body md-dialog-content {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  body .md-dialog-container {
+    background-color: white;
+    align-items: flex-start;
+  }
+
+  body #printableArea {
+    visibility: visible;
+    font-size: 9px;
+  }
+}

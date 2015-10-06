@@ -150,7 +150,7 @@
             });
 
           function setMyLocation() {
-            $rootScope.$watch('myCoords', function () {
+            $rootScope.$watchCollection('myCoords', function () {
               if ($rootScope.myCoords !== undefined) {
                 var classLocation = 'my-location';
                 var xy = projection([$rootScope.myCoords.lon, $rootScope.myCoords.lat]);
@@ -362,7 +362,7 @@
             scope.setCurrentCoords({lon: coords[0], lat: coords[1]});
           });
 
-          scope.$watch('searchParams.distance', function () {
+          scope.$watchCollection('searchParams.distance', function () {
             $('#heatmap').remove();
             $('.radius').show();
             $('.radius').attr('r', (scope.searchParams.distance/kmPerPixel));
@@ -393,7 +393,7 @@
           }
 
           //** ALL AREA MAP
-          scope.$watch('heatmap', function () {
+          scope.$watchCollection('heatmap', function () {
             if (scope.heatmap !== undefined) {
               var geometries = [];
               var coordinates = [[], []];
@@ -471,11 +471,11 @@
             }
           });
 
-          scope.$watch('searchParams.currentCoords', function () {
+          scope.$watchCollection('searchParams.currentCoords', function () {
               setUmkreisInternal();
           });
 
-          scope.$watch('searchParams.distanceType', function (newValue, oldValue) {
+          scope.$watchCollection('searchParams.distanceType', function (newValue, oldValue) {
             if (newValue!==oldValue && scope.searchParams.distanceType==='distance') {
               setUmkreisInternal();
             }
@@ -568,6 +568,31 @@
         scope.setTranslationLanguage = function (language) {
           $translate.use(language);
         };
+      }
+    };
+  }]);
+
+  module.directive('infiniteScroll',['$window','$document',function($window,$document){
+    return {
+      priority: 100,
+      restrict : 'A',
+      link : function(scope, element, attrs){
+        var height=$document.height() - element.offset().top;
+        var elementHeight=0;
+        var itemClass = attrs.infinteScrollItem || 'detail';
+
+        element.css('height',height);
+
+        element.scroll(function() {
+          if (elementHeight===0){
+            elementHeight=Math.ceil($(itemClass+':nth-last-child(5)').offset().top-$document.outerHeight(true));
+          }
+          if (elementHeight<element.scrollTop() && !scope.idle){
+            scope.loadMoreResults();
+            elementHeight=Math.ceil($(itemClass+':nth-last-child(5)').offset().top-$document.outerHeight(true));
+          }
+        });
+
       }
     };
   }]);

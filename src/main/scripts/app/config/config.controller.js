@@ -7,10 +7,11 @@
 
       $scope.lookupCoords=false;
       $scope.idle=false;
+      $scope.locationError=false;
 
       $scope.config=ConfigService.init();
 
-      $scope.$watch('myCoords', function () {
+      $scope.$watchCollection('myCoords', function () {
         if ($rootScope.myCoords !== undefined && $scope.config.coords === undefined) {
           initCoords();
         }
@@ -62,6 +63,10 @@
         ConfigService.persist();
         $rootScope.myCoords=$scope.config.coords;
         $rootScope.appConfig=$scope.config;
+      };
+
+      $scope.closeError=function(){
+        $scope.locationError=false;
       };
 
       function initCoords() {

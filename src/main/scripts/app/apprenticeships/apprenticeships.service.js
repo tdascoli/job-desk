@@ -6,6 +6,8 @@
     .factory('ApprenticeshipsService', function ($http, baseUrl) {
 
       var params = {
+        from: 0,
+        size: 20,
         distanceType: 'distance',
         distance: 30,
         travelTime: 30,
@@ -18,6 +20,8 @@
 
       function find() {
         var filter = {
+          'from' : params.from,
+          'size' : params.size,
           'query': {
             'filtered': {
               'query': {
@@ -56,7 +60,7 @@
         if (params.swissdocGroupLevel2 !== '') {
           filter.query.filtered.filter.and.push({'prefix': {'swissdoc': '0.' + params.swissdocGroupLevel2}});
         }
-        return $http.post(baseUrl + '/apprenticeships/_search?size=5000', filter);
+        return $http.post(baseUrl + '/apprenticeships/_search', filter);
       }
 
       function resetSearchParams(){

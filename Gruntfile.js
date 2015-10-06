@@ -192,8 +192,7 @@ module.exports = function (grunt) {
           ieCompat: true
         },
         files: {
-          'src/main/assets/styles/jobdesk.css': ['src/main/assets/less/main.less'],
-          'src/main/assets/styles/material-icons.css': ['src/main/assets/less/material-design-iconfont.less']
+          'src/main/assets/styles/jobdesk.css': ['src/main/assets/less/main.less']
         }
       }
     },

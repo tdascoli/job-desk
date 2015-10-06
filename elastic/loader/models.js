@@ -113,6 +113,10 @@
         "source": {
           "type": "string"
         },
+        "publicationDate": {
+          "type":"date",
+          "format" : "yyyy-MM-dd HH:mm:ss"
+        },
         "onlineSince": {
           "type": "integer"
         },

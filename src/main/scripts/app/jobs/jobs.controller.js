@@ -7,6 +7,7 @@
 
       $rootScope.searchType = 'jobs';
       $scope.searchParams = JobsService.params;
+      $scope.searchParams.from=0;
 
       $scope.distanceOptions = {min: 10, max: 150, step: 10, value: 30};
       $scope.travelTimeOptions = {min: 10, max: 120, step: 5, value: 30};
@@ -106,7 +107,21 @@
         }
         else {
           //** countJobs with distance parameter
-          find();
+          find(false);
+        }
+      };
+
+      $scope.loadMoreResults=function(){
+        if ($scope.searchParams.from<$scope.count) {
+          $scope.idle=true;
+
+          var from = $scope.searchParams.from;
+          from += $scope.searchParams.size;
+          if (from > $scope.count) {
+            from = $scope.count;
+          }
+          $scope.searchParams.from = from;
+          find(true);
         }
       };
 
@@ -116,7 +131,7 @@
           ArrleeService.getZips($scope.searchParams.travelTime).success(function (result) {
             $scope.searchParams.zips = lodash.pluck(result.POI, 'name');
             //** find Jobs with searchParams
-            find();
+            find(false);
           })
           .error(function (error) {
             // todo error handling
@@ -129,9 +144,14 @@
         });
       }
 
-      function find(){
+      function find(scroll){
         JobsService.find().success(function (result) {
-          $rootScope.jobs = result.hits.hits;
+          if (scroll && angular.isArray($rootScope.jobs)){
+            $rootScope.jobs = $rootScope.jobs.concat(result.hits.hits);
+          }
+          else {
+            $rootScope.jobs = result.hits.hits;
+          }
           $scope.count = result.hits.total;
           $scope.idle=false;
         })
@@ -179,19 +199,19 @@
         setNewCoords(coords);
       };
 
-      $scope.$watch('searchParams.currentCoords', function () {
+      $scope.$watchCollection('searchParams.currentCoords', function () {
         if ($scope.searchParams.currentCoords !== undefined) {
           setNewCoords($scope.searchParams.currentCoords);
         }
       });
 
-      $scope.$watch('myCoords', function () {
+      $scope.$watchCollection('myCoords', function () {
         if ($rootScope.myCoords !== undefined && $scope.searchParams.currentCoords===undefined) {
           $scope.searchParams.currentCoords = $rootScope.myCoords;
         }
       });
 
-      $scope.$watch('searchParams.distanceType', function (newValue, oldValue) {
+      $scope.$watchCollection('searchParams.distanceType', function (newValue, oldValue) {
         if (newValue!==oldValue){
           $scope.countJobs();
         }

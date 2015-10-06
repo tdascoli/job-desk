@@ -91,13 +91,20 @@
             controller: function PrintDialogController($scope, jobDetail, getMultiLanguageText) {
               $scope.jobDetail = jobDetail;
               $scope.getMultiLanguageText = getMultiLanguageText;
+              $scope.cancel = function() {
+                $mdDialog.cancel();
+              };
+              $scope.printJob = function() {
+                window.print();
+                $mdDialog.hide();
+              };
               $scope.formatText = function(text) {
                 text = text.replace(/(<|&lt;)br\s*\/*(>|&gt;)/g,' ');
                 return text;
-              }
+              };
             }
           });
-        }
+        };
       }
     };
   }]);
