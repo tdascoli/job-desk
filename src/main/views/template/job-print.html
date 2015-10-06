@@ -10,17 +10,17 @@
   </md-toolbar>
   <md-dialog-content>
     <div id="printableArea">
-      <strong>{{getMultiLanguageText(jobDetail._source.title)}}</strong><br />
+      <strong>{{::getMultiLanguageText(jobDetail._source.title)}}</strong><br />
       <span ng-if="jobDetail._source.onlineSince>1" translate="jobs.result.onlineSince" translate-values="{value: jobDetail._source.onlineSince}"></span>
       <span ng-if="jobDetail._source.onlineSince===1" translate="jobs.result.onlineSinceOneDay"></span>
       /
       <span translate="jobs.result.workload"></span>
-      <span ng-if="jobDetail._source.quotaFrom!==jobDetail._source.quotaTo">{{jobDetail._source.quotaFrom}} - {{jobDetail._source.quotaTo}}%</span>
-      <span ng-if="jobDetail._source.quotaFrom===jobDetail._source.quotaTo">{{jobDetail._source.quotaTo}}%</span>
+      <span ng-if="jobDetail._source.quotaFrom!==jobDetail._source.quotaTo">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</span>
+      <span ng-if="jobDetail._source.quotaFrom===jobDetail._source.quotaTo">{{::jobDetail._source.quotaTo}}%</span>
 
       <p ng-bind-html="formatText(getMultiLanguageText(jobDetail._source.description))"></p>
       <strong class="fake-label" translate="jobs.result.jobLocation"></strong> :
-      <span>{{getMultiLanguageText(jobDetail._source.locations.remarks)}}</span><br />
+      <span>{{::getMultiLanguageText(jobDetail._source.locations.remarks)}}</span><br />
 
       <strong class="fake-label" translate="jobs.result.entryDate"></strong> :
       <span ng-if="jobDetail._source.availableNow" translate="jobs.result.availableNow"></span>
@@ -46,22 +46,22 @@
       </div>
       <div ng-if="jobDetail._source.application.electronical">
         <strong class="fake-label" translate="jobs.result.titleElectronicApplication"></strong> :
-        <span>{{jobDetail._source.contact.eMail}} <span ng-if="jobDetail._source.company.url">/ {{jobDetail._source.company.url}}</span></span>
+        <span>{{::jobDetail._source.contact.eMail}} <span ng-if="jobDetail._source.company.url">/ {{::jobDetail._source.company.url}}</span></span>
       </div>
       <div ng-if="jobDetail._source.application.phone">
         <strong class="fake-label" translate="jobs.result.titlePhoneApplication"></strong> :
-        <span>{{jobDetail._source.contact.phone}}</span>
+        <span>{{::jobDetail._source.contact.phone}}</span>
       </div>
 
-      <strong>{{jobDetail._source.company.name}}</strong><br />
-      <span>{{jobDetail._source.company.address.street}}</span><br />
-      <span>{{jobDetail._source.company.address.zip}} {{jobDetail._source.company.address.location}}</span><br />
+      <strong>{{::jobDetail._source.company.name}}</strong><br />
+      <span>{{::jobDetail._source.company.address.street}}</span><br />
+      <span>{{::jobDetail._source.company.address.zip}} {{::jobDetail._source.company.address.location}}</span><br />
       <span ng-if="jobDetail._source.company.poAddress.poBox"><br /><span translate="jobs.result.poBox" translate-values="{value: jobDetail._source.company.poAddress.poBox}"></span><br /></span>
-      <span ng-if="jobDetail._source.company.poAddress.poBox">{{jobDetail._source.company.poAddress.zip}} {{jobDetail._source.company.poAddress.location}}</span>
+      <span ng-if="jobDetail._source.company.poAddress.poBox">{{::jobDetail._source.company.poAddress.zip}} {{::jobDetail._source.company.poAddress.location}}</span>
 
-      <strong><span translate="global.codes.salutations.{{jobDetail._source.contact.gender}}"></span> {{jobDetail._source.contact.firstName}} {{jobDetail._source.contact.lastName}}</strong><br />
-      <span ng-if="jobDetail._source.contact.phone">{{jobDetail._source.contact.phone}}<br /></span>
-      <span ng-if="jobDetail._source.contact.eMail">{{jobDetail._source.contact.eMail}}</span>
+      <strong><span translate="global.codes.salutations.{{jobDetail._source.contact.gender}}"></span> {{::jobDetail._source.contact.firstName}} {{::jobDetail._source.contact.lastName}}</strong><br />
+      <span ng-if="jobDetail._source.contact.phone">{{::jobDetail._source.contact.phone}}<br /></span>
+      <span ng-if="jobDetail._source.contact.eMail">{{::jobDetail._source.contact.eMail}}</span>
     </div>
   </md-dialog-content>
   <div class="md-actions" layout="row">
