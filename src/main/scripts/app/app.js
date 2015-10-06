@@ -18,8 +18,7 @@
     'alv-ch-ng.security',
     'alv-ch-ng.text-truncate',
     'job-desk.i18n',
-    'job-desk.directive',
-    'debounce'
+    'job-desk.directive'
   ]);
 
   app.config(['$httpProvider', function($httpProvider) {
