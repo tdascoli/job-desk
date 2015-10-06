@@ -10,13 +10,13 @@
   </md-toolbar>
   <md-dialog-content>
     <div id="printableArea">
-      <strong>{{getMultiLanguageText(jobDetail._source.title)}}</strong>
-      <strong ng-if="jobDetail._source.onlineSince>1" translate="jobs.result.onlineSince" translate-values="{value: jobDetail._source.onlineSince}"></strong>
-      <strong ng-if="jobDetail._source.onlineSince===1" translate="jobs.result.onlineSinceOneDay"></strong>
+      <strong>{{getMultiLanguageText(jobDetail._source.title)}}</strong><br />
+      <span ng-if="jobDetail._source.onlineSince>1" translate="jobs.result.onlineSince" translate-values="{value: jobDetail._source.onlineSince}"></span>
+      <span ng-if="jobDetail._source.onlineSince===1" translate="jobs.result.onlineSinceOneDay"></span>
       /
-      <strong translate="jobs.result.workload"></strong>
-      <strong ng-if="jobDetail._source.quotaFrom!==jobDetail._source.quotaTo">{{jobDetail._source.quotaFrom}} - {{jobDetail._source.quotaTo}}%</strong>
-      <strong ng-if="jobDetail._source.quotaFrom===jobDetail._source.quotaTo">{{jobDetail._source.quotaTo}}%</strong>
+      <span translate="jobs.result.workload"></span>
+      <span ng-if="jobDetail._source.quotaFrom!==jobDetail._source.quotaTo">{{jobDetail._source.quotaFrom}} - {{jobDetail._source.quotaTo}}%</span>
+      <span ng-if="jobDetail._source.quotaFrom===jobDetail._source.quotaTo">{{jobDetail._source.quotaTo}}%</span>
 
       <p ng-bind-html="formatText(getMultiLanguageText(jobDetail._source.description))"></p>
       <strong class="fake-label" translate="jobs.result.jobLocation"></strong> :
