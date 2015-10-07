@@ -250,9 +250,14 @@
       $scope.sortResultList = function () {
         $rootScope.jobs = orderBy($rootScope.jobs, $scope.sortList[$scope.sort].code.field, $scope.sortList[$scope.sort].code.order);
       };
+
+      if ($scope.searchParams.currentCoords !== undefined) {
+        setNewCoords($scope.searchParams.currentCoords);
+      }
+      else {
+        $scope.setMyLocation();
+      }
     });
-
-
 }());
 
 
