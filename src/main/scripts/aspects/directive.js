@@ -358,8 +358,10 @@
           d3.select(window).on('resize', resize());
 
           d3.select('svg').on('mousedown.log', function () {
-            var coords = projection.invert(d3.mouse(this));
-            scope.setCurrentCoords({lon: coords[0], lat: coords[1]});
+            if (!scope.updatingNewCoords) {
+              var coords = projection.invert(d3.mouse(this));
+              scope.setCurrentCoords({lon: coords[0], lat: coords[1]});
+            }
           });
 
           scope.$watchCollection('searchParams.distance', function () {
