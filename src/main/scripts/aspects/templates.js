@@ -98,10 +98,72 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "      </span>\n" +
     "    </md-button>\n" +
     "    <p></p>\n" +
-    "    <md-button><md-icon>print</md-icon>&nbsp;<span translate=\"educations.result.print\"></span></md-button>\n" +
+    "    <md-button ng-click=\"showPrintDialog()\"><md-icon>print</md-icon>&nbsp;<span translate=\"educations.result.print\"></span></md-button>\n" +
     "  </div>\n" +
     "</div>\n" +
     "<md-divider></md-divider>\n"
+  );
+
+
+  $templateCache.put('template/education-print.html',
+    "<md-dialog>\n" +
+    "  <md-toolbar>\n" +
+    "    <div class=\"md-toolbar-tools\">\n" +
+    "      <h2><span translate=\"educations.result.print\"></span></h2>\n" +
+    "      <span flex></span>\n" +
+    "    </div>\n" +
+    "  </md-toolbar>\n" +
+    "  <md-dialog-content>\n" +
+    "\n" +
+    "    <div id=\"printableArea\">\n" +
+    "\n" +
+    "      <strong>{{educationDetail._source.title}}</strong><br />\n" +
+    "      <strong><span translate=\"educations.result.location\"></span></strong> : {{educationDetail._source.location.zip}} {{educationDetail._source.location.name}}\n" +
+    "\n" +
+    "      <p ng-bind-html=\"formatText(educationDetail._source.content)\"></p>\n" +
+    "\n" +
+    "      <strong>{{educationDetail._source.provider.name}}</strong><br />\n" +
+    "      <strong ng-if=\"educationDetail._source.provider.contact.firstName\">{{educationDetail._source.provider.contact.firstName}} {{educationDetail._source.provider.contact.lastName}}<br /></strong>\n" +
+    "      <span>{{educationDetail._source.provider.address.street}}</span><br />\n" +
+    "      <span>{{educationDetail._source.location.zip}} {{educationDetail._source.location.name}}</span><br />\n" +
+    "      <span ng-if=\"educationDetail._source.provider.phone\"><span translate=\"educations.result.phone\" translate-values=\"{value: educationDetail._source.provider.phone}\"></span><br /></span>\n" +
+    "      <span ng-if=\"educationDetail._source.provider.fax\"><span translate=\"educations.result.fax\" translate-values=\"{value: educationDetail._source.provider.fax}\"></span><br /></span>\n" +
+    "      <span ng-if=\"educationDetail._source.provider.eMail\">{{educationDetail._source.provider.eMail}}<br /></span>\n" +
+    "      <span ng-if=\"educationDetail._source.provider.url\">{{educationDetail._source.provider.url}}</span>\n" +
+    "\n" +
+    "      <div ng-if=\"educationDetail._source.startText\"><strong translate=\"educations.result.start\"></strong> : <span ng-bind-html=\"educationDetail._source.startText\"></span></div>\n" +
+    "      <div ng-if=\"educationDetail._source.duration\"><strong translate=\"educations.result.duration\"></strong> : <span ng-bind-html=\"educationDetail._source.duration\"></span></div>\n" +
+    "      <div ng-if=\"educationDetail._source.activity\"><strong translate=\"educations.result.activity\"></strong> : <span ng-bind-html=\"educationDetail._source.activity\"></span></div>\n" +
+    "      <div ng-if=\"educationDetail._source.cost\"><strong translate=\"educations.result.cost\"></strong> : <span ng-bind-html=\"educationDetail._source.cost\"></span></div>\n" +
+    "      <div ng-if=\"educationDetail._source.languages\"><strong translate=\"educations.result.language\"></strong> : <span translate=\"educations.result.languages.{{checkLanguage(educationDetail._source.languages)}}\"></span></div>\n" +
+    "\n" +
+    "      <div ng-if=\"educations.result.target\">\n" +
+    "        <strong translate=\"educations.result.target\"></strong>\n" +
+    "        <p ng-bind-html=\"educationDetail._source.target\"></p>\n" +
+    "      </div>\n" +
+    "      <div ng-if=\"educations.result.preconditions\">\n" +
+    "        <strong translate=\"educations.result.preconditions\"></strong>\n" +
+    "        <p ng-bind-html=\"educationDetail._source.preconditions\"></p>\n" +
+    "      </div>\n" +
+    "      <div>\n" +
+    "        <strong translate=\"educations.result.degree\"></strong>\n" +
+    "      </div>\n" +
+    "\n" +
+    "      <div ng-if=\"educationDetail._source.comments.class || educationDetail._source.comments.offers\">\n" +
+    "        <strong translate=\"educations.result.comments\"></strong>\n" +
+    "        <p ng-bind-html=\"educationDetail._source.comments.class\"></p>\n" +
+    "        <p ng-bind-html=\"educationDetail._source.comments.offers\"></p>\n" +
+    "      </div>\n" +
+    "\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <div layout=\"row\" layout-sm=\"column\" layout-align=\"space-around\">\n" +
+    "      <md-progress-circular md-mode=\"indeterminate\" md-diameter=\"60\"></md-progress-circular>\n" +
+    "    </div>\n" +
+    "\n" +
+    "  </md-dialog-content>\n" +
+    "</md-dialog>\n" +
+    "\n"
   );
 
 
@@ -254,8 +316,8 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "  <md-dialog-content>\n" +
     "    <div id=\"printableArea\">\n" +
     "      <strong>{{::getMultiLanguageText(jobDetail._source.title)}}</strong><br />\n" +
-    "      <span ng-if=\"jobDetail._source.onlineSince>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: jobDetail._source.onlineSince}\"></span>\n" +
-    "      <span ng-if=\"jobDetail._source.onlineSince===1\" translate=\"jobs.result.onlineSinceOneDay\"></span>\n" +
+    "      <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: onlineSinceDate(jobDetail._source.publicationDate)}\"></span>\n" +
+    "      <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)===1\" translate=\"jobs.result.onlineSinceOneDay\"></span>\n" +
     "      /\n" +
     "      <span translate=\"jobs.result.workload\"></span>\n" +
     "      <span ng-if=\"jobDetail._source.quotaFrom!==jobDetail._source.quotaTo\">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</span>\n" +
