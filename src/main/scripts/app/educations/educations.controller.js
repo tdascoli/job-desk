@@ -183,12 +183,6 @@
         setNewCoords(coords);
       };
 
-      $scope.$watchCollection('searchParams.currentCoords', function () {
-        if ($scope.searchParams.currentCoords !== undefined) {
-          setNewCoords($scope.searchParams.currentCoords);
-        }
-      });
-
       $scope.$watchCollection('myCoords', function () {
         if ($rootScope.myCoords !== undefined && $scope.searchParams.currentCoords===undefined) {
           $scope.searchParams.currentCoords = $rootScope.myCoords;
@@ -243,6 +237,13 @@
       $scope.resetSearchParams=function(){
         return EducationsService.resetSearchParams();
       };
+
+      if ($scope.searchParams.currentCoords !== undefined) {
+        setNewCoords($scope.searchParams.currentCoords);
+      }
+      else {
+        $scope.setMyLocation();
+      }
     });
 
 
