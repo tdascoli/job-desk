@@ -91,7 +91,6 @@
       $scope.currentZip = $scope.searchParams.currentZip;
       $scope.heatmap = undefined;
       $scope.idle=false;
-      $scope.updatingNewCoords = false;
 
       $scope.setIscoGroup = function (isco) {
         $scope.searchParams.iscoMajorGroup = isco;
@@ -137,13 +136,11 @@
           .error(function (error) {
               // todo error handling
               console.log(error);
-              $scope.updatingNewCoords = false;
           });
         })
         .error(function (error) {
             // todo error handling
             console.log(error);
-            $scope.updatingNewCoords = false;
         });
       }
 
@@ -157,13 +154,11 @@
           }
           $scope.count = result.hits.total;
           $scope.idle=false;
-          $scope.updatingNewCoords = false;
         })
         .error(function (error) {
-          $scope.idle=false;
+            $scope.idle=false;
             // todo error handling
             console.log(error);
-            $scope.updatingNewCoords = false;
         });
       }
 
@@ -177,7 +172,6 @@
       };
 
       function setNewCoords(coords) {
-        $scope.updatingNewCoords = true;
         LocationsService.getLocation(coords).success(function (nearestZip) {
           if (nearestZip.hits.total > 0) {
             $scope.searchParams.currentCoords = coords;
@@ -189,13 +183,11 @@
           }
           else {
             $scope.locationError('global.error.noValidCoords');
-            $scope.updatingNewCoords = false;
           }
         })
         .error(function (error) {
             // todo error handling
             console.log(error);
-            $scope.updatingNewCoords = false;
         });
       }
 
@@ -206,12 +198,6 @@
       $scope.setCurrentCoords = function (coords) {
         setNewCoords(coords);
       };
-
-      $scope.$watchCollection('searchParams.currentCoords', function () {
-        if ($scope.searchParams.currentCoords !== undefined) {
-          setNewCoords($scope.searchParams.currentCoords);
-        }
-      });
 
       $scope.$watchCollection('myCoords', function () {
         if ($rootScope.myCoords !== undefined && $scope.searchParams.currentCoords===undefined) {
