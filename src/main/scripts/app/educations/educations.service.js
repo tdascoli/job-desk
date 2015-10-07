@@ -16,7 +16,11 @@
         language: '',
         zips: undefined,
         currentZip: '',
-        currentCoords: undefined
+        currentCoords: undefined,
+        sort: {
+          field: 'title',
+          order: 'desc'
+        }
       };
 
       function find() {
@@ -33,9 +37,18 @@
                 'or': []
               }
             }
-          }
+          },
+          'sort': []
         };
 
+        // QUERY
+        if (params.swissdocMajorGroup !== '') {
+          filter.query.filtered.query={'prefix': {'swissdoc': '9.' + params.swissdocMajorGroup}};
+        }
+        if (params.swissdocGroupLevel2 !== '' && params.swissdocGroupLevel2 !== 0 && params.swissdocGroupLevel2 !== '0') {
+          filter.query.filtered.query={'prefix': {'swissdoc': '9.' + params.swissdocGroupLevel2}};
+        }
+        // FILTER
         if (params.distanceType === 'distance') {
           filter.query.filtered.filter.and.push({
             'geo_distance': {
@@ -56,12 +69,6 @@
             }
           });
         }
-        if (params.swissdocMajorGroup !== '') {
-          filter.query.filtered.filter.and.push({'prefix': {'swissdoc': '9.' + params.swissdocMajorGroup}});
-        }
-        if (params.swissdocGroupLevel2 !== '') {
-          filter.query.filtered.filter.and.push({'prefix': {'swissdoc': '9.' + params.swissdocGroupLevel2}});
-        }
         if (params.language !== '') {
           if (params.language!=='other') {
             filter.query.filtered.filter.or.push({'term': {'languages': params.language}});
@@ -76,6 +83,10 @@
             filter.query.filtered.filter.and.push({'not': {'terms': {'languages':['ger','de','fre','fr','ita','it','eng','en']}}});
           }
         }
+        // SORT
+        var sort = {};
+        sort[params.sort.field]={order:params.sort.order};
+        filter.sort.push(sort);
         return $http.post(baseUrl + '/educations/_search', filter);
       }
 

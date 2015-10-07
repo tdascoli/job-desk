@@ -228,16 +228,15 @@
       };
 
       $scope.sort=0;
-      var orderBy = $filter('orderBy');
-      $scope.sortList=[
-        {code:{field:'_source.titleM.'+$translate.use(),order:false}, text:'global.sort.apprenticeshipstitle_az'},
-        {code:{field:'_source.titleM.'+$translate.use(),order:true}, text:'global.sort.apprenticeshipstitle_za'},
-        {code:{field:'_source.company.address.zip',order:false}, text:'global.sort.location_1000'},
-        {code:{field:'_source.company.address.zip',order:true}, text:'global.sort.location_9999'}
+      $scope.sortList = [
+        {sort: { field: 'company.address.zip', order: 'asc' }, text: 'global.sort.location_1000'},
+        {sort: { field: 'company.address.zip', order: 'desc' }, text: 'global.sort.location_9999'},
+        {sort: { field: 'titleM.'+$translate.use(), order: 'asc' }, text: 'global.sort.apprenticeshipstitle_az'},
+        {sort: { field: 'titleM.'+$translate.use(), order: 'desc' }, text: 'global.sort.apprenticeshipstitle_za'}
       ];
-      $scope.sortResultList=function(){
-        //var sort = lodash.findIndex($scope.sortList,$scope.sort);
-        $rootScope.apprenticeships = orderBy($rootScope.apprenticeships, $scope.sortList[$scope.sort].code.field, $scope.sortList[$scope.sort].code.order);
+      $scope.sortResultList = function () {
+        $scope.searchParams.sort=$scope.sortList[$scope.sort].sort;
+        $scope.countJobs();
       };
 
       $scope.resetSearchParams=function(){

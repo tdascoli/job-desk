@@ -155,8 +155,8 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "  <div flex flex-sm=\"100\" ng-click=\"showDetail($event,jobDetail._source)\">\n" +
     "      <h4 class=\"strong\">{{::getMultiLanguageText(jobDetail._source.title)}}</h4>\n" +
     "\n" +
-    "      <strong ng-if=\"jobDetail._source.onlineSince>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: jobDetail._source.onlineSince}\"></strong>\n" +
-    "      <strong ng-if=\"jobDetail._source.onlineSince===1\" translate=\"jobs.result.onlineSinceOneDay\"></strong>\n" +
+    "      <strong ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: onlineSinceDate(jobDetail._source.publicationDate)}\"></strong>\n" +
+    "      <strong ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)===1\" translate=\"jobs.result.onlineSinceOneDay\"></strong>\n" +
     "      /\n" +
     "      <strong translate=\"jobs.result.workload\"></strong>\n" +
     "      <strong ng-if=\"jobDetail._source.quotaFrom!==jobDetail._source.quotaTo\">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</strong>\n" +

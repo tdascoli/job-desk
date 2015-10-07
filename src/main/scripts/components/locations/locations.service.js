@@ -5,10 +5,9 @@
   angular.module('job-desk')
     .factory('LocationsService', function ($http, baseUrl) {
 
-      // todo ?size=1 da nur eines benutzt wird...
-
       function getLocation(coords) {
         var filter = {
+          'size' : 1,
           'query': {
             'filtered': {
               'query': {
@@ -39,16 +38,17 @@
 
       function getLocationFromZip(zip) {
         var filter = {
+          'size' : 1,
           'query': {
-            'filtered': {
-              'query': {
                 'term': {'zip':zip }
-              },
-              'filter': {
-                'term': { 'additionalNumber':0 }
+          },
+          'sort': [
+            {
+              'additionalNumber': {
+                'order': 'asc'
               }
             }
-          }
+          ]
         };
 
         return $http.post(baseUrl + '/locations/_search', filter);

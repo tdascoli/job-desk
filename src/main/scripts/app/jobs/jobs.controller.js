@@ -239,16 +239,16 @@
       };
 
       $scope.sort = 0;
-      var orderBy = $filter('orderBy');
       $scope.sortList = [
-        {code: {field: '_source.onlineSince', order: false}, text: 'global.sort.newest'},
-        {code: {field: '_source.quotaTo', order: true}, text: 'global.sort.workload_0'},
-        {code: {field: '_source.quotaTo', order: false}, text: 'global.sort.workload_100'},
-        {code: {field: '_source.title.' + $translate.use(), order: false}, text: 'global.sort.jobtitle_az'},
-        {code: {field: '_source.title.' + $translate.use(), order: true}, text: 'global.sort.jobtitle_za'}
+        {sort: { field: 'publicationDate', order: 'desc' }, text: 'global.sort.newest'},
+        {sort: { field: 'quotaTo', order: 'desc' }, text: 'global.sort.workload_0'},
+        {sort: { field: 'quotaTo', order: 'asc' }, text: 'global.sort.workload_100'},
+        {sort: { field: 'title.'+$translate.use(), order: 'desc' }, text: 'global.sort.jobtitle_az'},
+        {sort: { field: 'title.'+$translate.use(), order: 'asc' }, text: 'global.sort.jobtitle_za'}
       ];
       $scope.sortResultList = function () {
-        $rootScope.jobs = orderBy($rootScope.jobs, $scope.sortList[$scope.sort].code.field, $scope.sortList[$scope.sort].code.order);
+        $scope.searchParams.sort=$scope.sortList[$scope.sort].sort;
+        $scope.countJobs();
       };
 
       if ($scope.searchParams.currentCoords !== undefined) {

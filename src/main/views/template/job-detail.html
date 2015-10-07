@@ -2,8 +2,8 @@
   <div flex flex-sm="100" ng-click="showDetail($event,jobDetail._source)">
       <h4 class="strong">{{::getMultiLanguageText(jobDetail._source.title)}}</h4>
 
-      <strong ng-if="jobDetail._source.onlineSince>1" translate="jobs.result.onlineSince" translate-values="{value: jobDetail._source.onlineSince}"></strong>
-      <strong ng-if="jobDetail._source.onlineSince===1" translate="jobs.result.onlineSinceOneDay"></strong>
+      <strong ng-if="onlineSinceDate(jobDetail._source.publicationDate)>1" translate="jobs.result.onlineSince" translate-values="{value: onlineSinceDate(jobDetail._source.publicationDate)}"></strong>
+      <strong ng-if="onlineSinceDate(jobDetail._source.publicationDate)===1" translate="jobs.result.onlineSinceOneDay"></strong>
       /
       <strong translate="jobs.result.workload"></strong>
       <strong ng-if="jobDetail._source.quotaFrom!==jobDetail._source.quotaTo">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</strong>
