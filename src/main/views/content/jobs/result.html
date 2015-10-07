@@ -3,7 +3,7 @@
     <md-input-container class="md-select-has-label">
       <label translate="jobs.result.sorting"></label>
       <md-select ng-model="sort" ng-change="sortResultList()">
-        <md-option ng-repeat="sort in sortList" value="{{$index}}"><span translate="{{sort.text}}"></span></md-option>
+        <md-option ng-repeat="sort in sortList track by $index" value="{{$index}}"><span translate="{{sort.text}}"></span></md-option>
       </md-select>
     </md-input-container>
   </div>

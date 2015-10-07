@@ -228,16 +228,16 @@
         );
       };
 
-      $scope.sort=0;
-      var orderBy = $filter('orderBy');
-      $scope.sortList=[
-        {code:{field:'_source.title',order:false}, text:'global.sort.coursetitle_az'},
-        {code:{field:'_source.title',order:true}, text:'global.sort.coursetitle_za'},
-        {code:{field:'_source.location.zip',order:false}, text:'global.sort.courseLocation_1000'},
-        {code:{field:'_source.location.zip',order:true}, text:'global.sort.courseLocation_9999'}
+      $scope.sort = 0;
+      $scope.sortList = [
+        {sort: { field: 'title', order: 'desc' }, text: 'global.sort.coursetitle_az'},
+        {sort: { field: 'title', order: 'asc' }, text: 'global.sort.coursetitle_za'},
+        {sort: { field: 'location.zip', order: 'desc' }, text: 'global.sort.courseLocation_1000'},
+        {sort: { field: 'location.zip', order: 'asc' }, text: 'global.sort.courseLocation_9999'}
       ];
-      $scope.sortResultList=function(){
-        $rootScope.educations = orderBy($rootScope.educations, $scope.sortList[$scope.sort].code.field, $scope.sortList[$scope.sort].code.order);
+      $scope.sortResultList = function () {
+        $scope.searchParams.sort=$scope.sortList[$scope.sort].sort;
+        $scope.countJobs();
       };
 
       $scope.resetSearchParams=function(){

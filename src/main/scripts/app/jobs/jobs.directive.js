@@ -32,6 +32,10 @@
           return text[$translate.use()];
         };
 
+        scope.onlineSinceDate=function(publicationDate){
+          return moment().diff(publicationDate, 'days');
+        };
+
         scope.showDetail=function(ev,jobObject){
           if (jobObject.external==='false') {
             scope.showInternalJob();

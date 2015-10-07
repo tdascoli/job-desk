@@ -17,7 +17,11 @@
         iscoGroupLevel2: '',
         zips: undefined,
         currentZip: '',
-        currentCoords: undefined
+        currentCoords: undefined,
+        sort: {
+          field: 'publicationDate',
+          order: 'desc'
+        }
       };
 
       function find() {
@@ -26,24 +30,31 @@
           'size' : params.size,
           'query': {
             'filtered': {
-              'query': {
-                'match_all': {}
-              },
+              'query': {'match_all': {}},
               'filter': {
                 'and': [
                   {
                     'range': {
-                      'onlineSince': {
-                        'lte': params.onlineSince
+                      'publicationDate': {
+                        'gte': moment().subtract(params.onlineSince, 'days').format('YYYY-MM-DD 00:00:00')
                       }
                     }
                   }
                 ]
               }
             }
-          }
+          },
+          'sort': []
         };
 
+        // QUERY
+        if (params.iscoMajorGroup !== '') {
+          filter.query.filtered.query={'term': {'isco.majorGroup': params.iscoMajorGroup}};
+        }
+        if (params.iscoGroupLevel2 !== '' && params.iscoGroupLevel2 !== 0 && params.iscoGroupLevel2 !== '0') {
+          filter.query.filtered.query={'term': {'isco.groupLevel2': params.iscoGroupLevel2}};
+        }
+        // FILTER
         if (params.distanceType === 'distance') {
           filter.query.filtered.filter.and.push({
             'nested': {
@@ -69,16 +80,14 @@
             }
           });
         }
-
         if (params.fulltime === '2') {
           filter.query.filtered.filter.and.push({'term': {'fulltime': 'false'}});
         }
-        if (params.iscoMajorGroup !== '') {
-          filter.query.filtered.filter.and.push({'term': {'isco.majorGroup': params.iscoMajorGroup}});
-        }
-        if (params.iscoGroupLevel2 !== '' && params.iscoGroupLevel2 !== 0) {
-          filter.query.filtered.filter.and.push({'term': {'isco.groupLevel2': params.iscoGroupLevel2}});
-        }
+        // SORT
+        var sort = {};
+        sort[params.sort.field]={order:params.sort.order};
+        filter.sort.push(sort);
+
         return $http.post(baseUrl + '/jobs/_search', filter);
       }
 
