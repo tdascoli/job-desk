@@ -47,8 +47,8 @@
 
   <div flex="15" flex-sm="50">
     <md-radio-group ng-model="searchParams.distanceType" ng-change="countJobs()">
-      <md-radio-button value="distance"><span translate="apprenticeships.search.distanceTypeDistance"></span></md-radio-button>
-      <md-radio-button value="travelTime"><span translate="apprenticeships.search.distanceTypeTravelTime"></span></md-radio-button>
+      <md-radio-button value="distance" class="md-primary" md-theme-watch="true"><span translate="apprenticeships.search.distanceTypeDistance"></span></md-radio-button>
+      <md-radio-button value="travelTime" class="md-primary" md-theme-watch="true"><span translate="apprenticeships.search.distanceTypeTravelTime"></span></md-radio-button>
     </md-radio-group>
   </div>
 
@@ -56,13 +56,13 @@
     <md-input-container flex class="md-slider-has-label" ng-if="searchParams.distanceType==='distance'">
       <label translate="apprenticeships.search.distance" translate-values="{value:searchParams.distance}"></label>
       <md-slider ng-model="searchParams.distance" step="{{distanceOptions.step}}" min="{{distanceOptions.min}}"
-                 max="{{distanceOptions.max}}" aria-label="distance" ng-change="countJobs()"></md-slider>
+                 max="{{distanceOptions.max}}" aria-label="distance" ng-change="countJobs()" class="md-primary" md-theme-watch="true"></md-slider>
     </md-input-container>
 
     <md-input-container flex class="md-slider-has-label" ng-if="searchParams.distanceType==='travelTime'">
       <label translate="apprenticeships.search.travelTime" translate-values="{value:showTimeInH(searchParams.travelTime)}"></label>
       <md-slider ng-model="searchParams.travelTime" step="{{travelTimeOptions.step}}" min="{{travelTimeOptions.min}}"
-                 max="{{travelTimeOptions.max}}" aria-label="travelTime" ng-change="countJobs()"></md-slider>
+                 max="{{travelTimeOptions.max}}" aria-label="travelTime" ng-change="countJobs()" class="md-primary" md-theme-watch="true"></md-slider>
     </md-input-container>
   </div>
 

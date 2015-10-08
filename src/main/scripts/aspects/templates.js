@@ -19,10 +19,46 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "\n" +
     "  </div>\n" +
     "  <div flex=\"20\" hide-sm>\n" +
-    "    <md-button><md-icon>print</md-icon>&nbsp;<span translate=\"apprenticeships.result.print\"></span></md-button>\n" +
+    "    <md-button ng-click=\"showPrintDialog()\"><md-icon>print</md-icon>&nbsp;<span translate=\"apprenticeships.result.print\"></span></md-button>\n" +
     "  </div>\n" +
     "</div>\n" +
     "<md-divider></md-divider>\n"
+  );
+
+
+  $templateCache.put('template/apprenticeship-print.html',
+    "<md-dialog md-theme=\"apprenticeships\">\n" +
+    "  <md-toolbar>\n" +
+    "    <div class=\"md-toolbar-tools\">\n" +
+    "      <h2><span translate=\"apprenticeships.result.print\"></span></h2>\n" +
+    "      <span flex></span>\n" +
+    "    </div>\n" +
+    "  </md-toolbar>\n" +
+    "  <md-dialog-content>\n" +
+    "    <div id=\"printableArea\">\n" +
+    "      <strong>{{::getMultiLanguageText(apprenticeshipDetail._source.titleM)}}/{{::getMultiLanguageText(apprenticeshipDetail._source.titleW)}}\n" +
+    "        <span ng-if=\"apprenticeshipDetail._source.amount>1\" translate=\"apprenticeships.results.apprenticeshipAmount\" translate-values=\"{value: apprenticeshipDetail._source.amount}\"></span>\n" +
+    "      </strong>\n" +
+    "\n" +
+    "      <p ng-bind-html=\"formatText(getMultiLanguageText(apprenticeshipDetail._source.description))\"></p>\n" +
+    "\n" +
+    "      <div>\n" +
+    "        <strong>{{::apprenticeshipDetail._source.company.name}}</strong><br />\n" +
+    "        <strong ng-if=\"apprenticeshipDetail._source.company.contact.fullName\">{{::apprenticeshipDetail._source.company.contact.fullName}}<br /></strong>\n" +
+    "        <span>{{::apprenticeshipDetail._source.company.address.street}}</span><br />\n" +
+    "        <span>{{::apprenticeshipDetail._source.company.address.zip}} {{::apprenticeshipDetail._source.company.address.location}}</span><br />\n" +
+    "        <span ng-if=\"apprenticeshipDetail._source.company.contact.phone\">{{::apprenticeshipDetail._source.company.contact.phone}}<br /></span>\n" +
+    "        <span ng-if=\"apprenticeshipDetail._source.company.contact.eMail\">{{::apprenticeshipDetail._source.company.contact.eMail}}</span>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <div layout=\"row\" layout-sm=\"column\" layout-align=\"space-around\">\n" +
+    "      <md-progress-circular md-mode=\"indeterminate\" md-diameter=\"60\"></md-progress-circular>\n" +
+    "    </div>\n" +
+    "\n" +
+    "  </md-dialog-content>\n" +
+    "</md-dialog>\n" +
+    "\n"
   );
 
 
@@ -106,7 +142,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('template/education-print.html',
-    "<md-dialog>\n" +
+    "<md-dialog md-theme=\"educations\">\n" +
     "  <md-toolbar>\n" +
     "    <div class=\"md-toolbar-tools\">\n" +
     "      <h2><span translate=\"educations.result.print\"></span></h2>\n" +
@@ -117,19 +153,19 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <div id=\"printableArea\">\n" +
     "\n" +
-    "      <strong>{{educationDetail._source.title}}</strong><br />\n" +
-    "      <strong><span translate=\"educations.result.location\"></span></strong> : {{educationDetail._source.location.zip}} {{educationDetail._source.location.name}}\n" +
+    "      <strong>{{::educationDetail._source.title}}</strong><br />\n" +
+    "      <strong><span translate=\"educations.result.location\"></span></strong> : {{::educationDetail._source.location.zip}} {{::educationDetail._source.location.name}}\n" +
     "\n" +
     "      <p ng-bind-html=\"formatText(educationDetail._source.content)\"></p>\n" +
     "\n" +
-    "      <strong>{{educationDetail._source.provider.name}}</strong><br />\n" +
-    "      <strong ng-if=\"educationDetail._source.provider.contact.firstName\">{{educationDetail._source.provider.contact.firstName}} {{educationDetail._source.provider.contact.lastName}}<br /></strong>\n" +
-    "      <span>{{educationDetail._source.provider.address.street}}</span><br />\n" +
-    "      <span>{{educationDetail._source.location.zip}} {{educationDetail._source.location.name}}</span><br />\n" +
+    "      <strong>{{::educationDetail._source.provider.name}}</strong><br />\n" +
+    "      <strong ng-if=\"educationDetail._source.provider.contact.firstName\">{{::educationDetail._source.provider.contact.firstName}} {{::educationDetail._source.provider.contact.lastName}}<br /></strong>\n" +
+    "      <span>{{::educationDetail._source.provider.address.street}}</span><br />\n" +
+    "      <span>{{::educationDetail._source.location.zip}} {{::educationDetail._source.location.name}}</span><br />\n" +
     "      <span ng-if=\"educationDetail._source.provider.phone\"><span translate=\"educations.result.phone\" translate-values=\"{value: educationDetail._source.provider.phone}\"></span><br /></span>\n" +
     "      <span ng-if=\"educationDetail._source.provider.fax\"><span translate=\"educations.result.fax\" translate-values=\"{value: educationDetail._source.provider.fax}\"></span><br /></span>\n" +
-    "      <span ng-if=\"educationDetail._source.provider.eMail\">{{educationDetail._source.provider.eMail}}<br /></span>\n" +
-    "      <span ng-if=\"educationDetail._source.provider.url\">{{educationDetail._source.provider.url}}</span>\n" +
+    "      <span ng-if=\"educationDetail._source.provider.eMail\">{{::educationDetail._source.provider.eMail}}<br /></span>\n" +
+    "      <span ng-if=\"educationDetail._source.provider.url\">{{::educationDetail._source.provider.url}}</span>\n" +
     "\n" +
     "      <div ng-if=\"educationDetail._source.startText\"><strong translate=\"educations.result.start\"></strong> : <span ng-bind-html=\"educationDetail._source.startText\"></span></div>\n" +
     "      <div ng-if=\"educationDetail._source.duration\"><strong translate=\"educations.result.duration\"></strong> : <span ng-bind-html=\"educationDetail._source.duration\"></span></div>\n" +
@@ -300,7 +336,6 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "  </div>\n" +
     "</div>\n" +
     "\n" +
-    "<job-print ng-show=\"false\" id=\"{{::jobDetail._id}}\" job=\"jobDetail\"></job-print>\n" +
     "<md-divider></md-divider>\n"
   );
 

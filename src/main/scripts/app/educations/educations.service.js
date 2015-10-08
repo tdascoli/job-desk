@@ -33,8 +33,11 @@
                 'match_all': {}
               },
               'filter': {
-                'and': [],
-                'or': []
+                'bool' : {
+                  'must' : [],
+                  'must_not' : [],
+                  'should' : []
+                }
               }
             }
           },
@@ -50,7 +53,7 @@
         }
         // FILTER
         if (params.distanceType === 'distance') {
-          filter.query.filtered.filter.and.push({
+          filter.query.filtered.filter.bool.must.push({
             'geo_distance': {
               'distance': params.distance + 'km',
               'location.coords': params.currentCoords
@@ -58,7 +61,7 @@
           });
         }
         else {
-          filter.query.filtered.filter.and.push({
+          filter.query.filtered.filter.bool.must.push({
             'nested': {
               'path': 'location.zip',
               'filter': {
@@ -71,16 +74,16 @@
         }
         if (params.language !== '') {
           if (params.language!=='other') {
-            filter.query.filtered.filter.or.push({'term': {'languages': params.language}});
+            filter.query.filtered.filter.bool.should.push({'term': {'languages': params.language}});
             if (params.language === 'ger') {
-              filter.query.filtered.filter.or.push({'term': {'languages': 'de'}});
+              filter.query.filtered.filter.bool.should.push({'term': {'languages': 'de'}});
             }
             else {
-              filter.query.filtered.filter.or.push({'term': {'languages': params.language.substr(0, 2)}});
+              filter.query.filtered.filter.bool.should.push({'term': {'languages': params.language.substr(0, 2)}});
             }
           }
           else {
-            filter.query.filtered.filter.and.push({'not': {'terms': {'languages':['ger','de','fre','fr','ita','it','eng','en']}}});
+            filter.query.filtered.filter.bool.must.push({'not': {'terms': {'languages':['ger','de','fre','fr','ita','it','eng','en']}}});
           }
         }
         // SORT
