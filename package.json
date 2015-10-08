@@ -71,7 +71,6 @@
     "topojson":"1.6.19"
   },
   "scripts": {
-    "install": "node node_modules/protractor/bin/webdriver-manager update",
     "install": "npm install -g elasticdump"
   },
   "engines": {
