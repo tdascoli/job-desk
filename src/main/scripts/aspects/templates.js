@@ -263,6 +263,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "      <p ng-if=\"!showDetailContent\" ng-text-truncate=\"getMultiLanguageText(jobDetail._source.description)\" ng-tt-words-threshold=\"20\" ng-tt-no-toggling></p>\n" +
     "\n" +
     "      <div ng-if=\"showDetailContent\">\n" +
+    "        <!-- todo change to stellennummeravam check -->\n" +
     "        <span ng-if=\"jobDetail._source.external==='false'\">\n" +
     "          <p ng-bind-html=\"getMultiLanguageText(jobDetail._source.description)\"></p>\n" +
     "          <div layout=\"row\" layout-wrap layout-align=\"space-between start\">\n" +
@@ -350,6 +351,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "  </md-toolbar>\n" +
     "  <md-dialog-content>\n" +
     "    <div id=\"printableArea\">\n" +
+    "      <!-- todo add external job -->\n" +
     "      <strong>{{::getMultiLanguageText(jobDetail._source.title)}}</strong><br />\n" +
     "      <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: onlineSinceDate(jobDetail._source.publicationDate)}\"></span>\n" +
     "      <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)===1\" translate=\"jobs.result.onlineSinceOneDay\"></span>\n" +

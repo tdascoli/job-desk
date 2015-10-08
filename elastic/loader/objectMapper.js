@@ -47,7 +47,6 @@
       "external": data.EXTERN,
       "source": data.SOURCE,
       "publicationDate": data.ANMELDE_DATUM,
-      "onlineSince": data.ONLINE_SEIT,
       "quotaFrom": data.PENSUM_VON,
       "quotaTo": data.PENSUM_BIS,
       "availableNow": data.AB_SOFORT_B,

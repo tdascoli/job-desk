@@ -80,6 +80,7 @@
             }
           });
         }
+        // todo change to pensumBis/Von solution
         if (params.fulltime === '2') {
           filter.query.filtered.filter.and.push({'term': {'fulltime': 'false'}});
         }

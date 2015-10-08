@@ -7,8 +7,8 @@
   var models = require("./models.js");
   var objectMapper = require("./objectMapper.js");
   var client = new elasticsearch.Client({
-    host: 'localhost:9200/',
-    //host: 'http://jobdesk.job-room.ch/jobdesk',
+    //host: 'localhost:9200/',
+    host: 'jobdesk.job-room.ch/',
     log: 'error'
   });
 
@@ -43,7 +43,8 @@
             delimiter: finalDelimiter,
             headers: true,
             trim: true,
-            quote: '"'
+            quote: '"',
+            escape: "\\"
           })
             .on("data", function (data) {
               var id;
@@ -55,6 +56,7 @@
 
               items.push({index: {_index: index, _type: type, _id: id}});
               items.push(mapperFn(data));
+              //console.log(mapperFn(data));
 
               if (counter >= finalBulkSize) {
                 client.bulk({

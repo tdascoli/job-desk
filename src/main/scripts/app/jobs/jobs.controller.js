@@ -217,7 +217,6 @@
             setNewCoords(nearestZip.hits.hits[0]._source.geoLocation);
           }
           else {
-            // todo error handling
             $scope.setCurrentZip($scope.searchParams.currentZip);
             $scope.locationError('global.error.noValidZip');
           }

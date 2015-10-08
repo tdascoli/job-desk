@@ -7,6 +7,7 @@
   </md-toolbar>
   <md-dialog-content>
     <div id="printableArea">
+      <!-- todo add external job -->
       <strong>{{::getMultiLanguageText(jobDetail._source.title)}}</strong><br />
       <span ng-if="onlineSinceDate(jobDetail._source.publicationDate)>1" translate="jobs.result.onlineSince" translate-values="{value: onlineSinceDate(jobDetail._source.publicationDate)}"></span>
       <span ng-if="onlineSinceDate(jobDetail._source.publicationDate)===1" translate="jobs.result.onlineSinceOneDay"></span>
