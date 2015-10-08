@@ -250,9 +250,14 @@
         $scope.searchParams.sort=$scope.sortList[$scope.sort].sort;
         $scope.countJobs();
       };
+
+      if ($scope.searchParams.currentCoords !== undefined) {
+        setNewCoords($scope.searchParams.currentCoords);
+      }
+      else {
+        $scope.setMyLocation();
+      }
     });
-
-
 }());
 
 

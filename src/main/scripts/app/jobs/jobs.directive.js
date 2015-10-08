@@ -83,7 +83,8 @@
             templateUrl: 'views/template/job-print.html',
             locals: {
               jobDetail: scope.jobDetail,
-              getMultiLanguageText: scope.getMultiLanguageText
+              getMultiLanguageText: scope.getMultiLanguageText,
+              onlineSinceDate: scope.onlineSinceDate
             },
             escapeToClose: false,
             onComplete: function() {
@@ -92,15 +93,12 @@
                 $mdDialog.hide();
               }, 3000);
             },
-            controller: function PrintDialogController($scope, jobDetail, getMultiLanguageText) {
+            controller: function PrintDialogController($scope, jobDetail, getMultiLanguageText, onlineSinceDate) {
               $scope.jobDetail = jobDetail;
               $scope.getMultiLanguageText = getMultiLanguageText;
+              $scope.onlineSinceDate = onlineSinceDate;
               $scope.cancel = function() {
                 $mdDialog.cancel();
-              };
-              $scope.printJob = function() {
-                window.print();
-                $mdDialog.hide();
               };
               $scope.formatText = function(text) {
                 text = text.replace(/(<|&lt;)br\s*\/*(>|&gt;)/g,' ');
