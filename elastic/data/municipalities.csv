@@ -1,0 +1,913 @@
+"BFSNR"|"GEMEINDENAME"|"SPRACHREGION"|"GEMEINDE_GROESSE"|"STADT"|"LON"|"LAT"|"PLZ"|"INITIAL"
+2|"Affoltern am Albis"|1|4|true|8.432897|47.285697|8909|false
+3|"Bonstetten"|1|5|false|8.466153|47.317789|8906|false
+4|"Hausen am Albis"|1|6|false|8.526172|47.245292|8915|false
+5|"Hedingen"|1|6|false|8.439778|47.300831|8908|false
+7|"Knonau"|1|6|false|8.456839|47.223339|8934|false
+9|"Mettmenstetten"|1|6|false|8.468583|47.243608|8932|false
+10|"Obfelden"|1|6|false|8.419522|47.265769|8912|false
+11|"Ottenbach"|1|6|false|8.402122|47.278392|8913|false
+13|"Stallikon"|1|6|false|8.493303|47.324144|8143|false
+14|"Wettswil am Albis"|1|6|false|8.468886|47.339442|8907|false
+27|"Feuerthalen"|1|6|false|8.641028|47.690944|8245|false
+30|"Andelfingen"|1|6|false|8.678506|47.594886|8450|false
+31|"Henggart"|1|6|false|8.687181|47.560550|8444|false
+33|"Kleinandelfingen"|1|6|false|8.681647|47.601831|8451|false
+51|"Bachenbülach"|1|6|false|8.540392|47.501339|8184|false
+52|"Bassersdorf"|1|4|true|8.620981|47.439425|8303|false
+53|"Bülach"|1|4|true|8.550386|47.519072|8180|false
+54|"Dietlikon"|1|5|false|8.613861|47.426311|8305|false
+55|"Eglisau"|1|6|false|8.526025|47.575178|8193|false
+56|"Embrach"|1|5|false|8.595194|47.501228|8424|false
+57|"Freienstein-Teufen"|1|6|false|8.567372|47.549886|8428|false
+58|"Glattfelden"|1|6|false|8.497711|47.556308|8192|false
+59|"Hochfelden"|1|6|false|8.511650|47.521525|8182|false
+60|"Höri"|1|6|false|8.500853|47.508042|8181|false
+62|"Kloten"|1|4|true|8.597914|47.452933|8302|false
+64|"Nürensdorf"|1|5|false|8.656514|47.449381|8309|false
+66|"Opfikon"|1|4|true|8.560975|47.432647|8152|false
+67|"Rafz"|1|6|false|8.534969|47.614392|8197|false
+68|"Rorbas"|1|6|false|8.590831|47.532611|8427|false
+69|"Wallisellen"|1|4|true|8.594861|47.418711|8304|false
+72|"Winkel"|1|6|false|8.559817|47.493472|8185|false
+83|"Buchs (ZH)"|1|5|false|8.432594|47.456236|8107|false
+84|"Dällikon"|1|6|false|8.434636|47.443508|8108|false
+86|"Dielsdorf"|1|5|false|8.447825|47.476233|8157|false
+88|"Neerach"|1|6|false|8.471333|47.508344|8173|false
+89|"Niederglatt"|1|6|false|8.494489|47.492522|8172|false
+90|"Niederhasli"|1|5|false|8.468989|47.466747|8155|false
+91|"Niederweningen"|1|6|false|8.373864|47.505764|8166|false
+92|"Oberglatt"|1|5|false|8.529564|47.480800|8154|false
+94|"Otelfingen"|1|6|false|8.387114|47.461906|8112|false
+96|"Regensdorf"|1|4|true|8.466250|47.432050|8105|false
+97|"Rümlang"|1|5|false|8.521736|47.448878|8153|false
+100|"Stadel"|1|6|false|8.471275|47.529294|8174|false
+101|"Steinmaur"|1|6|false|8.454236|47.494392|8162|false
+111|"Bäretswil"|1|6|false|8.855767|47.337536|8344|false
+112|"Bubikon"|1|5|false|8.814161|47.271317|8608|false
+113|"Dürnten"|1|5|false|8.847711|47.265478|8632|false
+114|"Fischenthal"|1|6|false|8.932344|47.353914|8496|false
+115|"Gossau (ZH)"|1|5|false|8.757272|47.320956|8614|false
+116|"Grüningen"|1|6|false|8.762536|47.285756|8627|false
+117|"Hinwil"|1|4|true|8.847197|47.301181|8340|false
+118|"Rüti (ZH)"|1|4|true|8.849903|47.253478|8630|false
+120|"Wald (ZH)"|1|5|false|8.917003|47.279950|8636|false
+121|"Wetzikon (ZH)"|1|3|true|8.806361|47.322381|8620|false
+131|"Adliswil"|1|4|true|8.517967|47.311333|8134|false
+132|"Hirzel"|1|6|false|8.606661|47.217022|8816|false
+133|"Horgen"|1|4|true|8.529561|47.288350|8135|false
+135|"Kilchberg (ZH)"|1|5|false|8.547336|47.323703|8802|false
+136|"Langnau am Albis"|1|5|false|8.529561|47.288350|8135|false
+137|"Oberrieden"|1|6|false|8.574231|47.272806|8942|false
+138|"Richterswil"|1|4|true|8.700950|47.208256|8805|false
+139|"Rüschlikon"|1|5|false|8.547314|47.304236|8803|false
+141|"Thalwil"|1|4|true|8.552667|47.282558|8136|false
+142|"Wädenswil"|1|3|true|8.646444|47.248053|8804|false
+151|"Erlenbach (ZH)"|1|5|false|8.593494|47.300644|8703|false
+152|"Herrliberg"|1|5|false|8.620558|47.293236|8704|false
+153|"Hombrechtikon"|1|5|false|8.761767|47.255242|8634|false
+154|"Küsnacht (ZH)"|1|4|true|8.589869|47.319569|8700|false
+155|"Männedorf"|1|4|true|8.697000|47.258128|8708|false
+156|"Meilen"|1|4|true|8.646786|47.274947|8706|false
+157|"Oetwil am See"|1|6|false|8.726836|47.269617|8618|false
+158|"Stäfa"|1|4|true|8.731036|47.238950|8712|false
+159|"Uetikon am See"|1|5|false|8.679042|47.269467|8707|false
+160|"Zumikon"|1|5|false|8.625817|47.335892|8126|false
+161|"Zollikon"|1|4|true|8.606753|47.345083|8125|false
+172|"Fehraltorf"|1|5|false|8.750364|47.391908|8320|false
+173|"Hittnau"|1|6|false|8.824083|47.360922|8335|false
+174|"Illnau-Effretikon"|1|4|true|8.695294|47.420469|8307|false
+176|"Lindau"|1|5|false|8.698208|47.443872|8310|false
+177|"Pfäffikon"|1|4|true|8.781086|47.365228|8330|false
+178|"Russikon"|1|6|false|8.810414|47.397644|8322|false
+180|"Weisslingen"|1|6|false|8.792592|47.429419|8484|false
+191|"Dübendorf"|1|3|true|8.610681|47.391989|8600|false
+192|"Egg"|1|5|false|8.691431|47.300656|8132|false
+193|"Fällanden"|1|5|false|8.645675|47.372586|8117|false
+194|"Greifensee"|1|5|false|8.674889|47.368158|8606|false
+195|"Maur"|1|5|false|8.627050|47.356742|8122|false
+196|"Mönchaltorf"|1|6|false|8.715031|47.313244|8617|false
+197|"Schwerzenbach"|1|6|false|8.655903|47.380358|8603|false
+198|"Uster"|1|3|true|8.674889|47.368158|8606|false
+199|"Volketswil"|1|4|true|8.686017|47.388753|8604|false
+200|"Wangen-Brüttisellen"|1|5|false|8.635569|47.421986|8306|false
+213|"Brütten"|1|6|false|8.676381|47.470581|8311|false
+217|"Elgg"|1|6|false|8.863094|47.495067|8353|false
+219|"Elsau"|1|6|false|8.805186|47.503844|8352|false
+221|"Hettlingen"|1|6|false|8.708639|47.543856|8442|false
+223|"Neftenbach"|1|5|false|8.678847|47.543969|8412|false
+224|"Pfungen"|1|6|false|8.645756|47.512964|8422|false
+225|"Rickenbach (ZH)"|1|6|false|8.783069|47.542081|8545|false
+227|"Seuzach"|1|5|false|8.723144|47.536625|8472|false
+228|"Turbenthal"|1|6|false|8.852233|47.433447|8488|false
+230|"Winterthur"|1|1|true|8.712736|47.500786|8400|false
+231|"Zell (ZH)"|1|5|false|8.783542|47.457331|8483|false
+242|"Birmensdorf (ZH)"|1|5|false|8.445178|47.353000|8903|false
+243|"Dietikon"|1|3|true|8.403872|47.398633|8953|false
+244|"Geroldswil"|1|6|false|8.413072|47.422906|8954|false
+245|"Oberengstringen"|1|5|false|8.466825|47.409639|8102|false
+246|"Oetwil an der Limmat"|1|6|false|8.389342|47.431369|8955|false
+247|"Schlieren"|1|4|true|8.451211|47.393417|8952|false
+248|"Uitikon"|1|6|false|8.448478|47.370692|8142|false
+249|"Unterengstringen"|1|6|false|8.441311|47.412067|8103|false
+250|"Urdorf"|1|5|true|8.419089|47.384681|8902|false
+251|"Weiningen (ZH)"|1|6|false|8.434439|47.416697|8104|false
+261|"Zürich"|1|1|true|8.541336|47.372047|8001|true
+297|"Bauma"|1|6|false|8.853469|47.391117|8493|false
+298|"Wiesendangen"|1|5|false|8.789500|47.521261|8542|false
+301|"Aarberg"|1|6|false|7.275297|47.043542|3270|false
+303|"Grossaffoltern"|1|6|false|7.339675|47.069989|3257|false
+306|"Lyss"|1|4|true|7.307511|47.070578|3250|false
+307|"Meikirch"|1|6|false|7.399408|46.992489|3042|false
+310|"Rapperswil (BE)"|1|6|false|7.426508|47.089064|3251|false
+311|"Schüpfen"|1|6|false|7.376797|47.038208|3054|false
+312|"Seedorf (BE)"|1|6|false|7.285478|46.994931|3035|false
+321|"Aarwangen"|1|6|false|7.763406|47.240872|4912|false
+329|"Langenthal"|1|4|true|7.792492|47.211589|4900|false
+331|"Lotzwil"|1|6|false|7.799433|47.182092|4932|false
+332|"Madiswil"|1|6|false|7.799433|47.182092|4932|false
+337|"Roggwil (BE)"|1|6|false|7.821683|47.239903|4914|false
+342|"Thunstetten"|1|6|false|7.744525|47.216664|4922|false
+351|"Bern"|1|1|true|7.452017|46.980486|3004|true
+352|"Bolligen"|1|5|false|7.503403|46.976194|3065|false
+353|"Bremgarten bei Bern"|1|6|false|7.434353|46.978517|3047|false
+354|"Kirchlindach"|1|6|false|7.417111|46.976544|3037|false
+355|"Köniz"|1|3|true|7.449536|46.928583|3084|false
+356|"Muri bei Bern"|1|4|true|7.509275|46.935047|3073|false
+358|"Stettlen"|1|6|false|7.528233|46.963800|3066|false
+359|"Vechigen"|1|6|false|7.547606|46.953522|3067|false
+360|"Wohlen bei Bern"|1|5|false|7.372542|46.968378|3032|false
+361|"Zollikofen"|1|4|true|7.461419|46.992897|3052|false
+362|"Ittigen"|1|4|true|7.466211|46.981219|3048|false
+363|"Ostermundigen"|1|4|true|7.497664|46.957686|3072|false
+371|"Biel/Bienne"|1|2|true|7.245731|47.141983|2502|false
+372|"Evilard"|1|6|false|7.216717|47.142056|2532|false
+383|"Büren an der Aare"|1|6|false|7.371306|47.136997|3294|false
+387|"Lengnau (BE)"|1|6|false|7.369178|47.182375|2543|false
+392|"Pieterlen"|1|6|false|7.328283|47.174122|2542|false
+404|"Burgdorf"|1|4|true|7.632700|47.057914|3400|false
+406|"Hasle bei Burgdorf"|1|6|false|7.646519|47.016431|3415|false
+409|"Hindelbank"|1|6|false|7.540036|47.041761|3324|false
+412|"Kirchberg (BE)"|1|5|false|7.577403|47.081886|3422|false
+413|"Koppigen"|1|6|false|7.595542|47.133214|3425|false
+414|"Krauchthal"|1|6|false|7.554178|47.029003|3325|false
+418|"Oberburg"|1|6|false|7.621717|47.036389|3414|false
+420|"Rüdtligen-Alchenflüh"|1|6|false|7.577403|47.081886|3422|false
+443|"Saint-Imier"|2|6|false|6.996725|47.131528|2610|false
+446|"Tramelan"|2|6|false|7.153314|47.222089|2720|false
+496|"Ins"|1|6|false|7.101925|47.009092|3232|false
+533|"Bätterkinden"|1|6|false|7.532086|47.131997|3315|false
+538|"Fraubrunnen"|1|6|false|7.480644|47.084469|3306|false
+540|"Jegenstorf"|1|5|false|7.475861|47.040486|3303|false
+544|"Moosseedorf"|1|6|false|7.482211|47.017519|3302|false
+546|"Münchenbuchsee"|1|5|true|7.453650|47.037333|3053|false
+551|"Urtenen-Schönbühl"|1|5|false|7.513767|47.029936|3322|false
+552|"Utzenstorf"|1|6|false|7.557289|47.126800|3427|false
+561|"Adelboden"|1|6|false|7.558819|46.492906|3715|false
+562|"Aeschi bei Spiez"|1|6|false|7.694431|46.659911|3703|false
+563|"Frutigen"|1|5|false|7.611864|46.564253|3724|false
+567|"Reichenbach im Kandertal"|1|6|false|7.684983|46.654328|3711|false
+572|"Bönigen"|1|6|false|7.900481|46.684028|3806|false
+573|"Brienz (BE)"|1|6|false|8.038303|46.721439|3855|false
+576|"Grindelwald"|1|6|false|7.978083|46.637925|3816|false
+581|"Interlaken"|1|5|true|7.910217|46.652339|3800|false
+584|"Lauterbrunnen"|1|6|false|7.895628|46.620250|3822|false
+587|"Matten bei Interlaken"|1|6|false|7.910217|46.652339|3800|false
+590|"Ringgenberg (BE)"|1|6|false|7.880272|46.696583|3805|false
+593|"Unterseen"|1|5|false|7.910217|46.652339|3800|false
+594|"Wilderswil"|1|6|false|7.869478|46.666086|3812|false
+608|"Grosshöchstetten"|1|6|false|7.641661|46.907075|3506|false
+612|"Konolfingen"|1|6|false|7.594778|46.889572|3503|false
+616|"Münsingen"|1|4|true|7.580047|46.905711|3083|false
+619|"Oberdiessbach"|1|6|false|7.646469|46.837542|3672|false
+623|"Rubigen"|1|6|false|7.549253|46.897911|3113|false
+627|"Worb"|1|4|false|7.538522|46.929711|3075|false
+632|"Wichtrach"|1|6|false|7.573258|46.847439|3114|false
+667|"Laupen"|1|6|false|7.243456|46.905894|3177|false
+668|"Mühleberg"|1|6|false|7.263214|46.956264|3203|false
+670|"Neuenegg"|1|6|false|7.292700|46.896514|3176|false
+700|"Moutier"|2|5|false|7.372169|47.280481|2740|false
+703|"Reconvilier"|2|6|false|7.238825|47.243872|2732|false
+713|"Tavannes"|2|6|false|7.197400|47.221494|2710|false
+717|"Valbirse"|2|6|false|7.254442|47.238917|2733|false
+723|"La Neuveville"|2|6|false|7.097061|47.064450|2520|false
+726|"Plateau de Diesse"|2|6|false|7.129889|47.099319|2515|false
+733|"Brügg"|1|6|false|7.278125|47.123539|2555|false
+739|"Ipsach"|1|6|false|7.229433|47.116300|2563|false
+743|"Nidau"|1|5|false|7.240561|47.125036|2560|false
+744|"Orpund"|1|6|false|7.312844|47.137236|2552|false
+745|"Port"|1|6|false|7.255428|47.117217|2562|false
+749|"Studen (BE)"|1|6|false|7.303242|47.113047|2557|false
+751|"Täuffelen"|1|6|false|7.201272|47.075006|2575|false
+755|"Worben"|1|6|false|7.292347|47.094000|3252|false
+762|"Diemtigen"|1|6|false|7.580483|46.658669|3753|false
+768|"Spiez"|1|4|true|7.646017|46.709431|3646|false
+769|"Wimmis"|1|6|false|7.635292|46.672972|3752|false
+785|"Meiringen"|1|6|false|8.112142|46.739181|3857|false
+792|"Lenk"|1|6|false|7.440903|46.456456|3775|false
+794|"Zweisimmen"|1|6|false|7.371836|46.552014|3770|false
+843|"Saanen"|1|5|false|7.292803|46.577031|1657|false
+855|"Schwarzenburg"|1|5|false|7.347211|46.841886|3148|false
+861|"Belp"|1|4|true|7.509181|46.892986|3123|false
+870|"Kehrsatz"|1|6|false|7.473553|46.912631|3122|false
+879|"Riggisberg"|1|6|false|7.447528|46.782797|3099|false
+883|"Seftigen"|1|6|false|7.543814|46.788642|3662|false
+884|"Toffen"|1|6|false|7.492822|46.858517|3125|false
+886|"Wattenwil"|1|6|false|7.504869|46.770525|3665|false
+901|"Eggiwil"|1|6|false|7.766453|46.908883|3536|false
+902|"Langnau im Emmental"|1|5|false|7.785108|46.941858|3550|false
+903|"Lauperswil"|1|6|false|7.737897|46.966531|3438|false
+905|"Rüderswil"|1|6|false|7.694469|46.985597|3433|false
+907|"Signau"|1|6|false|7.720981|46.920331|3534|false
+928|"Heimberg"|1|5|false|7.599661|46.793567|3627|false
+929|"Hilterfingen"|1|6|false|7.653411|46.747117|3626|false
+934|"Oberhofen am Thunersee"|1|6|false|7.675056|46.732086|3653|false
+938|"Sigriswil"|1|6|false|7.701972|46.714442|3654|false
+939|"Steffisburg"|1|4|true|7.624922|46.777347|3612|false
+941|"Thierachern"|1|6|false|7.576317|46.751517|3634|false
+942|"Thun"|1|3|true|7.631258|46.758742|3600|true
+944|"Uetendorf"|1|5|false|7.576097|46.778450|3661|false
+954|"Huttwil"|1|6|false|7.849953|47.113714|4950|false
+955|"Lützelflüh"|1|6|false|7.684433|47.001425|3432|false
+956|"Rüegsau"|1|6|false|7.675539|47.027017|3417|false
+957|"Sumiswald"|1|5|false|7.744989|47.027769|3454|false
+979|"Herzogenbuchsee"|1|5|false|7.714364|47.194533|3360|false
+981|"Niederbipp"|1|6|false|7.701836|47.268381|4704|false
+992|"Wangen an der Aare"|1|6|false|7.691778|47.237364|3380|false
+995|"Wiedlisbach"|1|6|false|7.647969|47.246950|4537|false
+1002|"Entlebuch"|1|6|false|8.064728|46.992217|6162|false
+1008|"Schüpfheim"|1|6|false|8.021175|46.951131|6170|false
+1009|"Werthenstein"|1|6|false|8.139831|47.036175|6105|false
+1010|"Escholzmatt-Marbach"|1|6|false|7.940900|46.913306|6182|false
+1023|"Ballwil"|1|6|false|8.320708|47.152283|6275|false
+1024|"Emmen"|1|3|true|8.273678|47.077297|6020|false
+1026|"Eschenbach (LU)"|1|6|false|8.320281|47.132775|6274|false
+1030|"Hitzkirch"|1|6|false|8.271531|47.214608|6284|false
+1031|"Hochdorf"|1|5|false|8.293025|47.166883|6280|false
+1032|"Hohenrain"|1|6|false|8.318347|47.179486|6276|false
+1033|"Inwil"|1|6|false|8.350275|47.122186|6034|false
+1037|"Rain"|1|6|false|8.263186|47.129725|6026|false
+1040|"Rothenburg"|1|5|false|8.273053|47.093925|6023|false
+1051|"Adligenswil"|1|5|false|8.365092|47.070569|6043|false
+1052|"Buchrain"|1|5|false|8.346000|47.094767|6033|false
+1054|"Ebikon"|1|4|true|8.340211|47.081786|6030|false
+1058|"Horw"|1|4|true|8.333803|47.013433|6047|false
+1059|"Kriens"|1|3|true|8.254697|46.979256|6010|false
+1061|"Luzern"|1|2|true|8.297008|47.050058|6003|true
+1062|"Malters"|1|5|false|8.188939|47.037464|6102|false
+1063|"Meggen"|1|5|false|8.372058|47.046486|6045|false
+1065|"Root"|1|6|false|8.384517|47.113472|6037|false
+1067|"Udligenswil"|1|6|false|8.399283|47.091114|6044|false
+1069|"Weggis"|1|6|false|8.434314|47.032694|6353|false
+1081|"Beromünster"|1|5|false|8.211831|47.177031|6025|false
+1082|"Büron"|1|6|false|8.090950|47.214739|6233|false
+1083|"Buttisholz"|1|6|false|8.087689|47.114497|6018|false
+1085|"Geuensee"|1|6|false|8.113014|47.200356|6232|false
+1086|"Grosswangen"|1|6|false|8.050044|47.133289|6022|false
+1088|"Hildisrieden"|1|6|false|8.233369|47.150094|6024|false
+1089|"Knutwil"|1|6|false|8.072789|47.201608|6213|false
+1093|"Neuenkirch"|1|5|false|8.196847|47.070139|6016|false
+1094|"Nottwil"|1|6|false|8.133828|47.134367|6207|false
+1095|"Oberkirch"|1|6|false|8.115308|47.158514|6208|false
+1097|"Rickenbach (LU)"|1|6|false|8.172942|47.249100|5735|false
+1098|"Ruswil"|1|5|false|8.126656|47.085108|6017|false
+1099|"Schenkon"|1|6|false|8.135519|47.173253|6214|false
+1102|"Sempach"|1|6|false|8.199031|47.133011|6204|false
+1103|"Sursee"|1|5|true|8.109414|47.173317|6210|false
+1104|"Triengen"|1|6|false|8.089506|47.253425|6234|false
+1107|"Wolhusen"|1|6|false|8.039553|47.035808|6110|false
+1125|"Dagmersellen"|1|5|false|8.037119|47.200900|6211|false
+1128|"Ettiswil"|1|6|false|8.045094|47.162764|6217|false
+1136|"Menznau"|1|6|false|8.039317|47.084025|6122|false
+1137|"Nebikon"|1|6|false|7.974650|47.191222|6244|false
+1139|"Pfaffnau"|1|6|false|7.839719|47.232411|4915|false
+1140|"Reiden"|1|5|false|7.998447|47.270119|6260|false
+1143|"Schötz"|1|6|false|7.954078|47.159817|6143|false
+1150|"Zell (LU)"|1|6|false|7.921992|47.134625|6144|false
+1151|"Willisau"|1|5|false|8.013764|47.095775|6126|false
+1201|"Altdorf (UR)"|1|5|true|8.634011|46.883681|6460|false
+1205|"Bürglen (UR)"|1|6|false|8.668608|46.873231|6463|false
+1206|"Erstfeld"|1|6|false|8.654461|46.820114|6472|false
+1213|"Schattdorf"|1|5|false|8.658892|46.864067|6467|false
+1216|"Silenen"|1|6|false|8.669675|46.790261|6473|false
+1301|"Einsiedeln"|1|4|true|8.729897|47.148589|8836|false
+1311|"Gersau"|1|6|false|8.530478|46.994486|6442|false
+1321|"Feusisberg"|1|6|false|8.712694|47.174375|8834|false
+1322|"Freienbach"|1|4|true|8.805842|47.214283|8640|false
+1323|"Wollerau"|1|5|false|8.734603|47.196997|8832|false
+1331|"Küssnacht (SZ)"|1|4|false|8.408042|47.066372|6402|false
+1341|"Altendorf"|1|5|false|8.830872|47.191950|8852|false
+1342|"Galgenen"|1|5|false|8.870456|47.182253|8854|false
+1344|"Lachen"|1|5|false|8.857811|47.197453|8853|false
+1345|"Reichenburg"|1|6|false|8.973511|47.167933|8864|false
+1346|"Schübelbach"|1|5|false|8.923517|47.173286|8862|false
+1347|"Tuggen"|1|6|false|8.947717|47.200050|8856|false
+1349|"Wangen (SZ)"|1|6|false|8.890667|47.190303|8855|false
+1362|"Arth"|1|4|true|8.555919|47.050619|6410|false
+1364|"Ingenbohl"|1|5|false|8.602303|47.000328|6440|false
+1367|"Muotathal"|1|6|false|8.831422|46.943931|6436|false
+1370|"Rothenthurm"|1|6|false|8.675131|47.105064|6418|false
+1372|"Schwyz"|1|4|true|8.630489|47.031392|6423|false
+1373|"Steinen"|1|6|false|8.611836|47.047292|6422|false
+1375|"Unteriberg"|1|6|false|8.803236|47.056367|8842|false
+1401|"Alpnach"|1|5|false|8.277419|46.952833|6053|false
+1402|"Engelberg"|1|6|false|8.373861|46.868425|6388|false
+1403|"Giswil"|1|6|false|8.181294|46.836858|6074|false
+1404|"Kerns"|1|5|false|8.280233|46.901961|6064|false
+1405|"Lungern"|1|6|false|8.164728|46.811858|6078|false
+1406|"Sachseln"|1|5|false|8.233036|46.864550|6072|false
+1407|"Sarnen"|1|4|true|8.258569|46.919506|6056|false
+1501|"Beckenried"|1|6|false|8.468736|46.965083|6375|false
+1502|"Buochs"|1|5|false|8.414994|46.972453|6374|false
+1505|"Ennetbürgen"|1|6|false|8.410978|46.987994|6373|false
+1506|"Ennetmoos"|1|6|false|8.331869|46.957469|6372|false
+1507|"Hergiswil (NW)"|1|5|false|8.304153|46.987142|6052|false
+1508|"Oberdorf (NW)"|1|6|false|8.383650|46.959025|6370|false
+1509|"Stans"|1|5|true|8.383650|46.959025|6370|false
+1510|"Stansstad"|1|6|false|8.339561|46.976589|6362|false
+1511|"Wolfenschiessen"|1|6|false|8.403856|46.907731|6386|false
+1630|"Glarus Nord"|1|4|true|9.057078|47.101122|8752|false
+1631|"Glarus Süd"|1|5|false|9.076858|47.012481|8756|false
+1632|"Glarus"|1|4|true|9.058375|47.041561|8750|false
+1701|"Baar"|1|3|true|8.550964|47.164544|6319|false
+1702|"Cham"|1|4|true|8.451950|47.184836|6330|false
+1703|"Hünenberg"|1|5|false|8.431208|47.172008|6331|false
+1704|"Menzingen"|1|6|false|8.571478|47.179744|6313|false
+1705|"Neuheim"|1|6|false|8.517694|47.196456|6340|false
+1706|"Oberägeri"|1|5|false|8.639136|47.142769|6315|false
+1707|"Risch"|1|5|true|8.454944|47.139606|6343|false
+1708|"Steinhausen"|1|5|true|8.490356|47.198811|6312|false
+1709|"Unterägeri"|1|5|false|8.562789|47.152375|6314|false
+1710|"Walchwil"|1|6|false|8.514769|47.100256|6318|false
+1711|"Zug"|1|3|true|8.518733|47.168747|6300|false
+2013|"Domdidier"|2|6|false|7.015361|46.864761|1564|false
+2015|"Estavayer-le-Lac"|2|5|false|6.827686|46.833086|1473|false
+2029|"Montagny (FR)"|2|6|false|6.975569|46.819000|1774|false
+2096|"Romont (FR)"|2|6|false|6.953275|46.693194|1680|false
+2099|"Siviriez"|2|6|false|6.897694|46.651753|1676|false
+2102|"Ursy"|2|6|false|6.855458|46.635056|1670|false
+2113|"Vuisternens-devant-Romont"|2|6|false|6.939939|46.664828|1685|false
+2124|"Broc"|2|6|false|7.099481|46.604956|1636|false
+2125|"Bulle"|2|3|true|7.058453|46.620269|1630|false
+2135|"Gruyères"|2|6|false|7.085494|46.588117|1663|false
+2148|"Riaz"|2|6|false|7.061164|46.641500|1632|false
+2160|"Vuadens"|2|6|false|7.019147|46.616461|1628|false
+2163|"Val-de-Charmey"|2|6|false|7.162789|46.619086|1637|false
+2175|"Belfaux"|2|6|false|7.077869|46.813622|1782|false
+2183|"Corminboeuf"|2|6|false|7.078228|46.807128|1720|false
+2192|"Farvagny"|2|6|false|7.066161|46.721900|1726|false
+2196|"Fribourg"|2|3|true|7.162800|46.806186|1700|true
+2197|"Givisiez"|2|6|false|7.126594|46.812208|1762|false
+2198|"Granges-Paccot"|2|6|false|7.141511|46.825086|1763|false
+2206|"Marly"|2|5|false|7.158928|46.774908|1723|false
+2211|"Neyruz (FR)"|2|6|false|7.065217|46.767892|1740|false
+2220|"Le Mouret"|2|6|false|7.202272|46.740650|1724|false
+2228|"Villars-sur-Glâne"|2|4|true|7.116042|46.791031|1752|false
+2233|"Hauterive (FR)"|2|6|false|7.094969|46.762328|1725|false
+2254|"Courtepin"|2|6|false|7.126086|46.863697|1784|false
+2262|"Gurmels"|1|6|false|7.153192|46.871800|1792|false
+2265|"Kerzers"|1|6|false|7.196386|46.976147|3210|false
+2275|"Murten"|1|5|false|7.091336|46.913756|3280|false
+2280|"Bas-Vully"|2|6|false|7.112822|46.961889|1786|false
+2291|"Alterswil"|1|6|false|7.267525|46.795253|1715|false
+2293|"Düdingen"|1|5|false|7.190667|46.846036|3186|false
+2295|"Bösingen"|1|6|false|7.228381|46.894200|3178|false
+2305|"Schmitten (FR)"|1|6|false|7.254539|46.853811|3185|false
+2306|"Tafers"|1|6|false|7.216519|46.817842|1712|false
+2308|"Ueberstorf"|1|6|false|7.305108|46.866492|3182|false
+2309|"Wünnewil-Flamatt"|1|5|false|7.308686|46.889561|3175|false
+2321|"Attalens"|2|6|false|6.849225|46.510844|1616|false
+2325|"Châtel-Saint-Denis"|2|5|false|6.901072|46.528797|1618|false
+2401|"Egerkingen"|1|6|false|7.796294|47.326189|4622|false
+2404|"Neuendorf"|1|6|false|7.796658|47.301542|4623|false
+2406|"Oberbuchsiten"|1|6|false|7.772794|47.310292|4625|false
+2407|"Oensingen"|1|5|false|7.723819|47.287289|4702|false
+2408|"Wolfwil"|1|6|false|7.793439|47.270656|4628|false
+2422|"Balsthal"|1|5|false|7.698203|47.311933|4710|false
+2428|"Mümliswil-Ramiswil"|1|6|false|7.695128|47.341172|4717|false
+2465|"Buchegg"|1|6|false|7.482714|47.148675|4576|false
+2473|"Dornach"|1|5|false|7.623561|47.476142|4143|false
+2476|"Hofstetten-Flüh"|1|6|false|7.505694|47.475261|4114|false
+2493|"Lostorf"|1|6|false|7.951708|47.383067|4654|false
+2495|"Niedergösgen"|1|6|false|7.988119|47.377414|5013|false
+2497|"Obergösgen"|1|6|false|7.955839|47.362469|4653|false
+2500|"Trimbach"|1|5|false|7.895942|47.367436|4632|false
+2503|"Erlinsbach (SO)"|1|6|false|8.000547|47.400686|5015|false
+2513|"Biberist"|1|5|false|7.552294|47.183186|4562|false
+2516|"Deitingen"|1|6|false|7.626556|47.216369|4543|false
+2517|"Derendingen"|1|5|false|7.591531|47.196967|4552|false
+2519|"Gerlafingen"|1|6|false|7.571669|47.170508|4563|false
+2526|"Lohn-Ammannsegg"|1|6|false|7.527411|47.173258|4573|false
+2527|"Luterbach"|1|6|false|7.590894|47.213947|4542|false
+2532|"Subingen"|1|6|false|7.622781|47.196650|4553|false
+2534|"Zuchwil"|1|5|false|7.562531|47.204394|4528|false
+2542|"Bellach"|1|5|false|7.492511|47.214783|4512|false
+2543|"Bettlach"|1|6|false|7.429717|47.203389|2544|false
+2546|"Grenchen"|1|4|true|7.407233|47.188975|2540|false
+2550|"Langendorf"|1|6|false|7.514553|47.221742|4513|false
+2554|"Riedholz"|1|6|false|7.569978|47.249358|4523|false
+2556|"Selzach"|1|6|false|7.461417|47.204603|2545|false
+2572|"Däniken"|1|6|false|7.976081|47.351997|4658|false
+2573|"Dulliken"|1|6|false|7.946247|47.347869|4657|false
+2576|"Gretzenbach"|1|6|false|8.002431|47.358222|5014|false
+2579|"Hägendorf"|1|6|false|7.836703|47.337911|4614|false
+2580|"Kappel (SO)"|1|6|false|7.854472|47.322503|4616|false
+2581|"Olten"|1|4|true|7.911567|47.352908|4600|false
+2583|"Schönenwerd"|1|6|false|8.023628|47.376942|5012|false
+2586|"Wangen bei Olten"|1|6|false|7.877375|47.342664|4612|false
+2601|"Solothurn"|1|4|true|7.529167|47.206467|4500|false
+2613|"Breitenbach"|1|6|false|7.550975|47.403147|4226|false
+2614|"Büsserach"|1|6|false|7.546775|47.389894|4227|false
+2701|"Basel"|1|1|true|7.588872|47.556361|4001|true
+2703|"Riehen"|1|3|true|7.649222|47.584706|4125|false
+2761|"Aesch (BL)"|1|4|true|7.587764|47.474231|4147|false
+2762|"Allschwil"|1|3|true|7.535653|47.550617|4123|false
+2763|"Arlesheim"|1|5|true|7.626772|47.495078|4144|false
+2764|"Biel-Benken"|1|6|false|7.519294|47.503567|4105|false
+2765|"Binningen"|1|4|true|7.582100|47.528572|4101|false
+2766|"Birsfelden"|1|4|true|7.625564|47.555444|4127|false
+2767|"Bottmingen"|1|5|false|7.574458|47.525756|4103|false
+2768|"Ettingen"|1|6|false|7.551267|47.477933|4107|false
+2769|"Münchenstein"|1|4|true|7.621553|47.513683|4142|false
+2770|"Muttenz"|1|4|true|7.654467|47.520994|4132|false
+2771|"Oberwil (BL)"|1|4|true|7.548886|47.519703|4104|false
+2772|"Pfeffingen"|1|6|false|7.580383|47.457206|4148|false
+2773|"Reinach (BL)"|1|4|true|7.590497|47.492647|4153|false
+2775|"Therwil"|1|5|false|7.547869|47.496492|4106|false
+2787|"Laufen"|1|5|false|7.498431|47.421111|4242|false
+2793|"Zwingen"|1|6|false|7.524850|47.435639|4222|false
+2823|"Bubendorf"|1|6|false|7.743747|47.445836|4416|false
+2824|"Frenkendorf"|1|5|false|7.706747|47.501844|4402|false
+2825|"Füllinsdorf"|1|6|false|7.728497|47.511389|4414|false
+2828|"Lausen"|1|6|false|7.762764|47.468422|4415|false
+2829|"Liestal"|1|4|true|7.721058|47.485386|4410|false
+2831|"Pratteln"|1|4|true|7.688083|47.515664|4133|false
+2846|"Gelterkinden"|1|5|false|7.856094|47.459075|4460|false
+2849|"Itingen"|1|6|false|7.782389|47.465578|4452|false
+2861|"Sissach"|1|5|false|7.815969|47.470753|4450|false
+2869|"Zunzgen"|1|6|false|7.802703|47.449192|4455|false
+2886|"Hölstein"|1|6|false|7.775619|47.427067|4434|false
+2892|"Oberdorf (BL)"|1|6|false|7.720664|47.390508|4436|false
+2904|"Neunkirch"|1|6|false|8.498675|47.690586|8213|false
+2920|"Thayngen"|1|5|false|8.711175|47.747447|8240|false
+2932|"Beringen"|1|6|false|8.572589|47.699178|8222|false
+2937|"Neuhausen am Rheinfall"|1|4|true|8.617419|47.681822|8212|false
+2939|"Schaffhausen"|1|3|true|8.636278|47.696517|8200|true
+2964|"Stein am Rhein"|1|6|false|8.860147|47.658942|8260|false
+2971|"Hallau"|1|6|false|8.462153|47.698414|8215|false
+3001|"Herisau"|1|4|true|9.270381|47.387219|9100|false
+3006|"Urnäsch"|1|6|false|9.276664|47.315506|9107|false
+3022|"Gais"|1|6|false|9.455025|47.362281|9056|false
+3023|"Speicher"|1|6|false|9.441364|47.426894|9037|false
+3024|"Teufen (AR)"|1|5|false|9.363147|47.392514|9052|false
+3032|"Heiden"|1|6|false|9.527214|47.442164|9410|false
+3037|"Walzenhausen"|1|6|false|9.604806|47.450806|9428|false
+3101|"Appenzell"|1|5|false|9.403031|47.328656|9050|false
+3103|"Rüte"|1|6|false|9.458914|47.297522|9058|false
+3105|"Schwende"|1|6|false|9.434181|47.299608|9057|false
+3203|"St. Gallen"|1|2|true|9.362217|47.423642|9000|true
+3204|"Wittenbach"|1|5|false|9.378928|47.460636|9300|false
+3212|"Eggersriet"|1|6|false|9.465792|47.444111|9034|false
+3213|"Goldach"|1|5|false|9.464783|47.473369|9403|false
+3214|"Mörschwil"|1|6|false|9.424450|47.468186|9402|false
+3215|"Rorschach"|1|5|true|9.491339|47.474467|9400|false
+3216|"Rorschacherberg"|1|5|false|9.502114|47.466286|9404|false
+3217|"Steinach"|1|6|false|9.440219|47.502642|9323|false
+3231|"Au (SG)"|1|5|false|9.633775|47.433414|9434|false
+3232|"Balgach"|1|6|false|9.606314|47.407381|9436|false
+3233|"Berneck"|1|6|false|9.609400|47.424572|9442|false
+3234|"Diepoldsau"|1|5|false|9.657631|47.385406|9444|false
+3235|"Rheineck"|1|6|false|9.590039|47.465808|9424|false
+3236|"St. Margrethen"|1|5|false|9.625906|47.453953|9430|false
+3237|"Thal"|1|5|false|9.542219|47.480589|9422|false
+3238|"Widnau"|1|5|false|9.639644|47.404142|9443|false
+3251|"Altstätten"|1|4|true|9.541469|47.378033|9450|false
+3253|"Marbach (SG)"|1|6|false|9.567531|47.391736|9437|false
+3254|"Oberriet (SG)"|1|5|false|9.606844|47.365442|9451|false
+3255|"Rebstein"|1|6|false|9.584153|47.399500|9445|false
+3256|"Rüthi (SG)"|1|6|false|9.516128|47.278464|9464|false
+3271|"Buchs (SG)"|1|4|true|9.467975|47.165069|9470|false
+3272|"Gams"|1|6|false|9.440358|47.203758|9473|false
+3273|"Grabs"|1|5|false|9.447075|47.181139|9472|false
+3274|"Sennwald"|1|5|false|9.502592|47.237489|9465|false
+3275|"Sevelen"|1|6|false|9.482239|47.128503|9475|false
+3276|"Wartau"|1|5|false|9.488606|47.090633|9476|false
+3291|"Bad Ragaz"|1|5|false|9.506389|47.002167|7310|false
+3292|"Flums"|1|6|false|9.346875|47.092842|8890|false
+3293|"Mels"|1|5|false|9.361858|47.009711|7325|false
+3295|"Quarten"|1|6|false|9.213886|47.111006|8877|false
+3296|"Sargans"|1|5|false|9.449050|47.050122|7320|false
+3297|"Vilters-Wangs"|1|6|false|9.432256|47.029367|7323|false
+3298|"Walenstadt"|1|5|false|9.307383|47.122525|8880|false
+3312|"Benken (SG)"|1|6|false|8.999228|47.198042|8717|false
+3313|"Kaltbrunn"|1|6|false|9.018711|47.214556|8722|false
+3315|"Schänis"|1|6|false|9.040497|47.158608|8718|false
+3338|"Schmerikon"|1|6|false|8.941742|47.225183|8716|false
+3339|"Uznach"|1|5|false|8.978378|47.223378|8730|false
+3340|"Rapperswil-Jona"|1|3|true|8.844422|47.227925|8645|false
+3341|"Gommiswald"|1|6|false|9.002189|47.238369|8725|false
+3342|"Eschenbach (SG)"|1|5|false|8.963250|47.264314|8638|false
+3352|"Ebnat-Kappel"|1|6|false|9.119194|47.260822|9642|false
+3359|"Wildhaus-Alt St. Johann"|1|6|false|9.280881|47.193214|9656|false
+3360|"Nesslau"|1|6|false|9.173011|47.248717|9643|false
+3378|"Neckertal"|1|6|false|9.173378|47.362158|9114|false
+3379|"Wattwil"|1|5|false|9.049686|47.315750|9622|false
+3392|"Kirchberg (SG)"|1|5|false|9.019500|47.422097|9533|false
+3394|"Mosnang"|1|6|false|9.039211|47.360344|9607|false
+3395|"Bütschwil-Ganterschwil"|1|6|false|9.068481|47.358983|9606|false
+3401|"Degersheim"|1|6|false|9.198694|47.369414|9113|false
+3402|"Flawil"|1|4|true|9.188908|47.410956|9230|false
+3405|"Jonschwil"|1|6|false|9.091264|47.422156|9243|false
+3407|"Oberuzwil"|1|5|false|9.168453|47.429950|9240|false
+3408|"Uzwil"|1|4|true|9.140617|47.449589|9244|false
+3423|"Niederhelfenschwil"|1|6|false|9.146094|47.475192|9525|false
+3424|"Oberbüren"|1|6|false|9.200847|47.439319|9203|false
+3426|"Zuzwil (SG)"|1|6|false|9.084917|47.464689|9523|false
+3427|"Wil (SG)"|1|3|true|9.053836|47.440694|9500|false
+3442|"Gaiserwald"|1|5|false|9.321131|47.426181|9030|false
+3443|"Gossau (SG)"|1|4|true|9.258447|47.414858|9200|false
+3444|"Waldkirch"|1|6|false|9.278928|47.469394|9205|false
+3506|"Vaz/Obervaz"|1|6|false|9.552967|46.750889|7077|false
+3561|"Poschiavo"|3|6|false|10.032831|46.374764|7710|false
+3618|"Lumnezia"|4|6|false|9.195083|46.719022|7110|false
+3619|"Ilanz/Glion"|1|6|false|9.219436|46.730639|7111|false
+3661|"Cazis"|1|6|false|9.432992|46.721842|7408|false
+3668|"Thusis"|1|6|false|9.443925|46.675586|7430|false
+3721|"Bonaduz"|1|6|false|9.395447|46.813689|7402|false
+3722|"Domat/Ems"|1|5|false|9.462342|46.832042|7013|false
+3731|"Felsberg"|1|6|false|9.470569|46.845428|7012|false
+3732|"Flims"|1|6|false|9.285892|46.840058|7017|false
+3762|"Scuol"|4|6|false|10.152128|46.777364|7545|false
+3784|"Pontresina"|1|6|false|9.907878|46.492686|7504|false
+3786|"Samedan"|1|6|false|9.870533|46.533903|7503|false
+3787|"St. Moritz"|1|5|true|9.831233|46.493975|7500|false
+3834|"Roveredo (GR)"|3|6|false|9.119994|46.233111|6535|false
+3851|"Davos"|1|4|true|9.839817|46.809075|7260|false
+3871|"Klosters-Serneus"|1|6|false|9.840219|46.890683|7249|false
+3901|"Chur"|1|3|true|9.532789|46.848175|7000|true
+3911|"Churwalden"|1|6|false|9.549308|46.828289|7062|false
+3921|"Arosa"|1|6|false|9.593797|46.842461|7027|false
+3945|"Trimmis"|1|6|false|9.552711|46.910897|7201|false
+3946|"Untervaz"|1|6|false|9.529075|46.927825|7204|false
+3947|"Zizers"|1|6|false|9.562308|46.936797|7205|false
+3953|"Maienfeld"|1|6|false|9.531478|47.007994|7304|false
+3954|"Malans"|1|6|false|9.574319|46.981828|7208|false
+3955|"Landquart"|1|5|false|9.578453|46.944975|7206|false
+3962|"Schiers"|1|6|false|9.682308|46.969786|7220|false
+3982|"Disentis/Mustér"|4|6|false|8.858008|46.703156|7180|false
+4001|"Aarau"|1|3|true|8.046036|47.395886|5000|true
+4003|"Buchs (AG)"|1|5|false|8.083356|47.388597|5033|false
+4005|"Erlinsbach (AG)"|1|6|false|7.969933|47.421850|5017|false
+4006|"Gränichen"|1|5|false|8.094283|47.357458|5722|false
+4008|"Küttigen"|1|5|false|8.045814|47.405367|5022|false
+4009|"Muhen"|1|6|false|8.051353|47.335028|5037|false
+4010|"Oberentfelden"|1|5|false|8.033772|47.358003|5036|false
+4012|"Suhr"|1|5|true|8.086472|47.373647|5034|false
+4013|"Unterentfelden"|1|6|false|8.038339|47.369681|5035|false
+4021|"Baden"|1|4|true|8.298986|47.476186|5400|false
+4023|"Bergdietikon"|1|6|false|8.380364|47.390758|8962|false
+4024|"Birmenstorf (AG)"|1|6|false|8.240956|47.461886|5413|false
+4026|"Ennetbaden"|1|6|false|8.323986|47.480547|5408|false
+4027|"Fislisbach"|1|5|false|8.296875|47.439036|5442|false
+4029|"Gebenstorf"|1|6|false|8.242978|47.477300|5412|false
+4032|"Mägenwil"|1|6|false|8.233664|47.409725|5506|false
+4033|"Mellingen"|1|6|false|8.281392|47.418192|5507|false
+4034|"Neuenhof"|1|5|false|8.323658|47.445706|5432|false
+4035|"Niederrohrdorf"|1|6|false|8.297703|47.423819|5443|false
+4037|"Oberrohrdorf"|1|6|false|8.321978|47.422728|5452|false
+4038|"Obersiggenthal"|1|5|false|8.312717|47.487497|5415|false
+4039|"Remetschwil"|1|6|false|8.331711|47.407200|5453|false
+4040|"Spreitenbach"|1|4|true|8.357850|47.418644|8957|false
+4042|"Turgi"|1|6|false|8.253678|47.490725|5300|false
+4044|"Untersiggenthal"|1|5|false|8.237950|47.515217|5301|false
+4045|"Wettingen"|1|3|true|8.331978|47.471339|5430|false
+4047|"Würenlingen"|1|6|false|8.249225|47.532111|5303|false
+4048|"Würenlos"|1|5|false|8.364858|47.442783|5436|false
+4049|"Ehrendingen"|1|6|false|8.347458|47.496981|5420|false
+4062|"Berikon"|1|6|false|8.376803|47.351642|8965|false
+4063|"Bremgarten (AG)"|1|5|false|8.336981|47.355142|5620|false
+4065|"Dottikon"|1|6|false|8.240997|47.383661|5605|false
+4068|"Hägglingen"|1|6|false|8.258497|47.388322|5607|false
+4072|"Niederwil (AG)"|1|6|false|8.295694|47.390364|5524|false
+4074|"Oberwil-Lieli"|1|6|false|8.394158|47.338619|8966|false
+4075|"Rudolfstetten-Friedlisberg"|1|6|false|8.382817|47.368475|8964|false
+4076|"Sarmenstorf"|1|6|false|8.242589|47.310908|5614|false
+4080|"Villmergen"|1|5|false|8.243853|47.345728|5612|false
+4081|"Widen"|1|6|false|8.357661|47.367672|8967|false
+4082|"Wohlen (AG)"|1|4|true|8.285356|47.357375|5610|false
+4083|"Zufikon"|1|6|false|8.360292|47.347556|5621|false
+4092|"Birr"|1|6|false|8.207714|47.434869|5242|false
+4095|"Brugg"|1|4|true|8.206847|47.485100|5200|false
+4100|"Hausen (AG)"|1|6|false|8.204742|47.461458|5212|false
+4104|"Lupfig"|1|6|false|8.207714|47.434869|5242|false
+4121|"Villigen"|1|6|false|8.231489|47.516486|5233|false
+4123|"Windisch"|1|5|false|8.216525|47.471786|5210|false
+4125|"Schinznach"|1|6|false|8.139808|47.449475|5107|false
+4131|"Beinwil am See"|1|6|false|8.208400|47.264989|5712|false
+4135|"Gontenschwil"|1|6|false|8.149925|47.273567|5728|false
+4139|"Menziken"|1|5|false|8.193031|47.239625|5737|false
+4140|"Oberkulm"|1|6|false|8.115511|47.298636|5727|false
+4141|"Reinach (AG)"|1|5|false|8.191364|47.256375|5734|false
+4144|"Schöftland"|1|6|false|8.050661|47.304800|5040|false
+4146|"Unterkulm"|1|6|false|8.108272|47.309714|5726|false
+4161|"Eiken"|1|6|false|7.988236|47.536322|5074|false
+4163|"Frick"|1|5|false|8.026403|47.503794|5070|false
+4165|"Gipf-Oberfrick"|1|6|false|7.992831|47.496881|5073|false
+4169|"Kaisten"|1|6|false|8.045892|47.540119|5082|false
+4170|"Laufenburg"|1|6|false|8.064469|47.557856|5080|false
+4194|"Dintikon"|1|6|false|8.226822|47.361856|5606|false
+4200|"Hunzenschwil"|1|6|false|8.127200|47.382847|5502|false
+4201|"Lenzburg"|1|5|true|8.209194|47.371319|5600|false
+4202|"Meisterschwanden"|1|6|false|8.234444|47.295133|5616|false
+4203|"Möriken-Wildegg"|1|6|false|8.190964|47.416467|5103|false
+4204|"Niederlenz"|1|6|false|8.170353|47.402694|5702|false
+4205|"Othmarsingen"|1|6|false|8.210142|47.402111|5504|false
+4206|"Rupperswil"|1|6|false|8.134572|47.402764|5102|false
+4207|"Schafisheim"|1|6|false|8.145728|47.375944|5503|false
+4208|"Seengen"|1|6|false|8.201342|47.329619|5707|false
+4209|"Seon"|1|6|false|8.163967|47.350097|5703|false
+4210|"Staufen"|1|6|false|8.161619|47.381953|5603|false
+4228|"Boswil"|1|6|false|8.308811|47.303808|5623|false
+4234|"Merenschwand"|1|6|false|8.380589|47.257342|5634|false
+4236|"Muri (AG)"|1|5|false|8.338669|47.272331|5630|false
+4239|"Sins"|1|6|false|8.363164|47.199419|5643|false
+4240|"Waltenschwil"|1|6|false|8.296306|47.334539|5622|false
+4252|"Kaiseraugst"|1|5|false|7.724933|47.539603|4303|false
+4253|"Magden"|1|6|false|7.821458|47.525789|4312|false
+4254|"Möhlin"|1|4|true|7.843400|47.561717|4313|false
+4258|"Rheinfelden"|1|4|true|7.807322|47.549767|4310|false
+4260|"Stein (AG)"|1|6|false|7.955931|47.546753|4332|false
+4263|"Zeiningen"|1|6|false|7.876253|47.543239|4314|false
+4271|"Aarburg"|1|5|false|7.907239|47.324422|4663|false
+4274|"Brittnau"|1|6|false|7.940942|47.259375|4805|false
+4276|"Kölliken"|1|6|false|8.029381|47.338003|5742|false
+4279|"Murgenthal"|1|6|false|7.832264|47.265419|4853|false
+4280|"Oftringen"|1|4|true|7.933347|47.309672|4665|false
+4282|"Rothrist"|1|5|false|7.883675|47.298289|4852|false
+4283|"Safenwil"|1|6|false|7.987094|47.318711|5745|false
+4285|"Strengelbach"|1|6|false|7.920144|47.281214|4802|false
+4289|"Zofingen"|1|4|true|7.952681|47.284842|4800|false
+4303|"Böttstein"|1|6|false|8.238142|47.570361|5314|false
+4304|"Döttingen"|1|6|false|8.260917|47.564067|5312|false
+4305|"Endingen"|1|6|false|8.297978|47.536958|5304|false
+4309|"Klingnau"|1|6|false|8.250544|47.586194|5313|false
+4312|"Lengnau (AG)"|1|6|false|8.322133|47.522297|5426|false
+4313|"Leuggern"|1|6|false|8.216833|47.580011|5316|false
+4323|"Bad Zurzach"|1|6|false|8.295292|47.582078|5330|false
+4401|"Arbon"|1|4|true|9.436883|47.515242|9320|false
+4411|"Egnach"|1|6|false|9.346111|47.535844|9314|false
+4421|"Horn"|1|6|false|9.459450|47.492942|9326|false
+4431|"Roggwil (TG)"|1|6|false|9.393569|47.486489|9306|false
+4436|"Romanshorn"|1|4|true|9.369406|47.564878|8590|false
+4461|"Amriswil"|1|4|true|9.266308|47.536958|8581|false
+4471|"Bischofszell"|1|5|false|9.235769|47.495397|9220|false
+4476|"Erlen"|1|6|false|9.212892|47.565211|8586|false
+4501|"Kradolf-Schönenberg"|1|6|false|9.195567|47.526017|9214|false
+4506|"Sulgen"|1|6|false|9.198636|47.554975|8583|false
+4511|"Zihlschlacht-Sitterdorf"|1|6|false|9.263478|47.522592|8588|false
+4545|"Diessenhofen"|1|6|false|8.752622|47.682947|8253|false
+4551|"Aadorf"|1|5|false|8.906306|47.496283|8355|false
+4561|"Felben-Wellhausen"|1|6|false|8.940972|47.575628|8552|false
+4566|"Frauenfeld"|1|3|true|8.885683|47.566203|8500|false
+4571|"Gachnang"|1|6|false|8.843517|47.548261|8546|false
+4591|"Matzingen"|1|6|false|8.928025|47.521119|9548|false
+4641|"Altnau"|1|6|false|9.257661|47.608031|8595|false
+4643|"Bottighofen"|1|6|false|9.213278|47.640806|8598|false
+4646|"Ermatingen"|1|6|false|9.080422|47.669872|8272|false
+4666|"Kemmental"|1|6|false|9.115861|47.597544|8565|false
+4671|"Kreuzlingen"|1|3|true|9.173181|47.644686|8280|false
+4691|"Münsterlingen"|1|6|false|9.234989|47.631439|8596|false
+4696|"Tägerwilen"|1|6|false|9.133578|47.663811|8274|false
+4711|"Affeltrangen"|1|6|false|9.034264|47.528728|9556|false
+4721|"Bichelsee-Balterswil"|1|6|false|8.939978|47.456269|8362|false
+4724|"Eschlikon"|1|6|false|8.961042|47.465611|8360|false
+4726|"Fischingen"|1|6|false|8.959069|47.431822|8374|false
+4746|"Münchwilen (TG)"|1|5|false|8.990761|47.479833|9542|false
+4751|"Rickenbach (TG)"|1|6|false|9.063064|47.434564|9532|false
+4761|"Sirnach"|1|5|false|9.001869|47.459533|8370|false
+4781|"Wängi"|1|6|false|8.957808|47.496886|9545|false
+4786|"Wilen (TG)"|1|6|false|9.031992|47.447086|9535|false
+4831|"Müllheim"|1|6|false|9.005428|47.601211|8555|false
+4864|"Steckborn"|1|6|false|8.983383|47.666750|8266|false
+4891|"Berg (TG)"|1|6|false|9.179350|47.577547|8572|false
+4911|"Bürglen (TG)"|1|6|false|9.157325|47.553031|8575|false
+4921|"Bussnang"|1|6|false|9.095869|47.519858|9503|false
+4941|"Märstetten"|1|6|false|9.062969|47.591875|8560|false
+4946|"Weinfelden"|1|4|true|9.114856|47.562306|8570|false
+4951|"Wigoltingen"|1|6|false|9.041950|47.583558|8554|false
+5001|"Arbedo-Castione"|3|6|false|9.046481|46.213792|6517|false
+5002|"Bellinzona"|3|4|true|9.024150|46.196967|6500|true
+5003|"Cadenazzo"|3|6|false|8.946953|46.149186|6593|false
+5004|"Camorino"|3|6|false|9.001208|46.164600|6528|false
+5005|"Giubiasco"|3|5|false|9.007172|46.174783|6512|false
+5013|"Monte Carasso"|3|6|false|8.999425|46.189133|6513|false
+5017|"Sant'Antonino"|3|6|false|8.970567|46.154772|6592|false
+5019|"Sementina"|3|6|false|8.989431|46.183008|6514|false
+5050|"Serravalle"|3|6|false|8.984344|46.413778|6713|false
+5072|"Faido"|3|6|false|8.841117|46.450728|6746|false
+5091|"Ascona"|3|5|false|8.769561|46.155736|6612|false
+5108|"Gordola"|3|6|false|8.860181|46.186300|6596|false
+5113|"Locarno"|3|4|true|8.891175|46.177431|6595|false
+5115|"Losone"|3|5|false|8.758708|46.168458|6616|false
+5118|"Minusio"|3|5|false|8.818336|46.178489|6648|false
+5120|"Muralto"|3|6|false|8.765869|46.185478|6600|false
+5131|"Tenero-Contra"|3|6|false|8.849733|46.180539|6598|false
+5138|"Cugnasco-Gerra"|3|6|false|8.918789|46.174644|6516|false
+5141|"Agno"|3|6|false|8.901825|45.995178|6982|false
+5151|"Bioggio"|3|6|false|8.911717|46.015975|6934|false
+5167|"Canobbio"|3|6|false|8.967853|46.036233|6952|false
+5171|"Caslano"|3|6|false|8.879522|45.969292|6987|false
+5176|"Comano"|3|6|false|8.957247|46.040444|6949|false
+5192|"Lugano"|3|2|true|8.952464|46.007211|6900|false
+5196|"Massagno"|3|5|false|8.952464|46.007211|6900|false
+5210|"Paradiso"|3|6|false|8.952464|46.007211|6900|false
+5221|"Savosa"|3|6|false|8.945064|46.018925|6942|false
+5226|"Capriasca"|3|5|false|8.958547|46.058872|6947|false
+5227|"Torricella-Taverne"|3|6|false|8.932494|46.067883|6807|false
+5236|"Collina d'Oro"|3|6|false|8.901453|45.967778|6919|false
+5238|"Monteceneri"|3|6|false|8.918508|46.126558|6802|false
+5242|"Balerna"|3|6|false|9.005447|45.847472|6828|false
+5249|"Castel San Pietro"|3|6|false|8.993756|45.861472|6873|false
+5250|"Chiasso"|3|5|true|9.026819|45.833289|6830|false
+5251|"Coldrerio"|3|6|false|8.985881|45.853511|6877|false
+5254|"Mendrisio"|3|4|true|9.018464|45.927994|6825|false
+5257|"Morbio Inferiore"|3|6|false|9.019183|45.851050|6834|false
+5260|"Novazzano"|3|6|false|8.985825|45.841483|6883|false
+5263|"Riva San Vitale"|3|6|false|8.968919|45.905475|6826|false
+5266|"Stabio"|3|6|false|8.935733|45.859256|6854|false
+5268|"Vacallo"|3|6|false|9.034958|45.847658|6833|false
+5281|"Biasca"|3|5|false|8.972214|46.360111|6710|false
+5282|"Claro"|3|6|false|9.022683|46.256550|6702|false
+5317|"Maggia"|3|6|false|8.708308|46.246778|6673|false
+5396|"Terre di Pedemonte"|3|6|false|8.744333|46.186161|6652|false
+5398|"Gambarogno"|3|5|false|8.829764|46.094964|6571|false
+5401|"Aigle"|2|5|true|6.967614|46.317278|1860|false
+5402|"Bex"|2|5|false|7.012428|46.251219|1880|false
+5407|"Leysin"|2|6|false|7.012525|46.341636|1854|false
+5409|"Ollon"|2|5|false|6.994508|46.297136|1867|false
+5414|"Villeneuve (VD)"|2|5|false|6.925178|46.396256|1844|false
+5422|"Aubonne"|2|6|false|6.392142|46.496725|1170|false
+5451|"Avenches"|2|6|false|7.040611|46.880244|1580|false
+5464|"Vully-les-Lacs"|2|6|false|6.989997|46.905506|1584|false
+5477|"Cossonay"|2|6|false|6.509814|46.600125|1304|false
+5495|"Penthalaz"|2|6|false|6.529311|46.614269|1305|false
+5498|"La Sarraz"|2|6|false|6.514475|46.659544|1315|false
+5516|"Cugy (VD)"|2|6|false|6.642517|46.597792|1053|false
+5518|"Echallens"|2|5|false|6.634075|46.640769|1040|false
+5523|"Froideville"|2|6|false|6.680742|46.601778|1055|false
+5561|"Grandson"|2|6|false|6.643600|46.808331|1422|false
+5568|"Sainte-Croix"|2|6|false|6.497489|46.814869|1450|false
+5581|"Belmont-sur-Lausanne"|2|6|false|6.680422|46.520117|1092|false
+5582|"Cheseaux-sur-Lausanne"|2|6|false|6.605039|46.584875|1033|false
+5583|"Crissier"|2|5|true|6.578761|46.556169|1023|false
+5584|"Epalinges"|2|5|false|6.673658|46.545956|1066|false
+5586|"Lausanne"|2|1|true|6.683447|46.562239|1000|true
+5587|"Le Mont-sur-Lausanne"|2|5|false|6.636117|46.556806|1052|false
+5589|"Prilly"|2|4|true|6.597694|46.552814|1008|false
+5590|"Pully"|2|4|true|6.661969|46.509189|1009|false
+5591|"Renens (VD)"|2|3|true|6.590683|46.536828|1020|false
+5592|"Romanel-sur-Lausanne"|2|6|false|6.606142|46.563194|1032|false
+5601|"Chexbres"|2|6|false|6.777519|46.482258|1071|false
+5604|"Forel (Lavaux)"|2|6|false|6.769836|46.541164|1072|false
+5606|"Lutry"|2|5|false|6.702703|46.516667|1090|false
+5607|"Puidoux"|2|6|false|6.783086|46.497736|1070|false
+5611|"Savigny"|2|6|false|6.750383|46.556817|1073|false
+5613|"Bourg-en-Lavaux"|2|5|false|6.710342|46.498011|1091|false
+5624|"Bussigny"|2|5|true|6.551058|46.553169|1030|false
+5627|"Chavannes-près-Renens"|2|5|false|6.576344|46.535847|1022|false
+5633|"Echandens"|2|6|false|6.538969|46.523378|1026|false
+5634|"Echichens"|2|6|false|6.498636|46.526019|1112|false
+5635|"Ecublens (VD)"|2|4|true|6.582961|46.517267|1015|false
+5636|"Etoy"|2|6|false|6.420569|46.486133|1163|false
+5638|"Lonay"|2|6|false|6.520878|46.526481|1027|false
+5642|"Morges"|2|4|true|6.499997|46.510739|1110|false
+5643|"Préverenges"|2|5|false|6.526944|46.518397|1028|false
+5646|"Saint-Prex"|2|5|false|6.458247|46.481336|1162|false
+5648|"Saint-Sulpice (VD)"|2|6|false|6.559950|46.509039|1025|false
+5675|"Lucens"|2|6|false|6.837997|46.710322|1522|false
+5678|"Moudon"|2|5|false|6.799131|46.668156|1510|false
+5693|"Montanaire"|2|6|false|6.719014|46.681881|1063|false
+5702|"Arzier-Le Muids"|2|6|false|6.207353|46.460531|1273|false
+5711|"Commugny"|2|6|false|6.180392|46.320183|1291|false
+5712|"Coppet"|2|6|false|6.193086|46.315889|1296|false
+5713|"Crans-près-Céligny"|2|6|false|6.183739|46.348408|1299|false
+5717|"Founex"|2|6|false|6.192722|46.332933|1297|false
+5721|"Gland"|2|4|true|6.265211|46.423700|1196|false
+5724|"Nyon"|2|4|true|6.238006|46.380825|1260|false
+5725|"Prangins"|2|6|false|6.249861|46.394536|1197|false
+5727|"Saint-Cergue"|2|6|false|6.158803|46.447958|1264|false
+5749|"Chavornay"|2|6|false|6.570536|46.701442|1373|false
+5757|"Orbe"|2|5|false|6.532997|46.724600|1350|false
+5764|"Vallorbe"|2|6|false|6.380036|46.712911|1337|false
+5805|"Oron"|2|5|false|6.810614|46.554836|1607|false
+5816|"Corcelles-près-Payerne"|2|6|false|6.961214|46.831644|1562|false
+5822|"Payerne"|2|5|true|6.937775|46.820739|1530|false
+5831|"Valbroye"|2|6|false|6.889633|46.759950|1523|false
+5841|"Château-d'Oex"|2|6|false|7.129433|46.472750|1660|false
+5859|"Mont-sur-Rolle"|2|6|false|6.336961|46.470942|1185|false
+5861|"Rolle"|2|5|false|6.336172|46.458572|1180|false
+5872|"Le Chenit"|2|6|false|6.238367|46.600950|1341|false
+5881|"Blonay"|2|5|false|6.894406|46.465858|1807|false
+5882|"Chardonne"|2|6|false|6.830192|46.481589|1801|false
+5883|"Corseaux"|2|6|false|6.832808|46.472311|1802|false
+5884|"Corsier-sur-Vevey"|2|6|false|6.841697|46.470197|1804|false
+5886|"Montreux"|2|3|true|6.892486|46.442028|1815|false
+5888|"Saint-Légier-La Chiésaz"|2|5|false|6.883986|46.471367|1806|false
+5889|"La Tour-de-Peilz"|2|4|true|6.857017|46.453608|1814|false
+5890|"Vevey"|2|4|true|6.848147|46.459058|1800|false
+5938|"Yverdon-les-Bains"|2|3|true|6.676869|46.783092|1400|false
+5939|"Yvonand"|2|6|false|6.745100|46.798225|1462|false
+6002|"Brig-Glis"|1|4|true|7.996536|46.316478|3900|true
+6007|"Naters"|1|5|false|7.957700|46.318731|3903|false
+6021|"Ardon"|2|6|false|7.252567|46.210436|1957|false
+6022|"Chamoson"|2|6|false|7.181581|46.205897|1911|false
+6023|"Conthey"|2|5|false|7.304875|46.227350|1964|false
+6024|"Nendaz"|2|5|false|7.312728|46.205867|1994|false
+6025|"Vétroz"|2|5|false|7.278625|46.223653|1963|false
+6031|"Bagnes"|2|5|false|7.215211|46.065233|1934|false
+6034|"Orsières"|2|6|false|7.146203|46.031092|1937|false
+6082|"Ayent"|2|6|false|7.399739|46.263575|1966|false
+6110|"Leuk"|1|6|false|7.648200|46.308042|3952|false
+6133|"Fully"|2|5|false|7.113703|46.138219|1926|false
+6135|"Leytron"|2|6|false|7.182928|46.189322|1912|false
+6136|"Martigny"|2|4|true|7.073761|46.100622|1920|false
+6137|"Martigny-Combe"|2|6|false|7.053958|46.086558|1921|false
+6139|"Riddes"|2|6|false|7.227672|46.171261|1908|false
+6140|"Saillon"|2|6|false|7.184736|46.171381|1913|false
+6141|"Saxon"|2|6|false|7.180753|46.145336|1907|false
+6152|"Collombey-Muraz"|2|5|false|6.946350|46.267989|1868|false
+6153|"Monthey"|2|4|true|6.815219|46.207044|1870|false
+6154|"Port-Valais"|2|6|false|6.851192|46.384742|1897|false
+6156|"Troistorrents"|2|6|false|6.919008|46.229761|1872|false
+6158|"Vionnaz"|2|6|false|6.899650|46.308986|1895|false
+6159|"Vouvry"|2|6|false|6.863653|46.338458|1896|false
+6217|"Saint-Maurice"|2|6|false|6.999556|46.184981|1890|false
+6232|"Chalais"|2|6|false|7.504631|46.265225|3966|false
+6234|"Chermignon"|2|6|false|7.471803|46.287478|3971|false
+6238|"Grône"|2|6|false|7.454328|46.251689|3979|false
+6240|"Lens"|2|6|false|7.445397|46.278944|1978|false
+6243|"Montana"|2|6|false|7.502825|46.284522|3960|false
+6244|"Randogne"|2|6|false|7.510792|46.312997|3975|false
+6246|"Saint-Léonard"|2|6|false|7.419769|46.255889|1958|false
+6248|"Sierre"|2|4|true|7.498031|46.278903|3976|false
+6252|"Anniviers"|2|6|false|7.605619|46.180239|3961|false
+6263|"Grimisuat"|2|6|false|7.372136|46.245967|1971|false
+6265|"Savièse"|2|5|false|7.318853|46.248719|1965|false
+6266|"Sion"|2|3|true|7.356742|46.229539|1950|true
+6292|"St. Niklaus"|1|6|false|7.803094|46.177742|3924|false
+6297|"Visp"|1|5|true|7.911083|46.294089|3930|false
+6300|"Zermatt"|1|5|true|7.746750|46.019517|3920|false
+6402|"Bevaix"|2|6|false|6.815639|46.930811|2022|false
+6404|"Boudry"|2|5|false|6.856794|46.953706|2015|false
+6407|"Corcelles-Cormondrèche"|2|6|false|6.876889|46.985606|2035|false
+6408|"Cortaillod"|2|6|false|6.846336|46.942931|2016|false
+6410|"Gorgier"|2|6|false|6.780533|46.903169|2023|false
+6412|"Peseux"|2|5|false|6.888661|46.987308|2034|false
+6414|"Saint-Aubin-Sauges"|2|6|false|6.773633|46.895575|2024|false
+6416|"Milvignes"|2|5|false|6.877247|46.977781|2012|false
+6421|"La Chaux-de-Fonds"|2|3|true|6.833108|47.104131|2300|false
+6436|"Le Locle"|2|4|true|6.710469|47.052783|2400|false
+6454|"Hauterive (NE)"|2|6|false|6.971694|47.013592|2068|false
+6455|"Le Landeron"|2|6|false|7.065017|47.053647|2525|false
+6458|"Neuchâtel"|2|3|true|6.926369|46.992044|2000|true
+6459|"Saint-Blaise"|2|6|false|6.986886|47.013428|2072|false
+6461|"La Tène"|2|6|false|7.001178|47.009264|2074|false
+6487|"Val-de-Ruz"|2|4|false|6.837167|46.986628|2037|false
+6512|"Val-de-Travers"|2|4|false|6.722975|46.956061|2103|false
+6602|"Anières"|2|6|false|6.222903|46.276231|1247|false
+6605|"Bardonnex"|2|6|false|6.124692|46.148567|1257|false
+6606|"Bellevue"|2|6|false|6.153292|46.253781|1293|false
+6607|"Bernex"|2|5|false|6.069653|46.173725|1233|false
+6608|"Carouge (GE)"|2|3|true|6.139539|46.184994|1227|false
+6612|"Chêne-Bougeries"|2|4|true|6.188597|46.197758|1224|false
+6613|"Chêne-Bourg"|2|5|false|6.191900|46.193736|1225|false
+6616|"Collonge-Bellerive"|2|5|false|6.199664|46.237556|1222|false
+6617|"Cologny"|2|6|false|6.181197|46.216272|1223|false
+6618|"Confignon"|2|6|false|6.084475|46.173994|1232|false
+6621|"Genève"|2|1|true|6.146619|46.210286|1201|true
+6622|"Genthod"|2|6|false|6.157558|46.264786|1294|false
+6623|"Le Grand-Saconnex"|2|4|true|6.123989|46.232453|1218|false
+6628|"Lancy"|2|3|true|6.120947|46.182378|1212|false
+6629|"Meinier"|2|6|false|6.234222|46.246572|1252|false
+6630|"Meyrin"|2|3|true|6.106847|46.235203|1215|false
+6631|"Onex"|2|4|true|6.100944|46.182081|1213|false
+6632|"Perly-Certoux"|2|6|false|6.087678|46.156011|1258|false
+6633|"Plan-les-Ouates"|2|4|true|6.115842|46.168075|1228|false
+6634|"Pregny-Chambésy"|2|6|false|6.139764|46.241839|1292|false
+6636|"Puplinge"|2|6|false|6.232403|46.209903|1241|false
+6638|"Satigny"|2|6|false|6.031414|46.218247|1242|false
+6640|"Thônex"|2|4|true|6.198672|46.188286|1226|false
+6641|"Troinex"|2|6|false|6.148508|46.161167|1256|false
+6642|"Vandoeuvres"|2|6|false|6.202561|46.221222|1253|false
+6643|"Vernier"|2|3|true|6.086519|46.215306|1214|false
+6644|"Versoix"|2|4|true|6.133758|46.315986|1290|false
+6645|"Veyrier"|2|4|false|6.154681|46.172331|1234|false
+6708|"Courrendlin"|2|6|false|7.379281|47.338356|2830|false
+6709|"Courroux"|2|6|false|7.375411|47.365147|2822|false
+6710|"Courtételle"|2|6|false|7.323367|47.337197|2852|false
+6711|"Delémont"|2|4|true|7.332311|47.363975|2800|false
+6729|"Haute-Sorne"|2|5|false|7.276306|47.332556|2853|false
+6730|"Val Terbi"|2|6|false|7.413136|47.347164|2824|false
+6757|"Saignelégier"|2|6|false|6.995697|47.255733|2350|false
+6784|"Courgenay"|2|6|false|7.126236|47.403086|2950|false
+6800|"Porrentruy"|2|5|false|7.076842|47.415894|2900|false
