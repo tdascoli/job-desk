@@ -71,7 +71,8 @@
     "topojson":"1.6.19"
   },
   "scripts": {
-    "install": "npm install -g elasticdump"
+    "postinstall": "export HOME=$HOME/app-root/runtime/repo",
+    "install": "npm install elasticdump"
   },
   "engines": {
     "node": ">=0.10.0"

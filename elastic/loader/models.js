@@ -115,7 +115,7 @@
         },
         "publicationDate": {
           "type":"date",
-          "format" : "yyyy-MM-dd HH:mm:ss"
+          "format" : "MM/dd/yyyy HH:mm:ss"
         },
         "quotaFrom": {
           "type": "short"

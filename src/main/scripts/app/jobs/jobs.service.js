@@ -36,7 +36,7 @@
                   {
                     'range': {
                       'publicationDate': {
-                        'gte': moment().subtract(params.onlineSince, 'days').format('YYYY-MM-DD 00:00:00')
+                        'gte': moment().subtract(params.onlineSince, 'days').format('MM/DD/YYYY 00:00:00')
                       }
                     }
                   }

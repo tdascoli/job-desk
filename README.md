@@ -1,6 +1,9 @@
-# job-desk [![Code Climate](https://codeclimate.com/github/alv-ch/job-desk/badges/gpa.svg)](https://codeclimate.com/github/alv-ch/job-desk) [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/alv-ch/job-desk)
-Job search frontend made for internet terminals.
+job-desk
+========
 
+[![Code Climate](https://codeclimate.com/github/alv-ch/job-desk/badges/gpa.svg)](https://codeclimate.com/github/alv-ch/job-desk) [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/alv-ch/job-desk)
+
+Job search frontend made for internet terminals.
 
 # ISCO
 https://de.wikipedia.org/wiki/International_Standard_Classification_of_Occupations
@@ -35,7 +38,7 @@ https://material.angularjs.org
 * Iconfont: https://github.com/google/material-design-icons/tree/master/iconfont
 * Spec: https://www.google.com/design/spec/material-design/introduction.html
 
-# Arrlee
+# Arrlee                                               
 http://www.arrlee.ch
 
 # webPRNT
@@ -48,11 +51,18 @@ http://www.arrlee.ch
 * angularjs-pdf: https://github.com/sayanee/angularjs-pdf
 
 # Elasticsearch
+
 Query/Filter/Sort
+
 * Query: https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl.html
 * FIlter: https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl-filters.html
-** GeoLocation: https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl-geo-distance-filter.html
+  * GeoLocation: https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl-geo-distance-filter.html
 * Sort: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html
 
 For moving and saving indicies
+
 * Elasticsearch-dump: https://github.com/taskrabbit/elasticsearch-dump
+* elasticsearch-tools: https://github.com/skratchdot/elasticsearch-tools#usage-es-export-bulk
+* **Bulk API**: https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html 
+  * `curl -s -XPOST 'http://[_url-to-elastic:_port]/[_index]/[_type]/_bulk' --data-binary @data.json`
+  * currently 2500 operations are OK
