@@ -1,4 +1,4 @@
-<md-dialog>
+<md-dialog md-theme="educations">
   <md-toolbar>
     <div class="md-toolbar-tools">
       <h2><span translate="educations.result.print"></span></h2>
@@ -9,19 +9,19 @@
 
     <div id="printableArea">
 
-      <strong>{{educationDetail._source.title}}</strong><br />
-      <strong><span translate="educations.result.location"></span></strong> : {{educationDetail._source.location.zip}} {{educationDetail._source.location.name}}
+      <strong>{{::educationDetail._source.title}}</strong><br />
+      <strong><span translate="educations.result.location"></span></strong> : {{::educationDetail._source.location.zip}} {{::educationDetail._source.location.name}}
 
       <p ng-bind-html="formatText(educationDetail._source.content)"></p>
 
-      <strong>{{educationDetail._source.provider.name}}</strong><br />
-      <strong ng-if="educationDetail._source.provider.contact.firstName">{{educationDetail._source.provider.contact.firstName}} {{educationDetail._source.provider.contact.lastName}}<br /></strong>
-      <span>{{educationDetail._source.provider.address.street}}</span><br />
-      <span>{{educationDetail._source.location.zip}} {{educationDetail._source.location.name}}</span><br />
+      <strong>{{::educationDetail._source.provider.name}}</strong><br />
+      <strong ng-if="educationDetail._source.provider.contact.firstName">{{::educationDetail._source.provider.contact.firstName}} {{::educationDetail._source.provider.contact.lastName}}<br /></strong>
+      <span>{{::educationDetail._source.provider.address.street}}</span><br />
+      <span>{{::educationDetail._source.location.zip}} {{::educationDetail._source.location.name}}</span><br />
       <span ng-if="educationDetail._source.provider.phone"><span translate="educations.result.phone" translate-values="{value: educationDetail._source.provider.phone}"></span><br /></span>
       <span ng-if="educationDetail._source.provider.fax"><span translate="educations.result.fax" translate-values="{value: educationDetail._source.provider.fax}"></span><br /></span>
-      <span ng-if="educationDetail._source.provider.eMail">{{educationDetail._source.provider.eMail}}<br /></span>
-      <span ng-if="educationDetail._source.provider.url">{{educationDetail._source.provider.url}}</span>
+      <span ng-if="educationDetail._source.provider.eMail">{{::educationDetail._source.provider.eMail}}<br /></span>
+      <span ng-if="educationDetail._source.provider.url">{{::educationDetail._source.provider.url}}</span>
 
       <div ng-if="educationDetail._source.startText"><strong translate="educations.result.start"></strong> : <span ng-bind-html="educationDetail._source.startText"></span></div>
       <div ng-if="educationDetail._source.duration"><strong translate="educations.result.duration"></strong> : <span ng-bind-html="educationDetail._source.duration"></span></div>
