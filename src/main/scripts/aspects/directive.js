@@ -147,7 +147,9 @@
                 .attr('d', path);
 
               setCities();
-              setMunicipalities();
+              if ($rootScope.appConfig.showMunicipalities) {
+                setMunicipalities();
+              }
             });
 
           function setMyLocation() {
@@ -190,6 +192,7 @@
               $('#heatmap').remove();
               $('#current-radius').remove();
               $('#my-radius').remove();
+              $('#municipalities').remove();
 
               var xy = projection([scope.searchParams.currentCoords.lon, scope.searchParams.currentCoords.lat]);
               // Set Umkreis
@@ -203,7 +206,7 @@
               }
 
               // Set Municipalities
-              if ($rootScope.appConfig.showMunicipalities) {
+              if ($rootScope.appConfig.showMunicipalities && scope.searchParams.distanceType === 'distance') {
                 setMunicipalities();
               }
 
@@ -479,6 +482,12 @@
           scope.$watchCollection('searchParams.distanceType', function (newValue, oldValue) {
             if (newValue!==oldValue && scope.searchParams.distanceType==='distance') {
               setUmkreisInternal();
+            }
+          });
+
+          scope.$watchCollection('searchParams.zips', function() {
+            if ($rootScope.appConfig.showMunicipalities) {
+              setMunicipalities();
             }
           });
         });
