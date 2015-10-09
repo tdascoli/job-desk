@@ -19,10 +19,6 @@
       "courseLocation_1000":"Kursort - niedrigste PLZ zuerst",
       "courseLocation_9999":"Kursort - höchste PLZ zuerst"
     },
-    "error": {
-      "noValidZip":"Die Eingegebene PLZ ist nicht gültig.",
-      "noValidCoords":"Bitte wählen Sie einen Ort innerhalb der Schweizerkarte."
-    },
     "codes": {
       "salutations": {
         "1": "Herr",

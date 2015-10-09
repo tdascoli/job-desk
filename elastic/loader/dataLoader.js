@@ -7,8 +7,8 @@
   var models = require("./models.js");
   var objectMapper = require("./objectMapper.js");
   var client = new elasticsearch.Client({
-    //host: 'localhost:9200/',
-    host: 'jobdesk.job-room.ch/',
+    host: 'localhost:9200/',
+    //host: 'jobdesk.job-room.ch/',
     log: 'error'
   });
 
@@ -43,8 +43,7 @@
             delimiter: finalDelimiter,
             headers: true,
             trim: true,
-            quote: '"',
-            escape: "\\"
+            quote: '"'
           })
             .on("data", function (data) {
               var id;

@@ -1,5 +1,46 @@
 {
   "jobs": {
-    "title": "[IT] Jobs"
+    "search": {
+      "jobgroup":"Cosa (categoria professionale)",
+      "allSubGroups":"Tutte le categorie",
+      "disableGroup":"Altre categoria professionale",
+      "location":"Dove (NPA)",
+      "distance":"Distanza {{value}} km",
+      "travelTime":"Durata del viaggio {{value}} h",
+      "distanceTypeDistance":"Distanza in km",
+      "distanceTypeTravelTime":"Durata del viaggio in TP in ore",
+      "onlineSince":"Online da {{value}} giorni",
+      "onlineSinceOneDay":"Online da 1 giorno",
+      "allJobs":"Tutti gli impieghi",
+      "parttimeJobs":"Solo impieghi a tempo parziale",
+      "foundJobs":"Impieghi trovati {{value}}"
+    },
+    "result": {
+      "sorting":"Classificazione",
+      "onlineSince":"Online da {{value}} giorni",
+      "onlineSinceOneDay":"Online da 1 giorno",
+      "availableNow":"da subito ",
+      "availableFromDate":"da {{value}}",
+      "availableByAppointment":"da convenire",
+      "untilDate":"fino a {{value}}",
+      "permanent":"a tempo indeterminato",
+      "nonPermanent":"a tempo determinato",
+      "jobLocation": " Luogo di lavoro Osservazione",
+      "letterApplication": " cfr. indirizzo dell'azienda",
+      "workload": " Tasso d'occupazione",
+      "poBox": " Casella postale {{value}}",
+      "entryDate": " Inizio dell'attività",
+      "phoneNumber": "Telefono",
+      "titleElectronicApplication": "Candidatura elettronica",
+      "titleWrittenApplication": "Candidatura scritta",
+      "titlePhoneApplication": "Candidatura telefonica",
+      "titleApplications": "Tipi di candidatura",
+      "contractDuration": "Durata dell'impiego",
+      "print":"Stampa impiego",
+      "spoken":"verbale",
+      "written":"scritta",
+      "showMore":"Mostra altro",
+      "showLess":"Chiudi"
+    }
   }
 }

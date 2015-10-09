@@ -19,10 +19,6 @@
       "courseLocation_1000":"Lieu du cours - NPA le moins élevé d'abord",
       "courseLocation_9999":"Lieu du cours - NPA le plus élevé d'abord"
     },
-    "error": {
-      "noValidZip":"Le NPA saisi n'est pas valable.",
-      "noValidCoords":"Prière de sélectionner une localité sur la carte de la Suisse"
-    },
     "codes": {
       "salutations": {
         "1": "Monsieur",
