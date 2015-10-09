@@ -54,22 +54,17 @@
         // FILTER
         if (params.distanceType === 'distance') {
           filter.query.filtered.filter.bool.must.push({
-            'geo_distance': {
-              'distance': params.distance + 'km',
-              'location.coords': params.currentCoords
-            }
-          });
+              'geo_distance': {
+                'distance': params.distance + 'km',
+                'location.coords': params.currentCoords
+              }
+            });
         }
         else {
           filter.query.filtered.filter.bool.must.push({
-            'nested': {
-              'path': 'location.zip',
-              'filter': {
-                'terms': {
-                  'zip': params.zips
-                }
+              'terms': {
+                'location.zip': params.zips
               }
-            }
           });
         }
         if (params.language !== '') {

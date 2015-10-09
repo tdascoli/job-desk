@@ -57,14 +57,9 @@
         }
         else {
           filter.query.filtered.filter.and.push({
-            'nested': {
-              'path': 'company.address.zip',
-              'filter': {
-                'terms': {
-                  'zip': params.zips
-                }
+              'terms': {
+                'company.address.zip': params.zips
               }
-            }
           });
         }
         // SORT
