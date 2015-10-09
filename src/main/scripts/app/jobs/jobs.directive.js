@@ -33,7 +33,7 @@
         };
 
         scope.onlineSinceDate=function(publicationDate){
-          return moment().diff(publicationDate, 'days');
+          return moment().diff(moment(publicationDate, "YYYY-MM-DD-00.00.00.000000'"), 'days');
         };
 
         scope.showDetail=function(ev,jobObject){

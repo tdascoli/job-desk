@@ -8,7 +8,7 @@
   var objectMapper = require("./objectMapper.js");
   var client = new elasticsearch.Client({
     host: 'localhost:9200/',
-    //host: 'jobdesk.job-room.ch/',
+    //host: 'http://jobdesk.job-room.ch/jobdesk',
     log: 'error'
   });
 
@@ -47,15 +47,23 @@
           })
             .on("data", function (data) {
               var id;
+              var oldId=false;
               if (isFunction(idParam)) {
                 id = idParam(data);
               } else {
                 id = data[idParam];
               }
 
-              items.push({index: {_index: index, _type: type, _id: id}});
+              if (oldId===id) {
+                items.push({update: {_index: index, _type: type, _id: id}});
+                //{ "update" : {"_id" : "1", "_type" : "type1", "_index" : "index1"} }
+              }
+              else {
+                items.push({index: {_index: index, _type: type, _id: id}});
+              }
               items.push(mapperFn(data));
               //console.log(mapperFn(data));
+              oldId=id;
 
               if (counter >= finalBulkSize) {
                 client.bulk({
