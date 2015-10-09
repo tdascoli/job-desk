@@ -147,6 +147,7 @@
                 .attr('d', path);
 
               setCities();
+              setMunicipalities();
             });
 
           function setMyLocation() {
