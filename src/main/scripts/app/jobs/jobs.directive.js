@@ -37,45 +37,9 @@
         };
 
         scope.showDetail=function(ev,jobObject){
-          if (jobObject.external==='false') {
-            scope.showInternalJob();
-          }
-          else {
-            scope.showExternalJob(ev,jobObject);
-          }
-        };
-
-        scope.showInternalJob=function(){
           element.addClass('visited');
           scope.showDetailContent=!scope.showDetailContent;
         };
-
-        scope.showExternalJob = function(ev,jobObject) {
-          $mdDialog.show({
-            controller: DialogController,
-            templateUrl: 'views/template/external-job-detail.html',
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose:true,
-            locals: {
-              language: $translate.use(),
-              jobDetail: jobObject
-            }
-          });
-        };
-
-        function DialogController($scope, $mdDialog, $sce, language, jobDetail) {
-          $scope.jobDetail = jobDetail;
-          $scope.language = language;
-
-          $scope.getExternalUrl = function (link) {
-            return $sce.trustAsResourceUrl(link);
-          };
-
-          $scope.cancel = function () {
-            $mdDialog.cancel();
-          };
-        }
 
         scope.showPrintDialog = function() {
           $mdDialog.show({
@@ -110,28 +74,6 @@
       }
     };
   }]);
-
-  module.directive('jdExternalDetail', ['$window',function($window){
-    return {
-      priority: 5,
-      restrict: 'C',
-      link: function(scope, element){
-        var viewportWidth = $($window).width()*0.8;
-        var viewportHeight = $($window).height()*0.8;
-
-        if (viewportWidth>768 && viewportWidth<=1024){
-          viewportWidth=1024;
-        }
-        else if (viewportWidth>1024){
-          viewportWidth=1200;
-        }
-
-        element.css('height',viewportHeight);
-        element.css('width',viewportWidth);
-      }
-    };
-  }]);
-
 }());
 
 
