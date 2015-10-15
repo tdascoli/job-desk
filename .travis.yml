@@ -23,4 +23,4 @@ deploy:
 after_script:
 - cat build/coverage/reports/lcov/lcov.info | codeclimate
 notifications:
-  slack: alv-ch-team:xPPBP1ztMn6xWr1TrrgxeaKC
+  slack: alv-ch:tf9xRwey0Crj0qdDxljP5lDX
