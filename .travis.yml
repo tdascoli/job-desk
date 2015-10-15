@@ -19,7 +19,6 @@ deploy:
   domain: alvchegov
   on:
     repo: alv-ch/job-desk
-    branch: dev
 after_script:
 - cat build/coverage/reports/lcov/lcov.info | codeclimate
 notifications:
