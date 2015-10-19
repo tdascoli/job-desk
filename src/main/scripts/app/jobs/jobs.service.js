@@ -58,11 +58,11 @@
         if (params.distanceType === 'distance') {
           filter.query.filtered.filter.and.push({
             'nested': {
-              'path': 'locations.location',
+              'path': 'location.locations',
               'filter': {
                 'geo_distance': {
                   'distance': params.distance + 'km',
-                  'locations.location.coords': params.currentCoords
+                  'location.locations.geoLocation': params.currentCoords
                 }
               }
             }
@@ -71,7 +71,7 @@
         else {
           filter.query.filtered.filter.and.push({
             'nested': {
-              'path': 'locations.location',
+              'path': 'location.locations',
               'filter': {
                 'terms': {
                   'zip': params.zips
@@ -89,7 +89,7 @@
         sort[params.sort.field]={order:params.sort.order};
         filter.sort.push(sort);
 
-        return $http.post(baseUrl + '/jobs/_search', filter);
+        return $http.post(baseUrl + '/job/_search', filter);
       }
 
       function resetSearchParams() {

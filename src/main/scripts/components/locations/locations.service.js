@@ -33,7 +33,7 @@
           ]
         };
 
-        return $http.post(baseUrl + '/locations/_search', filter);
+        return $http.post(baseUrl + '/location/_search', filter);
       }
 
       function getLocationFromZip(zip) {
@@ -51,7 +51,7 @@
           ]
         };
 
-        return $http.post(baseUrl + '/locations/_search', filter);
+        return $http.post(baseUrl + '/location/_search', filter);
       }
 
       return {
