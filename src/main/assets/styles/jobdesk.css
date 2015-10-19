@@ -325,6 +325,15 @@ body #printableArea {
 label {
   width: 100% !important;
 }
+.jd-bottom-right {
+  top: auto;
+  right: 100px;
+  bottom: 20px;
+  left: auto;
+  position: fixed !important;
+  height: 56px;
+  font-size: 20px;
+}
 @media print {
   body #topnav,
   body #main {
