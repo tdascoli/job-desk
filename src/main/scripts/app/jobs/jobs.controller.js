@@ -172,6 +172,7 @@
       };
 
       function setNewCoords(coords) {
+        $scope.idle = true;
         LocationsService.getLocation(coords).success(function (nearestZip) {
           if (nearestZip.hits.total > 0) {
             $scope.searchParams.currentCoords = coords;
@@ -182,6 +183,7 @@
             $scope.countJobs();
           }
           else {
+            $scope.idle = false;
             $scope.locationError('errors.msg.noValidCoords');
           }
         })
