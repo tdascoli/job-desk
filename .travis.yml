@@ -15,10 +15,10 @@ deploy:
   user: mediamatik@seco.admin.ch
   password:
     secure: llUEC3G7AOBN08O4mjt58Lxws1b+6NtL+liH+c9yTTnPPn5J+7WOBuqBCQBuaXqj7XzqZmjI7bCUEWEB5GTI25P2CVJiHapCDP4WBm834NNYrwJ7p26gnQwzJ6CW/wKbOfWHHZhlUyHHEwFnAIppN5gupPx97R8BnmcC3BSwapkz5Dwh0vW6EbnH/aYmZUPcd7Po3xcywymzGI12P29TI0q9K5Qr8imhayLXFa/dEU1kVYK8uO05gzudJ78/VibIbCXc9y11vDFE7g4yhUI4ttSsw2WCaN3VXUkcGqnIkLmS9CkNv+pQXQnbleQiAIAq0XNV+FiwLk98DwWbGHlqPhUU1lRjamc2V7lypvk4e6vtrwhCnWXxDJaXYnJR2YKuXg92kcJ6XO8bs+LrSPiEDcp26xLOlcEvjraWNvrmAJfy4CM7NZwPcE1n+wTZyXtjt+Yh/0YXpBp4B6V04nhpDZceisWYwyFhfjiFU38IAUwMe3nPW4FKcFIfD889h5JGEXaDhQg+11FouHl4kDH0Y2lwzGbXKRJeg/AijJ5UWZsGdwMxm12BribnHIVc2JefPg1lCg9AT3A9Bssi3Tliami0FOCXmMny4acqMuE2sflYFEmUyqapgiw7gEiy6UHMbGMpjegw6uBPhy/W6/o9XZoolK5XEsDumoxtEjj3VVc=
-  app: jobdeskdev
   domain: alvchegov
-  on:
-    branch: dev
+  app:
+    master: jobdesk
+    dev: jobdeskdev
 after_script:
 - cat build/coverage/reports/lcov/lcov.info | codeclimate
 notifications:
