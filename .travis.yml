@@ -19,7 +19,9 @@ deploy:
   user: mediamatik@seco.admin.ch
   password:
     secure: plOcc82kJsHZGx9N4aea/IQxZqOZ0qwH6RE4n9Leo4OqcGIlJjdNz1bjS1YfzOkiWn1jNdKqcjAhS/Gw3W2oPb7A1t/xk+7sF/2dLsGpkxod8w8f+2JNwzCDb9C0TCdG5zIFhq7t3V23scfXIe4z6dKrze2wZddQklqa7WsLmKROxSiuJWZSfHrGKuFoAWQLZYvfdHXtlT+SH/CugFub7b5gGdAs03jmq4N53eR/td3zccqOx56gWTI54rro81xKSFGvd/ykQd0H8gCn6EswcWJEeuGvDF3P0KIAlnv+M4OTCsodl7AaaOSph963AhU8dt4NreIFfKzE/vmy4tOSZ6le5EWPdg8zIijxgB007Oz6ZVL7m5TC181E1zxChdcu7TvN+TW+swmXxAO8vGzhrF2fbhaQb480uAOL/p7vMy20C9/+exadTaqfSQ1tIpSoHZWwQBvb5H7yI6JtRA7B8c3fXS15maM/BjIu2h8CInd61kxpndbX6nTnsnQ5VkCr3UaGeeltCS4B4j6MRVBUyIhrPiXwGQ8NyPL6VEKJhxeu16yAfu9qIP2ZeioNmp5DJ4jMqVQspCTt9kkmz73HrFYcDewZ/pWpjDB8Oo2m5iQFaIty5jsAHYBwlCOmMEkzXtLyGYy0yp6uYiCIhYKUAfINgUSQS9oE8FEGf3mBLPc=
-  app: jobdesk
+  app:
+    master: jobdesk
+    dev: jobdeskdev
   domain: alvchegov
   on:
     repo: alv-ch/job-desk
