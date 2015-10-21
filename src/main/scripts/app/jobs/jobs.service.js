@@ -5,24 +5,8 @@
   angular.module('job-desk')
     .factory('JobsService', function ($http, baseUrl) {
 
-      var params = {
-        from: 0,
-        size: 20,
-        distanceType: 'distance',
-        distance: 30,
-        travelTime: 30,
-        onlineSince: 5,
-        fulltime: 1,
-        iscoMajorGroup: '',
-        iscoGroupLevel2: '',
-        zips: undefined,
-        currentZip: '',
-        currentCoords: undefined,
-        sort: {
-          field: 'publicationDate',
-          order: 'desc'
-        }
-      };
+      var params = {};
+      resetSearchParams();
 
       function find() {
         var filter = {
@@ -93,19 +77,22 @@
       }
 
       function resetSearchParams() {
-        params = {
-          distanceType: 'distance',
-          distance: 30,
-          travelTime: 30,
-          onlineSince: 5,
-          fulltime: 1,
-          iscoMajorGroup: '',
-          iscoGroupLevel2: '',
-          zips: undefined,
-          currentZip: '',
-          currentCoords: undefined
-        };
-        return params;
+
+        params.from = 0;
+        params.size = 20;
+        params.distanceType = 'distance';
+        params.distance = 30;
+        params.travelTime = 30;
+        params.onlineSince = 5;
+        params.fulltime = 1;
+        params.iscoMajorGroup = '';
+        params.iscoGroupLevel2 = '';
+        params.zips = undefined;
+        params.currentZip = '';
+        params.currentCoords = undefined;
+        params.sort = {};
+        params.sort.field = 'publicationDate';
+        params.sort.order = 'desc';
       }
 
       return {
@@ -113,9 +100,7 @@
         params: params,
         resetSearchParams: resetSearchParams
       };
-
     });
-
 }());
 
 

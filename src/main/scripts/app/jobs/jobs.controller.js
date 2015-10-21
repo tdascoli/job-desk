@@ -4,7 +4,6 @@
 
   angular.module('job-desk')
     .controller('JobsCtrl', function ($scope, $rootScope, $state, $filter, $translate, lodash, JobsService, LocationsService, ArrleeService, $mdDialog) {
-
       $rootScope.searchType = 'jobs';
       $scope.searchParams = JobsService.params;
       $scope.searchParams.from=0;
@@ -258,6 +257,14 @@
       else {
         $scope.setMyLocation();
       }
+
+      // user isn't active anymore : reset search params
+      var stateListener = $rootScope.$on('stateChangedInactive', function() {
+        JobsService.resetSearchParams();
+      });
+
+      // unregister the state listener
+      $scope.$on('$destroy', stateListener);
     });
 }());
 

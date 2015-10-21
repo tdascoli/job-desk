@@ -18,7 +18,8 @@
     'alv-ch-ng.security',
     'alv-ch-ng.text-truncate',
     'job-desk.i18n',
-    'job-desk.directive'
+    'job-desk.directive',
+    'presence'
   ]);
 
   app.config(['$httpProvider', function($httpProvider) {
@@ -89,7 +90,7 @@
     hotkeysProvider.includeCheatSheet = false;
   });
 
-  app.run(function($http, geolocation, $rootScope, $state, $cookies){
+  app.run(function($http, geolocation, $rootScope, $state, $cookies, $presence){
 
     $rootScope.mobile=$.browser.mobile;
     $rootScope.appConfig={
@@ -165,6 +166,19 @@
     $rootScope.ssiKeyInfo=function(){
       $state.go('localInfo');
     };
+
+    // detection of user inactivity
+    var minutes = 3;
+    $rootScope.states = $presence.init({
+      ACTIVE : 0,
+      INACTIVE : minutes * 60 * 1000
+    });
+
+    // controllers have to catch broadcast to reset their search params
+    $rootScope.states.INACTIVE.onEnter(function() {
+      $rootScope.$broadcast('stateChangedInactive');
+      $state.go('jobs');
+    });
 
   });
 
