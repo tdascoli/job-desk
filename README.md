@@ -66,3 +66,8 @@ For moving and saving indicies
   * Split into Chunks of 5000 lines (2500 operations): `split -l 5000 data.json data.json`
   * Import `curl -s -XPOST 'http://[_url-to-elastic:_port]/[_index]/[_type]/_bulk' --data-binary @data.jsonaa` until data.jsonXX
   * currently 2500 operations are OK
+  
+## angular-presence
+Detect user activity
+https://github.com/katebe/angular-presence
+  
