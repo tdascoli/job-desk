@@ -243,13 +243,13 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "        <span ng-switch=\"jobDetail._source.external\">\n" +
     "\n" +
     "          <!--Internal Jobs -->\n" +
-    "          <span ng-switch-when=\"0\">\n" +
+    "          <span ng-switch-when=\"false\">\n" +
     "\n" +
     "            <p ng-bind-html=\"getMultiLanguageText(jobDetail._source.description)\"></p>\n" +
     "            <div layout=\"row\" layout-wrap layout-align=\"space-between start\">\n" +
     "              <div flex=\"25\" flex-sm=\"100\">\n" +
     "                <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong><br />\n" +
-    "                <span>{{::getMultiLanguageText(jobDetail._source.locations.remarks)}}</span><br />\n" +
+    "                <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />\n" +
     "\n" +
     "                <strong class=\"fake-label\" translate=\"jobs.result.entryDate\"></strong><br />\n" +
     "                <span ng-if=\"jobDetail._source.availableNow\" translate=\"jobs.result.availableNow\"></span>\n" +
@@ -302,13 +302,13 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "          </span>\n" +
     "\n" +
     "          <!--External Jobs-->\n" +
-    "          <span ng-switch-when=\"1\">\n" +
+    "          <span ng-switch-when=\"true\">\n" +
     "\n" +
     "            <p ng-bind-html=\"getMultiLanguageText(jobDetail._source.description)\"></p>\n" +
     "            <div layout=\"row\" layout-wrap layout-align=\"space-between start\">\n" +
     "              <div flex=\"25\" flex-sm=\"100\">\n" +
     "                <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong><br />\n" +
-    "                <span>{{::getMultiLanguageText(jobDetail._source.locations.remarks)}}</span><br />\n" +
+    "                <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />\n" +
     "\n" +
     "                <strong class=\"fake-label\" translate=\"jobs.result.entryDate\"></strong><br />\n" +
     "                <span ng-if=\"jobDetail._source.availableNow\" translate=\"jobs.result.availableNow\"></span>\n" +
@@ -361,7 +361,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "      <div ng-switch=\"jobDetail._source.external\">\n" +
     "\n" +
     "        <!--Internal Jobs-->\n" +
-    "        <div ng-switch-when=\"0\">\n" +
+    "        <div ng-switch-when=\"false\">\n" +
     "\n" +
     "          <strong>{{::getMultiLanguageText(jobDetail._source.title)}}</strong><br />\n" +
     "          <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: onlineSinceDate(jobDetail._source.publicationDate)}\"></span>\n" +
@@ -373,7 +373,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "\n" +
     "          <p ng-bind-html=\"formatText(getMultiLanguageText(jobDetail._source.description))\"></p>\n" +
     "          <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong> :\n" +
-    "          <span>{{::getMultiLanguageText(jobDetail._source.locations.remarks)}}</span><br />\n" +
+    "          <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />\n" +
     "\n" +
     "          <strong class=\"fake-label\" translate=\"jobs.result.entryDate\"></strong> :\n" +
     "          <span ng-if=\"jobDetail._source.availableNow\" translate=\"jobs.result.availableNow\"></span>\n" +
@@ -418,7 +418,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "        </div>\n" +
     "\n" +
     "        <!--External Jobs-->\n" +
-    "        <div ng-switch-when=\"1\">\n" +
+    "        <div ng-switch-when=\"true\">\n" +
     "\n" +
     "          <strong>{{::getMultiLanguageText(jobDetail._source.title)}}</strong><br />\n" +
     "          <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: onlineSinceDate(jobDetail._source.publicationDate)}\"></span>\n" +
@@ -430,7 +430,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "\n" +
     "          <p ng-bind-html=\"formatText(getMultiLanguageText(jobDetail._source.description))\"></p>\n" +
     "          <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong> :\n" +
-    "          <span>{{::getMultiLanguageText(jobDetail._source.locations.remarks)}}</span><br />\n" +
+    "          <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />\n" +
     "\n" +
     "          <strong class=\"fake-label\" translate=\"jobs.result.entryDate\"></strong> :\n" +
     "          <span ng-if=\"jobDetail._source.availableNow\" translate=\"jobs.result.availableNow\"></span>\n" +
