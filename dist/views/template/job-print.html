@@ -23,7 +23,7 @@
 
           <p ng-bind-html="formatText(getMultiLanguageText(jobDetail._source.description))"></p>
           <strong class="fake-label" translate="jobs.result.jobLocation"></strong> :
-          <span>{{::getMultiLanguageText(jobDetail._source.locations.remarks)}}</span><br />
+          <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />
 
           <strong class="fake-label" translate="jobs.result.entryDate"></strong> :
           <span ng-if="jobDetail._source.availableNow" translate="jobs.result.availableNow"></span>
@@ -80,7 +80,7 @@
 
           <p ng-bind-html="formatText(getMultiLanguageText(jobDetail._source.description))"></p>
           <strong class="fake-label" translate="jobs.result.jobLocation"></strong> :
-          <span>{{::getMultiLanguageText(jobDetail._source.locations.remarks)}}</span><br />
+          <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />
 
           <strong class="fake-label" translate="jobs.result.entryDate"></strong> :
           <span ng-if="jobDetail._source.availableNow" translate="jobs.result.availableNow"></span>
