@@ -15,13 +15,13 @@
         <span ng-switch="jobDetail._source.external">
 
           <!--Internal Jobs -->
-          <span ng-switch-when="0">
+          <span ng-switch-when="false">
 
             <p ng-bind-html="getMultiLanguageText(jobDetail._source.description)"></p>
             <div layout="row" layout-wrap layout-align="space-between start">
               <div flex="25" flex-sm="100">
                 <strong class="fake-label" translate="jobs.result.jobLocation"></strong><br />
-                <span>{{::getMultiLanguageText(jobDetail._source.locations.remarks)}}</span><br />
+                <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />
 
                 <strong class="fake-label" translate="jobs.result.entryDate"></strong><br />
                 <span ng-if="jobDetail._source.availableNow" translate="jobs.result.availableNow"></span>
@@ -74,13 +74,13 @@
           </span>
 
           <!--External Jobs-->
-          <span ng-switch-when="1">
+          <span ng-switch-when="true">
 
             <p ng-bind-html="getMultiLanguageText(jobDetail._source.description)"></p>
             <div layout="row" layout-wrap layout-align="space-between start">
               <div flex="25" flex-sm="100">
                 <strong class="fake-label" translate="jobs.result.jobLocation"></strong><br />
-                <span>{{::getMultiLanguageText(jobDetail._source.locations.remarks)}}</span><br />
+                <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />
 
                 <strong class="fake-label" translate="jobs.result.entryDate"></strong><br />
                 <span ng-if="jobDetail._source.availableNow" translate="jobs.result.availableNow"></span>

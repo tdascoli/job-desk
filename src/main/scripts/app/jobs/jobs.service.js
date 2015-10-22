@@ -5,24 +5,8 @@
   angular.module('job-desk')
     .factory('JobsService', function ($http, baseUrl) {
 
-      var params = {
-        from: 0,
-        size: 20,
-        distanceType: 'distance',
-        distance: 30,
-        travelTime: 30,
-        onlineSince: 5,
-        fulltime: 1,
-        iscoMajorGroup: '',
-        iscoGroupLevel2: '',
-        zips: undefined,
-        currentZip: '',
-        currentCoords: undefined,
-        sort: {
-          field: 'publicationDate',
-          order: 'desc'
-        }
-      };
+      var params = {};
+      resetSearchParams();
 
       function find() {
         var filter = {
@@ -32,15 +16,7 @@
             'filtered': {
               'query': {'match_all': {}},
               'filter': {
-                'and': [
-                  {
-                    'range': {
-                      'publicationDate': {
-                        'gte': moment().subtract(params.onlineSince, 'days').format('YYYY-MM-DD-00.00.00.000000') //yyyy-MM-dd-HH.mm.ss.000000
-                      }
-                    }
-                  }
-                ]
+                'and': []
               }
             }
           },
@@ -58,11 +34,11 @@
         if (params.distanceType === 'distance') {
           filter.query.filtered.filter.and.push({
             'nested': {
-              'path': 'locations.location',
+              'path': 'location.locations',
               'filter': {
                 'geo_distance': {
                   'distance': params.distance + 'km',
-                  'locations.location.coords': params.currentCoords
+                  'location.locations.geoLocation': params.currentCoords
                 }
               }
             }
@@ -71,7 +47,7 @@
         else {
           filter.query.filtered.filter.and.push({
             'nested': {
-              'path': 'locations.location',
+              'path': 'location.locations',
               'filter': {
                 'terms': {
                   'zip': params.zips
@@ -89,23 +65,24 @@
         sort[params.sort.field]={order:params.sort.order};
         filter.sort.push(sort);
 
-        return $http.post(baseUrl + '/jobs/_search', filter);
+        return $http.post(baseUrl + '/job/_search', filter);
       }
 
       function resetSearchParams() {
-        params = {
-          distanceType: 'distance',
-          distance: 30,
-          travelTime: 30,
-          onlineSince: 5,
-          fulltime: 1,
-          iscoMajorGroup: '',
-          iscoGroupLevel2: '',
-          zips: undefined,
-          currentZip: '',
-          currentCoords: undefined
-        };
-        return params;
+        params.from = 0;
+        params.size = 20;
+        params.distanceType = 'distance';
+        params.distance = 30;
+        params.travelTime = 30;
+        params.fulltime = 1;
+        params.iscoMajorGroup = '';
+        params.iscoGroupLevel2 = '';
+        params.zips = undefined;
+        params.currentZip = '';
+        params.currentCoords = undefined;
+        params.sort = {};
+        params.sort.field = 'publicationDate';
+        params.sort.order = 'desc';
       }
 
       return {
@@ -113,9 +90,7 @@
         params: params,
         resetSearchParams: resetSearchParams
       };
-
     });
-
 }());
 
 

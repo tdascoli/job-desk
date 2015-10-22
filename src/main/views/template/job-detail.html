@@ -1,5 +1,5 @@
 <div layout="row" layout-wrap layout-align="space-between start" style="padding: 10px;">
-  <div flex flex-sm="100" ng-click="showDetail($event,jobDetail._source)">
+  <div flex flex-sm="100">
       <h4 class="strong">{{::getMultiLanguageText(jobDetail._source.title)}}</h4>
       <strong ng-if="onlineSinceDate(jobDetail._source.publicationDate)>1" translate="jobs.result.onlineSince" translate-values="{value: onlineSinceDate(jobDetail._source.publicationDate)}"></strong>
       <strong ng-if="onlineSinceDate(jobDetail._source.publicationDate)===1" translate="jobs.result.onlineSinceOneDay"></strong>
@@ -15,13 +15,13 @@
         <span ng-switch="jobDetail._source.external">
 
           <!--Internal Jobs -->
-          <span ng-switch-when="0">
+          <span ng-switch-when="false">
 
             <p ng-bind-html="getMultiLanguageText(jobDetail._source.description)"></p>
             <div layout="row" layout-wrap layout-align="space-between start">
               <div flex="25" flex-sm="100">
                 <strong class="fake-label" translate="jobs.result.jobLocation"></strong><br />
-                <span>{{::getMultiLanguageText(jobDetail._source.locations.remarks)}}</span><br />
+                <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />
 
                 <strong class="fake-label" translate="jobs.result.entryDate"></strong><br />
                 <span ng-if="jobDetail._source.availableNow" translate="jobs.result.availableNow"></span>
@@ -74,13 +74,13 @@
           </span>
 
           <!--External Jobs-->
-          <span ng-switch-when="1">
+          <span ng-switch-when="true">
 
             <p ng-bind-html="getMultiLanguageText(jobDetail._source.description)"></p>
             <div layout="row" layout-wrap layout-align="space-between start">
               <div flex="25" flex-sm="100">
                 <strong class="fake-label" translate="jobs.result.jobLocation"></strong><br />
-                <span>{{::getMultiLanguageText(jobDetail._source.locations.remarks)}}</span><br />
+                <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />
 
                 <strong class="fake-label" translate="jobs.result.entryDate"></strong><br />
                 <span ng-if="jobDetail._source.availableNow" translate="jobs.result.availableNow"></span>
@@ -101,8 +101,8 @@
       </div>
 
     </div>
-  <div flex="20" hide-sm>
-    <md-button ng-click="showDetail($event,jobDetail._source)" aria-label="Show / Close Detail">
+  <div flex="20" hide-sm layout-margin>
+    <md-button flex ng-click="showDetail($event,jobDetail._source)" aria-label="Show / Close Detail" class="md-raised">
       <span ng-if="!showDetailContent">
         <md-icon>search</md-icon>&nbsp;<span translate="jobs.result.showMore"></span>
       </span>
@@ -111,7 +111,7 @@
       </span>
     </md-button>
     <p></p>
-    <md-button ng-click="showPrintDialog()"><md-icon>print</md-icon>&nbsp;<span translate="jobs.result.print"></span></md-button>
+    <md-button flex ng-click="showPrintDialog()" class="md-raised"><md-icon>print</md-icon>&nbsp;<span translate="jobs.result.print"></span></md-button>
   </div>
 </div>
 

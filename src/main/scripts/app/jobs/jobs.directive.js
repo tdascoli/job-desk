@@ -33,10 +33,10 @@
         };
 
         scope.onlineSinceDate=function(publicationDate){
-          return moment().diff(moment(publicationDate, "YYYY-MM-DD-00.00.00.000000'"), 'days');
+          return moment().diff(moment(publicationDate, 'YYYY-MM-DD'), 'days');
         };
 
-        scope.showDetail=function(ev,jobObject){
+        scope.showDetail=function(){
           element.addClass('visited');
           scope.showDetailContent=!scope.showDetailContent;
         };

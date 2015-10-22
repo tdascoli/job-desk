@@ -6,9 +6,11 @@ angular.module('job-desk')
 
 .constant('VERSION', 'src/main')
 
-.constant('baseUrl', 'http://jobdesk.job-room.ch/jobdesk')
+.constant('baseUrl', 'http://jobdeskdev-alvchegov.rhcloud.com/jobdesk')
 
-.constant('arrleeUrl', 'http://jobdesk.job-room.ch/arrlee')
+.constant('baseDevUrl', 'http://jobdeskdev-alvchegov.rhcloud.com/jobdeskdev')
+
+.constant('arrleeUrl', 'http://jobdeskdev-alvchegov.rhcloud.com/arrlee')
 
 .constant('supportedLanguages', ['de','fr','it','en'])
 

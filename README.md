@@ -1,7 +1,7 @@
-job-desk
-========
+job-desk DEV
+============
 
-[![Code Climate](https://codeclimate.com/github/alv-ch/job-desk/badges/gpa.svg)](https://codeclimate.com/github/alv-ch/job-desk) [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/alv-ch/job-desk)
+[![Code Climate](https://codeclimate.com/github/alv-ch/job-desk/badges/gpa.svg)](https://codeclimate.com/github/alv-ch/job-desk) [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/alv-ch/job-desk) [![Build Status](https://travis-ci.org/alv-ch/job-desk.svg?branch=dev)](https://travis-ci.org/alv-ch/job-desk)
 
 Job search frontend made for internet terminals.
 
@@ -41,10 +41,8 @@ https://material.angularjs.org
 ## Arrlee                                               
 http://www.arrlee.ch
 
-## webPRNT
-* Sample Program: http://www.starmicronics.com/support/mannualfolder/en/_sampleprogram.htm
-* Homepage: http://www.webprnt.com/webPRNT/
-* Printer Spec for pilot (Star TSP700II): http://www.starmicronics.com/printer/thermal_printers/tsp700ii
+## Star TSP700II
+* Drivers : http://www.starmicronics.com/support/default.aspx?printerCode=TSP700II
 
 ## AngularJS-PDF
 (wip using the internal rendering engine, cause of cross-site scripting error)
@@ -68,3 +66,8 @@ For moving and saving indicies
   * Split into Chunks of 5000 lines (2500 operations): `split -l 5000 data.json data.json`
   * Import `curl -s -XPOST 'http://[_url-to-elastic:_port]/[_index]/[_type]/_bulk' --data-binary @data.jsonaa` until data.jsonXX
   * currently 2500 operations are OK
+  
+## angular-presence
+Detect user activity
+https://github.com/katebe/angular-presence
+  

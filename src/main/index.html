@@ -60,7 +60,7 @@
   <!-- endbuild -->
 </head>
 
-<body layout="column" md-theme="{{searchType}}" hotkey="{a: ssiKeyStart, b: back, c: ssiKeyInfo}">
+<body presence layout="column" md-theme="{{searchType}}" hotkey="{a: ssiKeyStart, b: back, c: ssiKeyInfo}">
 
 <md-toolbar layout="column" id="topnav" class="md-whiteframe-z4" md-theme-watch="true">
   <div class="md-toolbar-tools">
@@ -93,6 +93,8 @@
 </md-toolbar>
 
 <md-content id="main" ui-view="content" ng-view></md-content>
+
+<div ng-if="!userActive" class="jd-sleep-screen"></div>
 <!--./container -->
 
 <!-- build:js scripts/vendor.js -->
@@ -132,6 +134,7 @@
 <script src="bower_components/topojson/topojson.js"></script>
 <script src="bower_components/detect-mobile-browser/detectmobilebrowser.js"></script>
 <script src="bower_components/moment/min/moment-with-locales.min.js"></script>
+<script src="bower_components/angular-presence/angular-presence.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 

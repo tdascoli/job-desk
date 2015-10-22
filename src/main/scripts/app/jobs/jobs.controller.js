@@ -4,14 +4,13 @@
 
   angular.module('job-desk')
     .controller('JobsCtrl', function ($scope, $rootScope, $state, $filter, $translate, lodash, JobsService, LocationsService, ArrleeService, $mdDialog) {
-
       $rootScope.searchType = 'jobs';
       $scope.searchParams = JobsService.params;
       $scope.searchParams.from=0;
 
       $scope.distanceOptions = {min: 10, max: 150, step: 10, value: 30};
       $scope.travelTimeOptions = {min: 10, max: 120, step: 5, value: 30};
-      $scope.onlineSinceOptions = {min: 1, max: 60, step: 1, value: 5};
+
       $scope.iscoMajorGroup = [
         {text: 'isco.1000', code: '1',img:'jobs/isco1.png'},
         {text: 'isco.2000', code: '2',img:'jobs/isco2.png'}, {
@@ -100,6 +99,7 @@
 
       $scope.countJobs = function () {
         $scope.idle=true;
+        $scope.searchParams.from = 0;
 
         if ($scope.searchParams.distanceType==='travelTime') {
           //** countJobs with travelTime parameter
@@ -172,6 +172,7 @@
       };
 
       function setNewCoords(coords) {
+        $scope.idle = true;
         LocationsService.getLocation(coords).success(function (nearestZip) {
           if (nearestZip.hits.total > 0) {
             $scope.searchParams.currentCoords = coords;
@@ -182,6 +183,7 @@
             $scope.countJobs();
           }
           else {
+            $scope.idle = false;
             $scope.locationError('errors.msg.noValidCoords');
           }
         })
@@ -242,8 +244,6 @@
         {sort: { field: 'publicationDate', order: 'desc' }, text: 'global.sort.newest'},
         {sort: { field: 'quotaTo', order: 'desc' }, text: 'global.sort.workload_0'},
         {sort: { field: 'quotaTo', order: 'asc' }, text: 'global.sort.workload_100'},
-        {sort: { field: 'title.'+$translate.use(), order: 'desc' }, text: 'global.sort.jobtitle_az'},
-        {sort: { field: 'title.'+$translate.use(), order: 'asc' }, text: 'global.sort.jobtitle_za'}
       ];
       $scope.sortResultList = function () {
         $scope.searchParams.sort=$scope.sortList[$scope.sort].sort;
@@ -256,6 +256,14 @@
       else {
         $scope.setMyLocation();
       }
+
+      // user isn't active anymore : reset search params
+      var resetListener = $rootScope.$on('resetSearchParams', function() {
+        JobsService.resetSearchParams();
+      });
+
+      // unregister the state listener
+      $scope.$on('$destroy', resetListener);
     });
 }());
 

@@ -343,9 +343,15 @@ module.exports = function (grunt) {
       },
       proxies: [
         {
-          context: '/jobdesk',
+          context: '/jobdeskdev',
           host: 'localhost',
           port: 9200,
+          https: false,
+          changeOrigin: false
+        },
+        {
+          context: '/jobdesk',
+          host: 'arrlee.jobarea.ch',
           https: false,
           changeOrigin: false
         },
@@ -419,19 +425,8 @@ module.exports = function (grunt) {
           ENV: 'dev',
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://localhost:9000/jobdesk',
+          baseDevUrl: 'http://localhost:9000/jobdeskdev',
           arrleeUrl: 'http://localhost:9000/arrlee',
-          supportedLanguages: ['de', 'fr', 'it', 'en']
-        }
-      },
-      openshift: {
-        options: {
-          dest: 'src/main/scripts/app/app.constants.js'
-        },
-        constants: {
-          ENV: 'prod',
-          VERSION: '<%= yeoman.app.version %>',
-          baseUrl: 'http://jobdesk-alvchegov.rhcloud.com/jobdesk',
-          arrleeUrl: 'http://jobdesk-alvchegov.rhcloud.com/arrlee',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
@@ -442,9 +437,10 @@ module.exports = function (grunt) {
         constants: {
           ENV: 'prod',
           VERSION: '<%= yeoman.app.version %>',
-          baseUrl: 'http://jobdesk.job-room.ch/jobdesk',
-          arrleeUrl: 'http://jobdesk.job-room.ch/arrlee',
-          supportedLanguages: ['de', 'fr','it','en']
+          baseUrl: 'http://jobdeskdev-alvchegov.rhcloud.com/jobdesk',
+          baseDevUrl: 'http://jobdeskdev-alvchegov.rhcloud.com/jobdeskdev',
+          arrleeUrl: 'http://jobdeskdev-alvchegov.rhcloud.com/arrlee',
+          supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
       i18n: {
