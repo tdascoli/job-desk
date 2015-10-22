@@ -93,6 +93,8 @@
 </md-toolbar>
 
 <md-content id="main" ui-view="content" ng-view></md-content>
+
+<div ng-if="!userActive" class="jd-sleep-screen"></div>
 <!--./container -->
 
 <!-- build:js scripts/vendor.js -->

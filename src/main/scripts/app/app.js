@@ -168,16 +168,31 @@
     };
 
     // detection of user inactivity
-    var minutes = 3;
+    $rootScope.userActive = true;
+    var timeoutInactive = 1;  // minutes
+    var timeoutReset = 1.5;     // minutes
     $rootScope.states = $presence.init({
       ACTIVE : 0,
-      INACTIVE : minutes * 60 * 1000
+      INACTIVE : timeoutInactive * 60 * 1000,
+      RESET : {
+        enter: timeoutReset * 60 * 1000,
+        initial: true
+      }
     });
 
     // controllers have to catch broadcast to reset their search params
-    $rootScope.states.INACTIVE.onEnter(function() {
-      $rootScope.$broadcast('stateChangedInactive');
+    $rootScope.states.RESET.onEnter(function() {
+      $rootScope.userActive = true;
+      $rootScope.$broadcast('resetSearchParams');
       $state.go('jobs');
+    });
+
+    $rootScope.states.INACTIVE.onEnter(function() {
+      $rootScope.userActive = false;
+    });
+
+    $rootScope.states.ACTIVE.onEnter(function() {
+      $rootScope.userActive = true;
     });
 
   });

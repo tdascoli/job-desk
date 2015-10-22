@@ -258,12 +258,12 @@
       }
 
       // user isn't active anymore : reset search params
-      var stateListener = $rootScope.$on('stateChangedInactive', function() {
+      var resetListener = $rootScope.$on('resetSearchParams', function() {
         JobsService.resetSearchParams();
       });
 
       // unregister the state listener
-      $scope.$on('$destroy', stateListener);
+      $scope.$on('$destroy', resetListener);
     });
 }());
 
