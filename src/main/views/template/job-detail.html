@@ -102,7 +102,7 @@
 
     </div>
   <div flex="20" hide-sm>
-    <md-button ng-click="showDetail($event,jobDetail._source)" aria-label="Show / Close Detail">
+    <md-button ng-click="showDetail($event,jobDetail._source)" aria-label="Show / Close Detail" class="md-raised">
       <span ng-if="!showDetailContent">
         <md-icon>search</md-icon>&nbsp;<span translate="jobs.result.showMore"></span>
       </span>
@@ -111,7 +111,7 @@
       </span>
     </md-button>
     <p></p>
-    <md-button ng-click="showPrintDialog()"><md-icon>print</md-icon>&nbsp;<span translate="jobs.result.print"></span></md-button>
+    <md-button ng-click="showPrintDialog()" class="md-raised"><md-icon>print</md-icon>&nbsp;<span translate="jobs.result.print"></span></md-button>
   </div>
 </div>
 
