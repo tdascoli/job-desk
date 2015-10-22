@@ -227,7 +227,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('template/job-detail.html',
     "<div layout=\"row\" layout-wrap layout-align=\"space-between start\" style=\"padding: 10px;\">\n" +
-    "  <div flex flex-sm=\"100\" ng-click=\"showDetail($event,jobDetail._source)\">\n" +
+    "  <div flex flex-sm=\"100\">\n" +
     "      <h4 class=\"strong\">{{::getMultiLanguageText(jobDetail._source.title)}}</h4>\n" +
     "      <strong ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: onlineSinceDate(jobDetail._source.publicationDate)}\"></strong>\n" +
     "      <strong ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)===1\" translate=\"jobs.result.onlineSinceOneDay\"></strong>\n" +
