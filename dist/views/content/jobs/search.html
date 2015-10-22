@@ -1,6 +1,6 @@
 <div id="filter" layout="row" layout-wrap layout-margin layout-align="start center" class="jd-floating-toolbar jd-floating-toolbar-fill-sm" ng-class="{'md-whiteframe-z2':!mobile}">
 
-  <div flex="40" flex-sm="100" class="form-block">
+  <div flex="45" flex-sm="100" class="form-block">
     <md-input-container ng-if="!searchParams.iscoMajorGroup">
       <label><span translate="jobs.search.jobgroup"></span></label>
       <md-select ng-model="searchParams.iscoMajorGroup" ng-change="countJobs()">
@@ -20,7 +20,7 @@
 
   </div>
 
-  <div flex="15" flex-sm="100" layout="row" layout-align="start center">
+  <div flex="20" flex-sm="100" layout="row" layout-align="start center">
     <!-- todo when gps is turned off, hide -->
     <md-button class="md-icon-button jd-icon-button" ng-click="setMyLocation()">
       <md-icon>my_location</md-icon>
@@ -42,7 +42,7 @@
     </form>
   </div>
 
-  <div flex="15" flex-sm="50">
+  <div flex="20" flex-sm="50">
     <md-radio-group ng-model="searchParams.distanceType" ng-change="countJobs()">
       <md-radio-button value="distance" class="md-primary"><span translate="jobs.search.distanceTypeDistance"></span></md-radio-button>
       <md-radio-button value="travelTime" class="md-primary"><span translate="jobs.search.distanceTypeTravelTime"></span></md-radio-button>
@@ -60,20 +60,6 @@
       <label translate="jobs.search.travelTime" translate-values="{value:showTimeInH(searchParams.travelTime)}"></label>
       <md-slider ng-model="searchParams.travelTime" step="{{travelTimeOptions.step}}" min="{{travelTimeOptions.min}}"
                  max="{{travelTimeOptions.max}}" aria-label="travelTime" ng-change="countJobs()" class="md-primary"></md-slider>
-    </md-input-container>
-  </div>
-
-  <div flex="15" flex-sm="50">
-    <md-input-container flex class="md-slider-has-label">
-      <label>
-        <span ng-if="searchParams.onlineSince>1" translate="jobs.search.onlineSince"
-                                                          translate-values="{value:searchParams.onlineSince}"></span>
-        <span ng-if="searchParams.onlineSince===1" translate="jobs.search.onlineSinceOneDay"></span>
-      </label>
-
-      <md-slider ng-model="searchParams.onlineSince" step="{{onlineSinceOptions.step}}"
-                 min="{{onlineSinceOptions.min}}" max="{{onlineSinceOptions.max}}" aria-label="onlineSince"
-                 ng-change="countJobs()" class="md-primary"></md-slider>
     </md-input-container>
   </div>
 
