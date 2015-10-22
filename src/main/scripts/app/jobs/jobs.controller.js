@@ -244,8 +244,6 @@
         {sort: { field: 'publicationDate', order: 'desc' }, text: 'global.sort.newest'},
         {sort: { field: 'quotaTo', order: 'desc' }, text: 'global.sort.workload_0'},
         {sort: { field: 'quotaTo', order: 'asc' }, text: 'global.sort.workload_100'},
-        {sort: { field: 'title.'+$translate.use(), order: 'desc' }, text: 'global.sort.jobtitle_az'},
-        {sort: { field: 'title.'+$translate.use(), order: 'asc' }, text: 'global.sort.jobtitle_za'}
       ];
       $scope.sortResultList = function () {
         $scope.searchParams.sort=$scope.sortList[$scope.sort].sort;
