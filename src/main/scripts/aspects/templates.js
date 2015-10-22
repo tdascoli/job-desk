@@ -329,8 +329,8 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "      </div>\n" +
     "\n" +
     "    </div>\n" +
-    "  <div flex=\"20\" hide-sm>\n" +
-    "    <md-button ng-click=\"showDetail($event,jobDetail._source)\" aria-label=\"Show / Close Detail\" class=\"md-raised\">\n" +
+    "  <div flex=\"20\" hide-sm layout-margin>\n" +
+    "    <md-button flex ng-click=\"showDetail($event,jobDetail._source)\" aria-label=\"Show / Close Detail\" class=\"md-raised\">\n" +
     "      <span ng-if=\"!showDetailContent\">\n" +
     "        <md-icon>search</md-icon>&nbsp;<span translate=\"jobs.result.showMore\"></span>\n" +
     "      </span>\n" +
@@ -339,7 +339,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "      </span>\n" +
     "    </md-button>\n" +
     "    <p></p>\n" +
-    "    <md-button ng-click=\"showPrintDialog()\" class=\"md-raised\"><md-icon>print</md-icon>&nbsp;<span translate=\"jobs.result.print\"></span></md-button>\n" +
+    "    <md-button flex ng-click=\"showPrintDialog()\" class=\"md-raised\"><md-icon>print</md-icon>&nbsp;<span translate=\"jobs.result.print\"></span></md-button>\n" +
     "  </div>\n" +
     "</div>\n" +
     "\n" +
