@@ -1,6 +1,6 @@
 {
   "name": "job-desk",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "ignore": [
     ".idea",
     "components",
