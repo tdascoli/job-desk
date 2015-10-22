@@ -10,7 +10,7 @@
 
       $scope.distanceOptions = {min: 10, max: 150, step: 10, value: 30};
       $scope.travelTimeOptions = {min: 10, max: 120, step: 5, value: 30};
-      $scope.onlineSinceOptions = {min: 1, max: 60, step: 1, value: 5};
+
       $scope.iscoMajorGroup = [
         {text: 'isco.1000', code: '1',img:'jobs/isco1.png'},
         {text: 'isco.2000', code: '2',img:'jobs/isco2.png'}, {

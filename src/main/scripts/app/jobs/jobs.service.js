@@ -16,15 +16,7 @@
             'filtered': {
               'query': {'match_all': {}},
               'filter': {
-                'and': [
-                  {
-                    'range': {
-                      'publicationDate': {
-                        'gte': moment().subtract(params.onlineSince, 'days').format('YYYY-MM-DD') //yyyy-MM-dd
-                      }
-                    }
-                  }
-                ]
+                'and': []
               }
             }
           },
@@ -82,7 +74,6 @@
         params.distanceType = 'distance';
         params.distance = 30;
         params.travelTime = 30;
-        params.onlineSince = 5;
         params.fulltime = 1;
         params.iscoMajorGroup = '';
         params.iscoGroupLevel2 = '';
