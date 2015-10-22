@@ -605,7 +605,7 @@
 
         // reset scroll state when jobs are updated after filtering/sorting
         scope.$watchCollection('jobs', function () {
-          if (scope.searchParams.from == 0) {
+          if (scope.searchParams.from === 0) {
             elementHeight = 0;
             element.scrollTop(0);
           }

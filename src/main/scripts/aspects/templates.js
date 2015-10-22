@@ -236,9 +236,9 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "      <strong ng-if=\"jobDetail._source.quotaFrom!==jobDetail._source.quotaTo\">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</strong>\n" +
     "      <strong ng-if=\"jobDetail._source.quotaFrom===jobDetail._source.quotaTo\">{{::jobDetail._source.quotaTo}}%</strong>\n" +
     "\n" +
-    "      <p ng-if=\"!showDetailContent\" ng-text-truncate=\"getMultiLanguageText(jobDetail._source.description)\" ng-tt-words-threshold=\"20\" ng-tt-no-toggling></p>\n" +
+    "      <p ng-show=\"!showDetailContent\" ng-text-truncate=\"getMultiLanguageText(jobDetail._source.description)\" ng-tt-words-threshold=\"20\" ng-tt-no-toggling></p>\n" +
     "\n" +
-    "      <div ng-if=\"showDetailContent\">\n" +
+    "      <div ng-show=\"showDetailContent\">\n" +
     "\n" +
     "        <span ng-switch=\"jobDetail._source.external\">\n" +
     "\n" +
@@ -330,16 +330,16 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "\n" +
     "    </div>\n" +
     "  <div flex=\"20\" hide-sm layout-margin>\n" +
-    "    <md-button flex ng-click=\"showDetail($event,jobDetail._source)\" aria-label=\"Show / Close Detail\" class=\"md-raised\">\n" +
-    "      <span ng-if=\"!showDetailContent\">\n" +
+    "    <md-button flex ng-click=\"showDetail()\" aria-label=\"Show / Close Detail\" class=\"md-raised jd-btn-block\">\n" +
+    "      <span ng-show=\"!showDetailContent\">\n" +
     "        <md-icon>search</md-icon>&nbsp;<span translate=\"jobs.result.showMore\"></span>\n" +
     "      </span>\n" +
-    "      <span ng-if=\"showDetailContent\">\n" +
+    "      <span ng-show=\"showDetailContent\">\n" +
     "        <md-icon>close</md-icon>&nbsp;<span translate=\"jobs.result.showLess\"></span>\n" +
     "      </span>\n" +
     "    </md-button>\n" +
     "    <p></p>\n" +
-    "    <md-button flex ng-click=\"showPrintDialog()\" class=\"md-raised\"><md-icon>print</md-icon>&nbsp;<span translate=\"jobs.result.print\"></span></md-button>\n" +
+    "    <md-button flex ng-click=\"showPrintDialog()\" class=\"md-raised jd-btn-block\"><md-icon>print</md-icon>&nbsp;<span translate=\"jobs.result.print\"></span></md-button>\n" +
     "  </div>\n" +
     "</div>\n" +
     "\n" +

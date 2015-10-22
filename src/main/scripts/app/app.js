@@ -132,29 +132,7 @@
       if ($state.$current.url.source==='/' || $state.$current.url.source==='/jobs' || $state.$current.url.source==='/apprenticeships' || $state.$current.url.source==='/educations'){
         $state.go('localInfo');
       }
-      // Jobs
-      else if ($state.$current.url.source==='/job-search' || $state.$current.url.source==='/config'){
-        $state.go('jobs');
-      }
-      else if ($state.$current.url.source==='/job-results'){
-        $state.go('job-search');
-      }
-      // Apprenticeship
-      else if ($state.$current.url.source==='/apprenticeship-search'){
-        $state.go('apprenticeships');
-      }
-      else if ($state.$current.url.source==='/apprenticeship-results'){
-        $state.go('apprenticeship-search');
-      }
-      // Education
-      else if ($state.$current.url.source==='/education-search'){
-        $state.go('educations');
-      }
-      else if ($state.$current.url.source==='/education-results'){
-        $state.go('education-search');
-      }
-      // Infopage
-      else if ($state.$current.url.source==='/localInfo'){
+      else {
         $state.go($rootScope.searchType);
       }
     };
