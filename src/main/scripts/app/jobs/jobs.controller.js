@@ -99,6 +99,7 @@
 
       $scope.countJobs = function () {
         $scope.idle=true;
+        $scope.searchParams.from = 0;
 
         if ($scope.searchParams.distanceType==='travelTime') {
           //** countJobs with travelTime parameter
