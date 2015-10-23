@@ -296,11 +296,11 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "                <span ng-if=\"jobDetail._source.contact.phone\">{{::jobDetail._source.contact.phone}}<br /></span>\n" +
     "                <span ng-if=\"jobDetail._source.contact.eMail\">{{::jobDetail._source.contact.eMail}}</span>\n" +
     "\n" +
-    "                <br />\n" +
-    "                <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: onlineSinceDate(jobDetail._source.publicationDate)}\"></span>\n" +
-    "                <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)===1\" translate=\"jobs.result.onlineSinceOneDay\"></span>\n" +
     "              </div>\n" +
     "            </div>\n" +
+    "            <br />\n" +
+    "            <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: onlineSinceDate(jobDetail._source.publicationDate)}\"></span>\n" +
+    "            <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)===1\" translate=\"jobs.result.onlineSinceOneDay\"></span>\n" +
     "          </span>\n" +
     "\n" +
     "          <!--External Jobs-->\n" +
@@ -410,6 +410,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "            <span>{{::jobDetail._source.contact.phone}}</span>\n" +
     "          </div>\n" +
     "\n" +
+    "          <br />\n" +
     "          <strong>{{::jobDetail._source.company.name}}</strong><br />\n" +
     "          <span>{{::jobDetail._source.company.address.street}}</span><br />\n" +
     "          <span>{{::jobDetail._source.company.address.zip}} {{::jobDetail._source.company.address.location}}</span><br />\n" +

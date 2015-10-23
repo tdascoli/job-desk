@@ -68,11 +68,11 @@
                 <span ng-if="jobDetail._source.contact.phone">{{::jobDetail._source.contact.phone}}<br /></span>
                 <span ng-if="jobDetail._source.contact.eMail">{{::jobDetail._source.contact.eMail}}</span>
 
-                <br />
-                <span ng-if="onlineSinceDate(jobDetail._source.publicationDate)>1" translate="jobs.result.onlineSince" translate-values="{value: onlineSinceDate(jobDetail._source.publicationDate)}"></span>
-                <span ng-if="onlineSinceDate(jobDetail._source.publicationDate)===1" translate="jobs.result.onlineSinceOneDay"></span>
               </div>
             </div>
+            <br />
+            <span ng-if="onlineSinceDate(jobDetail._source.publicationDate)>1" translate="jobs.result.onlineSince" translate-values="{value: onlineSinceDate(jobDetail._source.publicationDate)}"></span>
+            <span ng-if="onlineSinceDate(jobDetail._source.publicationDate)===1" translate="jobs.result.onlineSinceOneDay"></span>
           </span>
 
           <!--External Jobs-->
