@@ -71,6 +71,10 @@
             }
           });
         };
+
+        scope.containsQuota = function(jobTitle) {
+          return (jobTitle.search("%") > -1);
+        };
       }
     };
   }]);
