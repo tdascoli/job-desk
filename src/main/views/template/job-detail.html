@@ -4,7 +4,9 @@
       <span ng-if="!containsQuota(getMultiLanguageText(jobDetail._source.title))">
         <strong ng-if="jobDetail._source.quotaFrom!==jobDetail._source.quotaTo">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</strong>
         <strong ng-if="jobDetail._source.quotaFrom===jobDetail._source.quotaTo">{{::jobDetail._source.quotaTo}}%</strong>
-      </span>
+      </span>&nbsp;
+      <span ng-if="onlineSinceDate(jobDetail._source.publicationDate)>1" translate="jobs.result.onlineSince" translate-values="{value: onlineSinceDate(jobDetail._source.publicationDate)}"></span>
+      <span ng-if="onlineSinceDate(jobDetail._source.publicationDate)===1" translate="jobs.result.onlineSinceOneDay"></span>
 
       <p ng-show="!showDetailContent" ng-text-truncate="formatTextToShow(getMultiLanguageText(jobDetail._source.description))" ng-tt-words-threshold="20" ng-tt-no-toggling></p>
 
@@ -70,9 +72,6 @@
 
               </div>
             </div>
-            <br />
-            <span ng-if="onlineSinceDate(jobDetail._source.publicationDate)>1" translate="jobs.result.onlineSince" translate-values="{value: onlineSinceDate(jobDetail._source.publicationDate)}"></span>
-            <span ng-if="onlineSinceDate(jobDetail._source.publicationDate)===1" translate="jobs.result.onlineSinceOneDay"></span>
           </span>
 
           <!--External Jobs-->
@@ -97,9 +96,6 @@
                 <strong>{{::jobDetail._source.company.name}}</strong>
               </div>
             </div>
-            <br />
-            <span ng-if="onlineSinceDate(jobDetail._source.publicationDate)>1" translate="jobs.result.onlineSince" translate-values="{value: onlineSinceDate(jobDetail._source.publicationDate)}"></span>
-            <span ng-if="onlineSinceDate(jobDetail._source.publicationDate)===1" translate="jobs.result.onlineSinceOneDay"></span>
           </span>
         </span>
       </div>

@@ -232,7 +232,9 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "      <span ng-if=\"!containsQuota(getMultiLanguageText(jobDetail._source.title))\">\n" +
     "        <strong ng-if=\"jobDetail._source.quotaFrom!==jobDetail._source.quotaTo\">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</strong>\n" +
     "        <strong ng-if=\"jobDetail._source.quotaFrom===jobDetail._source.quotaTo\">{{::jobDetail._source.quotaTo}}%</strong>\n" +
-    "      </span>\n" +
+    "      </span>&nbsp;\n" +
+    "      <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: onlineSinceDate(jobDetail._source.publicationDate)}\"></span>\n" +
+    "      <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)===1\" translate=\"jobs.result.onlineSinceOneDay\"></span>\n" +
     "\n" +
     "      <p ng-show=\"!showDetailContent\" ng-text-truncate=\"formatTextToShow(getMultiLanguageText(jobDetail._source.description))\" ng-tt-words-threshold=\"20\" ng-tt-no-toggling></p>\n" +
     "\n" +
@@ -298,9 +300,6 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "\n" +
     "              </div>\n" +
     "            </div>\n" +
-    "            <br />\n" +
-    "            <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: onlineSinceDate(jobDetail._source.publicationDate)}\"></span>\n" +
-    "            <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)===1\" translate=\"jobs.result.onlineSinceOneDay\"></span>\n" +
     "          </span>\n" +
     "\n" +
     "          <!--External Jobs-->\n" +
@@ -325,9 +324,6 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "                <strong>{{::jobDetail._source.company.name}}</strong>\n" +
     "              </div>\n" +
     "            </div>\n" +
-    "            <br />\n" +
-    "            <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: onlineSinceDate(jobDetail._source.publicationDate)}\"></span>\n" +
-    "            <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)===1\" translate=\"jobs.result.onlineSinceOneDay\"></span>\n" +
     "          </span>\n" +
     "        </span>\n" +
     "      </div>\n" +
