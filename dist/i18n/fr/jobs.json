@@ -2,8 +2,8 @@
   "jobs": {
     "search": {
       "jobgroup":"Quoi (catégorie professionnelle)",
-      "allSubGroups":"[FR] Alle Untergruppen",
-      "disableGroup":"[FR] Andere Berufsgruppe",
+      "allSubGroups":"Tous les sous-groupes",
+      "disableGroup":"Autre catégorie professionnelle",
       "location":"Où (NPA)",
       "distance":"Distance {{value}} km",
       "travelTime":"Durée du trajet {{value}} h",
