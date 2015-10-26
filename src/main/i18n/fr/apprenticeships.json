@@ -2,8 +2,8 @@
   "apprenticeships": {
     "search": {
       "swissdocGroup":"Quoi (catégorie professionnelle)",
-      "allSubGroups":"[FR] Alle Untergruppen",
-      "disableGroup":"[FR] Andere Kursart",
+      "allSubGroups":"Tous les sous-groupes",
+      "disableGroup":"Autre catégorie professionnelle",
       "location":"Où (NPA)",
       "distance":"Distance {{value}} km",
       "travelTime":"Durée du trajet {{value}} h",
