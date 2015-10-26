@@ -17,7 +17,9 @@
       "location_1000":"Arbeitsort - niedrigste PLZ zuerst",
       "location_9999":"Arbeitsort - höchste PLZ zuerst",
       "courseLocation_1000":"Kursort - niedrigste PLZ zuerst",
-      "courseLocation_9999":"Kursort - höchste PLZ zuerst"
+      "courseLocation_9999":"Kursort - höchste PLZ zuerst",
+      "distanceNearest":"[IT] Job location - located nearest",
+      "distanceFarthest":"[IT] Job location - located farthest"
     },
     "codes": {
       "salutations": {

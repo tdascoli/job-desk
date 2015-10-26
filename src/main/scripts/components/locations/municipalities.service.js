@@ -3,12 +3,13 @@
   'use strict';
 
   angular.module('job-desk')
-    .factory('MunicipalitiesService', function ($http, baseUrl) {
+    .factory('MunicipalitiesService', function ($http) {
 
       function getMunicipalities(coords,distance) {
         var size = Math.ceil(distance/3);
         //size = 4000;
         var filter = {
+          'size': size,
           'query': {
             'filtered': {
               'query': {
@@ -32,18 +33,7 @@
             }
           }
         };
-        /*
-         ,
-         {
-         'range': {
-         'communitySize': {
-         'gt': 2,
-         'lt': 4
-         }
-         }
-         }
-         */
-        return $http.post(baseUrl + '/municipalities/_search?size='+size, filter);
+        return $http.post('http://localhost:9000/jobdeskdev/municipality/_search', filter);
       }
 
       function getMunicipalitiesFromZips(zips) {
@@ -76,7 +66,7 @@
           }
         };
 
-        return $http.post(baseUrl + '/municipalities/_search', filter);
+        return $http.post('http://localhost:9000/jobdeskdev/municipality/_search', filter);
       }
 
       return {

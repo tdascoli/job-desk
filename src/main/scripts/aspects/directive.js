@@ -306,6 +306,15 @@
               .attr('r', 3)
               .attr('class', classPrefix+'-boundaries');
 
+            /*cityMap.selectAll("g")
+              .data(cities.geometries)
+              .enter().append("text")
+              .attr("class", "pl ace-label")
+              .attr("transform", function(d) { return "translate(" + projection(d.coordinates) + ")"; })
+              .attr("dy", "1.25em")
+              .text(function(d) { return d.properties.name; });*/
+
+
             cityMap.selectAll('g')
               .data(cities.geometries)
               .enter().append('text')
