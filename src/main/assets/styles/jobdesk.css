@@ -356,8 +356,8 @@ label {
   position: fixed;
   width: 100%;
   height: 100%;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   z-index: 1000;
 }
 .jd-sleep-screen.ng-enter {
@@ -369,6 +369,12 @@ label {
 }
 .jd-btn-block {
   width: 100%;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.visited {
+  background-color: #EEEEEE;
 }
 @media print {
   body #topnav,

@@ -73,7 +73,7 @@
         };
 
         scope.containsQuota = function(jobTitle) {
-          return (jobTitle.search("%") > -1);
+          return (jobTitle.search('%') > -1);
         };
       }
     };
