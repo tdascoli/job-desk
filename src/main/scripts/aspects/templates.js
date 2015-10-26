@@ -234,7 +234,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "        <strong ng-if=\"jobDetail._source.quotaFrom===jobDetail._source.quotaTo\">{{::jobDetail._source.quotaTo}}%</strong>\n" +
     "      </span>\n" +
     "\n" +
-    "      <p ng-show=\"!showDetailContent\" ng-text-truncate=\"getMultiLanguageText(jobDetail._source.description)\" ng-tt-words-threshold=\"20\" ng-tt-no-toggling></p>\n" +
+    "      <p ng-show=\"!showDetailContent\" ng-text-truncate=\"formatTextToShow(getMultiLanguageText(jobDetail._source.description))\" ng-tt-words-threshold=\"20\" ng-tt-no-toggling></p>\n" +
     "\n" +
     "      <div ng-show=\"showDetailContent\">\n" +
     "\n" +
@@ -243,7 +243,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "          <!--Internal Jobs -->\n" +
     "          <span ng-switch-when=\"false\">\n" +
     "\n" +
-    "            <p ng-bind-html=\"getMultiLanguageText(jobDetail._source.description)\"></p>\n" +
+    "            <p ng-bind-html=\"formatTextToShow(getMultiLanguageText(jobDetail._source.description))\"></p>\n" +
     "            <div layout=\"row\" layout-wrap layout-align=\"space-between start\">\n" +
     "              <div flex=\"25\" flex-sm=\"100\">\n" +
     "                <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong><br />\n" +
@@ -305,7 +305,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "\n" +
     "          <!--External Jobs-->\n" +
     "          <span ng-switch-when=\"true\">\n" +
-    "            <p ng-bind-html=\"getMultiLanguageText(jobDetail._source.description)\"></p>\n" +
+    "            <p ng-bind-html=\"formatTextToShow(getMultiLanguageText(jobDetail._source.description))\"></p>\n" +
     "            <div layout=\"row\" layout-wrap layout-align=\"space-between start\">\n" +
     "              <div flex=\"25\" flex-sm=\"100\">\n" +
     "                <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong><br />\n" +
@@ -375,7 +375,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "          <span ng-if=\"jobDetail._source.quotaFrom!==jobDetail._source.quotaTo\">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</span>\n" +
     "          <span ng-if=\"jobDetail._source.quotaFrom===jobDetail._source.quotaTo\">{{::jobDetail._source.quotaTo}}%</span>\n" +
     "\n" +
-    "          <p ng-bind-html=\"formatText(getMultiLanguageText(jobDetail._source.description))\"></p>\n" +
+    "          <p ng-bind-html=\"formatTextToPrint(getMultiLanguageText(jobDetail._source.description))\"></p>\n" +
     "          <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong> :\n" +
     "          <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />\n" +
     "\n" +
@@ -433,7 +433,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "          <span ng-if=\"jobDetail._source.quotaFrom!==jobDetail._source.quotaTo\">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</span>\n" +
     "          <span ng-if=\"jobDetail._source.quotaFrom===jobDetail._source.quotaTo\">{{::jobDetail._source.quotaTo}}%</span>\n" +
     "\n" +
-    "          <p ng-bind-html=\"formatText(getMultiLanguageText(jobDetail._source.description))\"></p>\n" +
+    "          <p ng-bind-html=\"formatTextToPrint(getMultiLanguageText(jobDetail._source.description))\"></p>\n" +
     "          <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong> :\n" +
     "          <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />\n" +
     "\n" +

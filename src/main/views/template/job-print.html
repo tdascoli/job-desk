@@ -21,7 +21,7 @@
           <span ng-if="jobDetail._source.quotaFrom!==jobDetail._source.quotaTo">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</span>
           <span ng-if="jobDetail._source.quotaFrom===jobDetail._source.quotaTo">{{::jobDetail._source.quotaTo}}%</span>
 
-          <p ng-bind-html="formatText(getMultiLanguageText(jobDetail._source.description))"></p>
+          <p ng-bind-html="formatTextToPrint(getMultiLanguageText(jobDetail._source.description))"></p>
           <strong class="fake-label" translate="jobs.result.jobLocation"></strong> :
           <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />
 
@@ -79,7 +79,7 @@
           <span ng-if="jobDetail._source.quotaFrom!==jobDetail._source.quotaTo">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</span>
           <span ng-if="jobDetail._source.quotaFrom===jobDetail._source.quotaTo">{{::jobDetail._source.quotaTo}}%</span>
 
-          <p ng-bind-html="formatText(getMultiLanguageText(jobDetail._source.description))"></p>
+          <p ng-bind-html="formatTextToPrint(getMultiLanguageText(jobDetail._source.description))"></p>
           <strong class="fake-label" translate="jobs.result.jobLocation"></strong> :
           <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />
 

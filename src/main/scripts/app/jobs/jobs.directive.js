@@ -64,8 +64,11 @@
               $scope.cancel = function() {
                 $mdDialog.cancel();
               };
-              $scope.formatText = function(text) {
-                text = text.replace(/(<|&lt;)br\s*\/*(>|&gt;)/g,' ');
+              $scope.formatTextToPrint = function(text) {
+                // replace <br> tags by whitespace
+                text = String(text).replace(/(<|&lt;)br\s*\/*(>|&gt;)/g,' ');
+                // remove all html tags
+                text = String(text).replace(/<[^>]+>/gm, ' ');
                 return text;
               };
             }
@@ -73,7 +76,12 @@
         };
 
         scope.containsQuota = function(jobTitle) {
-          return (jobTitle.search("%") > -1);
+          return (jobTitle.search('%') > -1);
+        };
+
+        scope.formatTextToShow = function(text) {
+          // remove all html tags except <ul>, <li>, <br>
+          return text ? String(text).replace(/((?!<((\/)?li|ul|br))<[^>]*>)/gi, ' ') : ' ';
         };
       }
     };
