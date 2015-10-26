@@ -166,7 +166,10 @@
     });
 
     $rootScope.states.INACTIVE.onEnter(function() {
-      $rootScope.userActive = false;
+      // no sleep screen when state is on 'job'
+      if (!$state.is('jobs')) {
+        $rootScope.userActive = false;
+      }
     });
 
     $rootScope.states.ACTIVE.onEnter(function() {
