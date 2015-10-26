@@ -53,7 +53,7 @@ http://www.arrlee.ch
 Query/Filter/Sort
 
 * Query: https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl.html
-* FIlter: https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl-filters.html
+* Filter: https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl-filters.html
   * GeoLocation: https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl-geo-distance-filter.html
 * Sort: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html
 

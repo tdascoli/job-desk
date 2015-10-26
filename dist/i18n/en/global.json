@@ -17,7 +17,9 @@
       "location_1000":"Job location - lowest postal code first",
       "location_9999":"Job location - highest postal code first",
       "courseLocation_1000":"Course location - lowest postal code first",
-      "courseLocation_9999":"Course location - highest postal code first"
+      "courseLocation_9999":"Course location - highest postal code first",
+      "distanceNearest":"Job location - located nearest",
+      "distanceFarthest":"Job location - located farthest"
     },
     "codes": {
       "salutations": {

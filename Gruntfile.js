@@ -349,6 +349,13 @@ module.exports = function (grunt) {
           changeOrigin: false
         },
         {
+          context: '/jobdeskdev',
+          host: 'localhost',
+          port: 9200,
+          https: false,
+          changeOrigin: false
+        },
+        {
           context: '/arrlee',
           host: 'arrlee.jobarea.ch',
           https: false,
