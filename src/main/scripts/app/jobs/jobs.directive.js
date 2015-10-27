@@ -81,9 +81,11 @@
 
         scope.formatTextToShow = function(text) {
           // remove all html tags except <ul>, <li>, <br>
-          return text ? String(text).replace(/((?!<((\/)?li|ul|br))<[^>]*>)/gi, ' ') : ' ';
+          text = String(text).replace(/((?!<((\/)?li|ul|br))<[^>]*>)/gi, ' ');
+          // tmp fix : avoid $sanitize parse errors while DB field for job description is too short
+          text = String(text).replace(/<([^>]*)$/, '');
+          return text;
         };
-
 
         scope.isVisited = function(jobId) {
           return JobsService.isVisited(jobId);
