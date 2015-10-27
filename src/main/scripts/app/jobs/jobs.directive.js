@@ -17,7 +17,7 @@
     };
   });
 
-  module.directive('jobDetail', ['$translate','$sce','$mdDialog', '$timeout', function($translate,$sce,$mdDialog, $timeout){
+  module.directive('jobDetail', ['$translate','$sce','$mdDialog', '$timeout', 'JobsService', function($translate,$sce,$mdDialog, $timeout, JobsService){
     return {
       priority: 10,
       restrict: 'A',
@@ -36,8 +36,8 @@
           return moment().diff(moment(publicationDate, 'YYYY-MM-DD'), 'days');
         };
 
-        scope.showDetail=function(){
-          element.addClass('visited');
+        scope.showDetail=function(jobId){
+          JobsService.addVisitedJob(jobId);
           scope.showDetailContent=!scope.showDetailContent;
         };
 
@@ -83,6 +83,11 @@
           // remove all html tags except <ul>, <li>, <br>
           return text ? String(text).replace(/((?!<((\/)?li|ul|br))<[^>]*>)/gi, ' ') : ' ';
         };
+
+
+        scope.isVisited = function(jobId) {
+          return JobsService.isVisited(jobId);
+        }
       }
     };
   }]);

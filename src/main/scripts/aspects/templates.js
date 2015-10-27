@@ -226,7 +226,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('template/job-detail.html',
-    "<div layout=\"row\" layout-wrap layout-align=\"space-between start\" style=\"padding: 10px;\">\n" +
+    "<div ng-class=\"{visited: isVisited(jobDetail._source.jobId)}\" layout=\"row\" layout-wrap layout-align=\"space-between start\" style=\"padding: 10px;\">\n" +
     "  <div flex flex-sm=\"100\">\n" +
     "      <strong class=\"strong\">{{::getMultiLanguageText(jobDetail._source.title)}}&nbsp;</strong>\n" +
     "      <span ng-if=\"!containsQuota(getMultiLanguageText(jobDetail._source.title))\">\n" +
@@ -330,7 +330,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "\n" +
     "    </div>\n" +
     "  <div flex=\"20\" hide-sm layout-margin>\n" +
-    "    <md-button flex ng-click=\"showDetail()\" aria-label=\"Show / Close Detail\" class=\"md-raised jd-btn-block\">\n" +
+    "    <md-button flex ng-click=\"showDetail(jobDetail._source.jobId)\" aria-label=\"Show / Close Detail\" class=\"md-raised jd-btn-block\">\n" +
     "      <span ng-show=\"!showDetailContent\">\n" +
     "        <md-icon>search</md-icon>&nbsp;<span translate=\"jobs.result.showMore\"></span>\n" +
     "      </span>\n" +

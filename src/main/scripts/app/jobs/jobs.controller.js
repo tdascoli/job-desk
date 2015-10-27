@@ -264,6 +264,7 @@
       // user isn't active anymore : reset search params
       var resetListener = $rootScope.$on('resetSearchParams', function() {
         JobsService.resetSearchParams();
+        JobsService.resetVisitedJobs();
       });
 
       // unregister the state listener

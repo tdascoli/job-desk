@@ -6,6 +6,7 @@
     .factory('JobsService', function ($http, baseUrl) {
 
       var params = {};
+      var visitedJobs = [];
 
       function resetSearchParams() {
         params.from = 0;
@@ -113,10 +114,25 @@
         return $http.post(baseUrl + '/job/_search', filter);
       }
 
+      function addVisitedJob(jobId) {
+        visitedJobs.push(jobId);
+      }
+
+      function isVisited(jobId) {
+        return visitedJobs.indexOf(jobId) > -1;
+      }
+
+      function resetVisitedJobs() {
+        visitedJobs = [];
+      }
+
       return {
         find: find,
         params: params,
-        resetSearchParams: resetSearchParams
+        resetSearchParams: resetSearchParams,
+        addVisitedJob: addVisitedJob,
+        isVisited: isVisited,
+        resetVisitedJobs: resetVisitedJobs
       };
     });
 }());
