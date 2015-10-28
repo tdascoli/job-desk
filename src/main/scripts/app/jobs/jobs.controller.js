@@ -247,7 +247,7 @@
         {sort: { field: 'zip', order: 'asc' }, text: 'global.sort.location_1000', distanceType: 'travelTime'},
         {sort: { field: 'zip', order: 'desc' }, text: 'global.sort.location_9999', distanceType: 'travelTime'},
         {sort: { field: 'distance', order: 'asc' }, text: 'global.sort.distanceNearest', distanceType: 'distance'},
-        {sort: { field: 'distance', order: 'desc' }, text: 'global.sort.distanceFarest', distanceType: 'distance'}
+        {sort: { field: 'distance', order: 'desc' }, text: 'global.sort.distanceFarthest', distanceType: 'distance'}
       ];
       $scope.sortResultList = function () {
         $scope.searchParams.sort=$scope.sortList[$scope.sort].sort;
