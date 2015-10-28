@@ -80,30 +80,13 @@
         }
         // SORT
         var sort = {};
-        if (params.sort.field==='distance' ) {
+        if (params.sort.field==='distance') {
           sort._geo_distance = {
             'location.locations.geoLocation': params.currentCoords,
             order: params.sort.order,
             mode: 'min',
             unit: 'km',
-            distance_type: 'sloppy_arc',
-            nested_filter: {
-              'geo_distance': {
-                'distance': params.distance + 'km',
-                'location.locations.geoLocation': params.currentCoords
-              }
-            }
-          };
-        }
-        else if (params.sort.field==='zip') {
-          sort['location.locations.zip'] = {
-            order: params.sort.order,
-            mode: 'min',
-            nested_filter: {
-              'terms': {
-                'location.locations.zip': params.zips
-              }
-            }
+            distance_type: 'sloppy_arc'
           };
         }
         else {
