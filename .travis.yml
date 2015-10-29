@@ -22,7 +22,7 @@ deploy:
   domain: alvchegov
   app:
     master: jobdesk
-    dev: jobdeskdev
+    '0.1.2': jobdeskdev
   on:
     repo: alv-ch/job-desk
 after_script:

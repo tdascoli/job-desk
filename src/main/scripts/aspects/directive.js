@@ -510,8 +510,6 @@
       require : '?ngModel',
       restrict : 'C',
       link : function(scope,element,attrs,ngModelCtrl){
-        // get element x/y
-        var offset = element.offset();
         if(!ngModelCtrl){
           return;
         }
@@ -522,6 +520,11 @@
 
         $(element).keyboard({
           layout : 'custom',
+          display : {
+            'b': 'backspace',
+            'a': 'check',
+            'c': 'clear'
+          },
           customLayout: {'default':[
             '{clear} {b}',
             '7 8 9',
@@ -541,8 +544,8 @@
           },
           beforeVisible: function(){
             // set keyboard x/y according to element
-            $('#location_keyboard').css('top',offset.top+element.outerHeight(true));
-            $('#location_keyboard').css('left',offset.left);
+            $('#location_keyboard').css('top',element.offset().top+element.outerHeight(true));
+            $('#location_keyboard').css('left',element.offset().left);
             // reset value
             ngModelCtrl.$setViewValue(null);
             ngModelCtrl.$render();

@@ -19,7 +19,7 @@
       "courseLocation_1000":"Kursort - niedrigste PLZ zuerst",
       "courseLocation_9999":"Kursort - höchste PLZ zuerst",
       "distanceNearest":"Arbeitsort - am dichtesten gelegen",
-      "distanceFarest":"Arbeitsort - am weitesten gelegen"
+      "distanceFarthest":"Arbeitsort - am weitesten gelegen"
     },
     "codes": {
       "salutations": {

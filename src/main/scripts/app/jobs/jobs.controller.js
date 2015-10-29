@@ -97,6 +97,16 @@
         $state.go('job-search');
       };
 
+      $scope.showIscoLevel4 = function () {
+        $mdDialog.show(
+          $mdDialog.alert()
+            .parent(angular.element(document.body))
+            .content($translate.instant('isco.1000'))
+            .ariaLabel($translate.instant('isco.1000'))
+            .ok('OK')
+        );
+      };
+
       $scope.countJobs = function () {
         $scope.idle=true;
         $scope.searchParams.from = 0;

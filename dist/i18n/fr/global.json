@@ -18,8 +18,8 @@
       "location_9999":"Lieu de travail - NPA le plus élevé d'abord",
       "courseLocation_1000":"Lieu du cours - NPA le moins élevé d'abord",
       "courseLocation_9999":"Lieu du cours - NPA le plus élevé d'abord",
-      "distanceNearest":"[FR] Job location - located nearest",
-      "distanceFarthest":"[FR] Job location - located farthest"
+      "distanceNearest":"Lieu de travail - le plus proche d'abord",
+      "distanceFarthest":"Lieu de travail - le plus éloigné d'abord"
     },
     "codes": {
       "salutations": {

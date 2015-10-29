@@ -25,7 +25,7 @@
         jobDetail: '='
       },
       templateUrl: 'template/job-detail.html',
-      link: function(scope, element){
+      link: function(scope){
         scope.showDetailContent=false;
 
         scope.getMultiLanguageText=function(text){
@@ -89,7 +89,7 @@
 
         scope.isVisited = function(jobId) {
           return JobsService.isVisited(jobId);
-        }
+        };
       }
     };
   }]);

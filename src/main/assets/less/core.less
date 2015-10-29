@@ -3,7 +3,7 @@
 
 //** GLOBAL
 body {
-  font-family: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: @font-family-base;
 }
 
 //**** TOPNAV
@@ -74,6 +74,7 @@ body {
   vertical-align: top;
   width: auto;
   padding-bottom: 10px;
+  cursor: pointer;
 }
 .category img {
   height: 200px;
@@ -83,6 +84,9 @@ body {
 .category .iscoIcon {
   height: auto;
   width: 100%;
+}
+.category :focus {
+  outline: none;
 }
 
 //**** ISCO COLOURS
@@ -263,6 +267,33 @@ text {
 }
 .ui-keyboard-bksp {
   width: 107px;
+}
+.ui-keyboard-text {
+  font-family: @font-family-base;
+}
+.ui-keyboard-actionkey .ui-keyboard-text {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+
+  margin: auto;
+  background-repeat: no-repeat no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentColor;
+  height: 24px;
+  width: 24px;
+
 }
 .ui-keyboard-preview-wrapper input {
   border: none;
