@@ -102,7 +102,7 @@
       if ($state.$current.url.source==='/' || $state.$current.url.source==='/jobs' || $state.$current.url.source==='/apprenticeships' || $state.$current.url.source==='/educations'){
         return 'info_outline';
       }
-      return 'keyboard_arrow_left';
+      return 'home';
     };
 
     var menuEv;
