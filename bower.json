@@ -48,7 +48,8 @@
     "topojson": "1.6.19",
     "detect-mobile-browser": "0.0.1",
     "moment": "latest",
-    "angular-presence": "~0.2.2"
+    "angular-presence": "~0.2.2",
+    "trackjs": "latest"
   },
   "devDependencies": {
     "angular-mocks": "1.4.5",
