@@ -30,7 +30,7 @@
     $httpProvider.defaults.headers.common['If-Modified-Since'] = '01 Jan 1970 00:00:00 GMT';
   }]);
 
-  app.config(function ($stateProvider, $urlRouterProvider, httpRequestInterceptorCacheBusterProvider, SecurityConfigProvider, $mdThemingProvider) {
+  app.config(function ($stateProvider, $urlRouterProvider, httpRequestInterceptorCacheBusterProvider, SecurityConfigProvider, $mdThemingProvider, $provide) {
 
     SecurityConfigProvider.setClientId('job-desk');
     SecurityConfigProvider.setClientSecret('job-deskSecret');
@@ -52,6 +52,17 @@
     $mdThemingProvider.theme('apprenticeships').primaryPalette('teal').accentPalette('blue-grey');
 
     $mdThemingProvider.setDefaultTheme('jobs');
+
+    // catch all exceptions and send them to trackJS
+    $provide.decorator("$exceptionHandler", ["$delegate", "$window", function($delegate, $window) {
+      return function (exception, cause) {
+        if ($window.trackJs) {
+          $window.trackJs.track(exception);
+        }
+        // (Optional) Pass the error through to the delegate formats it for the console
+        $delegate(exception, cause);
+      };
+    }]);
   });
 
   app.config(function ($stateProvider, hotkeysProvider) {

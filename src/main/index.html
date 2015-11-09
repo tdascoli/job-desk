@@ -19,7 +19,14 @@
   <!-- /google analytics -->
 
   <!-- BEGIN TRACKJS -->
-  <script type="text/javascript">window._trackJs = { token: '730fa2d5bf8443039fb8771d143ca046' };</script>
+  <script type="text/javascript">window._trackJs = {
+    token: '730fa2d5bf8443039fb8771d143ca046',
+    application: "job-desk",
+    serialize: function (what) {
+      return JSON.stringify(what);
+    },
+    enabled: !(window.location.host.indexOf('localhost') >= 0)
+  };</script>
   <script type="text/javascript" src="https://d2zah9y47r7bi2.cloudfront.net/releases/current/tracker.js"></script>
   <!-- END TRACKJS -->
 
@@ -129,7 +136,7 @@
 <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
 <script src="bower_components/angular-scroll/angular-scroll.js"></script>
 <script src="bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
-<script src="bower_components/angular-simple-logger/dist/index.js"></script>
+<script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
 <script src="bower_components/leaflet/dist/leaflet.js"></script>
 <script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
 <script src="bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
