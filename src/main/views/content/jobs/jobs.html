@@ -1,10 +1,10 @@
-<div layout="row" layout-wrap layout-margin layout-padding layout-align="space-between start" class="jd-categories">
+<div layout="row" layout-wrap layout-padding layout-align="space-between start" class="jd-categories">
 
   <div class="category" flex="33" flex-sm="100" ng-repeat="isco in iscoMajorGroup">
     <img ng-click="setIscoGroup(isco.code)" class="iscoIcon" ng-src="assets/images/{{isco.img}}" alt="isco" />
     <div class="category-title isco{{isco.code}}" layout="row">
       <span flex="90" class="md-title" translate="{{isco.text}}"></span>
-      <md-icon ng-click="showIscoLevel4()" flex>help</md-icon>
+      <md-icon ng-click="showIscoLevel4()" flex>help_outline</md-icon>
     </div>
   </div>
 

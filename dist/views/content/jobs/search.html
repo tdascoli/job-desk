@@ -1,4 +1,4 @@
-<div id="filter" layout="row" layout-wrap layout-margin layout-padding layout-align="start center" class="jd-floating-toolbar jd-floating-toolbar-fill-sm" ng-class="{'md-whiteframe-z2':!mobile}">
+<div id="filter" layout="row" layout-wrap layout-margin layout-align="start center" class="jd-floating-toolbar jd-floating-toolbar-fill-sm" ng-class="{'md-whiteframe-z2':!mobile}">
 
   <div flex="45" flex-sm="100" class="form-block">
     <md-input-container ng-if="!searchParams.iscoMajorGroup">
@@ -50,17 +50,15 @@
   </div>
 
   <div flex="15" flex-sm="50">
-    <md-input-container flex class="md-slider-has-label" ng-if="searchParams.distanceType==='distance'">
-      <label translate="jobs.search.distance" translate-values="{value:searchParams.distance}"></label>
-      <md-slider ng-model="searchParams.distance" step="{{distanceOptions.step}}" min="{{distanceOptions.min}}"
-                 max="{{distanceOptions.max}}" aria-label="distance" ng-change="countJobs()" class="md-primary"></md-slider>
-    </md-input-container>
+    <div flex ng-if="searchParams.distanceType==='distance'">
+      <label class="md-slider-label" translate="jobs.search.distance" translate-values="{value:searchParams.distance}"></label>
+      <md-slider ng-model="searchParams.distance" step="{{distanceOptions.step}}" min="{{distanceOptions.min}}" max="{{distanceOptions.max}}" aria-label="distance" ng-change="countJobs()" class="md-primary"></md-slider>
+    </div>
 
-    <md-input-container flex class="md-slider-has-label" ng-if="searchParams.distanceType==='travelTime'">
-      <label translate="jobs.search.travelTime" translate-values="{value:showTimeInH(searchParams.travelTime)}"></label>
-      <md-slider ng-model="searchParams.travelTime" step="{{travelTimeOptions.step}}" min="{{travelTimeOptions.min}}"
-                 max="{{travelTimeOptions.max}}" aria-label="travelTime" ng-change="countJobs()" class="md-primary"></md-slider>
-    </md-input-container>
+    <div flex ng-if="searchParams.distanceType==='travelTime'">
+      <label class="md-slider-label" translate="jobs.search.travelTime" translate-values="{value:showTimeInH(searchParams.travelTime)}"></label>
+      <md-slider ng-model="searchParams.travelTime" step="{{travelTimeOptions.step}}" min="{{travelTimeOptions.min}}" max="{{travelTimeOptions.max}}" aria-label="travelTime" ng-change="countJobs()" class="md-primary"></md-slider>
+    </div>
   </div>
 
   <div flex-sm="50" hide-gt-sm>

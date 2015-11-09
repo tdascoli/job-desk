@@ -62,6 +62,9 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
 }
+.jd-categories md-icon {
+  color: #000;
+}
 .jd-categories .category-title span {
   margin: 0 0 0 16px;
   box-sizing: border-box;
@@ -346,11 +349,15 @@ md-select-menu md-content {
   margin: 5px;
 }
 
-md-input-container.md-slider-has-label label {
+md-input-container.md-slider-has-label label,
+.md-slider-label {
   -webkit-transform: translate3d(0, 1em, 0) scale(0.75);
   transform: translate3d(0, 1em, 0) scale(0.75);
   color: rgba(0,0,0,0.54);
   width: 100%;
+}
+.md-slider-label {
+  font-size: 0.75em;
 }
 
 .toolbar-inverse md-icon {
