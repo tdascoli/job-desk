@@ -349,6 +349,16 @@ module.exports = function (grunt) {
           changeOrigin: false
         },
         {
+          context: '/jobdesk-behind-corporate-proxy',
+          host: 'put.your.proxy.host',
+          port: 8080,
+          https: false,
+          changeOrigin: false,
+          headers: {
+            Host: "arrlee.jobarea.ch" // the real host you want to access
+          }
+        },
+        {
           context: '/jobdeskdev',
           host: 'localhost',
           port: 9200,
@@ -360,6 +370,16 @@ module.exports = function (grunt) {
           host: 'arrlee.jobarea.ch',
           https: false,
           changeOrigin: false
+        },
+        {
+          context: '/arrlee-behind-corporate-proxy',
+          host: 'put.your.proxy.host',
+          port: 8080,
+          https: false,
+          changeOrigin: false,
+          headers: {
+            Host: "arrlee.jobarea.ch" // the real host you want to access
+          }
         }
       ],
       livereload: {
