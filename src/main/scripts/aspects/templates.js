@@ -227,6 +227,8 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('template/job-detail.html',
     "<div ng-class=\"{visited: isVisited(jobDetail._source.jobId)}\" layout=\"row\" layout-wrap layout-align=\"space-between start\" style=\"padding: 10px;\">\n" +
+    "  <!-- JOB ID : for debug purposes -->\n" +
+    "  <span ng-show=\"false\">{{::jobDetail._source.jobId}}</span>\n" +
     "  <div flex flex-sm=\"100\">\n" +
     "      <strong class=\"strong\">{{::getMultiLanguageText(jobDetail._source.title)}}&nbsp;</strong>\n" +
     "      <span ng-if=\"!containsQuota(getMultiLanguageText(jobDetail._source.title))\">\n" +
