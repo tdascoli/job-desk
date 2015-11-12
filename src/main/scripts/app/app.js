@@ -101,7 +101,7 @@
     hotkeysProvider.includeCheatSheet = false;
   });
 
-  app.run(function($http, geolocation, $rootScope, $state, $cookies, $presence){
+  app.run(function($http, geolocation, $rootScope, $state, $cookies, $presence, LocationsService){
 
     $rootScope.mobile=$.browser.mobile;
     $rootScope.appConfig={
@@ -129,9 +129,13 @@
     var config = $cookies.getObject('config');
     if (!angular.isObject(config)) {
       geolocation.getLocation().then(function (data) {
+        // geolocation received from browser
         if ($rootScope.myCoords === undefined) {
           $rootScope.myCoords = {lat: data.coords.latitude, lon: data.coords.longitude};
         }
+      }, function() {
+        // user blocked geolocation or browser doesn't support it
+        $rootScope.myCoords = LocationsService.getDefaultLocation();
       });
     }
     else {

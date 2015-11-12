@@ -54,9 +54,18 @@
         return $http.post(baseUrl + '/location/_search', filter);
       }
 
+      function getDefaultLocation() {
+        // Älggi-Alp : Geographical centre of Switzerland
+        return {
+          lat: 46.798530,
+          lon: 8.231803
+        }
+      }
+
       return {
         getLocation: getLocation,
-        getLocationFromZip: getLocationFromZip
+        getLocationFromZip: getLocationFromZip,
+        getDefaultLocation: getDefaultLocation
       };
 
     });

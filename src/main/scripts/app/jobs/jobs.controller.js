@@ -213,7 +213,7 @@
 
       $scope.$watchCollection('myCoords', function () {
         if ($rootScope.myCoords !== undefined && $scope.searchParams.currentCoords===undefined) {
-          $scope.searchParams.currentCoords = $rootScope.myCoords;
+          setNewCoords($rootScope.myCoords);
         }
       });
 
@@ -264,9 +264,6 @@
 
       if ($scope.searchParams.currentCoords !== undefined) {
         setNewCoords($scope.searchParams.currentCoords);
-      }
-      else {
-        $scope.setMyLocation();
       }
 
       // user isn't active anymore : reset search params
