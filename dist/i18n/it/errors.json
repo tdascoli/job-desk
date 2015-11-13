@@ -1,8 +1,0 @@
-{
-  "errors": {
-    "msg": {
-      "noValidZip": "NPA non valido.",
-      "noValidCoords": "Scegli una località in Svizzera."
-    }
-  }
-}

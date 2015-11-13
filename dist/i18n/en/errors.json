@@ -1,8 +1,0 @@
-{
-  "errors": {
-    "msg": {
-      "noValidZip":"The postal code entered is not valid.",
-      "noValidCoords":"Please choose a place within the map of Switzerland."
-    }
-  }
-}
