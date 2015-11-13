@@ -27,7 +27,7 @@ deploy:
   on:
     repo: alv-ch/job-desk
 after_success:
-- grunt build-prod
+- grunt build-staging
 - cp server.js dist/
 - cp package.json dist/
 - cp -r .openshift dist/
