@@ -461,6 +461,18 @@ module.exports = function (grunt) {
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
+      staging: {
+        options: {
+          dest: 'src/main/scripts/app/app.constants.js'
+        },
+        constants: {
+          ENV: 'staging',
+          VERSION: '<%= yeoman.app.version %>',
+          baseUrl: 'http://jobdeskdev-alvch.rhcloud.com/jobdesk',
+          arrleeUrl: 'http://jobdeskdev-alvch.rhcloud.com/arrlee',
+          supportedLanguages: ['de', 'fr', 'it', 'en']
+        }
+      },
       i18n: {
           options: {
             name: 'job-desk.i18n',
@@ -539,7 +551,6 @@ module.exports = function (grunt) {
     'clean:dist',
     'less',
     'wiredep:app',
-    'ngconstant:prod',
     'ngconstant:i18n',
     'useminPrepare',
     'ngtemplates:dist',
@@ -557,7 +568,18 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
+  grunt.registerTask('build-prod', [
+    'ngconstant:prod',
+    'build'
+  ]);
+
+  grunt.registerTask('build-staging', [
+    'ngconstant:staging',
+    'build'
+  ]);
+
   grunt.registerTask('default', [
     'build'
   ]);
+
 };
