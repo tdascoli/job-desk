@@ -43,7 +43,7 @@
   </div>
 
   <div flex="15" flex-sm="50">
-    <md-radio-group ng-model="searchParams.distanceType" ng-change="countJobs()" ng-init="searchParams.distanceType=appConfig.distanceType">
+    <md-radio-group ng-model="searchParams.distanceType" ng-change="countJobs()" ng-init="searchParams.distanceType=appConfig.distanceType || searchParams.distanceType">
       <md-radio-button value="distance" class="md-primary"><span translate="jobs.search.distanceTypeDistance"></span></md-radio-button>
       <md-radio-button value="travelTime" class="md-primary"><span translate="jobs.search.distanceTypeTravelTime"></span></md-radio-button>
     </md-radio-group>
