@@ -11,7 +11,7 @@
       function resetSearchParams() {
         params.from = 0;
         params.size = 20;
-        params.distanceType = 'distance';
+        params.distanceType = 'travelTime';
         params.distance = 30;
         params.travelTime = 30;
         params.fulltime = 1;
