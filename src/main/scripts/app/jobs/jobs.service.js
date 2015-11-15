@@ -36,7 +36,15 @@
             'filtered': {
               'query': {'match_all': {}},
               'filter': {
-                'and': []
+                'and': [
+                  {
+                    'range': {
+                      'publicationDate': {
+                        'gte': moment().subtract(60, 'days').format('YYYY-MM-DD') //yyyy-MM-dd-HH.mm.ss.000000
+                      }
+                    }
+                  }
+                ]
               }
             }
           },
