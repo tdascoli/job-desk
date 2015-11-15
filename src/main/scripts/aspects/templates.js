@@ -349,6 +349,37 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('template/job-list.html',
+    "<md-dialog aria-label=\"Job List\" ng-cloak>\n" +
+    "  <form>\n" +
+    "    <md-toolbar>\n" +
+    "      <div class=\"md-toolbar-tools\">\n" +
+    "        <h2 translate=\"isco.majorGroups.{{level}}\"></h2>\n" +
+    "        <span flex></span>\n" +
+    "        <md-button class=\"md-icon-button\" ng-click=\"hide()\">\n" +
+    "          <md-icon aria-label=\"Close dialog\">close</md-icon>\n" +
+    "        </md-button>\n" +
+    "      </div>\n" +
+    "    </md-toolbar>\n" +
+    "    <md-dialog-content style=\"width:100%;height:100%;\">\n" +
+    "      <div class=\"md-dialog-content\">\n" +
+    "        <div layout=\"row\" layout-wrap layout-margin layout-align=\"space-between center\" width=\"100%\">\n" +
+    "          <a ng-click=\"answer(minorGroup)\" layout=\"row\" layout-align=\"start center\" flex=\"30\" class=\"jd-job-list\" ng-repeat=\"minorGroup in iscoMinorGroups[level] track by $index\" style=\"height: 66px;\">\n" +
+    "            <md-icon>arrow_forward</md-icon><span flex translate=\"isco.minorGroups.{{minorGroup}}\"></span>\n" +
+    "          </a>\n" +
+    "        </div>\n" +
+    "      </div>\n" +
+    "    </md-dialog-content>\n" +
+    "    <md-dialog-actions layout=\"row\">\n" +
+    "      <md-button ng-click=\"hide()\">\n" +
+    "        Close\n" +
+    "      </md-button>\n" +
+    "    </md-dialog-actions>\n" +
+    "  </form>\n" +
+    "</md-dialog>\n"
+  );
+
+
   $templateCache.put('template/job-print.html',
     "<md-dialog>\n" +
     "  <md-toolbar>\n" +

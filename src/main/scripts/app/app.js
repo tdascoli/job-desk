@@ -54,7 +54,7 @@
     $mdThemingProvider.setDefaultTheme('jobs');
 
     // catch all exceptions and send them to trackJS
-    $provide.decorator("$exceptionHandler", ["$delegate", "$window", function($delegate, $window) {
+    $provide.decorator('$exceptionHandler', ['$delegate', '$window', function($delegate, $window) {
       return function (exception, cause) {
         if ($window.trackJs) {
           $window.trackJs.track(exception);

@@ -522,7 +522,7 @@
           layout : 'custom',
           display : {
             'b': 'backspace',
-            'a': 'check',
+            'a': 'OK',
             'c': 'clear'
           },
           customLayout: {'default':[
@@ -530,7 +530,7 @@
             '7 8 9',
             '4 5 6',
             '1 2 3',
-            '0 {a} {c}'
+            '{a} 0 {c}'
           ]},
           accepted : function(event, keyboard, el){
             var zip = el.value;

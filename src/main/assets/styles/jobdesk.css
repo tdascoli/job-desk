@@ -54,6 +54,7 @@ body {
 }
 .jd-categories md-icon {
   color: #000;
+  margin-left: 0.5em;
 }
 .jd-categories .category-title span {
   margin: 0 0 0 16px;
@@ -255,7 +256,8 @@ text {
 .ui-keyboard-text {
   font-family: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-.ui-keyboard-actionkey .ui-keyboard-text {
+.ui-keyboard-actionkey.ui-keyboard-cancel .ui-keyboard-text,
+.ui-keyboard-actionkey.ui-keyboard-bksp .ui-keyboard-text {
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
@@ -276,6 +278,9 @@ text {
   height: 24px;
   width: 24px;
 }
+.ui-keyboard-actionkey.ui-keyboard-accept .ui-keyboard-text {
+  font-weight: 700;
+}
 .ui-keyboard-preview-wrapper input {
   border: none;
   background: transparent;
@@ -294,6 +299,9 @@ text {
   -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
+}
+label {
+  color: #000000 !important;
 }
 .form-block md-input-container,
 .form-block md-select,
@@ -315,7 +323,7 @@ md-select-menu md-content {
 }
 .jd-floating-toolbar md-radio-button .md-label {
   font-size: 0.75em;
-  color: rgba(0, 0, 0, 0.54);
+  color: #000000;
 }
 .jd-floating-toolbar md-radio-button {
   margin: 5px;
@@ -324,14 +332,14 @@ md-input-container.md-slider-has-label label,
 .md-slider-label {
   -webkit-transform: translate3d(0, 1em, 0) scale(0.75);
   transform: translate3d(0, 1em, 0) scale(0.75);
-  color: rgba(0, 0, 0, 0.54);
+  color: #000000;
   width: 100%;
 }
 .md-slider-label {
   font-size: 0.75em;
 }
 .toolbar-inverse md-icon {
-  color: rgba(0, 0, 0, 0.54);
+  color: #000000;
 }
 .jd-floating-toolbar {
   height: 5em;
@@ -405,11 +413,14 @@ label {
 .jd-btn-block {
   width: 100%;
 }
+.jd-job-list {
+  text-align: left;
+}
 ::-webkit-scrollbar {
   display: none;
 }
 .visited {
-  background-color: #EEEEEE;
+  background-color: #ccc;
 }
 @media print {
   body #topnav,
