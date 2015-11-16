@@ -9,3 +9,5 @@ node_modules
 src/test/coverage
 
 src/main/scripts/app/app.constants.secure.js
+
+dist
