@@ -364,8 +364,8 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "    <md-dialog-content style=\"width:100%;height:100%;\">\n" +
     "      <div class=\"md-dialog-content\">\n" +
     "        <div layout=\"row\" layout-wrap layout-margin layout-align=\"space-between center\" width=\"100%\">\n" +
-    "          <a ng-click=\"answer(minorGroup)\" layout=\"row\" layout-align=\"start center\" flex=\"30\" class=\"jd-job-list\" ng-repeat=\"minorGroup in iscoMinorGroups[level] track by $index\" style=\"height: 66px;\">\n" +
-    "            <md-icon>arrow_forward</md-icon><span flex translate=\"isco.minorGroups.{{minorGroup}}\"></span>\n" +
+    "          <a ng-click=\"answer(minorGroup)\" layout=\"row\" layout-align=\"start center\" flex=\"30\" class=\"jd-job-list\" ng-repeat=\"minorGroup in iscoMinorGroups[level] track by $index\" >\n" +
+    "            <md-icon>arrow_forward</md-icon>&nbsp;<span flex translate=\"isco.minorGroups.{{minorGroup}}\"></span>\n" +
     "          </a>\n" +
     "        </div>\n" +
     "      </div>\n" +
