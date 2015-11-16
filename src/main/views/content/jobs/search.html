@@ -10,11 +10,11 @@
 
 
     <md-input-container ng-if="searchParams.iscoMajorGroup">
-      <label><span translate="isco.{{searchParams.iscoMajorGroup}}000"></span></label>
-      <md-select ng-model="searchParams.iscoGroupLevel2" ng-change="countJobs()">
+      <label><span translate="isco.majorGroups.{{searchParams.iscoMajorGroup}}"></span></label>
+      <md-select ng-model="searchParams.iscoGroupLevel3" ng-change="countJobs()">
         <md-option value="0"><span translate="jobs.search.allSubGroups"></span></md-option>
-        <md-option ng-repeat="isco2 in iscoGroupLevel2[searchParams.iscoMajorGroup]" value="{{isco2.code}}"><span translate="{{isco2.text}}"></span></md-option>
-        <md-option value="-1" ng-click="searchParams.iscoMajorGroup='';searchParams.iscoGroupLevel2='';countJobs()"><md-icon>keyboard_arrow_left</md-icon><span class="jd-select-reset" translate="jobs.search.disableGroup"></span></md-option>
+        <md-option ng-repeat="minorGroup in iscoMinorGroups[searchParams.iscoMajorGroup]" value="{{minorGroup}}"><span translate="isco.minorGroups.{{minorGroup}}"></span></md-option>
+        <md-option value="-1" ng-click="searchParams.iscoMajorGroup='';searchParams.iscoGroupLevel3='';countJobs()"><md-icon>keyboard_arrow_left</md-icon><span class="jd-select-reset" translate="jobs.search.disableGroup"></span></md-option>
       </md-select>
     </md-input-container>
 
@@ -43,7 +43,7 @@
   </div>
 
   <div flex="15" flex-sm="50">
-    <md-radio-group ng-model="searchParams.distanceType" ng-change="countJobs()">
+    <md-radio-group ng-model="searchParams.distanceType" ng-change="countJobs()" ng-init="searchParams.distanceType=appConfig.distanceType || searchParams.distanceType">
       <md-radio-button value="distance" class="md-primary"><span translate="jobs.search.distanceTypeDistance"></span></md-radio-button>
       <md-radio-button value="travelTime" class="md-primary"><span translate="jobs.search.distanceTypeTravelTime"></span></md-radio-button>
     </md-radio-group>
@@ -69,7 +69,7 @@
   </div>
 </div>
 
-<div align="center" hide-sm>
+<div align="center" class="no-scrollbar" hide-sm>
   <swiss-map id="map"></swiss-map>
 </div>
 

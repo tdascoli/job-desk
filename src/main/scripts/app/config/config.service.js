@@ -12,7 +12,8 @@
         educations:true,
         apprenticeships:true,
         localInfo:'',
-        showMunicipalities:true
+        showMunicipalities:false,
+        distanceType:'travelTime'
       };
 
       function init(){

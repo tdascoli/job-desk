@@ -11,12 +11,13 @@
       function resetSearchParams() {
         params.from = 0;
         params.size = 20;
-        params.distanceType = 'distance';
+        params.distanceType = 'travelTime';
         params.distance = 30;
         params.travelTime = 30;
         params.fulltime = 1;
         params.iscoMajorGroup = '';
         params.iscoGroupLevel2 = '';
+        params.iscoGroupLevel3 = '';
         params.zips = undefined;
         params.currentZip = '';
         params.currentCoords = undefined;
@@ -48,6 +49,9 @@
         }
         if (params.iscoGroupLevel2 !== '' && params.iscoGroupLevel2 !== 0 && params.iscoGroupLevel2 !== '0') {
           filter.query.filtered.query = {'term': {'isco.groupLevel2': params.iscoGroupLevel2}};
+        }
+        if (params.iscoGroupLevel3 !== '' && params.iscoGroupLevel3 !== 0 && params.iscoGroupLevel3 !== '0') {
+          filter.query.filtered.query = {'term': {'isco.groupLevel3': params.iscoGroupLevel3}};
         }
         // FILTER
         if (params.distanceType === 'distance') {

@@ -18,7 +18,7 @@
 
       $scope.courseLanguages=[{text:'educations.result.languages.ger',code:'ger'},{text:'educations.result.languages.fre',code:'fre'},{text:'educations.result.languages.ita',code:'ita'},{text:'educations.result.languages.eng',code:'eng'},{text:'educations.result.languages.other',code:'other'}];
 
-      $scope.swissdocMajorGroup=[{text:'swissdoc.0-100-0-0',code:'1',img:'jobs/isco6.png'},{text:'swissdoc.0-200-0-0',code:'2',img:'jobs/isco6.png'},{text:'swissdoc.0-300-0-0',code:'3',img:'jobs/isco6.png'},{text:'swissdoc.0-400-0-0',code:'4',img:'jobs/isco6.png'},{text:'swissdoc.0-500-0-0',code:'5',img:'jobs/isco6.png'},{text:'swissdoc.0-600-0-0',code:'6',img:'jobs/isco6.png'},{text:'swissdoc.0-700-0-0',code:'7',img:'jobs/isco6.png'},{text:'swissdoc.0-800-0-0',code:'8',img:'jobs/isco6.png'}];
+      $scope.swissdocMajorGroup=[{text:'swissdoc.0-100-0-0',code:'1',img:'apprenticeships/swissdoc1.png'},{text:'swissdoc.0-200-0-0',code:'2',img:'apprenticeships/swissdoc2.png'},{text:'swissdoc.0-300-0-0',code:'3',img:'apprenticeships/swissdoc3.png'},{text:'swissdoc.0-400-0-0',code:'4',img:'apprenticeships/swissdoc4.png'},{text:'swissdoc.0-500-0-0',code:'5',img:'apprenticeships/swissdoc5.png'},{text:'swissdoc.0-600-0-0',code:'6',img:'apprenticeships/swissdoc6.png'},{text:'swissdoc.0-700-0-0',code:'7',img:'apprenticeships/swissdoc7.png'},{text:'swissdoc.0-800-0-0',code:'8',img:'apprenticeships/swissdoc8.png'}];
 
       $scope.swissdocGroupLevel2=[];
       $scope.swissdocGroupLevel2['1']=[

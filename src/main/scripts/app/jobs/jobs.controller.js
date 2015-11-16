@@ -12,78 +12,164 @@
       $scope.travelTimeOptions = {min: 10, max: 120, step: 5, value: 30};
 
       $scope.iscoMajorGroup = [
-        {text: 'isco.1000', code: '1',img:'jobs/isco1.png'},
-        {text: 'isco.2000', code: '2',img:'jobs/isco2.png'}, {
-        text: 'isco.3000',
-        code: '3',img:'jobs/isco3.png'
-      },
-        {text: 'isco.4000', code: '4',img:'jobs/isco4.png'},
-        {text: 'isco.5000', code: '5',img:'jobs/isco5.png'}, {
-        text: 'isco.6000',
-        code: '6',img:'jobs/isco6.png'
-      }, {text: 'isco.7000', code: '7',img:'jobs/isco7.png'},
-        {text: 'isco.8000', code: '8',img:'jobs/isco8.png'},
-        {text: 'isco.9000', code: '9',img:'jobs/isco9.png'}];
-
-      $scope.iscoGroupLevel2 = [];
-      $scope.iscoGroupLevel2['1'] = [
-        {code: '11', text: 'isco.1100'},
-        {code: '12', text: 'isco.1200'},
-        {code: '13', text: 'isco.1300'},
-        {code: '14', text: 'isco.1400'}
-      ];
-      $scope.iscoGroupLevel2['2'] = [
-        {code: '21', text: 'isco.2100'},
-        {code: '22', text: 'isco.2200'},
-        {code: '23', text: 'isco.2300'},
-        {code: '24', text: 'isco.2400'},
-        {code: '25', text: 'isco.2500'},
-        {code: '26', text: 'isco.2600'}
-      ];
-      $scope.iscoGroupLevel2['3'] = [
-        {code: '31', text: 'isco.3100'},
-        {code: '32', text: 'isco.3200'},
-        {code: '33', text: 'isco.3300'},
-        {code: '34', text: 'isco.3400'},
-        {code: '35', text: 'isco.3500'}
-      ];
-      $scope.iscoGroupLevel2['4'] = [
-        {code: '41', text: 'isco.4100'},
-        {code: '42', text: 'isco.4200'},
-        {code: '43', text: 'isco.4300'},
-        {code: '44', text: 'isco.4400'}
-      ];
-      $scope.iscoGroupLevel2['5'] = [
-        {code: '51', text: 'isco.5100'},
-        {code: '52', text: 'isco.5200'},
-        {code: '53', text: 'isco.5300'},
-        {code: '54', text: 'isco.5400'}
-      ];
-      $scope.iscoGroupLevel2['6'] = [
-        {code: '61', text: 'isco.6100'},
-        {code: '62', text: 'isco.6200'},
-        {code: '63', text: 'isco.6300'}
-      ];
-      $scope.iscoGroupLevel2['7'] = [
-        {code: '71', text: 'isco.7100'},
-        {code: '72', text: 'isco.7200'},
-        {code: '73', text: 'isco.7300'},
-        {code: '74', text: 'isco.7400'},
-        {code: '75', text: 'isco.7500'}
-      ];
-      $scope.iscoGroupLevel2['8'] = [
-        {code: '81', text: 'isco.8100'},
-        {code: '82', text: 'isco.8200'},
-        {code: '83', text: 'isco.8300'}
-      ];
-      $scope.iscoGroupLevel2['9'] = [
-        {code: '91', text: 'isco.9100'},
-        {code: '92', text: 'isco.9200'},
-        {code: '93', text: 'isco.9300'},
-        {code: '94', text: 'isco.9400'},
-        {code: '95', text: 'isco.9500'},
-        {code: '96', text: 'isco.9600'}
-      ];
+        {text: 'isco.majorGroups.1', code: '1', img: 'jobs/isco1.png'},
+        {text: 'isco.majorGroups.2', code: '2', img: 'jobs/isco2.png'},
+        {text: 'isco.majorGroups.3', code: '3', img: 'jobs/isco3.png'},
+        {text: 'isco.majorGroups.4', code: '4', img: 'jobs/isco4.png'},
+        {text: 'isco.majorGroups.5', code: '5', img: 'jobs/isco5.png'},
+        {text: 'isco.majorGroups.6', code: '6', img: 'jobs/isco6.png'},
+        {text: 'isco.majorGroups.7', code: '7', img: 'jobs/isco7.png'},
+        {text: 'isco.majorGroups.8', code: '8', img: 'jobs/isco8.png'},
+        {text: 'isco.majorGroups.9', code: '9', img: 'jobs/isco9.png'}];
+      $scope.iscoMinorGroups = {
+        '1': [
+          '111',
+          '112',
+          '121',
+          '122',
+          '130',
+          '131',
+          '132',
+          '133',
+          '134',
+          '141',
+          '142',
+          '143'
+        ],
+        '2': [
+          '211',
+          '212',
+          '213',
+          '214',
+          '215',
+          '216',
+          '221',
+          '222',
+          '223',
+          '224',
+          '225',
+          '226',
+          '231',
+          '232',
+          '233',
+          '234',
+          '235',
+          '241',
+          '242',
+          '243',
+          '251',
+          '252',
+          '261',
+          '262',
+          '263',
+          '264',
+          '265'
+        ],
+        '3': [
+          '311',
+          '312',
+          '313',
+          '314',
+          '315',
+          '321',
+          '322',
+          '323',
+          '324',
+          '325',
+          '331',
+          '332',
+          '333',
+          '334',
+          '335',
+          '341',
+          '342',
+          '343',
+          '351',
+          '352'
+        ],
+        '4': [
+          '411',
+          '412',
+          '413',
+          '420',
+          '421',
+          '422',
+          '431',
+          '432',
+          '441'
+        ],
+        '5': [
+          '511',
+          '512',
+          '513',
+          '514',
+          '515',
+          '516',
+          '521',
+          '522',
+          '523',
+          '524',
+          '531',
+          '532',
+          '541'
+        ],
+        '6': [
+          '611',
+          '612',
+          '613',
+          '621',
+          '622',
+          '631',
+          '632',
+          '633',
+          '634'
+        ],
+        '7': [
+          '711',
+          '712',
+          '713',
+          '721',
+          '722',
+          '723',
+          '731',
+          '732',
+          '741',
+          '742',
+          '751',
+          '752',
+          '753',
+          '754'
+        ],
+        '8': [
+          '811',
+          '812',
+          '813',
+          '814',
+          '815',
+          '816',
+          '817',
+          '818',
+          '821',
+          '831',
+          '832',
+          '833',
+          '834',
+          '835'
+        ],
+        '9': [
+          '911',
+          '912',
+          '921',
+          '931',
+          '932',
+          '933',
+          '941',
+          '951',
+          '952',
+          '961',
+          '962'
+        ]
+      };
 
       $scope.count = 0;
       $scope.nearestZip = '';
@@ -93,19 +179,192 @@
 
       $scope.setIscoGroup = function (isco) {
         $scope.searchParams.iscoMajorGroup = isco;
-        $scope.searchParams.iscoGroupLevel2 = '';
+        $scope.searchParams.iscoGroupLevel3 = '';
+        $state.go('job-search');
+      };
+      $scope.setIscoMinorGroup = function (majorGroup,minorGroup) {
+        $scope.searchParams.iscoMajorGroup = majorGroup;
+        $scope.searchParams.iscoGroupLevel3 = minorGroup;
         $state.go('job-search');
       };
 
-      $scope.showIscoLevel4 = function () {
-        $mdDialog.show(
-          $mdDialog.alert()
-            .parent(angular.element(document.body))
-            .content($translate.instant('isco.1000'))
-            .ariaLabel($translate.instant('isco.1000'))
-            .ok('OK')
-        );
+      $scope.showIscoUnitGroup = function (ev, level) {
+        $mdDialog.show({
+          controller: DialogController,
+          templateUrl: 'views/template/job-list.html',
+          locals: {
+            level: level
+          },
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose: true
+        })
+        .then(function(answer) {
+          if (answer>0) {
+            $scope.setIscoMinorGroup(level, answer);
+          }
+        });
       };
+      function DialogController($scope, $mdDialog, level) {
+        $scope.level = level;
+        $scope.iscoMinorGroups = {
+          '1': [
+            '111',
+            '112',
+            '121',
+            '122',
+            '130',
+            '131',
+            '132',
+            '133',
+            '134',
+            '141',
+            '142',
+            '143'
+          ],
+          '2': [
+            '211',
+            '212',
+            '213',
+            '214',
+            '215',
+            '216',
+            '221',
+            '222',
+            '223',
+            '224',
+            '225',
+            '226',
+            '231',
+            '232',
+            '233',
+            '234',
+            '235',
+            '241',
+            '242',
+            '243',
+            '251',
+            '252',
+            '261',
+            '262',
+            '263',
+            '264',
+            '265'
+          ],
+          '3': [
+            '311',
+            '312',
+            '313',
+            '314',
+            '315',
+            '321',
+            '322',
+            '323',
+            '324',
+            '325',
+            '331',
+            '332',
+            '333',
+            '334',
+            '335',
+            '341',
+            '342',
+            '343',
+            '351',
+            '352'
+          ],
+          '4': [
+            '411',
+            '412',
+            '413',
+            '420',
+            '421',
+            '422',
+            '431',
+            '432',
+            '441'
+          ],
+          '5': [
+            '511',
+            '512',
+            '513',
+            '514',
+            '515',
+            '516',
+            '521',
+            '522',
+            '523',
+            '524',
+            '531',
+            '532',
+            '541'
+          ],
+          '6': [
+            '611',
+            '612',
+            '613',
+            '621',
+            '622',
+            '631',
+            '632',
+            '633',
+            '634'
+          ],
+          '7': [
+            '711',
+            '712',
+            '713',
+            '721',
+            '722',
+            '723',
+            '731',
+            '732',
+            '741',
+            '742',
+            '751',
+            '752',
+            '753',
+            '754'
+          ],
+          '8': [
+            '811',
+            '812',
+            '813',
+            '814',
+            '815',
+            '816',
+            '817',
+            '818',
+            '821',
+            '831',
+            '832',
+            '833',
+            '834',
+            '835'
+          ],
+          '9': [
+            '911',
+            '912',
+            '921',
+            '931',
+            '932',
+            '933',
+            '941',
+            '951',
+            '952',
+            '961',
+            '962'
+          ]
+        };
+
+        $scope.hide = function () {
+          $mdDialog.hide();
+        };
+
+        $scope.answer = function(answer) {
+          $mdDialog.hide(answer);
+        };
+      }
 
       $scope.countJobs = function () {
         $scope.idle=true;

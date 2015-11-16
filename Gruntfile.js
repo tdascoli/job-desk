@@ -27,7 +27,7 @@ module.exports = function (grunt) {
       dist: 'dist'
     },
     autoprefixer: {
-      // src and dest is configured in a subtask called "generated" by usemin
+      // src and dest is configured in a subtask called 'generated' by usemin
     },
     wiredep: {
       app: {
@@ -120,10 +120,10 @@ module.exports = function (grunt) {
       ]
     },
     concat: {
-      // src and dest is configured in a subtask called "generated" by usemin
+      // src and dest is configured in a subtask called 'generated' by usemin
     },
     uglifyjs: {
-      // src and dest is configured in a subtask called "generated" by usemin
+      // src and dest is configured in a subtask called 'generated' by usemin
     },
     rev: {
       dist: {
@@ -181,7 +181,7 @@ module.exports = function (grunt) {
       }
     },
     cssmin: {
-      // src and dest is configured in a subtask called "generated" by usemin
+      // src and dest is configured in a subtask called 'generated' by usemin
     },
     less: {
       main: {
@@ -355,7 +355,7 @@ module.exports = function (grunt) {
           https: false,
           changeOrigin: false,
           headers: {
-            Host: "arrlee.jobarea.ch" // the real host you want to access
+            Host: 'arrlee.jobarea.ch' // the real host you want to access
           }
         },
         {
@@ -378,7 +378,7 @@ module.exports = function (grunt) {
           https: false,
           changeOrigin: false,
           headers: {
-            Host: "arrlee.jobarea.ch" // the real host you want to access
+            Host: 'arrlee.jobarea.ch' // the real host you want to access
           }
         }
       ],

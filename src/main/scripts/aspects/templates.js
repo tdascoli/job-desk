@@ -260,9 +260,8 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "                <br />\n" +
     "\n" +
     "                <strong class=\"fake-label\" translate=\"jobs.result.contractDuration\"></strong><br />\n" +
-    "                <span ng-if=\"!jobDetail._source.permanentJob && jobDetail._source.endDate\" translate=\"untilDate\" translate-values=\"{value: jobDetail._source.endDate}\"></span>\n" +
-    "                <span ng-if=\"!jobDetail._source.permanentJob && !jobDetail._source.endDate\" translate=\"jobs.result.nonPermanent\"></span>\n" +
-    "                <span ng-if=\"jobDetail._source.permanentJob\" translate=\"jobs.result.permanent\"></span>\n" +
+    "                <span ng-if=\"jobDetail._source.endDate\" translate=\"jobs.result.untilDate\" translate-values=\"{value: jobDetail._source.endDate}\"></span>\n" +
+    "                <span ng-if=\"!jobDetail._source.endDate\" translate=\"jobs.result.permanent\"></span>\n" +
     "              </div>\n" +
     "\n" +
     "              <!-- Sprachen -->\n" +
@@ -319,9 +318,9 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "                <br />\n" +
     "\n" +
     "                <strong class=\"fake-label\" translate=\"jobs.result.contractDuration\"></strong><br />\n" +
-    "                <span ng-if=\"!jobDetail._source.permanentJob && jobDetail._source.endDate\" translate=\"untilDate\" translate-values=\"{value: jobDetail._source.endDate}\"></span>\n" +
-    "                <span ng-if=\"!jobDetail._source.permanentJob && !jobDetail._source.endDate\" translate=\"jobs.result.nonPermanent\"></span>\n" +
-    "                <span ng-if=\"jobDetail._source.permanentJob\" translate=\"jobs.result.permanent\"></span><br />\n" +
+    "                <span ng-if=\"jobDetail._source.endDate\" translate=\"jobs.result.untilDate\" translate-values=\"{value: jobDetail._source.endDate}\"></span>\n" +
+    "                <span ng-if=\"!jobDetail._source.endDate\" translate=\"jobs.result.permanent\"></span>\n" +
+    "                <br />\n" +
     "\n" +
     "                <strong>{{::jobDetail._source.company.name}}</strong>\n" +
     "              </div>\n" +
@@ -346,6 +345,37 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "</div>\n" +
     "\n" +
     "<md-divider></md-divider>\n"
+  );
+
+
+  $templateCache.put('template/job-list.html',
+    "<md-dialog aria-label=\"Job List\" ng-cloak>\n" +
+    "  <form>\n" +
+    "    <md-toolbar>\n" +
+    "      <div class=\"md-toolbar-tools\">\n" +
+    "        <h2 translate=\"isco.majorGroups.{{level}}\"></h2>\n" +
+    "        <span flex></span>\n" +
+    "        <md-button class=\"md-icon-button\" ng-click=\"hide()\">\n" +
+    "          <md-icon aria-label=\"Close dialog\">close</md-icon>\n" +
+    "        </md-button>\n" +
+    "      </div>\n" +
+    "    </md-toolbar>\n" +
+    "    <md-dialog-content style=\"width:100%;height:100%;\">\n" +
+    "      <div class=\"md-dialog-content\">\n" +
+    "        <div layout=\"row\" layout-wrap layout-margin layout-align=\"space-between center\" width=\"100%\">\n" +
+    "          <a ng-click=\"answer(minorGroup)\" layout=\"row\" layout-align=\"start center\" flex=\"30\" class=\"jd-job-list\" ng-repeat=\"minorGroup in iscoMinorGroups[level] track by $index\" >\n" +
+    "            <md-icon>arrow_forward</md-icon>&nbsp;<span flex translate=\"isco.minorGroups.{{minorGroup}}\"></span>\n" +
+    "          </a>\n" +
+    "        </div>\n" +
+    "      </div>\n" +
+    "    </md-dialog-content>\n" +
+    "    <md-dialog-actions layout=\"row\">\n" +
+    "      <md-button ng-click=\"hide()\">\n" +
+    "        Close\n" +
+    "      </md-button>\n" +
+    "    </md-dialog-actions>\n" +
+    "  </form>\n" +
+    "</md-dialog>\n"
   );
 
 
@@ -384,9 +414,8 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "          <br />\n" +
     "\n" +
     "          <strong class=\"fake-label\" translate=\"jobs.result.contractDuration\"></strong> :\n" +
-    "          <span ng-if=\"!jobDetail._source.permanentJob && jobDetail._source.endDate\" translate=\"untilDate\" translate-values=\"{value: jobDetail._source.endDate}\"></span>\n" +
-    "          <span ng-if=\"!jobDetail._source.permanentJob && !jobDetail._source.endDate\" translate=\"jobs.result.nonPermanent\"></span>\n" +
-    "          <span ng-if=\"jobDetail._source.permanentJob\" translate=\"jobs.result.permanent\"></span>\n" +
+    "          <span ng-if=\"jobDetail._source.endDate\" translate=\"jobs.result.untilDate\" translate-values=\"{value: jobDetail._source.endDate}\"></span>\n" +
+    "          <span ng-if=\"!jobDetail._source.endDate\" translate=\"jobs.result.permanent\"></span>\n" +
     "\n" +
     "        <!-- Sprachen -->\n" +
     "          <div ng-repeat=\"language in jobDetail._source.languages\" ng-if=\"language.languageCode\">\n" +
@@ -442,9 +471,8 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "          <br />\n" +
     "\n" +
     "          <strong class=\"fake-label\" translate=\"jobs.result.contractDuration\"></strong> :\n" +
-    "          <span ng-if=\"!jobDetail._source.permanentJob && jobDetail._source.endDate\" translate=\"untilDate\" translate-values=\"{value: jobDetail._source.endDate}\"></span>\n" +
-    "          <span ng-if=\"!jobDetail._source.permanentJob && !jobDetail._source.endDate\" translate=\"jobs.result.nonPermanent\"></span>\n" +
-    "          <span ng-if=\"jobDetail._source.permanentJob\" translate=\"jobs.result.permanent\"></span><br />\n" +
+    "          <span ng-if=\"jobDetail._source.endDate\" translate=\"jobs.result.untilDate\" translate-values=\"{value: jobDetail._source.endDate}\"></span>\n" +
+    "          <span ng-if=\"!jobDetail._source.endDate\" translate=\"jobs.result.permanent\"></span>\n" +
     "\n" +
     "          <strong>{{::jobDetail._source.company.name}}</strong>\n" +
     "        </div>\n" +
