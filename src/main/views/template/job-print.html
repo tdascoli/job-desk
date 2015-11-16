@@ -32,9 +32,8 @@
           <br />
 
           <strong class="fake-label" translate="jobs.result.contractDuration"></strong> :
-          <span ng-if="!jobDetail._source.permanentJob && jobDetail._source.endDate" translate="untilDate" translate-values="{value: jobDetail._source.endDate}"></span>
-          <span ng-if="!jobDetail._source.permanentJob && !jobDetail._source.endDate" translate="jobs.result.nonPermanent"></span>
-          <span ng-if="jobDetail._source.permanentJob" translate="jobs.result.permanent"></span>
+          <span ng-if="jobDetail._source.endDate" translate="jobs.result.untilDate" translate-values="{value: jobDetail._source.endDate}"></span>
+          <span ng-if="!jobDetail._source.endDate" translate="jobs.result.permanent"></span>
 
         <!-- Sprachen -->
           <div ng-repeat="language in jobDetail._source.languages" ng-if="language.languageCode">
@@ -90,9 +89,8 @@
           <br />
 
           <strong class="fake-label" translate="jobs.result.contractDuration"></strong> :
-          <span ng-if="!jobDetail._source.permanentJob && jobDetail._source.endDate" translate="untilDate" translate-values="{value: jobDetail._source.endDate}"></span>
-          <span ng-if="!jobDetail._source.permanentJob && !jobDetail._source.endDate" translate="jobs.result.nonPermanent"></span>
-          <span ng-if="jobDetail._source.permanentJob" translate="jobs.result.permanent"></span><br />
+          <span ng-if="jobDetail._source.endDate" translate="jobs.result.untilDate" translate-values="{value: jobDetail._source.endDate}"></span>
+          <span ng-if="!jobDetail._source.endDate" translate="jobs.result.permanent"></span>
 
           <strong>{{::jobDetail._source.company.name}}</strong>
         </div>
