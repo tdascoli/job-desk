@@ -555,7 +555,7 @@
           preventPaste : true,  // prevent ctrl-v and right click
           autoAccept : false,
           usePreview: false,
-          stayOpen : true
+          stayOpen : false
         });
       }
     };
