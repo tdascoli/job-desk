@@ -38,6 +38,7 @@
       $scope.currentZip = $scope.searchParams.currentZip;
       $scope.heatmap = undefined;
       $scope.idle=false;
+      $scope.lastOpenedJob = {'scope' : null};
 
       $scope.setIscoGroup = function (isco) {
         $scope.searchParams.iscoMajorGroup = isco;

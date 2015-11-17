@@ -16,7 +16,7 @@
 </div>
 
 <div class="infinite-scroll no-scrollbar" infinite-scroll="loadMoreResults()" infinte-scroll-item=".jd-detail">
-    <div class="jd-detail" job-detail="jobDetail" ng-repeat="jobDetail in jobs track by jobDetail._id"></div>
+    <div class="jd-detail" job-detail="jobDetail" last-opened-job="lastOpenedJob" ng-repeat="jobDetail in jobs track by jobDetail._id"></div>
     <div ng-if="idle" layout="row" layout-sm="column" layout-align="space-around">
       <md-progress-circular md-mode="indeterminate"></md-progress-circular>
     </div>

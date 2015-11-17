@@ -102,7 +102,9 @@
       }
 
       function addVisitedJob(jobId) {
-        visitedJobs.push(jobId);
+        if (!isVisited(jobId)) {
+          visitedJobs.push(jobId);
+        }
       }
 
       function isVisited(jobId) {

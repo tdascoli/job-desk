@@ -22,7 +22,8 @@
       priority: 10,
       restrict: 'A',
       scope: {
-        jobDetail: '='
+        jobDetail: '=',
+        lastOpenedJob: '='
       },
       templateUrl: 'template/job-detail.html',
       link: function(scope){
@@ -37,7 +38,13 @@
         };
 
         scope.showDetail=function(jobId){
-          JobsService.addVisitedJob(jobId);
+          if (!scope.showDetailContent) {
+            JobsService.addVisitedJob(jobId);
+            if (scope.lastOpenedJob.scope && scope.lastOpenedJob.scope !== scope) {
+              scope.lastOpenedJob.scope.showDetailContent = false;
+            }
+            scope.lastOpenedJob.scope = scope;
+          }
           scope.showDetailContent=!scope.showDetailContent;
         };
 
