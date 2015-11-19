@@ -219,7 +219,7 @@
         $mdDialog.show(
           $mdDialog.alert()
             .parent(angular.element(document.body))
-            .content($translate.instant(errorKey))
+            .textContent($translate.instant(errorKey))
             .ariaLabel($translate.instant(errorKey))
             .ok('OK')
         );
