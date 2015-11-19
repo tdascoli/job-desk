@@ -340,7 +340,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "      </span>\n" +
     "    </md-button>\n" +
     "    <p></p>\n" +
-    "    <md-button flex ng-click=\"showPrintDialog()\" class=\"md-raised jd-btn-block\"><md-icon>print</md-icon>&nbsp;<span translate=\"jobs.result.print\"></span></md-button>\n" +
+    "    <md-button flex ng-click=\"showPrintDialog(jobDetail._source.jobId)\" class=\"md-raised jd-btn-block\"><md-icon>print</md-icon>&nbsp;<span translate=\"jobs.result.print\"></span></md-button>\n" +
     "  </div>\n" +
     "</div>\n" +
     "\n" +

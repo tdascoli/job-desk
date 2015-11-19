@@ -55,7 +55,8 @@
 
         };
 
-        scope.showPrintDialog = function() {
+        scope.showPrintDialog = function(jobId) {
+          JobsService.addVisitedJob(jobId);
           $mdDialog.show({
             parent: angular.element(document.body),
             templateUrl: 'views/template/job-print.html',
