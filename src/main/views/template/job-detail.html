@@ -10,9 +10,9 @@
       <span ng-if="onlineSinceDate(jobDetail._source.publicationDate)>1" translate="jobs.result.onlineSince" translate-values="{value: onlineSinceDate(jobDetail._source.publicationDate)}"></span>
       <span ng-if="onlineSinceDate(jobDetail._source.publicationDate)===1" translate="jobs.result.onlineSinceOneDay"></span>
 
-      <p ng-show="!showDetailContent" ng-text-truncate="formatTextToShow(getMultiLanguageText(jobDetail._source.description))" ng-tt-words-threshold="20" ng-tt-no-toggling></p>
+      <p ng-if="!showDetailContent" ng-text-truncate="formatTextToShow(getMultiLanguageText(jobDetail._source.description))" ng-tt-words-threshold="20" ng-tt-no-toggling></p>
 
-      <div ng-show="showDetailContent">
+      <div ng-if="showDetailContent" class="jd-job-detail">
 
         <span ng-switch="jobDetail._source.external">
 

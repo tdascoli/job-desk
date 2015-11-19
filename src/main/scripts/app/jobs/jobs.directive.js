@@ -26,7 +26,7 @@
         lastOpenedJob: '='
       },
       templateUrl: 'template/job-detail.html',
-      link: function(scope){
+      link: function(scope, element){
         scope.showDetailContent=false;
 
         scope.getMultiLanguageText=function(text){
@@ -44,8 +44,15 @@
               scope.lastOpenedJob.scope.showDetailContent = false;
             }
             scope.lastOpenedJob.scope = scope;
+
+            // timeout to wait to the end of digest cycle
+            $timeout(function() {
+              // scroll to the opened job
+              element.parent().scrollTop(element.parent().scrollTop() + element.position().top - 100);
+            }, 0);
           }
           scope.showDetailContent=!scope.showDetailContent;
+
         };
 
         scope.showPrintDialog = function() {

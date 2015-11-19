@@ -422,6 +422,17 @@ label {
 .visited {
   background-color: #ccc;
 }
+.jd-job-detail.ng-enter {
+  -webkit-transition: linear 0.6s;
+  -moz-transition: linear 0.6s;
+  -ms-transition: linear 0.6s;
+  -o-transition: linear 0.6s;
+  transition: linear 0.6s;
+  opacity: 0;
+}
+.jd-job-detail.ng-enter-active {
+  opacity: 1;
+}
 @media print {
   body #topnav,
   body #main {

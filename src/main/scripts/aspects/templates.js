@@ -238,9 +238,9 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "      <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: onlineSinceDate(jobDetail._source.publicationDate)}\"></span>\n" +
     "      <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)===1\" translate=\"jobs.result.onlineSinceOneDay\"></span>\n" +
     "\n" +
-    "      <p ng-show=\"!showDetailContent\" ng-text-truncate=\"formatTextToShow(getMultiLanguageText(jobDetail._source.description))\" ng-tt-words-threshold=\"20\" ng-tt-no-toggling></p>\n" +
+    "      <p ng-if=\"!showDetailContent\" ng-text-truncate=\"formatTextToShow(getMultiLanguageText(jobDetail._source.description))\" ng-tt-words-threshold=\"20\" ng-tt-no-toggling></p>\n" +
     "\n" +
-    "      <div ng-show=\"showDetailContent\">\n" +
+    "      <div ng-if=\"showDetailContent\" class=\"jd-job-detail\">\n" +
     "\n" +
     "        <span ng-switch=\"jobDetail._source.external\">\n" +
     "\n" +
