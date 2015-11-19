@@ -311,17 +311,6 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "                <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong><br />\n" +
     "                <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />\n" +
     "\n" +
-    "                <strong class=\"fake-label\" translate=\"jobs.result.entryDate\"></strong><br />\n" +
-    "                <span ng-if=\"jobDetail._source.availableNow\" translate=\"jobs.result.availableNow\"></span>\n" +
-    "                <span ng-if=\"!jobDetail._source.availableNow && jobDetail._source.startDate\" translate=\"jobs.result.availableFromDate\" translate-values=\"{value: jobDetail._source.startDate}\"></span>\n" +
-    "                <span ng-if=\"!jobDetail._source.availableNow && !jobDetail._source.startDate\" translate=\"jobs.result.availableByAppointment\"></span>\n" +
-    "                <br />\n" +
-    "\n" +
-    "                <strong class=\"fake-label\" translate=\"jobs.result.contractDuration\"></strong><br />\n" +
-    "                <span ng-if=\"jobDetail._source.endDate\" translate=\"jobs.result.untilDate\" translate-values=\"{value: jobDetail._source.endDate}\"></span>\n" +
-    "                <span ng-if=\"!jobDetail._source.endDate\" translate=\"jobs.result.permanent\"></span>\n" +
-    "                <br />\n" +
-    "\n" +
     "                <strong>{{::jobDetail._source.company.name}}</strong>\n" +
     "              </div>\n" +
     "            </div>\n" +
@@ -463,16 +452,6 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "          <p ng-bind-html=\"formatTextToPrint(getMultiLanguageText(jobDetail._source.description))\"></p>\n" +
     "          <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong> :\n" +
     "          <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />\n" +
-    "\n" +
-    "          <strong class=\"fake-label\" translate=\"jobs.result.entryDate\"></strong> :\n" +
-    "          <span ng-if=\"jobDetail._source.availableNow\" translate=\"jobs.result.availableNow\"></span>\n" +
-    "          <span ng-if=\"!jobDetail._source.availableNow && jobDetail._source.startDate\" translate=\"jobs.result.availableFromDate\" translate-values=\"{value: jobDetail._source.startDate}\"></span>\n" +
-    "          <span ng-if=\"!jobDetail._source.availableNow && !jobDetail._source.startDate\" translate=\"jobs.result.availableByAppointment\"></span>\n" +
-    "          <br />\n" +
-    "\n" +
-    "          <strong class=\"fake-label\" translate=\"jobs.result.contractDuration\"></strong> :\n" +
-    "          <span ng-if=\"jobDetail._source.endDate\" translate=\"jobs.result.untilDate\" translate-values=\"{value: jobDetail._source.endDate}\"></span>\n" +
-    "          <span ng-if=\"!jobDetail._source.endDate\" translate=\"jobs.result.permanent\"></span>\n" +
     "\n" +
     "          <strong>{{::jobDetail._source.company.name}}</strong>\n" +
     "        </div>\n" +

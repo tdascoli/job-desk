@@ -82,16 +82,6 @@
           <strong class="fake-label" translate="jobs.result.jobLocation"></strong> :
           <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />
 
-          <strong class="fake-label" translate="jobs.result.entryDate"></strong> :
-          <span ng-if="jobDetail._source.availableNow" translate="jobs.result.availableNow"></span>
-          <span ng-if="!jobDetail._source.availableNow && jobDetail._source.startDate" translate="jobs.result.availableFromDate" translate-values="{value: jobDetail._source.startDate}"></span>
-          <span ng-if="!jobDetail._source.availableNow && !jobDetail._source.startDate" translate="jobs.result.availableByAppointment"></span>
-          <br />
-
-          <strong class="fake-label" translate="jobs.result.contractDuration"></strong> :
-          <span ng-if="jobDetail._source.endDate" translate="jobs.result.untilDate" translate-values="{value: jobDetail._source.endDate}"></span>
-          <span ng-if="!jobDetail._source.endDate" translate="jobs.result.permanent"></span>
-
           <strong>{{::jobDetail._source.company.name}}</strong>
         </div>
 
