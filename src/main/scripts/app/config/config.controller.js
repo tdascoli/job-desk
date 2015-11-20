@@ -17,18 +17,6 @@
         }
       });
 
-      $scope.chooseAddress=function(index){
-        var coords={
-                    lon:$scope.lookupCoords[index].geometry.location.K,
-                    lat:$scope.lookupCoords[index].geometry.location.G
-                    };
-        var plzIndex=lodash.findIndex($scope.lookupCoords[0].address_components,{types:['postal_code']});
-
-        $scope.config.coords = coords;
-        $scope.config.zip = parseInt($scope.lookupCoords[index].address_components[plzIndex].long_name, 10);
-        $scope.lookupCoords=false;
-      };
-
       $scope.resetCoords=function(){
         $scope.idle=true;
         $scope.config.coords=undefined;
@@ -41,6 +29,7 @@
       };
 
       $scope.receiveCoords=function(){
+        $scope.closeError();
         $scope.idle=true;
         LocationsService.getLocationFromZip($scope.config.zip).success(function (nearestZip) {
           if (nearestZip.hits.total > 0) {

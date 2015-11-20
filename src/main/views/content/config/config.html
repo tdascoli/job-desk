@@ -5,7 +5,7 @@
 <md-content layout-padding>
   <h1 translate="config.title"></h1>
 
-  <form layout="row" layout-wrap>
+  <form name="configForm" layout="row" layout-wrap>
 
     <strong class="md-title" flex="100">Standort</strong>
 
@@ -16,19 +16,23 @@
       <input ng-model="config.address" type="text" />
     </md-input-container>
 
-    <md-input-container flex="33">
+    <md-input-container flex="50">
       <label>Postleitzahl</label>
-      <input ng-model="config.zip" type="number" min="1000" max="9999" />
+      <input name="zipInput" ng-model="config.zip" type="number" min="1000" max="9999" required integer/>
     </md-input-container>
 
-    <md-input-container flex="33">
+    <md-input-container flex="50">
+      <md-button ng-disabled="configForm.zipInput.$invalid" class="md-raised" ng-click="receiveCoords()">lookup</md-button>
+    </md-input-container>
+
+    <md-input-container flex="50">
       <label>Koordinaten / Longitude</label>
-      <input ng-model="config.coords.lon" type="text" />
+      <input ng-model="config.coords.lon" ng-disabled="true" type="text" />
     </md-input-container>
 
-    <md-input-container flex="33">
+    <md-input-container flex="50">
       <label>Koordinaten / Latitude</label>
-      <input ng-model="config.coords.lat" type="text" />
+      <input ng-model="config.coords.lat" ng-disabled="true" type="text" />
     </md-input-container>
 
     <strong class="md-title" flex="100">Angebot</strong>
@@ -54,7 +58,6 @@
 
     <div flex="100">
       <md-button class="md-raised md-primary" ng-click="saveConfig()">save</md-button>
-      <md-button class="md-raised" ng-click="receiveCoords()">lookup</md-button>
       <md-button class="md-raised md-warn" ng-click="resetCoords()">reset</md-button>
     </div>
 
