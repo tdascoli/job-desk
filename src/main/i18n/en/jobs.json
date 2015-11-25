@@ -18,6 +18,7 @@
     "result": {
       "sorting":"Sorting",
       "onlineSince":"Online since {{value}} days",
+      "onlineSinceDate":"Online since {{value}}",
       "onlineSinceOneDay":"Online since 1 day ago",
       "availableNow":"as of now",
       "availableFromDate":"as of {{value}}",

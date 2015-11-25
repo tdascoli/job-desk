@@ -18,6 +18,7 @@
     "result": {
       "sorting":"Classificazione",
       "onlineSince":"Online da {{value}} giorni",
+      "onlineSinceDate":"Online da {{value}}",
       "onlineSinceOneDay":"Online da 1 giorno",
       "availableNow":"da subito ",
       "availableFromDate":"da {{value}}",

@@ -18,6 +18,7 @@
     "result": {
       "sorting":"Sortierung",
       "onlineSince":"Online seit {{value}} Tagen",
+      "onlineSinceDate":"Online seit {{value}}",
       "onlineSinceOneDay":"Online seit 1 Tag",
       "availableNow":"ab Sofort",
       "availableFromDate":"ab {{value}}",

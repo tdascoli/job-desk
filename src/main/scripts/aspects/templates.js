@@ -385,8 +385,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "        <div ng-switch-when=\"false\">\n" +
     "\n" +
     "          <strong>{{::getMultiLanguageText(jobDetail._source.title)}}</strong><br />\n" +
-    "          <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: onlineSinceDate(jobDetail._source.publicationDate)}\"></span>\n" +
-    "          <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)===1\" translate=\"jobs.result.onlineSinceOneDay\"></span>\n" +
+    "          <span translate=\"jobs.result.onlineSinceDate\" translate-values=\"{value: formatDate(jobDetail._source.publicationDate)}\"></span>\n" +
     "          /\n" +
     "          <span translate=\"jobs.result.workload\"></span>\n" +
     "          <span ng-if=\"jobDetail._source.quotaFrom!==jobDetail._source.quotaTo\">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</span>\n" +
@@ -442,8 +441,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "        <div ng-switch-when=\"true\">\n" +
     "\n" +
     "          <strong>{{::getMultiLanguageText(jobDetail._source.title)}}</strong><br />\n" +
-    "          <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: onlineSinceDate(jobDetail._source.publicationDate)}\"></span>\n" +
-    "          <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)===1\" translate=\"jobs.result.onlineSinceOneDay\"></span>\n" +
+    "          <span translate=\"jobs.result.onlineSinceDate\" translate-values=\"{value: formatDate(jobDetail._source.publicationDate)}\"></span>\n" +
     "          /\n" +
     "          <span translate=\"jobs.result.workload\"></span>\n" +
     "          <span ng-if=\"jobDetail._source.quotaFrom!==jobDetail._source.quotaTo\">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</span>\n" +

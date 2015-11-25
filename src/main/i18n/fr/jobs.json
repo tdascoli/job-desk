@@ -18,6 +18,7 @@
     "result": {
       "sorting":"Tri",
       "onlineSince":"En ligne depuis {{value}} jours",
+      "onlineSinceDate":"En ligne depuis {{value}}",
       "onlineSinceOneDay":"En ligne depuis 1 jour",
       "availableNow":"de suite",
       "availableFromDate":"à partir du {{value}}",
