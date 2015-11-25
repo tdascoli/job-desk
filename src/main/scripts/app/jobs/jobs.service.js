@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('job-desk')
-    .factory('JobsService', function ($http, baseUrl) {
+    .factory('JobsService', function ($http, baseUrl, ConfigService) {
 
       var params = {};
       var visitedJobs = [];
@@ -11,7 +11,7 @@
       function resetSearchParams() {
         params.from = 0;
         params.size = 20;
-        params.distanceType = 'travelTime';
+        params.distanceType = ConfigService.init().distanceType;
         params.distance = 30;
         params.travelTime = 30;
         params.fulltime = 1;

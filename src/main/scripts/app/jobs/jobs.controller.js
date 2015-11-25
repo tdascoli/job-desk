@@ -193,12 +193,6 @@
         }
       });
 
-      $scope.$watchCollection('searchParams.distanceType', function (newValue, oldValue) {
-        if (newValue!==oldValue){
-          $scope.countJobs();
-        }
-      });
-
       $scope.setCurrentZip = function (zip) {
         LocationsService.getLocationFromZip(zip).success(function (nearestZip) {
           if (nearestZip.hits.total > 0) {

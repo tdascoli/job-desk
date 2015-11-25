@@ -11,21 +11,8 @@
 
       $scope.config=ConfigService.init();
 
-      $scope.$watchCollection('myCoords', function () {
-        if ($rootScope.myCoords !== undefined && $scope.config.coords === undefined) {
-          initCoords();
-        }
-      });
-
-      $scope.resetCoords=function(){
-        $scope.idle=true;
-        $scope.config.coords=undefined;
-        $scope.config.zip='';
-        geolocation.getLocation().then(function (data) {
-          $rootScope.myCoords = {lat: data.coords.latitude, lon: data.coords.longitude};
-        });
-        $scope.$digest();
-        initCoords();
+      $scope.resetConfig=function(){
+        ConfigService.reset();
       };
 
       $scope.receiveCoords=function(){
@@ -58,23 +45,7 @@
         $scope.locationError=false;
       };
 
-      function initCoords() {
-        $scope.idle=true;
-        if (!$scope.config.coords){
-          $scope.config.coords=$rootScope.myCoords;
-        }
-        LocationsService.getLocation($scope.config.coords).success(function (nearestZip) {
-          $scope.config.zip = parseInt(nearestZip.hits.hits[0]._source.zip,10);
-          $scope.idle=false;
-        })
-          .error(function (error) {
-            // todo error handling
-            console.log(error);
-            $scope.idle=false;
-          });
-      }
     });
-
 
 }());
 

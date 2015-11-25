@@ -101,13 +101,9 @@
     hotkeysProvider.includeCheatSheet = false;
   });
 
-  app.run(function($http, geolocation, $rootScope, $state, $cookies, $presence, LocationsService){
+  app.run(function($http, geolocation, $rootScope, $state, $cookies, $presence, LocationsService, ConfigService){
 
     $rootScope.mobile=$.browser.mobile;
-    $rootScope.appConfig={
-      educations:true,
-      apprenticeships:true
-    };
 
     $rootScope.current=function(){
       if ($state.$current.url.source==='/' || $state.$current.url.source==='/jobs' || $state.$current.url.source==='/apprenticeships' || $state.$current.url.source==='/educations'){
@@ -126,6 +122,8 @@
       $state.go(target);
     };
 
+    $rootScope.appConfig = ConfigService.init();
+
     var config = $cookies.getObject('config');
     if (!angular.isObject(config)) {
       geolocation.getLocation().then(function (data) {
@@ -139,7 +137,6 @@
       });
     }
     else {
-      $rootScope.appConfig=config;
       $rootScope.myCoords=config.coords;
     }
 

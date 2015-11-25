@@ -57,8 +57,8 @@
     </md-checkbox>
 
     <div flex="100">
-      <md-button class="md-raised md-primary" ng-click="saveConfig()">save</md-button>
-      <md-button class="md-raised md-warn" ng-click="resetCoords()">reset</md-button>
+      <md-button ng-disabled="!config.coords" class="md-raised md-primary" ng-click="saveConfig()">save</md-button>
+      <md-button class="md-raised md-warn" ng-click="resetConfig()">reset</md-button>
     </div>
 
   </form>
