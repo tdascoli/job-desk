@@ -55,10 +55,10 @@
       }
 
       function getDefaultLocation() {
-        // Älggi-Alp : Geographical centre of Switzerland
+        // Bern
         return {
-          lat: 46.798530,
-          lon: 8.231803
+          lat: 46.953,
+          lon: 7.461
         };
       }
 
