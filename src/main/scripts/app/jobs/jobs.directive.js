@@ -63,7 +63,8 @@
             locals: {
               jobDetail: scope.jobDetail,
               getMultiLanguageText: scope.getMultiLanguageText,
-              onlineSinceDate: scope.onlineSinceDate
+              onlineSinceDate: scope.onlineSinceDate,
+              formatDate: scope.formatDate
             },
             escapeToClose: false,
             onComplete: function() {
@@ -72,10 +73,11 @@
                 $mdDialog.hide();
               }, 3000);
             },
-            controller: function PrintDialogController($scope, jobDetail, getMultiLanguageText, onlineSinceDate) {
+            controller: function PrintDialogController($scope, jobDetail, getMultiLanguageText, onlineSinceDate, formatDate) {
               $scope.jobDetail = jobDetail;
               $scope.getMultiLanguageText = getMultiLanguageText;
               $scope.onlineSinceDate = onlineSinceDate;
+              $scope.formatDate = formatDate;
               $scope.cancel = function() {
                 $mdDialog.cancel();
               };
@@ -105,6 +107,10 @@
         scope.isVisited = function(jobId) {
           return JobsService.isVisited(jobId);
         };
+
+        scope.formatDate = function(date) {
+          return moment(date, 'YYYY-MM-DD').format('DD.MM.YYYY');
+        }
       }
     };
   }]);
