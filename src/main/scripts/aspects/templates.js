@@ -360,7 +360,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "    </md-dialog-content>\n" +
     "    <md-dialog-actions layout=\"row\">\n" +
     "      <md-button ng-click=\"hide()\">\n" +
-    "        Close\n" +
+    "        <span translate=\"jobs.search.close\"></span>\n" +
     "      </md-button>\n" +
     "    </md-dialog-actions>\n" +
     "  </form>\n" +

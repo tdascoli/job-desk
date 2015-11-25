@@ -554,6 +554,7 @@ module.exports = function (grunt) {
     'ngconstant:i18n',
     'useminPrepare',
     'ngtemplates:dist',
+    'ngtemplates:tour',
     'imagemin',
     'svgmin',
     'concat',

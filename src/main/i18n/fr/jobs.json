@@ -13,7 +13,16 @@
       "onlineSinceOneDay":"En ligne depuis 1 jour",
       "allJobs":"Tous les emplois",
       "parttimeJobs":"Emplois à temps partiel uniquement",
-      "foundJobs":"Emplois trouvés {{value}}"
+      "foundJobs":"Emplois trouvés {{value}}",
+      "close":"Fermer",
+      "tour":{
+        "jobGroups":"[FR] Falls erwünscht, verfeinern Sie die Suche mit einer Unterrubrik",
+        "location":"[FR] Hier ist Ihr Standort",
+        "distanceType":"[FR] Wählen Sie zwischen Reisedauer mit ÖV in Stunden oder Distanz in Kilometer",
+        "distanceTypeParameter":"[FR] Hier können Sie die Reisedauer / Distanz verlängern oder verkürzen",
+        "changeZip":"[FR] Falls erwünscht, können Sie den Standort verändern (PLZ eingeben oder auf die Karte tippen)",
+        "countJobs":"[FR] Anzahl gefundene Jobs mit Ihren Suchkriterien, weiter zur Trefferliste mit der Pfeiltaste"
+      }
     },
     "result": {
       "sorting":"Tri",

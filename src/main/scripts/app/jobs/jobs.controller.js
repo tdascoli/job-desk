@@ -244,6 +244,13 @@
 
       // unregister the state listener
       $scope.$on('$destroy', resetListener);
+
+      // tour
+      // load cookie, or start new tour
+      $scope.jobSearchTour = -1;
+      $scope.tourTranslate=function(key){
+        return $translate.instant(key);
+      };
     });
 }());
 

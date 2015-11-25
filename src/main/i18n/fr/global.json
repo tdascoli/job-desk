@@ -34,6 +34,10 @@
           "4": "Aucune connaissance"
         }
       }
+    },
+    "tour":{
+      "next":"[FR] Next",
+      "close":"Fermer"
     }
   }
 }

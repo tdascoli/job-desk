@@ -19,7 +19,8 @@
     'alv-ch-ng.text-truncate',
     'job-desk.i18n',
     'job-desk.directive',
-    'presence'
+    'presence',
+    'angular-tour'
   ]);
 
   app.config(['$httpProvider', function($httpProvider) {

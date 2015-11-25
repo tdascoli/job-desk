@@ -1,39 +1,43 @@
 {
   "global": {
     "title": "Job-Desk",
-    "apprenticeships": "Lehrstellen",
-    "educations": "Weiterbildungen",
-    "jobs": "Jobs",
+    "apprenticeships": "Posti di tirocinio",
+    "educations": "Perfezionamenti",
+    "jobs": "Impieghi",
     "sort": {
-      "newest":"Neuste Jobs zuerst",
-      "workload_100":"Arbeitspensum - niedrigste zuerst",
-      "workload_0":"Arbeitspensum - höchste zuerst",
-      "jobtitle_az":"Jobtitel - A-Z",
-      "jobtitle_za":"Jobtitel - Z-A",
-      "apprenticeshipstitle_az":"Lehrstellentitel - A-Z",
-      "apprenticeshipstitle_za":"Lehrstellentitel - Z-A",
-      "coursetitle_az":"Kurstitel - A-Z",
-      "coursetitle_za":"Kurstitel - Z-A",
-      "location_1000":"Arbeitsort - niedrigste PLZ zuerst",
-      "location_9999":"Arbeitsort - höchste PLZ zuerst",
-      "courseLocation_1000":"Kursort - niedrigste PLZ zuerst",
-      "courseLocation_9999":"Kursort - höchste PLZ zuerst",
-      "distanceNearest":"[IT] Job location - located nearest",
-      "distanceFarthest":"[IT] Job location - located farthest"
+      "newest":"Impieghi più recenti prima",
+      "workload_100":"Tasso d'occupazione - Dal più basso",
+      "workload_0":"Tasso d'occupazione - Dal più elevato",
+      "jobtitle_az":"Impiego da A-Z",
+      "jobtitle_za":"Impiego da Z-A",
+      "apprenticeshipstitle_az":"Posto di tirocinio da A-Z",
+      "apprenticeshipstitle_za":"Posto di tirocinio da Z-A",
+      "coursetitle_az":"Corso da A-Z",
+      "coursetitle_za":"Corso da Z-A",
+      "location_1000":"Luogo di lavoro - NPA più basso prima",
+      "location_9999":"Luogo di lavoro - NPA più alto prima",
+      "courseLocation_1000":"Luogo del corso - NPA più basso prima",
+      "courseLocation_9999":"Luogo del corso - NPA più alto prima",
+      "distanceNearest":"Luogo di lavoro - si trova più vicino",
+      "distanceFarthest":"Luogo di lavoro - located farthest"
     },
     "codes": {
       "salutations": {
-        "1": "Herr",
-        "2": "Frau"
+        "1": "Signor",
+        "2": "Signora"
       },
       "languages": {
         "skills": {
-          "1": "sehr gut",
-          "2": "gut",
-          "3": "Grundkenntnisse",
-          "4": "keine Kenntnisse"
+          "1": "ottime",
+          "2": "buone",
+          "3": "conoscenze di base",
+          "4": "nessuna conoscenza"
         }
       }
+    },
+    "tour":{
+      "next":"[IT] Next",
+      "close":"Chiudi"
     }
   }
 }

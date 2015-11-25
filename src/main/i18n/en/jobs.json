@@ -13,7 +13,16 @@
       "onlineSinceOneDay":"Online since 1 day ago",
       "allJobs":"All jobs",
       "parttimeJobs":"Only part-time jobs",
-      "foundJobs":"Jobs found {{value}}"
+      "foundJobs":"Jobs found {{value}}",
+      "close":"Close",
+      "tour":{
+        "jobGroups":"[EN] Falls erwünscht, verfeinern Sie die Suche mit einer Unterrubrik",
+        "location":"[EN] Hier ist Ihr Standort",
+        "distanceType":"[EN] Wählen Sie zwischen Reisedauer mit ÖV in Stunden oder Distanz in Kilometer",
+        "distanceTypeParameter":"[EN] Hier können Sie die Reisedauer / Distanz verlängern oder verkürzen",
+        "changeZip":"[EN] Falls erwünscht, können Sie den Standort verändern (PLZ eingeben oder auf die Karte tippen)",
+        "countJobs":"[EN] Anzahl gefundene Jobs mit Ihren Suchkriterien, weiter zur Trefferliste mit der Pfeiltaste"
+      }
     },
     "result": {
       "sorting":"Sorting",

@@ -13,7 +13,16 @@
       "onlineSinceOneDay":"Online seit 1 Tag",
       "allJobs":"Alle Jobs",
       "parttimeJobs":"Nur Teilzeit Jobs",
-      "foundJobs":"Gefundene Jobs: {{value}}"
+      "foundJobs":"Gefundene Jobs: {{value}}",
+      "close":"Schliessen",
+      "tour":{
+        "jobGroups":"Falls erwünscht, verfeinern Sie die Suche mit einer Unterrubrik",
+        "location":"Hier ist Ihr Standort",
+        "distanceType":"Wählen Sie zwischen Reisedauer mit ÖV in Stunden oder Distanz in Kilometer",
+        "distanceTypeParameter":"Hier können Sie die Reisedauer / Distanz verlängern oder verkürzen",
+        "changeZip":"Falls erwünscht, können Sie den Standort verändern (PLZ eingeben oder auf die Karte tippen)",
+        "countJobs":"Anzahl gefundene Jobs mit Ihren Suchkriterien, weiter zur Trefferliste mit der Pfeiltaste"
+      }
     },
     "result": {
       "sorting":"Sortierung",

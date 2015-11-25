@@ -13,7 +13,16 @@
       "onlineSinceOneDay":"Online da 1 giorno",
       "allJobs":"Tutti gli impieghi",
       "parttimeJobs":"Solo impieghi a tempo parziale",
-      "foundJobs":"Impieghi trovati {{value}}"
+      "foundJobs":"Impieghi trovati {{value}}",
+      "close":"Chiudi",
+      "tour":{
+        "jobGroups":"[IT] Falls erwünscht, verfeinern Sie die Suche mit einer Unterrubrik",
+        "location":"[IT] Hier ist Ihr Standort",
+        "distanceType":"[IT] Wählen Sie zwischen Reisedauer mit ÖV in Stunden oder Distanz in Kilometer",
+        "distanceTypeParameter":"[IT] Hier können Sie die Reisedauer / Distanz verlängern oder verkürzen",
+        "changeZip":"[IT] Falls erwünscht, können Sie den Standort verändern (PLZ eingeben oder auf die Karte tippen)",
+        "countJobs":"[IT] Anzahl gefundene Jobs mit Ihren Suchkriterien, weiter zur Trefferliste mit der Pfeiltaste"
+      }
     },
     "result": {
       "sorting":"Classificazione",

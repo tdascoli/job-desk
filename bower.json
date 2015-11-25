@@ -49,7 +49,8 @@
     "detect-mobile-browser": "0.0.1",
     "moment": "latest",
     "angular-presence": "~0.2.2",
-    "trackjs": "latest"
+    "trackjs": "latest",
+    "angular-tour":"latest"
   },
   "devDependencies": {
     "angular-mocks": "1.4.5",
@@ -140,6 +141,11 @@
     "angular-dynamic-locale": {
       "main": [
         "tmhDynamicLocale.min.js"
+      ]
+    },
+    "angular-tour": {
+      "main": [
+        "dist/angular-tour.min.js"
       ]
     }
   }
