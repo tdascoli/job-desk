@@ -21,9 +21,9 @@
 
     </div>
 
-    <div flex="15" flex-sm="100" layout="row" layout-align="start center" id="finish">
+    <div flex="15" flex-sm="100" layout="row" layout-align="start center">
       <md-button class="md-icon-button jd-icon-button" ng-click="setMyLocation()">
-        <md-icon>my_location</md-icon>
+        <md-icon id="resetLocation">my_location</md-icon>
       </md-button>
 
       <md-input-container hide-sm id="zip">
@@ -84,10 +84,11 @@
     <md-icon>arrow_forward</md-icon>
   </md-button>
 
-  <span tourtip="{{tourTranslate('jobs.search.tour.jobGroups')}}" tourtip-next-label="{{tourTranslate('global.tour.next')}}" tourtip-placement="bottom" tourtip-element="#iscoGroup"></span>
-  <span tourtip="{{tourTranslate('jobs.search.tour.location')}}" tourtip-next-label="{{tourTranslate('global.tour.next')}}" tourtip-placement="top" tourtip-element="image.current-location"></span>
-  <span tourtip="{{tourTranslate('jobs.search.tour.distanceType')}}" tourtip-next-label="{{tourTranslate('global.tour.next')}}" tourtip-placement="bottom" tourtip-element="#distanceType"></span>
+  <span tourtip="{{tourTranslate('jobs.search.tour.jobGroups')}}" tourtip-next-label="{{tourTranslate('global.tour.next')}}" tourtip-placement="bottom" tourtip-element="#iscoGroup" tourtip-offset-vertical="-20"></span>
+  <span tourtip="{{tourTranslate('jobs.search.tour.location')}}" tourtip-next-label="{{tourTranslate('global.tour.next')}}" tourtip-placement="right" tourtip-element="image.current-location" tourtip-offset-horizontal="-15" tourtip-offset-vertical="-25"></span>
+  <span tourtip="{{tourTranslate('jobs.search.tour.distanceType')}}" tourtip-next-label="{{tourTranslate('global.tour.next')}}" tourtip-placement="bottom" tourtip-element="#distanceType"tourtip-offset-vertical="-10"></span>
   <span tourtip="{{tourTranslate('jobs.search.tour.distanceTypeParameter')}}" tourtip-next-label="{{tourTranslate('global.tour.next')}}" tourtip-placement="left" tourtip-element="#distanceTypeParameter"></span>
   <span tourtip="{{tourTranslate('jobs.search.tour.changeZip')}}" tourtip-next-label="{{tourTranslate('global.tour.next')}}" tourtip-placement="bottom" tourtip-element="#zip"></span>
+  <span tourtip="{{tourTranslate('jobs.search.tour.resetLocation')}}" tourtip-next-label="{{tourTranslate('global.tour.next')}}" tourtip-placement="left" tourtip-element="#resetLocation" tourtip-offset-vertical="-30"></span>
   <span tourtip="{{tourTranslate('jobs.search.tour.countJobs')}}" tourtip-next-label="close" tourtip-placement="top" tourtip-element=".jd-bottom-right"></span>
 </tour>

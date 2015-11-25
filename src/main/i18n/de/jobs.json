@@ -16,12 +16,13 @@
       "foundJobs":"Gefundene Jobs: {{value}}",
       "close":"Schliessen",
       "tour":{
-        "jobGroups":"Falls erwünscht, verfeinern Sie die Suche mit einer Unterrubrik",
-        "location":"Hier ist Ihr Standort",
-        "distanceType":"Wählen Sie zwischen Reisedauer mit ÖV in Stunden oder Distanz in Kilometer",
-        "distanceTypeParameter":"Hier können Sie die Reisedauer / Distanz verlängern oder verkürzen",
+        "jobGroups":"Falls erwünscht, verfeinern Sie die Suche mit einer Unterrubrik.",
+        "location":"Hier ist Ihr Standort.",
+        "distanceType":"Wählen Sie zwischen Reisedauer mit ÖV in Stunden oder Distanz in Kilometer.",
+        "distanceTypeParameter":"Hier können Sie die Reisedauer / Distanz verlängern oder verkürzen.",
         "changeZip":"Falls erwünscht, können Sie den Standort verändern (PLZ eingeben oder auf die Karte tippen)",
-        "countJobs":"Anzahl gefundene Jobs mit Ihren Suchkriterien, weiter zur Trefferliste mit der Pfeiltaste"
+        "resetLocation":"Mit Klick auf dieses Symbol, wird Ihr Standort wieder zurückgesetzt.",
+        "countJobs":"Anzahl gefundene Jobs mit Ihren Suchkriterien, weiter zur Trefferliste mit Klick auf den Knopf mit dem Pfeil."
       }
     },
     "result": {
