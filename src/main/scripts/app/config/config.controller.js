@@ -3,20 +3,18 @@
   'use strict';
 
   angular.module('job-desk')
-    .controller('ConfigCtrl', function ($scope, $rootScope, ConfigService, LocationsService, lodash, geolocation) {
+    .controller('ConfigCtrl', function ($scope, $rootScope, ConfigService, LocationsService, lodash, geolocation, $mdToast) {
 
-      $scope.lookupCoords=false;
       $scope.idle=false;
-      $scope.locationError=false;
 
       $scope.config=ConfigService.init();
 
       $scope.resetConfig=function(){
         ConfigService.reset();
+        displayToast('Cookie successfully deleted!', true);
       };
 
       $scope.receiveCoords=function(){
-        $scope.closeError();
         $scope.idle=true;
         LocationsService.getLocationFromZip($scope.config.zip).success(function (nearestZip) {
           if (nearestZip.hits.total > 0) {
@@ -24,7 +22,7 @@
           }
           else {
             // todo error handling
-            $scope.locationError=true;
+            displayToast('Postal code not valid!', false);
           }
           $scope.idle=false;
         })
@@ -39,11 +37,16 @@
         ConfigService.persist();
         $rootScope.myCoords=$scope.config.coords;
         $rootScope.appConfig=$scope.config;
+        displayToast('Configuration successfully saved!', true);
       };
 
-      $scope.closeError=function(){
-        $scope.locationError=false;
-      };
+      function displayToast(message, success) {
+        $mdToast.show($mdToast.simple()
+          .content(message)
+          .position('top right')
+          .theme(success ? 'toast-success' : 'toast-error')
+        );
+      }
 
     });
 

@@ -46,6 +46,9 @@
       'abstract': true
     });
 
+    $mdThemingProvider.theme('toast-success');
+    $mdThemingProvider.theme('toast-error');
+
     $mdThemingProvider.theme('jobs').primaryPalette('blue').accentPalette('blue-grey');
 
     $mdThemingProvider.theme('educations').primaryPalette('indigo').accentPalette('blue-grey');
