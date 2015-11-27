@@ -456,8 +456,8 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "\n" +
     "      </div>\n" +
     "    </div>\n" +
-    "    <div layout=\"row\" layout-sm=\"column\" layout-align=\"space-around\">\n" +
-    "      <md-progress-circular md-mode=\"indeterminate\" md-diameter=\"60\"></md-progress-circular>\n" +
+    "    <div layout=\"row\" layout-sm=\"column\" layout-align=\"center center\">\n" +
+    "      <md-progress-circular md-mode=\"indeterminate\" md-diameter=\"120\"></md-progress-circular>\n" +
     "    </div>\n" +
     "  </md-dialog-content>\n" +
     "</md-dialog>\n"
