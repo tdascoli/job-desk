@@ -21,7 +21,7 @@
   <!-- BEGIN TRACKJS -->
   <script type="text/javascript">window._trackJs = {
     token: "730fa2d5bf8443039fb8771d143ca046",
-    application: "job-desk-dev",
+    application: "job-desk",
     serialize: function (what) {
       return JSON.stringify(what);
     },
@@ -186,7 +186,7 @@
       <p ng-bind="ttContent"></p>
     </div>
     <div class="tour-footer-wrapper" layout="row" layout-align="space-between center">
-      <md-button ng-click="proceed()" ng-bind="ttNextLabel" ng-hide="ttNextLabel==='close'" class="md-raised tour-next-tip"></md-button>
+      <md-button ng-click="proceed()" ng-bind="ttNextLabel" class="md-raised tour-next-tip"></md-button>
       <md-button ng-click="closeTour()" translate="global.tour.close" class="md-raised"></md-button>
     </div>
   </div>
