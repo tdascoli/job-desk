@@ -578,6 +578,11 @@ module.exports = function (grunt) {
     'build'
   ]);
 
+  grunt.registerTask('build-local', [
+    'ngconstant:dev',
+    'build'
+  ]);
+
   grunt.registerTask('default', [
     'build'
   ]);
