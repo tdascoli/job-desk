@@ -69,9 +69,10 @@
   <link rel="stylesheet" href="assets/styles/jobdesk.css">
   <link rel="stylesheet" href="assets/styles/material-fix.css">
   <!-- endbuild -->
+
 </head>
 
-<body presence layout="column" md-theme="{{searchType}}" hotkey="{a: ssiKeyStart, b: back, c: ssiKeyInfo}" ng-joy-ride="startJoyRide" config="tourConfig" on-finish="onFinish()" on-skip="onFinish()">
+<body presence layout="column" md-theme="{{searchType}}" hotkey="{a: ssiKeyStart, b: back, c: ssiKeyInfo}">
 
 <md-toolbar layout="column" id="topnav" class="md-whiteframe-z4" md-theme-watch="true">
   <div class="md-toolbar-tools">
@@ -187,7 +188,7 @@
       <p ng-bind="ttContent"></p>
     </div>
     <div class="tour-footer-wrapper" layout="row" layout-align="space-between center">
-      <md-button ng-click="proceed()" ng-bind="ttNextLabel" class="md-raised tour-next-tip" aria-label="global.tour.next"></md-button>
+      <md-button ng-click="proceed()" ng-hide="currentStep === 6" translate="global.tour.next" class="md-raised tour-next-tip" aria-label="global.tour.next"></md-button>
       <md-button ng-click="closeTour()" translate="global.tour.close" class="md-raised" aria-label="global.tour.close"></md-button>
     </div>
   </div>

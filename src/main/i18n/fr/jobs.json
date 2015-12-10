@@ -21,6 +21,7 @@
         "distanceType":"[FR] Wählen Sie zwischen Reisedauer mit ÖV in Stunden oder Distanz in Kilometer",
         "distanceTypeParameter":"[FR] Hier können Sie die Reisedauer / Distanz verlängern oder verkürzen",
         "changeZip":"[FR] Falls erwünscht, können Sie den Standort verändern (PLZ eingeben oder auf die Karte tippen)",
+        "resetLocation":"[FR] Mit Klick auf dieses Symbol, wird Ihr Standort wieder zurückgesetzt.",
         "countJobs":"[FR] Anzahl gefundene Jobs mit Ihren Suchkriterien, weiter zur Trefferliste mit der Pfeiltaste"
       }
     },
