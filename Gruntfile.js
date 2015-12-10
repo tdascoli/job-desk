@@ -508,6 +508,14 @@ module.exports = function (grunt) {
           command: 'webdriver-manager start'
         }
       }
+    },
+    json_generator: {
+      update: {
+        dest: "<%= yeoman.dist %>/update.json",
+        options: {
+          timestamp: Date.now()
+        }
+      }
     }
   });
 
@@ -565,7 +573,8 @@ module.exports = function (grunt) {
     'uglify',
     'rev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'json_generator:update'
   ]);
 
   grunt.registerTask('build-prod', [
