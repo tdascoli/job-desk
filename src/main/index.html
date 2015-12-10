@@ -105,7 +105,7 @@
 
 <md-content id="main" ui-view="content" ng-view></md-content>
 
-<div ng-if="!userActive" class="jd-sleep-screen"></div>
+<div ng-if="!userActive.active" class="jd-sleep-screen"></div>
 <!--./container -->
 
 <!-- build:js scripts/vendor.js -->
@@ -178,6 +178,7 @@
 <script src="scripts/components/locations/municipalities.service.js"></script>
 <script src="scripts/components/locations/arrlee.service.js"></script>
 <script src="scripts/components/update/update.service.js"></script>
+<script src="scripts/components/presence/presence.service.js"></script>
 <script src="scripts/aspects/templates.js"></script>
 <!-- endbuild -->
 
