@@ -22,7 +22,7 @@
     "jquery": "2.1.1",
     "keyboard": "v1.23.5",
     "angular": "1.4.5",
-    "angular-material": "v1.0.0-rc6",
+    "angular-material": "v1.0.0-rc7",
     "alv-ch-ng.security": "0.2.1",
     "alv-ch-ng.text-truncate": "0.2.0",
     "angular-ui-router": "0.2.13",

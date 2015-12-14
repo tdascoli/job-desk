@@ -32,11 +32,11 @@
 
     <strong class="md-title" flex="100">Angebot</strong>
 
-    <md-checkbox ng-model="config.educations" aria-label="Weiterbildungsangebote" flex="33">
+    <md-checkbox ng-model="config.educations" class="md-primary" aria-label="Weiterbildungsangebote" flex="33">
       Weiterbildungsangebote
     </md-checkbox>
 
-    <md-checkbox ng-model="config.apprenticeships" aria-label="Lehrstellen" flex="33">
+    <md-checkbox ng-model="config.apprenticeships" class="md-primary" aria-label="Lehrstellen" flex="33">
       Lehrstellen
     </md-checkbox>
 
@@ -44,10 +44,10 @@
 
     <md-radio-group ng-model="config.distanceType" flex="33">
       <md-radio-button value="travelTime" class="md-primary">Umkreissuche nach Reisedauer mit öV</md-radio-button>
-      <md-radio-button value="distance">Umkreissuche nach Distanz</md-radio-button>
+      <md-radio-button value="distance" class="md-primary">Umkreissuche nach Distanz</md-radio-button>
     </md-radio-group>
 
-    <md-checkbox ng-model="config.showMunicipalities" aria-label="Gemeinden" flex="100">
+    <md-checkbox ng-model="config.showMunicipalities" class="md-primary" aria-label="Gemeinden" flex="100">
       Benachbarte Gemeinde anzeigen (innerhalb des Suchradius)
     </md-checkbox>
 

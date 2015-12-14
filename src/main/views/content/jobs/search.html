@@ -2,14 +2,13 @@
 
   <div id="filter" layout="row" layout-wrap layout-margin layout-align="start center" class="jd-floating-toolbar jd-floating-toolbar-fill-sm" ng-class="{'md-whiteframe-z2':!mobile}">
 
-    <div flex="45" flex-sm="100" class="form-block" id="iscoGroup">
-      <md-input-container ng-if="!searchParams.iscoMajorGroup">
+    <div flex="60" layout="row" flex-sm="100" class="form-block" id="iscoGroup">
+      <md-input-container flex="60" ng-if="!searchParams.iscoMajorGroup">
         <label><span translate="jobs.search.jobgroup"></span></label>
         <md-select ng-model="searchParams.iscoMajorGroup" ng-change="countJobs()">
           <md-option ng-repeat="isco in iscoMajorGroup" value="{{isco.code}}"><span translate="{{isco.text}}"></span></md-option>
         </md-select>
       </md-input-container>
-
 
       <md-input-container ng-if="searchParams.iscoMajorGroup">
         <label><span translate="isco.majorGroups.{{searchParams.iscoMajorGroup}}"></span></label>
@@ -20,14 +19,13 @@
         </md-select>
       </md-input-container>
 
-    </div>
-
-    <div flex="15" flex-sm="100" layout="row" layout-align="start center">
+      <md-input-container flex="10">
       <md-button class="md-icon-button jd-icon-button" ng-click="setMyLocation()">
         <md-icon id="resetLocation">my_location</md-icon>
       </md-button>
+      </md-input-container>
 
-      <md-input-container hide-sm id="zip">
+      <md-input-container flex="30" hide-sm id="zip">
         <label translate="jobs.search.location"></label>
         <input class="keyboard" type="text" name="location" id="location" ng-model="nearestZip" />
       </md-input-container>
