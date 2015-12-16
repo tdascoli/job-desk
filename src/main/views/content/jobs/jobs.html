@@ -3,8 +3,8 @@
   <div class="category" flex="33" flex-sm="100" ng-repeat="isco in iscoMajorGroup">
     <img ng-click="setIscoGroup(isco.code)" class="iscoIcon" ng-src="assets/images/{{isco.img}}" alt="isco" />
     <div class="category-title" layout="row">
-      <span flex><md-button ng-click="showIscoUnitGroup($event,isco.code,iscoMinorGroups)" class="md-fab md-mini"><md-icon>help_outline</md-icon></md-button></span>
-      <span flex="85" ng-click="setIscoGroup(isco.code)" class="md-title" translate="{{isco.text}}"></span>
+      <md-icon ng-click="showIscoUnitGroup($event,isco.code,iscoMinorGroups)" flex>help_outline</md-icon>
+      <span flex="90" ng-click="setIscoGroup(isco.code)" class="md-title" translate="{{isco.text}}"></span>
     </div>
   </div>
 
