@@ -1,14 +1,14 @@
-<tour step="jobSearchTour">
+<tour step="currentStep" post-tour="tourEnded()">
+
   <div id="filter" layout="row" layout-wrap layout-margin layout-align="start center" class="jd-floating-toolbar jd-floating-toolbar-fill-sm" ng-class="{'md-whiteframe-z2':!mobile}">
 
-    <div flex="45" flex-sm="100" class="form-block" id="iscoGroup">
-      <md-input-container ng-if="!searchParams.iscoMajorGroup">
+    <div flex="60" layout="row" flex-sm="100" class="form-block" id="iscoGroup">
+      <md-input-container flex="60" ng-if="!searchParams.iscoMajorGroup">
         <label><span translate="jobs.search.jobgroup"></span></label>
         <md-select ng-model="searchParams.iscoMajorGroup" ng-change="countJobs()">
           <md-option ng-repeat="isco in iscoMajorGroup" value="{{isco.code}}"><span translate="{{isco.text}}"></span></md-option>
         </md-select>
       </md-input-container>
-
 
       <md-input-container ng-if="searchParams.iscoMajorGroup">
         <label><span translate="isco.majorGroups.{{searchParams.iscoMajorGroup}}"></span></label>
@@ -19,14 +19,13 @@
         </md-select>
       </md-input-container>
 
-    </div>
-
-    <div flex="15" flex-sm="100" layout="row" layout-align="start center">
+      <md-input-container flex="10">
       <md-button class="md-icon-button jd-icon-button" ng-click="setMyLocation()">
         <md-icon id="resetLocation">my_location</md-icon>
       </md-button>
+      </md-input-container>
 
-      <md-input-container hide-sm id="zip">
+      <md-input-container flex="30" hide-sm id="zip">
         <label translate="jobs.search.location"></label>
         <input class="keyboard" type="text" name="location" id="location" ng-model="nearestZip" />
       </md-input-container>
@@ -68,7 +67,7 @@
       </md-radio-group>
     </div>
 
-    <md-button flex hide-sm ng-click="openTour()" class="md-icon-button"><md-icon>help</md-icon></md-button>
+    <md-button hide-sm ng-click="openTour()" class="md-icon-button"><md-icon>help</md-icon></md-button>
   </div>
 
   <div align="center" class="no-scrollbar" hide-sm>
@@ -77,18 +76,18 @@
 
   <div layout="row" layout-margin layout-align="start center" class="jd-bottom-right">
     <strong ng-show="!idle" translate="jobs.search.foundJobs" translate-values="{value: count}"></strong>
-    <md-progress-circular ng-show="idle" md-mode="indeterminate" md-diameter="56"></md-progress-circular>
+    <md-progress-circular ng-show="idle" md-mode="indeterminate" md-diameter="120"></md-progress-circular>
   </div>
 
   <md-button href="#/job-results" class="md-fab md-primary md-fab-bottom-right jd-floating-fab" aria-label="global.navigation.search" ng-disabled="count===0 || idle" md-theme-watch="true">
     <md-icon>arrow_forward</md-icon>
   </md-button>
 
-  <span tourtip="{{tourTranslate('jobs.search.tour.jobGroups')}}" tourtip-next-label="{{tourTranslate('global.tour.next')}}" tourtip-placement="bottom" tourtip-element="#iscoGroup" tourtip-offset-vertical="-20"></span>
-  <span tourtip="{{tourTranslate('jobs.search.tour.location')}}" tourtip-next-label="{{tourTranslate('global.tour.next')}}" tourtip-placement="right" tourtip-element="image.current-location" tourtip-offset-horizontal="-15" tourtip-offset-vertical="-25"></span>
-  <span tourtip="{{tourTranslate('jobs.search.tour.distanceType')}}" tourtip-next-label="{{tourTranslate('global.tour.next')}}" tourtip-placement="bottom" tourtip-element="#distanceType"tourtip-offset-vertical="-10"></span>
-  <span tourtip="{{tourTranslate('jobs.search.tour.distanceTypeParameter')}}" tourtip-next-label="{{tourTranslate('global.tour.next')}}" tourtip-placement="left" tourtip-element="#distanceTypeParameter"></span>
-  <span tourtip="{{tourTranslate('jobs.search.tour.changeZip')}}" tourtip-next-label="{{tourTranslate('global.tour.next')}}" tourtip-placement="bottom" tourtip-element="#zip"></span>
-  <span tourtip="{{tourTranslate('jobs.search.tour.resetLocation')}}" tourtip-next-label="{{tourTranslate('global.tour.next')}}" tourtip-placement="left" tourtip-element="#resetLocation" tourtip-offset-vertical="-30"></span>
-  <span tourtip="{{tourTranslate('jobs.search.tour.countJobs')}}" tourtip-next-label="{{tourTranslate('global.tour.next')}}" tourtip-placement="top" tourtip-element=".jd-bottom-right"></span>
+  <span tourtip="{{tourTranslate('jobs.search.tour.jobGroups')}}" tourtip-step="0"  tourtip-placement="bottom" tourtip-element="#iscoGroup" tourtip-offset-vertical="-20"></span>
+  <span tourtip="{{tourTranslate('jobs.search.tour.location')}}" tourtip-step="1"  tourtip-placement="right" tourtip-element="image.current-location" tourtip-offset-horizontal="-15" tourtip-offset-vertical="-25"></span>
+  <span tourtip="{{tourTranslate('jobs.search.tour.distanceType')}}" tourtip-step="2"  tourtip-placement="bottom" tourtip-element="#distanceType"tourtip-offset-vertical="-10"></span>
+  <span tourtip="{{tourTranslate('jobs.search.tour.distanceTypeParameter')}}" tourtip-step="3"  tourtip-placement="left" tourtip-element="#distanceTypeParameter"></span>
+  <span tourtip="{{tourTranslate('jobs.search.tour.changeZip')}}" tourtip-step="4"  tourtip-placement="bottom" tourtip-element="#zip"></span>
+  <span tourtip="{{tourTranslate('jobs.search.tour.resetLocation')}}" tourtip-step="5"  tourtip-placement="left" tourtip-element="#resetLocation" tourtip-offset-vertical="-30"></span>
+  <span tourtip="{{tourTranslate('jobs.search.tour.countJobs')}}" tourtip-step="6"  tourtip-placement="top" tourtip-element=".jd-bottom-right"></span>
 </tour>

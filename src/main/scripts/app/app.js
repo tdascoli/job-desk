@@ -105,7 +105,7 @@
     hotkeysProvider.includeCheatSheet = false;
   });
 
-  app.run(function($http, geolocation, $rootScope, $state, $cookies, $presence, LocationsService, ConfigService){
+  app.run(function($http, geolocation, $rootScope, $state, $cookies, LocationsService, ConfigService, UpdateService, PresenceService, ENV){
 
     $rootScope.mobile=$.browser.mobile;
 
@@ -162,35 +162,11 @@
     };
 
     // detection of user inactivity
-    $rootScope.userActive = true;
-    var timeoutInactive = 1;  // minutes
-    var timeoutReset = 1.5;     // minutes
-    $rootScope.states = $presence.init({
-      ACTIVE : 0,
-      INACTIVE : timeoutInactive * 60 * 1000,
-      RESET : {
-        enter: timeoutReset * 60 * 1000,
-        initial: true
-      }
-    });
+    $rootScope.userActive = PresenceService.userActive;
 
-    // controllers have to catch broadcast to reset their search params
-    $rootScope.states.RESET.onEnter(function() {
-      $rootScope.userActive = true;
-      $rootScope.$broadcast('resetSearchParams');
-      $state.go('jobs');
-    });
-
-    $rootScope.states.INACTIVE.onEnter(function() {
-      // no sleep screen when state is on 'job'
-      if (!$state.is('jobs')) {
-        $rootScope.userActive = false;
-      }
-    });
-
-    $rootScope.states.ACTIVE.onEnter(function() {
-      $rootScope.userActive = true;
-    });
+    if (ENV !== 'dev') {
+      UpdateService.init();
+    }
 
   });
 

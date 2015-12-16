@@ -320,7 +320,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "\n" +
     "    </div>\n" +
     "  <div flex=\"20\" hide-sm layout-margin>\n" +
-    "    <md-button flex ng-click=\"showDetail(jobDetail._source.jobId)\" aria-label=\"Show / Close Detail\" class=\"md-raised jd-btn-block\">\n" +
+    "    <md-button ng-click=\"showDetail(jobDetail._source.jobId)\" aria-label=\"Show / Close Detail\" class=\"md-raised jd-btn-block\">\n" +
     "      <span ng-show=\"!showDetailContent\">\n" +
     "        <md-icon>search</md-icon>&nbsp;<span translate=\"jobs.result.showMore\"></span>\n" +
     "      </span>\n" +
@@ -329,7 +329,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "      </span>\n" +
     "    </md-button>\n" +
     "    <p></p>\n" +
-    "    <md-button flex ng-click=\"showPrintDialog(jobDetail._source.jobId)\" class=\"md-raised jd-btn-block\"><md-icon>print</md-icon>&nbsp;<span translate=\"jobs.result.print\"></span></md-button>\n" +
+    "    <md-button ng-click=\"showPrintDialog(jobDetail._source.jobId)\" class=\"md-raised jd-btn-block\"><md-icon>print</md-icon>&nbsp;<span translate=\"jobs.result.print\"></span></md-button>\n" +
     "  </div>\n" +
     "</div>\n" +
     "\n" +
@@ -456,8 +456,8 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "\n" +
     "      </div>\n" +
     "    </div>\n" +
-    "    <div layout=\"row\" layout-sm=\"column\" layout-align=\"space-around\">\n" +
-    "      <md-progress-circular md-mode=\"indeterminate\" md-diameter=\"60\"></md-progress-circular>\n" +
+    "    <div layout=\"row\" layout-sm=\"column\" layout-align=\"center center\">\n" +
+    "      <md-progress-circular md-mode=\"indeterminate\" md-diameter=\"120\"></md-progress-circular>\n" +
     "    </div>\n" +
     "  </md-dialog-content>\n" +
     "</md-dialog>\n"

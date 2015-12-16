@@ -438,10 +438,10 @@ label {
 .jd-job-detail.ng-enter-active {
   opacity: 1;
 }
-md-toast.md-toast-success-theme {
+md-toast.md-toast-success-theme .md-toast-content {
   background-color: green;
 }
-md-toast.md-toast-error-theme {
+md-toast.md-toast-error-theme .md-toast-content {
   background-color: #E82B2B;
 }
 .tour-tip {

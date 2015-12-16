@@ -246,10 +246,12 @@
       $scope.$on('$destroy', resetListener);
 
       // tour
-      // load cookie, or start new tour
-      $scope.jobSearchTour = -1;
-      $scope.tourTranslate=function(key){
+      $scope.currentStep = -1;
+      $scope.tourTranslate = function(key){
         return $translate.instant(key);
+      };
+      $scope.tourEnded = function() {
+        $scope.currentStep = -1;
       };
     });
 }());

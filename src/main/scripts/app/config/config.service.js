@@ -6,7 +6,6 @@
     .factory('ConfigService', function ($cookies) {
 
       var config = {};
-      resetConfig();
 
       // default config when not set with a cookie
       function resetConfig() {
@@ -19,6 +18,7 @@
         config.showMunicipalities = false;
         config.distanceType = 'travelTime';
       }
+      resetConfig();
 
       function init() {
         var cookieConfig = $cookies.getObject('config');

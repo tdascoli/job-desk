@@ -42,7 +42,7 @@
 
       function displayToast(message, success) {
         $mdToast.show($mdToast.simple()
-          .content(message)
+          .textContent(message)
           .position('top right')
           .theme(success ? 'toast-success' : 'toast-error')
         );
