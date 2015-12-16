@@ -164,7 +164,7 @@
     // detection of user inactivity
     $rootScope.userActive = PresenceService.userActive;
 
-    if (ENV != 'dev') {
+    if (ENV !== 'dev') {
       UpdateService.init();
     }
 

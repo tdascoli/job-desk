@@ -10,8 +10,8 @@
         start_country: 'CH',
         'start-time': 7,
         year: 0,
-        month: 7,
-        day: 25,
+        month: 11,
+        day: 13,
         max_travel_time: 30,
         edgeLength: 2.25
       };

@@ -110,7 +110,7 @@
 
         scope.formatDate = function(date) {
           return moment(date, 'YYYY-MM-DD').format('DD.MM.YYYY');
-        }
+        };
       }
     };
   }]);

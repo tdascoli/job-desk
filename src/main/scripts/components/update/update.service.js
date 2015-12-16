@@ -17,11 +17,11 @@
 
         $interval(function () {
           getLastUpdate().then(function(timestamp) {
-            if (timestamp != lastUpdate) {
+            if (timestamp !== lastUpdate) {
               lastUpdate = timestamp;
               showUpdateToast();
             }
-          })
+          });
         }, updateDelay);
       }
 
@@ -35,7 +35,7 @@
           }, function errorCallback(response) {
             reject();
           });
-        })
+        });
       }
 
       function showUpdateToast() {
@@ -45,7 +45,7 @@
           .hideDelay(toastHideDelay)
           .position('top right');
         $mdToast.show(toast).then(function(response) {
-          if (response == 'ok') {
+          if (response === 'ok') {
             $window.location.reload();
           }
         });

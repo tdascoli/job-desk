@@ -252,7 +252,7 @@
       };
       $scope.tourEnded = function() {
         $scope.currentStep = -1;
-      }
+      };
     });
 }());
 

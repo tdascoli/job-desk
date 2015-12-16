@@ -511,7 +511,7 @@ module.exports = function (grunt) {
     },
     json_generator: {
       update: {
-        dest: "<%= yeoman.dist %>/update.json",
+        dest: '<%= yeoman.dist %>/update.json',
         options: {
           timestamp: Date.now()
         }
