@@ -114,43 +114,44 @@
 
           var map = svg.append('g');
 
-            d3.json('assets/topojson/ch-contours.json', function (error, topology) {
-              contour = map.append('svg')
-                .attr('id', 'contours')
-                .selectAll('.contour')
-                .data(topojson.feature(topology, topology.objects.contours).features)
-                .enter().append('path')
-                .attr('class', 'contour')
-                .attr('d', path)
-                .style('fill', function (d) {
-                  return color(d.id);
-                });
-            });
+          d3.json('assets/topojson/ch-contours.json', function (error, topology) {
+            contour = map.append('svg')
+              .attr('id', 'contours')
+              .selectAll('.contour')
+              .data(topojson.feature(topology, topology.objects.contours).features)
+              .enter().append('path')
+              .attr('class', 'contour')
+              .attr('d', path)
+              .style('fill', function (d) {
+                return color(d.id);
+              });
+
+              d3.json('assets/topojson/ch-cantons-lakes.json', function (error, ch) {
+                map.append('svg')
+                  .attr('id', 'cantons')
+                  .selectAll('path')
+                  .data(topojson.feature(ch, ch.objects.cantons).features)
+                  .enter().append('path')
+                  .attr('class', 'canton-boundaries')
+                  .attr('id', function (d) {
+                    return d.properties.abbr;
+                  })
+                  .attr('d', path);
+
+                map.append('path')
+                  .attr('id', 'lakes')
+                  .datum(topojson.mesh(ch, ch.objects.lakes))
+                  .attr('class', 'lakes')
+                  .attr('d', path);
+
+                setCities();
+                if ($rootScope.appConfig.showMunicipalities) {
+                  setMunicipalities();
+                }
+              });
+          });
 
 
-            d3.json('assets/topojson/ch.json', function (error, ch) {
-              map.append('svg')
-                .attr('id', 'cantons')
-                .selectAll('path')
-                .data(topojson.feature(ch, ch.objects.cantons).features)
-                .enter().append('path')
-                .attr('class', 'canton-boundaries')
-                .attr('id', function (d) {
-                  return d.properties.abbr;
-                })
-                .attr('d', path);
-
-              map.append('path')
-                .attr('id', 'lakes')
-                .datum(topojson.mesh(ch, ch.objects.lakes))
-                .attr('class', 'lakes')
-                .attr('d', path);
-
-              setCities();
-              if ($rootScope.appConfig.showMunicipalities) {
-                setMunicipalities();
-              }
-            });
 
           function setMyLocation() {
             $rootScope.$watchCollection('myCoords', function () {
