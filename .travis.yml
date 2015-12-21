@@ -27,7 +27,12 @@ deploy:
   on:
     repo: alv-ch/job-desk
 after_success:
-- grunt build-prod
+- if [ "$TRAVIS_BRANCH" == "master" ]; then
+  grunt build-prod;
+  fi
+- if [ "$TRAVIS_BRANCH" == "dev" ]; then
+  grunt build-staging;
+  fi
 - cp server.js dist/
 - cp package.json dist/
 - cp -r .openshift dist/

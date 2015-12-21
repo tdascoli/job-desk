@@ -516,6 +516,34 @@ module.exports = function (grunt) {
           timestamp: Date.now()
         }
       }
+    },
+    replace: {
+      trackjs_prod: {
+        options: {
+          patterns: [
+            {
+              match: 'app_name',
+              replacement: 'job-desk'
+            }
+          ]
+        },
+        files: [
+          {expand: true, flatten: true, src: ['dist/index.html'], dest: 'dist/'}
+        ]
+      },
+      trackjs_staging: {
+        options: {
+          patterns: [
+            {
+              match: 'app_name',
+              replacement: 'job-desk-dev'
+            }
+          ]
+        },
+        files: [
+          {expand: true, flatten: true, src: ['dist/index.html'], dest: 'dist/'}
+        ]
+      }
     }
   });
 
@@ -579,12 +607,14 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build-prod', [
     'ngconstant:prod',
-    'build'
+    'build',
+    'replace:trackjs_prod'
   ]);
 
   grunt.registerTask('build-staging', [
     'ngconstant:staging',
-    'build'
+    'build',
+    'replace:trackjs_staging'
   ]);
 
   grunt.registerTask('build-local', [
