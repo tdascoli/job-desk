@@ -189,8 +189,8 @@
       <p ng-bind="ttContent"></p>
     </div>
     <div class="tour-footer-wrapper" layout="row" layout-align="space-between center">
-      <md-button ng-click="proceed()" translate="global.tour.next" class="md-raised tour-next-tip"></md-button>
-      <md-button ng-click="closeTour()" translate="global.tour.close" class="md-raised"></md-button>
+      <md-button ng-click="proceed()" translate="global.tour.next" class="md-raised tour-next-tip" ng-hide="currentStep === 6" aria-label="global.tour.next"></md-button>
+      <md-button ng-click="closeTour()" translate="global.tour.close" class="md-raised" aria-label="global.tour.close"></md-button>
     </div>
   </div>
 </script>
