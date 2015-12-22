@@ -137,8 +137,9 @@ body {
 }
 .canton-boundaries {
   fill: @topo-canton-boundaries-fill;
-  stroke: @topo-canton-boundaries-stroke;
-  stroke-width: 1;
+  stroke: #000; //@topo-canton-boundaries-stroke;
+  weight: 2;
+  opacity: 1;
   shape-rendering: crispEdges;
 }
 
@@ -162,7 +163,9 @@ body {
 }
 .lakes {
   fill: @topo-lakes-fill;
+  fill-opacity: 1 !important;
   stroke: @topo-lakes-stroke;
+  stroke-opacity: 1 !important;
   z-index: 4000;
 }
 .my-location {

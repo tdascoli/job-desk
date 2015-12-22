@@ -38,6 +38,19 @@
       };
     }]);
 
+  /**
+   * TODO make factory and paramterize all json files
+   *
+   *     module.factory( "ValidationServices", function() {
+            return {
+                failIfWrongThreshouldConfig: function( firstThreshould, secondThreshould ) {
+                    if( (! firstThreshould && ! secondThreshould) || (firstThreshould && secondThreshould) ) {
+                        throw "You must specify one, and only one, type of threshould (chars or words)";
+                    }
+                }
+            };
+        });
+   */
   module.directive('swissMap', ['d3Service', '$window', '$rootScope', 'MunicipalitiesService', function (d3Service, $window, $rootScope, MunicipalitiesService) {
     return {
       priority: 10,

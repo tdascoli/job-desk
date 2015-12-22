@@ -123,8 +123,9 @@ body {
 }
 .canton-boundaries {
   fill: transparent;
-  stroke: #ffffff;
-  stroke-width: 1;
+  stroke: #000;
+  weight: 2;
+  opacity: 1;
   shape-rendering: crispEdges;
 }
 .city-boundaries {
@@ -147,7 +148,9 @@ body {
 }
 .lakes {
   fill: #c6ecff;
+  fill-opacity: 1 !important;
   stroke: none;
+  stroke-opacity: 1 !important;
   z-index: 4000;
 }
 .my-location {

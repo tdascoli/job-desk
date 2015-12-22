@@ -41,7 +41,6 @@
     "angular-animate": "1.4.5",
     "angular-scroll": "~0.7.1",
     "angularjs-geolocation": "0.1.1",
-    "angular-leaflet-directive": "~0.8.4",
     "angular-hotkeys": "git://github.com/chieffancypants/angular-hotkeys.git",
     "angular-translate-storage-local": "~2.7.2",
     "d3": "3.5.6",
@@ -50,7 +49,9 @@
     "moment": "latest",
     "angular-presence": "~0.2.2",
     "trackjs": "latest",
-    "angular-tour":"latest"
+    "angular-tour":"latest",
+    "chroma-js":"1.1.1",
+    "leaflet":"0.7.7"
   },
   "devDependencies": {
     "angular-mocks": "1.4.5",
@@ -79,11 +80,6 @@
         "dist/alv-ch-ng.textTruncate.js"
       ]
     },
-    "angular-leaflet-directive": {
-      "main": [
-        "dist/angular-leaflet-directive.js"
-      ]
-    },
     "d3": {
       "main": [
         "d3.min.js"
@@ -92,16 +88,6 @@
     "detect-mobile-browser": {
       "main": [
         "detectmobilebrowser.js"
-      ]
-    },
-    "leaflet": {
-      "main": [
-        "dist/leaflet.js"
-      ]
-    },
-    "topojson": {
-      "main": [
-        "topojson.js"
       ]
     },
     "angularjs-geolocation": {
@@ -147,6 +133,17 @@
     "angular-tour": {
       "main": [
         "dist/angular-tour.min.js"
+      ]
+    },
+    "leaflet": {
+      "main": [
+        "dist/leaflet.css",
+        "dist/leaflet-src.js",
+        "dist/images/layers-2x.png",
+        "dist/images/layers.png",
+        "dist/images/marker-icon-2x.png",
+        "dist/images/marker-icon.png",
+        "dist/images/marker-shadow.png"
       ]
     }
   }

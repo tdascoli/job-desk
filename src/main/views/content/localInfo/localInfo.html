@@ -1,8 +1,83 @@
-<div class="col-md-12">
-  <h1 style="margin-top: 10px; margin-bottom: 5px;" translate="localInfo.title"></h1>
-  <hr style="margin-top: 5px;" />
-</div>
+<style>
+  #worldmap {
+    height: 600px;
+    width: 1000px;
+  }
+</style>
 
-<md-button ng-click="back()" class="md-fab md-primary md-fab-bottom-right jd-floating-fab" aria-label="global.navigation.search" md-theme-watch="true">
+<div id="worldmap"></div>
+
+<script>
+  $('#worldmap').css('height', ($(window).height() - ($('#topnav').outerHeight()+$('#filter').outerHeight())) );
+  $('#worldmap').css('width',$(document).width());
+
+  //****** GEO TOPO JSON ******//
+  var canton_layer = new L.TopoJSON(null, {
+      style: {
+        fillColor: 'transparent',
+        color: '#fff',
+        weight: 1.5,
+        opacity: 1,
+        fillOpacity: 1
+      }
+    });
+  var lake_layer = new L.TopoJSON(null, {
+      style: {
+        fillColor: '#C6ECFF',
+        color: '#C6ECFF',
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 1
+      }
+    });
+
+  var geojsonMarkerOptions = {
+    radius: 3,
+    fillColor: "#fff",
+    color: "#000",
+    weight: 1.5,
+    opacity: 1,
+    fillOpacity: 1
+  };
+
+  var cities_layer = new L.GeoJSON(null, {
+    pointToLayer: function (feature, latlng) {
+      return L.circleMarker(latlng, geojsonMarkerOptions);
+    }
+  });
+
+  var map = L.map('worldmap', {
+    scrollWheelZoom: false,
+    doubleClickZoom: false
+  });
+
+  L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    minZoom: 8, maxZoom: 12
+  }).addTo(map);
+
+  map
+    .addLayer(canton_layer)
+    .addLayer(lake_layer)
+    .addLayer(cities_layer)
+    .setView([46.8, 8.3], 8);
+
+  $.getJSON('assets/topojson/ch-cantons-lakes.json', function (data) {
+    var canton_geojson = topojson.feature(data, data.objects.cantons),
+        lake_geojson = topojson.feature(data, data.objects.lakes);
+    canton_layer.addData(canton_geojson);
+    lake_layer.addData(lake_geojson);
+
+    $.getJSON('assets/topojson/cities.json', function (data) {
+      cities_layer.addData(data);
+    });
+  });
+
+
+
+</script>
+
+
+<md-button ng-click="back()" class="md-fab md-primary md-fab-bottom-right jd-floating-fab"
+           aria-label="global.navigation.search" md-theme-watch="true">
   <md-icon>arrow_backward</md-icon>
 </md-button>
