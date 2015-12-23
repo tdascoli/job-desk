@@ -253,6 +253,9 @@
       $scope.tourEnded = function() {
         $scope.currentStep = -1;
       };
+      $scope.startTour = function() {
+        $scope.currentStep = 0;
+      }
     });
 }());
 
