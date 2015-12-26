@@ -598,6 +598,7 @@
               cities_layer.addData(data);
 
               L.circleMarker(myCoords, { clickable: false, radius: 3, className: 'my-location' }).addTo(map);
+              myPosition();
             });
           });
         });
@@ -641,11 +642,14 @@
         }
 
         scope.$watchCollection('searchParams.currentCoords', function () {
-          myPosition();
+          if (currentPosition!==undefined) {
+            myPosition();
+          }
         });
 
         scope.$watchCollection('searchParams.distanceType', function (newValue, oldValue) {
           if (newValue!==oldValue && scope.searchParams.distanceType==='distance') {
+            heatmap_layer.clearLayers();
             doRadius();
           }
         });
@@ -664,6 +668,8 @@
 
         scope.$watchCollection('heatmap', function () {
           if (scope.heatmap !== undefined) {
+            currentRadius=undefined;
+
             var geometries = [];
             var coordinates = [[], []];
             var type = 'MultiPolygon';
