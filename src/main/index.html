@@ -63,6 +63,7 @@
   <link rel="stylesheet" href="bower_components/keyboard/dist/css/keyboard.min.css" />
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
   <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="bower_components/Leaflet.label/dist/leaflet.label.css" />
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -73,7 +74,7 @@
 
 </head>
 
-<body presence layout="column" md-theme="{{searchType}}" hotkey="{a: ssiKeyStart, b: back, c: ssiKeyInfo}">
+<body presence layout="column" md-theme="{{searchType}}">
 
 <md-toolbar layout="column" id="topnav" class="md-whiteframe-z4" md-theme-watch="true">
   <div class="md-toolbar-tools">
@@ -138,7 +139,6 @@
 <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
 <script src="bower_components/angular-scroll/angular-scroll.js"></script>
 <script src="bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
-<script src="bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
 <script src="bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
 <script src="bower_components/d3/d3.min.js"></script>
 <script src="bower_components/topojson/topojson.js"></script>
@@ -149,6 +149,7 @@
 <script src="bower_components/angular-tour/dist/angular-tour.min.js"></script>
 <script src="bower_components/chroma-js/chroma.js"></script>
 <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
+<script src="bower_components/Leaflet.label/dist/leaflet.label.js"></script>
 <!-- endbower -->
 <script src="scripts/components/leaflet/L.TopoJSON.js"></script>
 <!-- endbuild -->

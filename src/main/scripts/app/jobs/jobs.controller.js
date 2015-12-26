@@ -2,6 +2,8 @@
 
   'use strict';
 
+  //** todo Location stuff in external controller, how to implement?! three functions in three controllers for the same ex. setNewCoords
+
   angular.module('job-desk')
     .controller('JobsCtrl', function ($scope, $rootScope, $state, $filter, $translate, lodash, JobsService, LocationsService, ArrleeService, $mdDialog) {
       $rootScope.searchType = 'jobs';
@@ -255,7 +257,22 @@
       };
       $scope.startTour = function() {
         $scope.currentStep = 0;
-      }
+      };
+
+
+      //*** LEAFLET ***//
+      $scope.mapDefaults = {
+        center: [46.8, 8.3],
+        zoom: 8,
+        zoomControl: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: true,
+        maxBounds: [
+          [45.5, 5.5],
+          [48, 11]
+        ]
+      };
+
     });
 }());
 

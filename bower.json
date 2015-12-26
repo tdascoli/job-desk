@@ -41,7 +41,6 @@
     "angular-animate": "1.4.5",
     "angular-scroll": "~0.7.1",
     "angularjs-geolocation": "0.1.1",
-    "angular-hotkeys": "git://github.com/chieffancypants/angular-hotkeys.git",
     "angular-translate-storage-local": "~2.7.2",
     "d3": "3.5.6",
     "topojson": "1.6.19",
@@ -51,7 +50,8 @@
     "trackjs": "latest",
     "angular-tour":"latest",
     "chroma-js":"1.1.1",
-    "leaflet":"0.7.7"
+    "leaflet":"0.7.7",
+    "Leaflet.label":"0.2.1"
   },
   "devDependencies": {
     "angular-mocks": "1.4.5",
@@ -144,6 +144,12 @@
         "dist/images/marker-icon-2x.png",
         "dist/images/marker-icon.png",
         "dist/images/marker-shadow.png"
+      ]
+    },
+    "Leaflet.label": {
+      "main": [
+        "dist/leaflet.label.css",
+        "dist/leaflet.label.js"
       ]
     }
   }

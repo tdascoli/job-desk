@@ -116,28 +116,55 @@ body {
 #map {
   width: 960px;
   height: 500px;
+  cursor: pointer;
+  background-color: #fff;
 }
 .radius {
   fill: #ffffff;
-  opacity: 0.25;
+  opacity: 1;
+  stroke: #ffffff;
+  stroke-opacity: 1;
+  stroke-width: 1;
+}
+.contour {
+  fill-opacity: 1;
+  stroke: none;
+  stroke-opacity: 0;
+  stroke-width: 0;
+  shape-rendering: crispEdges;
 }
 .canton-boundaries {
   fill: transparent;
-  stroke: #000;
-  weight: 2;
-  opacity: 1;
+  fill-opacity: 1;
+  stroke: #ffffff;
+  stroke-opacity: 1;
+  stroke-width: 1;
   shape-rendering: crispEdges;
 }
 .city-boundaries {
   fill: #ffffff;
+  fill-opacity: 1;
   stroke: #000000;
+  stroke-opacity: 1;
   stroke-width: 1.5;
-  z-index: 1900;
 }
 .municipality-boundaries {
   fill: #ffffff;
   stroke: #000000;
   stroke-width: 1;
+}
+.city-text.leaflet-label {
+  font-family: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
+  border: none;
+  background: transparent;
+  padding-left: 0;
+  padding-top: 4px;
+  margin-left: -4px;
+  cursor: pointer;
+}
+.city-text.leaflet-label:before {
+  border: none;
+  left: 0;
 }
 .municipality-text {
   font-size: 12px;
@@ -151,17 +178,21 @@ body {
   fill-opacity: 1 !important;
   stroke: none;
   stroke-opacity: 1 !important;
-  z-index: 4000;
+  weight: 1;
 }
 .my-location {
   fill: #ff0000;
+  fill-opacity: 1;
   stroke: #000000;
+  stroke-opacity: 1;
   stroke-width: 1.5;
   z-index: 2000;
 }
 .current-location {
-  fill: transparent;
+  fill: #fff;
+  fill-opacity: 1;
   stroke: #000000;
+  stroke-opacity: 1;
   stroke-width: 1;
 }
 text {
@@ -179,7 +210,11 @@ text {
   }
 }
 .heatmap {
-  opacity: 0.66;
+  fill: transparent;
+  fill-opacity: 0.66;
+  stroke: transparent;
+  stroke-opacity: 0;
+  stroke-width: 0;
   fill-rule: nonzero;
 }
 .heatmap-outline {

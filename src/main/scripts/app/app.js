@@ -14,7 +14,6 @@
     'pascalprecht.translate',
     'ngCacheBuster',
     'geolocation',
-    'cfp.hotkeys',
     'alv-ch-ng.security',
     'alv-ch-ng.text-truncate',
     'job-desk.i18n',
@@ -69,7 +68,7 @@
     }]);
   });
 
-  app.config(function ($stateProvider, hotkeysProvider) {
+  app.config(function ($stateProvider) {
     $stateProvider
       .state('error', {
         parent: 'site',
@@ -100,9 +99,6 @@
           }
         }
       });
-
-    //hotkeys configuration
-    hotkeysProvider.includeCheatSheet = false;
   });
 
   app.run(function($http, geolocation, $rootScope, $state, $cookies, LocationsService, ConfigService, UpdateService, PresenceService, ENV){
@@ -151,14 +147,6 @@
       else {
         $state.go($rootScope.searchType);
       }
-    };
-
-    // SSI Tastatur
-    $rootScope.ssiKeyStart=function(){
-      $state.go('jobs');
-    };
-    $rootScope.ssiKeyInfo=function(){
-      $state.go('localInfo');
     };
 
     // detection of user inactivity

@@ -130,29 +130,55 @@ body {
 #map {
   width: 960px;
   height: 500px;
+  cursor: pointer;
+  background-color: #fff;
 }
 .radius {
   fill: @map-radius-fill;
-  opacity: 0.25;
+  opacity: 1;
+  stroke: @map-radius-fill;
+  stroke-opacity: 1;
+  stroke-width: 1;
+}
+.contour {
+  fill-opacity: 1;
+  stroke: none;
+  stroke-opacity: 0;
+  stroke-width: 0;
+  shape-rendering: crispEdges;
 }
 .canton-boundaries {
   fill: @topo-canton-boundaries-fill;
-  stroke: #000; //@topo-canton-boundaries-stroke;
-  weight: 2;
-  opacity: 1;
+  fill-opacity: 1;
+  stroke: @topo-canton-boundaries-stroke;
+  stroke-opacity: 1;
+  stroke-width: 1;
   shape-rendering: crispEdges;
 }
-
 .city-boundaries {
   fill: @topo-city-boundaries-fill;
+  fill-opacity: 1;
   stroke: @topo-city-boundaries-stroke;
+  stroke-opacity: 1;
   stroke-width: 1.5;
-  z-index: 1900;
 }
 .municipality-boundaries {
   fill: @topo-city-boundaries-fill;
   stroke: @topo-city-boundaries-stroke;
   stroke-width: 1;
+}
+.city-text.leaflet-label {
+  font-family: @font-family-base;
+  border: none;
+  background: transparent;
+  padding-left: 0;
+  padding-top: 4px;
+  margin-left: -4px;
+  cursor: pointer;
+}
+.city-text.leaflet-label:before {
+  border: none;
+  left: 0;
 }
 .municipality-text {
   font-size: 12px;
@@ -166,17 +192,21 @@ body {
   fill-opacity: 1 !important;
   stroke: @topo-lakes-stroke;
   stroke-opacity: 1 !important;
-  z-index: 4000;
+  weight: 1;
 }
 .my-location {
   fill: @map-my-location-fill;
+  fill-opacity: 1;
   stroke: @map-my-location-stroke;
+  stroke-opacity: 1;
   stroke-width: 1.5;
   z-index: 2000;
 }
 .current-location {
-  fill: transparent;
+  fill: #fff;
+  fill-opacity: 1;
   stroke: @map-current-location-stroke;
+  stroke-opacity: 1;
   stroke-width: 1;
 }
 text {
@@ -195,7 +225,11 @@ text {
 }
 
 .heatmap {
-  opacity: 0.66;
+  fill: transparent;
+  fill-opacity: 0.66;
+  stroke: transparent;
+  stroke-opacity: 0;
+  stroke-width: 0;
   fill-rule: nonzero;
 }
 .heatmap-outline {

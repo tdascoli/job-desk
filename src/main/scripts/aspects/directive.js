@@ -283,7 +283,6 @@
               });
           }
 
-
           function getMunicipalitiesFromZips(municipalityMap){
             MunicipalitiesService.getMunicipalitiesFromZips(scope.searchParams.zips).success(function(result){
               var geoJSON = {
@@ -513,6 +512,229 @@
               setMunicipalities();
             }
           });
+        });
+      }
+    };
+  }]);
+
+  module.directive('map', ['$rootScope',function ($rootScope) {
+    return {
+      restrict: 'C',
+      priority: 10,
+      link: function (scope, element, attrs) {
+        // todo attrs - eval??
+        var mapId = attrs.id || 'map';
+        var myCoords = attrs.mapLocation || {lat: $rootScope.myCoords.lat, lng: $rootScope.myCoords.lon};
+        var defaults = attrs.mapDefaults || {
+                                              center: [46.8, 8.3],
+                                              zoom: 8,
+                                              zoomControl: false,
+                                              scrollWheelZoom: false,
+                                              doubleClickZoom: true,
+                                              maxBounds: [
+                                                [45.5, 5.5],
+                                                [48, 11]
+                                              ]
+                                            };
+
+        element.css('height', ($(window).height() - ($('#topnav').outerHeight()+$('#filter').outerHeight())) );
+        element.css('width',$(document).width());
+
+        //****** GEO/TOPOJSON ******//
+        var colorScale = chroma.scale(['94BF8B', 'F5F4F2']).domain([0,4000]).mode('hcl');
+        var contour_layer = new L.TopoJSON(null, {
+          clickable: false,
+          className: 'contour',
+          style: function(feature){
+            return { fillColor: colorScale(feature.id).hex() };
+          }
+        });
+
+        var canton_layer = new L.TopoJSON(null, {
+          clickable: false,
+          className: 'canton-boundaries'
+        });
+
+        var lake_layer = new L.TopoJSON(null, {
+          clickable: false,
+          className: 'lakes'
+        });
+
+        var cities_layer = new L.GeoJSON(null, {
+          pointToLayer: function (feature, latlng) {
+            return L.circleMarker(latlng, {
+              clickable: false,
+              radius: 3,
+              className: 'city-boundaries'
+            }).bindLabel(feature.geometry.properties.name, { noHide: true, className: 'city-text' });
+          }
+        });
+
+        var heatmap_layer = new L.GeoJSON(null, {
+          onEachFeature: function (feature, layer) {
+            layer.setStyle({className:'heatmap '+feature.properties.className});
+          }
+        });
+
+        var currentPosition, currentRadius;
+
+        var map = L.map(mapId, defaults);
+
+        map
+          .addLayer(contour_layer)
+          .addLayer(canton_layer)
+          .addLayer(lake_layer)
+          .addLayer(cities_layer)
+          .addLayer(heatmap_layer);
+
+        $.getJSON('assets/topojson/ch-contours.json', function (data) {
+          contour_layer.addData(topojson.feature(data, data.objects.contours));
+
+          $.getJSON('assets/topojson/ch-cantons-lakes.json', function (data) {
+            canton_layer.addData(topojson.feature(data, data.objects.cantons));
+            lake_layer.addData(topojson.feature(data, data.objects.lakes));
+
+            $.getJSON('assets/topojson/cities.json', function (data) {
+              cities_layer.addData(data);
+
+              L.circleMarker(myCoords, { clickable: false, radius: 3, className: 'my-location' }).addTo(map);
+            });
+          });
+        });
+
+        map.on('click', function (e) {
+          scope.setCurrentCoords({lon: e.latlng.lng, lat: e.latlng.lat});
+        });
+
+        function myPosition(){
+          if (scope.searchParams.currentCoords!==undefined) {
+            var latlng = [scope.searchParams.currentCoords.lat, scope.searchParams.currentCoords.lon];
+
+            if (currentPosition === undefined) {
+              currentPosition = L.marker(latlng, {
+                clickable: false,
+                radius: 3,
+                className: 'current-location'
+              }).addTo(map);
+            }
+            else {
+              currentPosition.setLatLng(latlng);
+            }
+            doRadius();
+          }
+        }
+
+        function doRadius(){
+          var latlng = [scope.searchParams.currentCoords.lat,scope.searchParams.currentCoords.lon];
+
+          if (scope.searchParams.distanceType==='distance') {
+            if (currentRadius === undefined) {
+              currentRadius = L.circle(latlng, (scope.searchParams.distance * 1000), {
+                clickable: false,
+                className: 'radius'
+              }).addTo(map);
+            }
+            else {
+              currentRadius.setLatLng(latlng);
+            }
+          }
+        }
+
+        scope.$watchCollection('searchParams.currentCoords', function () {
+          myPosition();
+        });
+
+        scope.$watchCollection('searchParams.distanceType', function (newValue, oldValue) {
+          if (newValue!==oldValue && scope.searchParams.distanceType==='distance') {
+            doRadius();
+          }
+        });
+
+        scope.$watchCollection('searchParams.distance', function () {
+          if (currentRadius !== undefined) {
+            currentRadius.setRadius((scope.searchParams.distance*1000));
+          }
+        });
+
+        /*scope.$watchCollection('searchParams.zips', function() {
+          if ($rootScope.appConfig.showMunicipalities) {
+            setMunicipalities();
+          }
+        });*/
+
+        scope.$watchCollection('heatmap', function () {
+          if (scope.heatmap !== undefined) {
+            var geometries = [];
+            var coordinates = [[], []];
+            var type = 'MultiPolygon';
+
+            angular.forEach(scope.heatmap.areas, function (area, id) {
+              // calculate polygon
+              var polygons = area.polygons.sort(function (a, b) {
+                return b[0] - a[0];
+              });
+
+              // reset coordinates
+              coordinates = [[], []];
+
+              angular.forEach(polygons, function (polygon) {
+                var i, exterior=[],interior=[];
+
+                for (i = 1; i < polygon.length; i += 2) {
+                  if (polygon[0] === 1) {
+                    exterior.push([polygon[i], polygon[i + 1]]);
+                  }
+                  else {
+                    interior.push([polygon[i], polygon[i + 1]]);
+                  }
+                }
+
+                if (type==='Polygon') {
+                  //** Polygon
+                  exterior.reverse();
+                  exterior.push(exterior[0]);
+                  coordinates.push(exterior);
+                }
+                else {
+                  //** MultiPolygon
+                  if (polygon[0] === 1) {
+                    if (exterior.length > 0) {
+                      //** exterior ring
+                      if (id===0) {
+                        exterior.reverse();
+                      }
+
+                      exterior.push(exterior[0]);
+                      coordinates[0].push(exterior);
+                    }
+                  }
+                  else {
+                    if (interior.length > 0) {
+                      //** interior ring
+                      interior.push(interior[0]);
+                      if (id===6) {
+                        coordinates[1].push(interior);
+                      }
+                    }
+                  }
+                }
+              });
+
+              var polygon = {
+                'type': type,
+                'properties': {
+                  'id': id,
+                  'className': 'area'+id
+                },
+                'coordinates': coordinates
+              };
+              geometries.push(polygon);
+
+            });
+
+            heatmap_layer.clearLayers();
+            heatmap_layer.addData(geometries);
+          }
         });
       }
     };
