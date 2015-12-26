@@ -652,6 +652,11 @@
             heatmap_layer.clearLayers();
             doRadius();
           }
+          else if (newValue!==oldValue && scope.searchParams.distanceType!=='distance'){
+            if (currentRadius!==undefined) {
+              map.removeLayer(currentRadius);
+            }
+          }
         });
 
         scope.$watchCollection('searchParams.distance', function () {
@@ -668,8 +673,6 @@
 
         scope.$watchCollection('heatmap', function () {
           if (scope.heatmap !== undefined) {
-            currentRadius=undefined;
-
             var geometries = [];
             var coordinates = [[], []];
             var type = 'MultiPolygon';
