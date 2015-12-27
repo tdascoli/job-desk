@@ -520,7 +520,7 @@
   module.directive('map', ['$rootScope',function ($rootScope) {
     return {
       restrict: 'C',
-      priority: 10,
+      priority: 50,
       link: function (scope, element, attrs) {
         // todo attrs - eval??
         var mapId = attrs.id || 'map';
@@ -537,10 +537,11 @@
                                               ]
                                             };
 
+        //** height/width -> fullscreen param?!
         element.css('height', ($(window).height() - ($('#topnav').outerHeight()+$('#filter').outerHeight())) );
         element.css('width',$(document).width());
 
-        //****** GEO/TOPOJSON ******//
+        //*** geo-layer (contours, cantons, lakes, cities and my-position
         var colorScale = chroma.scale(['94BF8B', 'F5F4F2']).domain([0,4000]).mode('hcl');
         var contour_layer = new L.TopoJSON(null, {
           clickable: false,
@@ -569,23 +570,30 @@
             }).bindLabel(feature.geometry.properties.name, { noHide: true, className: 'city-text' });
           }
         });
+        var geo_layer = L.featureGroup([contour_layer,canton_layer,lake_layer,cities_layer]);
 
+        //*** search-layer (heatmap, radius, current position
         var heatmap_layer = new L.GeoJSON(null, {
           onEachFeature: function (feature, layer) {
             layer.setStyle({className:'heatmap '+feature.properties.className});
           }
         });
-
-        var currentPosition, currentRadius;
+        var radius_layer = new L.circle(null, (scope.searchParams.distance * 1000), {
+          clickable: false,
+          className: 'radius'
+        });
+        var position_layer = new L.marker(null, {
+          clickable: false,
+          radius: 3,
+          className: 'current-location'
+        });
+        var search_layer = L.featureGroup([heatmap_layer]);
 
         var map = L.map(mapId, defaults);
 
         map
-          .addLayer(contour_layer)
-          .addLayer(canton_layer)
-          .addLayer(lake_layer)
-          .addLayer(cities_layer)
-          .addLayer(heatmap_layer);
+          .addLayer(geo_layer.bringToBack())
+          .addLayer(search_layer);
 
         $.getJSON('assets/topojson/ch-contours.json', function (data) {
           contour_layer.addData(topojson.feature(data, data.objects.contours));
@@ -597,7 +605,7 @@
             $.getJSON('assets/topojson/cities.json', function (data) {
               cities_layer.addData(data);
 
-              L.circleMarker(myCoords, { clickable: false, radius: 3, className: 'my-location' }).addTo(map);
+              geo_layer.addLayer(L.circleMarker(myCoords, { clickable: false, radius: 3, className: 'my-location' }));
               myPosition();
             });
           });
@@ -610,39 +618,28 @@
         function myPosition(){
           if (scope.searchParams.currentCoords!==undefined) {
             var latlng = [scope.searchParams.currentCoords.lat, scope.searchParams.currentCoords.lon];
-
-            if (currentPosition === undefined) {
-              currentPosition = L.marker(latlng, {
-                clickable: false,
-                radius: 3,
-                className: 'current-location'
-              }).addTo(map);
-            }
-            else {
-              currentPosition.setLatLng(latlng);
-            }
+            setLatLngLayer(position_layer,search_layer,latlng);
             doRadius();
           }
         }
 
         function doRadius(){
-          var latlng = [scope.searchParams.currentCoords.lat,scope.searchParams.currentCoords.lon];
+          if (scope.searchParams.currentCoords!==undefined && scope.searchParams.distanceType==='distance') {
+            var latlng = [scope.searchParams.currentCoords.lat, scope.searchParams.currentCoords.lon];
+            setLatLngLayer(radius_layer,search_layer,latlng);
+          }
+        }
 
-          if (scope.searchParams.distanceType==='distance') {
-            if (currentRadius === undefined) {
-              currentRadius = L.circle(latlng, (scope.searchParams.distance * 1000), {
-                clickable: false,
-                className: 'radius'
-              }).addTo(map);
-            }
-            else {
-              currentRadius.setLatLng(latlng);
-            }
+        function setLatLngLayer(layer,layerGroup,latlng){
+          layer.setLatLng(latlng);
+
+          if (!layerGroup.hasLayer(layer)) {
+            layerGroup.addLayer(layer);
           }
         }
 
         scope.$watchCollection('searchParams.currentCoords', function () {
-          if (currentPosition!==undefined) {
+          if (search_layer.hasLayer(position_layer)) {
             myPosition();
           }
         });
@@ -653,15 +650,15 @@
             doRadius();
           }
           else if (newValue!==oldValue && scope.searchParams.distanceType!=='distance'){
-            if (currentRadius!==undefined) {
-              map.removeLayer(currentRadius);
+            if (search_layer.hasLayer(radius_layer)) {
+              search_layer.removeLayer(radius_layer);
             }
           }
         });
 
         scope.$watchCollection('searchParams.distance', function () {
-          if (currentRadius !== undefined) {
-            currentRadius.setRadius((scope.searchParams.distance*1000));
+          if (search_layer.hasLayer(radius_layer)) {
+            radius_layer.setRadius((scope.searchParams.distance*1000));
           }
         });
 
@@ -745,6 +742,17 @@
             heatmap_layer.addData(geometries);
           }
         });
+      }
+    };
+  }]);
+
+  module.directive('jdContent', [function () {
+    return {
+      restrict: 'C',
+      priority: 50,
+      link: function (scope, element) {
+        console.log($('#filter').outerHeight());
+        element.css({marginTop:$('#filter').outerHeight()});
       }
     };
   }]);
