@@ -536,6 +536,7 @@
                                                 [48, 11]
                                               ]
                                             };
+        var markerColor = attrs.mapMarkerColor || 'cadetblue';
 
         //** height/width -> fullscreen param?!
         element.css('height', ($(window).height() - ($('#topnav').outerHeight()+$('#filter').outerHeight())) );
@@ -582,9 +583,15 @@
           clickable: false,
           className: 'radius'
         });
+
+        var position_icon = L.divIcon({
+          className: 'material-icons',
+          html: 'place'
+        });
+
         var position_layer = new L.marker(null, {
+          icon: position_icon,
           clickable: false,
-          radius: 3,
           className: 'current-location'
         });
         var search_layer = L.featureGroup([heatmap_layer]);
@@ -751,7 +758,6 @@
       restrict: 'C',
       priority: 50,
       link: function (scope, element) {
-        console.log($('#filter').outerHeight());
         element.css({marginTop:$('#filter').outerHeight()});
       }
     };

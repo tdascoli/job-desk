@@ -482,6 +482,12 @@ md-toast.md-toast-success-theme .md-toast-content {
 md-toast.md-toast-error-theme .md-toast-content {
   background-color: #E82B2B;
 }
+.md-jobs-theme .leaflet-marker-icon.material-icons {
+  color: #2196f3 !important;
+  margin-left: -17px !important;
+  margin-top: -32px !important;
+  font-size: 34px;
+}
 .tour-tip {
   display: none;
   position: absolute;
