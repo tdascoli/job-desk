@@ -517,7 +517,7 @@
     };
   }]);
 
-  module.directive('map', ['$rootScope',function ($rootScope) {
+  module.directive('map', ['$rootScope','$window',function ($rootScope,$window) {
     return {
       restrict: 'C',
       priority: 50,
@@ -539,7 +539,7 @@
         var markerColor = attrs.mapMarkerColor || 'cadetblue';
 
         //** height/width -> fullscreen param?!
-        element.css('height', ($(window).height() - ($('#topnav').outerHeight()+$('#filter').outerHeight())) );
+        element.css('height', ($window.height() - ($('#topnav').outerHeight()+$('#filter').outerHeight())) );
         element.css('width',$(document).width());
 
         //*** geo-layer (contours, cantons, lakes, cities and my-position
@@ -756,7 +756,7 @@
   module.directive('jdContent', [function () {
     return {
       restrict: 'C',
-      priority: 50,
+      priority: 10,
       link: function (scope, element) {
         element.css({marginTop:$('#filter').outerHeight()});
       }

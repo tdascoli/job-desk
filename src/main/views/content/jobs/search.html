@@ -1,7 +1,7 @@
 <div id="filter" layout="row" layout-wrap layout-margin layout-align="start center" class="jd-floating-toolbar jd-floating-toolbar-fill-sm" ng-class="{'md-whiteframe-z2':!mobile}">
 
-  <div flex="60" layout="row" flex-sm="100" class="form-block" id="iscoGroup">
-    <md-input-container flex="60" ng-if="!searchParams.iscoMajorGroup">
+  <div flex="60" layout="row" layout-wrap flex-xs="100" class="form-block" id="iscoGroup">
+    <md-input-container flex="60" flex-xs="100" ng-if="!searchParams.iscoMajorGroup">
       <label><span translate="jobs.search.jobgroup"></span></label>
       <md-select ng-model="searchParams.iscoMajorGroup" ng-change="countJobs()">
         <md-option ng-repeat="isco in iscoMajorGroup" value="{{isco.code}}"><span translate="{{isco.text}}"></span></md-option>
@@ -17,36 +17,39 @@
       </md-select>
     </md-input-container>
 
-    <md-input-container flex="10">
-    <md-button class="md-icon-button jd-icon-button" ng-click="setMyLocation()">
-      <md-icon id="resetLocation">my_location</md-icon>
-    </md-button>
-    </md-input-container>
+    <div class="filter-button-container" flex="10" flex-xs="15">
+      <md-button class="md-icon-button jd-icon-button" ng-click="setMyLocation()">
+        <md-icon id="resetLocation">my_location</md-icon>
+      </md-button>
+    </div>
 
-    <md-input-container flex="30" hide-sm id="zip">
+    <md-input-container flex="30" hide-xs id="zip">
       <label translate="jobs.search.location"></label>
       <input class="keyboard" type="text" name="location" id="location" ng-model="nearestZip" />
     </md-input-container>
 
-    <form ng-submit="setCurrentZip(currentZip)" hide-gt-sm layout="row" layout-align="start center" flex>
-      <md-input-container flex>
+    <form ng-submit="setCurrentZip(currentZip)" flex-xs="85" hide-gt-xs layout="row" layout-align="start center">
+      <md-input-container flex-xs="70">
         <label translate="jobs.search.location"></label>
         <input type="number" min="1000" max="9999" name="location-sm" id="location-sm" ng-model="currentZip" />
       </md-input-container>
-      <md-button class="md-icon-button jd-icon-button">
-        <md-icon>check</md-icon>
-      </md-button>
+
+      <div class="mobile filter-button-container" flex>
+        <md-button class="md-icon-button jd-icon-button">
+          <md-icon>check</md-icon>
+        </md-button>
+      </div>
     </form>
   </div>
 
-  <div flex="15" flex-sm="50" id="distanceType">
+  <div flex="15" flex-xs="40" id="distanceType">
     <md-radio-group ng-model="searchParams.distanceType" ng-change="countJobs()" ng-init="searchParams.distanceType=searchParams.distanceType || appConfig.distanceType">
       <md-radio-button value="distance" class="md-primary"><span translate="jobs.search.distanceTypeDistance"></span></md-radio-button>
       <md-radio-button value="travelTime" class="md-primary"><span translate="jobs.search.distanceTypeTravelTime"></span></md-radio-button>
     </md-radio-group>
   </div>
 
-  <div flex="15" flex-sm="50" id="distanceTypeParameter">
+  <div flex="15" flex-xs="40" id="distanceTypeParameter">
     <div flex ng-if="searchParams.distanceType==='distance'">
       <label class="md-slider-label" translate="jobs.search.distance" translate-values="{value:searchParams.distance}"></label>
       <md-slider ng-model="searchParams.distance" step="{{distanceOptions.step}}" min="{{distanceOptions.min}}" max="{{distanceOptions.max}}" aria-label="distance" ng-change="countJobs()" class="md-primary"></md-slider>
@@ -58,14 +61,14 @@
     </div>
   </div>
 
-  <div flex-sm="50" hide-gt-sm>
+  <div flex-xs="50" hide-gt-xs>
     <md-radio-group ng-model="searchParams.fulltime" ng-change="countJobs()">
       <md-radio-button value="2" class="md-primary"><span translate="jobs.search.parttimeJobs"></span></md-radio-button>
       <md-radio-button value="1" class="md-primary"><span translate="jobs.search.allJobs"></span></md-radio-button>
     </md-radio-group>
   </div>
 
-  <md-button hide-sm ng-click="startTour()" class="md-icon-button"><md-icon>help</md-icon></md-button>
+  <md-button flex hide-xs ng-click="startTour()" class="md-icon-button"><md-icon>help</md-icon></md-button>
 </div>
 
 <div align="center" class="jd-content no-scrollbar" hide-sm>

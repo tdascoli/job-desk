@@ -488,6 +488,16 @@ md-toast.md-toast-error-theme .md-toast-content {
   margin-top: -32px !important;
   font-size: 34px;
 }
+.filter-button-container {
+  display: inline-block;
+  position: relative;
+  padding: 2px;
+  margin: 18px 0;
+  vertical-align: middle;
+}
+form .filter-button-container {
+  margin-top: 0;
+}
 .tour-tip {
   display: none;
   position: absolute;
