@@ -454,7 +454,13 @@ label {
   opacity: 0.6;
 }
 .jd-btn-block {
-  width: 100%;
+  width: calc(100% - 8px);
+}
+.jd-btn-block + .jd-btn-block {
+  margin-bottom: 8px;
+}
+.jd-mobile .jd-btn-block {
+  margin-left: 0;
 }
 .jd-job-list {
   text-align: left;
@@ -497,6 +503,12 @@ md-toast.md-toast-error-theme .md-toast-content {
 }
 form .filter-button-container {
   margin-top: 0;
+}
+.md-has-icon.isco-select {
+  padding-left: 0;
+}
+.my-location-button {
+  text-align: right;
 }
 .tour-tip {
   display: none;

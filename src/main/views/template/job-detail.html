@@ -1,7 +1,8 @@
+<!-- layout-xs="column" -->
 <div ng-class="{visited: isVisited(jobDetail._source.jobId)}" layout="row" layout-wrap layout-align="space-between start" style="padding: 10px;">
   <!-- JOB ID : for debug purposes -->
   <span ng-show="false">{{::jobDetail._source.jobId}}</span>
-  <div flex flex-sm="100">
+  <div flex flex-xs="100" flex-order-xs="2">
       <strong class="strong">{{::getMultiLanguageText(jobDetail._source.title)}}&nbsp;</strong>
       <span ng-if="!containsQuota(getMultiLanguageText(jobDetail._source.title))">
         <strong ng-if="jobDetail._source.quotaFrom!==jobDetail._source.quotaTo">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</strong>
@@ -90,8 +91,9 @@
         </span>
       </div>
 
-    </div>
-  <div flex="20" hide-sm layout-margin>
+  </div>
+  <!-- todo style: layout-margin flex-xs="100" flex-order-xs="1" ng-class="{'jd-mobile':mobile}" -->
+  <div flex="20" hide-xs>
     <md-button ng-click="showDetail(jobDetail._source.jobId)" aria-label="Show / Close Detail" class="md-raised jd-btn-block">
       <span ng-show="!showDetailContent">
         <md-icon>search</md-icon>&nbsp;<span translate="jobs.result.showMore"></span>
@@ -100,8 +102,8 @@
         <md-icon>close</md-icon>&nbsp;<span translate="jobs.result.showLess"></span>
       </span>
     </md-button>
-    <p></p>
-    <md-button ng-click="showPrintDialog(jobDetail._source.jobId)" class="md-raised jd-btn-block"><md-icon>print</md-icon>&nbsp;<span translate="jobs.result.print"></span></md-button>
+
+    <md-button hide-xs ng-click="showPrintDialog(jobDetail._source.jobId)" class="md-raised jd-btn-block"><md-icon>print</md-icon>&nbsp;<span translate="jobs.result.print"></span></md-button>
   </div>
 </div>
 

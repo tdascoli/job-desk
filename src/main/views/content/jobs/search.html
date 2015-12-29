@@ -1,14 +1,14 @@
 <div id="filter" layout="row" layout-wrap layout-margin layout-align="start center" class="jd-floating-toolbar jd-floating-toolbar-fill-sm" ng-class="{'md-whiteframe-z2':!mobile}">
 
-  <div flex="60" layout="row" layout-wrap flex-xs="100" class="form-block" id="iscoGroup">
-    <md-input-container flex="60" flex-xs="100" ng-if="!searchParams.iscoMajorGroup">
+  <div flex="60" layout="row" layout-wrap flex-xs="100" id="iscoGroup">
+    <md-input-container flex="60" flex-xs="100" class="md-block isco-select" ng-if="!searchParams.iscoMajorGroup">
       <label><span translate="jobs.search.jobgroup"></span></label>
       <md-select ng-model="searchParams.iscoMajorGroup" ng-change="countJobs()">
         <md-option ng-repeat="isco in iscoMajorGroup" value="{{isco.code}}"><span translate="{{isco.text}}"></span></md-option>
       </md-select>
     </md-input-container>
 
-    <md-input-container ng-if="searchParams.iscoMajorGroup">
+    <md-input-container flex="60" flex-xs="100" class="md-block isco-select" ng-if="searchParams.iscoMajorGroup">
       <label><span translate="isco.majorGroups.{{searchParams.iscoMajorGroup}}"></span></label>
       <md-select ng-model="searchParams.iscoGroupLevel3" ng-change="countJobs()">
         <md-option value="0"><span translate="jobs.search.allSubGroups"></span></md-option>
@@ -17,7 +17,7 @@
       </md-select>
     </md-input-container>
 
-    <div class="filter-button-container" flex="10" flex-xs="15">
+    <div class="filter-button-container my-location-button" flex flex-xs="15">
       <md-button class="md-icon-button jd-icon-button" ng-click="setMyLocation()">
         <md-icon id="resetLocation">my_location</md-icon>
       </md-button>
@@ -61,17 +61,10 @@
     </div>
   </div>
 
-  <div flex-xs="50" hide-gt-xs>
-    <md-radio-group ng-model="searchParams.fulltime" ng-change="countJobs()">
-      <md-radio-button value="2" class="md-primary"><span translate="jobs.search.parttimeJobs"></span></md-radio-button>
-      <md-radio-button value="1" class="md-primary"><span translate="jobs.search.allJobs"></span></md-radio-button>
-    </md-radio-group>
-  </div>
-
   <md-button flex hide-xs ng-click="startTour()" class="md-icon-button"><md-icon>help</md-icon></md-button>
 </div>
 
-<div align="center" class="jd-content no-scrollbar" hide-sm>
+<div align="center" class="jd-content no-scrollbar" hide-xs>
   <div id="map" class="map"></div>
 </div>
 

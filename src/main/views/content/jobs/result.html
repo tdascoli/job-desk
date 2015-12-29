@@ -1,5 +1,5 @@
 <div id="filter" layout="row" layout-wrap layout-margin layout-align="start center" class="jd-floating-toolbar jd-floating-toolbar-fill-sm md-whiteframe-z2">
-  <div flex="25" flex-sm="100" class="form-block">
+  <div flex="25" flex-xs="100" class="form-block">
     <md-input-container>
       <label translate="jobs.result.sorting"></label>
       <md-select ng-model="sort" ng-change="sortResultList()">
@@ -7,7 +7,7 @@
       </md-select>
     </md-input-container>
   </div>
-  <div flex="20" hide-sm>
+  <div flex="20" hide-xs>
     <md-radio-group ng-model="searchParams.fulltime" ng-change="countJobs()">
       <md-radio-button value="1" class="md-primary"><span translate="jobs.search.allJobs"></span></md-radio-button>
       <md-radio-button value="2" class="md-primary"><span translate="jobs.search.parttimeJobs"></span></md-radio-button>
