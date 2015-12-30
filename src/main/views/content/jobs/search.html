@@ -29,18 +29,18 @@
         <input class="keyboard" type="text" name="location" id="location" ng-model="nearestZip" />
       </md-input-container>
 
-      <form ng-submit="setCurrentZip(currentZip)" flex-xs="85" hide-gt-xs layout="row" layout-align="start center">
+      <div flex-xs="85" hide-gt-xs layout="row" layout-align="start center" class="zip-form">
         <md-input-container flex-xs="70">
           <label translate="jobs.search.location"></label>
           <input type="number" min="1000" max="9999" name="location-sm" id="location-sm" ng-model="currentZip" />
         </md-input-container>
 
         <div class="mobile filter-button-container" flex>
-          <md-button class="md-icon-button jd-icon-button">
+          <md-button class="md-icon-button jd-icon-button" ng-click="setCurrentZip()">
             <md-icon>check</md-icon>
           </md-button>
         </div>
-      </form>
+      </div>
     </div>
 
     <div flex="15" flex-xs="40" id="distanceType">
@@ -70,6 +70,7 @@
   <div align="center" flex-order-xs="1">
     <div id="map" class="map"></div>
   </div>
+
 </div>
 
 <div layout="row" layout-margin layout-align="start center" class="jd-bottom-right">

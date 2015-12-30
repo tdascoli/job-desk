@@ -195,8 +195,8 @@
         }
       });
 
-      $scope.setCurrentZip = function (zip) {
-        LocationsService.getLocationFromZip(zip).success(function (nearestZip) {
+      $scope.setCurrentZip = function () {
+        LocationsService.getLocationFromZip($scope.currentZip).success(function (nearestZip) {
           if (nearestZip.hits.total > 0) {
             setNewCoords(nearestZip.hits.hits[0]._source.geoLocation);
           }

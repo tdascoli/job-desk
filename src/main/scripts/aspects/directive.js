@@ -22,10 +22,18 @@
                                                 [48, 11]
                                               ]
                                             };
+        if ($rootScope.mobile){
+          defaults.center=myCoords;
+          defaults.zoom=9;
+        }
 
         //** height/width -> fullscreen param?!
-        element.css('height', ($(window).height() - ($('#topnav').outerHeight()+$('#filter').outerHeight())) - 25 );
         element.css('width',$(document).width());
+        element.css('height', ($(window).height() - ($('#topnav').outerHeight()+$('#filter').outerHeight())) - 25 );
+        if ($rootScope.mobile){
+          //element.css('height', ( $(window).height() / 3 * 2 ));
+          element.css('height', $(document).width());
+        }
 
         //*** geo-layer (contours, cantons, lakes, cities and my-position)
         var colorScale = chroma.scale(['94BF8B', 'F5F4F2']).domain([0,4000]).mode('hcl');
@@ -75,15 +83,11 @@
         });
         var search_layer = L.featureGroup([heatmap_layer]);
 
-        if ($rootScope.mobile){
-          defaults.center=myCoords;
-          defaults.zoom=9;
-        }
         var map = L.map(mapId, defaults);
 
         map
           .addLayer(geo_layer.bringToBack())
-          .addLayer(search_layer);
+          .addLayer(search_layer.bringToFront());
 
         $.getJSON('assets/topojson/ch-contours.json', function (data) {
           contour_layer.addData(topojson.feature(data, data.objects.contours));
