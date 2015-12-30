@@ -536,7 +536,6 @@
                                                 [48, 11]
                                               ]
                                             };
-        var markerColor = attrs.mapMarkerColor || 'cadetblue';
 
         //** height/width -> fullscreen param?!
         element.css('height', ($(window).height() - ($('#topnav').outerHeight()+$('#filter').outerHeight())) );

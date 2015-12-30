@@ -459,7 +459,7 @@ label {
 .jd-btn-block + .jd-btn-block {
   margin-bottom: 8px;
 }
-.jd-mobile .jd-btn-block {
+.jd-mobile .jd-show-btn {
   margin-left: 0;
 }
 .jd-job-list {

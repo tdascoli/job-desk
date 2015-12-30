@@ -23,7 +23,8 @@
       restrict: 'A',
       scope: {
         jobDetail: '=',
-        lastOpenedJob: '='
+        lastOpenedJob: '=',
+        isMobile: '='
       },
       templateUrl: 'template/job-detail.html',
       link: function(scope, element){

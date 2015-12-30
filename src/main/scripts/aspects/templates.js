@@ -321,8 +321,8 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "\n" +
     "  </div>\n" +
     "  <!-- todo style: layout-margin flex-xs=\"100\" flex-order-xs=\"1\" ng-class=\"{'jd-mobile':mobile}\" -->\n" +
-    "  <div flex=\"20\" hide-xs>\n" +
-    "    <md-button ng-click=\"showDetail(jobDetail._source.jobId)\" aria-label=\"Show / Close Detail\" class=\"md-raised jd-btn-block\">\n" +
+    "  <div flex=\"20\" flex-xs=\"100\" flex-order-xs=\"1\" ng-class=\"{'jd-mobile':isMobile}\">\n" +
+    "    <md-button ng-click=\"showDetail(jobDetail._source.jobId)\" aria-label=\"Show / Close Detail\" class=\"jd-show-btn\" ng-class=\"{'md-raised jd-btn-block':!isMobile}\">\n" +
     "      <span ng-show=\"!showDetailContent\">\n" +
     "        <md-icon>search</md-icon>&nbsp;<span translate=\"jobs.result.showMore\"></span>\n" +
     "      </span>\n" +
