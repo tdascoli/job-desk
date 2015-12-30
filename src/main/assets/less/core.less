@@ -167,7 +167,8 @@ body {
   stroke: @topo-city-boundaries-stroke;
   stroke-width: 1;
 }
-.city-text.leaflet-label {
+.city-text.leaflet-label,
+.municipality-text.leaflet-label{
   font-family: @font-family-base;
   border: none;
   background: transparent;
@@ -176,7 +177,11 @@ body {
   margin-left: -4px;
   cursor: pointer;
 }
-.city-text.leaflet-label:before {
+.municipality-text.leaflet-label{
+  font-weight: 400;
+}
+.city-text.leaflet-label:before,
+.municipality-text.leaflet-label:before {
   border: none;
   left: 0;
 }

@@ -3,7 +3,7 @@
 
   var module = angular.module('job-desk.directive', []);
 
-  module.directive('map', ['$rootScope',function ($rootScope) {
+  module.directive('map', ['$rootScope','MunicipalitiesService',function ($rootScope,MunicipalitiesService) {
     return {
       restrict: 'C',
       priority: 50,
@@ -31,7 +31,6 @@
         element.css('width',$(document).width());
         element.css('height', ($(window).height() - ($('#topnav').outerHeight()+$('#filter').outerHeight())) - 25 );
         if ($rootScope.mobile){
-          //element.css('height', ( $(window).height() / 3 * 2 ));
           element.css('height', $(document).width());
         }
 
@@ -63,7 +62,7 @@
         });
         var geo_layer = L.featureGroup([contour_layer,canton_layer,lake_layer,cities_layer]);
 
-        //*** search-layer (heatmap, radius, current position)
+        //*** search-layer (heatmap, radius, current position, municipalities)
         var heatmap_layer = new L.GeoJSON(null, {
           onEachFeature: function (feature, layer) {
             layer.setStyle({className:'heatmap '+feature.properties.className});
@@ -80,6 +79,15 @@
         var position_layer = new L.marker(null, {
           icon: position_icon,
           clickable: false
+        });
+        var municipalities_layer = new L.GeoJSON(null, {
+          pointToLayer: function (feature, latlng) {
+            return L.circleMarker(latlng, {
+              clickable: false,
+              radius: 3,
+              className: 'municipality-boundaries'
+            }).bindLabel(feature.geometry.properties.name, { noHide: true, direction: 'auto', className: 'municipality-text' });
+          }
         });
         var search_layer = L.featureGroup([heatmap_layer]);
 
@@ -115,6 +123,9 @@
             map.setView(latlng,map.getZoom());
             setLatLngLayer(position_layer,search_layer,latlng);
             doRadius();
+            if ($rootScope.appConfig.showMunicipalities) {
+              setMunicipalities();
+            }
           }
         }
 
@@ -130,6 +141,30 @@
 
           if (!layerGroup.hasLayer(layer)) {
             layerGroup.addLayer(layer);
+          }
+        }
+
+        function setMunicipalities(){
+          if (scope.searchParams.currentCoords!==undefined) {
+            if (scope.searchParams.distanceType === 'distance') {
+              MunicipalitiesService.getMunicipalitiesGeoJSON(scope.searchParams.currentCoords, scope.searchParams.distance, function (result) {
+                setMunicipalitiesLayer(result);
+              });
+            }
+            else {
+              MunicipalitiesService.getMunicipalitiesFromZipsGeoJSON(scope.searchParams.zips,function (result) {
+                setMunicipalitiesLayer(result);
+              });
+            }
+          }
+        }
+
+        function setMunicipalitiesLayer(data){
+          municipalities_layer.clearLayers();
+          municipalities_layer.addData(data);
+
+          if (!search_layer.hasLayer(municipalities_layer)){
+            search_layer.addLayer(municipalities_layer).bringToFront();
           }
         }
 
@@ -154,14 +189,17 @@
         scope.$watchCollection('searchParams.distance', function () {
           if (search_layer.hasLayer(radius_layer)) {
             radius_layer.setRadius((scope.searchParams.distance*1000));
+            if ($rootScope.appConfig.showMunicipalities) {
+              setMunicipalities();
+            }
           }
         });
 
-        /*scope.$watchCollection('searchParams.zips', function() {
+        scope.$watchCollection('searchParams.zips', function() {
           if ($rootScope.appConfig.showMunicipalities) {
             setMunicipalities();
           }
-        });*/
+        });
 
         scope.$watchCollection('heatmap', function () {
           if (scope.heatmap !== undefined) {
