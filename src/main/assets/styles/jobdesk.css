@@ -364,7 +364,7 @@ md-select-menu md-content {
 .jd-select-reset {
   color: rgba(0, 0, 0, 0.54);
 }
-.jd-floating-toolbar md-radio-button .md-label {
+#distanceType md-radio-button .md-label {
   font-size: 0.75em;
   color: #000000;
 }
@@ -385,25 +385,18 @@ md-input-container.md-slider-has-label label,
   color: #000000;
 }
 .jd-floating-toolbar {
-  height: 5em;
-  max-height: 7em;
   margin-top: 1em;
-  width: calc(100% - 16px);
-  position: fixed;
-  background-color: #fff;
-  z-index: 10;
 }
 @media (max-width: 599px) {
-  .jd-floating-toolbar-fill-sm {
-    height: auto;
-    max-height: inherit;
+  #filter {
+    margin-bottom: 76px;
+  }
+  .jd-floating-toolbar #filter {
+    margin-bottom: 0;
   }
 }
 .jd-floating-fab {
   position: fixed !important;
-}
-#filter + div {
-  margin-top: 6em;
 }
 .jd-icon-button {
   width: auto !important;
@@ -435,6 +428,11 @@ label {
   position: fixed !important;
   height: 56px;
   font-size: 20px;
+}
+@media (max-width: 599px) {
+  .jd-bottom-right {
+    font-size: inherit;
+  }
 }
 .jd-sleep-screen {
   opacity: 0.6;

@@ -250,7 +250,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <p ng-bind-html=\"formatTextToShow(getMultiLanguageText(jobDetail._source.description))\"></p>\n" +
     "            <div layout=\"row\" layout-wrap layout-align=\"space-between start\">\n" +
-    "              <div flex=\"25\" flex-sm=\"100\">\n" +
+    "              <div flex=\"25\" flex-xs=\"100\">\n" +
     "                <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong><br />\n" +
     "                <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />\n" +
     "\n" +
@@ -266,7 +266,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "              </div>\n" +
     "\n" +
     "              <!-- Sprachen -->\n" +
-    "              <div flex=\"25\" flex-sm=\"100\">\n" +
+    "              <div flex=\"25\" flex-xs=\"100\">\n" +
     "                <div ng-repeat=\"language in jobDetail._source.languages\" ng-if=\"language.languageCode\">\n" +
     "                  <strong class=\"fake-label\" translate=\"language.jobs.{{::language.languageCode}}\"></strong><br />\n" +
     "                  (<span translate=\"jobs.result.spoken\"></span>: <span translate=\"global.codes.languages.skills.{{::language.spokenCode}}\"></span> / <span translate=\"jobs.result.written\"></span>: <span translate=\"global.codes.languages.skills.{{::language.writtenCode}}\"></span>)\n" +
@@ -274,7 +274,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "              </div>\n" +
     "\n" +
     "              <!-- Bewerbung -->\n" +
-    "              <div flex=\"25\" flex-sm=\"100\">\n" +
+    "              <div flex=\"25\" flex-xs=\"100\">\n" +
     "                <div ng-if=\"jobDetail._source.application.written\">\n" +
     "                  <strong class=\"fake-label\" translate=\"jobs.result.titleWrittenApplication\"></strong><br />\n" +
     "                  <span translate=\"jobs.result.letterApplication\"></span>\n" +
@@ -288,7 +288,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "                  <span>{{jobDetail._source.contact.phone}}</span>\n" +
     "                </div>\n" +
     "              </div>\n" +
-    "              <div flex=\"25\" flex-sm=\"100\">\n" +
+    "              <div flex=\"25\" flex-xs=\"100\">\n" +
     "                <strong>{{::jobDetail._source.company.name}}</strong><br />\n" +
     "                <span>{{::jobDetail._source.company.address.street}}</span><br />\n" +
     "                <span>{{::jobDetail._source.company.address.zip}} {{::jobDetail._source.company.address.location}}</span><br />\n" +
@@ -308,7 +308,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "          <span ng-switch-when=\"true\">\n" +
     "            <p ng-bind-html=\"formatTextToShow(getMultiLanguageText(jobDetail._source.description))\"></p>\n" +
     "            <div layout=\"row\" layout-wrap layout-align=\"space-between start\">\n" +
-    "              <div flex=\"25\" flex-sm=\"100\">\n" +
+    "              <div flex=\"25\" flex-xs=\"100\">\n" +
     "                <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong><br />\n" +
     "                <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />\n" +
     "\n" +
@@ -354,7 +354,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "    <md-dialog-content style=\"width:100%;height:100%;\">\n" +
     "      <div class=\"md-dialog-content\">\n" +
     "        <div layout=\"row\" layout-wrap layout-margin layout-align=\"space-between center\" width=\"100%\">\n" +
-    "          <a ng-click=\"answer(minorGroup)\" layout=\"row\" layout-align=\"start center\" flex=\"30\" class=\"jd-job-list\" ng-repeat=\"minorGroup in iscoMinorGroups[level] track by $index\" >\n" +
+    "          <a ng-click=\"answer(minorGroup)\" layout=\"row\" layout-align=\"start center\" flex=\"30\" flex-xs=\"100\" class=\"jd-job-list\" ng-repeat=\"minorGroup in iscoMinorGroups[level] track by $index\" >\n" +
     "            <md-icon>arrow_forward</md-icon>&nbsp;<span flex translate=\"isco.minorGroups.{{minorGroup}}\"></span>\n" +
     "          </a>\n" +
     "        </div>\n" +

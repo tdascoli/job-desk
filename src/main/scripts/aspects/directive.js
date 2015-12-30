@@ -14,7 +14,7 @@
         var defaults = attrs.mapDefaults || {
                                               center: [46.8, 8.3],
                                               zoom: 8,
-                                              zoomControl: false,
+                                              zoomControl: true,
                                               scrollWheelZoom: false,
                                               doubleClickZoom: true,
                                               maxBounds: [
@@ -24,7 +24,7 @@
                                             };
 
         //** height/width -> fullscreen param?!
-        element.css('height', ($(window).height() - ($('#topnav').outerHeight()+$('#filter').outerHeight())) );
+        element.css('height', ($(window).height() - ($('#topnav').outerHeight()+$('#filter').outerHeight())) - 25 );
         element.css('width',$(document).width());
 
         //*** geo-layer (contours, cantons, lakes, cities and my-position
@@ -80,6 +80,10 @@
         });
         var search_layer = L.featureGroup([heatmap_layer]);
 
+        if ($rootScope.mobile){
+          defaults.center=[scope.searchParams.currentCoords.lat, scope.searchParams.currentCoords.lon];
+          defaults.zoom=9;
+        }
         var map = L.map(mapId, defaults);
 
         map
@@ -109,6 +113,7 @@
         function myPosition(){
           if (scope.searchParams.currentCoords!==undefined) {
             var latlng = [scope.searchParams.currentCoords.lat, scope.searchParams.currentCoords.lon];
+            map.setView(latlng,map.getZoom());
             setLatLngLayer(position_layer,search_layer,latlng);
             doRadius();
           }
@@ -233,16 +238,6 @@
             heatmap_layer.addData(geometries);
           }
         });
-      }
-    };
-  }]);
-
-  module.directive('jdContent', [function () {
-    return {
-      restrict: 'C',
-      priority: 10,
-      link: function (scope, element) {
-        element.css({marginTop:$('#filter').outerHeight()});
       }
     };
   }]);
