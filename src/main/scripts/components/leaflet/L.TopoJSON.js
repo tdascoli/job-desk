@@ -1,26 +1,21 @@
-/*
-You'll need something like this in your HTML:
-<script src="http://d3js.org/topojson.v1.min.js"></script>
-*/
-
+'use strict';
 L.TopoJSON = L.GeoJSON.extend({
-  addData: function(jsonData) {    
-    if (jsonData.type === "Topology") {
-      for (key in jsonData.objects) {
-        geojson = topojson.feature(jsonData, jsonData.objects[key]);
-        L.GeoJSON.prototype.addData.call(this, geojson);
+  addData: function(jsonData) {
+    if (jsonData.type === 'Topology') {
+      for (var key in jsonData.objects) {
+        L.GeoJSON.prototype.addData.call(this, topojson.feature(jsonData, jsonData.objects[key]));
       }
-    }    
+    }
     else {
       L.GeoJSON.prototype.addData.call(this, jsonData);
     }
-  }  
+  }
 });
-
-/* 
+/*
 The MIT License (MIT)
 
 Copyright (c) 2013 Ryan Clark
+              2015 Thomas D'Ascoli, jshint
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
