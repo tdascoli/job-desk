@@ -27,7 +27,7 @@
         element.css('height', ($(window).height() - ($('#topnav').outerHeight()+$('#filter').outerHeight())) - 25 );
         element.css('width',$(document).width());
 
-        //*** geo-layer (contours, cantons, lakes, cities and my-position
+        //*** geo-layer (contours, cantons, lakes, cities and my-position)
         var colorScale = chroma.scale(['94BF8B', 'F5F4F2']).domain([0,4000]).mode('hcl');
         var contour_layer = new L.TopoJSON(null, {
           clickable: false,
@@ -36,17 +36,14 @@
             return { fillColor: colorScale(feature.id).hex() };
           }
         });
-
         var canton_layer = new L.TopoJSON(null, {
           clickable: false,
           className: 'canton-boundaries'
         });
-
         var lake_layer = new L.TopoJSON(null, {
           clickable: false,
           className: 'lakes'
         });
-
         var cities_layer = new L.GeoJSON(null, {
           pointToLayer: function (feature, latlng) {
             return L.circleMarker(latlng, {
@@ -58,7 +55,7 @@
         });
         var geo_layer = L.featureGroup([contour_layer,canton_layer,lake_layer,cities_layer]);
 
-        //*** search-layer (heatmap, radius, current position
+        //*** search-layer (heatmap, radius, current position)
         var heatmap_layer = new L.GeoJSON(null, {
           onEachFeature: function (feature, layer) {
             layer.setStyle({className:'heatmap '+feature.properties.className});
@@ -68,12 +65,10 @@
           clickable: false,
           className: 'radius'
         });
-
         var position_icon = L.divIcon({
           className: 'material-icons current-location',
           html: 'place'
         });
-
         var position_layer = new L.marker(null, {
           icon: position_icon,
           clickable: false
@@ -81,7 +76,7 @@
         var search_layer = L.featureGroup([heatmap_layer]);
 
         if ($rootScope.mobile){
-          defaults.center=[scope.searchParams.currentCoords.lat, scope.searchParams.currentCoords.lon];
+          defaults.center=myCoords;
           defaults.zoom=9;
         }
         var map = L.map(mapId, defaults);
