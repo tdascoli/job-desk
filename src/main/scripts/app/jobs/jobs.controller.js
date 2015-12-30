@@ -259,7 +259,6 @@
         $scope.currentStep = 0;
       };
 
-
       //*** LEAFLET ***//
       $scope.mapDefaults = {
         center: [46.8, 8.3],
