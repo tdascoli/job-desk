@@ -129,7 +129,9 @@
       geolocation.getLocation().then(function (data) {
         // geolocation received from browser
         if ($rootScope.myCoords === undefined) {
-          $rootScope.myCoords = {lat: data.coords.latitude, lon: data.coords.longitude};
+          LocationsService.checkLocation({lat: data.coords.latitude, lon: data.coords.longitude}, function (coords) {
+            $rootScope.myCoords=coords;
+          });
         }
       }, function() {
         // user blocked geolocation or browser doesn't support it

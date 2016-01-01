@@ -54,6 +54,21 @@
         return $http.post(baseUrl + '/location/_search', filter);
       }
 
+      function checkLocation(coords,callback){
+        var location=coords;
+        getLocation(coords).success(function(nearestZip){
+            if (nearestZip.hits.total <= 0) {
+              location=getDefaultLocation();
+            }
+            callback(location);
+          })
+          .error(function(error){
+            // todo error handling
+            console.log(error);
+            callback(getDefaultLocation());
+          });
+      }
+
       function getDefaultLocation() {
         // Bern
         return {
@@ -65,7 +80,8 @@
       return {
         getLocation: getLocation,
         getLocationFromZip: getLocationFromZip,
-        getDefaultLocation: getDefaultLocation
+        getDefaultLocation: getDefaultLocation,
+        checkLocation: checkLocation
       };
 
     });

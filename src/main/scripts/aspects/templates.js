@@ -329,7 +329,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "        </md-button>\n" +
     "      </div>\n" +
     "    </md-toolbar>\n" +
-    "    <md-dialog-content style=\"width:100%;\">\n" +
+    "    <md-dialog-content>\n" +
     "      <div class=\"md-dialog-content\">\n" +
     "        <div layout=\"row\" layout-wrap layout-margin layout-align=\"space-between center\" width=\"100%\">\n" +
     "          <a ng-click=\"answer(minorGroup)\" layout=\"row\" layout-align=\"start center\" flex=\"30\" flex-xs=\"100\" class=\"jd-job-list\" ng-repeat=\"minorGroup in iscoMinorGroups[level] track by $index\" >\n" +
