@@ -72,8 +72,8 @@
       function getDefaultLocation() {
         // Bern
         return {
-          lat: 46.953,
-          lon: 7.461
+          lat: 46.946953,
+          lon: 7.424150
         };
       }
 
