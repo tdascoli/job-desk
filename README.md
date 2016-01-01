@@ -9,7 +9,7 @@ production: http://jobdesk.job-room.ch
 
 development: http://jobdeskdev-alvch.rhcloud.com
 
-poc denmark: http://jobdesk-dascoli.rhcloud.com
+poc denmark: http://jobdesk-dascoli.rhcloud.com / github: https://github.com/tdascoli/job-desk
 
 ## ISCO
 https://de.wikipedia.org/wiki/International_Standard_Classification_of_Occupations
