@@ -10,6 +10,7 @@
       link: function (scope, element, attrs) {
         // todo attrs - eval??
         var mapId = attrs.id || 'map';
+        var tiles = attrs.mapTiles || false;
         var myCoords = attrs.mapLocation || {lat: $rootScope.myCoords.lat, lng: $rootScope.myCoords.lon};
         var defaults = attrs.mapDefaults || {
                                               center: [46.8, 8.3],
@@ -26,6 +27,11 @@
           defaults.center=myCoords;
           defaults.zoom=9;
         }
+
+        //** tiles
+        var tile_layer = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+         minZoom: 8, maxZoom: 12
+        });
 
         //** height/width -> fullscreen param?!
         element.css('width',$(document).width());
@@ -92,6 +98,10 @@
         var search_layer = L.featureGroup([heatmap_layer]);
 
         var map = L.map(mapId, defaults);
+
+        if (tiles){
+          map.addLayer(tile_layer);
+        }
 
         map
           .addLayer(geo_layer.bringToBack())
