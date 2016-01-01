@@ -158,16 +158,24 @@ body {
   font-family: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
   border: none;
   background: transparent;
-  padding-left: 0;
-  padding-top: 4px;
-  margin-left: -4px;
+  padding: 6px 0 0 0;
   cursor: pointer;
+}
+.city-text.leaflet-label-right,
+.municipality-text.leaflet-label-right {
+  margin-left: -4px;
+}
+.city-text.leaflet-label-left,
+.municipality-text.leaflet-label-left {
+  margin-left: 6px;
 }
 .municipality-text.leaflet-label {
   font-weight: 400;
 }
 .city-text.leaflet-label:before,
-.municipality-text.leaflet-label:before {
+.city-text.leaflet-label:after,
+.municipality-text.leaflet-label:before,
+.municipality-text.leaflet-label:after {
   border: none;
   left: 0;
 }
@@ -369,7 +377,7 @@ md-select-menu md-content {
 .jd-select-reset {
   color: rgba(0, 0, 0, 0.54);
 }
-#distanceType md-radio-button .md-label {
+.jd-floating-toolbar md-radio-button .md-label {
   font-size: 0.75em;
   color: #000000;
 }
@@ -521,7 +529,7 @@ md-toast.md-toast-error-theme .md-toast-content {
   position: absolute;
   background-color: #2196f3;
   color: #fff;
-  z-index: 101;
+  z-index: 1001;
   top: 0;
   left: 2.5%;
   font-family: inherit;
