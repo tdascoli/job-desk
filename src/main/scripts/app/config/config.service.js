@@ -18,11 +18,12 @@
         config.showMunicipalities = false;
         config.distanceType = 'travelTime';
       }
+
       resetConfig();
 
       function init() {
         var cookieConfig = $cookies.getObject('config');
-        if (cookieConfig){
+        if (cookieConfig) {
           config = cookieConfig;
         }
         return config;
@@ -31,7 +32,7 @@
       function persist() {
         var now = new Date();
         $cookies.remove('config');
-        $cookies.putObject('config',config,{expires:new Date(now.getFullYear()+10,now.getMonth())});
+        $cookies.putObject('config', config, {expires: new Date(now.getFullYear() + 10, now.getMonth())});
       }
 
       function reset() {

@@ -7,7 +7,7 @@
 
       function getLocation(coords) {
         var filter = {
-          'size' : 1,
+          'size': 1,
           'query': {
             'filtered': {
               'query': {
@@ -38,9 +38,9 @@
 
       function getLocationFromZip(zip) {
         var filter = {
-          'size' : 1,
+          'size': 1,
           'query': {
-                'term': {'zip':zip }
+            'term': {'zip': zip}
           },
           'sort': [
             {
@@ -54,15 +54,15 @@
         return $http.post(baseUrl + '/location/_search', filter);
       }
 
-      function checkLocation(coords,callback){
-        var location=coords;
-        getLocation(coords).success(function(nearestZip){
+      function checkLocation(coords, callback) {
+        var location = coords;
+        getLocation(coords).success(function (nearestZip) {
             if (nearestZip.hits.total <= 0) {
-              location=getDefaultLocation();
+              location = getDefaultLocation();
             }
             callback(location);
           })
-          .error(function(error){
+          .error(function (error) {
             // todo error handling
             console.log(error);
             callback(getDefaultLocation());

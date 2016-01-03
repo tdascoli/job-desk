@@ -3,7 +3,7 @@
 
   var module = angular.module('job-desk.i18n', ['pascalprecht.translate', 'LocalStorageModule', 'tmh.dynamicLocale']);
 
-  module.config(function($translateProvider, tmhDynamicLocaleProvider, supportedLanguages) {
+  module.config(function ($translateProvider, tmhDynamicLocaleProvider, supportedLanguages) {
     // Initialize angular-translate
     $translateProvider.registerAvailableLanguageKeys(supportedLanguages, {
       'en_US': 'en',
@@ -24,8 +24,8 @@
     tmhDynamicLocaleProvider.useCookieStorage('NG_TRANSLATE_LANG_KEY');
   });
 
-  module.run(function($rootScope, $translate, LanguageService, $translatePartialLoader) {
-    $rootScope.currentLanguage=false;
+  module.run(function ($rootScope, $translate, LanguageService, $translatePartialLoader) {
+    $rootScope.currentLanguage = false;
 
     $rootScope.changeLanguage = function (languageKey) {
       $translate.use(languageKey);
@@ -39,7 +39,7 @@
     $rootScope.$on('$stateChangeStart', function () {
       // Update the language
       LanguageService.getCurrent().then(function (language) {
-        $rootScope.currentLanguage=language;
+        $rootScope.currentLanguage = language;
         $translate.use(language);
       });
     });
@@ -70,11 +70,11 @@
 
     var _defaultParts = ['global', 'languages', 'errors'];
 
-    this.setLanguages = function(languages) {
+    this.setLanguages = function (languages) {
       _languages = languages;
     };
 
-    this.setDefaultParts = function(defaultParts) {
+    this.setDefaultParts = function (defaultParts) {
       _defaultParts = defaultParts;
     };
 
@@ -92,7 +92,7 @@
       }
     }
 
-    function getAll () {
+    function getAll() {
       var deferred = _q.defer();
       deferred.resolve(_languages);
       return deferred.promise;
@@ -102,7 +102,7 @@
       return _defaultParts;
     }
 
-    this.$get = function($q, $http, $translate) {
+    this.$get = function ($q, $http, $translate) {
       _q = $q;
       _http = $http;
       _translate = $translate;
