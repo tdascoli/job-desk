@@ -1,23 +1,23 @@
-;(function() {
+;(function () {
 
   'use strict';
 
   var module = angular.module('job-desk');
 
-  module.directive('help', function(){
+  module.directive('help', function () {
     return {
       priority: 10,
       restrict: 'E',
       replace: true,
       templateUrl: 'template/help.html',
-      link: function(scope, element){
+      link: function (scope, element) {
         element.addClass('example');
 
       }
     };
   });
 
-  module.directive('jobDetail', ['$translate','$sce','$mdDialog', '$timeout', 'JobsService', function($translate,$sce,$mdDialog, $timeout, JobsService){
+  module.directive('jobDetail', ['$translate', '$sce', '$mdDialog', '$timeout', 'JobsService', function ($translate, $sce, $mdDialog, $timeout, JobsService) {
     return {
       priority: 10,
       restrict: 'A',
@@ -27,18 +27,18 @@
         isMobile: '='
       },
       templateUrl: 'template/job-detail.html',
-      link: function(scope, element){
-        scope.showDetailContent=false;
+      link: function (scope, element) {
+        scope.showDetailContent = false;
 
-        scope.getMultiLanguageText=function(text){
+        scope.getMultiLanguageText = function (text) {
           return text[$translate.use()];
         };
 
-        scope.onlineSinceDate=function(publicationDate){
+        scope.onlineSinceDate = function (publicationDate) {
           return moment().diff(moment(publicationDate, 'YYYY-MM-DD'), 'days');
         };
 
-        scope.showDetail=function(jobId){
+        scope.showDetail = function (jobId) {
           if (!scope.showDetailContent) {
             JobsService.addVisitedJob(jobId);
             if (scope.lastOpenedJob.scope && scope.lastOpenedJob.scope !== scope) {
@@ -47,16 +47,16 @@
             scope.lastOpenedJob.scope = scope;
 
             // timeout to wait to the end of digest cycle
-            $timeout(function() {
+            $timeout(function () {
               // scroll to the opened job
               element.parent().scrollTop(element.parent().scrollTop() + element.position().top - 100);
             }, 0);
           }
-          scope.showDetailContent=!scope.showDetailContent;
+          scope.showDetailContent = !scope.showDetailContent;
 
         };
 
-        scope.showPrintDialog = function(jobId) {
+        scope.showPrintDialog = function (jobId) {
           JobsService.addVisitedJob(jobId);
           $mdDialog.show({
             parent: angular.element(document.body),
@@ -68,7 +68,7 @@
               formatDate: scope.formatDate
             },
             escapeToClose: false,
-            onComplete: function() {
+            onComplete: function () {
               window.print();
               $timeout(function () {
                 $mdDialog.hide();
@@ -79,12 +79,12 @@
               $scope.getMultiLanguageText = getMultiLanguageText;
               $scope.onlineSinceDate = onlineSinceDate;
               $scope.formatDate = formatDate;
-              $scope.cancel = function() {
+              $scope.cancel = function () {
                 $mdDialog.cancel();
               };
-              $scope.formatTextToPrint = function(text) {
+              $scope.formatTextToPrint = function (text) {
                 // replace <br> tags by whitespace
-                text = String(text).replace(/(<|&lt;)br\s*\/*(>|&gt;)/g,' ');
+                text = String(text).replace(/(<|&lt;)br\s*\/*(>|&gt;)/g, ' ');
                 // remove all html tags
                 text = String(text).replace(/<[^>]+>/gm, ' ');
                 return text;
@@ -93,11 +93,11 @@
           });
         };
 
-        scope.containsQuota = function(jobTitle) {
+        scope.containsQuota = function (jobTitle) {
           return (jobTitle.search('%') > -1);
         };
 
-        scope.formatTextToShow = function(text) {
+        scope.formatTextToShow = function (text) {
           // remove all html tags except <ul>, <li>, <br>
           text = String(text).replace(/((?!<((\/)?li|ul|br))<[^>]*>)/gi, ' ');
           // tmp fix : avoid $sanitize parse errors while DB field for job description is too short
@@ -105,11 +105,11 @@
           return text;
         };
 
-        scope.isVisited = function(jobId) {
+        scope.isVisited = function (jobId) {
           return JobsService.isVisited(jobId);
         };
 
-        scope.formatDate = function(date) {
+        scope.formatDate = function (date) {
           return moment(date, 'YYYY-MM-DD').format('DD.MM.YYYY');
         };
       }

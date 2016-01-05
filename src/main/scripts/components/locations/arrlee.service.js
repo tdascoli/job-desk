@@ -16,7 +16,7 @@
         edgeLength: 2.25
       };
 
-      function getHeatmap(zip,travelTime) {
+      function getHeatmap(zip, travelTime) {
         arrleeParams.start_zip = zip;
         arrleeParams.max_travel_time = travelTime;
 

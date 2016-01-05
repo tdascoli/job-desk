@@ -107,7 +107,14 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      server: '.tmp'
+      server: '.tmp',
+      app: {
+        files: [{
+          src: [
+            'JobDesk/www/*'
+          ]
+        }]
+      }
     },
     jshint: {
       options: {
@@ -258,6 +265,18 @@ module.exports = function (grunt) {
     },
     // Put files not handled in other tasks here
     copy: {
+      app: {
+        files: [
+          {
+            expand: true,
+            cwd: 'dist',
+            dest: 'JobDesk/www',
+            src: [
+              '**.*'
+            ]
+          }
+        ]
+      },
       dist: {
         files: [
           {

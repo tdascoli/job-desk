@@ -11,12 +11,12 @@
 
       function init() {
 
-        getLastUpdate().then(function(timestamp) {
+        getLastUpdate().then(function (timestamp) {
           lastUpdate = timestamp;
         });
 
         $interval(function () {
-          getLastUpdate().then(function(timestamp) {
+          getLastUpdate().then(function (timestamp) {
             if (timestamp !== lastUpdate) {
               lastUpdate = timestamp;
               showUpdateToast();
@@ -26,7 +26,7 @@
       }
 
       function getLastUpdate() {
-        return $q(function(resolve, reject) {
+        return $q(function (resolve, reject) {
           $http({
             method: 'GET',
             url: '/update.json'
@@ -46,7 +46,7 @@
           .action('Update')
           .hideDelay(toastHideDelay)
           .position('top right');
-        $mdToast.show(toast).then(function(response) {
+        $mdToast.show(toast).then(function (response) {
           if (response === 'ok') {
             $window.location.reload();
           }

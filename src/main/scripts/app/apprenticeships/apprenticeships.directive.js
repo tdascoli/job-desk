@@ -1,10 +1,10 @@
-;(function() {
+;(function () {
 
   'use strict';
 
   var module = angular.module('job-desk');
 
-  module.directive('apprenticeshipDetail', ['$translate', '$mdDialog', '$timeout', function($translate, $mdDialog, $timeout){
+  module.directive('apprenticeshipDetail', ['$translate', '$mdDialog', '$timeout', function ($translate, $mdDialog, $timeout) {
     return {
       priority: 10,
       restrict: 'A',
@@ -12,13 +12,13 @@
         apprenticeshipDetail: '='
       },
       templateUrl: 'template/apprenticeship-detail.html',
-      link: function(scope){
+      link: function (scope) {
 
-        scope.getMultiLanguageText=function(text){
+        scope.getMultiLanguageText = function (text) {
           return text[$translate.use()];
         };
 
-        scope.showPrintDialog = function() {
+        scope.showPrintDialog = function () {
           $mdDialog.show({
             parent: angular.element(document.body),
             templateUrl: 'views/template/apprenticeship-print.html',
@@ -27,7 +27,7 @@
               getMultiLanguageText: scope.getMultiLanguageText
             },
             escapeToClose: false,
-            onComplete: function() {
+            onComplete: function () {
               window.print();
               $timeout(function () {
                 $mdDialog.hide();
@@ -36,11 +36,11 @@
             controller: function PrintDialogController($scope, apprenticeshipDetail, getMultiLanguageText) {
               $scope.apprenticeshipDetail = apprenticeshipDetail;
               $scope.getMultiLanguageText = getMultiLanguageText;
-              $scope.cancel = function() {
+              $scope.cancel = function () {
                 $mdDialog.cancel();
               };
-              $scope.formatText = function(text) {
-                text = text.replace(/(<|&lt;)br\s*\/*(>|&gt;)/g,' ');
+              $scope.formatText = function (text) {
+                text = text.replace(/(<|&lt;)br\s*\/*(>|&gt;)/g, ' ');
                 return text;
               };
             }

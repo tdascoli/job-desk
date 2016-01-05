@@ -1,4 +1,4 @@
-angular.module('job-desk').run(['$templateCache', function($templateCache) {
+angular.module('job-desk').run(['$templateCache', function ($templateCache) {
   'use strict';
 
   $templateCache.put('template/apprenticeship-detail.html',

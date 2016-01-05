@@ -22,7 +22,7 @@
     'angular-tour'
   ]);
 
-  app.config(['$httpProvider', function($httpProvider) {
+  app.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.useXDomain = true;
     $httpProvider.defaults.withCredentials = true;
     $httpProvider.interceptors.push('authInterceptor');
@@ -57,7 +57,7 @@
     $mdThemingProvider.setDefaultTheme('jobs');
 
     // catch all exceptions and send them to trackJS
-    $provide.decorator('$exceptionHandler', ['$delegate', '$window', function($delegate, $window) {
+    $provide.decorator('$exceptionHandler', ['$delegate', '$window', function ($delegate, $window) {
       return function (exception, cause) {
         if ($window.trackJs) {
           $window.trackJs.track(exception);
@@ -83,7 +83,7 @@
           }
         },
         resolve: {
-          mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+          mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
             $translatePartialLoader.addPart('errors');
             return $translate.refresh();
           }]
@@ -101,24 +101,24 @@
       });
   });
 
-  app.run(function($http, geolocation, $rootScope, $state, $cookies, LocationsService, ConfigService, UpdateService, PresenceService, ENV){
+  app.run(function ($http, geolocation, $rootScope, $state, $cookies, LocationsService, ConfigService, UpdateService, PresenceService, ENV) {
 
-    $rootScope.mobile=$.browser.mobile;
+    $rootScope.mobile = $.browser.mobile;
 
-    $rootScope.current=function(){
-      if ($state.$current.url.source==='/' || $state.$current.url.source==='/jobs' || $state.$current.url.source==='/apprenticeships' || $state.$current.url.source==='/educations'){
+    $rootScope.current = function () {
+      if ($state.$current.url.source === '/' || $state.$current.url.source === '/jobs' || $state.$current.url.source === '/apprenticeships' || $state.$current.url.source === '/educations') {
         return 'info_outline';
       }
       return 'home';
     };
 
     var menuEv;
-    $rootScope.openMenu=function($mdOpenMenu, ev){
+    $rootScope.openMenu = function ($mdOpenMenu, ev) {
       menuEv = ev;
       $mdOpenMenu(ev);
     };
-    $rootScope.closeMenu=function(target){
-      menuEv=null;
+    $rootScope.closeMenu = function (target) {
+      menuEv = null;
       $state.go(target);
     };
 
@@ -130,20 +130,20 @@
         // geolocation received from browser
         if ($rootScope.myCoords === undefined) {
           LocationsService.checkLocation({lat: data.coords.latitude, lon: data.coords.longitude}, function (coords) {
-            $rootScope.myCoords=coords;
+            $rootScope.myCoords = coords;
           });
         }
-      }, function() {
+      }, function () {
         // user blocked geolocation or browser doesn't support it
         $rootScope.myCoords = LocationsService.getDefaultLocation();
       });
     }
     else {
-      $rootScope.myCoords=config.coords;
+      $rootScope.myCoords = config.coords;
     }
 
-    $rootScope.back=function(){
-      if ($state.$current.url.source==='/' || $state.$current.url.source==='/jobs' || $state.$current.url.source==='/apprenticeships' || $state.$current.url.source==='/educations'){
+    $rootScope.back = function () {
+      if ($state.$current.url.source === '/' || $state.$current.url.source === '/jobs' || $state.$current.url.source === '/apprenticeships' || $state.$current.url.source === '/educations') {
         //$state.go('localInfo');
       }
       else {
