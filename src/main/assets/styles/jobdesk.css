@@ -2,18 +2,12 @@ body {
   font-family: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 .topnav-title {
-  padding-right: 2em;
+  padding: 0;
+  margin: 0;
   height: 100%;
-}
-.topnav-title span {
-  font-size: 20px;
-  text-transform: none;
-  line-height: 48px;
-  height: 48px;
 }
 .topnav-title img {
   height: 100%;
-  padding: 0;
 }
 .section-button {
   width: 25%;
@@ -498,7 +492,7 @@ md-toast.md-toast-error-theme .md-toast-content {
   background-color: #E82B2B;
 }
 .md-jobs-theme .leaflet-marker-icon.material-icons {
-  color: #2196f3 !important;
+  color: #03a9f4 !important;
   margin-left: -17px !important;
   margin-top: -32px !important;
   font-size: 34px;
