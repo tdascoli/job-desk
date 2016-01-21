@@ -7,7 +7,7 @@
 
       function getLocation(coords) {
         var filter = {
-          'size' : 1,
+          'size': 1,
           'query': {
             'filtered': {
               'query': {
@@ -38,9 +38,9 @@
 
       function getLocationFromZip(zip) {
         var filter = {
-          'size' : 1,
+          'size': 1,
           'query': {
-                'term': {'zip':zip }
+            'term': {'zip': zip}
           },
           'sort': [
             {
@@ -54,18 +54,34 @@
         return $http.post(baseUrl + '/location/_search', filter);
       }
 
+      function checkLocation(coords, callback) {
+        var location = coords;
+        getLocation(coords).success(function (nearestZip) {
+            if (nearestZip.hits.total <= 0) {
+              location = getDefaultLocation();
+            }
+            callback(location);
+          })
+          .error(function (error) {
+            // todo error handling
+            console.log(error);
+            callback(getDefaultLocation());
+          });
+      }
+
       function getDefaultLocation() {
         // Bern
         return {
-          lat: 46.953,
-          lon: 7.461
+          lat: 46.946953,
+          lon: 7.424150
         };
       }
 
       return {
         getLocation: getLocation,
         getLocationFromZip: getLocationFromZip,
-        getDefaultLocation: getDefaultLocation
+        getDefaultLocation: getDefaultLocation,
+        checkLocation: checkLocation
       };
 
     });

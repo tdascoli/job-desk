@@ -1,7 +1,8 @@
+<!-- layout-xs="column" -->
 <div ng-class="{visited: isVisited(jobDetail._source.jobId)}" layout="row" layout-wrap layout-align="space-between start" style="padding: 10px;">
   <!-- JOB ID : for debug purposes -->
   <span ng-show="false">{{::jobDetail._source.jobId}}</span>
-  <div flex flex-sm="100">
+  <div flex flex-xs="100" flex-order-xs="2">
       <strong class="strong">{{::getMultiLanguageText(jobDetail._source.title)}}&nbsp;</strong>
       <span ng-if="!containsQuota(getMultiLanguageText(jobDetail._source.title))">
         <strong ng-if="jobDetail._source.quotaFrom!==jobDetail._source.quotaTo">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</strong>
@@ -21,7 +22,7 @@
 
             <p ng-bind-html="formatTextToShow(getMultiLanguageText(jobDetail._source.description))"></p>
             <div layout="row" layout-wrap layout-align="space-between start">
-              <div flex="25" flex-sm="100">
+              <div flex="25" flex-xs="100">
                 <strong class="fake-label" translate="jobs.result.jobLocation"></strong><br />
                 <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />
 
@@ -37,7 +38,7 @@
               </div>
 
               <!-- Sprachen -->
-              <div flex="25" flex-sm="100">
+              <div flex="25" flex-xs="100">
                 <div ng-repeat="language in jobDetail._source.languages" ng-if="language.languageCode">
                   <strong class="fake-label" translate="language.jobs.{{::language.languageCode}}"></strong><br />
                   (<span translate="jobs.result.spoken"></span>: <span translate="global.codes.languages.skills.{{::language.spokenCode}}"></span> / <span translate="jobs.result.written"></span>: <span translate="global.codes.languages.skills.{{::language.writtenCode}}"></span>)
@@ -45,7 +46,7 @@
               </div>
 
               <!-- Bewerbung -->
-              <div flex="25" flex-sm="100">
+              <div flex="25" flex-xs="100">
                 <div ng-if="jobDetail._source.application.written">
                   <strong class="fake-label" translate="jobs.result.titleWrittenApplication"></strong><br />
                   <span translate="jobs.result.letterApplication"></span>
@@ -59,7 +60,7 @@
                   <span>{{jobDetail._source.contact.phone}}</span>
                 </div>
               </div>
-              <div flex="25" flex-sm="100">
+              <div flex="25" flex-xs="100">
                 <strong>{{::jobDetail._source.company.name}}</strong><br />
                 <span>{{::jobDetail._source.company.address.street}}</span><br />
                 <span>{{::jobDetail._source.company.address.zip}} {{::jobDetail._source.company.address.location}}</span><br />
@@ -79,7 +80,7 @@
           <span ng-switch-when="true">
             <p ng-bind-html="formatTextToShow(getMultiLanguageText(jobDetail._source.description))"></p>
             <div layout="row" layout-wrap layout-align="space-between start">
-              <div flex="25" flex-sm="100">
+              <div flex="25" flex-xs="100">
                 <strong class="fake-label" translate="jobs.result.jobLocation"></strong><br />
                 <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />
 
@@ -90,9 +91,10 @@
         </span>
       </div>
 
-    </div>
-  <div flex="20" hide-sm layout-margin>
-    <md-button ng-click="showDetail(jobDetail._source.jobId)" aria-label="Show / Close Detail" class="md-raised jd-btn-block">
+  </div>
+  <!-- todo style: layout-margin flex-xs="100" flex-order-xs="1" ng-class="{'jd-mobile':mobile}" -->
+  <div flex="20" flex-xs="100" flex-order-xs="1" ng-class="{'jd-mobile':isMobile}">
+    <md-button ng-click="showDetail(jobDetail._source.jobId)" aria-label="Show / Close Detail" class="jd-show-btn" ng-class="{'md-raised jd-btn-block':!isMobile}">
       <span ng-show="!showDetailContent">
         <md-icon>search</md-icon>&nbsp;<span translate="jobs.result.showMore"></span>
       </span>
@@ -100,8 +102,8 @@
         <md-icon>close</md-icon>&nbsp;<span translate="jobs.result.showLess"></span>
       </span>
     </md-button>
-    <p></p>
-    <md-button ng-click="showPrintDialog(jobDetail._source.jobId)" class="md-raised jd-btn-block"><md-icon>print</md-icon>&nbsp;<span translate="jobs.result.print"></span></md-button>
+
+    <md-button hide-xs ng-click="showPrintDialog(jobDetail._source.jobId)" class="md-raised jd-btn-block"><md-icon>print</md-icon>&nbsp;<span translate="jobs.result.print"></span></md-button>
   </div>
 </div>
 

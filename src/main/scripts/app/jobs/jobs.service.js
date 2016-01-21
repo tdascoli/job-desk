@@ -84,7 +84,7 @@
         }
         // SORT
         var sort = {};
-        if (params.sort.field==='distance') {
+        if (params.sort.field === 'distance') {
           sort._geo_distance = {
             'location.locations.geoLocation': params.currentCoords,
             order: params.sort.order,

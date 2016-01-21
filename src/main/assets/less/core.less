@@ -8,23 +8,12 @@ body {
 
 //**** TOPNAV
 .topnav-title {
-  padding-right: 2em;
+  padding: 0;
+  margin: 0;
+  height: 100%;
 }
-.topnav-title md-icon {
-  margin: 0 6px;
-  height: 48px;
-  min-width: 0;
-  line-height: 48px;
-  padding-left: 0;
-  padding-right: 0;
-  width: 24px;
-  border-radius: 50%;
-}
-.topnav-title span {
-  font-size: 20px;
-  text-transform: none;
-  line-height: 48px;
-  height: 48px;
+.topnav-title img {
+  height: 100%;
 }
 .section-button {
   width: 25%;
@@ -130,28 +119,68 @@ body {
 #map {
   width: 960px;
   height: 500px;
+  cursor: pointer;
+  background-color: #fff;
 }
 .radius {
   fill: @map-radius-fill;
-  opacity: 0.25;
+  opacity: 1;
+  stroke: @map-radius-fill;
+  stroke-opacity: 1;
+  stroke-width: 1;
+}
+.contour {
+  fill-opacity: 1;
+  stroke: none;
+  stroke-opacity: 0;
+  stroke-width: 0;
+  shape-rendering: crispEdges;
 }
 .canton-boundaries {
   fill: @topo-canton-boundaries-fill;
+  fill-opacity: 1;
   stroke: @topo-canton-boundaries-stroke;
+  stroke-opacity: 1;
   stroke-width: 1;
   shape-rendering: crispEdges;
 }
-
 .city-boundaries {
   fill: @topo-city-boundaries-fill;
+  fill-opacity: 1;
   stroke: @topo-city-boundaries-stroke;
+  stroke-opacity: 1;
   stroke-width: 1.5;
-  z-index: 1900;
 }
 .municipality-boundaries {
   fill: @topo-city-boundaries-fill;
   stroke: @topo-city-boundaries-stroke;
   stroke-width: 1;
+}
+.city-text.leaflet-label,
+.municipality-text.leaflet-label{
+  font-family: @font-family-base;
+  border: none;
+  background: transparent;
+  padding: 6px 0 0 0;
+  cursor: pointer;
+}
+.city-text.leaflet-label-right,
+.municipality-text.leaflet-label-right{
+  margin-left: -4px;
+}
+.city-text.leaflet-label-left,
+.municipality-text.leaflet-label-left{
+  margin-left: 6px;
+}
+.municipality-text.leaflet-label{
+  font-weight: 400;
+}
+.city-text.leaflet-label:before,
+.city-text.leaflet-label:after,
+.municipality-text.leaflet-label:before,
+.municipality-text.leaflet-label:after {
+  border: none;
+  left: 0;
 }
 .municipality-text {
   font-size: 12px;
@@ -162,18 +191,24 @@ body {
 }
 .lakes {
   fill: @topo-lakes-fill;
+  fill-opacity: 1 !important;
   stroke: @topo-lakes-stroke;
-  z-index: 4000;
+  stroke-opacity: 1 !important;
+  weight: 1;
 }
 .my-location {
   fill: @map-my-location-fill;
+  fill-opacity: 1;
   stroke: @map-my-location-stroke;
+  stroke-opacity: 1;
   stroke-width: 1.5;
   z-index: 2000;
 }
 .current-location {
-  fill: transparent;
+  fill: #fff;
+  fill-opacity: 1;
   stroke: @map-current-location-stroke;
+  stroke-opacity: 1;
   stroke-width: 1;
 }
 text {
@@ -192,7 +227,11 @@ text {
 }
 
 .heatmap {
-  opacity: 0.66;
+  fill: transparent;
+  fill-opacity: 0.66;
+  stroke: transparent;
+  stroke-opacity: 0;
+  stroke-width: 0;
   fill-rule: nonzero;
 }
 .heatmap-outline {
@@ -380,28 +419,19 @@ md-input-container.md-slider-has-label label,
 }
 
 .jd-floating-toolbar {
-  height: 5em;
-  max-height: 7em;
   margin-top: 1em;
-  width: calc(~'100% - 16px');
-  position: fixed;
-  background-color: #fff;
-  z-index: 10;
 }
-
 @media (max-width: 599px) {
-  .jd-floating-toolbar-fill-sm {
-    height: auto;
-    max-height: inherit;
+  #filter {
+    margin-bottom: 76px;
+  }
+  .jd-floating-toolbar #filter {
+    margin-bottom: 0;
   }
 }
 
 .jd-floating-fab {
   position: fixed !important;
-}
-
-#filter + div {
-  margin-top: 6em;
 }
 
 .jd-icon-button {
@@ -441,6 +471,14 @@ label {
   height: 56px;
   font-size: 20px;
 }
+@media (max-width: 599px) {
+  .jd-bottom-right  {
+    top: 50px;
+    right: 0;
+    bottom: auto;
+    font-size: inherit;
+  }
+}
 
 .jd-sleep-screen {
   opacity: @sleep-screen-opacity;
@@ -463,7 +501,13 @@ label {
 }
 
 .jd-btn-block {
-  width: 100%;
+  width: calc(~'100% - 8px');
+}
+.jd-btn-block + .jd-btn-block {
+  margin-bottom: 8px;
+}
+.jd-mobile .jd-show-btn {
+  margin-left: 0;
 }
 .jd-job-list {
   text-align: left;
@@ -495,4 +539,31 @@ md-toast.md-toast-success-theme .md-toast-content {
 
 md-toast.md-toast-error-theme .md-toast-content{
   background-color: #E82B2B;
+}
+
+.md-jobs-theme .leaflet-marker-icon.material-icons {
+  color: @material-color-light-blue !important;
+  margin-left: -(@map-marker-size / 2) !important;
+  margin-top: -(@map-marker-size - 2) !important;
+  font-size: @map-marker-size;
+}
+
+.filter-button-container {
+  display: inline-block;
+  position: relative;
+  padding: 2px;
+  margin: 18px 0;
+  vertical-align: middle;
+}
+
+.zip-form .filter-button-container {
+  margin-top: 0;
+}
+
+.md-has-icon.isco-select {
+  padding-left: 0;
+}
+
+.my-location-button {
+  text-align: right;
 }

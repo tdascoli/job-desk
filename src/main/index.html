@@ -62,6 +62,8 @@
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/keyboard/dist/css/keyboard.min.css" />
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+  <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="bower_components/Leaflet.label/dist/leaflet.label.css" />
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -72,19 +74,19 @@
 
 </head>
 
-<body presence layout="column" md-theme="{{searchType}}" hotkey="{a: ssiKeyStart, b: back, c: ssiKeyInfo}">
+<body presence layout="column" md-theme="{{searchType}}">
 
 <md-toolbar layout="column" id="topnav" class="md-whiteframe-z4" md-theme-watch="true">
   <div class="md-toolbar-tools">
-    <md-button ng-click="back()" class="topnav-title">
-      <md-icon>{{current()}}</md-icon> <span translate="global.title"></span>
+    <md-button ng-click="back()" class="topnav-title" aria-label="Job-Desk Home">
+      <img src="assets/images/jobdesk-logo.png" />
     </md-button>
-    <md-button hide-sm class="md-raised md-primary section-button" aria-label="jobs" md-theme="jobs" href="#/jobs" ng-hide="searchType==='jobs'"><md-icon>launch</md-icon> <span translate="global.jobs"></span></md-button>
-    <md-button hide-sm class="md-raised md-primary section-button" aria-label="educations" md-theme="educations" href="#/educations" ng-hide="searchType==='educations' || !appConfig.educations "><md-icon>launch</md-icon> <span translate="global.educations"></span></md-button>
-    <md-button hide-sm class="md-raised md-primary section-button" aria-label="apprenticeships" md-theme="apprenticeships" href="#/apprenticeships" ng-hide="searchType==='apprenticeships' || !appConfig.apprenticeships"><md-icon>launch</md-icon> <span translate="global.apprenticeships"></span></md-button>
+    <md-button hide-xs class="md-raised md-primary section-button" aria-label="jobs" md-theme="jobs" href="#/jobs" ng-hide="searchType==='jobs'"><md-icon>launch</md-icon> <span translate="global.jobs"></span></md-button>
+    <md-button hide-xs class="md-raised md-primary section-button" aria-label="educations" md-theme="educations" href="#/educations" ng-hide="searchType==='educations' || !appConfig.educations "><md-icon>launch</md-icon> <span translate="global.educations"></span></md-button>
+    <md-button hide-xs class="md-raised md-primary section-button" aria-label="apprenticeships" md-theme="apprenticeships" href="#/apprenticeships" ng-hide="searchType==='apprenticeships' || !appConfig.apprenticeships"><md-icon>launch</md-icon> <span translate="global.apprenticeships"></span></md-button>
     <span flex></span>
     <language-switcher></language-switcher>
-    <md-menu md-position-mode="target-right target" hide-gt-sm ng-hide="!appConfig.educations && !appConfig.apprenticeships">
+    <md-menu md-position-mode="target-right target" hide-gt-xs ng-hide="!appConfig.educations && !appConfig.apprenticeships">
       <md-button aria-label="Open Menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu,$event)">
         <md-icon md-menu-origin>more_vert</md-icon>
       </md-button>
@@ -137,10 +139,6 @@
 <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
 <script src="bower_components/angular-scroll/angular-scroll.js"></script>
 <script src="bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
-<script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
-<script src="bower_components/leaflet/dist/leaflet.js"></script>
-<script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
-<script src="bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
 <script src="bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
 <script src="bower_components/d3/d3.min.js"></script>
 <script src="bower_components/topojson/topojson.js"></script>
@@ -149,7 +147,11 @@
 <script src="bower_components/angular-presence/angular-presence.js"></script>
 <script src="bower_components/trackjs/tracker.js"></script>
 <script src="bower_components/angular-tour/dist/angular-tour.min.js"></script>
+<script src="bower_components/chroma-js/chroma.js"></script>
+<script src="bower_components/leaflet/dist/leaflet-src.js"></script>
+<script src="bower_components/Leaflet.label/dist/leaflet.label.js"></script>
 <!-- endbower -->
+<script src="scripts/components/leaflet/L.TopoJSON.js"></script>
 <!-- endbuild -->
 
 <!-- build:js scripts/app.js -->

@@ -5,6 +5,12 @@ job-desk
 
 Job search frontend made for internet terminals.
 
+production: http://jobdesk.job-room.ch
+
+development: http://jobdeskdev-alvch.rhcloud.com
+
+poc denmark: http://jobdesk-dascoli.rhcloud.com / github: https://github.com/tdascoli/job-desk
+
 ## ISCO
 https://de.wikipedia.org/wiki/International_Standard_Classification_of_Occupations
 
@@ -18,6 +24,9 @@ http://www.swissdoc.sdbb.ch/
 
 ## GeoJSON
 http://geojson.org/
+
+## Leaflet
+* map: http://leafletjs.com/
 
 ## Radius km/px calculation
 * Calculated from: http://www.freemaptools.com/how-far-is-it-between-bern_-schweiz-and-zürich_-schweiz.htm

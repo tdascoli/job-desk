@@ -1,10 +1,10 @@
-;(function() {
+;(function () {
 
   'use strict';
 
   var module = angular.module('job-desk');
 
-  module.directive('educationDetail', ['$translate', '$mdDialog', '$timeout', function($translate, $mdDialog, $timeout){
+  module.directive('educationDetail', ['$translate', '$mdDialog', '$timeout', function ($translate, $mdDialog, $timeout) {
     return {
       priority: 10,
       restrict: 'A',
@@ -12,26 +12,26 @@
         educationDetail: '='
       },
       templateUrl: 'template/education-detail.html',
-      link: function(scope, element){
-        scope.showDetailContent=false;
+      link: function (scope, element) {
+        scope.showDetailContent = false;
 
-        scope.getMultiLanguageText=function(text){
+        scope.getMultiLanguageText = function (text) {
           return text[$translate.use()];
         };
 
-        scope.showDetail=function(){
+        scope.showDetail = function () {
           element.addClass('visited');
-          scope.showDetailContent=!scope.showDetailContent;
+          scope.showDetailContent = !scope.showDetailContent;
         };
 
-        scope.checkLanguage=function(lang){
-          if (lang!=='ger' && lang!=='de' && lang!=='eng' && lang!=='en' && lang!=='fre' && lang!=='fr' && lang!=='ita' && lang!=='it'){
+        scope.checkLanguage = function (lang) {
+          if (lang !== 'ger' && lang !== 'de' && lang !== 'eng' && lang !== 'en' && lang !== 'fre' && lang !== 'fr' && lang !== 'ita' && lang !== 'it') {
             return 'other';
           }
           return lang;
         };
 
-        scope.showPrintDialog = function() {
+        scope.showPrintDialog = function () {
           $mdDialog.show({
             parent: angular.element(document.body),
             templateUrl: 'views/template/education-print.html',
@@ -41,7 +41,7 @@
               checkLanguage: scope.checkLanguage
             },
             escapeToClose: false,
-            onComplete: function() {
+            onComplete: function () {
               window.print();
               $timeout(function () {
                 $mdDialog.hide();
@@ -51,11 +51,11 @@
               $scope.educationDetail = educationDetail;
               $scope.getMultiLanguageText = getMultiLanguageText;
               $scope.checkLanguage = checkLanguage;
-              $scope.cancel = function() {
+              $scope.cancel = function () {
                 $mdDialog.cancel();
               };
-              $scope.formatText = function(text) {
-                text = text.replace(/(<|&lt;)br\s*\/*(>|&gt;)/g,' ');
+              $scope.formatText = function (text) {
+                text = text.replace(/(<|&lt;)br\s*\/*(>|&gt;)/g, ' ');
                 return text;
               };
             }
