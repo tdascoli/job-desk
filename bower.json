@@ -1,6 +1,6 @@
 {
   "name": "job-desk",
-  "version": "0.1.5-RC2",
+  "version": "0.1.5",
   "ignore": [
     ".idea",
     "node_modules",
