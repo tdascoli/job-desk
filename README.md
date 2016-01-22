@@ -27,6 +27,7 @@ http://geojson.org/
 
 ## Leaflet
 * map: http://leafletjs.com/
+* tiles: https://leaflet-extras.github.io/leaflet-providers/preview/
 
 ## Radius km/px calculation
 * Calculated from: http://www.freemaptools.com/how-far-is-it-between-bern_-schweiz-and-zürich_-schweiz.htm
@@ -48,7 +49,7 @@ https://material.angularjs.org
 * Spec: https://www.google.com/design/spec/material-design/introduction.html
 
 ## Arrlee                                               
-http://www.arrlee.ch
+* http://www.arrlee.ch
 
 ## Star TSP700II
 * Drivers : http://www.starmicronics.com/support/default.aspx?printerCode=TSP700II

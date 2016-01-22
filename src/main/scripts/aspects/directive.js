@@ -32,6 +32,14 @@
         var tile_layer = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
           minZoom: 8, maxZoom: 12
         });
+        /*var tile_layer = L.tileLayer('http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+          minZoom: 8, maxZoom: 12
+        });
+        var tile_layer = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.{ext}', {
+          subdomains: 'abcd',
+          minZoom: 8, maxZoom: 12,
+          ext: 'png'
+        });*/
 
         //** height/width -> fullscreen param?!
         element.css('width', $(document).width());
@@ -67,6 +75,7 @@
           }
         });
         var geo_layer = L.featureGroup([contour_layer, canton_layer, lake_layer, cities_layer]);
+        //var geo_layer = L.featureGroup([canton_layer]);
 
         //*** search-layer (heatmap, radius, current position, municipalities)
         var heatmap_layer = new L.GeoJSON(null, {
