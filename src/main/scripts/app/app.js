@@ -143,12 +143,7 @@
     }
 
     $rootScope.back = function () {
-      if ($state.$current.url.source === '/' || $state.$current.url.source === '/jobs' || $state.$current.url.source === '/apprenticeships' || $state.$current.url.source === '/educations') {
-        //$state.go('localInfo');
-      }
-      else {
-        $state.go($rootScope.searchType);
-      }
+      $state.go($rootScope.searchType);
     };
 
     // detection of user inactivity
