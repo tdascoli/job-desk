@@ -124,6 +124,8 @@
 
     $rootScope.appConfig = ConfigService.init();
 
+    $rootScope.myCoords = LocationsService.getDefaultLocation();
+
     var config = $cookies.getObject('config');
     if (!angular.isObject(config)) {
       geolocation.getLocation().then(function (data) {
@@ -135,7 +137,6 @@
         }
       }, function () {
         // user blocked geolocation or browser doesn't support it
-        $rootScope.myCoords = LocationsService.getDefaultLocation();
       });
     }
     else {
