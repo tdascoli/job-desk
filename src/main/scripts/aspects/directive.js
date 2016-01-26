@@ -11,7 +11,6 @@
         // todo attrs - eval??
         var mapId = attrs.id || 'map';
         var tiles = attrs.mapTiles || false;
-        var myCoords = attrs.mapLocation || {lat: $rootScope.myCoords.lat, lng: $rootScope.myCoords.lon};
         var defaults = attrs.mapDefaults || {
             center: [46.8, 8.3],
             zoom: 8,
@@ -24,7 +23,6 @@
             ]
           };
         if ($rootScope.mobile) {
-          defaults.center = myCoords;
           defaults.zoom = 9;
         }
 
@@ -32,14 +30,6 @@
         var tile_layer = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
           minZoom: 8, maxZoom: 12
         });
-        /*var tile_layer = L.tileLayer('http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-          minZoom: 8, maxZoom: 12
-        });
-        var tile_layer = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.{ext}', {
-          subdomains: 'abcd',
-          minZoom: 8, maxZoom: 12,
-          ext: 'png'
-        });*/
 
         //** height/width -> fullscreen param?!
         element.css('width', $(document).width());
@@ -75,7 +65,6 @@
           }
         });
         var geo_layer = L.featureGroup([contour_layer, canton_layer, lake_layer, cities_layer]);
-        //var geo_layer = L.featureGroup([canton_layer]);
 
         //*** search-layer (heatmap, radius, current position, municipalities)
         var heatmap_layer = new L.GeoJSON(null, {
@@ -94,6 +83,11 @@
         var position_layer = new L.marker(null, {
           icon: position_icon,
           clickable: false
+        });
+        var my_position_layer = new L.circleMarker(null, {
+          clickable: false,
+          radius: 3,
+          className: 'my-location'
         });
         var municipalities_layer = new L.GeoJSON(null, {
           pointToLayer: function (feature, latlng) {
@@ -129,9 +123,10 @@
 
             $.getJSON('assets/topojson/cities.json', function (data) {
               cities_layer.addData(data);
-
-              geo_layer.addLayer(L.circleMarker(myCoords, {clickable: false, radius: 3, className: 'my-location'}));
-              myPosition();
+              if ($rootScope.myCoords!==undefined){
+                geo_layer.addLayer(L.circleMarker([$rootScope.myCoords.lat, $rootScope.myCoords.lon], {clickable: false, radius: 3, className: 'my-location'}));
+                myPosition();
+              }
             });
           });
         });
@@ -194,6 +189,12 @@
         scope.$watchCollection('searchParams.currentCoords', function () {
           if (search_layer.hasLayer(position_layer)) {
             myPosition();
+          }
+        });
+
+        scope.$watchCollection('myCoords', function () {
+          if ($rootScope.myCoords!==undefined) {
+            setLatLngLayer(my_position_layer, geo_layer, [$rootScope.myCoords.lat, $rootScope.myCoords.lon]);
           }
         });
 
