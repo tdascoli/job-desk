@@ -356,6 +356,9 @@ md-input-container > md-slider {
   margin: 0;
   width: 100%;
 }
+.md-select-menu-container {
+  z-index: 1001;
+}
 #iscoGroup .md-select-value {
   color: #000000 !important;
 }
