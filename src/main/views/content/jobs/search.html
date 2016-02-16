@@ -45,8 +45,9 @@
 
     <div flex="15" flex-xs="40" id="distanceType">
       <md-radio-group ng-model="searchParams.distanceType" ng-change="countJobs()" ng-init="searchParams.distanceType=searchParams.distanceType || appConfig.distanceType">
-        <md-radio-button value="distance" class="md-primary"><span translate="jobs.search.distanceTypeDistance"></span></md-radio-button>
-        <md-radio-button value="travelTime" class="md-primary"><span translate="jobs.search.distanceTypeTravelTime"></span></md-radio-button>
+        <md-radio-button value="distance" class="md-primary" aria-label="distance"><span translate="jobs.search.distanceTypeDistance"></span></md-radio-button>
+        <md-radio-button value="travelTime" class="md-primary" aria-label="travel time"><span translate="jobs.search.distanceTypeTravelTime"></span></md-radio-button>
+        <md-radio-button value="drive" class="md-primary" aria-label="travel time"><span translate="jobs.search.distanceTypeDrive"></span></md-radio-button>
       </md-radio-group>
     </div>
 
@@ -60,6 +61,11 @@
         <label class="md-slider-label" translate="jobs.search.travelTime" translate-values="{value:showTimeInH(searchParams.travelTime)}"></label>
         <md-slider ng-model="searchParams.travelTime" step="{{travelTimeOptions.step}}" min="{{travelTimeOptions.min}}" max="{{travelTimeOptions.max}}" aria-label="travelTime" ng-change="countJobs()" class="md-primary"></md-slider>
       </div>
+
+      <div flex ng-if="searchParams.distanceType==='drive'">
+        <label class="md-slider-label" translate="jobs.search.travelTime" translate-values="{value:showTimeInH(searchParams.travelTime)}"></label>
+        <md-slider ng-model="searchParams.travelTime" step="{{driveOptions.step}}" min="{{driveOptions.min}}" max="{{driveOptions.max}}" aria-label="drive" ng-change="countJobs()" class="md-primary"></md-slider>
+      </div>
     </div>
 
     <div flex hide-xs>
@@ -68,7 +74,7 @@
   </div>
 
   <div align="center" flex-order-xs="1">
-    <div id="map" class="map"></div>
+    <div id="map" class="map" map-tiles="true"></div>
   </div>
 
 </div>

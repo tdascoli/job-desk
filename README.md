@@ -1,4 +1,4 @@
-job-desk
+Job-Desk
 ========
 
 [![Code Climate](https://codeclimate.com/github/alv-ch/job-desk/badges/gpa.svg)](https://codeclimate.com/github/alv-ch/job-desk) [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/alv-ch/job-desk) [![Build Status](https://travis-ci.org/alv-ch/job-desk.svg?branch=dev)](https://travis-ci.org/alv-ch/job-desk)
@@ -11,73 +11,75 @@ development: http://jobdeskdev-alvch.rhcloud.com
 
 poc denmark: http://jobdesk-dascoli.rhcloud.com / github: https://github.com/tdascoli/job-desk
 
-## ISCO
+Labour market
+-------------
+
+### ISCO
 https://de.wikipedia.org/wiki/International_Standard_Classification_of_Occupations
 
-## Swissdoc
+### Swissdoc
 http://www.swissdoc.sdbb.ch/
 
-## Topojson
+Geolocation
+-----------
+
+### Topojson
 * Swiss Maps: https://github.com/interactivethings/swiss-maps
 * Create a Map: http://bost.ocks.org/mike/map/
 * General: https://github.com/mbostock/topojson/wiki
+* geo.admin.ch API: https://api3.geo.admin.ch/
 
-## GeoJSON
+### GeoJSON
 http://geojson.org/
 
-## Leaflet
+### Leaflet
 * map: http://leafletjs.com/
 * tiles: https://leaflet-extras.github.io/leaflet-providers/preview/
+* wiki tiles: https://www.mediawiki.org/wiki/Maps 
 
-## Radius km/px calculation
+### Radius km/px calculation
 * Calculated from: http://www.freemaptools.com/how-far-is-it-between-bern_-schweiz-and-zürich_-schweiz.htm
 * JavaScript from: http://stackoverflow.com/questions/27928/how-do-i-calculate-distance-between-two-latitude-longitude-points
 
-## PLZ and Coordinates
+### PLZ and Coordinates
 * Cadastre.ch - PLZ/Coordinates (Choose 'CSV (Excel) WGS84'): http://www.cadastre.ch/internet/kataster/de/home/services/service/plz.html
 * PLZ -> Gemeinde Zuordnung - Ortschaftenverzeichnis der Schweiz: http://www.bfs.admin.ch/bfs/portal/de/index/infothek/nomenklaturen/blank/blank/gem_liste/04.html
 * Räumliche Topologien (bfs.admin.ch > Regional > Statistische Grundlagen > Räumliche Gliederungen > Räumliche Topologien): http://www.bfs.admin.ch/bfs/portal/de/index/regionen/11/geo/raeumliche_typologien/00.html
 * Todo: PLZ and PO Box, for example 3000 Bern or 8000 Zürich
 
-## Angular Material
+### Arrlee - circum search by public transport system based on the official SBB timetable                                               
+* http://www.arrlee.ch
+
+### WalkScore API - circum search by traveltime (car, bike, walk, transport) 
+* Travel Time HTTP API: https://www.walkscore.com/professional/travel-time-http-api.php
+
+Techstack
+---------
+
+### Angular Material
 https://material.angularjs.org
 
-## Material Design
+### Material Design
 * General: https://design.google.com/
 * Icons: https://www.google.com/design/icons/
 * Iconfont: https://github.com/google/material-design-icons/tree/master/iconfont
 * Spec: https://www.google.com/design/spec/material-design/introduction.html
 
-## Arrlee                                               
-* http://www.arrlee.ch
-
-## Star TSP700II
-* Drivers : http://www.starmicronics.com/support/default.aspx?printerCode=TSP700II
-
-## AngularJS-PDF
+### AngularJS-PDF
 (wip using the internal rendering engine, cause of cross-site scripting error)
 * angularjs-pdf: https://github.com/sayanee/angularjs-pdf
 
-## Elasticsearch
+### angular-presence
+Detect user activity
+https://github.com/katebe/angular-presence
+
+### Elasticsearch
 
 Query/Filter/Sort
 
 * Query: https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl.html
 * Filter: https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl-filters.html
   * GeoLocation: https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl-geo-distance-filter.html
+  * Geo Polygon Filer: https://www.elastic.co/guide/en/elasticsearch/reference/1.7/query-dsl-geo-polygon-filter.html
 * Sort: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html
-
-For moving and saving indicies
-
-* Elasticsearch-dump: https://github.com/taskrabbit/elasticsearch-dump
-* elasticsearch-tools: https://github.com/skratchdot/elasticsearch-tools#usage-es-export-bulk
-* **Bulk API**: https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
-  * Export: `es-export-bulk --url http://[_url-to-elastic:_port] --file data.json --index [_index] --type [_type] --transformMeta 'delete data.index._score'`
-  * Split into Chunks of 5000 lines (2500 operations): `split -l 5000 data.json data.json`
-  * Import `curl -s -XPOST 'http://[_url-to-elastic:_port]/[_index]/[_type]/_bulk' --data-binary @data.jsonaa` until data.jsonXX
-  * currently 2500 operations are OK
-  
-## angular-presence
-Detect user activity
-https://github.com/katebe/angular-presence
   

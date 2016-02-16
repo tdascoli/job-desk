@@ -399,6 +399,12 @@ module.exports = function (grunt) {
           headers: {
             Host: 'arrlee.jobarea.ch' // the real host you want to access
           }
+        },
+        {
+          context: '/api',
+          host: 'api2.walkscore.com',
+          https: false,
+          changeOrigin: false
         }
       ],
       livereload: {
@@ -465,6 +471,7 @@ module.exports = function (grunt) {
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://localhost:9000/jobdesk',
           arrleeUrl: 'http://localhost:9000/arrlee',
+          travelTimeUrl: 'http://localhost:9000/api',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
@@ -477,6 +484,7 @@ module.exports = function (grunt) {
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://jobdesk.job-room.ch/jobdesk',
           arrleeUrl: 'http://jobdesk.job-room.ch/arrlee',
+          travelTimeUrl: 'http://jobdesk.job-room.ch/api',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
@@ -489,6 +497,7 @@ module.exports = function (grunt) {
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://jobdeskdev-alvch.rhcloud.com/jobdesk',
           arrleeUrl: 'http://jobdeskdev-alvch.rhcloud.com/arrlee',
+          travelTimeUrl: 'http://jobdeskdev-alvch.rhcloud.com/api',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },

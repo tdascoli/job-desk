@@ -123,9 +123,9 @@ body {
   background-color: #fff;
 }
 .radius {
-  fill: @map-radius-fill;
+  fill: @map-heatmap-fill; //@map-radius-fill;
   opacity: 1;
-  stroke: @map-radius-fill;
+  stroke: @map-heatmap-fill; //@map-radius-fill;
   stroke-opacity: 1;
   stroke-width: 1;
 }
@@ -135,6 +135,13 @@ body {
   stroke-opacity: 0;
   stroke-width: 0;
   shape-rendering: crispEdges;
+}
+.country-boundaries {
+  fill: #fff;
+  fill-opacity: 0.75;
+  stroke: transparent;
+  stroke-opacity: 1;
+  stroke-width: 1;
 }
 .canton-boundaries {
   fill: @topo-canton-boundaries-fill;
@@ -211,23 +218,9 @@ body {
   stroke-opacity: 1;
   stroke-width: 1;
 }
-text {
-  font-size: 12px;
-  font-weight: 700;
-  pointer-events: none;
-  opacity: 1;
-  z-index: 2100;
-}
-@media (max-width: 599px) {
-  text {
-    font-size: 10px;
-    font-weight: 700;
-    pointer-events: none;
-  }
-}
 
 .heatmap {
-  fill: transparent;
+  fill: @map-heatmap-fill;
   fill-opacity: 0.66;
   stroke: transparent;
   stroke-opacity: 0;
@@ -238,7 +231,15 @@ text {
   fill: transparent;
   stroke: transparent;
 }
-
+.traveltime {
+  fill: @map-heatmap-fill;
+  fill-opacity: 0.66;
+  stroke: @map-heatmap-fill;
+  stroke-opacity: 1;
+  stroke-width: 1;
+  fill-rule: nonzero;
+}
+/*
 .area0 {
   fill: @arrlee-area0;
 }
@@ -257,7 +258,7 @@ text {
 .area5 {
   fill: @arrlee-area5;
 }
-
+*/
 //**** KEYBOARD
 .keyboard {
   width: 100% !important;

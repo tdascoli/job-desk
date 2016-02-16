@@ -109,9 +109,9 @@ body {
   background-color: #fff;
 }
 .radius {
-  fill: #ffffff;
+  fill: #f2d600;
   opacity: 1;
-  stroke: #ffffff;
+  stroke: #f2d600;
   stroke-opacity: 1;
   stroke-width: 1;
 }
@@ -121,6 +121,13 @@ body {
   stroke-opacity: 0;
   stroke-width: 0;
   shape-rendering: crispEdges;
+}
+.country-boundaries {
+  fill: #fff;
+  fill-opacity: 0.75;
+  stroke: transparent;
+  stroke-opacity: 1;
+  stroke-width: 1;
 }
 .canton-boundaries {
   fill: transparent;
@@ -197,22 +204,8 @@ body {
   stroke-opacity: 1;
   stroke-width: 1;
 }
-text {
-  font-size: 12px;
-  font-weight: 700;
-  pointer-events: none;
-  opacity: 1;
-  z-index: 2100;
-}
-@media (max-width: 599px) {
-  text {
-    font-size: 10px;
-    font-weight: 700;
-    pointer-events: none;
-  }
-}
 .heatmap {
-  fill: transparent;
+  fill: #f2d600;
   fill-opacity: 0.66;
   stroke: transparent;
   stroke-opacity: 0;
@@ -223,24 +216,34 @@ text {
   fill: transparent;
   stroke: transparent;
 }
+.traveltime {
+  fill: #f2d600;
+  fill-opacity: 0.66;
+  stroke: #f2d600;
+  stroke-opacity: 1;
+  stroke-width: 1;
+  fill-rule: nonzero;
+}
+/*
 .area0 {
-  fill: #de9900;
+  fill: @arrlee-area0;
 }
 .area1 {
-  fill: #e5ad00;
+  fill: @arrlee-area1;
 }
 .area2 {
-  fill: #ebc200;
+  fill: @arrlee-area2;
 }
 .area3 {
-  fill: #f2d600;
+  fill: @arrlee-area3;
 }
 .area4 {
-  fill: #f8eb00;
+  fill: @arrlee-area4;
 }
 .area5 {
-  fill: #ffff00;
+  fill: @arrlee-area5;
 }
+*/
 .keyboard {
   width: 100% !important;
 }

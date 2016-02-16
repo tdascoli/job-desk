@@ -29,15 +29,15 @@
         }
 
         //** tiles
-        var tile_layer = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        var tile_layer = L.tileLayer('https://maps.wikimedia.org/osm/{z}/{x}/{y}.png', {
           minZoom: 8, maxZoom: 12
         });
-        /*var tile_layer = L.tileLayer('http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-          minZoom: 8, maxZoom: 12
-        });
-        var tile_layer = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.{ext}', {
-          subdomains: 'abcd',
-          minZoom: 8, maxZoom: 12,
+        //** tiles label
+        /*var tile_labels = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.{ext}', {
+          attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          subdomains: 'ab',
+          minZoom: 8,
+          maxZoom: 12,
           ext: 'png'
         });*/
 
@@ -57,6 +57,11 @@
             return {fillColor: colorScale(feature.id).hex()};
           }
         });
+        var country_layer = new L.TopoJSON(null, {
+          clickable: false,
+          className: 'country-boundaries',
+          invert: true
+        });
         var canton_layer = new L.TopoJSON(null, {
           clickable: false,
           className: 'canton-boundaries'
@@ -74,14 +79,16 @@
             }).bindLabel(feature.geometry.properties.name, {noHide: true, className: 'city-text'});
           }
         });
-        var geo_layer = L.featureGroup([contour_layer, canton_layer, lake_layer, cities_layer]);
-        //var geo_layer = L.featureGroup([canton_layer]);
+        var geo_layer = L.featureGroup([contour_layer, country_layer, canton_layer, lake_layer, cities_layer]);
 
         //*** search-layer (heatmap, radius, current position, municipalities)
         var heatmap_layer = new L.GeoJSON(null, {
           onEachFeature: function (feature, layer) {
             layer.setStyle({className: 'heatmap ' + feature.properties.className});
           }
+        });
+        var traveltime_layer = new L.GeoJSON(null, {
+            className: 'traveltime'
         });
         var radius_layer = new L.circle(null, (scope.searchParams.distance * 1000), {
           clickable: false,
@@ -108,19 +115,19 @@
             });
           }
         });
-        var search_layer = L.featureGroup([heatmap_layer]);
+        var search_layer = L.featureGroup([heatmap_layer,traveltime_layer]);
 
         var map = L.map(mapId, defaults);
 
         if (tiles) {
-          map.addLayer(tile_layer);
+          map.addLayer(tile_layer); //.addLayer(tile_labels);
         }
 
         map
           .addLayer(geo_layer.bringToBack())
           .addLayer(search_layer.bringToFront());
 
-        $.getJSON('assets/topojson/ch-contours.json', function (data) {
+        /*$.getJSON('assets/topojson/ch-contours.json', function (data) {
           contour_layer.addData(topojson.feature(data, data.objects.contours));
 
           $.getJSON('assets/topojson/ch-cantons-lakes.json', function (data) {
@@ -133,6 +140,16 @@
               geo_layer.addLayer(L.circleMarker(myCoords, {clickable: false, radius: 3, className: 'my-location'}));
               myPosition();
             });
+          });
+        });*/
+
+        $.getJSON('assets/topojson/ch-country-lakes.json', function (data) {
+          country_layer.addData(topojson.feature(data, data.objects.country));
+          lake_layer.addData(topojson.feature(data, data.objects.lakes));
+          $.getJSON('assets/topojson/cities.json', function (data) {
+            cities_layer.addData(data);
+            geo_layer.addLayer(L.circleMarker(myCoords, {clickable: false, radius: 3, className: 'my-location'}));
+            myPosition();
           });
         });
 
@@ -200,9 +217,17 @@
         scope.$watchCollection('searchParams.distanceType', function (newValue, oldValue) {
           if (newValue !== oldValue && scope.searchParams.distanceType === 'distance') {
             heatmap_layer.clearLayers();
+            traveltime_layer.clearLayers();
             doRadius();
           }
-          else if (newValue !== oldValue && scope.searchParams.distanceType !== 'distance') {
+          else if (newValue !== oldValue && scope.searchParams.distanceType === 'travelTime') {
+            traveltime_layer.clearLayers();
+            if (search_layer.hasLayer(radius_layer)) {
+              search_layer.removeLayer(radius_layer);
+            }
+          }
+          else if (newValue !== oldValue && scope.searchParams.distanceType === 'drive') {
+            heatmap_layer.clearLayers();
             if (search_layer.hasLayer(radius_layer)) {
               search_layer.removeLayer(radius_layer);
             }
@@ -221,6 +246,14 @@
         scope.$watchCollection('searchParams.zips', function () {
           if ($rootScope.appConfig.showMunicipalities) {
             setMunicipalities();
+          }
+        });
+
+        // todo traveltime/heatmap?? naming!! travelTime!==drive??
+        scope.$watchCollection('traveltime', function () {
+          if (scope.traveltime !== undefined) {
+            traveltime_layer.clearLayers();
+            traveltime_layer.addData(scope.traveltime.response.geometry);
           }
         });
 

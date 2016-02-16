@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('job-desk')
-    .factory('JobsService', function ($http, baseUrl, ConfigService) {
+    .factory('JobsService', function ($http, baseUrl, ConfigService, lodash) {
 
       var params = {};
       var visitedJobs = [];
@@ -19,6 +19,7 @@
         params.iscoGroupLevel2 = '';
         params.iscoGroupLevel3 = '';
         params.zips = undefined;
+        params.shape = undefined;
         params.currentZip = '';
         params.currentCoords = undefined;
         params.sort = {};
@@ -27,6 +28,35 @@
       }
 
       resetSearchParams();
+
+      function doDriveQuery(filter){
+        var coords=[];
+        angular.forEach(params.shape, function(value) {
+          if (value.length>1){
+            coords.push(lodash.flatten(value));
+          }
+          else {
+            coords.push(value[0]);
+          }
+        });
+
+        angular.forEach(coords, function(value) {
+          var query ={
+            'nested': {
+              'path': 'location.locations',
+              'filter': {
+                'geo_polygon': {
+                  'geoLocation': {
+                    'points': value
+                  }
+                }
+              }
+            }
+          };
+          filter.push(query);
+        });
+        return filter;
+      }
 
       function find() {
         var filter = {
@@ -66,6 +96,10 @@
               }
             }
           });
+        }
+        else if (params.distanceType === 'drive'){
+          var query_filter=[];
+          filter.query.filtered.filter.and.push({or:doDriveQuery(query_filter)});
         }
         else {
           filter.query.filtered.filter.and.push({
