@@ -123,7 +123,7 @@
             $scope.heatmap = result.heatmap;
             ArrleeService.getZips($scope.searchParams.travelTime).success(function (result) {
                 // todo trackjs!! error
-                $scope.searchParams.zips = lodash.pluck(result.POI, 'name');
+                $scope.searchParams.zips = lodash.map(result.POI, 'name');
                 //** find Jobs with searchParams
                 find(false);
               })
