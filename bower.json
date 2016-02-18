@@ -42,7 +42,6 @@
     "angularjs-geolocation": "0.1.1",
     "angular-translate-storage-local": "~2.7.2",
     "ng-lodash": "0.4.0",
-    "d3": "3.5.6",
     "topojson": "1.6.19",
     "detect-mobile-browser": "0.0.1",
     "moment": "latest",
@@ -52,7 +51,8 @@
     "chroma-js": "1.1.1",
     "leaflet": "0.7.7",
     "Leaflet.label": "0.2.1",
-    "leaflet.snogylop":"0.2.0"
+    "leaflet.snogylop":"0.2.0",
+    "proj4":"latest"
   },
   "devDependencies": {
     "angular-mocks": "1.4.5",
@@ -76,11 +76,6 @@
     "alv-ch-ng.text-truncate": {
       "main": [
         "dist/alv-ch-ng.textTruncate.js"
-      ]
-    },
-    "d3": {
-      "main": [
-        "d3.min.js"
       ]
     },
     "detect-mobile-browser": {

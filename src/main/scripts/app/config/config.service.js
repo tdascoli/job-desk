@@ -15,8 +15,7 @@
         config.educations = false;
         config.apprenticeships = false;
         config.localInfo = '';
-        config.showMunicipalities = false;
-        config.distanceType = 'travelTime';
+        config.distanceType = 'transport';
       }
 
       resetConfig();

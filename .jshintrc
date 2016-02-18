@@ -25,5 +25,5 @@
         "define": false,
         "document":false
     },
-    "predef": ["$","window","topojson","geojson","module","moment","L","chroma"]
+    "predef": ["$","window","topojson","geojson","module","moment","L","proj4"]
 }

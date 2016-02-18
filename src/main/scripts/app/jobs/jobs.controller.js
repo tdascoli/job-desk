@@ -11,7 +11,7 @@
       $scope.searchParams.from = 0;
 
       $scope.distanceOptions = {min: 10, max: 150, step: 10, value: 30};
-      $scope.travelTimeOptions = {min: 10, max: 120, step: 5, value: 30};
+      $scope.transportOptions = {min: 10, max: 120, step: 5, value: 30};
       $scope.driveOptions = {min: 10, max: 60, step: 5, value: 30};
 
       $scope.iscoMajorGroup = [
@@ -90,7 +90,7 @@
         $scope.idle = true;
         $scope.searchParams.from = 0;
 
-        if ($scope.searchParams.distanceType === 'travelTime') {
+        if ($scope.searchParams.distanceType === 'transport') {
           //** countJobs with travelTime parameter
           findByTravelTime();
         }

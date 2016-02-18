@@ -79,7 +79,7 @@
 <md-toolbar layout="column" id="topnav" class="md-whiteframe-z4" md-theme-watch="true">
   <div class="md-toolbar-tools">
     <md-button ng-click="back()" class="topnav-title" aria-label="Job-Desk Home">
-      <img src="assets/images/jobdesk-logo.png" />
+      <md-icon md-svg-src="assets/images/job-desk.svg" aria-label="Job-Desk" class="job-desk-logo"></md-icon>
     </md-button>
     <md-button hide-xs class="md-raised md-primary section-button" aria-label="jobs" md-theme="jobs" href="#/jobs" ng-hide="searchType==='jobs'"><md-icon>launch</md-icon> <span translate="global.jobs"></span></md-button>
     <md-button hide-xs class="md-raised md-primary section-button" aria-label="educations" md-theme="educations" href="#/educations" ng-hide="searchType==='educations' || !appConfig.educations "><md-icon>launch</md-icon> <span translate="global.educations"></span></md-button>
@@ -140,7 +140,6 @@
 <script src="bower_components/angular-scroll/angular-scroll.js"></script>
 <script src="bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
 <script src="bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
-<script src="bower_components/d3/d3.min.js"></script>
 <script src="bower_components/topojson/topojson.js"></script>
 <script src="bower_components/detect-mobile-browser/detectmobilebrowser.js"></script>
 <script src="bower_components/moment/min/moment-with-locales.min.js"></script>
@@ -151,8 +150,10 @@
 <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
 <script src="bower_components/Leaflet.label/dist/leaflet.label.js"></script>
 <script src="bower_components/leaflet.snogylop/src/leaflet.snogylop.js"></script>
+<script src="bower_components/proj4/dist/proj4.js"></script>
 <!-- endbower -->
 <script src="scripts/components/leaflet/L.TopoJSON.js"></script>
+<script src="scripts/components/leaflet/L.Proj.js"></script>
 <!-- endbuild -->
 
 <!-- build:js scripts/app.js -->
@@ -179,7 +180,6 @@
 <script src="scripts/app/config/config.service.js"></script>
 <script src="scripts/app/config/config.controller.js"></script>
 <script src="scripts/components/locations/locations.service.js"></script>
-<script src="scripts/components/locations/municipalities.service.js"></script>
 <script src="scripts/components/locations/arrlee.service.js"></script>
 <script src="scripts/components/locations/traveltime.service.js"></script>
 <script src="scripts/components/update/update.service.js"></script>

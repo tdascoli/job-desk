@@ -43,13 +43,10 @@
     <strong class="md-title" flex="100">Suchkriterien</strong>
 
     <md-radio-group ng-model="config.distanceType" flex="33">
-      <md-radio-button value="travelTime" class="md-primary">Umkreissuche nach Reisedauer mit öV</md-radio-button>
+      <md-radio-button value="transport" class="md-primary">Umkreissuche nach Reisedauer mit öV</md-radio-button>
+      <md-radio-button value="drive" class="md-primary">Umkreissuche nach Reisedauer mit PW</md-radio-button>
       <md-radio-button value="distance" class="md-primary">Umkreissuche nach Distanz</md-radio-button>
     </md-radio-group>
-
-    <md-checkbox ng-model="config.showMunicipalities" class="md-primary" aria-label="Gemeinden" flex="100">
-      Benachbarte Gemeinde anzeigen (innerhalb des Suchradius)
-    </md-checkbox>
 
     <div flex="100">
       <md-button ng-disabled="!config.coords" class="md-raised md-primary" ng-click="saveConfig()">save</md-button>

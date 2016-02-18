@@ -8,7 +8,6 @@
       "distance":"Distanz {{value}} km",
       "travelTime":"Reisedauer {{value}} h",
       "distanceTypeDistance":"Distanz in km",
-      "distanceTypeTravelTime":"Reisedauer ÖV in Stunden",
       "distanceTypeTransport":"Reisedauer ÖV in Stunden",
       "distanceTypeDrive":"Reisedauer PW in Stunden",
       "onlineSince":"Online seit {{value}} Tagen",
