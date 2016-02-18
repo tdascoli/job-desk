@@ -21,6 +21,12 @@
       "distanceNearest":"Job location - located nearest",
       "distanceFarthest":"Job location - located farthest"
     },
+    "messages": {
+      "update": {
+        "information":"A new version is available!",
+        "action":"Update"
+      }
+    },
     "codes": {
       "salutations": {
         "1": "Mr.",

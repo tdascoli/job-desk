@@ -69,15 +69,12 @@
           tile_layer = new L.TileLayer('https://wmts6.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/20140520/21781/{z}/{y}/{x}.jpeg', {
             scheme: 'xyz',
             maxZoom: res.length - 1,
-            minZoom: 0,
+            minZoom: 15,
             opacity: 0.75,
-            continuousWorld: true,
             attribution: 'Map data &copy; swisstopo'
           });
 
           defaults.crs=crs;
-          defaults.continuousWorld=true;
-          defaults.worldCopyJump=false;
           defaults.scale=scale;
 
           initial_zoom=17;

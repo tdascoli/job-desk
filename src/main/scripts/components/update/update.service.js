@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('job-desk')
-    .factory('UpdateService', function ($window, $interval, $mdToast, $http, $q) {
+    .factory('UpdateService', function ($window, $interval, $mdToast, $http, $q, $translate) {
 
       var updateDelay = 60000;
       var toastHideDelay = 0;
@@ -42,8 +42,8 @@
 
       function showUpdateToast() {
         var toast = $mdToast.simple()
-          .content('A new version is available !')
-          .action('Update')
+          .content($translate.instant('messages.update.information'))
+          .action($translate.instant('messages.update.action'))
           .hideDelay(toastHideDelay)
           .position('top right');
         $mdToast.show(toast).then(function (response) {

@@ -10,6 +10,8 @@
       </span>&nbsp;
       <span ng-if="onlineSinceDate(jobDetail._source.publicationDate)>1" translate="jobs.result.onlineSince" translate-values="{value: onlineSinceDate(jobDetail._source.publicationDate)}"></span>
       <span ng-if="onlineSinceDate(jobDetail._source.publicationDate)===1" translate="jobs.result.onlineSinceOneDay"></span>
+      &nbsp;
+      <span ng-if="sorting==='3' || sorting==='4'" translate="jobs.search.distance" translate-values="{value:formatDistance(jobDetail.sort[0])}"></span>
 
       <p ng-if="!showDetailContent" ng-text-truncate="formatTextToShow(getMultiLanguageText(jobDetail._source.description))" ng-tt-words-threshold="20" ng-tt-no-toggling></p>
 

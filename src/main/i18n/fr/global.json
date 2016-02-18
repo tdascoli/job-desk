@@ -21,6 +21,12 @@
       "distanceNearest":"Lieu de travail - le plus proche d'abord",
       "distanceFarthest":"Lieu de travail - le plus éloigné d'abord"
     },
+    "messages": {
+      "update": {
+        "information":"[FR] A new version is available!",
+        "action":"[FR] Update"
+      }
+    },
     "codes": {
       "salutations": {
         "1": "Monsieur",
