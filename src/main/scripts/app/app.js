@@ -129,7 +129,7 @@
     var config = $cookies.getObject('config');
     if (!angular.isObject(config)) {
       geolocation.getLocation().then(function (data) {
-        // geolocation received from browser
+        // geolocatigon received from browser
         if ($rootScope.myCoords === undefined) {
           LocationsService.checkLocation({lat: data.coords.latitude, lon: data.coords.longitude}, function (coords) {
             $rootScope.myCoords = coords;

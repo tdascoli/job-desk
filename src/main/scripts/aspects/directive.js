@@ -95,10 +95,12 @@
         var heatmap_layer = new L.GeoJSON(null, {
           onEachFeature: function (feature, layer) {
             layer.setStyle({className: 'heatmap ' + feature.properties.className});
-          }
+          },
+          clickable: false
         });
         var traveltime_layer = new L.GeoJSON(null, {
-            className: 'traveltime'
+            className: 'traveltime',
+            clickable: false
         });
         var radius_layer = new L.circle(null, (scope.searchParams.distance * 1000), {
           clickable: false,
