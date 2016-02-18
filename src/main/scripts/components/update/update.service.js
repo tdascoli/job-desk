@@ -42,8 +42,8 @@
 
       function showUpdateToast() {
         var toast = $mdToast.simple()
-          .content($translate.instant('messages.update.information'))
-          .action($translate.instant('messages.update.action'))
+          .content($translate.instant('global.messages.update.information'))
+          .action($translate.instant('global.messages.update.action'))
           .hideDelay(toastHideDelay)
           .position('top right');
         $mdToast.show(toast).then(function (response) {
