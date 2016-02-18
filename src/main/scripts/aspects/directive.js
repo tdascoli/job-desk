@@ -35,7 +35,7 @@
 
         // todo attrs - eval??
         var mapId = attrs.id || 'map';
-        var tiles = attrs.mapTiles || false;
+        var tiles = attrs.mapTiles || 'osm';
         var myCoords = attrs.mapLocation || {lat: $rootScope.myCoords.lat, lng: $rootScope.myCoords.lon};
 
         var res = [4000, 3750, 3500, 3250, 3000, 2750, 2500, 2250, 2000, 1750, 1500, 1250, 1000, 750, 650, 500, 250, 100, 50, 20, 10, 5, 2.5, 2, 1.5, 1, 0.5];
@@ -48,12 +48,8 @@
           origin: [420000, 350000]
         });
 
+        // defaults
         var defaults = attrs.mapDefaults || {
-            crs:crs,
-            continuousWorld: true,
-            worldCopyJump: false,
-            scale: scale,
-
             zoomControl: true,
             scrollWheelZoom: false,
             doubleClickZoom: true,
@@ -62,23 +58,30 @@
               [48, 11]
             ]
           };
-        /*if ($rootScope.mobile) {
-          defaults.center = myCoords;
-          defaults.zoom = 9;
-        }*/
 
-        //** tiles
+        //** tiles & zoom
+        var initial_zoom = 9;
+        var tile_layer = L.tileLayer('http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
+          minZoom: 8, maxZoom: 12
+        });
         /****  GEO.ADMIN.CH *****/
-        var mapUrl = 'https://wmts6.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/20140520/21781/{z}/{y}/{x}.jpeg',
-          attrib = 'Map data &copy; swisstopo',
-          tile_layer = new L.TileLayer(mapUrl, {
+        if (tiles==='swisstopo'){
+          tile_layer = new L.TileLayer('https://wmts6.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/20140520/21781/{z}/{y}/{x}.jpeg', {
             scheme: 'xyz',
             maxZoom: res.length - 1,
             minZoom: 0,
             opacity: 0.75,
             continuousWorld: true,
-            attribution: attrib
+            attribution: 'Map data &copy; swisstopo'
           });
+
+          defaults.crs=crs;
+          defaults.continuousWorld=true;
+          defaults.worldCopyJump=false;
+          defaults.scale=scale;
+
+          initial_zoom=17;
+        }
         /**** /GEO.ADMIN.CH *****/
 
         //** height/width -> fullscreen param?!
@@ -117,7 +120,7 @@
         var map = L.map(mapId, defaults);
         if (tiles) {
           map.addLayer(tile_layer);
-          map.setView(myCoords, 17);
+          map.setView(myCoords, initial_zoom);
         }
 
         map
