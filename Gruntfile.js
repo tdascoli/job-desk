@@ -510,7 +510,7 @@ module.exports = function (grunt) {
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://arrlee.jobarea.ch/jobdesk',
           arrleeUrl: 'http://arrlee.jobarea.ch/arrlee',
-          travelTimeUrl: 'http://localhost:9000/api',
+          travelTimeUrl: 'http://arrlee.jobarea.ch/api',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },

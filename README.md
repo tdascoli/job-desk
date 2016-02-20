@@ -36,10 +36,10 @@ http://geojson.org/
 * map: http://leafletjs.com/
 * tiles: https://leaflet-extras.github.io/leaflet-providers/preview/
 * wiki tiles: https://www.mediawiki.org/wiki/Maps
-* osm tiles: ...
+* osm.de tiles: http://openstreetmap.de/
 * swisstopo
-** tiles: http://api.geo.admin.ch
-** tutorial: ...
+ * tiles: https://api3.geo.admin.ch/
+ * tutorial: https://www.procrastinatio.org/2014/11/16/native-wmts-leaflet/
 
 ### Radius km/px calculation
 * Calculated from: http://www.freemaptools.com/how-far-is-it-between-bern_-schweiz-and-zürich_-schweiz.htm

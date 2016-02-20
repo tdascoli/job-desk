@@ -10,6 +10,8 @@ angular.module('job-desk')
 
 .constant('arrleeUrl', 'http://arrlee.jobarea.ch/arrlee')
 
+.constant('travelTimeUrl', 'http://arrlee.jobarea.ch/api')
+
 .constant('supportedLanguages', ['de','fr','it','en'])
 
 ;

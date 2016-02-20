@@ -126,64 +126,64 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('views/content/config/config.html',
-    "<h2 class=\"md-toolbar-tools jd-warn\" ng-if=\"locationError\">\n" +
-    "  <strong translate=\"errors.msg.noValidZip\" flex></strong>\n" +
-    "  <md-button ng-click=\"closeError()\"><md-icon>close</md-icon></md-button>\n" +
-    "</h2>\n" +
     "<md-content layout-padding>\n" +
     "  <h1 translate=\"config.title\"></h1>\n" +
     "\n" +
-    "  <form layout=\"row\" layout-wrap>\n" +
+    "  <form name=\"configForm\" layout=\"row\" layout-wrap>\n" +
     "\n" +
     "    <strong class=\"md-title\" flex=\"100\">Standort</strong>\n" +
-    "\n" +
-    "    <img ng-if=\"idle\" alt=\"idle\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\n" +
     "\n" +
     "    <md-input-container flex=\"100\">\n" +
     "      <label>Adresse</label>\n" +
     "      <input ng-model=\"config.address\" type=\"text\" />\n" +
     "    </md-input-container>\n" +
     "\n" +
-    "    <md-input-container flex=\"33\">\n" +
+    "    <md-input-container flex=\"50\">\n" +
     "      <label>Postleitzahl</label>\n" +
-    "      <input ng-model=\"config.zip\" type=\"number\" min=\"1000\" max=\"9999\" />\n" +
+    "      <input name=\"zipInput\" ng-model=\"config.zip\" type=\"number\" min=\"1000\" max=\"9999\" required integer/>\n" +
     "    </md-input-container>\n" +
     "\n" +
-    "    <md-input-container flex=\"33\">\n" +
+    "    <md-input-container flex=\"50\" layout=\"row\">\n" +
+    "      <md-button ng-disabled=\"configForm.zipInput.$invalid\" class=\"md-raised\" ng-click=\"receiveCoords()\">lookup</md-button>\n" +
+    "      <md-progress-circular ng-if=\"idle\" md-mode=\"indeterminate\"></md-progress-circular>\n" +
+    "    </md-input-container>\n" +
+    "\n" +
+    "    <md-input-container flex=\"50\">\n" +
     "      <label>Koordinaten / Longitude</label>\n" +
-    "      <input ng-model=\"config.coords.lon\" type=\"text\" />\n" +
+    "      <input ng-model=\"config.coords.lon\" ng-disabled=\"true\" type=\"text\" />\n" +
     "    </md-input-container>\n" +
     "\n" +
-    "    <md-input-container flex=\"33\">\n" +
+    "    <md-input-container flex=\"50\">\n" +
     "      <label>Koordinaten / Latitude</label>\n" +
-    "      <input ng-model=\"config.coords.lat\" type=\"text\" />\n" +
+    "      <input ng-model=\"config.coords.lat\" ng-disabled=\"true\" type=\"text\" />\n" +
     "    </md-input-container>\n" +
     "\n" +
     "    <strong class=\"md-title\" flex=\"100\">Angebot</strong>\n" +
     "\n" +
-    "    <md-checkbox ng-model=\"config.educations\" aria-label=\"Weiterbildungsangebote\" flex=\"33\">\n" +
+    "    <md-checkbox ng-model=\"config.educations\" class=\"md-primary\" aria-label=\"Weiterbildungsangebote\" flex=\"33\">\n" +
     "      Weiterbildungsangebote\n" +
     "    </md-checkbox>\n" +
     "\n" +
-    "    <md-checkbox ng-model=\"config.apprenticeships\" aria-label=\"Lehrstellen\" flex=\"33\">\n" +
+    "    <md-checkbox ng-model=\"config.apprenticeships\" class=\"md-primary\" aria-label=\"Lehrstellen\" flex=\"33\">\n" +
     "      Lehrstellen\n" +
     "    </md-checkbox>\n" +
     "\n" +
     "    <strong class=\"md-title\" flex=\"100\">Suchkriterien</strong>\n" +
     "\n" +
-    "    <md-radio-group ng-model=\"config.distanceType\" flex=\"33\">\n" +
-    "      <md-radio-button value=\"travelTime\" class=\"md-primary\">Umkreissuche nach Reisedauer mit öV</md-radio-button>\n" +
-    "      <md-radio-button value=\"distance\">Umkreissuche nach Distanz</md-radio-button>\n" +
+    "    <md-radio-group ng-model=\"config.distanceType\" flex=\"50\">\n" +
+    "      <md-radio-button value=\"transport\" class=\"md-primary\">Umkreissuche nach Reisedauer mit öV</md-radio-button>\n" +
+    "      <md-radio-button value=\"drive\" class=\"md-primary\">Umkreissuche nach Reisedauer mit PW</md-radio-button>\n" +
+    "      <md-radio-button value=\"distance\" class=\"md-primary\">Umkreissuche nach Distanz</md-radio-button>\n" +
     "    </md-radio-group>\n" +
     "\n" +
-    "    <md-checkbox ng-model=\"config.showMunicipalities\" aria-label=\"Gemeinden\" flex=\"100\">\n" +
-    "      Benachbarte Gemeinde anzeigen (innerhalb des Suchradius)\n" +
-    "    </md-checkbox>\n" +
+    "    <md-radio-group ng-model=\"config.mapType\" flex=\"50\">\n" +
+    "      <md-radio-button value=\"swisstopo\" class=\"md-primary\">swisstopo Karte</md-radio-button>\n" +
+    "      <md-radio-button value=\"osm\" class=\"md-primary\">OpenStreetMap Karte</md-radio-button>\n" +
+    "    </md-radio-group>\n" +
     "\n" +
     "    <div flex=\"100\">\n" +
-    "      <md-button class=\"md-raised md-primary\" ng-click=\"saveConfig()\">save</md-button>\n" +
-    "      <md-button class=\"md-raised\" ng-click=\"receiveCoords()\">lookup</md-button>\n" +
-    "      <md-button class=\"md-raised md-warn\" ng-click=\"resetCoords()\">reset</md-button>\n" +
+    "      <md-button ng-disabled=\"!config.coords\" class=\"md-raised md-primary\" ng-click=\"saveConfig()\">save</md-button>\n" +
+    "      <md-button class=\"md-raised md-warn\" ng-click=\"resetConfig()\">reset</md-button>\n" +
     "    </div>\n" +
     "\n" +
     "  </form>\n" +
@@ -344,9 +344,9 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('views/content/jobs/jobs.html',
-    "<div layout=\"row\" layout-wrap layout-padding layout-align=\"space-between start\" class=\"jd-categories\">\n" +
+    "<div layout=\"row\" layout-padding layout-wrap class=\"jd-categories\">\n" +
     "\n" +
-    "  <div class=\"category\" flex=\"33\" flex-sm=\"100\" ng-repeat=\"isco in iscoMajorGroup\">\n" +
+    "  <div class=\"category\" flex=\"33\" flex-xs=\"100\" ng-repeat=\"isco in iscoMajorGroup\">\n" +
     "    <img ng-click=\"setIscoGroup(isco.code)\" class=\"iscoIcon\" ng-src=\"assets/images/{{isco.img}}\" alt=\"isco\" />\n" +
     "    <div class=\"category-title\" layout=\"row\">\n" +
     "      <md-icon ng-click=\"showIscoUnitGroup($event,isco.code,iscoMinorGroups)\" flex>help_outline</md-icon>\n" +
@@ -363,28 +363,30 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('views/content/jobs/result.html',
-    "<div id=\"filter\" layout=\"row\" layout-wrap layout-margin layout-align=\"start center\" class=\"jd-floating-toolbar jd-floating-toolbar-fill-sm md-whiteframe-z2\">\n" +
-    "  <div flex=\"25\" flex-sm=\"100\" class=\"form-block\">\n" +
-    "    <md-input-container>\n" +
-    "      <label translate=\"jobs.result.sorting\"></label>\n" +
-    "      <md-select ng-model=\"sort\" ng-change=\"sortResultList()\">\n" +
-    "        <md-option ng-repeat=\"sort in sortList track by $index\" value=\"{{$index}}\"><span translate=\"{{sort.text}}\"></span></md-option>\n" +
-    "      </md-select>\n" +
-    "    </md-input-container>\n" +
-    "  </div>\n" +
-    "  <div flex=\"20\" hide-sm>\n" +
-    "    <md-radio-group ng-model=\"searchParams.fulltime\" ng-change=\"countJobs()\">\n" +
-    "      <md-radio-button value=\"1\" class=\"md-primary\"><span translate=\"jobs.search.allJobs\"></span></md-radio-button>\n" +
-    "      <md-radio-button value=\"2\" class=\"md-primary\"><span translate=\"jobs.search.parttimeJobs\"></span></md-radio-button>\n" +
-    "    </md-radio-group>\n" +
-    "  </div>\n" +
-    "</div>\n" +
-    "\n" +
-    "<div class=\"infinite-scroll no-scrollbar\" infinite-scroll=\"loadMoreResults()\" infinte-scroll-item=\".jd-detail\">\n" +
-    "    <div class=\"jd-detail\" job-detail=\"jobDetail\" last-opened-job=\"lastOpenedJob\" ng-repeat=\"jobDetail in jobs track by jobDetail._id\"></div>\n" +
-    "    <div ng-if=\"idle\" layout=\"row\" layout-sm=\"column\" layout-align=\"space-around\">\n" +
-    "      <md-progress-circular md-mode=\"indeterminate\"></md-progress-circular>\n" +
+    "<div class=\"jd-floating-toolbar no-scrollbar\">\n" +
+    "  <div id=\"filter\" layout=\"row\" layout-wrap layout-margin layout-align=\"start center\" class=\"md-whiteframe-z2\">\n" +
+    "    <div flex=\"25\" flex-xs=\"100\" class=\"form-block\">\n" +
+    "      <md-input-container>\n" +
+    "        <label translate=\"jobs.result.sorting\"></label>\n" +
+    "        <md-select ng-model=\"sort\" ng-change=\"sortResultList()\">\n" +
+    "          <md-option ng-repeat=\"sort in sortList track by $index\" value=\"{{$index}}\"><span translate=\"{{sort.text}}\"></span></md-option>\n" +
+    "        </md-select>\n" +
+    "      </md-input-container>\n" +
     "    </div>\n" +
+    "    <div flex=\"20\" hide-xs>\n" +
+    "      <md-radio-group ng-model=\"searchParams.fulltime\" ng-change=\"countJobs()\">\n" +
+    "        <md-radio-button value=\"1\" class=\"md-primary\" aria-label=\"all jobs\"><span translate=\"jobs.search.allJobs\"></span></md-radio-button>\n" +
+    "        <md-radio-button value=\"2\" class=\"md-primary\" aria-label=\"part time jobs\"><span translate=\"jobs.search.parttimeJobs\"></span></md-radio-button>\n" +
+    "      </md-radio-group>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "\n" +
+    "  <div class=\"infinite-scroll no-scrollbar\" infinite-scroll=\"loadMoreResults()\" infinte-scroll-item=\".jd-detail\">\n" +
+    "      <div class=\"jd-detail\" job-detail=\"jobDetail\" last-opened-job=\"lastOpenedJob\" is-mobile=\"mobile\" sorting=\"sort\" ng-repeat=\"jobDetail in jobs track by jobDetail._id\"></div>\n" +
+    "      <div ng-if=\"idle\" layout=\"row\" layout-sm=\"column\" layout-align=\"center center\">\n" +
+    "        <md-progress-circular md-mode=\"indeterminate\" md-diameter=\"120\"></md-progress-circular>\n" +
+    "      </div>\n" +
+    "  </div>\n" +
     "</div>\n" +
     "\n" +
     "<md-button ng-href=\"#/job-search\" class=\"md-fab md-primary md-fab-bottom-right jd-floating-fab\" aria-label=\"global.navigation.search\" md-theme-watch=\"true\">\n" +
@@ -394,105 +396,168 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('views/content/jobs/search.html',
-    "<tour step=\"jobSearchTour\">\n" +
-    "<div id=\"filter\" layout=\"row\" layout-wrap layout-margin layout-align=\"start center\" class=\"jd-floating-toolbar jd-floating-toolbar-fill-sm\" ng-class=\"{'md-whiteframe-z2':!mobile}\">\n" +
+    "<div layout-xs=\"row\" layout-wrap class=\"no-scrollbar\" ng-class=\"{'jd-floating-toolbar':!mobile}\">\n" +
+    "  <div id=\"filter\" flex-order-xs=\"2\" layout=\"row\" layout-wrap layout-margin layout-align=\"start center\" class=\"md-whiteframe-z2\">\n" +
     "\n" +
-    "  <div flex=\"45\" flex-sm=\"100\" class=\"form-block\" tourtip=\"tip 1\" tourtip-placement=\"right\">\n" +
-    "    <md-input-container ng-if=\"!searchParams.iscoMajorGroup\">\n" +
-    "      <label><span translate=\"jobs.search.jobgroup\"></span></label>\n" +
-    "      <md-select ng-model=\"searchParams.iscoMajorGroup\" ng-change=\"countJobs()\">\n" +
-    "        <md-option ng-repeat=\"isco in iscoMajorGroup\" value=\"{{isco.code}}\"><span translate=\"{{isco.text}}\"></span></md-option>\n" +
-    "      </md-select>\n" +
-    "    </md-input-container>\n" +
-    "\n" +
-    "\n" +
-    "    <md-input-container ng-if=\"searchParams.iscoMajorGroup\">\n" +
-    "      <label><span translate=\"isco.majorGroups.{{searchParams.iscoMajorGroup}}\"></span></label>\n" +
-    "      <md-select ng-model=\"searchParams.iscoGroupLevel3\" ng-change=\"countJobs()\">\n" +
-    "        <md-option value=\"0\"><span translate=\"jobs.search.allSubGroups\"></span></md-option>\n" +
-    "        <md-option ng-repeat=\"minorGroup in iscoMinorGroups[searchParams.iscoMajorGroup]\" value=\"{{minorGroup}}\"><span translate=\"isco.minorGroups.{{minorGroup}}\"></span></md-option>\n" +
-    "        <md-option value=\"-1\" ng-click=\"searchParams.iscoMajorGroup='';searchParams.iscoGroupLevel3='';countJobs()\"><md-icon>keyboard_arrow_left</md-icon><span class=\"jd-select-reset\" translate=\"jobs.search.disableGroup\"></span></md-option>\n" +
-    "      </md-select>\n" +
-    "    </md-input-container>\n" +
-    "\n" +
-    "  </div>\n" +
-    "\n" +
-    "  <div flex=\"15\" flex-sm=\"100\" layout=\"row\" layout-align=\"start center\" id=\"finish\">\n" +
-    "    <!-- todo when gps is turned off, hide -->\n" +
-    "    <md-button class=\"md-icon-button jd-icon-button\" ng-click=\"setMyLocation()\">\n" +
-    "      <md-icon>my_location</md-icon>\n" +
-    "    </md-button>\n" +
-    "\n" +
-    "    <md-input-container hide-sm>\n" +
-    "      <label translate=\"jobs.search.location\"></label>\n" +
-    "      <input class=\"keyboard\" type=\"text\" name=\"location\" id=\"location\" ng-model=\"nearestZip\" />\n" +
-    "    </md-input-container>\n" +
-    "\n" +
-    "    <form ng-submit=\"setCurrentZip(currentZip)\" hide-gt-sm layout=\"row\" layout-align=\"start center\" flex>\n" +
-    "      <md-input-container flex>\n" +
-    "        <label translate=\"jobs.search.location\"></label>\n" +
-    "        <input type=\"number\" min=\"1000\" max=\"9999\" name=\"location-sm\" id=\"location-sm\" ng-model=\"currentZip\" />\n" +
+    "    <div flex=\"60\" layout=\"row\" layout-wrap flex-xs=\"100\" id=\"iscoGroup\">\n" +
+    "      <md-input-container flex=\"60\" flex-xs=\"100\" class=\"md-block isco-select\" ng-if=\"!searchParams.iscoMajorGroup\">\n" +
+    "        <label><span translate=\"jobs.search.jobgroup\"></span></label>\n" +
+    "        <md-select ng-model=\"searchParams.iscoMajorGroup\" ng-change=\"countJobs()\">\n" +
+    "          <md-option ng-repeat=\"isco in iscoMajorGroup\" value=\"{{isco.code}}\"><span translate=\"{{isco.text}}\"></span></md-option>\n" +
+    "        </md-select>\n" +
     "      </md-input-container>\n" +
-    "      <md-button class=\"md-icon-button jd-icon-button\">\n" +
-    "        <md-icon>check</md-icon>\n" +
-    "      </md-button>\n" +
-    "    </form>\n" +
-    "  </div>\n" +
     "\n" +
-    "  <div flex=\"15\" flex-sm=\"50\">\n" +
-    "    <md-radio-group ng-model=\"searchParams.distanceType\" ng-change=\"countJobs()\" ng-init=\"searchParams.distanceType=appConfig.distanceType || searchParams.distanceType\">\n" +
-    "      <md-radio-button value=\"distance\" class=\"md-primary\"><span translate=\"jobs.search.distanceTypeDistance\"></span></md-radio-button>\n" +
-    "      <md-radio-button value=\"travelTime\" class=\"md-primary\"><span translate=\"jobs.search.distanceTypeTravelTime\"></span></md-radio-button>\n" +
-    "    </md-radio-group>\n" +
-    "  </div>\n" +
+    "      <md-input-container flex=\"60\" flex-xs=\"100\" class=\"md-block isco-select\" ng-if=\"searchParams.iscoMajorGroup\">\n" +
+    "        <label><span translate=\"isco.majorGroups.{{searchParams.iscoMajorGroup}}\"></span></label>\n" +
+    "        <md-select ng-model=\"searchParams.iscoGroupLevel3\" ng-change=\"countJobs()\">\n" +
+    "          <md-option value=\"0\"><span translate=\"jobs.search.allSubGroups\"></span></md-option>\n" +
+    "          <md-option ng-repeat=\"minorGroup in iscoMinorGroups[searchParams.iscoMajorGroup]\" value=\"{{minorGroup}}\"><span translate=\"isco.minorGroups.{{minorGroup}}\"></span></md-option>\n" +
+    "          <md-option value=\"-1\" ng-click=\"searchParams.iscoMajorGroup='';searchParams.iscoGroupLevel3='';countJobs()\"><md-icon>keyboard_arrow_left</md-icon><span class=\"jd-select-reset\" translate=\"jobs.search.disableGroup\"></span></md-option>\n" +
+    "        </md-select>\n" +
+    "      </md-input-container>\n" +
     "\n" +
-    "  <div flex=\"15\" flex-sm=\"50\" tourtip=\"tip 2\" tourtip-placement=\"bottom\">\n" +
-    "    <div flex ng-if=\"searchParams.distanceType==='distance'\">\n" +
-    "      <label class=\"md-slider-label\" translate=\"jobs.search.distance\" translate-values=\"{value:searchParams.distance}\"></label>\n" +
-    "      <md-slider ng-model=\"searchParams.distance\" step=\"{{distanceOptions.step}}\" min=\"{{distanceOptions.min}}\" max=\"{{distanceOptions.max}}\" aria-label=\"distance\" ng-change=\"countJobs()\" class=\"md-primary\"></md-slider>\n" +
+    "      <div class=\"filter-button-container my-location-button\" flex flex-xs=\"15\">\n" +
+    "        <md-button class=\"md-icon-button jd-icon-button\" ng-click=\"setMyLocation()\">\n" +
+    "          <md-icon id=\"resetLocation\">my_location</md-icon>\n" +
+    "        </md-button>\n" +
+    "      </div>\n" +
+    "\n" +
+    "      <md-input-container flex=\"30\" hide-xs id=\"zip\">\n" +
+    "        <label translate=\"jobs.search.location\"></label>\n" +
+    "        <input class=\"keyboard\" type=\"text\" name=\"location\" id=\"location\" ng-model=\"nearestZip\" />\n" +
+    "      </md-input-container>\n" +
+    "\n" +
+    "      <div flex-xs=\"85\" hide-gt-xs layout=\"row\" layout-align=\"start center\" class=\"zip-form\">\n" +
+    "        <md-input-container flex-xs=\"70\">\n" +
+    "          <label translate=\"jobs.search.location\"></label>\n" +
+    "          <input type=\"number\" min=\"1000\" max=\"9999\" name=\"location-sm\" id=\"location-sm\" ng-model=\"currentZip\" />\n" +
+    "        </md-input-container>\n" +
+    "\n" +
+    "        <div class=\"mobile filter-button-container\" flex>\n" +
+    "          <md-button class=\"md-icon-button jd-icon-button\" ng-click=\"setCurrentZip(false)\">\n" +
+    "            <md-icon>check</md-icon>\n" +
+    "          </md-button>\n" +
+    "        </div>\n" +
+    "      </div>\n" +
     "    </div>\n" +
     "\n" +
-    "    <div flex ng-if=\"searchParams.distanceType==='travelTime'\">\n" +
-    "      <label class=\"md-slider-label\" translate=\"jobs.search.travelTime\" translate-values=\"{value:showTimeInH(searchParams.travelTime)}\"></label>\n" +
-    "      <md-slider ng-model=\"searchParams.travelTime\" step=\"{{travelTimeOptions.step}}\" min=\"{{travelTimeOptions.min}}\" max=\"{{travelTimeOptions.max}}\" aria-label=\"travelTime\" ng-change=\"countJobs()\" class=\"md-primary\"></md-slider>\n" +
+    "    <div flex=\"15\" flex-xs=\"40\" id=\"distanceType\">\n" +
+    "      <md-radio-group ng-model=\"searchParams.distanceType\" ng-change=\"countJobs()\" ng-init=\"searchParams.distanceType=searchParams.distanceType || appConfig.distanceType || 'distance'\">\n" +
+    "        <md-radio-button value=\"distance\" class=\"md-primary\" aria-label=\"distance\"><span translate=\"jobs.search.distanceTypeDistance\"></span></md-radio-button>\n" +
+    "        <md-radio-button value=\"transport\" class=\"md-primary\" aria-label=\"travel time\"><span translate=\"jobs.search.distanceTypeTransport\"></span></md-radio-button>\n" +
+    "        <md-radio-button value=\"drive\" class=\"md-primary\" aria-label=\"travel time\"><span translate=\"jobs.search.distanceTypeDrive\"></span></md-radio-button>\n" +
+    "      </md-radio-group>\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <div flex=\"15\" flex-xs=\"40\" id=\"distanceTypeParameter\">\n" +
+    "      <div flex ng-if=\"searchParams.distanceType==='distance'\">\n" +
+    "        <label class=\"md-slider-label\" translate=\"jobs.search.distance\" translate-values=\"{value:searchParams.distance}\"></label>\n" +
+    "        <md-slider ng-model=\"searchParams.distance\" step=\"{{distanceOptions.step}}\" min=\"{{distanceOptions.min}}\" max=\"{{distanceOptions.max}}\" aria-label=\"distance\" ng-change=\"countJobs()\" class=\"md-primary\"></md-slider>\n" +
+    "      </div>\n" +
+    "\n" +
+    "      <div flex ng-if=\"searchParams.distanceType==='transport'\">\n" +
+    "        <label class=\"md-slider-label\" translate=\"jobs.search.travelTime\" translate-values=\"{value:showTimeInH(searchParams.travelTime)}\"></label>\n" +
+    "        <md-slider ng-model=\"searchParams.travelTime\" step=\"{{transportOptions.step}}\" min=\"{{transportOptions.min}}\" max=\"{{transportOptions.max}}\" aria-label=\"travelTime\" ng-change=\"countJobs()\" class=\"md-primary\"></md-slider>\n" +
+    "      </div>\n" +
+    "\n" +
+    "      <div flex ng-if=\"searchParams.distanceType==='drive'\">\n" +
+    "        <label class=\"md-slider-label\" translate=\"jobs.search.travelTime\" translate-values=\"{value:showTimeInH(searchParams.travelTime)}\"></label>\n" +
+    "        <md-slider ng-model=\"searchParams.travelTime\" step=\"{{driveOptions.step}}\" min=\"{{driveOptions.min}}\" max=\"{{driveOptions.max}}\" aria-label=\"drive\" ng-change=\"countJobs()\" class=\"md-primary\"></md-slider>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <div flex hide-xs>\n" +
+    "      <md-button ng-click=\"startTour()\" class=\"md-icon-button\"><md-icon>help</md-icon></md-button>\n" +
     "    </div>\n" +
     "  </div>\n" +
     "\n" +
-    "  <div flex-sm=\"50\" hide-gt-sm>\n" +
-    "    <md-radio-group ng-model=\"searchParams.fulltime\" ng-change=\"countJobs()\">\n" +
-    "      <md-radio-button value=\"2\" class=\"md-primary\"><span translate=\"jobs.search.parttimeJobs\"></span></md-radio-button>\n" +
-    "      <md-radio-button value=\"1\" class=\"md-primary\"><span translate=\"jobs.search.allJobs\"></span></md-radio-button>\n" +
-    "    </md-radio-group>\n" +
+    "  <div align=\"center\" flex-order-xs=\"1\">\n" +
+    "    <div id=\"map\" class=\"map\" map-tiles=\"{{appConfig.mapType}}\"></div>\n" +
     "  </div>\n" +
     "\n" +
-    "  <md-button flex hide-sm ng-click=\"openTour()\" class=\"md-icon-button\"><md-icon>help</md-icon></md-button>\n" +
     "</div>\n" +
     "\n" +
-    "<div align=\"center\" class=\"no-scrollbar\" hide-sm>\n" +
-    "  <swiss-map id=\"map\"></swiss-map>\n" +
-    "</div>\n" +
-    "\n" +
-    "<div layout=\"row\" layout-margin layout-align=\"start center\" class=\"jd-bottom-right\" tourtip=\"tourTranslate(global.tour.tourTitle)\">\n" +
+    "<div layout=\"row\" layout-margin layout-align=\"start center\" class=\"jd-bottom-right\">\n" +
     "  <strong ng-show=\"!idle\" translate=\"jobs.search.foundJobs\" translate-values=\"{value: count}\"></strong>\n" +
-    "  <md-progress-circular ng-show=\"idle\" md-mode=\"indeterminate\" md-diameter=\"56\"></md-progress-circular>\n" +
+    "  <md-progress-circular ng-show=\"idle\" md-mode=\"indeterminate\" md-diameter=\"120\"></md-progress-circular>\n" +
     "</div>\n" +
     "\n" +
     "<md-button href=\"#/job-results\" class=\"md-fab md-primary md-fab-bottom-right jd-floating-fab\" aria-label=\"global.navigation.search\" ng-disabled=\"count===0 || idle\" md-theme-watch=\"true\">\n" +
     "  <md-icon>arrow_forward</md-icon>\n" +
     "</md-button>\n" +
     "\n" +
-    "  <span tourtip=\"tip 4\" tourtip-placement=\"bottom\" tourtip-element=\"#finish\"></span>\n" +
+    "<tour step=\"currentStep\" post-tour=\"tourEnded()\">\n" +
+    "  <virtual-step tourtip=\"{{tourTranslate('jobs.search.tour.jobGroups')}}\" tourtip-step=\"0\"  tourtip-placement=\"bottom\" tourtip-element=\"#iscoGroup\" tourtip-offset-vertical=\"-20\"></virtual-step>\n" +
+    "  <virtual-step tourtip=\"{{tourTranslate('jobs.search.tour.location')}}\" tourtip-step=\"1\"  tourtip-placement=\"right\" tourtip-element=\".current-location\" tourtip-offset-horizontal=\"10\" tourtip-offset-vertical=\"-25\"></virtual-step>\n" +
+    "  <virtual-step tourtip=\"{{tourTranslate('jobs.search.tour.distanceType')}}\" tourtip-step=\"2\"  tourtip-placement=\"bottom\" tourtip-element=\"#distanceType\"tourtip-offset-vertical=\"-10\"></virtual-step>\n" +
+    "  <virtual-step tourtip=\"{{tourTranslate('jobs.search.tour.distanceTypeParameter')}}\" tourtip-step=\"3\"  tourtip-placement=\"left\" tourtip-element=\"#distanceTypeParameter\"></virtual-step>\n" +
+    "  <virtual-step tourtip=\"{{tourTranslate('jobs.search.tour.changeZip')}}\" tourtip-step=\"4\"  tourtip-placement=\"bottom\" tourtip-element=\"#zip\"></virtual-step>\n" +
+    "  <virtual-step tourtip=\"{{tourTranslate('jobs.search.tour.resetLocation')}}\" tourtip-step=\"5\"  tourtip-placement=\"left\" tourtip-element=\"#resetLocation\" tourtip-offset-vertical=\"-30\"></virtual-step>\n" +
+    "  <virtual-step tourtip=\"{{tourTranslate('jobs.search.tour.countJobs')}}\" tourtip-step=\"6\"  tourtip-placement=\"top\" tourtip-element=\".jd-bottom-right\"></virtual-step>\n" +
     "</tour>\n"
   );
 
 
   $templateCache.put('views/content/localInfo/localInfo.html',
-    "<div class=\"col-md-12\">\n" +
-    "  <h1 style=\"margin-top: 10px; margin-bottom: 5px;\" translate=\"localInfo.title\"></h1>\n" +
-    "  <hr style=\"margin-top: 5px;\" />\n" +
-    "</div>\n" +
+    "<h1>localInfo</h1>\n" +
+    "<script>\n" +
+    "  if (!String.prototype.trim) {\n" +
+    "    String.prototype.trim = function() {\n" +
+    "      return this.replace(/^\\s+|\\s+$/g, '');\n" +
+    "    };\n" +
+    "  }\n" +
     "\n" +
-    "<md-button ng-click=\"back()\" class=\"md-fab md-primary md-fab-bottom-right jd-floating-fab\" aria-label=\"global.navigation.search\" md-theme-watch=\"true\">\n" +
+    "  proj4.defs(\"EPSG:21781\",\"+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=600000 +y_0=200000 +ellps=bessel +towgs84=674.4,15.1,405.3,0,0,0,0 +units=m +no_defs\");\n" +
+    "\n" +
+    "    var res = [4000, 3750, 3500, 3250, 3000, 2750, 2500, 2250, 2000, 1750, 1500, 1250, 1000, 750, 650, 500, 250, 100, 50, 20, 10, 5, 2.5, 2, 1.5, 1, 0.5];\n" +
+    "\n" +
+    "    var scale = function(zoom) {\n" +
+    "        return 1 / res[zoom];\n" +
+    "      },\n" +
+    "\n" +
+    "      crs = new L.Proj.CRS('EPSG:21781', '+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 ' + '+k_0=1 +x_0=600000 +y_0=200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs', {\n" +
+    "        resolutions: res,\n" +
+    "        origin: [420000, 350000]\n" +
+    "      });\n" +
+    "\n" +
+    "    var map = new L.Map('map', {\n" +
+    "      crs:crs,\n" +
+    "      continuousWorld: true,\n" +
+    "      worldCopyJump: false,\n" +
+    "      scale: scale,\n" +
+    "\n" +
+    "      zoomControl: true,\n" +
+    "      scrollWheelZoom: false,\n" +
+    "      doubleClickZoom: true,\n" +
+    "      maxBounds: [\n" +
+    "        [45.5, 5.5],\n" +
+    "        [48, 11]\n" +
+    "      ]\n" +
+    "    });\n" +
+    "\n" +
+    "    var mapUrl = 'https://wmts6.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/20140520/21781/{z}/{y}/{x}.jpeg',\n" +
+    "      attrib = 'Map data &copy; 2014 swisstopo',\n" +
+    "      tilelayer = new L.TileLayer(mapUrl, {\n" +
+    "        scheme: 'xyz',\n" +
+    "        maxZoom: res.length - 1,\n" +
+    "        minZoom: 0,\n" +
+    "        opacity: 0.75,\n" +
+    "        continuousWorld: true,\n" +
+    "        attribution: attrib\n" +
+    "      });\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "    map.addLayer(tilelayer);\n" +
+    "\n" +
+    "    map.setView([46.8, 8.3], 15);\n" +
+    "</script>\n" +
+    "\n" +
+    "<div id=\"map\"></div>\n" +
+    "\n" +
+    "<md-button ng-click=\"back()\" class=\"md-fab md-primary md-fab-bottom-right jd-floating-fab\"\n" +
+    "           aria-label=\"global.navigation.search\" md-theme-watch=\"true\">\n" +
     "  <md-icon>arrow_backward</md-icon>\n" +
     "</md-button>\n"
   );
@@ -700,33 +765,12 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('views/template/help.html',
-    "<div id=\"help\">\n" +
-    "    <svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"39px\" height=\"39px\" viewbox=\"0 0 39 39\" enable-background=\"new 0 0 39 39\" xml:space=\"preserve\">\n" +
-    "        <g>\n" +
-    "            <path style=\"fill: rgb(68, 141, 214);\" class=\"uv-bubble-background\" fill=\"rgba(46, 49, 51, 0.6)\" d=\"M31.425,34.514c-0.432-0.944-0.579-2.007-0.591-2.999c4.264-3.133,7.008-7.969,7.008-13.409\n" +
-    "                C37.842,8.658,29.594,1,19.421,1S1,8.658,1,18.105c0,9.446,7.932,16.79,18.105,16.79c1.845,0,3.94,0.057,5.62-0.412\n" +
-    "                c0.979,1.023,2.243,2.3,2.915,2.791c3.785,2.759,7.571,0,7.571,0S32.687,37.274,31.425,34.514z\"></path>\n" +
-    "            <g>\n" +
-    "                <g>\n" +
-    "                    <path style=\"fill: white;\" class=\"uv-bubble-foreground\" fill=\"#FFFFFF\" d=\"M16.943,19.467c0-3.557,4.432-3.978,4.432-6.058c0-0.935-0.723-1.721-2.383-1.721\n" +
-    "                        c-1.508,0-2.773,0.725-3.709,1.87l-2.441-2.743c1.598-1.9,4.01-2.924,6.602-2.924c3.891,0,6.271,1.959,6.271,4.765\n" +
-    "                        c0,4.4-5.037,4.732-5.037,7.265c0,0.481,0.243,0.994,0.574,1.266l-3.316,0.965C17.303,21.459,16.943,20.522,16.943,19.467z\n" +
-    "                         M16.943,26.19c0-1.326,1.114-2.441,2.44-2.441c1.327,0,2.442,1.115,2.442,2.441c0,1.327-1.115,2.441-2.442,2.441\n" +
-    "                        C18.058,28.632,16.943,27.518,16.943,26.19z\"></path>\n" +
-    "                </g>\n" +
-    "            </g>\n" +
-    "        </g>\n" +
-    "    </svg>\n" +
-    "</div>"
-  );
-
-
   $templateCache.put('views/template/job-detail.html',
+    "<!-- layout-xs=\"column\" -->\n" +
     "<div ng-class=\"{visited: isVisited(jobDetail._source.jobId)}\" layout=\"row\" layout-wrap layout-align=\"space-between start\" style=\"padding: 10px;\">\n" +
     "  <!-- JOB ID : for debug purposes -->\n" +
     "  <span ng-show=\"false\">{{::jobDetail._source.jobId}}</span>\n" +
-    "  <div flex flex-sm=\"100\">\n" +
+    "  <div flex flex-xs=\"100\" flex-order-xs=\"2\">\n" +
     "      <strong class=\"strong\">{{::getMultiLanguageText(jobDetail._source.title)}}&nbsp;</strong>\n" +
     "      <span ng-if=\"!containsQuota(getMultiLanguageText(jobDetail._source.title))\">\n" +
     "        <strong ng-if=\"jobDetail._source.quotaFrom!==jobDetail._source.quotaTo\">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</strong>\n" +
@@ -734,6 +778,8 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "      </span>&nbsp;\n" +
     "      <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: onlineSinceDate(jobDetail._source.publicationDate)}\"></span>\n" +
     "      <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)===1\" translate=\"jobs.result.onlineSinceOneDay\"></span>\n" +
+    "      &nbsp;\n" +
+    "      <span ng-if=\"sorting==='3' || sorting==='4'\" translate=\"jobs.search.distance\" translate-values=\"{value:formatDistance(jobDetail.sort[0])}\"></span>\n" +
     "\n" +
     "      <p ng-if=\"!showDetailContent\" ng-text-truncate=\"formatTextToShow(getMultiLanguageText(jobDetail._source.description))\" ng-tt-words-threshold=\"20\" ng-tt-no-toggling></p>\n" +
     "\n" +
@@ -746,23 +792,23 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <p ng-bind-html=\"formatTextToShow(getMultiLanguageText(jobDetail._source.description))\"></p>\n" +
     "            <div layout=\"row\" layout-wrap layout-align=\"space-between start\">\n" +
-    "              <div flex=\"25\" flex-sm=\"100\">\n" +
+    "              <div flex=\"25\" flex-xs=\"100\">\n" +
     "                <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong><br />\n" +
     "                <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />\n" +
     "\n" +
     "                <strong class=\"fake-label\" translate=\"jobs.result.entryDate\"></strong><br />\n" +
     "                <span ng-if=\"jobDetail._source.availableNow\" translate=\"jobs.result.availableNow\"></span>\n" +
-    "                <span ng-if=\"!jobDetail._source.availableNow && jobDetail._source.startDate\" translate=\"jobs.result.availableFromDate\" translate-values=\"{value: jobDetail._source.startDate}\"></span>\n" +
+    "                <span ng-if=\"!jobDetail._source.availableNow && jobDetail._source.startDate\" translate=\"jobs.result.availableFromDate\" translate-values=\"{value: formatDate(jobDetail._source.startDate)}\"></span>\n" +
     "                <span ng-if=\"!jobDetail._source.availableNow && !jobDetail._source.startDate\" translate=\"jobs.result.availableByAppointment\"></span>\n" +
     "                <br />\n" +
     "\n" +
     "                <strong class=\"fake-label\" translate=\"jobs.result.contractDuration\"></strong><br />\n" +
-    "                <span ng-if=\"jobDetail._source.endDate\" translate=\"jobs.result.untilDate\" translate-values=\"{value: jobDetail._source.endDate}\"></span>\n" +
+    "                <span ng-if=\"jobDetail._source.endDate\" translate=\"jobs.result.untilDate\" translate-values=\"{value: formatDate(jobDetail._source.endDate)}\"></span>\n" +
     "                <span ng-if=\"!jobDetail._source.endDate\" translate=\"jobs.result.permanent\"></span>\n" +
     "              </div>\n" +
     "\n" +
     "              <!-- Sprachen -->\n" +
-    "              <div flex=\"25\" flex-sm=\"100\">\n" +
+    "              <div flex=\"25\" flex-xs=\"100\">\n" +
     "                <div ng-repeat=\"language in jobDetail._source.languages\" ng-if=\"language.languageCode\">\n" +
     "                  <strong class=\"fake-label\" translate=\"language.jobs.{{::language.languageCode}}\"></strong><br />\n" +
     "                  (<span translate=\"jobs.result.spoken\"></span>: <span translate=\"global.codes.languages.skills.{{::language.spokenCode}}\"></span> / <span translate=\"jobs.result.written\"></span>: <span translate=\"global.codes.languages.skills.{{::language.writtenCode}}\"></span>)\n" +
@@ -770,7 +816,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "              </div>\n" +
     "\n" +
     "              <!-- Bewerbung -->\n" +
-    "              <div flex=\"25\" flex-sm=\"100\">\n" +
+    "              <div flex=\"25\" flex-xs=\"100\">\n" +
     "                <div ng-if=\"jobDetail._source.application.written\">\n" +
     "                  <strong class=\"fake-label\" translate=\"jobs.result.titleWrittenApplication\"></strong><br />\n" +
     "                  <span translate=\"jobs.result.letterApplication\"></span>\n" +
@@ -784,7 +830,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "                  <span>{{jobDetail._source.contact.phone}}</span>\n" +
     "                </div>\n" +
     "              </div>\n" +
-    "              <div flex=\"25\" flex-sm=\"100\">\n" +
+    "              <div flex=\"25\" flex-xs=\"100\">\n" +
     "                <strong>{{::jobDetail._source.company.name}}</strong><br />\n" +
     "                <span>{{::jobDetail._source.company.address.street}}</span><br />\n" +
     "                <span>{{::jobDetail._source.company.address.zip}} {{::jobDetail._source.company.address.location}}</span><br />\n" +
@@ -804,7 +850,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "          <span ng-switch-when=\"true\">\n" +
     "            <p ng-bind-html=\"formatTextToShow(getMultiLanguageText(jobDetail._source.description))\"></p>\n" +
     "            <div layout=\"row\" layout-wrap layout-align=\"space-between start\">\n" +
-    "              <div flex=\"25\" flex-sm=\"100\">\n" +
+    "              <div flex=\"25\" flex-xs=\"100\">\n" +
     "                <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong><br />\n" +
     "                <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />\n" +
     "\n" +
@@ -815,9 +861,10 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "        </span>\n" +
     "      </div>\n" +
     "\n" +
-    "    </div>\n" +
-    "  <div flex=\"20\" hide-sm layout-margin>\n" +
-    "    <md-button flex ng-click=\"showDetail(jobDetail._source.jobId)\" aria-label=\"Show / Close Detail\" class=\"md-raised jd-btn-block\">\n" +
+    "  </div>\n" +
+    "  <!-- todo style: layout-margin flex-xs=\"100\" flex-order-xs=\"1\" ng-class=\"{'jd-mobile':mobile}\" -->\n" +
+    "  <div flex=\"20\" flex-xs=\"100\" flex-order-xs=\"1\" ng-class=\"{'jd-mobile':isMobile}\">\n" +
+    "    <md-button ng-click=\"showDetail(jobDetail._source.jobId)\" aria-label=\"Show / Close Detail\" class=\"jd-show-btn\" ng-class=\"{'md-raised jd-btn-block':!isMobile}\">\n" +
     "      <span ng-show=\"!showDetailContent\">\n" +
     "        <md-icon>search</md-icon>&nbsp;<span translate=\"jobs.result.showMore\"></span>\n" +
     "      </span>\n" +
@@ -825,8 +872,8 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "        <md-icon>close</md-icon>&nbsp;<span translate=\"jobs.result.showLess\"></span>\n" +
     "      </span>\n" +
     "    </md-button>\n" +
-    "    <p></p>\n" +
-    "    <md-button flex ng-click=\"showPrintDialog(jobDetail._source.jobId)\" class=\"md-raised jd-btn-block\"><md-icon>print</md-icon>&nbsp;<span translate=\"jobs.result.print\"></span></md-button>\n" +
+    "\n" +
+    "    <md-button hide-xs ng-click=\"showPrintDialog(jobDetail._source.jobId)\" class=\"md-raised jd-btn-block\"><md-icon>print</md-icon>&nbsp;<span translate=\"jobs.result.print\"></span></md-button>\n" +
     "  </div>\n" +
     "</div>\n" +
     "\n" +
@@ -846,10 +893,10 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "        </md-button>\n" +
     "      </div>\n" +
     "    </md-toolbar>\n" +
-    "    <md-dialog-content style=\"width:100%;height:100%;\">\n" +
+    "    <md-dialog-content>\n" +
     "      <div class=\"md-dialog-content\">\n" +
     "        <div layout=\"row\" layout-wrap layout-margin layout-align=\"space-between center\" width=\"100%\">\n" +
-    "          <a ng-click=\"answer(minorGroup)\" layout=\"row\" layout-align=\"start center\" flex=\"30\" class=\"jd-job-list\" ng-repeat=\"minorGroup in iscoMinorGroups[level] track by $index\" >\n" +
+    "          <a ng-click=\"answer(minorGroup)\" layout=\"row\" layout-align=\"start center\" flex=\"30\" flex-xs=\"100\" class=\"jd-job-list\" ng-repeat=\"minorGroup in iscoMinorGroups[level] track by $index\" >\n" +
     "            <md-icon>arrow_forward</md-icon>&nbsp;<span flex translate=\"isco.minorGroups.{{minorGroup}}\"></span>\n" +
     "          </a>\n" +
     "        </div>\n" +
@@ -882,8 +929,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "        <div ng-switch-when=\"false\">\n" +
     "\n" +
     "          <strong>{{::getMultiLanguageText(jobDetail._source.title)}}</strong><br />\n" +
-    "          <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: onlineSinceDate(jobDetail._source.publicationDate)}\"></span>\n" +
-    "          <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)===1\" translate=\"jobs.result.onlineSinceOneDay\"></span>\n" +
+    "          <span translate=\"jobs.result.onlineSinceDate\" translate-values=\"{value: formatDate(jobDetail._source.publicationDate)}\"></span>\n" +
     "          /\n" +
     "          <span translate=\"jobs.result.workload\"></span>\n" +
     "          <span ng-if=\"jobDetail._source.quotaFrom!==jobDetail._source.quotaTo\">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</span>\n" +
@@ -895,12 +941,12 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "\n" +
     "          <strong class=\"fake-label\" translate=\"jobs.result.entryDate\"></strong> :\n" +
     "          <span ng-if=\"jobDetail._source.availableNow\" translate=\"jobs.result.availableNow\"></span>\n" +
-    "          <span ng-if=\"!jobDetail._source.availableNow && jobDetail._source.startDate\" translate=\"jobs.result.availableFromDate\" translate-values=\"{value: jobDetail._source.startDate}\"></span>\n" +
+    "          <span ng-if=\"!jobDetail._source.availableNow && jobDetail._source.startDate\" translate=\"jobs.result.availableFromDate\" translate-values=\"{value: formatDate(jobDetail._source.startDate)}\"></span>\n" +
     "          <span ng-if=\"!jobDetail._source.availableNow && !jobDetail._source.startDate\" translate=\"jobs.result.availableByAppointment\"></span>\n" +
     "          <br />\n" +
     "\n" +
     "          <strong class=\"fake-label\" translate=\"jobs.result.contractDuration\"></strong> :\n" +
-    "          <span ng-if=\"jobDetail._source.endDate\" translate=\"jobs.result.untilDate\" translate-values=\"{value: jobDetail._source.endDate}\"></span>\n" +
+    "          <span ng-if=\"jobDetail._source.endDate\" translate=\"jobs.result.untilDate\" translate-values=\"{value: formatDate(jobDetail._source.endDate)}\"></span>\n" +
     "          <span ng-if=\"!jobDetail._source.endDate\" translate=\"jobs.result.permanent\"></span>\n" +
     "\n" +
     "        <!-- Sprachen -->\n" +
@@ -939,8 +985,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "        <div ng-switch-when=\"true\">\n" +
     "\n" +
     "          <strong>{{::getMultiLanguageText(jobDetail._source.title)}}</strong><br />\n" +
-    "          <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: onlineSinceDate(jobDetail._source.publicationDate)}\"></span>\n" +
-    "          <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)===1\" translate=\"jobs.result.onlineSinceOneDay\"></span>\n" +
+    "          <span translate=\"jobs.result.onlineSinceDate\" translate-values=\"{value: formatDate(jobDetail._source.publicationDate)}\"></span>\n" +
     "          /\n" +
     "          <span translate=\"jobs.result.workload\"></span>\n" +
     "          <span ng-if=\"jobDetail._source.quotaFrom!==jobDetail._source.quotaTo\">{{::jobDetail._source.quotaFrom}} - {{::jobDetail._source.quotaTo}}%</span>\n" +
@@ -955,53 +1000,11 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "\n" +
     "      </div>\n" +
     "    </div>\n" +
-    "    <div layout=\"row\" layout-sm=\"column\" layout-align=\"space-around\">\n" +
-    "      <md-progress-circular md-mode=\"indeterminate\" md-diameter=\"60\"></md-progress-circular>\n" +
+    "    <div layout=\"row\" layout-sm=\"column\" layout-align=\"center center\">\n" +
+    "      <md-progress-circular md-mode=\"indeterminate\" md-diameter=\"120\"></md-progress-circular>\n" +
     "    </div>\n" +
     "  </md-dialog-content>\n" +
     "</md-dialog>\n"
-  );
-
-
-  $templateCache.put('views/template/numeric.html',
-    "<div>\n" +
-    "\t<div class=\"button-wrapper\">\n" +
-    "\t\t<button ng-key=\"1\">1</button>\n" +
-    "\t\t<button ng-key=\"2\">2</button>\n" +
-    "\t\t<button data-ng-key=\"3\">3</button>\n" +
-    "\t\t<button data-ng-key=\"4\">4</button>\n" +
-    "\t\t<button data-ng-key=\"5\">5</button>\n" +
-    "\t\t<button data-ng-key=\"6\">6</button>\n" +
-    "\t\t<button data-ng-key=\"7\">7</button>\n" +
-    "\t\t<button data-ng-key=\"8\">8</button>\n" +
-    "\t\t<button data-ng-key=\"9\">9</button>\n" +
-    "\n" +
-    "\t\t<button data-ng-key=\"0\" class=\"button-wide\">0</button>\n" +
-    "        <button ng-click=\"setCoords()\" class=\"smaller primary\">Ok</button>\n" +
-    "\n" +
-    "        <button ng-click=\"closeNumpad()\" class=\"smaller\">Close</button>\n" +
-    "        <button ng-click=\"clearNumpad()\" class=\"smaller\">Clear</button>\n" +
-    "\t</div>\n" +
-    "</div>\n"
-  );
-
-
-  $templateCache.put('views/template/results.html',
-    "<div class=\"row\">\n" +
-    "    <a href=\"#/detail/{{job.id}}\" class=\"job-result col-md-10\">\n" +
-    "            <strong class=\"fake-label\">{{job.BEZEICHNUNG}} / #{{job.id}} / Online seit {{job.ONLINE_SEIT}} Tag(en) / {{job.PENSUM_BIS}}%</strong>\n" +
-    "            <p ng-text-truncate=\"job.BESCHREIBUNG\" ng-tt-chars-threshold=\"200\" ng-tt-no-toggling></p>\n" +
-    "    </a>\n" +
-    "    <div class=\"cold-md-2\" align=\"center\">\n" +
-    "        <button glyph-icon=\"print\" admin-symbol class=\"result-button btn-plain\"></button>\n" +
-    "        <button ng-click=\"star(job.id)\" glyph-icon=\"star\" admin-symbol class=\"result-button btn-plain\" ng-class=\"{favorite: isStarred(job.id)}\"></button>\n" +
-    "    </div>\n" +
-    "</div>"
-  );
-
-
-  $templateCache.put('views/tour/tour.tpl.html',
-    "<div class=\"tour-tip\"><span class=\"tour-arrow tt-{{ ttPlacement }}\" ng-hide=\"centered\"></span><div class=\"tour-content-wrapper\">TEST    <p ng-bind=\"ttContent\"></p>    <a ng-click=\"proceed()\" ng-bind=\"ttNextLabel\" class=\"small button tour-next-tip\"></a>    <a ng-click=\"closeTour()\" class=\"tour-close-tip\">&times;</a></div>\\n' + '</div>');\n"
   );
 
 }]);
