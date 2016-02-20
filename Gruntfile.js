@@ -111,7 +111,7 @@ module.exports = function (grunt) {
       app: {
         files: [{
           src: [
-            'JobDesk/www/*'
+            'app/www/*'
           ]
         }]
       }
@@ -266,16 +266,16 @@ module.exports = function (grunt) {
     // Put files not handled in other tasks here
     copy: {
       app: {
-        files: [
-          {
-            expand: true,
-            cwd: 'dist',
-            dest: 'JobDesk/www',
-            src: [
-              '**.*'
-            ]
-          }
-        ]
+        files: [{
+          expand: true,
+          dot: true,
+          flatten: false,
+          cwd: 'dist',
+          dest: 'app/www',
+          src: [
+            '**/*'
+          ]
+        }]
       },
       dist: {
         files: [
@@ -501,6 +501,19 @@ module.exports = function (grunt) {
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
+      app: {
+        options: {
+          dest: 'src/main/scripts/app/app.constants.js'
+        },
+        constants: {
+          ENV: 'dev',
+          VERSION: '<%= yeoman.app.version %>',
+          baseUrl: 'http://arrlee.jobarea.ch/jobdesk',
+          arrleeUrl: 'http://arrlee.jobarea.ch/arrlee',
+          travelTimeUrl: 'http://localhost:9000/api',
+          supportedLanguages: ['de', 'fr', 'it', 'en']
+        }
+      },
       i18n: {
           options: {
             name: 'job-desk.i18n',
@@ -648,6 +661,14 @@ module.exports = function (grunt) {
   grunt.registerTask('build-local', [
     'ngconstant:dev',
     'build'
+  ]);
+
+  grunt.registerTask('build-app', [
+    'clean:app',
+    'ngconstant:app',
+    'build',
+    'copy:app',
+    'clean:dist'
   ]);
 
   grunt.registerTask('default', [

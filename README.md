@@ -35,7 +35,11 @@ http://geojson.org/
 ### Leaflet
 * map: http://leafletjs.com/
 * tiles: https://leaflet-extras.github.io/leaflet-providers/preview/
-* wiki tiles: https://www.mediawiki.org/wiki/Maps 
+* wiki tiles: https://www.mediawiki.org/wiki/Maps
+* osm tiles: ...
+* swisstopo
+** tiles: http://api.geo.admin.ch
+** tutorial: ...
 
 ### Radius km/px calculation
 * Calculated from: http://www.freemaptools.com/how-far-is-it-between-bern_-schweiz-and-zürich_-schweiz.htm
@@ -82,4 +86,15 @@ Query/Filter/Sort
   * GeoLocation: https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl-geo-distance-filter.html
   * Geo Polygon Filer: https://www.elastic.co/guide/en/elasticsearch/reference/1.7/query-dsl-geo-polygon-filter.html
 * Sort: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html
+
+## Mobile-App (wip)
+
+*Apache Cordova*
+* https://cordova.apache.org/
+* follow the steps (except step 2, there create folder "app"): https://cordova.apache.org/#getstarted
+* before running the app, run `$ grunt build-app`
+
+* Android - currently alpha
+* iOS - not yet implemented
+* Others - no plan for further os 
   
