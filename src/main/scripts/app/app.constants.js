@@ -6,11 +6,11 @@ angular.module('job-desk')
 
 .constant('VERSION', 'src/main')
 
-.constant('baseUrl', 'http://arrlee.jobarea.ch/jobdesk')
+.constant('baseUrl', 'http://localhost:9000/jobdesk')
 
-.constant('arrleeUrl', 'http://arrlee.jobarea.ch/arrlee')
+.constant('arrleeUrl', 'http://localhost:9000/arrlee')
 
-.constant('travelTimeUrl', 'http://arrlee.jobarea.ch/api')
+.constant('travelTimeUrl', 'http://localhost:9000/api')
 
 .constant('supportedLanguages', ['de','fr','it','en'])
 
