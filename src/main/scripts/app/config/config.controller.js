@@ -3,11 +3,38 @@
   'use strict';
 
   angular.module('job-desk')
-    .controller('ConfigCtrl', function ($scope, $rootScope, ConfigService, LocationsService, lodash, geolocation, $mdToast) {
+    .controller('ConfigCtrl', function ($scope, $rootScope, ConfigService, LocationsService, lodash, geolocation, $mdToast, $mdDialog) {
 
       $scope.idle = false;
 
       $scope.config = ConfigService.init();
+
+      $scope.circumSearch=function(type){
+        if (!type){
+          return false;
+        }
+        else if (
+          (!$scope.config.availableDistanceType.distance && !$scope.config.availableDistanceType.transport) ||
+          (!$scope.config.availableDistanceType.distance && !$scope.config.availableDistanceType.drive) ||
+          (!$scope.config.availableDistanceType.drive && !$scope.config.availableDistanceType.transport)
+        ){
+          return true;
+        }
+        return false;
+      };
+
+      $scope.$watchCollection('config.availableDistanceType', function () {
+        if (!$scope.config.availableDistanceType[$scope.config.distanceType]){
+          $scope.config.availableDistanceType[$scope.config.distanceType]=true;
+          $mdDialog.show(
+            $mdDialog.alert()
+              .parent(angular.element(document.body))
+              .textContent('Diese Konfiguration ist unzulässig: Umkreissuche - Angebot entspricht nicht der Standardeinstellung.')
+              .ariaLabel('Diese Konfiguration ist unzulässig: Umkreissuche - Angebot entspricht nicht der Standardeinstellung.')
+              .ok('OK')
+          );
+        }
+      });
 
       $scope.resetConfig = function () {
         ConfigService.reset();

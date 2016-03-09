@@ -16,6 +16,11 @@
         config.apprenticeships = false;
         config.localInfo = '';
         config.distanceType = 'transport';
+        config.availableDistanceType={
+          distance:true,
+          transport:true,
+          drive:false
+        };
         config.mapType = 'osm';
       }
 

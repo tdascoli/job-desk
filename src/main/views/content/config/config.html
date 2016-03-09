@@ -5,53 +5,78 @@
 
     <strong class="md-title" flex="100">Standort</strong>
 
-    <md-input-container flex="100">
+    <md-input-container flex="50">
       <label>Adresse</label>
       <input ng-model="config.address" type="text" />
     </md-input-container>
 
-    <md-input-container flex="50">
+    <md-input-container flex="10">
       <label>Postleitzahl</label>
       <input name="zipInput" ng-model="config.zip" type="number" min="1000" max="9999" required integer/>
     </md-input-container>
 
-    <md-input-container flex="50" layout="row">
+    <md-input-container flex="10" layout="row">
       <md-button ng-disabled="configForm.zipInput.$invalid" class="md-raised" ng-click="receiveCoords()">lookup</md-button>
       <md-progress-circular ng-if="idle" md-mode="indeterminate"></md-progress-circular>
     </md-input-container>
 
-    <md-input-container flex="50">
+    <md-input-container flex="15">
       <label>Koordinaten / Longitude</label>
       <input ng-model="config.coords.lon" ng-disabled="true" type="text" />
     </md-input-container>
 
-    <md-input-container flex="50">
+    <md-input-container flex="15">
       <label>Koordinaten / Latitude</label>
       <input ng-model="config.coords.lat" ng-disabled="true" type="text" />
     </md-input-container>
 
-    <strong class="md-title" flex="100">Angebot</strong>
+    <div flex="33">
+      <p><strong class="md-title">Angebot</strong></p>
+      <md-checkbox ng-model="config.educations" class="md-primary" aria-label="Weiterbildungsangebote">
+        Weiterbildungsangebote
+      </md-checkbox>
+      <br />
+      <md-checkbox ng-model="config.apprenticeships" class="md-primary" aria-label="Lehrstellen">
+        Lehrstellen
+      </md-checkbox>
+    </div>
 
-    <md-checkbox ng-model="config.educations" class="md-primary" aria-label="Weiterbildungsangebote" flex="33">
-      Weiterbildungsangebote
-    </md-checkbox>
+    <div flex="66">
+      <p><strong class="md-title">Karte</strong></p>
+      <md-radio-group ng-model="config.mapType">
+        <md-radio-button value="swisstopo" class="md-primary">swisstopo Karte</md-radio-button>
+        <md-radio-button value="osm" class="md-primary">OpenStreetMap Karte</md-radio-button>
+      </md-radio-group>
+    </div>
 
-    <md-checkbox ng-model="config.apprenticeships" class="md-primary" aria-label="Lehrstellen" flex="33">
-      Lehrstellen
-    </md-checkbox>
+    <div flex="33">
+      <p><strong class="md-title">Umkreissuche - Angebot</strong></p>
+      <md-checkbox ng-model="config.availableDistanceType.distance" class="md-primary" ng-disabled="circumSearch(config.availableDistanceType.distance)" aria-label="Umkreissuche nach Distanz">
+        Umkreissuche nach Distanz
+      </md-checkbox>
+      <br />
+      <md-checkbox ng-model="config.availableDistanceType.transport" class="md-primary" ng-disabled="circumSearch(config.availableDistanceType.transport)" aria-label="Umkreissuche nach Reisedauer mit öV">
+        Umkreissuche nach Reisedauer mit öV
+      </md-checkbox>
+      <br />
+      <md-checkbox ng-model="config.availableDistanceType.drive" class="md-primary" ng-disabled="circumSearch(config.availableDistanceType.drive)" aria-label="Umkreissuche nach Reisedauer mit PW">
+        Umkreissuche nach Reisedauer mit PW
+      </md-checkbox>
+    </div>
 
-    <strong class="md-title" flex="100">Suchkriterien</strong>
+    <div flex="33">
+      <p><strong class="md-title">Umkreissuche - Standardeinstellung</strong></p>
+      <md-radio-group ng-model="config.distanceType">
+        <md-radio-button value="distance" class="md-primary" ng-disabled="!config.availableDistanceType.distance">Umkreissuche nach Distanz</md-radio-button>
+        <md-radio-button value="transport" class="md-primary" ng-disabled="!config.availableDistanceType.transport">Umkreissuche nach Reisedauer mit öV</md-radio-button>
+        <md-radio-button value="drive" class="md-primary" ng-disabled="!config.availableDistanceType.drive">Umkreissuche nach Reisedauer mit PW</md-radio-button>
+      </md-radio-group>
+    </div>
 
-    <md-radio-group ng-model="config.distanceType" flex="50">
-      <md-radio-button value="transport" class="md-primary">Umkreissuche nach Reisedauer mit öV</md-radio-button>
-      <md-radio-button value="drive" class="md-primary">Umkreissuche nach Reisedauer mit PW</md-radio-button>
-      <md-radio-button value="distance" class="md-primary">Umkreissuche nach Distanz</md-radio-button>
-    </md-radio-group>
-
-    <md-radio-group ng-model="config.mapType" flex="50">
-      <md-radio-button value="swisstopo" class="md-primary">swisstopo Karte</md-radio-button>
-      <md-radio-button value="osm" class="md-primary">OpenStreetMap Karte</md-radio-button>
-    </md-radio-group>
+    <div flex="33">
+      <p><strong class="md-title">Umkreissuche - Standardwert</strong></p>
+      tbd
+    </div>
 
     <div flex="100">
       <md-button ng-disabled="!config.coords" class="md-raised md-primary" ng-click="saveConfig()">save</md-button>
