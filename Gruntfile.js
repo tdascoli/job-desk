@@ -495,9 +495,9 @@ module.exports = function (grunt) {
         constants: {
           ENV: 'staging',
           VERSION: '<%= yeoman.app.version %>',
-          baseUrl: 'http://jobdeskdev-alvch.rhcloud.com/jobdesk',
-          arrleeUrl: 'http://jobdeskdev-alvch.rhcloud.com/arrlee',
-          travelTimeUrl: 'http://jobdeskdev-alvch.rhcloud.com/api',
+          baseUrl: 'http://dev.job-desk.ch/jobdesk',
+          arrleeUrl: 'http://dev.job-desk.ch/arrlee',
+          travelTimeUrl: 'http://dev.job-desk.ch/api',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
