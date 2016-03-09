@@ -10,6 +10,8 @@ angular.module('job-desk')
 
 .constant('arrleeUrl', 'http://localhost:9000/arrlee')
 
+.constant('travelTimeUrl', 'http://localhost:9000/api')
+
 .constant('supportedLanguages', ['de','fr','it','en'])
 
 ;

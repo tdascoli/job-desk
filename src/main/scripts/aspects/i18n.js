@@ -20,6 +20,7 @@
     });
     $translateProvider.useCookieStorage();
     $translateProvider.determinePreferredLanguage();
+    $translateProvider.useSanitizeValueStrategy('sanitize');
     tmhDynamicLocaleProvider.localeLocationPattern('bower_components/angular-i18n/angular-locale_{{locale}}.js');
     tmhDynamicLocaleProvider.useCookieStorage('NG_TRANSLATE_LANG_KEY');
   });

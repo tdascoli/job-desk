@@ -21,6 +21,12 @@
       "distanceNearest":"Arbeitsort - am dichtesten gelegen",
       "distanceFarthest":"Arbeitsort - am weitesten gelegen"
     },
+    "messages": {
+      "update": {
+        "information":"Eine neue Version ist verfügbar!",
+        "action":"Aktualisieren"
+      }
+    },
     "codes": {
       "salutations": {
         "1": "Herr",

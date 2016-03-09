@@ -24,7 +24,8 @@
       scope: {
         jobDetail: '=',
         lastOpenedJob: '=',
-        isMobile: '='
+        isMobile: '=',
+        sorting: '='
       },
       templateUrl: 'template/job-detail.html',
       link: function (scope, element) {
@@ -65,7 +66,8 @@
               jobDetail: scope.jobDetail,
               getMultiLanguageText: scope.getMultiLanguageText,
               onlineSinceDate: scope.onlineSinceDate,
-              formatDate: scope.formatDate
+              formatDate: scope.formatDate,
+              sorting: scope.sorting
             },
             escapeToClose: false,
             onComplete: function () {
@@ -111,6 +113,10 @@
 
         scope.formatDate = function (date) {
           return moment(date, 'YYYY-MM-DD').format('DD.MM.YYYY');
+        };
+
+        scope.formatDistance = function (distance) {
+          return Math.round(distance * 10) / 10;
         };
       }
     };

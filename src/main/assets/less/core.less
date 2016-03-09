@@ -15,6 +15,10 @@ body {
 .topnav-title img {
   height: 100%;
 }
+.topnav-title .job-desk-logo {
+  height: 50%;
+  width: 150px;
+}
 .section-button {
   width: 25%;
   text-align: left;
@@ -84,37 +88,6 @@ body {
   outline: none;
 }
 
-//**** ISCO COLOURS
-/*
-.jd-categories .category-title.isco1 {
-  background-color: @material-color-deep-purple;
-  opacity: 0.54;
-}
-.jd-categories .category-title.isco2 {
-  background-color: @material-color-blue;
-}
-.jd-categories .category-title.isco3 {
-  background-color: @material-color-lime;
-}
-.jd-categories .category-title.isco4 {
-  background-color: @material-color-teal;
-}
-.jd-categories .category-title.isco5 {
-  background-color: @material-color-pink;
-}
-.jd-categories .category-title.isco6 {
-  background-color: @material-color-green;
-}
-.jd-categories .category-title.isco7 {
-  background-color: @material-color-orange;
-}
-.jd-categories .category-title.isco8 {
-  background-color: @material-color-amber;
-}
-.jd-categories .category-title.isco9 {
-  background-color: @material-color-cyan;
-} */
-
 //**** MAP
 #map {
   width: 960px;
@@ -123,26 +96,18 @@ body {
   background-color: #fff;
 }
 .radius {
-  fill: @map-radius-fill;
+  fill: @map-heatmap-fill; //@map-radius-fill;
   opacity: 1;
-  stroke: @map-radius-fill;
+  stroke: @map-heatmap-fill; //@map-radius-fill;
   stroke-opacity: 1;
   stroke-width: 1;
 }
-.contour {
-  fill-opacity: 1;
-  stroke: none;
-  stroke-opacity: 0;
-  stroke-width: 0;
-  shape-rendering: crispEdges;
-}
-.canton-boundaries {
-  fill: @topo-canton-boundaries-fill;
-  fill-opacity: 1;
-  stroke: @topo-canton-boundaries-stroke;
+.country-boundaries {
+  fill: #fff;
+  fill-opacity: 0.75;
+  stroke: transparent;
   stroke-opacity: 1;
   stroke-width: 1;
-  shape-rendering: crispEdges;
 }
 .city-boundaries {
   fill: @topo-city-boundaries-fill;
@@ -151,50 +116,23 @@ body {
   stroke-opacity: 1;
   stroke-width: 1.5;
 }
-.municipality-boundaries {
-  fill: @topo-city-boundaries-fill;
-  stroke: @topo-city-boundaries-stroke;
-  stroke-width: 1;
-}
-.city-text.leaflet-label,
-.municipality-text.leaflet-label{
+.city-text.leaflet-label{
   font-family: @font-family-base;
   border: none;
   background: transparent;
   padding: 6px 0 0 0;
   cursor: pointer;
 }
-.city-text.leaflet-label-right,
-.municipality-text.leaflet-label-right{
+.city-text.leaflet-label-right{
   margin-left: -4px;
 }
-.city-text.leaflet-label-left,
-.municipality-text.leaflet-label-left{
+.city-text.leaflet-label-left{
   margin-left: 6px;
 }
-.municipality-text.leaflet-label{
-  font-weight: 400;
-}
 .city-text.leaflet-label:before,
-.city-text.leaflet-label:after,
-.municipality-text.leaflet-label:before,
-.municipality-text.leaflet-label:after {
+.city-text.leaflet-label:after{
   border: none;
   left: 0;
-}
-.municipality-text {
-  font-size: 12px;
-  font-weight: 400;
-  pointer-events: none;
-  opacity: 1;
-  text-anchor: end;
-}
-.lakes {
-  fill: @topo-lakes-fill;
-  fill-opacity: 1 !important;
-  stroke: @topo-lakes-stroke;
-  stroke-opacity: 1 !important;
-  weight: 1;
 }
 .my-location {
   fill: @map-my-location-fill;
@@ -211,20 +149,6 @@ body {
   stroke-opacity: 1;
   stroke-width: 1;
 }
-text {
-  font-size: 12px;
-  font-weight: 700;
-  pointer-events: none;
-  opacity: 1;
-  z-index: 2100;
-}
-@media (max-width: 599px) {
-  text {
-    font-size: 10px;
-    font-weight: 700;
-    pointer-events: none;
-  }
-}
 
 .heatmap {
   fill: transparent;
@@ -237,6 +161,14 @@ text {
 .heatmap-outline {
   fill: transparent;
   stroke: transparent;
+}
+.traveltime {
+  fill: @map-heatmap-fill;
+  fill-opacity: 0.66;
+  stroke: @map-heatmap-fill;
+  stroke-opacity: 1;
+  stroke-width: 1;
+  fill-rule: nonzero;
 }
 
 .area0 {
@@ -379,6 +311,10 @@ md-input-container > md-slider {
   order: 2;
   margin: 0;
   width: 100%;
+}
+
+.md-select-menu-container {
+  z-index: 1001;
 }
 
 #iscoGroup .md-select-value {

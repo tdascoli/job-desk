@@ -111,7 +111,7 @@ module.exports = function (grunt) {
       app: {
         files: [{
           src: [
-            'JobDesk/www/*'
+            'app/www/*'
           ]
         }]
       }
@@ -266,16 +266,16 @@ module.exports = function (grunt) {
     // Put files not handled in other tasks here
     copy: {
       app: {
-        files: [
-          {
-            expand: true,
-            cwd: 'dist',
-            dest: 'JobDesk/www',
-            src: [
-              '**.*'
-            ]
-          }
-        ]
+        files: [{
+          expand: true,
+          dot: true,
+          flatten: false,
+          cwd: 'dist',
+          dest: 'app/www',
+          src: [
+            '**/*'
+          ]
+        }]
       },
       dist: {
         files: [
@@ -399,6 +399,12 @@ module.exports = function (grunt) {
           headers: {
             Host: 'arrlee.jobarea.ch' // the real host you want to access
           }
+        },
+        {
+          context: '/api',
+          host: 'api2.walkscore.com',
+          https: false,
+          changeOrigin: false
         }
       ],
       livereload: {
@@ -465,6 +471,7 @@ module.exports = function (grunt) {
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://localhost:9000/jobdesk',
           arrleeUrl: 'http://localhost:9000/arrlee',
+          travelTimeUrl: 'http://localhost:9000/api',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
@@ -477,6 +484,7 @@ module.exports = function (grunt) {
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://jobdesk.job-room.ch/jobdesk',
           arrleeUrl: 'http://jobdesk.job-room.ch/arrlee',
+          travelTimeUrl: 'http://jobdesk.job-room.ch/api',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
@@ -489,6 +497,20 @@ module.exports = function (grunt) {
           VERSION: '<%= yeoman.app.version %>',
           baseUrl: 'http://jobdeskdev-alvch.rhcloud.com/jobdesk',
           arrleeUrl: 'http://jobdeskdev-alvch.rhcloud.com/arrlee',
+          travelTimeUrl: 'http://jobdeskdev-alvch.rhcloud.com/api',
+          supportedLanguages: ['de', 'fr', 'it', 'en']
+        }
+      },
+      app: {
+        options: {
+          dest: 'src/main/scripts/app/app.constants.js'
+        },
+        constants: {
+          ENV: 'dev',
+          VERSION: '<%= yeoman.app.version %>',
+          baseUrl: 'http://arrlee.jobarea.ch/jobdesk',
+          arrleeUrl: 'http://arrlee.jobarea.ch/arrlee',
+          travelTimeUrl: 'http://arrlee.jobarea.ch/api',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
@@ -639,6 +661,14 @@ module.exports = function (grunt) {
   grunt.registerTask('build-local', [
     'ngconstant:dev',
     'build'
+  ]);
+
+  grunt.registerTask('build-app', [
+    'clean:app',
+    'ngconstant:app',
+    'build',
+    'copy:app',
+    'clean:dist'
   ]);
 
   grunt.registerTask('default', [

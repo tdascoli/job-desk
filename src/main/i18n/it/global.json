@@ -21,6 +21,12 @@
       "distanceNearest":"Luogo di lavoro - si trova più vicino",
       "distanceFarthest":"Luogo di lavoro - located farthest"
     },
+    "messages": {
+      "update": {
+        "information":"[IT] A new version is available!",
+        "action":"[IT] Update"
+      }
+    },
     "codes": {
       "salutations": {
         "1": "Signor",

@@ -3,147 +3,18 @@
 
   var module = angular.module('job-desk.directive', []);
 
-  module.directive('map', ['$rootScope', 'MunicipalitiesService', function ($rootScope, MunicipalitiesService) {
+  module.directive('map', ['$rootScope', function ($rootScope) {
     return {
       restrict: 'C',
       priority: 50,
       link: function (scope, element, attrs) {
-        // todo attrs - eval??
-        var mapId = attrs.id || 'map';
-        var tiles = attrs.mapTiles || false;
-        var defaults = attrs.mapDefaults || {
-            center: [46.8, 8.3],
-            zoom: 8,
-            zoomControl: true,
-            scrollWheelZoom: false,
-            doubleClickZoom: true,
-            maxBounds: [
-              [45.5, 5.5],
-              [48, 11]
-            ]
-          };
-        if ($rootScope.mobile) {
-          defaults.zoom = 9;
-        }
-
-        //** tiles
-        var tile_layer = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-          minZoom: 8, maxZoom: 12
-        });
-
-        //** height/width -> fullscreen param?!
-        element.css('width', $(document).width());
-        element.css('height', ($(window).height() - ($('#topnav').outerHeight() + $('#filter').outerHeight())) - 25);
-        if ($rootScope.mobile) {
-          element.css('height', $(document).width());
-        }
-
-        //*** geo-layer (contours, cantons, lakes, cities and my-position)
-        var colorScale = chroma.scale(['94BF8B', 'F5F4F2']).domain([0, 4000]).mode('hcl');
-        var contour_layer = new L.TopoJSON(null, {
-          clickable: false,
-          className: 'contour',
-          style: function (feature) {
-            return {fillColor: colorScale(feature.id).hex()};
-          }
-        });
-        var canton_layer = new L.TopoJSON(null, {
-          clickable: false,
-          className: 'canton-boundaries'
-        });
-        var lake_layer = new L.TopoJSON(null, {
-          clickable: false,
-          className: 'lakes'
-        });
-        var cities_layer = new L.GeoJSON(null, {
-          pointToLayer: function (feature, latlng) {
-            return L.circleMarker(latlng, {
-              clickable: false,
-              radius: 3,
-              className: 'city-boundaries'
-            }).bindLabel(feature.geometry.properties.name, {noHide: true, className: 'city-text'});
-          }
-        });
-        var geo_layer = L.featureGroup([contour_layer, canton_layer, lake_layer, cities_layer]);
-
-        //*** search-layer (heatmap, radius, current position, municipalities)
-        var heatmap_layer = new L.GeoJSON(null, {
-          onEachFeature: function (feature, layer) {
-            layer.setStyle({className: 'heatmap ' + feature.properties.className});
-          }
-        });
-        var radius_layer = new L.circle(null, (scope.searchParams.distance * 1000), {
-          clickable: false,
-          className: 'radius'
-        });
-        var position_icon = L.divIcon({
-          className: 'material-icons current-location',
-          html: 'place'
-        });
-        var position_layer = new L.marker(null, {
-          icon: position_icon,
-          clickable: false
-        });
-        var my_position_layer = new L.circleMarker(null, {
-          clickable: false,
-          radius: 3,
-          className: 'my-location'
-        });
-        var municipalities_layer = new L.GeoJSON(null, {
-          pointToLayer: function (feature, latlng) {
-            return L.circleMarker(latlng, {
-              clickable: false,
-              radius: 3,
-              className: 'municipality-boundaries'
-            }).bindLabel(feature.geometry.properties.name, {
-              noHide: true,
-              direction: 'auto',
-              className: 'municipality-text'
-            });
-          }
-        });
-        var search_layer = L.featureGroup([heatmap_layer]);
-
-        var map = L.map(mapId, defaults);
-
-        if (tiles) {
-          map.addLayer(tile_layer);
-        }
-
-        map
-          .addLayer(geo_layer.bringToBack())
-          .addLayer(search_layer.bringToFront());
-
-        $.getJSON('assets/topojson/ch-contours.json', function (data) {
-          contour_layer.addData(topojson.feature(data, data.objects.contours));
-
-          $.getJSON('assets/topojson/ch-cantons-lakes.json', function (data) {
-            canton_layer.addData(topojson.feature(data, data.objects.cantons));
-            lake_layer.addData(topojson.feature(data, data.objects.lakes));
-
-            $.getJSON('assets/topojson/cities.json', function (data) {
-              cities_layer.addData(data);
-              if ($rootScope.myCoords!==undefined){
-                geo_layer.addLayer(L.circleMarker([$rootScope.myCoords.lat, $rootScope.myCoords.lon], {clickable: false, radius: 3, className: 'my-location'}));
-                myPosition();
-              }
-            });
-          });
-        });
-
-        map.on('click', function (e) {
-          scope.setCurrentCoords({lon: e.latlng.lng, lat: e.latlng.lat});
-        });
-
+        // todo functions in controller/service?!
         function myPosition() {
           if (scope.searchParams.currentCoords !== undefined) {
             var latlng = [scope.searchParams.currentCoords.lat, scope.searchParams.currentCoords.lon];
             map.setView(latlng, map.getZoom());
             setLatLngLayer(position_layer, search_layer, latlng);
             doRadius();
-            if ($rootScope.appConfig.showMunicipalities) {
-              setMunicipalities();
-            }
           }
         }
 
@@ -162,29 +33,105 @@
           }
         }
 
-        function setMunicipalities() {
-          if (scope.searchParams.currentCoords !== undefined) {
-            if (scope.searchParams.distanceType === 'distance') {
-              MunicipalitiesService.getMunicipalitiesGeoJSON(scope.searchParams.currentCoords, scope.searchParams.distance, function (result) {
-                setMunicipalitiesLayer(result);
-              });
-            }
-            else {
-              MunicipalitiesService.getMunicipalitiesFromZipsGeoJSON(scope.searchParams.zips, function (result) {
-                setMunicipalitiesLayer(result);
-              });
-            }
-          }
+        // todo attrs - eval??
+        var mapId = attrs.id || 'map';
+        var tiles = attrs.mapTiles || 'osm';
+        var myCoords = attrs.mapLocation || {lat: $rootScope.myCoords.lat, lng: $rootScope.myCoords.lon};
+
+        var res = [4000, 3750, 3500, 3250, 3000, 2750, 2500, 2250, 2000, 1750, 1500, 1250, 1000, 750, 650, 500, 250, 100, 50, 20, 10, 5, 2.5, 2, 1.5, 1, 0.5];
+        proj4.defs('EPSG:21781','+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=600000 +y_0=200000 +ellps=bessel +towgs84=674.4,15.1,405.3,0,0,0,0 +units=m +no_defs');
+        var scale = function(zoom) {
+          return 1 / res[zoom];
+        },
+        crs = new L.Proj.CRS('EPSG:21781', '+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 ' + '+k_0=1 +x_0=600000 +y_0=200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs', {
+          resolutions: res,
+          origin: [420000, 350000]
+        });
+
+        // defaults
+        var defaults = attrs.mapDefaults || {
+            zoomControl: true,
+            scrollWheelZoom: false,
+            doubleClickZoom: true,
+            maxBounds: [
+              [45.5, 5.5],
+              [48, 11]
+            ]
+          };
+
+        //** tiles & zoom
+        var initial_zoom = 9;
+        var tile_layer = L.tileLayer('http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
+          minZoom: 8, maxZoom: 12
+        });
+        /****  GEO.ADMIN.CH *****/
+        if (tiles==='swisstopo'){
+          tile_layer = new L.TileLayer('https://wmts6.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/20140520/21781/{z}/{y}/{x}.jpeg', {
+            scheme: 'xyz',
+            maxZoom: res.length - 1,
+            minZoom: 15,
+            opacity: 0.75,
+            attribution: 'Map data &copy; swisstopo'
+          });
+
+          defaults.crs=crs;
+          defaults.scale=scale;
+
+          initial_zoom=17;
+        }
+        /**** /GEO.ADMIN.CH *****/
+
+        //** height/width -> fullscreen param?!
+        element.css('width', $(document).width());
+        element.css('height', ($(window).height() - ($('#topnav').outerHeight() + $('#filter').outerHeight())) - 25);
+        if ($rootScope.mobile) {
+          element.css('height', $(document).width());
         }
 
-        function setMunicipalitiesLayer(data) {
-          municipalities_layer.clearLayers();
-          municipalities_layer.addData(data);
+        //*** geo-layer (my-position)
+        var geo_layer = L.featureGroup([]);
 
-          if (!search_layer.hasLayer(municipalities_layer)) {
-            search_layer.addLayer(municipalities_layer).bringToFront();
-          }
+        //*** search-layer (heatmap, traveltime, radius, current position)
+        var heatmap_layer = new L.GeoJSON(null, {
+          onEachFeature: function (feature, layer) {
+            layer.setStyle({className: 'heatmap ' + feature.properties.className});
+          },
+          clickable: false
+        });
+        var traveltime_layer = new L.GeoJSON(null, {
+            className: 'traveltime',
+            clickable: false
+        });
+        var radius_layer = new L.circle(null, (scope.searchParams.distance * 1000), {
+          clickable: false,
+          className: 'radius'
+        });
+        var position_icon = L.divIcon({
+          className: 'material-icons current-location',
+          html: 'place'
+        });
+        var position_layer = new L.marker(null, {
+          icon: position_icon,
+          clickable: false
+        });
+        var search_layer = L.featureGroup([heatmap_layer,traveltime_layer]);
+
+        var map = L.map(mapId, defaults);
+        if (tiles) {
+          map.addLayer(tile_layer);
+          map.setView(myCoords, initial_zoom);
         }
+
+        map
+          .addLayer(geo_layer.bringToBack())
+          .addLayer(search_layer.bringToFront());
+
+        geo_layer.addLayer(L.circleMarker(myCoords, {clickable: false, radius: 3, className: 'my-location'}));
+        myPosition();
+
+        map.on('click', function (e) {
+          scope.setCurrentCoords({lon: e.latlng.lng, lat: e.latlng.lat});
+        });
 
         scope.$watchCollection('searchParams.currentCoords', function () {
           if (search_layer.hasLayer(position_layer)) {
@@ -192,18 +139,20 @@
           }
         });
 
-        scope.$watchCollection('myCoords', function () {
-          if ($rootScope.myCoords!==undefined) {
-            setLatLngLayer(my_position_layer, geo_layer, [$rootScope.myCoords.lat, $rootScope.myCoords.lon]);
-          }
-        });
-
         scope.$watchCollection('searchParams.distanceType', function (newValue, oldValue) {
           if (newValue !== oldValue && scope.searchParams.distanceType === 'distance') {
             heatmap_layer.clearLayers();
+            traveltime_layer.clearLayers();
             doRadius();
           }
-          else if (newValue !== oldValue && scope.searchParams.distanceType !== 'distance') {
+          else if (newValue !== oldValue && scope.searchParams.distanceType === 'transport') {
+            traveltime_layer.clearLayers();
+            if (search_layer.hasLayer(radius_layer)) {
+              search_layer.removeLayer(radius_layer);
+            }
+          }
+          else if (newValue !== oldValue && scope.searchParams.distanceType === 'drive') {
+            heatmap_layer.clearLayers();
             if (search_layer.hasLayer(radius_layer)) {
               search_layer.removeLayer(radius_layer);
             }
@@ -213,15 +162,14 @@
         scope.$watchCollection('searchParams.distance', function () {
           if (search_layer.hasLayer(radius_layer)) {
             radius_layer.setRadius((scope.searchParams.distance * 1000));
-            if ($rootScope.appConfig.showMunicipalities) {
-              setMunicipalities();
-            }
           }
         });
 
-        scope.$watchCollection('searchParams.zips', function () {
-          if ($rootScope.appConfig.showMunicipalities) {
-            setMunicipalities();
+        // todo traveltime/heatmap?? naming!! travelTime!==drive??
+        scope.$watchCollection('traveltime', function () {
+          if (scope.traveltime !== undefined) {
+            traveltime_layer.clearLayers();
+            traveltime_layer.addData(scope.traveltime.response.geometry);
           }
         });
 

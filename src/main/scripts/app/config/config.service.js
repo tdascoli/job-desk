@@ -15,8 +15,13 @@
         config.educations = false;
         config.apprenticeships = false;
         config.localInfo = '';
-        config.showMunicipalities = false;
-        config.distanceType = 'travelTime';
+        config.distanceType = 'transport';
+        config.availableDistanceType={
+          distance:true,
+          transport:true,
+          drive:false
+        };
+        config.mapType = 'osm';
       }
 
       resetConfig();

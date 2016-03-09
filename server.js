@@ -20,6 +20,8 @@ function setProxy(host, location) {
 var host = 'http://arrlee.jobarea.ch';
 setProxy(host, '/jobdesk');
 setProxy(host, '/arrlee');
+// walkscore api
+setProxy('http://api2.walkscore.com', '/api');
 
 app.use(express.static(process.cwd()));
 

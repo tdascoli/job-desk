@@ -5,13 +5,14 @@
   //** todo Location stuff in external controller, how to implement?! three functions in three controllers for the same ex. setNewCoords
 
   angular.module('job-desk')
-    .controller('JobsCtrl', function ($scope, $rootScope, $state, $filter, $translate, lodash, JobsService, LocationsService, ArrleeService, $mdDialog) {
+    .controller('JobsCtrl', function ($scope, $rootScope, $state, $filter, $translate, lodash, JobsService, LocationsService, ArrleeService, TravelTimeService, $mdDialog) {
       $rootScope.searchType = 'jobs';
       $scope.searchParams = JobsService.params;
       $scope.searchParams.from = 0;
 
       $scope.distanceOptions = {min: 10, max: 150, step: 10, value: 30};
-      $scope.travelTimeOptions = {min: 10, max: 120, step: 5, value: 30};
+      $scope.transportOptions = {min: 10, max: 120, step: 5, value: 30};
+      $scope.driveOptions = {min: 10, max: 60, step: 5, value: 30};
 
       $scope.iscoMajorGroup = [
         {text: 'isco.majorGroups.1', code: '1', img: 'jobs/isco1.png'},
@@ -89,9 +90,13 @@
         $scope.idle = true;
         $scope.searchParams.from = 0;
 
-        if ($scope.searchParams.distanceType === 'travelTime') {
+        if ($scope.searchParams.distanceType === 'transport') {
           //** countJobs with travelTime parameter
           findByTravelTime();
+        }
+        else if ($scope.searchParams.distanceType === 'drive') {
+          //** countJobs with travelTime parameter
+          findByDriveTime();
         }
         else {
           //** countJobs with distance parameter
@@ -117,7 +122,8 @@
         ArrleeService.getHeatmap($scope.searchParams.currentZip, $scope.searchParams.travelTime).success(function (result) {
             $scope.heatmap = result.heatmap;
             ArrleeService.getZips($scope.searchParams.travelTime).success(function (result) {
-                $scope.searchParams.zips = lodash.pluck(result.POI, 'name');
+                // todo trackjs!! error
+                $scope.searchParams.zips = lodash.map(result.POI, 'name');
                 //** find Jobs with searchParams
                 find(false);
               })
@@ -130,6 +136,19 @@
             // todo error handling
             console.log(error);
           });
+      }
+
+      function findByDriveTime() {
+        TravelTimeService.getTravelTimePolygon($scope.searchParams.currentCoords,$scope.searchParams.travelTime).success(function (result) {
+          // todo find?!
+          $scope.traveltime=result;
+          $scope.searchParams.shape=result.response.geometry.coordinates;
+          find(false);
+        })
+        .error(function (error) {
+          // todo error handling
+          console.log(error);
+        });
       }
 
       function find(scroll) {

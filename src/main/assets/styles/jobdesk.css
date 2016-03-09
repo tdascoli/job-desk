@@ -9,6 +9,10 @@ body {
 .topnav-title img {
   height: 100%;
 }
+.topnav-title .job-desk-logo {
+  height: 50%;
+  width: 150px;
+}
 .section-button {
   width: 25%;
   text-align: left;
@@ -73,35 +77,6 @@ body {
 .category :focus {
   outline: none;
 }
-/*
-.jd-categories .category-title.isco1 {
-  background-color: @material-color-deep-purple;
-  opacity: 0.54;
-}
-.jd-categories .category-title.isco2 {
-  background-color: @material-color-blue;
-}
-.jd-categories .category-title.isco3 {
-  background-color: @material-color-lime;
-}
-.jd-categories .category-title.isco4 {
-  background-color: @material-color-teal;
-}
-.jd-categories .category-title.isco5 {
-  background-color: @material-color-pink;
-}
-.jd-categories .category-title.isco6 {
-  background-color: @material-color-green;
-}
-.jd-categories .category-title.isco7 {
-  background-color: @material-color-orange;
-}
-.jd-categories .category-title.isco8 {
-  background-color: @material-color-amber;
-}
-.jd-categories .category-title.isco9 {
-  background-color: @material-color-cyan;
-} */
 #map {
   width: 960px;
   height: 500px;
@@ -109,26 +84,18 @@ body {
   background-color: #fff;
 }
 .radius {
-  fill: #ffffff;
+  fill: #f2d600;
   opacity: 1;
-  stroke: #ffffff;
+  stroke: #f2d600;
   stroke-opacity: 1;
   stroke-width: 1;
 }
-.contour {
-  fill-opacity: 1;
-  stroke: none;
-  stroke-opacity: 0;
-  stroke-width: 0;
-  shape-rendering: crispEdges;
-}
-.canton-boundaries {
-  fill: transparent;
-  fill-opacity: 1;
-  stroke: #ffffff;
+.country-boundaries {
+  fill: #fff;
+  fill-opacity: 0.75;
+  stroke: transparent;
   stroke-opacity: 1;
   stroke-width: 1;
-  shape-rendering: crispEdges;
 }
 .city-boundaries {
   fill: #ffffff;
@@ -137,50 +104,23 @@ body {
   stroke-opacity: 1;
   stroke-width: 1.5;
 }
-.municipality-boundaries {
-  fill: #ffffff;
-  stroke: #000000;
-  stroke-width: 1;
-}
-.city-text.leaflet-label,
-.municipality-text.leaflet-label {
+.city-text.leaflet-label {
   font-family: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
   border: none;
   background: transparent;
   padding: 6px 0 0 0;
   cursor: pointer;
 }
-.city-text.leaflet-label-right,
-.municipality-text.leaflet-label-right {
+.city-text.leaflet-label-right {
   margin-left: -4px;
 }
-.city-text.leaflet-label-left,
-.municipality-text.leaflet-label-left {
+.city-text.leaflet-label-left {
   margin-left: 6px;
 }
-.municipality-text.leaflet-label {
-  font-weight: 400;
-}
 .city-text.leaflet-label:before,
-.city-text.leaflet-label:after,
-.municipality-text.leaflet-label:before,
-.municipality-text.leaflet-label:after {
+.city-text.leaflet-label:after {
   border: none;
   left: 0;
-}
-.municipality-text {
-  font-size: 12px;
-  font-weight: 400;
-  pointer-events: none;
-  opacity: 1;
-  text-anchor: end;
-}
-.lakes {
-  fill: #c6ecff;
-  fill-opacity: 1 !important;
-  stroke: none;
-  stroke-opacity: 1 !important;
-  weight: 1;
 }
 .my-location {
   fill: #ff0000;
@@ -197,20 +137,6 @@ body {
   stroke-opacity: 1;
   stroke-width: 1;
 }
-text {
-  font-size: 12px;
-  font-weight: 700;
-  pointer-events: none;
-  opacity: 1;
-  z-index: 2100;
-}
-@media (max-width: 599px) {
-  text {
-    font-size: 10px;
-    font-weight: 700;
-    pointer-events: none;
-  }
-}
 .heatmap {
   fill: transparent;
   fill-opacity: 0.66;
@@ -222,6 +148,14 @@ text {
 .heatmap-outline {
   fill: transparent;
   stroke: transparent;
+}
+.traveltime {
+  fill: #f2d600;
+  fill-opacity: 0.66;
+  stroke: #f2d600;
+  stroke-opacity: 1;
+  stroke-width: 1;
+  fill-rule: nonzero;
 }
 .area0 {
   fill: #de9900;
@@ -355,6 +289,9 @@ md-input-container > md-slider {
   order: 2;
   margin: 0;
   width: 100%;
+}
+.md-select-menu-container {
+  z-index: 1001;
 }
 #iscoGroup .md-select-value {
   color: #000000 !important;
