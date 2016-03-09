@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('job-desk')
-    .controller('ConfigCtrl', function ($scope, $rootScope, ConfigService, LocationsService, lodash, geolocation, $mdToast, $mdDialog) {
+    .controller('ConfigCtrl', function ($scope, $rootScope, ConfigService, LocationsService, geolocation, $mdToast, $mdDialog) {
 
       $scope.idle = false;
 
