@@ -1,6 +1,22 @@
-languages:
-  JavaScript: true
+---
+engines:
+  csslint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
+ratings:
+  paths:
+  - "**.css"
+  - "**.js"
 exclude_paths:
-- "dist/*"
-- "elastic/*"
-- "server.js"
+- dist/*
+- src/test/*
+- server.js
+- Gruntfile.js

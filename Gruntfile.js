@@ -482,9 +482,9 @@ module.exports = function (grunt) {
         constants: {
           ENV: 'prod',
           VERSION: '<%= yeoman.app.version %>',
-          baseUrl: 'http://jobdesk.job-room.ch/jobdesk',
-          arrleeUrl: 'http://jobdesk.job-room.ch/arrlee',
-          travelTimeUrl: 'http://jobdesk.job-room.ch/api',
+          baseUrl: 'http://pilot.job-desk.ch/jobdesk',
+          arrleeUrl: 'http://pilot.job-desk.ch/arrlee',
+          travelTimeUrl: 'http://pilot.job-desk.ch/api',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
