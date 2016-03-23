@@ -151,7 +151,7 @@
               search_layer.removeLayer(radius_layer);
             }
           }
-          else if (newValue !== oldValue && scope.searchParams.distanceType === 'drive') {
+          else if (newValue !== oldValue && (scope.searchParams.distanceType === 'drive' || scope.searchParams.distanceType === 'bike')) {
             heatmap_layer.clearLayers();
             if (search_layer.hasLayer(radius_layer)) {
               search_layer.removeLayer(radius_layer);

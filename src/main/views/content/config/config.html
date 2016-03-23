@@ -59,8 +59,12 @@
         Umkreissuche nach Reisedauer mit öV
       </md-checkbox>
       <br />
-      <md-checkbox ng-model="config.availableDistanceType.drive" class="md-primary" ng-disabled="circumSearch(config.availableDistanceType.drive)" aria-label="Umkreissuche nach Reisedauer mit PW">
-        Umkreissuche nach Reisedauer mit PW
+      <md-checkbox ng-model="config.availableDistanceType.drive" class="md-primary" ng-disabled="circumSearch(config.availableDistanceType.drive)" aria-label="Umkreissuche nach Reisedauer mit PKW">
+        Umkreissuche nach Reisedauer mit PKW
+      </md-checkbox>
+      <br />
+      <md-checkbox ng-model="config.availableDistanceType.bike" class="md-primary" ng-disabled="circumSearch(config.availableDistanceType.bike)" aria-label="Umkreissuche nach Reisedauer mit Fahrrad">
+        Umkreissuche nach Reisedauer mit Fahrrad
       </md-checkbox>
     </div>
 
@@ -69,7 +73,8 @@
       <md-radio-group ng-model="config.distanceType">
         <md-radio-button value="distance" class="md-primary" ng-disabled="!config.availableDistanceType.distance">Umkreissuche nach Distanz</md-radio-button>
         <md-radio-button value="transport" class="md-primary" ng-disabled="!config.availableDistanceType.transport">Umkreissuche nach Reisedauer mit öV</md-radio-button>
-        <md-radio-button value="drive" class="md-primary" ng-disabled="!config.availableDistanceType.drive">Umkreissuche nach Reisedauer mit PW</md-radio-button>
+        <md-radio-button value="drive" class="md-primary" ng-disabled="!config.availableDistanceType.drive">Umkreissuche nach Reisedauer mit PKW</md-radio-button>
+        <md-radio-button value="bike" class="md-primary" ng-disabled="!config.availableDistanceType.bike">Umkreissuche nach Reisedauer mit Fahrrad</md-radio-button>
       </md-radio-group>
     </div>
 

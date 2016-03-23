@@ -94,7 +94,7 @@
           //** countJobs with travelTime parameter
           findByTravelTime();
         }
-        else if ($scope.searchParams.distanceType === 'drive') {
+        else if ($scope.searchParams.distanceType === 'drive' || $scope.searchParams.distanceType === 'bike') {
           //** countJobs with travelTime parameter
           findByDriveTime();
         }
@@ -139,7 +139,7 @@
       }
 
       function findByDriveTime() {
-        TravelTimeService.getTravelTimePolygon($scope.searchParams.currentCoords,$scope.searchParams.travelTime).success(function (result) {
+        TravelTimeService.getTravelTimePolygon($scope.searchParams.currentCoords,$scope.searchParams.travelTime,$scope.searchParams.distanceType).success(function (result) {
           // todo find?!
           $scope.traveltime=result;
           $scope.searchParams.shape=result.response.geometry.coordinates;

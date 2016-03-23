@@ -44,10 +44,11 @@
     </div>
 
     <div flex="15" flex-xs="40" id="distanceType">
-      <md-radio-group ng-model="searchParams.distanceType" ng-change="countJobs()" ng-init="searchParams.distanceType=searchParams.distanceType || appConfig.distanceType || 'distance'">
+      <md-radio-group class="jd-" ng-model="searchParams.distanceType" ng-change="countJobs()" ng-init="searchParams.distanceType=searchParams.distanceType || appConfig.distanceType || 'distance'">
         <md-radio-button value="distance" class="md-primary" aria-label="distance" ng-if="appConfig.availableDistanceType.distance"><span translate="jobs.search.distanceTypeDistance"></span></md-radio-button>
         <md-radio-button value="transport" class="md-primary" aria-label="travel time" ng-if="appConfig.availableDistanceType.transport"><span translate="jobs.search.distanceTypeTransport"></span></md-radio-button>
         <md-radio-button value="drive" class="md-primary" aria-label="travel time" ng-if="appConfig.availableDistanceType.drive"><span translate="jobs.search.distanceTypeDrive"></span></md-radio-button>
+        <md-radio-button value="bike" class="md-primary" aria-label="travel time" ng-if="appConfig.availableDistanceType.bike"><span translate="jobs.search.distanceTypeBike"></span></md-radio-button>
       </md-radio-group>
     </div>
 
@@ -62,7 +63,7 @@
         <md-slider ng-model="searchParams.travelTime" step="{{transportOptions.step}}" min="{{transportOptions.min}}" max="{{transportOptions.max}}" aria-label="travelTime" ng-change="countJobs()" class="md-primary"></md-slider>
       </div>
 
-      <div flex ng-if="searchParams.distanceType==='drive'">
+      <div flex ng-if="searchParams.distanceType==='drive' || searchParams.distanceType==='bike'">
         <label class="md-slider-label" translate="jobs.search.travelTime" translate-values="{value:showTimeInH(searchParams.travelTime)}"></label>
         <md-slider ng-model="searchParams.travelTime" step="{{driveOptions.step}}" min="{{driveOptions.min}}" max="{{driveOptions.max}}" aria-label="drive" ng-change="countJobs()" class="md-primary"></md-slider>
       </div>
@@ -81,7 +82,7 @@
 
 <div layout="row" layout-margin layout-align="start center" class="jd-bottom-right">
   <strong ng-show="!idle" translate="jobs.search.foundJobs" translate-values="{value: count}"></strong>
-  <md-progress-circular ng-show="idle" md-mode="indeterminate" md-diameter="120"></md-progress-circular>
+  <md-progress-circular ng-show="idle" md-mode="indeterminate" md-diameter="56"></md-progress-circular>
 </div>
 
 <md-button href="#/job-results" class="md-fab md-primary md-fab-bottom-right jd-floating-fab" aria-label="global.navigation.search" ng-disabled="count===0 || idle" md-theme-watch="true">

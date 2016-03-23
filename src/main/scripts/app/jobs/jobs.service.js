@@ -98,7 +98,7 @@
               }
             });
           }
-          else if (params.distanceType === 'drive') {
+          else if (params.distanceType === 'drive' || params.distanceType === 'bike') {
             var query_filter = [];
             filter.query.filtered.filter.and.push({or: doDriveQuery(query_filter)});
           }
