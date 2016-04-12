@@ -1,6 +1,6 @@
 <div layout="row" layout-padding layout-wrap class="jd-categories">
 
-  <div class="category" flex="33" flex-xs="100" ng-repeat="isco in iscoMajorGroup">
+  <div class="category" flex="33" flex-sm="50" flex-xs="100" ng-repeat="isco in iscoMajorGroup">
     <img ng-click="setIscoGroup(isco.code)" class="iscoIcon" ng-src="assets/images/{{isco.img}}" alt="isco" />
     <div class="category-title" layout="row">
       <md-button class="md-square md-raised" ng-click="showIscoUnitGroup($event,isco.code,iscoMinorGroups)"><md-icon>help_outline</md-icon></md-button>
