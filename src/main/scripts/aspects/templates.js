@@ -320,7 +320,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('template/job-list.html',
-    "<md-dialog aria-label=\"Job List\" ng-cloak>\n" +
+    "<md-dialog aria-label=\"Job List\" ng-cloak class=\"jd-job-list-dialog\">\n" +
     "  <form>\n" +
     "    <md-toolbar>\n" +
     "      <div class=\"md-toolbar-tools\">\n" +

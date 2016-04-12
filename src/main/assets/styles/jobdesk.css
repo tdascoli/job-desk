@@ -408,6 +408,9 @@ label {
 .jd-mobile .jd-show-btn {
   margin-left: 0;
 }
+.jd-job-list-dialog {
+  width: 100%;
+}
 .jd-job-list {
   text-align: left;
   cursor: pointer;
