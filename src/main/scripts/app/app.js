@@ -9,6 +9,7 @@
     'ngResource',
     'ngSanitize',
     'ngCookies',
+    'ngAnimate',
     'ngMaterial',
     'ngLodash',
     'pascalprecht.translate',
