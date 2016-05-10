@@ -20,7 +20,7 @@
       "tour":{
         "jobGroups":"Falls erwünscht, verfeinern Sie die Suche mit einer Unterrubrik.",
         "location":"Hier ist Ihr Standort.",
-        "distanceType":"Wählen Sie zwischen Reisedauer mit ÖV in Stunden oder Distanz in Kilometer.",
+        "distanceType":"Wählen Sie zwischen Reisedauer in Stunden oder Distanz in Kilometer.",
         "distanceTypeParameter":"Hier können Sie die Reisedauer / Distanz verlängern oder verkürzen.",
         "changeZip":"Falls erwünscht, können Sie den Standort verändern (PLZ eingeben oder auf die Karte tippen)",
         "resetLocation":"Mit Klick auf dieses Symbol, wird Ihr Standort wieder zurückgesetzt.",
