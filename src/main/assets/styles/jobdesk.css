@@ -120,6 +120,11 @@ body {
 .m-app-loading img {
   height: 100px;
 }
+@media screen and (max-width: 768px) {
+  .m-app-loading img {
+    height: 60px;
+  }
+}
 #map {
   width: 960px;
   height: 500px;
