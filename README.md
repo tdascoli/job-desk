@@ -5,9 +5,9 @@ Job-Desk
 
 Job search frontend made for internet terminals.
 
-production: http://jobdesk.job-room.ch
+pilot: http://jobdesk.job-room.ch and soon: http://pilot.job-desk.ch
 
-development: http://jobdeskdev-alvch.rhcloud.com
+development: http://dev.job-desk.ch
 
 poc denmark: http://jobdesk-dascoli.rhcloud.com / github: https://github.com/tdascoli/job-desk
 
