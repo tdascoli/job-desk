@@ -77,16 +77,6 @@
 
 <body presence layout="column" md-theme="{{searchType}}">
 
-<!-- App-Loading Screen. -->
-<div class="m-app-loading" ng-animate-children>
-  <div class="animated-container">
-    <div class="messaging">
-      <img src="assets/images/job-desk.svg" />
-    </div>
-  </div>
-</div>
-<!-- END: App-Loading Screen. -->
-
 <md-toolbar layout="column" id="topnav" class="md-whiteframe-z4" md-theme-watch="true">
   <div class="md-toolbar-tools">
     <md-button ng-click="back()" class="topnav-title" aria-label="Job-Desk Home">
@@ -117,6 +107,16 @@
 </md-toolbar>
 
 <md-content id="main" ui-view="content" ng-view></md-content>
+
+<!-- App-Loading Screen. -->
+<div ng-if="false" class="jd-loading-screen" ng-animate-children>
+  <div class="animated-container">
+    <div class="messaging">
+      <img src="assets/images/job-desk.svg" />
+    </div>
+  </div>
+</div>
+<!-- END: App-Loading Screen. -->
 
 <div ng-if="!userActive.active" class="jd-sleep-screen"></div>
 <!--./container -->

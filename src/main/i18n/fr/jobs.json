@@ -9,7 +9,8 @@
       "travelTime":"Durée du trajet {{value}} h",
       "distanceTypeDistance":"Distance en km",
       "distanceTypeTransport":"Durée du trajet en TP en heures",
-      "distanceTypeDrive":"[FR] Durée du trajet en TP en heures",
+      "distanceTypeDrive":"Durée du trajet en voiture (heures)",
+      "distanceTypeBike":"Durée du trajet à vélo (heures)",
       "onlineSince":"En ligne depuis {{value}} jours",
       "onlineSinceOneDay":"En ligne depuis 1 jour",
       "allJobs":"Tous les emplois",
@@ -17,13 +18,13 @@
       "foundJobs":"Emplois trouvés {{value}}",
       "close":"Fermer",
       "tour":{
-        "jobGroups":"[FR] Falls erwünscht, verfeinern Sie die Suche mit einer Unterrubrik",
-        "location":"[FR] Hier ist Ihr Standort",
-        "distanceType":"[FR] Wählen Sie zwischen Reisedauer mit ÖV in Stunden oder Distanz in Kilometer",
-        "distanceTypeParameter":"[FR] Hier können Sie die Reisedauer / Distanz verlängern oder verkürzen",
-        "changeZip":"[FR] Falls erwünscht, können Sie den Standort verändern (PLZ eingeben oder auf die Karte tippen)",
-        "resetLocation":"[FR] Mit Klick auf dieses Symbol, wird Ihr Standort wieder zurückgesetzt.",
-        "countJobs":"[FR] Anzahl gefundene Jobs mit Ihren Suchkriterien, weiter zur Trefferliste mit der Pfeiltaste"
+        "jobGroups":"Si souhaité, vous pouvez affiner la recherche avec une sous-catégorie",
+        "location":"Votre emplacement se trouve ici",
+        "distanceType":"Choisissez entre une durée de trajet avec l'un des moyens de transport proposés ou une distance en kilomètres",
+        "distanceTypeParameter":"Vous pouvez augmenter ou diminuer la durée de trajet ou la distance",
+        "changeZip":"Si souhaité, vous pouvez changer l'emplacement actuel (en donnant un NPA ou en cliquant sur la carte)",
+        "resetLocation":"En cliquant sur ce symbole, l'emplacement actuel est remis à sa valeur par défaut",
+        "countJobs":"Le nombre de jobs trouvés correspondant aux critères de recherche est indiqué ici, utiliser la flèche pour accéder à la liste"
       }
     },
     "result": {

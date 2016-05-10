@@ -3,7 +3,7 @@
 
   var module = angular.module('job-desk.directive', []);
 
-  module.directive('mAppLoading', ['$animate', function ($animate) {
+  module.directive('jsLoadingScreen', ['$animate', function ($animate) {
     function link( scope, element, attributes ) {
       // Due to the way AngularJS prevents animation during the bootstrap
       // of the application, we can't animate the top-level container; but,
@@ -15,7 +15,7 @@
         function cleanupAfterAnimation() {
           // Remove the root directive element.
           element.remove();
-          $('#main').css('z-index','inherit');
+          //$('#main').css('z-index','inherit');
           // Clear the closed-over variable references.
           scope = element = attributes = null;
         }

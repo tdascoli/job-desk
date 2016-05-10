@@ -91,54 +91,6 @@ body {
   outline: none;
 }
 
-//**** MAIN
-#main {
-  z-index: 20;
-}
-
-//**** APP LOADING
-.m-app-loading {
-  position: fixed;
-  z-index: 10;
-}
-.m-app-loading .animated-container {
-  background-color: #03A9F4; /*E1F5FE;*/
-  bottom: 0;
-  left: 0;
-  opacity: 1 !important;
-  position: fixed ;
-  right: 0;
-  top: 0;
-  z-index: 999999 ;
-}
-/* Used to initialize the ng-leave animation state. */
-.m-app-loading .animated-container.ng-leave {
-  opacity: 1.0;
-  transition: all linear 200ms ;
-  -webkit-transition: all linear 200ms ;
-}
-/* Used to set the end properties of the ng-leave animation state. */
-.m-app-loading .animated-container.ng-leave-active {
-  opacity: 0 ;
-}
-.m-app-loading .messaging {
-  left: 0;
-  color: #ffffff;
-  margin-top: -37px ;
-  position: absolute ;
-  right: 0;
-  text-align: center ;
-  top: 50% ;
-}
-.m-app-loading img {
-  height: 100px;
-}
-@media screen and (max-width: 768px) {
-  .m-app-loading img {
-    height: 60px;
-  }
-}
-
 //**** MAP
 #map {
   width: 960px;
@@ -372,10 +324,18 @@ md-input-container > md-slider {
   color: rgba(0,0,0,1) !important;
 }
 
-/*md-select-menu,
-md-select-menu md-content {
-  max-height: inherit;
-}*/
+@media screen and (min-width: 767px) {
+  .jd-selectpicker,
+  .jd-selectpicker md-select-menu,
+  .jd-selectpicker md-select-menu md-content {
+    max-height: inherit;
+  }
+}
+@media screen and (max-width: 768px) {
+  .jd-selectpicker {
+    width: 90%;
+  }
+}
 
 .jd-select-reset {
   color: rgba(0,0,0,0.54);
@@ -487,6 +447,52 @@ label {
 
 .jd-sleep-screen.ng-enter.ng-enter-active {
   opacity: @sleep-screen-opacity;
+}
+
+.jd-loading-screen ~ .jd-sleep-screen {
+  opacity: 0;
+}
+
+.jd-loading-screen {
+  position: fixed;
+  z-index: 10;
+}
+.jd-loading-screen .animated-container {
+  background-color: #03A9F4; /*E1F5FE;*/
+  bottom: 0;
+  left: 0;
+  opacity: 1 !important;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 999999;
+}
+/* Used to initialize the ng-leave animation state. */
+.jd-loading-screen .animated-container.ng-leave {
+  opacity: 1.0;
+  transition: all linear 200ms ;
+  -webkit-transition: all linear 200ms ;
+}
+/* Used to set the end properties of the ng-leave animation state. */
+.jd-loading-screen .animated-container.ng-leave-active {
+  opacity: 0 ;
+}
+.jd-loading-screen .messaging {
+  left: 0;
+  color: #ffffff;
+  margin-top: -37px ;
+  position: absolute ;
+  right: 0;
+  text-align: center ;
+  top: 50% ;
+}
+.jd-loading-screen img {
+  height: 100px;
+}
+@media screen and (max-width: 768px) {
+  .jd-loading-screen img {
+    height: 60px;
+  }
 }
 
 .jd-btn-block {

@@ -14,7 +14,7 @@
       $scope.transportOptions = {min: 10, max: 120, step: 5, value: 30};
       $scope.driveOptions = {min: 10, max: 60, step: 5, value: 30};
 
-      $scope.iscoMajorGroup = [
+      /*$scope.iscoMajorGroup = [
         {text: 'isco.majorGroups.1', code: '1', img: 'jobs/isco1.png'},
         {text: 'isco.majorGroups.2', code: '2', img: 'jobs/isco2.png'},
         {text: 'isco.majorGroups.3', code: '3', img: 'jobs/isco3.png'},
@@ -23,7 +23,17 @@
         {text: 'isco.majorGroups.6', code: '6', img: 'jobs/isco6.png'},
         {text: 'isco.majorGroups.7', code: '7', img: 'jobs/isco7.png'},
         {text: 'isco.majorGroups.8', code: '8', img: 'jobs/isco8.png'},
-        {text: 'isco.majorGroups.9', code: '9', img: 'jobs/isco9.png'}];
+        {text: 'isco.majorGroups.9', code: '9', img: 'jobs/isco9.png'}];*/
+      $scope.iscoMajorGroup = [
+        {text: 'isco.majorGroups.9', code: '9', img: 'jobs/isco9.png'},
+        {text: 'isco.majorGroups.8', code: '8', img: 'jobs/isco8.png'},
+        {text: 'isco.majorGroups.7', code: '7', img: 'jobs/isco7.png'},
+        {text: 'isco.majorGroups.6', code: '6', img: 'jobs/isco6.png'},
+        {text: 'isco.majorGroups.5', code: '5', img: 'jobs/isco5.png'},
+        {text: 'isco.majorGroups.4', code: '4', img: 'jobs/isco4.png'},
+        {text: 'isco.majorGroups.3', code: '3', img: 'jobs/isco3.png'},
+        {text: 'isco.majorGroups.2', code: '2', img: 'jobs/isco2.png'},
+        {text: 'isco.majorGroups.1', code: '1', img: 'jobs/isco1.png'}];
       $scope.iscoMinorGroups = {
         '1': ['111', '112', '121', '122', '130', '131', '132', '133', '134', '141', '142', '143'],
         '2': ['211', '212', '213', '214', '215', '216', '221', '222', '223', '224', '225', '226', '231', '232', '233', '234', '235', '241', '242', '243', '251', '252', '261', '262', '263', '264', '265'],
