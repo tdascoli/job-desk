@@ -5,14 +5,19 @@
 
     <strong class="md-title" flex="100">Standort</strong>
 
-    <md-input-container flex="50">
+    <md-input-container flex="40">
       <label>Adresse</label>
       <input ng-model="config.address" type="text" />
     </md-input-container>
 
+    <md-input-container flex="10" layout="row">
+      <md-button class="md-raised" ng-click="lookupAddress()">lookup</md-button>
+      <md-progress-circular ng-if="idle" md-mode="indeterminate"></md-progress-circular>
+    </md-input-container>
+
     <md-input-container flex="10">
       <label>Postleitzahl</label>
-      <input name="zipInput" ng-model="config.zip" type="number" min="1000" max="9999" required integer/>
+      <input name="zipInput" ng-model="config.zip" type="number" min="1000" max="9999" required />
     </md-input-container>
 
     <md-input-container flex="10" layout="row">

@@ -33,8 +33,7 @@
           }).then(function successCallback(response) {
             resolve(response.data.timestamp);
           }, function errorCallback(response) {
-            // todo trackjs
-            console.log(response);
+            console.error(response);
             reject();
           });
         });

@@ -154,7 +154,6 @@
 
       function findByDriveTime() {
         TravelTimeService.getTravelTimePolygon($scope.searchParams.currentCoords,$scope.searchParams.travelTime,$scope.searchParams.distanceType).success(function (result) {
-            // todo find?!
             $scope.traveltime=result;
             $scope.searchParams.shape=result.response.geometry.coordinates;
             find(false);

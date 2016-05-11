@@ -405,6 +405,12 @@ module.exports = function (grunt) {
           host: 'api2.walkscore.com',
           https: false,
           changeOrigin: false
+        },
+        {
+          context: '/maps',
+          host: 'maps.googleapis.com',
+          https: false,
+          changeOrigin: true
         }
       ],
       livereload: {
@@ -472,6 +478,7 @@ module.exports = function (grunt) {
           baseUrl: 'http://localhost:9000/jobdesk',
           arrleeUrl: 'http://localhost:9000/arrlee',
           travelTimeUrl: 'http://localhost:9000/api',
+          googleAPIUrl: 'http://localhost:9000/maps',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
@@ -485,6 +492,7 @@ module.exports = function (grunt) {
           baseUrl: 'http://pilot.job-desk.ch/jobdesk',
           arrleeUrl: 'http://pilot.job-desk.ch/arrlee',
           travelTimeUrl: 'http://pilot.job-desk.ch/api',
+          googleAPIUrl: 'http://pilot.job-desk.ch/maps',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
@@ -498,6 +506,7 @@ module.exports = function (grunt) {
           baseUrl: 'http://dev.job-desk.ch/jobdesk',
           arrleeUrl: 'http://dev.job-desk.ch/arrlee',
           travelTimeUrl: 'http://dev.job-desk.ch/api',
+          googleAPIUrl: 'http://dev.job-desk.ch/maps',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
@@ -511,6 +520,7 @@ module.exports = function (grunt) {
           baseUrl: 'http://arrlee.jobarea.ch/jobdesk',
           arrleeUrl: 'http://arrlee.jobarea.ch/arrlee',
           travelTimeUrl: 'http://arrlee.jobarea.ch/api',
+          googleAPIUrl: 'http://arrlee.jobarea.ch/maps',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },

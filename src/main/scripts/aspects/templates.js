@@ -300,7 +300,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "      </div>\n" +
     "\n" +
     "  </div>\n" +
-    "  <!-- todo style: layout-margin flex-xs=\"100\" flex-order-xs=\"1\" ng-class=\"{'jd-mobile':mobile}\" -->\n" +
+    "\n" +
     "  <div flex=\"20\" flex-xs=\"100\" flex-order-xs=\"1\" ng-class=\"{'jd-mobile':isMobile}\">\n" +
     "    <md-button ng-click=\"showDetail(jobDetail._source.jobId)\" aria-label=\"Show / Close Detail\" class=\"jd-show-btn\" ng-class=\"{'md-raised jd-btn-block':!isMobile}\">\n" +
     "      <span ng-show=\"!showDetailContent\">\n" +
@@ -333,7 +333,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "    </md-toolbar>\n" +
     "    <md-dialog-content>\n" +
     "      <div class=\"md-dialog-content\">\n" +
-    "        <div layout=\"row\" layout-wrap layout-margin layout-align=\"space-between center\" width=\"100%\">\n" +
+    "        <div layout=\"row\" layout-padding layout-wrap width=\"100%\">\n" +
     "          <a ng-click=\"answer(minorGroup)\" layout=\"row\" layout-align=\"start center\" flex=\"30\" flex-xs=\"100\" class=\"jd-job-list\" ng-repeat=\"minorGroup in iscoMinorGroups[level] track by $index\" >\n" +
     "            <md-icon>arrow_forward</md-icon>&nbsp;<span flex translate=\"isco.minorGroups.{{minorGroup}}\"></span>\n" +
     "          </a>\n" +
