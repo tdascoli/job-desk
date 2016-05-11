@@ -7,6 +7,7 @@
   angular.module('job-desk')
     .controller('JobsCtrl', function ($scope, $rootScope, $state, $filter, $translate, lodash, JobsService, LocationsService, ArrleeService, TravelTimeService, $mdDialog) {
       $rootScope.searchType = 'jobs';
+      $scope.searchValues = JobsService.search;
       $scope.searchParams = JobsService.params;
       $scope.searchParams.from = 0;
 
@@ -36,10 +37,10 @@
         '9': ['911', '912', '921', '931', '932', '933', '941', '951', '952', '961', '962']
       };
 
-      $scope.count = 0;
+      //$scope.count = 0;
       $scope.nearestZip = '';
       $scope.currentZip = $scope.searchParams.currentZip;
-      $scope.heatmap = undefined;
+      //$scope.heatmap = $scope.searchValues.heatmap;
       $scope.idle = false;
       $scope.lastOpenedJob = {'scope': null};
 
@@ -87,7 +88,6 @@
       }
 
       $scope.countJobs = function () {
-        console.log('countJobs',$scope.count);
         $scope.idle = true;
         $scope.searchParams.from = 0;
 
@@ -106,13 +106,13 @@
       };
 
       $scope.loadMoreResults = function () {
-        if ($scope.searchParams.from < $scope.count) {
+        if ($scope.searchParams.from < $scope.searchValues.count) {
           $scope.idle = true;
 
           var from = $scope.searchParams.from;
           from += $scope.searchParams.size;
-          if (from > $scope.count) {
-            from = $scope.count;
+          if (from > $scope.searchValues.count) {
+            from = $scope.searchValues.count;
           }
           $scope.searchParams.from = from;
           find(true);
@@ -121,7 +121,7 @@
 
       function findByTravelTime() {
         ArrleeService.getHeatmap($scope.searchParams.currentZip, $scope.searchParams.travelTime).success(function (result) {
-            $scope.heatmap = result.heatmap;
+            $scope.searchValues.heatmap = result.heatmap;
             ArrleeService.getZips($scope.searchParams.travelTime).success(function (result) {
                 // todo trackjs!! error
                 $scope.searchParams.zips = lodash.map(result.POI, 'name');
@@ -150,7 +150,6 @@
       }
 
       function find(scroll) {
-        console.log('find',$scope.count);
         JobsService.find().success(function (result) {
             if (scroll && angular.isArray($rootScope.jobs)) {
               $rootScope.jobs = $rootScope.jobs.concat(result.hits.hits);
@@ -158,10 +157,9 @@
             else {
               $rootScope.jobs = result.hits.hits;
             }
-            $scope.count = result.hits.total;
+            //$scope.count = result.hits.total;
+            $scope.searchValues.count = result.hits.total;
             $scope.idle = false;
-
-            console.log('find ende',$scope.count,$rootScope.jobs.length);
           })
           .error(function (error) {
             $scope.idle = false;
@@ -179,7 +177,6 @@
       };
 
       function setNewCoords(coords) {
-        console.log('setNewCoords',coords,$scope.searchParams.currentCoords);
         $scope.idle = true;
         LocationsService.getLocation(coords).success(function (nearestZip) {
             if (nearestZip.hits.total > 0) {
@@ -266,12 +263,6 @@
         $scope.searchParams.sort = $scope.sortList[$scope.sort].sort;
         $scope.countJobs();
       };
-
-
-      if ($scope.searchParams.currentCoords !== undefined) {
-        console.log('IF');
-        //setNewCoords($scope.searchParams.currentCoords);
-      }
 
       // user isn't active anymore : reset search params
       var resetListener = $rootScope.$on('resetSearchParams', function () {
