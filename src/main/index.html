@@ -43,8 +43,7 @@
     application: "@@app_name",
     serialize: function (what) {
       return JSON.stringify(what);
-    },
-    enabled: !(window.location.host.indexOf('localhost') >= 0)
+    }
   };</script>
   <!-- END TRACKJS -->
 
@@ -100,9 +99,9 @@
     <md-button ng-click="back()" class="topnav-title" aria-label="Job-Desk Home">
       <md-icon md-svg-src="assets/images/job-desk.svg" aria-label="Job-Desk" class="job-desk-logo"></md-icon>
     </md-button>
-    <md-button hide-xs class="md-raised md-primary section-button" aria-label="jobs" md-theme="jobs" href="#/jobs" ng-hide="searchType==='jobs'"><md-icon>launch</md-icon> <span translate="global.jobs"></span></md-button>
-    <md-button hide-xs class="md-raised md-primary section-button" aria-label="educations" md-theme="educations" href="#/educations" ng-hide="searchType==='educations' || !appConfig.educations "><md-icon>launch</md-icon> <span translate="global.educations"></span></md-button>
-    <md-button hide-xs class="md-raised md-primary section-button" aria-label="apprenticeships" md-theme="apprenticeships" href="#/apprenticeships" ng-hide="searchType==='apprenticeships' || !appConfig.apprenticeships"><md-icon>launch</md-icon> <span translate="global.apprenticeships"></span></md-button>
+    <md-button hide-xs class="md-raised md-primary section-button" aria-label="jobs" md-theme="jobs" href="#/jobs" ng-if="searchType!=='jobs'"><md-icon>launch</md-icon> <span translate="global.jobs"></span></md-button>
+    <md-button hide-xs class="md-raised md-primary section-button" aria-label="educations" md-theme="educations" href="#/educations" ng-if="searchType!=='educations' && appConfig.educations "><md-icon>launch</md-icon> <span translate="global.educations"></span></md-button>
+    <md-button hide-xs class="md-raised md-primary section-button" aria-label="apprenticeships" md-theme="apprenticeships" href="#/apprenticeships" ng-if="searchType!=='apprenticeships' && appConfig.apprenticeships"><md-icon>launch</md-icon> <span translate="global.apprenticeships"></span></md-button>
     <span flex></span>
     <language-switcher></language-switcher>
     <md-menu md-position-mode="target-right target" hide-gt-xs ng-hide="!appConfig.educations && !appConfig.apprenticeships">

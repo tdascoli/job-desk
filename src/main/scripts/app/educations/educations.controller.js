@@ -3,18 +3,21 @@
   'use strict';
 
   angular.module('job-desk')
-    .controller('EducationsCtrl', function ($scope, $rootScope, $state, $filter, $translate, EducationsService, LocationsService, ArrleeService, $mdDialog, lodash) {
+    .controller('EducationsCtrl', function ($scope, $rootScope, $state, $filter, $translate, EducationsService, LocationsService, ArrleeService, TravelTimeService, $mdDialog, lodash) {
 
       $rootScope.searchType = 'educations';
       $scope.searchParams = EducationsService.params;
 
       $scope.distanceOptions = {min: 10, max: 150, step: 10, value: 30};
-      $scope.travelTimeOptions = {min: 10, max: 60, step: 5, value: 30};
+      $scope.transportOptions = {min: 10, max: 120, step: 5, value: 30};
+      $scope.driveOptions = {min: 10, max: 60, step: 5, value: 30};
 
       $scope.count = 0;
       $scope.nearestZip = '';
       $scope.currentZip = $scope.searchParams.currentZip;
-      $scope.sort = 0;
+      $scope.heatmap = undefined;
+      $scope.idle = false;
+      $scope.lastOpened = {'scope': null};
 
       $scope.courseLanguages = [{
         text: 'educations.result.languages.ger',
@@ -104,10 +107,15 @@
 
       $scope.countJobs = function () {
         $scope.idle = true;
+        $scope.searchParams.from = 0;
 
-        if ($scope.searchParams.distanceType === 'travelTime') {
+        if ($scope.searchParams.distanceType === 'transport') {
           //** countJobs with travelTime parameter
           findByTravelTime();
+        }
+        else if ($scope.searchParams.distanceType === 'drive' || $scope.searchParams.distanceType === 'bike') {
+          //** countJobs with travelTime parameter
+          findByDriveTime();
         }
         else {
           //** countJobs with distance parameter
@@ -138,13 +146,23 @@
                 find(false);
               })
               .error(function (error) {
-                // todo error handling
-                console.log(error);
+                console.error(error);
               });
           })
           .error(function (error) {
-            // todo error handling
-            console.log(error);
+            console.error(error);
+          });
+      }
+
+      function findByDriveTime() {
+        TravelTimeService.getTravelTimePolygon($scope.searchParams.currentCoords,$scope.searchParams.travelTime,$scope.searchParams.distanceType).success(function (result) {
+            // todo find?!
+            $scope.traveltime=result;
+            $scope.searchParams.shape=result.response.geometry.coordinates;
+            find(false);
+          })
+          .error(function (error) {
+            console.error(error);
           });
       }
 
@@ -160,11 +178,9 @@
             $scope.idle = false;
           })
           .error(function (error) {
-            // todo error handling
-            console.log(error);
+            console.error(error);
           });
       }
-
 
       $scope.showTimeInH = function (time) {
         var hour = Math.floor(time / 60);
@@ -194,11 +210,9 @@
             }
           })
           .error(function (error) {
-            // todo error handling
-            console.log(error);
+            console.error(error);
           });
       }
-
 
       $scope.setMyLocation = function () {
         setNewCoords($rootScope.myCoords);
@@ -226,14 +240,12 @@
               setNewCoords(nearestZip.hits.hits[0]._source.geoLocation);
             }
             else {
-              // todo error handling
               $scope.setCurrentZip($scope.searchParams.currentZip);
               $scope.locationError('errors.msg.noValidZip');
             }
           })
           .error(function (error) {
-            // todo error handling
-            console.log(error);
+            console.error(error);
           });
       };
 
@@ -269,6 +281,18 @@
       else {
         $scope.setMyLocation();
       }
+
+      // tour
+      $scope.currentStep = -1;
+      $scope.tourTranslate = function (key) {
+        return $translate.instant(key);
+      };
+      $scope.tourEnded = function () {
+        $scope.currentStep = -1;
+      };
+      $scope.startTour = function () {
+        $scope.currentStep = 0;
+      };
     });
 
 

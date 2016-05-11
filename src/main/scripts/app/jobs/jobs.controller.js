@@ -14,16 +14,6 @@
       $scope.transportOptions = {min: 10, max: 120, step: 5, value: 30};
       $scope.driveOptions = {min: 10, max: 60, step: 5, value: 30};
 
-      /*$scope.iscoMajorGroup = [
-        {text: 'isco.majorGroups.1', code: '1', img: 'jobs/isco1.png'},
-        {text: 'isco.majorGroups.2', code: '2', img: 'jobs/isco2.png'},
-        {text: 'isco.majorGroups.3', code: '3', img: 'jobs/isco3.png'},
-        {text: 'isco.majorGroups.4', code: '4', img: 'jobs/isco4.png'},
-        {text: 'isco.majorGroups.5', code: '5', img: 'jobs/isco5.png'},
-        {text: 'isco.majorGroups.6', code: '6', img: 'jobs/isco6.png'},
-        {text: 'isco.majorGroups.7', code: '7', img: 'jobs/isco7.png'},
-        {text: 'isco.majorGroups.8', code: '8', img: 'jobs/isco8.png'},
-        {text: 'isco.majorGroups.9', code: '9', img: 'jobs/isco9.png'}];*/
       $scope.iscoMajorGroup = [
         {text: 'isco.majorGroups.9', code: '9', img: 'jobs/isco9.png'},
         {text: 'isco.majorGroups.8', code: '8', img: 'jobs/isco8.png'},
@@ -97,6 +87,7 @@
       }
 
       $scope.countJobs = function () {
+        console.log('countJobs',$scope.count);
         $scope.idle = true;
         $scope.searchParams.from = 0;
 
@@ -138,13 +129,11 @@
                 find(false);
               })
               .error(function (error) {
-                // todo error handling
-                console.log(error);
+                console.error(error);
               });
           })
           .error(function (error) {
-            // todo error handling
-            console.log(error);
+            console.error(error);
           });
       }
 
@@ -156,12 +145,12 @@
           find(false);
         })
         .error(function (error) {
-          // todo error handling
-          console.log(error);
+          console.error(error);
         });
       }
 
       function find(scroll) {
+        console.log('find',$scope.count);
         JobsService.find().success(function (result) {
             if (scroll && angular.isArray($rootScope.jobs)) {
               $rootScope.jobs = $rootScope.jobs.concat(result.hits.hits);
@@ -171,11 +160,12 @@
             }
             $scope.count = result.hits.total;
             $scope.idle = false;
+
+            console.log('find ende',$scope.count,$rootScope.jobs.length);
           })
           .error(function (error) {
             $scope.idle = false;
-            // todo error handling
-            console.log(error);
+            console.error(error);
           });
       }
 
@@ -189,6 +179,7 @@
       };
 
       function setNewCoords(coords) {
+        console.log('setNewCoords',coords,$scope.searchParams.currentCoords);
         $scope.idle = true;
         LocationsService.getLocation(coords).success(function (nearestZip) {
             if (nearestZip.hits.total > 0) {
@@ -205,8 +196,7 @@
             }
           })
           .error(function (error) {
-            // todo error handling
-            console.log(error);
+            console.error(error);
           });
       }
 
@@ -238,8 +228,7 @@
             }
           })
           .error(function (error) {
-            // todo error handling
-            console.log(error);
+            console.error(error);
           });
       };
 
@@ -252,6 +241,18 @@
             .ok('OK')
         );
       };
+
+      // todo location autocompleter
+      /*
+      $scope.locationSearch = function (value) {
+        LocationsService.getLocationAutocompleter(value,$scope.searchParams.currentCoords).success(function (locations) {
+            return locations;
+          })
+          .error(function (error) {
+            console.error(error);
+          });
+      };
+      */
 
       $scope.sort = 0;
       $scope.sortList = [
@@ -266,8 +267,10 @@
         $scope.countJobs();
       };
 
+
       if ($scope.searchParams.currentCoords !== undefined) {
-        setNewCoords($scope.searchParams.currentCoords);
+        console.log('IF');
+        //setNewCoords($scope.searchParams.currentCoords);
       }
 
       // user isn't active anymore : reset search params
@@ -291,17 +294,9 @@
         $scope.currentStep = 0;
       };
 
-      //*** LEAFLET ***//
-      $scope.mapDefaults = {
-        center: [46.8, 8.3],
-        zoom: 8,
-        zoomControl: false,
-        scrollWheelZoom: false,
-        doubleClickZoom: true,
-        maxBounds: [
-          [45.5, 5.5],
-          [48, 11]
-        ]
+      // instant translation
+      $scope.translateKey=function(key){
+        return $translate.instant(key);
       };
 
     });

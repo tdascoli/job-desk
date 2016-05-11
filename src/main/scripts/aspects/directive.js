@@ -334,6 +334,131 @@
     };
   });
 
+  module.directive('numkey', function () {
+    return {
+      priority: 100,
+      require: '?ngModel',
+      restrict: 'C',
+      link: function (scope, element, attrs, ngModelCtrl) {
+        if (!ngModelCtrl) {
+          return;
+        }
+
+        element.click(function () {
+          element.getkeyboard().reveal();
+        });
+
+        $(element).keyboard({
+          layout: 'custom',
+          display: {
+            'b': 'backspace',
+            'a': 'OK',
+            'c': 'clear'
+          },
+          customLayout: {
+            'default': [
+              '{clear} {b}',
+              '7 8 9',
+              '4 5 6',
+              '1 2 3',
+              '{a} 0 {c}'
+            ]
+          },
+          accepted: function (event, keyboard, el) {
+            var zip = el.value;
+            if (zip.length < 4) {
+              zip = scope.searchParams.currentZip;
+            }
+            scope.setCurrentZip(zip);
+          },
+          canceled: function () {
+            scope.setCurrentZip(scope.searchParams.currentZip);
+          },
+          beforeVisible: function () {
+            // set keyboard x/y according to element
+            $('#location_keyboard').css('top', element.offset().top + element.outerHeight(true));
+            $('#location_keyboard').css('left', element.offset().left);
+            // reset value
+            ngModelCtrl.$setViewValue(null);
+            ngModelCtrl.$render();
+          },
+          maxLength: 4,
+          restrictInput: true, // Prevent keys not in the displayed keyboard from being typed in
+          preventPaste: true,  // prevent ctrl-v and right click
+          autoAccept: false,
+          usePreview: false,
+          stayOpen: false
+        });
+      }
+    };
+  });
+
+  module.directive('alphakey', function () {
+    return {
+      priority: 100,
+      require: '?ngModel',
+      restrict: 'C',
+      link: function (scope, element, attrs, ngModelCtrl) {
+        if (!ngModelCtrl) {
+          return;
+        }
+
+        element.click(function () {
+          element.getkeyboard().reveal();
+        });
+
+        $(element).keyboard({
+          layout: 'custom',
+          display: {
+            'b': 'backspace',
+            'a': 'OK',
+            'c': 'clear',
+            'default': 'ABC',
+            'meta1': 'àéè',
+            'meta2': 'âëç'
+          },
+          customLayout: {
+            'default': [
+              'Q W E R T Z U I O P Ü',
+              'A S D F G H J K L Ö Ä',
+              'Y X C V B N M . -  {b}',
+              '{meta1} {space} {meta1} {a} {c}'
+            ],
+            'meta1': [
+              'Q W Ë R T Z U I O P È',
+              'Â S D F G H J K L É À',
+              'Y X Ç V B N M . -  {b}',
+              '{default} {space} {default} {a} {c}'
+            ]
+          },
+          accepted: function (event, keyboard, el) {
+            var zip = el.value;
+            if (zip.length < 4) {
+              zip = scope.searchParams.currentZip;
+            }
+            scope.setCurrentZip(zip);
+          },
+          canceled: function () {
+            scope.setCurrentZip(scope.searchParams.currentZip);
+          },
+          beforeVisible: function () {
+            // set keyboard x/y according to element
+            $('#location_keyboard').css('top', element.offset().top + element.outerHeight(true));
+            $('#location_keyboard').css('left', element.offset().left);
+            // reset value
+            ngModelCtrl.$setViewValue(null);
+            ngModelCtrl.$render();
+          },
+          restrictInput: true, // Prevent keys not in the displayed keyboard from being typed in
+          preventPaste: true,  // prevent ctrl-v and right click
+          autoAccept: false,
+          usePreview: false,
+          stayOpen: false
+        });
+      }
+    };
+  });
+
   module.directive('languageSwitcher', ['$translate', 'supportedLanguages', function ($translate, supportedLanguages) {
     return {
       restrict: 'E',

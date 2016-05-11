@@ -178,12 +178,14 @@ body {
 .area5 {
   fill: #ffff00;
 }
-.keyboard {
+.keyboard,
+.numkey,
+.alphakey {
   width: 100% !important;
 }
 .ui-keyboard {
   background: #eeeeee;
-  width: 188px !important;
+  /*width: 188px !important;*/
   border: none !important;
   padding: 0 !important;
   margin-top: 20px;
@@ -231,6 +233,9 @@ body {
 }
 .ui-keyboard-bksp {
   width: 107px;
+}
+.ui-keyboard-space {
+  width: 387px;
 }
 .ui-keyboard-text {
   font-family: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -490,11 +495,19 @@ md-toast.md-toast-success-theme .md-toast-content {
 md-toast.md-toast-error-theme .md-toast-content {
   background-color: #E82B2B;
 }
-.md-jobs-theme .leaflet-marker-icon.material-icons {
+.md-jobs-theme .leaflet-marker-icon.material-icons,
+.md-educations-theme .leaflet-marker-icon.material-icons,
+.md-apprenticeships-theme .leaflet-marker-icon.material-icons {
   color: #03a9f4 !important;
   margin-left: -17px !important;
   margin-top: -32px !important;
   font-size: 34px;
+}
+.md-educations-theme .leaflet-marker-icon.material-icons {
+  color: #8bc34a !important;
+}
+.md-apprenticeships-theme .leaflet-marker-icon.material-icons {
+  color: #00bcd4 !important;
 }
 .leaflet-top,
 .leaflet-bottom {

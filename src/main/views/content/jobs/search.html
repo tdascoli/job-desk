@@ -26,8 +26,27 @@
 
       <md-input-container flex="30" hide-xs id="zip">
         <label translate="jobs.search.location"></label>
-        <input class="keyboard" type="text" name="location" id="location" ng-model="nearestZip" />
+        <input class="alphakey" type="text" name="location" id="location" ng-model="nearestZip" />
       </md-input-container>
+
+      <!--
+      <md-autocomplete flex="30"
+        md-selected-item="ctrl.selectedItem"
+        md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+        md-search-text="ctrl.searchText"
+        md-selected-item-change="ctrl.selectedItemChange(item)"
+        md-items="item in locationSearch(ctrl.searchText)"
+        md-item-text="item.display"
+        md-min-length="0"
+        md-floating-label="{{translateKey('jobs.search.location')}}">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+        </md-item-template>
+        <md-not-found>
+          No states matching "{{ctrl.searchText}}" were found.
+        </md-not-found>
+      </md-autocomplete>
+      -->
 
       <div flex-xs="85" hide-gt-xs layout="row" layout-align="start center" class="zip-form">
         <md-input-container flex-xs="70">
@@ -44,7 +63,7 @@
     </div>
 
     <div flex="15" flex-xs="40" id="distanceType">
-      <md-radio-group class="jd-" ng-model="searchParams.distanceType" ng-change="countJobs()" ng-init="searchParams.distanceType=searchParams.distanceType || appConfig.distanceType || 'distance'">
+      <md-radio-group ng-model="searchParams.distanceType" ng-change="countJobs()" ng-init="searchParams.distanceType=searchParams.distanceType || appConfig.distanceType || 'distance'">
         <md-radio-button value="distance" class="md-primary" aria-label="distance" ng-if="appConfig.availableDistanceType.distance"><span translate="jobs.search.distanceTypeDistance"></span></md-radio-button>
         <md-radio-button value="transport" class="md-primary" aria-label="travel time" ng-if="appConfig.availableDistanceType.transport"><span translate="jobs.search.distanceTypeTransport"></span></md-radio-button>
         <md-radio-button value="drive" class="md-primary" aria-label="travel time" ng-if="appConfig.availableDistanceType.drive"><span translate="jobs.search.distanceTypeDrive"></span></md-radio-button>
