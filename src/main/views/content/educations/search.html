@@ -26,7 +26,7 @@
 
       <md-input-container flex="30" hide-xs id="zip">
         <label translate="educations.search.location"></label>
-        <input class="keyboard" type="text" name="location" id="location" ng-model="nearestZip" />
+        <input class="keyboard" type="text" name="location" id="location" ng-model="searchValues.nearestZip" />
       </md-input-container>
 
       <div flex-xs="85" hide-gt-xs layout="row" layout-align="start center" class="zip-form">
@@ -91,11 +91,11 @@
 </div>
 
 <div layout="row" layout-margin layout-align="start center" class="jd-bottom-right">
-  <strong ng-show="!idle" translate="educations.search.foundJobs" translate-values="{value: count}"></strong>
+  <strong ng-show="!idle" translate="educations.search.foundJobs" translate-values="{value: searchValues.count}"></strong>
   <md-progress-circular ng-show="idle" md-mode="indeterminate" md-diameter="56"></md-progress-circular>
 </div>
 
-<md-button href="#/education-results" class="md-fab md-primary md-fab-bottom-right jd-floating-fab" aria-label="global.navigation.search" ng-disabled="count===0 || idle" md-theme-watch="true">
+<md-button href="#/education-results" class="md-fab md-primary md-fab-bottom-right jd-floating-fab" aria-label="global.navigation.search" ng-disabled="searchValues.count===0 || idle" md-theme-watch="true">
   <md-icon>arrow_forward</md-icon>
 </md-button>
 

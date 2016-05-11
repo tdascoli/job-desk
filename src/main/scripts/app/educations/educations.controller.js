@@ -3,19 +3,17 @@
   'use strict';
 
   angular.module('job-desk')
-    .controller('EducationsCtrl', function ($scope, $rootScope, $state, $filter, $translate, EducationsService, LocationsService, ArrleeService, TravelTimeService, $mdDialog, lodash) {
+    .controller('EducationsCtrl', function ($scope, $rootScope, $state, $filter, $translate, lodash, EducationsService, LocationsService, ArrleeService, TravelTimeService, $mdDialog) {
 
       $rootScope.searchType = 'educations';
+      $scope.searchValues = EducationsService.search;
       $scope.searchParams = EducationsService.params;
 
       $scope.distanceOptions = {min: 10, max: 150, step: 10, value: 30};
       $scope.transportOptions = {min: 10, max: 120, step: 5, value: 30};
       $scope.driveOptions = {min: 10, max: 60, step: 5, value: 30};
 
-      $scope.count = 0;
-      $scope.nearestZip = '';
       $scope.currentZip = $scope.searchParams.currentZip;
-      $scope.heatmap = undefined;
       $scope.idle = false;
       $scope.lastOpened = {'scope': null};
 
@@ -124,13 +122,13 @@
       };
 
       $scope.loadMoreResults = function () {
-        if ($scope.searchParams.from < $scope.count) {
+        if ($scope.searchParams.from < $scope.searchValues.count) {
           $scope.idle = true;
 
           var from = $scope.searchParams.from;
           from += $scope.searchParams.size;
-          if (from > $scope.count) {
-            from = $scope.count;
+          if (from > $scope.searchValues.count) {
+            from = $scope.searchValues.count;
           }
           $scope.searchParams.from = from;
           find(true);
@@ -139,9 +137,9 @@
 
       function findByTravelTime() {
         ArrleeService.getHeatmap($scope.searchParams.currentZip, $scope.searchParams.travelTime).success(function (result) {
-            $scope.heatmap = result.heatmap;
+            $scope.searchValues.heatmap = result.heatmap;
             ArrleeService.getZips($scope.searchParams.travelTime).success(function (result) {
-                $scope.searchParams.zips = lodash.pluck(result.POI, 'name');
+                $scope.searchParams.zips = lodash.map(result.POI, 'name');
                 //** find Jobs with searchParams
                 find(false);
               })
@@ -174,7 +172,7 @@
             else {
               $rootScope.educations = result.hits.hits;
             }
-            $scope.count = result.hits.total;
+            $scope.searchValues.count = result.hits.total;
             $scope.idle = false;
           })
           .error(function (error) {
@@ -200,7 +198,7 @@
         LocationsService.getLocation(coords).success(function (nearestZip) {
             if (nearestZip.hits.total > 0) {
               $scope.searchParams.currentCoords = coords;
-              $scope.nearestZip = nearestZip.hits.hits[0]._source.zip + ' (' + nearestZip.hits.hits[0]._source.name + ')';
+              $scope.searchValues.nearestZip = nearestZip.hits.hits[0]._source.zip + ' (' + nearestZip.hits.hits[0]._source.name + ')';
               $scope.searchParams.currentZip = parseInt(nearestZip.hits.hits[0]._source.zip, 10);
               $scope.currentZip = $scope.searchParams.currentZip;
               $scope.countJobs();
