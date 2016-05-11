@@ -87,7 +87,6 @@
       }
 
       $scope.countJobs = function () {
-        console.log('countJobs',$scope.count);
         $scope.idle = true;
         $scope.searchParams.from = 0;
 
@@ -150,7 +149,6 @@
       }
 
       function find(scroll) {
-        console.log('find',$scope.count);
         JobsService.find().success(function (result) {
             if (scroll && angular.isArray($rootScope.jobs)) {
               $rootScope.jobs = $rootScope.jobs.concat(result.hits.hits);
@@ -160,8 +158,6 @@
             }
             $scope.count = result.hits.total;
             $scope.idle = false;
-
-            console.log('find ende',$scope.count,$rootScope.jobs.length);
           })
           .error(function (error) {
             $scope.idle = false;
@@ -179,7 +175,6 @@
       };
 
       function setNewCoords(coords) {
-        console.log('setNewCoords',coords,$scope.searchParams.currentCoords);
         $scope.idle = true;
         LocationsService.getLocation(coords).success(function (nearestZip) {
             if (nearestZip.hits.total > 0) {
@@ -269,8 +264,7 @@
 
 
       if ($scope.searchParams.currentCoords !== undefined) {
-        console.log('IF');
-        //setNewCoords($scope.searchParams.currentCoords);
+        setNewCoords($scope.searchParams.currentCoords);
       }
 
       // user isn't active anymore : reset search params
