@@ -33,6 +33,7 @@
       function resetSearch() {
         params.heatmap = undefined;
         params.count = 0;
+        params.nearestZip = '';
       }
 
       resetSearch();

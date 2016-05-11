@@ -275,6 +275,7 @@
     };
   }]);
 
+  // todo > autocompleter with plz
   module.directive('keyboard', function () {
     return {
       priority: 100,
@@ -312,13 +313,10 @@
             }
             scope.setCurrentZip(zip);
           },
-          canceled: function () {
-            scope.setCurrentZip(scope.searchParams.currentZip);
-          },
           beforeVisible: function () {
             // set keyboard x/y according to element
-            $('#location_keyboard').css('top', element.offset().top + element.outerHeight(true));
-            $('#location_keyboard').css('left', element.offset().left);
+            $('#location_keyboard').css('top', element.offset().top - element.outerHeight(true));
+            $('#location_keyboard').css('left', element.offset().left - ($('#location_keyboard').outerWidth(true) + 20));
             // reset value
             ngModelCtrl.$setViewValue(null);
             ngModelCtrl.$render();
@@ -334,65 +332,7 @@
     };
   });
 
-  module.directive('numkey', function () {
-    return {
-      priority: 100,
-      require: '?ngModel',
-      restrict: 'C',
-      link: function (scope, element, attrs, ngModelCtrl) {
-        if (!ngModelCtrl) {
-          return;
-        }
-
-        element.click(function () {
-          element.getkeyboard().reveal();
-        });
-
-        $(element).keyboard({
-          layout: 'custom',
-          display: {
-            'b': 'backspace',
-            'a': 'OK',
-            'c': 'clear'
-          },
-          customLayout: {
-            'default': [
-              '{clear} {b}',
-              '7 8 9',
-              '4 5 6',
-              '1 2 3',
-              '{a} 0 {c}'
-            ]
-          },
-          accepted: function (event, keyboard, el) {
-            var zip = el.value;
-            if (zip.length < 4) {
-              zip = scope.searchParams.currentZip;
-            }
-            scope.setCurrentZip(zip);
-          },
-          canceled: function () {
-            scope.setCurrentZip(scope.searchParams.currentZip);
-          },
-          beforeVisible: function () {
-            // set keyboard x/y according to element
-            $('#location_keyboard').css('top', element.offset().top + element.outerHeight(true));
-            $('#location_keyboard').css('left', element.offset().left);
-            // reset value
-            ngModelCtrl.$setViewValue(null);
-            ngModelCtrl.$render();
-          },
-          maxLength: 4,
-          restrictInput: true, // Prevent keys not in the displayed keyboard from being typed in
-          preventPaste: true,  // prevent ctrl-v and right click
-          autoAccept: false,
-          usePreview: false,
-          stayOpen: false
-        });
-      }
-    };
-  });
-
+  // todo > autocompleter with text
   module.directive('alphakey', function () {
     return {
       priority: 100,
@@ -437,9 +377,6 @@
               zip = scope.searchParams.currentZip;
             }
             scope.setCurrentZip(zip);
-          },
-          canceled: function () {
-            scope.setCurrentZip(scope.searchParams.currentZip);
           },
           beforeVisible: function () {
             // set keyboard x/y according to element

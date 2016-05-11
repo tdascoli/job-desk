@@ -2,8 +2,6 @@
 
   'use strict';
 
-  //** todo Location stuff in external controller, how to implement?! three functions in three controllers for the same ex. setNewCoords
-
   angular.module('job-desk')
     .controller('JobsCtrl', function ($scope, $rootScope, $state, $filter, $translate, lodash, JobsService, LocationsService, ArrleeService, TravelTimeService, $mdDialog) {
       $rootScope.searchType = 'jobs';
@@ -37,24 +35,22 @@
         '9': ['911', '912', '921', '931', '932', '933', '941', '951', '952', '961', '962']
       };
 
-      //$scope.count = 0;
-      $scope.nearestZip = '';
       $scope.currentZip = $scope.searchParams.currentZip;
-      //$scope.heatmap = $scope.searchValues.heatmap;
       $scope.idle = false;
       $scope.lastOpenedJob = {'scope': null};
 
       $scope.setIscoGroup = function (isco) {
         $scope.searchParams.iscoMajorGroup = isco;
         $scope.searchParams.iscoGroupLevel3 = '';
+        $scope.countJobs();
         $state.go('job-search');
       };
       $scope.setIscoMinorGroup = function (majorGroup, minorGroup) {
         $scope.searchParams.iscoMajorGroup = majorGroup;
         $scope.searchParams.iscoGroupLevel3 = minorGroup;
+        $scope.countJobs();
         $state.go('job-search');
       };
-
       $scope.showIscoUnitGroup = function (ev, level, iscoMinorGroups) {
         $mdDialog.show({
             controller: iscoDialogController,
@@ -73,7 +69,6 @@
             }
           });
       };
-
       function iscoDialogController($scope, $mdDialog, level, iscoMinorGroups) {
         $scope.level = level;
         $scope.iscoMinorGroups = iscoMinorGroups;
@@ -139,7 +134,6 @@
 
       function findByDriveTime() {
         TravelTimeService.getTravelTimePolygon($scope.searchParams.currentCoords,$scope.searchParams.travelTime,$scope.searchParams.distanceType).success(function (result) {
-          // todo find?!
           $scope.traveltime=result;
           $scope.searchParams.shape=result.response.geometry.coordinates;
           find(false);
@@ -182,8 +176,9 @@
             if (nearestZip.hits.total > 0) {
               $scope.searchParams.currentCoords = coords;
               $scope.searchParams.currentZip = parseInt(nearestZip.hits.hits[0]._source.zip, 10);
+
               $scope.currentZip = $scope.searchParams.currentZip;
-              $scope.nearestZip = nearestZip.hits.hits[0]._source.zip + ' (' + nearestZip.hits.hits[0]._source.name + ')';
+              $scope.searchValues.nearestZip = nearestZip.hits.hits[0]._source.zip + ' (' + nearestZip.hits.hits[0]._source.name + ')';
 
               $scope.countJobs();
             }
