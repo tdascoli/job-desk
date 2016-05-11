@@ -185,15 +185,15 @@ body {
 }
 .ui-keyboard {
   background: #eeeeee;
-  /*width: 188px !important;*/
   border: none !important;
   padding: 0 !important;
   margin-top: 20px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
 }
-.ui-keyboard:after {
+/*.ui-keyboard:after {
   bottom: 100%;
   left: 50%;
   border: solid transparent;
@@ -203,9 +203,32 @@ body {
   position: absolute;
   pointer-events: none;
   border-color: rgba(238, 238, 238, 0);
-  border-bottom-color: #eeeeee;
+  border-bottom-color: @keyboard-border;
   border-width: 15px;
   margin-left: -15px;
+}*/
+.ui-keyboard:after,
+.arrow_box:before {
+  left: 100%;
+  top: 25px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.ui-keyboard:after {
+  border-color: rgba(238, 238, 238, 0);
+  border-left-color: #eeeeee;
+  border-width: 15px;
+  margin-top: -15px;
+}
+.ui-keyboard:before {
+  border-color: rgba(238, 238, 238, 0);
+  border-left-color: #eeeeee;
+  border-width: 21px;
+  margin-top: -21px;
 }
 .ui-keyboard-button {
   -webkit-border-radius: 5px;
@@ -271,7 +294,7 @@ body {
   margin-top: -1px;
 }
 .ui-keyboard-keyset {
-  padding: 6px 0 6px 12px !important;
+  padding: 12px 6px 6px 12px !important;
 }
 .ui-keyboard-button:active {
   top: 4px;
