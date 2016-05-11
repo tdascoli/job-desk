@@ -197,13 +197,13 @@
           }
         });
 
-        scope.$watchCollection('heatmap', function () {
-          if (scope.heatmap !== undefined) {
+        scope.$watchCollection('searchValues.heatmap', function () {
+          if (scope.searchValues.heatmap !== undefined) {
             var geometries = [];
             var coordinates = [[], []];
             var type = 'MultiPolygon';
 
-            angular.forEach(scope.heatmap.areas, function (area, id) {
+            angular.forEach(scope.searchValues.heatmap.areas, function (area, id) {
               // calculate polygon
               var polygons = area.polygons.sort(function (a, b) {
                 return b[0] - a[0];

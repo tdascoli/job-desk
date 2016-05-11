@@ -5,6 +5,7 @@
   angular.module('job-desk')
     .factory('JobsService', function ($http, baseUrl, ConfigService, lodash) {
 
+      var search = {};
       var params = {};
       var visitedJobs = [];
 
@@ -28,6 +29,13 @@
       }
 
       resetSearchParams();
+
+      function resetSearch() {
+        params.heatmap = undefined;
+        params.count = 0;
+      }
+
+      resetSearch();
 
       function doDriveQuery(filter){
         var coords=[];
@@ -154,6 +162,7 @@
 
       return {
         find: find,
+        search: search,
         params: params,
         resetSearchParams: resetSearchParams,
         addVisitedJob: addVisitedJob,
