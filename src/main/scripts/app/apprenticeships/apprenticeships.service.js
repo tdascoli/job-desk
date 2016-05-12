@@ -3,24 +3,40 @@
   'use strict';
 
   angular.module('job-desk')
-    .factory('ApprenticeshipsService', function ($http, baseUrl) {
+    .factory('ApprenticeshipsService', function ($http, baseUrl, ConfigService) {
 
-      var params = {
-        from: 0,
-        size: 20,
-        distanceType: 'distance',
-        distance: 30,
-        travelTime: 30,
-        swissdocMajorGroup: '',
-        swissdocGroupLevel2: '',
-        zips: undefined,
-        currentZip: '',
-        currentCoords: undefined,
-        sort: {
-          field: 'company.address.zip',
-          order: 'asc'
-        }
-      };
+
+      var search = {};
+      var params = {};
+      var visitedJobs = [];
+
+      function resetSearchParams() {
+        params.from = 0;
+        params.size = 20;
+        params.distanceType = ConfigService.init().distanceType;
+        params.distance = 30;
+        params.travelTime = 30;
+        params.swissdocMajorGroup = '';
+        params.swissdocGroupLevel2 = '';
+        params.language = '';
+        params.zips = undefined;
+        params.shape = undefined;
+        params.currentZip = '';
+        params.currentCoords = undefined;
+        params.sort = {};
+        params.sort.field = 'company.address.zip';
+        params.sort.order = 'asc';
+      }
+
+      resetSearchParams();
+
+      function resetSearch() {
+        params.heatmap = undefined;
+        params.count = 0;
+        params.nearestZip = '';
+      }
+
+      resetSearch();
 
       function find() {
         var filter = {
@@ -70,23 +86,29 @@
         return $http.post(baseUrl + '/apprenticeships/_search', filter);
       }
 
-      function resetSearchParams() {
-        return {
-          distanceType: 'distance',
-          distance: 30,
-          travelTime: 30,
-          swissdocMajorGroup: '',
-          swissdocGroupLevel2: '',
-          zips: undefined,
-          currentZip: '',
-          currentCoords: undefined
-        };
+      function addVisitedJob(jobId) {
+        if (!isVisited(jobId)) {
+          visitedJobs.push(jobId);
+        }
       }
+
+      function isVisited(jobId) {
+        return visitedJobs.indexOf(jobId) > -1;
+      }
+
+      function resetVisitedJobs() {
+        visitedJobs = [];
+      }
+      
 
       return {
         find: find,
+        search: search,
         params: params,
-        resetSearchParams: resetSearchParams
+        resetSearchParams: resetSearchParams,
+        addVisitedJob: addVisitedJob,
+        isVisited: isVisited,
+        resetVisitedJobs: resetVisitedJobs
       };
 
     });

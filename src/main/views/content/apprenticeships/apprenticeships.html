@@ -1,14 +1,17 @@
-<div layout="row" layout-wrap layout-padding layout-align="space-between start" class="jd-categories">
+<div layout="row" layout-padding layout-wrap class="jd-categories">
 
-  <div class="category" flex="33" flex-sm="100" ng-click="setSwissdocGroup(swissdoc.code)" ng-repeat="swissdoc in swissdocMajorGroup">
-    <img class="iscoIcon" ng-src="assets/images/{{swissdoc.img}}" alt="swissdoc" />
-    <div class="category-title"><span class="md-title" translate="{{swissdoc.text}}"></span></div>
+  <div class="category" flex="33" flex-sm="50" flex-xs="100" ng-repeat="swissdoc in swissdocMajorGroup">
+    <img ng-click="setSwissdocGroup(swissdoc.code)" class="iscoIcon" ng-src="assets/images/{{swissdoc.img}}" alt="swissdoc" />
+    <div class="category-title" layout="row">
+      <md-button class="md-square md-raised" ng-click="showSwissdocMinorGroup($event,swissdoc.code,swissdocGroupLevel2)"><md-icon>help_outline</md-icon></md-button>
+      <span flex="90" ng-click="setSwissdocGroup(swissdoc.code)" class="md-title" translate="{{swissdoc.text}}"></span>
+    </div>
   </div>
-
-  <div flex="33"></div>
 
 </div>
 
 <md-button href="#/apprenticeship-search" class="md-fab md-primary md-fab-bottom-right jd-floating-fab" aria-label="global.navigation.search" md-theme-watch="true">
   <md-icon>arrow_forward</md-icon>
 </md-button>
+
+

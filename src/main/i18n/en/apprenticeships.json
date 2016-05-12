@@ -8,7 +8,9 @@
       "distance":"Distance {{value}} km",
       "travelTime":"Travel time {{value}} hrs",
       "distanceTypeDistance":"Distance in km",
-      "distanceTypeTravelTime":"Public transport travel time in hrs",
+      "distanceTypeTransport":"Public transport travel time in hrs",
+      "distanceTypeDrive":"[EN] Drive travel time in hrs",
+      "distanceTypeBike":"[EN] Drive travel time in hrs",
       "foundJobs":"Apprenticeships found {{value}}"
     },
     "result": {

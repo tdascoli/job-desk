@@ -320,7 +320,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('template/job-list.html',
-    "<md-dialog aria-label=\"Job List\" ng-cloak class=\"jd-job-list-dialog\">\n" +
+    "<md-dialog aria-label=\"Category List\" ng-cloak class=\"jd-job-list-dialog\">\n" +
     "  <form>\n" +
     "    <md-toolbar>\n" +
     "      <div class=\"md-toolbar-tools\">\n" +
@@ -442,6 +442,37 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "      <md-progress-circular md-mode=\"indeterminate\" md-diameter=\"120\"></md-progress-circular>\n" +
     "    </div>\n" +
     "  </md-dialog-content>\n" +
+    "</md-dialog>\n"
+  );
+
+
+  $templateCache.put('template/swissdoc-list.html',
+    "<md-dialog aria-label=\"Category List\" ng-cloak class=\"jd-job-list-dialog\">\n" +
+    "  <form>\n" +
+    "    <md-toolbar>\n" +
+    "      <div class=\"md-toolbar-tools\">\n" +
+    "        <h2 translate=\"swissdoc.0-{{level}}00-0-0\"></h2>\n" +
+    "        <span flex></span>\n" +
+    "        <md-button class=\"md-icon-button\" ng-click=\"hide()\">\n" +
+    "          <md-icon aria-label=\"Close dialog\">close</md-icon>\n" +
+    "        </md-button>\n" +
+    "      </div>\n" +
+    "    </md-toolbar>\n" +
+    "    <md-dialog-content>\n" +
+    "      <div class=\"md-dialog-content\">\n" +
+    "        <div layout=\"row\" layout-padding layout-wrap width=\"100%\">\n" +
+    "          <a ng-click=\"answer(minorGroup.code)\" layout=\"row\" layout-align=\"start center\" flex=\"30\" flex-xs=\"100\" class=\"jd-job-list\" ng-repeat=\"minorGroup in swissdocGroupLevel2[level] track by $index\" >\n" +
+    "            <md-icon>arrow_forward</md-icon>&nbsp;<span flex translate=\"{{minorGroup.text}}\"></span>\n" +
+    "          </a>\n" +
+    "        </div>\n" +
+    "      </div>\n" +
+    "    </md-dialog-content>\n" +
+    "    <md-dialog-actions layout=\"row\">\n" +
+    "      <md-button ng-click=\"hide()\">\n" +
+    "        <span translate=\"global.tour.close\"></span>\n" +
+    "      </md-button>\n" +
+    "    </md-dialog-actions>\n" +
+    "  </form>\n" +
     "</md-dialog>\n"
   );
 

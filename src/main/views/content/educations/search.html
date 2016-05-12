@@ -10,7 +10,7 @@
       </md-input-container>
 
       <md-input-container flex="60" flex-xs="100" class="md-block isco-select" ng-if="searchParams.swissdocMajorGroup">
-        <label><span translate="swissdoc.0-{{searchParams.swissdocMajorGroup}}00-0-0""></span></label>
+        <label><span translate="swissdoc.0-{{searchParams.swissdocMajorGroup}}00-0-0"></span></label>
         <md-select ng-model="searchParams.swissdocGroupLevel2" ng-change="countJobs()" md-container-class="jd-selectpicker">
           <md-option value="0"><md-icon>done_all</md-icon> <span class="jd-select-reset" translate="educations.search.allSubGroups"></span></md-option>
           <md-option ng-repeat="minorGroup in swissdocGroupLevel2[searchParams.swissdocMajorGroup]" value="{{minorGroup.code}}"><span translate="{{minorGroup.text}}"></span></md-option>

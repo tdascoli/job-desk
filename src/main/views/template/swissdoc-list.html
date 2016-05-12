@@ -2,7 +2,7 @@
   <form>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <h2 translate="isco.majorGroups.{{level}}"></h2>
+        <h2 translate="swissdoc.0-{{level}}00-0-0"></h2>
         <span flex></span>
         <md-button class="md-icon-button" ng-click="hide()">
           <md-icon aria-label="Close dialog">close</md-icon>
@@ -12,15 +12,15 @@
     <md-dialog-content>
       <div class="md-dialog-content">
         <div layout="row" layout-padding layout-wrap width="100%">
-          <a ng-click="answer(minorGroup)" layout="row" layout-align="start center" flex="30" flex-xs="100" class="jd-job-list" ng-repeat="minorGroup in iscoMinorGroups[level] track by $index" >
-            <md-icon>arrow_forward</md-icon>&nbsp;<span flex translate="isco.minorGroups.{{minorGroup}}"></span>
+          <a ng-click="answer(minorGroup.code)" layout="row" layout-align="start center" flex="30" flex-xs="100" class="jd-job-list" ng-repeat="minorGroup in swissdocGroupLevel2[level] track by $index" >
+            <md-icon>arrow_forward</md-icon>&nbsp;<span flex translate="{{minorGroup.text}}"></span>
           </a>
         </div>
       </div>
     </md-dialog-content>
     <md-dialog-actions layout="row">
       <md-button ng-click="hide()">
-        <span translate="jobs.search.close"></span>
+        <span translate="global.tour.close"></span>
       </md-button>
     </md-dialog-actions>
   </form>

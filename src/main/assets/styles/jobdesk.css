@@ -534,7 +534,7 @@ md-toast.md-toast-error-theme .md-toast-content {
 .tour-tip {
   display: none;
   position: absolute;
-  background-color: #2196f3;
+  background-color: #03a9f4;
   color: #fff;
   z-index: 1001;
   top: 0;
@@ -543,6 +543,12 @@ md-toast.md-toast-error-theme .md-toast-content {
   font-weight: 400;
   max-width: 400px;
   border-radius: 4px;
+}
+.md-apprenticeships-theme.tour-tip {
+  background-color: #00bcd4;
+}
+.md-educations-theme.tour-tip {
+  background-color: #8bc34a !important;
 }
 .tour-tip .tour-arrow {
   display: block;
@@ -555,24 +561,48 @@ md-toast.md-toast-error-theme .md-toast-content {
 .tour-tip .tour-arrow.tt-top {
   border-style: solid;
   bottom: -27px;
-  border-color: #2196f3 transparent transparent !important;
+  border-color: #03a9f4 transparent transparent !important;
+}
+.md-apprenticeships-theme.tour-tip .tour-arrow.tt-top {
+  border-color: #00bcd4 transparent transparent !important;
+}
+.md-educations-theme.tour-tip .tour-arrow.tt-top {
+  border-color: #8bc34a transparent transparent !important;
 }
 .tour-tip .tour-arrow.tt-bottom {
   border-style: solid;
   top: -28px;
-  border-color: transparent transparent #2196f3 !important;
+  border-color: transparent transparent #03a9f4 !important;
+}
+.md-apprenticeships-theme.tour-tip .tour-arrow.tt-bottom {
+  border-color: transparent transparent #00bcd4 !important;
+}
+.md-educations-theme.tour-tip .tour-arrow.tt-bottom {
+  border-color: transparent transparent #8bc34a !important;
 }
 .tour-tip .tour-arrow.tt-right {
   border-style: solid;
   left: -27px;
   top: 28px;
-  border-color: transparent #2196f3 transparent transparent !important;
+  border-color: transparent #03a9f4 transparent transparent !important;
+}
+.md-apprenticeships-theme.tour-tip .tour-arrow.tt-right {
+  border-color: transparent #00bcd4 transparent transparent !important;
+}
+.md-educations-theme.tour-tip .tour-arrow.tt-right {
+  border-color: transparent #8bc34a transparent transparent !important;
 }
 .tour-tip .tour-arrow.tt-left {
   border-style: solid;
   left: 100%;
   top: 28px;
-  border-color: transparent transparent transparent #2196f3 !important;
+  border-color: transparent transparent transparent #03a9f4 !important;
+}
+.md-apprenticeships-theme.tour-tip .tour-arrow.tt-left {
+  border-color: transparent transparent transparent #00bcd4 !important;
+}
+.md-educations-theme.tour-tip .tour-arrow.tt-left {
+  border-color: transparent transparent transparent #8bc34a !important;
 }
 .tour-tip .tour-content-wrapper {
   padding: .5em .75em 0 .75em;

@@ -259,27 +259,6 @@
         $scope.countJobs();
       };
 
-      // user isn't active anymore : reset search params
-      var resetListener = $rootScope.$on('resetSearchParams', function () {
-        JobsService.resetSearchParams();
-        JobsService.resetVisitedJobs();
-      });
-
-      // unregister the state listener
-      $scope.$on('$destroy', resetListener);
-
-      // tour
-      $scope.currentStep = -1;
-      $scope.tourTranslate = function (key) {
-        return $translate.instant(key);
-      };
-      $scope.tourEnded = function () {
-        $scope.currentStep = -1;
-      };
-      $scope.startTour = function () {
-        $scope.currentStep = 0;
-      };
-
       // instant translation
       $scope.translateKey=function(key){
         return $translate.instant(key);

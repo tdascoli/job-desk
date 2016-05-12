@@ -13,7 +13,8 @@
       "location":"Wo (PLZ)",
       "foundJobs":"Gefundene Kurse: {{value}}",
       "language":"Kurssprache",
-      "allLanguages":"Alle Sprachen"
+      "allLanguages":"Alle Sprachen",
+      "close":"Schliessen"
     },
     "result": {
       "sorting":"Sortierung",

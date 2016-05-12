@@ -45,7 +45,6 @@
         code: '7',
         img: 'apprenticeships/swissdoc7.png'
       }, {text: 'swissdoc.0-800-0-0', code: '8', img: 'apprenticeships/swissdoc8.png'}];
-
       $scope.swissdocGroupLevel2 = [];
       $scope.swissdocGroupLevel2['1'] = [
         {code: '11', text: 'swissdoc.0-110-0-0'},
@@ -102,6 +101,52 @@
         {code: '82', text: 'swissdoc.0-820-0-0'},
         {code: '83', text: 'swissdoc.0-830-0-0'}
       ];
+
+
+      $scope.setSwissdocGroup = function (swissdoc) {
+        $scope.searchParams.swissdocMajorGroup = swissdoc;
+        $scope.searchParams.swissdocGroupLevel2 = '';
+        $scope.countJobs();
+        $state.go('education-search');
+      };
+
+      $scope.setSwissdocMinorGroup = function (swissdoc, minorGroup) {
+        $scope.searchParams.swissdocMajorGroup = swissdoc;
+        $scope.searchParams.swissdocGroupLevel2 = minorGroup;
+        $scope.countJobs();
+        $state.go('education-search');
+      };
+
+      $scope.showSwissdocMinorGroup = function (ev, level, swissdocGroupLevel2) {
+        $mdDialog.show({
+            controller: swissdocDialogController,
+            templateUrl: 'views/template/swissdoc-list.html',
+            locals: {
+              level: level,
+              swissdocGroupLevel2: swissdocGroupLevel2
+            },
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true
+          })
+          .then(function (answer) {
+            if (answer > 0) {
+              $scope.setSwissdocMinorGroup(level, answer);
+            }
+          });
+      };
+      function swissdocDialogController($scope, $mdDialog, level, swissdocGroupLevel2) {
+        $scope.level = level;
+        $scope.swissdocGroupLevel2 = swissdocGroupLevel2;
+
+        $scope.hide = function () {
+          $mdDialog.hide();
+        };
+
+        $scope.answer = function (answer) {
+          $mdDialog.hide(answer);
+        };
+      }
 
       $scope.countJobs = function () {
         $scope.idle = true;
@@ -188,11 +233,6 @@
         return hour + ':' + minute;
       };
 
-      $scope.setSwissdocGroup = function (swissdoc) {
-        $scope.searchParams.educationGroup = swissdoc;
-        $state.go('education-search');
-      };
-
       function setNewCoords(coords) {
         LocationsService.getLocation(coords).success(function (nearestZip) {
             if (nearestZip.hits.total > 0) {
@@ -221,7 +261,7 @@
 
       $scope.$watchCollection('myCoords', function () {
         if ($rootScope.myCoords !== undefined && $scope.searchParams.currentCoords === undefined) {
-          $scope.searchParams.currentCoords = $rootScope.myCoords;
+          setNewCoords($rootScope.myCoords);
         }
       });
 
@@ -250,8 +290,8 @@
         $mdDialog.show(
           $mdDialog.alert()
             .parent(angular.element(document.body))
-            .content($translate.instant(errorKey))
-            .ariaLabel('Alert Dialog Demo')
+            .textContent($translate.instant(errorKey))
+            .ariaLabel($translate.instant(errorKey))
             .ok('OK')
         );
       };
@@ -268,16 +308,14 @@
         $scope.countJobs();
       };
 
-      $scope.resetSearchParams = function () {
-        return EducationsService.resetSearchParams();
-      };
+      // user isn't active anymore : reset search params
+      var resetListener = $rootScope.$on('resetSearchParams', function () {
+        EducationsService.resetSearchParams();
+        EducationsService.resetVisitedJobs();
+      });
 
-      if ($scope.searchParams.currentCoords !== undefined) {
-        setNewCoords($scope.searchParams.currentCoords);
-      }
-      else {
-        $scope.setMyLocation();
-      }
+      // unregister the state listener
+      $scope.$on('$destroy', resetListener);
 
       // tour
       $scope.currentStep = -1;

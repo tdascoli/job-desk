@@ -2,8 +2,9 @@
 
   <div class="category" flex="33" flex-sm="50" flex-xs="100" ng-repeat="swissdoc in swissdocMajorGroup">
     <img ng-click="setSwissdocGroup(swissdoc.code)" class="iscoIcon" ng-src="assets/images/{{swissdoc.img}}" alt="swissdoc" />
-    <div class="category-title">
-      <span ng-click="setSwissdocGroup(swissdoc.code)" class="md-title" translate="{{swissdoc.text}}"></span>
+    <div class="category-title" layout="row">
+      <md-button class="md-square md-raised" ng-click="showSwissdocMinorGroup($event,swissdoc.code,swissdocGroupLevel2)"><md-icon>help_outline</md-icon></md-button>
+      <span flex="90" ng-click="setSwissdocGroup(swissdoc.code)" class="md-title" translate="{{swissdoc.text}}"></span>
     </div>
   </div>
 

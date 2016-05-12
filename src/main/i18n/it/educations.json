@@ -8,9 +8,12 @@
       "distance":"Distanza {{value}} km",
       "travelTime":"Durata del viaggio {{value}} h",
       "distanceTypeDistance":"Distanza in km",
-      "distanceTypeTravelTime":"Durata del viaggio in TP in ore",
+      "distanceTypeTransport":"Durata del viaggio in TP in ore",
+      "distanceTypeDrive":"[IT] Durata del viaggio con auto in ore",
+      "distanceTypeBike":"[IT] Durata del viaggio con bicicletta in ore",
       "language":"Lingua del corso",
-      "allLanguages":"Tutte le lingue"
+      "allLanguages":"Tutte le lingue",
+      "close":"Chiudi"
     },
     "result": {
       "sorting":"Classificazione",

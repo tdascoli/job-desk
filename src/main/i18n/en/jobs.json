@@ -10,6 +10,7 @@
       "distanceTypeDistance":"Distance in km",
       "distanceTypeTransport":"Public transport travel time in hrs",
       "distanceTypeDrive":"[EN] Drive travel time in hrs",
+      "distanceTypeBike":"[EN] Drive travel time in hrs",
       "onlineSince":"Online since {{value}} days",
       "onlineSinceOneDay":"Online since 1 day ago",
       "allJobs":"All jobs",
