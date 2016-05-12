@@ -93,6 +93,7 @@ Query/Filter/Sort
 * https://cordova.apache.org/
 * follow the steps (except step 2, there create folder "app"): https://cordova.apache.org/#getstarted
 * before running the app, run `$ grunt build-app`
+* todo: build the app
 
 * Android - currently alpha
 * iOS - not yet implemented
