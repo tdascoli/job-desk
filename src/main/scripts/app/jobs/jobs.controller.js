@@ -264,6 +264,17 @@
         return $translate.instant(key);
       };
 
+      // tour
+      $scope.currentStep = -1;
+      $scope.tourTranslate = function (key) {
+        return $translate.instant(key);
+      };
+      $scope.tourEnded = function () {
+        $scope.currentStep = -1;
+      };
+      $scope.startTour = function () {
+        $scope.currentStep = 0;
+      };
     });
 }());
 

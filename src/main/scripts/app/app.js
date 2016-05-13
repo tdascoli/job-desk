@@ -49,11 +49,11 @@
     $mdThemingProvider.theme('toast-success');
     $mdThemingProvider.theme('toast-error');
 
-    $mdThemingProvider.theme('jobs').primaryPalette('light-blue').accentPalette('light-green');
+    $mdThemingProvider.theme('jobs').primaryPalette('blue', {'default':'700'}).accentPalette('blue-grey');
 
-    $mdThemingProvider.theme('educations').primaryPalette('light-green').accentPalette('blue-grey');
+    $mdThemingProvider.theme('educations').primaryPalette('light-green', {'default':'700'}).accentPalette('blue-grey');
 
-    $mdThemingProvider.theme('apprenticeships').primaryPalette('cyan').accentPalette('blue-grey');
+    $mdThemingProvider.theme('apprenticeships').primaryPalette('cyan', {'default':'700'}).accentPalette('blue-grey');
 
     $mdThemingProvider.setDefaultTheme('jobs');
 

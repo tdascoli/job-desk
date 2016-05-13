@@ -81,7 +81,7 @@ https://github.com/katebe/angular-presence
 
 Query/Filter/Sort
 
-* Query: https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl.html
+* Query: https://www.elastic.co/guide/encordova/elasticsearch/reference/1.4/query-dsl.html
 * Filter: https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl-filters.html
   * GeoLocation: https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl-geo-distance-filter.html
   * Geo Polygon Filer: https://www.elastic.co/guide/en/elasticsearch/reference/1.7/query-dsl-geo-polygon-filter.html
@@ -94,6 +94,9 @@ Query/Filter/Sort
 * follow the steps (except step 2, there create folder "app"): https://cordova.apache.org/#getstarted
 * before running the app, run `$ grunt build-app`
 * todo: build the app
+
+* Splashscreen: https://github.com/AlexDisler/cordova-splash
+* Icons: https://github.com/AlexDisler/cordova-icon
 
 * Android - currently alpha
 * iOS - not yet implemented

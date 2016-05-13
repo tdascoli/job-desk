@@ -421,8 +421,7 @@ label {
   z-index: 10;
 }
 .jd-loading-screen .animated-container {
-  background-color: #03A9F4;
-  /*E1F5FE;*/
+  background-color: #1976d2;
   bottom: 0;
   left: 0;
   opacity: 1 !important;
@@ -500,16 +499,16 @@ md-toast.md-toast-error-theme .md-toast-content {
 .md-jobs-theme .leaflet-marker-icon.material-icons,
 .md-educations-theme .leaflet-marker-icon.material-icons,
 .md-apprenticeships-theme .leaflet-marker-icon.material-icons {
-  color: #03a9f4 !important;
+  color: #1976d2 !important;
   margin-left: -17px !important;
   margin-top: -32px !important;
   font-size: 34px;
 }
 .md-educations-theme .leaflet-marker-icon.material-icons {
-  color: #8bc34a !important;
+  color: #689f38 !important;
 }
 .md-apprenticeships-theme .leaflet-marker-icon.material-icons {
-  color: #00bcd4 !important;
+  color: #0097a7 !important;
 }
 .leaflet-top,
 .leaflet-bottom {
@@ -534,7 +533,7 @@ md-toast.md-toast-error-theme .md-toast-content {
 .tour-tip {
   display: none;
   position: absolute;
-  background-color: #03a9f4;
+  background-color: #1976d2;
   color: #fff;
   z-index: 1001;
   top: 0;
@@ -545,10 +544,10 @@ md-toast.md-toast-error-theme .md-toast-content {
   border-radius: 4px;
 }
 .md-apprenticeships-theme.tour-tip {
-  background-color: #00bcd4;
+  background-color: #0097a7;
 }
 .md-educations-theme.tour-tip {
-  background-color: #8bc34a !important;
+  background-color: #689f38 !important;
 }
 .tour-tip .tour-arrow {
   display: block;
@@ -561,48 +560,48 @@ md-toast.md-toast-error-theme .md-toast-content {
 .tour-tip .tour-arrow.tt-top {
   border-style: solid;
   bottom: -27px;
-  border-color: #03a9f4 transparent transparent !important;
+  border-color: #1976d2 transparent transparent !important;
 }
 .md-apprenticeships-theme.tour-tip .tour-arrow.tt-top {
-  border-color: #00bcd4 transparent transparent !important;
+  border-color: #0097a7 transparent transparent !important;
 }
 .md-educations-theme.tour-tip .tour-arrow.tt-top {
-  border-color: #8bc34a transparent transparent !important;
+  border-color: #689f38 transparent transparent !important;
 }
 .tour-tip .tour-arrow.tt-bottom {
   border-style: solid;
   top: -28px;
-  border-color: transparent transparent #03a9f4 !important;
+  border-color: transparent transparent #1976d2 !important;
 }
 .md-apprenticeships-theme.tour-tip .tour-arrow.tt-bottom {
-  border-color: transparent transparent #00bcd4 !important;
+  border-color: transparent transparent #0097a7 !important;
 }
 .md-educations-theme.tour-tip .tour-arrow.tt-bottom {
-  border-color: transparent transparent #8bc34a !important;
+  border-color: transparent transparent #689f38 !important;
 }
 .tour-tip .tour-arrow.tt-right {
   border-style: solid;
   left: -27px;
   top: 28px;
-  border-color: transparent #03a9f4 transparent transparent !important;
+  border-color: transparent #1976d2 transparent transparent !important;
 }
 .md-apprenticeships-theme.tour-tip .tour-arrow.tt-right {
-  border-color: transparent #00bcd4 transparent transparent !important;
+  border-color: transparent #0097a7 transparent transparent !important;
 }
 .md-educations-theme.tour-tip .tour-arrow.tt-right {
-  border-color: transparent #8bc34a transparent transparent !important;
+  border-color: transparent #689f38 transparent transparent !important;
 }
 .tour-tip .tour-arrow.tt-left {
   border-style: solid;
   left: 100%;
   top: 28px;
-  border-color: transparent transparent transparent #03a9f4 !important;
+  border-color: transparent transparent transparent #1976d2 !important;
 }
 .md-apprenticeships-theme.tour-tip .tour-arrow.tt-left {
-  border-color: transparent transparent transparent #00bcd4 !important;
+  border-color: transparent transparent transparent #0097a7 !important;
 }
 .md-educations-theme.tour-tip .tour-arrow.tt-left {
-  border-color: transparent transparent transparent #8bc34a !important;
+  border-color: transparent transparent transparent #689f38 !important;
 }
 .tour-tip .tour-content-wrapper {
   padding: .5em .75em 0 .75em;
