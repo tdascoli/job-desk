@@ -94,8 +94,8 @@ Query/Filter/Sort
 * follow the steps (create folder called "app" or change path in Gruntfile.js): https://cordova.apache.org/#getstarted
 * before running the app, run `$ grunt build-app`
 * Build and Sign the App:
-** cordova run android --release -- --keystore keystore-path/keystore-name.keystore --storePassword=password --alias=alias-name --password=password
-** zipalign -v 4 android-release-unaligned.apk project-name.apk 
+  * cordova run android --release -- --keystore keystore-path/keystore-name.keystore --storePassword=password --alias=alias-name --password=password
+  * zipalign -v 4 android-release-unaligned.apk project-name.apk 
 
 * Splashscreen: https://github.com/AlexDisler/cordova-splash
 * Icons: https://github.com/AlexDisler/cordova-icon
