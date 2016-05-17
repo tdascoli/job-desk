@@ -6,13 +6,13 @@ angular.module('job-desk')
 
 .constant('VERSION', 'src/main')
 
-.constant('baseUrl', 'http://localhost:9000/jobdesk')
+.constant('baseUrl', 'http://arrlee.jobarea.ch/jobdesk')
 
-.constant('arrleeUrl', 'http://localhost:9000/arrlee')
+.constant('arrleeUrl', 'http://arrlee.jobarea.ch/arrlee')
 
-.constant('travelTimeUrl', 'http://localhost:9000/api')
+.constant('travelTimeUrl', 'http://arrlee.jobarea.ch/api')
 
-.constant('googleAPIUrl', 'http://localhost:9000/maps')
+.constant('googleAPIUrl', 'http://arrlee.jobarea.ch/maps')
 
 .constant('supportedLanguages', ['de','fr','it','en'])
 

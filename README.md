@@ -91,14 +91,16 @@ Query/Filter/Sort
 
 *Apache Cordova*
 * https://cordova.apache.org/
-* follow the steps (except step 2, there create folder "app"): https://cordova.apache.org/#getstarted
+* follow the steps (create folder called "app" or change path in Gruntfile.js): https://cordova.apache.org/#getstarted
 * before running the app, run `$ grunt build-app`
-* todo: build the app
+* Build and Sign the App:
+** cordova run android --release -- --keystore keystore-path/keystore-name.keystore --storePassword=password --alias=alias-name --password=password
+** zipalign -v 4 android-release-unaligned.apk project-name.apk 
 
 * Splashscreen: https://github.com/AlexDisler/cordova-splash
 * Icons: https://github.com/AlexDisler/cordova-icon
 
-* Android - currently alpha
-* iOS - not yet implemented
+* Android - currently public alpha
+* iOS - not yet published
 * Others - no plan for further os 
   
