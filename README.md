@@ -69,10 +69,6 @@ https://material.angularjs.org
 * Iconfont: https://github.com/google/material-design-icons/tree/master/iconfont
 * Spec: https://www.google.com/design/spec/material-design/introduction.html
 
-### AngularJS-PDF
-(wip using the internal rendering engine, cause of cross-site scripting error)
-* angularjs-pdf: https://github.com/sayanee/angularjs-pdf
-
 ### angular-presence
 Detect user activity
 https://github.com/katebe/angular-presence
@@ -87,20 +83,62 @@ Query/Filter/Sort
   * Geo Polygon Filer: https://www.elastic.co/guide/en/elasticsearch/reference/1.7/query-dsl-geo-polygon-filter.html
 * Sort: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html
 
-## Mobile-App (wip)
+* http://stackoverflow.com/questions/29741641/elasticsearch-starts-with-first-word-in-phrases 
+* https://www.elastic.co/guide/en/elasticsearch/guide/current/configuring-analyzers.html
+* http://stackoverflow.com/questions/19758335/error-when-trying-to-update-the-settings
+```
+{
+    "settings": {
+          "analysis": {
+              "analyzer": {
+                  "analyzer_startswith": {
+                      "tokenizer": "keyword",
+                      "filter": "lowercase"
+                  }
+              }
+          }
+    },
+    "mappings": {
+        "location": {
+            "properties": {
+                "name": {
+                    "search_analyzer": "analyzer_startswith",
+                    "index_analyzer": "analyzer_startswith",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
+```
+
+## Mobile-App
+
+Android - currently public alpha
+iOS - not yet published
+Others - no plan for further os 
 
 *Apache Cordova*
+
 * https://cordova.apache.org/
 * follow the steps (create folder called "app" or change path in Gruntfile.js): https://cordova.apache.org/#getstarted
 * before running the app, run `$ grunt build-app`
-* Build and Sign the App:
-  * cordova run android --release -- --keystore keystore-path/keystore-name.keystore --storePassword=password --alias=alias-name --password=password
-  * zipalign -v 4 android-release-unaligned.apk project-name.apk 
 
+*Android*
+
+* Guide: https://cordova.apache.org/docs/de/6.x/guide/platforms/android/index.html
 * Splashscreen: https://github.com/AlexDisler/cordova-splash
 * Icons: https://github.com/AlexDisler/cordova-icon
+* Build and Sign the App:
+  * `$ cordova run android --release -- --keystore keystore-path/keystore-name.keystore --storePassword=password --alias=alias-name --password=password`
+  * `$ zipalign -v 4 android-release-unaligned.apk project-name.apk` 
 
-* Android - currently public alpha
-* iOS - not yet published
-* Others - no plan for further os 
+*iOS*
+
+* Guide: https://cordova.apache.org/docs/de/6.x/guide/platforms/ios/index.html
+* Splashscreen: https://github.com/AlexDisler/cordova-splash
+* Icons: https://github.com/AlexDisler/cordova-icon
+* Build and Sign the App:
+  * ...
+  * ...
   

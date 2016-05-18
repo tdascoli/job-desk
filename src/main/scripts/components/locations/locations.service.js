@@ -5,6 +5,10 @@
   angular.module('job-desk')
     .factory('LocationsService', function ($http, baseUrl, googleAPIUrl) {
 
+      function isInt(value) {
+        var x = parseFloat(value);
+        return !isNaN(value) && (x | 0) === x;
+      }
       function getLocation(coords) {
         var filter = {
           'size': 1,
@@ -54,21 +58,11 @@
         return $http.post(baseUrl + '/location/_search', filter);
       }
 
-      // todo autocompleter
-      /*
+      // todo autocompleter (zip and name string tokenizer and maybe AND)
       function getLocationAutocompleter(value, coords) {
         var filter = {
-          'size': 10,
-          'query': {
-            'filtered': {
-              'query': {
-                'match_all': {}
-              },
-              'filter': {
-                'prefix' : { 'name' : value }
-              }
-            }
-          },
+          'size': 6,
+          'query': {},
           'sort': [
             {
               '_geo_distance': {
@@ -80,10 +74,17 @@
             }
           ]
         };
-
+        if (!value){
+          filter.query = { 'match_all': {}};
+        }
+        else if (isInt(value)) {
+          filter.query = { 'match_phrase_prefix': {'zip': { 'query': value}}};
+        }
+        else {
+          filter.query = { 'match_phrase_prefix': {'name': { 'query': value}}};
+        }
         return $http.post(baseUrl + '/location/_search', filter);
       }
-      */
 
       // google geocoding api key: AIzaSyD2zQC5PTp8ZxkefDSgTQJB0_KGDFgiISE
       // http://maps.googleapis.com/maps/api/geocode/ json ? address='' & key=AIzaSyD2zQC5PTp8ZxkefDSgTQJB0_KGDFgiISE
@@ -117,6 +118,7 @@
         getLocation: getLocation,
         getLocationFromZip: getLocationFromZip,
         getLocationFromAddress: getLocationFromAddress,
+        getLocationAutocompleter: getLocationAutocompleter,
         getDefaultLocation: getDefaultLocation,
         checkLocation: checkLocation
       };

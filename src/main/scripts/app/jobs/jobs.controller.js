@@ -36,6 +36,7 @@
       };
 
       $scope.currentZip = $scope.searchParams.currentZip;
+      $scope.nearestZip = $scope.searchValues.nearestZip;
       $scope.idle = false;
       $scope.lastOpenedJob = {'scope': null};
 
@@ -175,10 +176,12 @@
         LocationsService.getLocation(coords).success(function (nearestZip) {
             if (nearestZip.hits.total > 0) {
               $scope.searchParams.currentCoords = coords;
-              $scope.searchParams.currentZip = parseInt(nearestZip.hits.hits[0]._source.zip, 10);
 
+              $scope.searchParams.currentZip = parseInt(nearestZip.hits.hits[0]._source.zip, 10);
               $scope.currentZip = $scope.searchParams.currentZip;
-              $scope.searchValues.nearestZip = nearestZip.hits.hits[0]._source.zip + ' (' + nearestZip.hits.hits[0]._source.name + ')';
+
+              $scope.searchValues.nearestZip = nearestZip.hits.hits[0]._source.zip + ' ' + nearestZip.hits.hits[0]._source.name;
+              $scope.nearestZip = $scope.searchValues.nearestZip;
 
               $scope.countJobs();
             }
@@ -197,7 +200,9 @@
       };
 
       $scope.setCurrentCoords = function (coords) {
-        setNewCoords(coords);
+        if (coords!==undefined && coords!==null) {
+          setNewCoords(coords);
+        }
       };
 
       $scope.$watchCollection('myCoords', function () {
@@ -233,18 +238,6 @@
             .ok('OK')
         );
       };
-
-      // todo location autocompleter
-      /*
-      $scope.locationSearch = function (value) {
-        LocationsService.getLocationAutocompleter(value,$scope.searchParams.currentCoords).success(function (locations) {
-            return locations;
-          })
-          .error(function (error) {
-            console.error(error);
-          });
-      };
-      */
 
       $scope.sort = 0;
       $scope.sortList = [

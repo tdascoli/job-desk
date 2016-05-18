@@ -52,8 +52,7 @@
     "leaflet": "0.7.7",
     "Leaflet.label": "0.2.1",
     "leaflet.snogylop":"0.2.0",
-    "proj4":"latest",
-    "ng-loading":"0.0.5"
+    "proj4":"latest"
   },
   "devDependencies": {
     "angular-mocks": "1.4.5",
