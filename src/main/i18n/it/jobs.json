@@ -9,8 +9,8 @@
       "travelTime":"Durata del viaggio {{value}} h",
       "distanceTypeDistance":"Distanza in km",
       "distanceTypeTransport":"Durata del viaggio in TP in ore",
-      "distanceTypeDrive":"[IT] Durata del viaggio con auto in ore",
-      "distanceTypeBike":"[IT] Durata del viaggio con bicicletta in ore",
+      "distanceTypeDrive":"Durata del viaggio in automobile",
+      "distanceTypeBike":"Durata del viaggio in bicicletta",
       "onlineSince":"Online da {{value}} giorni",
       "onlineSinceOneDay":"Online da 1 giorno",
       "allJobs":"Tutti gli impieghi",
@@ -18,13 +18,13 @@
       "foundJobs":"Impieghi trovati {{value}}",
       "close":"Chiudi",
       "tour":{
-        "jobGroups":"[IT] Falls erwünscht, verfeinern Sie die Suche mit einer Unterrubrik",
-        "location":"[IT] Hier ist Ihr Standort",
-        "distanceType":"[IT] Wählen Sie zwischen Reisedauer mit ÖV in Stunden oder Distanz in Kilometer",
-        "distanceTypeParameter":"[IT] Hier können Sie die Reisedauer / Distanz verlängern oder verkürzen",
-        "changeZip":"[IT] Falls erwünscht, können Sie den Standort verändern (PLZ eingeben oder auf die Karte tippen)",
-        "resetLocation":"[IT] Mit Klick auf dieses Symbol, wird Ihr Standort wieder zurückgesetzt.",
-        "countJobs":"[IT] Anzahl gefundene Jobs mit Ihren Suchkriterien, weiter zur Trefferliste mit der Pfeiltaste"
+        "jobGroups":"Possibilità di perfezione della la ricerca con un sottotitolo",
+        "location":"Posizione geografica dell'utente",
+        "distanceType":"Possibilità di scelta tra la durata o la distanza chilometrica del viaggio",
+        "distanceTypeParameter":"Possibilità di variazione tra la durata o distanza del viaggio",
+        "changeZip":"Possibilità di impostazione della posizione geografica",
+        "resetLocation":"Riempostazione della posizione geografica.",
+        "countJobs":"Numero di impieghi trovati con i criteri di ricerca; continua per elenco dei risultati"
       }
     },
     "result": {

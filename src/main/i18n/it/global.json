@@ -23,8 +23,8 @@
     },
     "messages": {
       "update": {
-        "information":"[IT] A new version is available!",
-        "action":"[IT] Update"
+        "information":"Una nuova versione è disponibile.",
+        "action":"Aggiornamento"
       }
     },
     "codes": {
@@ -42,7 +42,7 @@
       }
     },
     "tour":{
-      "next":"[IT] Next",
+      "next":"Continuare",
       "close":"Chiudi"
     }
   }
