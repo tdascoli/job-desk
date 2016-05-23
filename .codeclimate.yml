@@ -20,3 +20,4 @@ exclude_paths:
 - src/test/*
 - server.js
 - Gruntfile.js
+- src/main/scripts/aspects/templates.js
