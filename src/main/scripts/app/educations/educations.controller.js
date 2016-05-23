@@ -199,7 +199,7 @@
 
       function findByDriveTime() {
         TravelTimeService.getTravelTimePolygon($scope.searchParams.currentCoords,$scope.searchParams.travelTime,$scope.searchParams.distanceType).success(function (result) {
-            $scope.traveltime=result;
+            $scope.searchValues.heatmap = result;
             $scope.searchParams.shape=result.response.geometry.coordinates;
             find(false);
           })

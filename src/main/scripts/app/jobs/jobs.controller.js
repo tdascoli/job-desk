@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('job-desk')
-    .controller('JobsCtrl', function ($scope, $rootScope, $state, $filter, $translate, lodash, JobsService, LocationsService, ArrleeService, TravelTimeService, $mdDialog) {
+    .controller('JobsCtrl', function ($scope, $rootScope, $state, $filter, $translate, lodash, JobsService, LocationsService, ArrleeService, TravelTimeService, $mdDialog, $mdBottomSheet) {
       $rootScope.searchType = 'jobs';
       $scope.searchValues = JobsService.search;
       $scope.searchParams = JobsService.params;
@@ -135,7 +135,7 @@
 
       function findByDriveTime() {
         TravelTimeService.getTravelTimePolygon($scope.searchParams.currentCoords,$scope.searchParams.travelTime,$scope.searchParams.distanceType).success(function (result) {
-          $scope.traveltime=result;
+          $scope.searchValues.heatmap = result;
           $scope.searchParams.shape=result.response.geometry.coordinates;
           find(false);
         })
@@ -276,6 +276,17 @@
       };
       $scope.startTour = function () {
         $scope.currentStep = 0;
+      };
+
+      // mobile filter
+      $scope.isMobile=$rootScope.mobile;
+      $scope.showListBottomSheet = function() {
+        $mdBottomSheet.show({
+          templateUrl: 'views/template/job-mobile-filter.html',
+          scope: $scope,
+          preserveScope: true,
+          parent: 'body'
+        });
       };
     });
 }());

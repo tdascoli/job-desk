@@ -85,7 +85,7 @@
         element.css('width', $(document).width());
         element.css('height', ($(window).height() - ($('#topnav').outerHeight() + $('#filter').outerHeight())) - 25);
         if ($rootScope.mobile) {
-          element.css('height', $(document).width());
+          element.css('height', ($(window).height() - ($('#topnav').outerHeight() + $('#mobile-filter').outerHeight())));
         }
 
         //*** geo-layer (my-position)
@@ -159,22 +159,16 @@
           }
         });
 
+        // radius only
         scope.$watchCollection('searchParams.distance', function () {
-          if (search_layer.hasLayer(radius_layer)) {
+          if (search_layer.hasLayer(radius_layer) && scope.searchParams.distanceType === 'distance') {
             radius_layer.setRadius((scope.searchParams.distance * 1000));
           }
         });
 
-        // todo traveltime/heatmap?? naming!! travelTime!==drive??
-        scope.$watchCollection('traveltime', function () {
-          if (scope.traveltime !== undefined) {
-            traveltime_layer.clearLayers();
-            traveltime_layer.addData(scope.traveltime.response.geometry);
-          }
-        });
-
+        // Arrlee
         scope.$watchCollection('searchValues.heatmap', function () {
-          if (scope.searchValues.heatmap !== undefined) {
+          if (scope.searchValues.heatmap !== undefined && scope.searchParams.distanceType === 'transport') {
             var geometries = [];
             var coordinates = [[], []];
             var type = 'MultiPolygon';
@@ -246,6 +240,10 @@
             heatmap_layer.clearLayers();
             heatmap_layer.addData(geometries);
           }
+          else if (scope.searchValues.heatmap !== undefined && (scope.searchParams.distanceType === 'drive' || scope.searchParams.distanceType === 'bike')) {
+            traveltime_layer.clearLayers();
+            traveltime_layer.addData(scope.searchValues.heatmap.response.geometry);
+          }
         });
       }
     };
@@ -307,7 +305,6 @@
       }
     };
   });
-
 
   module.directive('languageSwitcher', ['$translate', 'supportedLanguages', function ($translate, supportedLanguages) {
     return {

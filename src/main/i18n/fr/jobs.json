@@ -17,6 +17,7 @@
       "parttimeJobs":"Emplois à temps partiel uniquement",
       "foundJobs":"Emplois trouvés {{value}}",
       "close":"Fermer",
+      "filter":"Filtre de recherche",
       "tour":{
         "jobGroups":"Si souhaité, vous pouvez affiner la recherche avec une sous-catégorie",
         "location":"Votre emplacement se trouve ici",

@@ -17,6 +17,7 @@
       "parttimeJobs":"Solo impieghi a tempo parziale",
       "foundJobs":"Impieghi trovati {{value}}",
       "close":"Chiudi",
+      "filter":"Perfeziona la ricerca",
       "tour":{
         "jobGroups":"Possibilità di perfezione della la ricerca con un sottotitolo",
         "location":"Posizione geografica dell'utente",

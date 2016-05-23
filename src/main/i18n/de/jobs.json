@@ -17,6 +17,7 @@
       "parttimeJobs":"Nur Teilzeit Jobs",
       "foundJobs":"Gefundene Jobs: {{value}}",
       "close":"Schliessen",
+      "filter":"Suchfilter",
       "tour":{
         "jobGroups":"Falls erwünscht, verfeinern Sie die Suche mit einer Unterrubrik.",
         "location":"Hier ist Ihr Standort.",
