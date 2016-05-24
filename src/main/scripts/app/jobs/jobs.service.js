@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('job-desk')
-    .factory('JobsService', function ($http, baseUrl, ConfigService, lodash) {
+    .factory('JobsService', function ($http, $rootScope, baseUrl, ConfigService, lodash) {
 
       var search = {};
       var params = {};
@@ -68,6 +68,11 @@
       }
 
       function find() {
+
+        if (params.currentCoords === undefined) {
+          params.currentCoords = $rootScope.myCoords;
+        }
+
         if (params.zips!==undefined || params.shape!==undefined || params.currentCoords!==undefined) {
           var filter = {
             'from': params.from,
@@ -166,6 +171,7 @@
         search: search,
         params: params,
         resetSearchParams: resetSearchParams,
+        resetSearch: resetSearch,
         addVisitedJob: addVisitedJob,
         isVisited: isVisited,
         resetVisitedJobs: resetVisitedJobs

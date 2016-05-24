@@ -8,7 +8,7 @@
       $scope.searchValues = JobsService.search;
       $scope.searchParams = JobsService.params;
       $scope.searchParams.from = 0;
-      
+
       $scope.distanceOptions = {min: 10, max: 150, step: 10, value: 30};
       $scope.transportOptions = {min: 10, max: 120, step: 5, value: 30};
       $scope.driveOptions = {min: 10, max: 60, step: 5, value: 30};
@@ -261,6 +261,7 @@
       var resetListener = $rootScope.$on('resetSearchParams', function () {
         JobsService.resetSearchParams();
         JobsService.resetVisitedJobs();
+        $scope.setMyLocation();
       });
 
       // unregister the state listener
