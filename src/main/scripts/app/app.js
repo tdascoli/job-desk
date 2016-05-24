@@ -9,6 +9,7 @@
     'ngResource',
     'ngSanitize',
     'ngCookies',
+    'ngAnimate',
     'ngMaterial',
     'ngLodash',
     'pascalprecht.translate',
@@ -48,11 +49,11 @@
     $mdThemingProvider.theme('toast-success');
     $mdThemingProvider.theme('toast-error');
 
-    $mdThemingProvider.theme('jobs').primaryPalette('light-blue').accentPalette('blue-grey');
+    $mdThemingProvider.theme('jobs').primaryPalette('blue', {'default':'700'}).accentPalette('blue-grey');
 
-    $mdThemingProvider.theme('educations').primaryPalette('indigo').accentPalette('blue-grey');
+    $mdThemingProvider.theme('educations').primaryPalette('light-green', {'default':'700'}).accentPalette('blue-grey');
 
-    $mdThemingProvider.theme('apprenticeships').primaryPalette('teal').accentPalette('blue-grey');
+    $mdThemingProvider.theme('apprenticeships').primaryPalette('cyan', {'default':'700'}).accentPalette('blue-grey');
 
     $mdThemingProvider.setDefaultTheme('jobs');
 
@@ -104,6 +105,7 @@
   app.run(function ($http, geolocation, $rootScope, $state, $cookies, LocationsService, ConfigService, UpdateService, PresenceService, ENV) {
 
     $rootScope.mobile = $.browser.mobile;
+    $rootScope.searchType = 'jobs';
 
     $rootScope.current = function () {
       if ($state.$current.url.source === '/' || $state.$current.url.source === '/jobs' || $state.$current.url.source === '/apprenticeships' || $state.$current.url.source === '/educations') {

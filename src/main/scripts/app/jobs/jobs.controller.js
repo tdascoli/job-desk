@@ -2,11 +2,10 @@
 
   'use strict';
 
-  //** todo Location stuff in external controller, how to implement?! three functions in three controllers for the same ex. setNewCoords
-
   angular.module('job-desk')
-    .controller('JobsCtrl', function ($scope, $rootScope, $state, $filter, $translate, lodash, JobsService, LocationsService, ArrleeService, TravelTimeService, $mdDialog) {
+    .controller('JobsCtrl', function ($scope, $rootScope, $state, $filter, $translate, lodash, JobsService, LocationsService, ArrleeService, TravelTimeService, $mdDialog, $mdBottomSheet) {
       $rootScope.searchType = 'jobs';
+      $scope.searchValues = JobsService.search;
       $scope.searchParams = JobsService.params;
       $scope.searchParams.from = 0;
 
@@ -15,15 +14,15 @@
       $scope.driveOptions = {min: 10, max: 60, step: 5, value: 30};
 
       $scope.iscoMajorGroup = [
-        {text: 'isco.majorGroups.1', code: '1', img: 'jobs/isco1.png'},
-        {text: 'isco.majorGroups.2', code: '2', img: 'jobs/isco2.png'},
-        {text: 'isco.majorGroups.3', code: '3', img: 'jobs/isco3.png'},
-        {text: 'isco.majorGroups.4', code: '4', img: 'jobs/isco4.png'},
-        {text: 'isco.majorGroups.5', code: '5', img: 'jobs/isco5.png'},
-        {text: 'isco.majorGroups.6', code: '6', img: 'jobs/isco6.png'},
-        {text: 'isco.majorGroups.7', code: '7', img: 'jobs/isco7.png'},
+        {text: 'isco.majorGroups.9', code: '9', img: 'jobs/isco9.png'},
         {text: 'isco.majorGroups.8', code: '8', img: 'jobs/isco8.png'},
-        {text: 'isco.majorGroups.9', code: '9', img: 'jobs/isco9.png'}];
+        {text: 'isco.majorGroups.7', code: '7', img: 'jobs/isco7.png'},
+        {text: 'isco.majorGroups.6', code: '6', img: 'jobs/isco6.png'},
+        {text: 'isco.majorGroups.5', code: '5', img: 'jobs/isco5.png'},
+        {text: 'isco.majorGroups.4', code: '4', img: 'jobs/isco4.png'},
+        {text: 'isco.majorGroups.3', code: '3', img: 'jobs/isco3.png'},
+        {text: 'isco.majorGroups.2', code: '2', img: 'jobs/isco2.png'},
+        {text: 'isco.majorGroups.1', code: '1', img: 'jobs/isco1.png'}];
       $scope.iscoMinorGroups = {
         '1': ['111', '112', '121', '122', '130', '131', '132', '133', '134', '141', '142', '143'],
         '2': ['211', '212', '213', '214', '215', '216', '221', '222', '223', '224', '225', '226', '231', '232', '233', '234', '235', '241', '242', '243', '251', '252', '261', '262', '263', '264', '265'],
@@ -36,24 +35,23 @@
         '9': ['911', '912', '921', '931', '932', '933', '941', '951', '952', '961', '962']
       };
 
-      $scope.count = 0;
-      $scope.nearestZip = '';
       $scope.currentZip = $scope.searchParams.currentZip;
-      $scope.heatmap = undefined;
+      $scope.nearestZip = $scope.searchValues.nearestZip;
       $scope.idle = false;
       $scope.lastOpenedJob = {'scope': null};
 
       $scope.setIscoGroup = function (isco) {
         $scope.searchParams.iscoMajorGroup = isco;
         $scope.searchParams.iscoGroupLevel3 = '';
+        $scope.countJobs();
         $state.go('job-search');
       };
       $scope.setIscoMinorGroup = function (majorGroup, minorGroup) {
         $scope.searchParams.iscoMajorGroup = majorGroup;
         $scope.searchParams.iscoGroupLevel3 = minorGroup;
+        $scope.countJobs();
         $state.go('job-search');
       };
-
       $scope.showIscoUnitGroup = function (ev, level, iscoMinorGroups) {
         $mdDialog.show({
             controller: iscoDialogController,
@@ -72,7 +70,6 @@
             }
           });
       };
-
       function iscoDialogController($scope, $mdDialog, level, iscoMinorGroups) {
         $scope.level = level;
         $scope.iscoMinorGroups = iscoMinorGroups;
@@ -94,7 +91,7 @@
           //** countJobs with travelTime parameter
           findByTravelTime();
         }
-        else if ($scope.searchParams.distanceType === 'drive') {
+        else if ($scope.searchParams.distanceType === 'drive' || $scope.searchParams.distanceType === 'bike') {
           //** countJobs with travelTime parameter
           findByDriveTime();
         }
@@ -105,13 +102,13 @@
       };
 
       $scope.loadMoreResults = function () {
-        if ($scope.searchParams.from < $scope.count) {
+        if ($scope.searchParams.from < $scope.searchValues.count) {
           $scope.idle = true;
 
           var from = $scope.searchParams.from;
           from += $scope.searchParams.size;
-          if (from > $scope.count) {
-            from = $scope.count;
+          if (from > $scope.searchValues.count) {
+            from = $scope.searchValues.count;
           }
           $scope.searchParams.from = from;
           find(true);
@@ -120,7 +117,7 @@
 
       function findByTravelTime() {
         ArrleeService.getHeatmap($scope.searchParams.currentZip, $scope.searchParams.travelTime).success(function (result) {
-            $scope.heatmap = result.heatmap;
+            $scope.searchValues.heatmap = result.heatmap;
             ArrleeService.getZips($scope.searchParams.travelTime).success(function (result) {
                 // todo trackjs!! error
                 $scope.searchParams.zips = lodash.map(result.POI, 'name');
@@ -128,26 +125,22 @@
                 find(false);
               })
               .error(function (error) {
-                // todo error handling
-                console.log(error);
+                console.error(error);
               });
           })
           .error(function (error) {
-            // todo error handling
-            console.log(error);
+            console.error(error);
           });
       }
 
       function findByDriveTime() {
-        TravelTimeService.getTravelTimePolygon($scope.searchParams.currentCoords,$scope.searchParams.travelTime).success(function (result) {
-          // todo find?!
-          $scope.traveltime=result;
+        TravelTimeService.getTravelTimePolygon($scope.searchParams.currentCoords,$scope.searchParams.travelTime,$scope.searchParams.distanceType).success(function (result) {
+          $scope.searchValues.heatmap = result;
           $scope.searchParams.shape=result.response.geometry.coordinates;
           find(false);
         })
         .error(function (error) {
-          // todo error handling
-          console.log(error);
+          console.error(error);
         });
       }
 
@@ -159,13 +152,13 @@
             else {
               $rootScope.jobs = result.hits.hits;
             }
-            $scope.count = result.hits.total;
+            //$scope.count = result.hits.total;
+            $scope.searchValues.count = result.hits.total;
             $scope.idle = false;
           })
           .error(function (error) {
             $scope.idle = false;
-            // todo error handling
-            console.log(error);
+            console.error(error);
           });
       }
 
@@ -183,9 +176,12 @@
         LocationsService.getLocation(coords).success(function (nearestZip) {
             if (nearestZip.hits.total > 0) {
               $scope.searchParams.currentCoords = coords;
+
               $scope.searchParams.currentZip = parseInt(nearestZip.hits.hits[0]._source.zip, 10);
               $scope.currentZip = $scope.searchParams.currentZip;
-              $scope.nearestZip = nearestZip.hits.hits[0]._source.zip + ' (' + nearestZip.hits.hits[0]._source.name + ')';
+
+              $scope.searchValues.nearestZip = nearestZip.hits.hits[0]._source.zip + ' ' + nearestZip.hits.hits[0]._source.name;
+              $scope.nearestZip = $scope.searchValues.nearestZip;
 
               $scope.countJobs();
             }
@@ -195,8 +191,7 @@
             }
           })
           .error(function (error) {
-            // todo error handling
-            console.log(error);
+            console.error(error);
           });
       }
 
@@ -205,7 +200,9 @@
       };
 
       $scope.setCurrentCoords = function (coords) {
-        setNewCoords(coords);
+        if (coords!==undefined && coords!==null) {
+          setNewCoords(coords);
+        }
       };
 
       $scope.$watchCollection('myCoords', function () {
@@ -228,8 +225,7 @@
             }
           })
           .error(function (error) {
-            // todo error handling
-            console.log(error);
+            console.error(error);
           });
       };
 
@@ -256,14 +252,16 @@
         $scope.countJobs();
       };
 
-      if ($scope.searchParams.currentCoords !== undefined) {
-        setNewCoords($scope.searchParams.currentCoords);
-      }
+      // instant translation
+      $scope.translateKey=function(key){
+        return $translate.instant(key);
+      };
 
       // user isn't active anymore : reset search params
       var resetListener = $rootScope.$on('resetSearchParams', function () {
         JobsService.resetSearchParams();
         JobsService.resetVisitedJobs();
+        $scope.setMyLocation();
       });
 
       // unregister the state listener
@@ -281,19 +279,16 @@
         $scope.currentStep = 0;
       };
 
-      //*** LEAFLET ***//
-      $scope.mapDefaults = {
-        center: [46.8, 8.3],
-        zoom: 8,
-        zoomControl: false,
-        scrollWheelZoom: false,
-        doubleClickZoom: true,
-        maxBounds: [
-          [45.5, 5.5],
-          [48, 11]
-        ]
+      // mobile filter
+      $scope.isMobile=$rootScope.mobile;
+      $scope.showListBottomSheet = function() {
+        $mdBottomSheet.show({
+          templateUrl: 'views/template/job-mobile-filter.html',
+          scope: $scope,
+          preserveScope: true,
+          parent: 'body'
+        });
       };
-
     });
 }());
 

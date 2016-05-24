@@ -85,7 +85,7 @@
         element.css('width', $(document).width());
         element.css('height', ($(window).height() - ($('#topnav').outerHeight() + $('#filter').outerHeight())) - 25);
         if ($rootScope.mobile) {
-          element.css('height', $(document).width());
+          element.css('height', ($(window).height() - ($('#topnav').outerHeight() + $('#mobile-filter').outerHeight())));
         }
 
         //*** geo-layer (my-position)
@@ -151,7 +151,7 @@
               search_layer.removeLayer(radius_layer);
             }
           }
-          else if (newValue !== oldValue && scope.searchParams.distanceType === 'drive') {
+          else if (newValue !== oldValue && (scope.searchParams.distanceType === 'drive' || scope.searchParams.distanceType === 'bike')) {
             heatmap_layer.clearLayers();
             if (search_layer.hasLayer(radius_layer)) {
               search_layer.removeLayer(radius_layer);
@@ -159,27 +159,21 @@
           }
         });
 
+        // radius only
         scope.$watchCollection('searchParams.distance', function () {
-          if (search_layer.hasLayer(radius_layer)) {
+          if (search_layer.hasLayer(radius_layer) && scope.searchParams.distanceType === 'distance') {
             radius_layer.setRadius((scope.searchParams.distance * 1000));
           }
         });
 
-        // todo traveltime/heatmap?? naming!! travelTime!==drive??
-        scope.$watchCollection('traveltime', function () {
-          if (scope.traveltime !== undefined) {
-            traveltime_layer.clearLayers();
-            traveltime_layer.addData(scope.traveltime.response.geometry);
-          }
-        });
-
-        scope.$watchCollection('heatmap', function () {
-          if (scope.heatmap !== undefined) {
+        // Arrlee
+        scope.$watchCollection('searchValues.heatmap', function () {
+          if (scope.searchValues.heatmap !== undefined && scope.searchParams.distanceType === 'transport') {
             var geometries = [];
             var coordinates = [[], []];
             var type = 'MultiPolygon';
 
-            angular.forEach(scope.heatmap.areas, function (area, id) {
+            angular.forEach(scope.searchValues.heatmap.areas, function (area, id) {
               // calculate polygon
               var polygons = area.polygons.sort(function (a, b) {
                 return b[0] - a[0];
@@ -246,11 +240,16 @@
             heatmap_layer.clearLayers();
             heatmap_layer.addData(geometries);
           }
+          else if (scope.searchValues.heatmap !== undefined && (scope.searchParams.distanceType === 'drive' || scope.searchParams.distanceType === 'bike')) {
+            traveltime_layer.clearLayers();
+            traveltime_layer.addData(scope.searchValues.heatmap.response.geometry);
+          }
         });
       }
     };
   }]);
 
+  // todo > autocompleter with plz
   module.directive('keyboard', function () {
     return {
       priority: 100,
@@ -288,13 +287,10 @@
             }
             scope.setCurrentZip(zip);
           },
-          canceled: function () {
-            scope.setCurrentZip(scope.searchParams.currentZip);
-          },
           beforeVisible: function () {
             // set keyboard x/y according to element
-            $('#location_keyboard').css('top', element.offset().top + element.outerHeight(true));
-            $('#location_keyboard').css('left', element.offset().left);
+            $('#location_keyboard').css('top', element.offset().top - element.outerHeight(true));
+            $('#location_keyboard').css('left', element.offset().left - ($('#location_keyboard').outerWidth(true) + 20));
             // reset value
             ngModelCtrl.$setViewValue(null);
             ngModelCtrl.$render();
@@ -374,4 +370,5 @@
       }
     };
   }]);
+
 }());

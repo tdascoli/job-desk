@@ -3,8 +3,9 @@
   'use strict';
 
   angular.module('job-desk')
-    .factory('JobsService', function ($http, baseUrl, ConfigService, lodash) {
+    .factory('JobsService', function ($http, $rootScope, baseUrl, ConfigService, lodash) {
 
+      var search = {};
       var params = {};
       var visitedJobs = [];
 
@@ -28,6 +29,14 @@
       }
 
       resetSearchParams();
+
+      function resetSearch() {
+        params.heatmap = undefined;
+        params.count = 0;
+        params.nearestZip = '';
+      }
+
+      resetSearch();
 
       function doDriveQuery(filter){
         var coords=[];
@@ -59,6 +68,11 @@
       }
 
       function find() {
+
+        if (params.currentCoords === undefined) {
+          params.currentCoords = $rootScope.myCoords;
+        }
+
         if (params.zips!==undefined || params.shape!==undefined || params.currentCoords!==undefined) {
           var filter = {
             'from': params.from,
@@ -98,7 +112,7 @@
               }
             });
           }
-          else if (params.distanceType === 'drive') {
+          else if (params.distanceType === 'drive' || params.distanceType === 'bike') {
             var query_filter = [];
             filter.query.filtered.filter.and.push({or: doDriveQuery(query_filter)});
           }
@@ -154,8 +168,10 @@
 
       return {
         find: find,
+        search: search,
         params: params,
         resetSearchParams: resetSearchParams,
+        resetSearch: resetSearch,
         addVisitedJob: addVisitedJob,
         isVisited: isVisited,
         resetVisitedJobs: resetVisitedJobs

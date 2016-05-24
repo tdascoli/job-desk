@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('job-desk')
-    .controller('ConfigCtrl', function ($scope, $rootScope, ConfigService, LocationsService, geolocation, $mdToast, $mdDialog) {
+    .controller('ConfigCtrl', function ($scope, $rootScope, ConfigService, LocationsService, geolocation, lodash, $mdToast, $mdDialog) {
 
       $scope.idle = false;
 
@@ -48,14 +48,31 @@
               $scope.config.coords = nearestZip.hits.hits[0]._source.geoLocation;
             }
             else {
-              // todo error handling
               displayToast('Postal code not valid!', false);
             }
             $scope.idle = false;
           })
           .error(function (error) {
-            // todo error handling
-            console.log(error);
+            console.error(error);
+            $scope.idle = false;
+          });
+      };
+
+      $scope.lookupAddress = function () {
+        $scope.idle = true;
+        LocationsService.getLocationFromAddress($scope.config.address).success(function (addressLocation) {
+            if (addressLocation.status === 'OK') {
+              $scope.config.coords = {lat: addressLocation.results[0].geometry.location.lat, lon: addressLocation.results[0].geometry.location.lng};
+              var plz =  lodash.find(addressLocation.results[0].address_components, {types:['postal_code']});
+              $scope.config.zip = parseInt(plz.long_name);
+            }
+            else {
+              displayToast('Address not valid!', false);
+            }
+            $scope.idle = false;
+          })
+          .error(function (error) {
+            console.error(error);
             $scope.idle = false;
           });
       };

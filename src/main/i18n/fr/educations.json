@@ -9,9 +9,12 @@
       "travelTime":"Durée du trajet {{value}} h",
       "foundJobs":"Cours trouvés {{value}}",
       "distanceTypeDistance":"Distance en km",
-      "distanceTypeTravelTime":"Durée du trajet en TP en heures",
+      "distanceTypeTransport":"Durée du trajet en TP en heures",
+      "distanceTypeDrive":"Durée du trajet en voiture (heures)",
+      "distanceTypeBike":"Durée du trajet à vélo (heures)",
       "language":"Langue du cours",
-      "allLanguages":"Toutes les langues"
+      "allLanguages":"Toutes les langues",
+      "close":"Fermer"
     },
     "result": {
       "sorting":"Tri",

@@ -8,7 +8,9 @@
       "distance":"Distanz {{value}} km",
       "travelTime":"Reisedauer {{value}} h",
       "distanceTypeDistance":"Distanz in km",
-      "distanceTypeTravelTime":"Reisedauer ÖV in Stunden",
+      "distanceTypeTransport":"Reisedauer ÖV in Stunden",
+      "distanceTypeDrive":"Reisedauer PKW in Stunden",
+      "distanceTypeBike":"Reisedauer Fahrrad in Stunden",
       "foundJobs":"Gefundene Lehrstellen: {{value}}"
     },
     "result": {

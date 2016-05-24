@@ -19,7 +19,8 @@
         config.availableDistanceType={
           distance:true,
           transport:true,
-          drive:false
+          drive:false,
+          bike:false
         };
         config.mapType = 'osm';
       }

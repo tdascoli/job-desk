@@ -1,57 +1,46 @@
 <div layout-xs="row" layout-wrap class="no-scrollbar" ng-class="{'jd-floating-toolbar':!mobile}">
-  <div id="filter" flex-order-xs="2" layout="row" layout-wrap layout-margin layout-align="start center" class="md-whiteframe-z2">
+  <div id="filter" hide-xs layout="row" layout-wrap layout-margin layout-align="start center" class="md-whiteframe-z2">
 
-    <div flex="60" layout="row" layout-wrap flex-xs="100" id="iscoGroup">
-      <md-input-container flex="60" flex-xs="100" class="md-block isco-select" ng-if="!searchParams.iscoMajorGroup">
+    <div flex="60" layout="row" layout-wrap id="iscoGroup">
+      <md-input-container flex="60" class="md-block isco-select" ng-if="!searchParams.iscoMajorGroup">
         <label><span translate="jobs.search.jobgroup"></span></label>
-        <md-select ng-model="searchParams.iscoMajorGroup" ng-change="countJobs()">
+        <md-select ng-model="searchParams.iscoMajorGroup" ng-change="countJobs()" md-container-class="jd-selectpicker">
           <md-option ng-repeat="isco in iscoMajorGroup" value="{{isco.code}}"><span translate="{{isco.text}}"></span></md-option>
         </md-select>
       </md-input-container>
 
-      <md-input-container flex="60" flex-xs="100" class="md-block isco-select" ng-if="searchParams.iscoMajorGroup">
+      <md-input-container flex="60" class="md-block isco-select" ng-if="searchParams.iscoMajorGroup">
         <label><span translate="isco.majorGroups.{{searchParams.iscoMajorGroup}}"></span></label>
-        <md-select ng-model="searchParams.iscoGroupLevel3" ng-change="countJobs()">
-          <md-option value="0"><span translate="jobs.search.allSubGroups"></span></md-option>
+        <md-select ng-model="searchParams.iscoGroupLevel3" ng-change="countJobs()" md-container-class="jd-selectpicker">
+          <md-option value="0"><md-icon>done_all</md-icon> <span class="jd-select-reset" translate="jobs.search.allSubGroups"></span></md-option>
           <md-option ng-repeat="minorGroup in iscoMinorGroups[searchParams.iscoMajorGroup]" value="{{minorGroup}}"><span translate="isco.minorGroups.{{minorGroup}}"></span></md-option>
           <md-option value="-1" ng-click="searchParams.iscoMajorGroup='';searchParams.iscoGroupLevel3='';countJobs()"><md-icon>keyboard_arrow_left</md-icon><span class="jd-select-reset" translate="jobs.search.disableGroup"></span></md-option>
         </md-select>
       </md-input-container>
 
-      <div class="filter-button-container my-location-button" flex flex-xs="15">
+      <div class="filter-button-container my-location-button" flex>
         <md-button class="md-icon-button jd-icon-button" ng-click="setMyLocation()">
           <md-icon id="resetLocation">my_location</md-icon>
         </md-button>
       </div>
 
-      <md-input-container flex="30" hide-xs id="zip">
+      <md-input-container flex="30" id="zip">
         <label translate="jobs.search.location"></label>
-        <input class="keyboard" type="text" name="location" id="location" ng-model="nearestZip" />
+        <input class="keyboard" type="text" name="location" id="location" ng-model="searchValues.nearestZip" />
       </md-input-container>
 
-      <div flex-xs="85" hide-gt-xs layout="row" layout-align="start center" class="zip-form">
-        <md-input-container flex-xs="70">
-          <label translate="jobs.search.location"></label>
-          <input type="number" min="1000" max="9999" name="location-sm" id="location-sm" ng-model="currentZip" />
-        </md-input-container>
-
-        <div class="mobile filter-button-container" flex>
-          <md-button class="md-icon-button jd-icon-button" ng-click="setCurrentZip(false)">
-            <md-icon>check</md-icon>
-          </md-button>
-        </div>
-      </div>
     </div>
 
-    <div flex="15" flex-xs="40" id="distanceType">
-      <md-radio-group ng-model="searchParams.distanceType" ng-change="countJobs()" ng-init="searchParams.distanceType=searchParams.distanceType || appConfig.distanceType || 'distance'">
+    <div flex="15" id="distanceType">
+      <md-radio-group hide-xs ng-model="searchParams.distanceType" ng-change="countJobs()" ng-init="searchParams.distanceType=searchParams.distanceType || appConfig.distanceType || 'distance'">
         <md-radio-button value="distance" class="md-primary" aria-label="distance" ng-if="appConfig.availableDistanceType.distance"><span translate="jobs.search.distanceTypeDistance"></span></md-radio-button>
         <md-radio-button value="transport" class="md-primary" aria-label="travel time" ng-if="appConfig.availableDistanceType.transport"><span translate="jobs.search.distanceTypeTransport"></span></md-radio-button>
         <md-radio-button value="drive" class="md-primary" aria-label="travel time" ng-if="appConfig.availableDistanceType.drive"><span translate="jobs.search.distanceTypeDrive"></span></md-radio-button>
+        <md-radio-button value="bike" class="md-primary" aria-label="travel time" ng-if="appConfig.availableDistanceType.bike"><span translate="jobs.search.distanceTypeBike"></span></md-radio-button>
       </md-radio-group>
     </div>
 
-    <div flex="15" flex-xs="40" id="distanceTypeParameter">
+    <div flex="15" id="distanceTypeParameter">
       <div flex ng-if="searchParams.distanceType==='distance'">
         <label class="md-slider-label" translate="jobs.search.distance" translate-values="{value:searchParams.distance}"></label>
         <md-slider ng-model="searchParams.distance" step="{{distanceOptions.step}}" min="{{distanceOptions.min}}" max="{{distanceOptions.max}}" aria-label="distance" ng-change="countJobs()" class="md-primary"></md-slider>
@@ -62,38 +51,42 @@
         <md-slider ng-model="searchParams.travelTime" step="{{transportOptions.step}}" min="{{transportOptions.min}}" max="{{transportOptions.max}}" aria-label="travelTime" ng-change="countJobs()" class="md-primary"></md-slider>
       </div>
 
-      <div flex ng-if="searchParams.distanceType==='drive'">
+      <div flex ng-if="searchParams.distanceType==='drive' || searchParams.distanceType==='bike'">
         <label class="md-slider-label" translate="jobs.search.travelTime" translate-values="{value:showTimeInH(searchParams.travelTime)}"></label>
         <md-slider ng-model="searchParams.travelTime" step="{{driveOptions.step}}" min="{{driveOptions.min}}" max="{{driveOptions.max}}" aria-label="drive" ng-change="countJobs()" class="md-primary"></md-slider>
       </div>
     </div>
 
-    <div flex hide-xs>
+    <div flex>
       <md-button ng-click="startTour()" class="md-icon-button"><md-icon>help</md-icon></md-button>
     </div>
   </div>
 
   <div align="center" flex-order-xs="1">
-    <div id="map" class="map" map-tiles="{{appConfig.mapType}}"></div>
+    <div id="map" class="map"></div>
+  </div>
+
+  <div hide-gt-xs flex-order-xs="2" id="mobile-filter">
+    <md-button class="md-raised" ng-click="showListBottomSheet()"><md-icon>settings</md-icon> <span translate="jobs.search.filter"></span></md-button>
   </div>
 
 </div>
 
 <div layout="row" layout-margin layout-align="start center" class="jd-bottom-right">
-  <strong ng-show="!idle" translate="jobs.search.foundJobs" translate-values="{value: count}"></strong>
-  <md-progress-circular ng-show="idle" md-mode="indeterminate" md-diameter="120"></md-progress-circular>
+  <strong ng-show="!idle" translate="jobs.search.foundJobs" translate-values="{value: searchValues.count}"></strong>
+  <md-progress-circular ng-show="idle" md-mode="indeterminate" md-diameter="56"></md-progress-circular>
 </div>
 
-<md-button href="#/job-results" class="md-fab md-primary md-fab-bottom-right jd-floating-fab" aria-label="global.navigation.search" ng-disabled="count===0 || idle" md-theme-watch="true">
+<md-button href="#/job-results" class="md-fab md-primary md-fab-bottom-right jd-floating-fab" aria-label="global.navigation.search" ng-disabled="searchValues.count===0 || idle" md-theme-watch="true">
   <md-icon>arrow_forward</md-icon>
 </md-button>
 
 <tour step="currentStep" post-tour="tourEnded()">
-  <virtual-step tourtip="{{tourTranslate('jobs.search.tour.jobGroups')}}" tourtip-step="0"  tourtip-placement="bottom" tourtip-element="#iscoGroup" tourtip-offset-vertical="-20"></virtual-step>
-  <virtual-step tourtip="{{tourTranslate('jobs.search.tour.location')}}" tourtip-step="1"  tourtip-placement="right" tourtip-element=".current-location" tourtip-offset-horizontal="10" tourtip-offset-vertical="-25"></virtual-step>
-  <virtual-step tourtip="{{tourTranslate('jobs.search.tour.distanceType')}}" tourtip-step="2"  tourtip-placement="bottom" tourtip-element="#distanceType"tourtip-offset-vertical="-10"></virtual-step>
-  <virtual-step tourtip="{{tourTranslate('jobs.search.tour.distanceTypeParameter')}}" tourtip-step="3"  tourtip-placement="left" tourtip-element="#distanceTypeParameter"></virtual-step>
-  <virtual-step tourtip="{{tourTranslate('jobs.search.tour.changeZip')}}" tourtip-step="4"  tourtip-placement="bottom" tourtip-element="#zip"></virtual-step>
-  <virtual-step tourtip="{{tourTranslate('jobs.search.tour.resetLocation')}}" tourtip-step="5"  tourtip-placement="left" tourtip-element="#resetLocation" tourtip-offset-vertical="-30"></virtual-step>
-  <virtual-step tourtip="{{tourTranslate('jobs.search.tour.countJobs')}}" tourtip-step="6"  tourtip-placement="top" tourtip-element=".jd-bottom-right"></virtual-step>
+  <virtual-step tourtip="{{tourTranslate('jobs.search.tour.jobGroups')}}" tourtip-step="0" tourtip-placement="bottom" tourtip-element="#iscoGroup" tourtip-offset-vertical="-20"></virtual-step>
+  <virtual-step tourtip="{{tourTranslate('jobs.search.tour.location')}}" tourtip-step="1" tourtip-placement="right" tourtip-element=".current-location" tourtip-offset-horizontal="10" tourtip-offset-vertical="-25"></virtual-step>
+  <virtual-step tourtip="{{tourTranslate('jobs.search.tour.distanceType')}}" tourtip-step="2" tourtip-placement="bottom" tourtip-element="#distanceType"tourtip-offset-vertical="-10"></virtual-step>
+  <virtual-step tourtip="{{tourTranslate('jobs.search.tour.distanceTypeParameter')}}" tourtip-step="3" tourtip-placement="left" tourtip-element="#distanceTypeParameter"></virtual-step>
+  <virtual-step tourtip="{{tourTranslate('jobs.search.tour.changeZip')}}" tourtip-step="4" tourtip-placement="bottom" tourtip-element="#zip"></virtual-step>
+  <virtual-step tourtip="{{tourTranslate('jobs.search.tour.resetLocation')}}" tourtip-step="5" tourtip-placement="left" tourtip-element="#resetLocation" tourtip-offset-vertical="-30"></virtual-step>
+  <virtual-step tourtip="{{tourTranslate('jobs.search.tour.countJobs')}}" tourtip-step="6" tourtip-placement="top" tourtip-element=".jd-bottom-right"></virtual-step>
 </tour>

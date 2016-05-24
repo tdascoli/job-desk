@@ -1,6 +1,6 @@
 {
   "name": "job-desk",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "ignore": [
     ".idea",
     "node_modules",
@@ -19,9 +19,9 @@
   "testPath": "src/test/unit",
   "dependencies": {
     "jquery": "2.1.3",
-    "keyboard": "v1.23.5",
+    "keyboard": "v1.25.25",
     "angular": "1.4.8",
-    "angular-material": "1.0.6",
+    "angular-material": "1.1.0-rc4",
     "alv-ch-ng.security": "0.2.1",
     "alv-ch-ng.text-truncate": "0.2.0",
     "angular-ui-router": "0.2.13",

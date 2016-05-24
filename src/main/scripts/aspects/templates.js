@@ -300,8 +300,8 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "      </div>\n" +
     "\n" +
     "  </div>\n" +
-    "  <!-- todo style: layout-margin flex-xs=\"100\" flex-order-xs=\"1\" ng-class=\"{'jd-mobile':mobile}\" -->\n" +
-    "  <div flex=\"20\" flex-xs=\"100\" flex-order-xs=\"1\" ng-class=\"{'jd-mobile':isMobile}\">\n" +
+    "\n" +
+    "  <div flex=\"25\" flex-xs=\"100\" flex-order-xs=\"1\" ng-class=\"{'jd-mobile':isMobile}\">\n" +
     "    <md-button ng-click=\"showDetail(jobDetail._source.jobId)\" aria-label=\"Show / Close Detail\" class=\"jd-show-btn\" ng-class=\"{'md-raised jd-btn-block':!isMobile}\">\n" +
     "      <span ng-show=\"!showDetailContent\">\n" +
     "        <md-icon>search</md-icon>&nbsp;<span translate=\"jobs.result.showMore\"></span>\n" +
@@ -320,7 +320,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('template/job-list.html',
-    "<md-dialog aria-label=\"Job List\" ng-cloak>\n" +
+    "<md-dialog aria-label=\"Category List\" ng-cloak class=\"jd-job-list-dialog\">\n" +
     "  <form>\n" +
     "    <md-toolbar>\n" +
     "      <div class=\"md-toolbar-tools\">\n" +
@@ -333,7 +333,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "    </md-toolbar>\n" +
     "    <md-dialog-content>\n" +
     "      <div class=\"md-dialog-content\">\n" +
-    "        <div layout=\"row\" layout-wrap layout-margin layout-align=\"space-between center\" width=\"100%\">\n" +
+    "        <div layout=\"row\" layout-padding layout-wrap width=\"100%\">\n" +
     "          <a ng-click=\"answer(minorGroup)\" layout=\"row\" layout-align=\"start center\" flex=\"30\" flex-xs=\"100\" class=\"jd-job-list\" ng-repeat=\"minorGroup in iscoMinorGroups[level] track by $index\" >\n" +
     "            <md-icon>arrow_forward</md-icon>&nbsp;<span flex translate=\"isco.minorGroups.{{minorGroup}}\"></span>\n" +
     "          </a>\n" +
@@ -347,6 +347,77 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "    </md-dialog-actions>\n" +
     "  </form>\n" +
     "</md-dialog>\n"
+  );
+
+
+  $templateCache.put('template/job-mobile-filter.html',
+    "<md-bottom-sheet class=\"md-list\" ng-cloak>\n" +
+    "  <md-list>\n" +
+    "    <md-list-item class=\"md-2-line\">\n" +
+    "      <md-input-container flex=\"100\" class=\"md-block isco-select\" ng-if=\"!searchParams.iscoMajorGroup\">\n" +
+    "        <label><span translate=\"jobs.search.jobgroup\"></span></label>\n" +
+    "        <md-select ng-model=\"searchParams.iscoMajorGroup\" ng-change=\"countJobs()\" md-container-class=\"jd-selectpicker\">\n" +
+    "          <md-option ng-repeat=\"isco in iscoMajorGroup\" value=\"{{isco.code}}\"><span translate=\"{{isco.text}}\"></span></md-option>\n" +
+    "        </md-select>\n" +
+    "      </md-input-container>\n" +
+    "\n" +
+    "      <md-input-container flex=\"100\" class=\"md-block isco-select\" ng-if=\"searchParams.iscoMajorGroup\">\n" +
+    "        <label><span translate=\"isco.majorGroups.{{searchParams.iscoMajorGroup}}\"></span></label>\n" +
+    "        <md-select ng-model=\"searchParams.iscoGroupLevel3\" ng-change=\"countJobs()\" md-container-class=\"jd-selectpicker\">\n" +
+    "          <md-option value=\"0\"><md-icon>done_all</md-icon> <span class=\"jd-select-reset\" translate=\"jobs.search.allSubGroups\"></span></md-option>\n" +
+    "          <md-option ng-repeat=\"minorGroup in iscoMinorGroups[searchParams.iscoMajorGroup]\" value=\"{{minorGroup}}\"><span translate=\"isco.minorGroups.{{minorGroup}}\"></span></md-option>\n" +
+    "          <md-option value=\"-1\" ng-click=\"searchParams.iscoMajorGroup='';searchParams.iscoGroupLevel3='';countJobs()\"><md-icon>keyboard_arrow_left</md-icon><span class=\"jd-select-reset\" translate=\"jobs.search.disableGroup\"></span></md-option>\n" +
+    "        </md-select>\n" +
+    "      </md-input-container>\n" +
+    "    </md-list-item>\n" +
+    "    <md-list-item class=\"md-3-line\">\n" +
+    "      <div flex=\"20\">\n" +
+    "        <md-button class=\"md-icon-button jd-icon-button\" ng-click=\"setMyLocation()\">\n" +
+    "          <md-icon id=\"resetLocation\">my_location</md-icon>\n" +
+    "        </md-button>\n" +
+    "      </div>\n" +
+    "\n" +
+    "      <md-input-container flex=\"60\">\n" +
+    "        <label translate=\"jobs.search.location\"></label>\n" +
+    "        <input type=\"number\" min=\"1000\" max=\"9999\" name=\"location-sm\" id=\"location-sm\" ng-model=\"currentZip\" />\n" +
+    "      </md-input-container>\n" +
+    "\n" +
+    "\n" +
+    "      <div flex=\"20\">\n" +
+    "        <md-button class=\"md-icon-button jd-icon-button\" ng-click=\"setCurrentZip(false)\">\n" +
+    "          <md-icon>check</md-icon>\n" +
+    "        </md-button>\n" +
+    "      </div>\n" +
+    "    </md-list-item>\n" +
+    "\n" +
+    "    <md-list-item class=\"md-2-line\">\n" +
+    "      <md-select aria-label=\"distance\" flex=\"100\" ng-model=\"searchParams.distanceType\" ng-change=\"countJobs()\" ng-init=\"searchParams.distanceType=searchParams.distanceType || appConfig.distanceType || 'distance'\">\n" +
+    "        <md-option value=\"distance\" class=\"md-primary\" aria-label=\"distance\" ng-if=\"appConfig.availableDistanceType.distance\"><span translate=\"jobs.search.distanceTypeDistance\"></span></md-option>\n" +
+    "        <md-option value=\"transport\" class=\"md-primary\" aria-label=\"travel time\" ng-if=\"appConfig.availableDistanceType.transport\"><span translate=\"jobs.search.distanceTypeTransport\"></span></md-option>\n" +
+    "        <md-option value=\"drive\" class=\"md-primary\" aria-label=\"travel time\" ng-if=\"appConfig.availableDistanceType.drive\"><span translate=\"jobs.search.distanceTypeDrive\"></span></md-option>\n" +
+    "        <md-option value=\"bike\" class=\"md-primary\" aria-label=\"travel time\" ng-if=\"appConfig.availableDistanceType.bike\"><span translate=\"jobs.search.distanceTypeBike\"></span></md-option>\n" +
+    "      </md-select>\n" +
+    "    </md-list-item>\n" +
+    "\n" +
+    "    <md-list-item class=\"md-2-line\">\n" +
+    "      <div flex=\"100\" ng-if=\"searchParams.distanceType==='distance'\">\n" +
+    "        <label class=\"md-slider-label\" translate=\"jobs.search.distance\" translate-values=\"{value:searchParams.distance}\"></label>\n" +
+    "        <md-slider ng-model=\"searchParams.distance\" step=\"{{distanceOptions.step}}\" min=\"{{distanceOptions.min}}\" max=\"{{distanceOptions.max}}\" aria-label=\"distance\" ng-change=\"countJobs()\" class=\"md-primary\"></md-slider>\n" +
+    "      </div>\n" +
+    "\n" +
+    "      <div flex=\"100\" ng-if=\"searchParams.distanceType==='transport'\">\n" +
+    "        <label class=\"md-slider-label\" translate=\"jobs.search.travelTime\" translate-values=\"{value:showTimeInH(searchParams.travelTime)}\"></label>\n" +
+    "        <md-slider ng-model=\"searchParams.travelTime\" step=\"{{transportOptions.step}}\" min=\"{{transportOptions.min}}\" max=\"{{transportOptions.max}}\" aria-label=\"travelTime\" ng-change=\"countJobs()\" class=\"md-primary\"></md-slider>\n" +
+    "      </div>\n" +
+    "\n" +
+    "      <div flex=\"100\" ng-if=\"searchParams.distanceType==='drive' || searchParams.distanceType==='bike'\">\n" +
+    "        <label class=\"md-slider-label\" translate=\"jobs.search.travelTime\" translate-values=\"{value:showTimeInH(searchParams.travelTime)}\"></label>\n" +
+    "        <md-slider ng-model=\"searchParams.travelTime\" step=\"{{driveOptions.step}}\" min=\"{{driveOptions.min}}\" max=\"{{driveOptions.max}}\" aria-label=\"drive\" ng-change=\"countJobs()\" class=\"md-primary\"></md-slider>\n" +
+    "      </div>\n" +
+    "    </md-list-item>\n" +
+    "\n" +
+    "  </md-list>\n" +
+    "</md-bottom-sheet>\n"
   );
 
 
@@ -442,6 +513,37 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "      <md-progress-circular md-mode=\"indeterminate\" md-diameter=\"120\"></md-progress-circular>\n" +
     "    </div>\n" +
     "  </md-dialog-content>\n" +
+    "</md-dialog>\n"
+  );
+
+
+  $templateCache.put('template/swissdoc-list.html',
+    "<md-dialog aria-label=\"Category List\" ng-cloak class=\"jd-job-list-dialog\">\n" +
+    "  <form>\n" +
+    "    <md-toolbar>\n" +
+    "      <div class=\"md-toolbar-tools\">\n" +
+    "        <h2 translate=\"swissdoc.0-{{level}}00-0-0\"></h2>\n" +
+    "        <span flex></span>\n" +
+    "        <md-button class=\"md-icon-button\" ng-click=\"hide()\">\n" +
+    "          <md-icon aria-label=\"Close dialog\">close</md-icon>\n" +
+    "        </md-button>\n" +
+    "      </div>\n" +
+    "    </md-toolbar>\n" +
+    "    <md-dialog-content>\n" +
+    "      <div class=\"md-dialog-content\">\n" +
+    "        <div layout=\"row\" layout-padding layout-wrap width=\"100%\">\n" +
+    "          <a ng-click=\"answer(minorGroup.code)\" layout=\"row\" layout-align=\"start center\" flex=\"30\" flex-xs=\"100\" class=\"jd-job-list\" ng-repeat=\"minorGroup in swissdocGroupLevel2[level] track by $index\" >\n" +
+    "            <md-icon>arrow_forward</md-icon>&nbsp;<span flex translate=\"{{minorGroup.text}}\"></span>\n" +
+    "          </a>\n" +
+    "        </div>\n" +
+    "      </div>\n" +
+    "    </md-dialog-content>\n" +
+    "    <md-dialog-actions layout=\"row\">\n" +
+    "      <md-button ng-click=\"hide()\">\n" +
+    "        <span translate=\"global.tour.close\"></span>\n" +
+    "      </md-button>\n" +
+    "    </md-dialog-actions>\n" +
+    "  </form>\n" +
     "</md-dialog>\n"
   );
 

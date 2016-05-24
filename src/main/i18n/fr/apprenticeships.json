@@ -8,7 +8,9 @@
       "distance":"Distance {{value}} km",
       "travelTime":"Durée du trajet {{value}} h",
       "distanceTypeDistance":"Distance en km",
-      "distanceTypeTravelTime":"Durée du trajet en TP en heures",
+      "distanceTypeTransport":"Durée du trajet en TP en heures",
+      "distanceTypeDrive":"Durée du trajet en voiture (heures)",
+      "distanceTypeBike":"Durée du trajet à vélo (heures)",
       "foundJobs":"Places d'apprentissage trouvées {{value}}"
     },
     "result": {

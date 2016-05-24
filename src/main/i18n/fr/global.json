@@ -10,7 +10,7 @@
       "workload_0":"Taux d'occupation - le plus haut d'abord",
       "jobtitle_az":"Intitulé du poste - A-Z",
       "jobtitle_za":"Intitulé du poste  - Z-A",
-      "apprenticeshipstitle_az":"Intitulé de la place d'apprentissage - A-Z",
+      "apprenticeshipstitle_az":"Int*itulé de la place d'apprentissage - A-Z",
       "apprenticeshipstitle_za":"Intitulé de la place d'apprentissage - Z-A",
       "coursetitle_az":"Intitulé du cours - A-Z",
       "coursetitle_za":"Intitulé du cours - Z-A",
@@ -23,8 +23,8 @@
     },
     "messages": {
       "update": {
-        "information":"[FR] A new version is available!",
-        "action":"[FR] Update"
+        "information":"Une nouvelle version est disponible!",
+        "action":"Mettre à jour"
       }
     },
     "codes": {
@@ -42,7 +42,7 @@
       }
     },
     "tour":{
-      "next":"[FR] Next",
+      "next":"Suivant",
       "close":"Fermer"
     }
   }

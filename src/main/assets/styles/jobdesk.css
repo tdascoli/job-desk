@@ -20,11 +20,13 @@ body {
 .jd-categories {
   position: fixed;
   height: calc(100% - 84px);
+  width: 100%;
 }
 @media (max-width: 599px) {
   .jd-categories {
     position: static;
     height: 100%;
+    width: 100%;
   }
 }
 .jd-categories .category-title {
@@ -46,10 +48,12 @@ body {
   overflow-y: hidden;
 }
 .jd-categories md-icon {
-  color: #000;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
-  font-size: 1.75em;
+  color: #000 !important;
+}
+.md-square {
+  min-width: 36px;
+  width: 36px;
+  background: rgba(0, 0, 0, 0.18) !important;
 }
 .jd-categories .category-title span {
   margin: 0 0 0 16px;
@@ -59,7 +63,6 @@ body {
   color: #000;
 }
 .category {
-  height: calc(33% - 64px);
   vertical-align: top;
   width: auto;
   padding-bottom: 10px;
@@ -175,32 +178,43 @@ body {
 .area5 {
   fill: #ffff00;
 }
-.keyboard {
+.keyboard,
+.numkey,
+.alphakey {
   width: 100% !important;
 }
 .ui-keyboard {
   background: #eeeeee;
-  width: 188px !important;
   border: none !important;
   padding: 0 !important;
   margin-top: 20px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
 }
-.ui-keyboard:after {
-  bottom: 100%;
-  left: 50%;
+.ui-keyboard:after,
+.arrow_box:before {
+  left: 100%;
+  top: 25px;
   border: solid transparent;
   content: " ";
   height: 0;
   width: 0;
   position: absolute;
   pointer-events: none;
+}
+.ui-keyboard:after {
   border-color: rgba(238, 238, 238, 0);
-  border-bottom-color: #eeeeee;
+  border-left-color: #eeeeee;
   border-width: 15px;
-  margin-left: -15px;
+  margin-top: -15px;
+}
+.ui-keyboard:before {
+  border-color: rgba(238, 238, 238, 0);
+  border-left-color: #eeeeee;
+  border-width: 21px;
+  margin-top: -21px;
 }
 .ui-keyboard-button {
   -webkit-border-radius: 5px;
@@ -228,6 +242,9 @@ body {
 }
 .ui-keyboard-bksp {
   width: 107px;
+}
+.ui-keyboard-space {
+  width: 387px;
 }
 .ui-keyboard-text {
   font-family: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -263,7 +280,7 @@ body {
   margin-top: -1px;
 }
 .ui-keyboard-keyset {
-  padding: 6px 0 6px 12px !important;
+  padding: 12px 6px 6px 12px !important;
 }
 .ui-keyboard-button:active {
   top: 4px;
@@ -296,14 +313,15 @@ md-input-container > md-slider {
 #iscoGroup .md-select-value {
   color: #000000 !important;
 }
-/*md-select-menu,
-md-select-menu md-content {
-  max-height: inherit;
-}*/
+@media screen and (max-width: 768px) {
+  .jd-selectpicker {
+    width: 90%;
+  }
+}
 .jd-select-reset {
   color: rgba(0, 0, 0, 0.54);
 }
-.jd-floating-toolbar md-radio-button .md-label {
+.jd-floating-toolbar ._md-label {
   font-size: 0.75em;
   color: #000000;
 }
@@ -367,6 +385,8 @@ label {
   position: fixed !important;
   height: 56px;
   font-size: 20px;
+  background-color: rgba(255, 255, 255, 0.75);
+  margin: 8px 16px;
 }
 @media (max-width: 599px) {
   .jd-bottom-right {
@@ -393,6 +413,50 @@ label {
 .jd-sleep-screen.ng-enter.ng-enter-active {
   opacity: 0.6;
 }
+.jd-loading-screen ~ .jd-sleep-screen {
+  opacity: 0;
+}
+.jd-loading-screen {
+  position: fixed;
+  z-index: 10;
+}
+.jd-loading-screen .animated-container {
+  background-color: #1976d2;
+  bottom: 0;
+  left: 0;
+  opacity: 1 !important;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 999999;
+}
+/* Used to initialize the ng-leave animation state. */
+.jd-loading-screen .animated-container.ng-leave {
+  opacity: 1.0;
+  transition: all linear 200ms ;
+  -webkit-transition: all linear 200ms ;
+}
+/* Used to set the end properties of the ng-leave animation state. */
+.jd-loading-screen .animated-container.ng-leave-active {
+  opacity: 0 ;
+}
+.jd-loading-screen .messaging {
+  left: 0;
+  color: #ffffff;
+  margin-top: -37px;
+  position: absolute ;
+  right: 0;
+  text-align: center ;
+  top: 50% ;
+}
+.jd-loading-screen img {
+  height: 100px;
+}
+@media screen and (max-width: 768px) {
+  .jd-loading-screen img {
+    height: 60px;
+  }
+}
 .jd-btn-block {
   width: calc(100% - 8px);
 }
@@ -402,8 +466,12 @@ label {
 .jd-mobile .jd-show-btn {
   margin-left: 0;
 }
+.jd-job-list-dialog {
+  width: 100%;
+}
 .jd-job-list {
   text-align: left;
+  cursor: pointer;
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -428,11 +496,23 @@ md-toast.md-toast-success-theme .md-toast-content {
 md-toast.md-toast-error-theme .md-toast-content {
   background-color: #E82B2B;
 }
-.md-jobs-theme .leaflet-marker-icon.material-icons {
-  color: #03a9f4 !important;
+.md-jobs-theme .leaflet-marker-icon.material-icons,
+.md-educations-theme .leaflet-marker-icon.material-icons,
+.md-apprenticeships-theme .leaflet-marker-icon.material-icons {
+  color: #1976d2 !important;
   margin-left: -17px !important;
   margin-top: -32px !important;
   font-size: 34px;
+}
+.md-educations-theme .leaflet-marker-icon.material-icons {
+  color: #689f38 !important;
+}
+.md-apprenticeships-theme .leaflet-marker-icon.material-icons {
+  color: #0097a7 !important;
+}
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 10;
 }
 .filter-button-container {
   display: inline-block;
@@ -453,7 +533,7 @@ md-toast.md-toast-error-theme .md-toast-content {
 .tour-tip {
   display: none;
   position: absolute;
-  background-color: #2196f3;
+  background-color: #1976d2;
   color: #fff;
   z-index: 1001;
   top: 0;
@@ -462,6 +542,12 @@ md-toast.md-toast-error-theme .md-toast-content {
   font-weight: 400;
   max-width: 400px;
   border-radius: 4px;
+}
+.md-apprenticeships-theme.tour-tip {
+  background-color: #0097a7;
+}
+.md-educations-theme.tour-tip {
+  background-color: #689f38 !important;
 }
 .tour-tip .tour-arrow {
   display: block;
@@ -474,24 +560,48 @@ md-toast.md-toast-error-theme .md-toast-content {
 .tour-tip .tour-arrow.tt-top {
   border-style: solid;
   bottom: -27px;
-  border-color: #2196f3 transparent transparent !important;
+  border-color: #1976d2 transparent transparent !important;
+}
+.md-apprenticeships-theme.tour-tip .tour-arrow.tt-top {
+  border-color: #0097a7 transparent transparent !important;
+}
+.md-educations-theme.tour-tip .tour-arrow.tt-top {
+  border-color: #689f38 transparent transparent !important;
 }
 .tour-tip .tour-arrow.tt-bottom {
   border-style: solid;
   top: -28px;
-  border-color: transparent transparent #2196f3 !important;
+  border-color: transparent transparent #1976d2 !important;
+}
+.md-apprenticeships-theme.tour-tip .tour-arrow.tt-bottom {
+  border-color: transparent transparent #0097a7 !important;
+}
+.md-educations-theme.tour-tip .tour-arrow.tt-bottom {
+  border-color: transparent transparent #689f38 !important;
 }
 .tour-tip .tour-arrow.tt-right {
   border-style: solid;
   left: -27px;
   top: 28px;
-  border-color: transparent #2196f3 transparent transparent !important;
+  border-color: transparent #1976d2 transparent transparent !important;
+}
+.md-apprenticeships-theme.tour-tip .tour-arrow.tt-right {
+  border-color: transparent #0097a7 transparent transparent !important;
+}
+.md-educations-theme.tour-tip .tour-arrow.tt-right {
+  border-color: transparent #689f38 transparent transparent !important;
 }
 .tour-tip .tour-arrow.tt-left {
   border-style: solid;
   left: 100%;
   top: 28px;
-  border-color: transparent transparent transparent #2196f3 !important;
+  border-color: transparent transparent transparent #1976d2 !important;
+}
+.md-apprenticeships-theme.tour-tip .tour-arrow.tt-left {
+  border-color: transparent transparent transparent #0097a7 !important;
+}
+.md-educations-theme.tour-tip .tour-arrow.tt-left {
+  border-color: transparent transparent transparent #689f38 !important;
 }
 .tour-tip .tour-content-wrapper {
   padding: .5em .75em 0 .75em;

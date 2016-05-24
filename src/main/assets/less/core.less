@@ -28,11 +28,13 @@ body {
 .jd-categories  {
   position: fixed;
   height: calc(~'100% - 84px');
+  width: 100%;
 }
 @media (max-width: 599px) {
   .jd-categories  {
     position: static;
     height: 100%;
+    width: 100%;
   }
 }
 
@@ -56,10 +58,12 @@ body {
   overflow-y: hidden;
 }
 .jd-categories md-icon {
-  color: #000;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
-  font-size: 1.75em;
+  color: #000 !important;
+}
+.md-square {
+  min-width: 36px;
+  width: 36px;
+  background: rgba(0, 0, 0, 0.18) !important;
 }
 .jd-categories .category-title span {
   margin: 0 0 0 16px;
@@ -69,7 +73,6 @@ body {
   color: #000;
 }
 .category {
-  height: calc(~'33% - 64px');
   vertical-align: top;
   width: auto;
   padding-bottom: 10px;
@@ -191,33 +194,47 @@ body {
 }
 
 //**** KEYBOARD
-.keyboard {
+.keyboard,
+.numkey,
+.alphakey {
   width: 100% !important;
 }
 .ui-keyboard {
   background: @keyboard-border;
-  width: 188px !important;
   border: none !important;
   padding: 0 !important;
   margin-top: 20px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
 }
-.ui-keyboard:after {
-  bottom: 100%;
-  left: 50%;
+
+.ui-keyboard:after, .arrow_box:before {
+  left: 100%;
+  top: 25px;
   border: solid transparent;
   content: " ";
   height: 0;
   width: 0;
   position: absolute;
   pointer-events: none;
-  border-color: rgba(238, 238, 238, 0);
-  border-bottom-color: @keyboard-border;
-  border-width: 15px;
-  margin-left: -15px;
 }
+
+.ui-keyboard:after {
+  border-color: rgba(238, 238, 238, 0);
+  border-left-color: @keyboard-border;
+  border-width: 15px;
+  margin-top: -15px;
+}
+.ui-keyboard:before {
+  border-color: rgba(238, 238, 238, 0);
+  border-left-color: @keyboard-border;
+  border-width: 21px;
+  margin-top: -21px;
+}
+
 .ui-keyboard-button {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -244,6 +261,9 @@ body {
 }
 .ui-keyboard-bksp {
   width: 107px;
+}
+.ui-keyboard-space {
+  width: 387px;
 }
 .ui-keyboard-text {
   font-family: @font-family-base;
@@ -282,7 +302,7 @@ body {
   margin-top: -1px;
 }
 .ui-keyboard-keyset {
-  padding: 6px 0 6px 12px !important;
+  padding: 12px 6px 6px 12px !important;
 }
 .ui-keyboard-button:active {
   top: 4px;
@@ -321,16 +341,17 @@ md-input-container > md-slider {
   color: rgba(0,0,0,1) !important;
 }
 
-/*md-select-menu,
-md-select-menu md-content {
-  max-height: inherit;
-}*/
+@media screen and (max-width: 768px) {
+  .jd-selectpicker {
+    width: 90%;
+  }
+}
 
 .jd-select-reset {
   color: rgba(0,0,0,0.54);
 }
 
-.jd-floating-toolbar md-radio-button .md-label {
+.jd-floating-toolbar ._md-label {
   font-size: 0.75em;
   color: rgba(0,0,0,1);
 }
@@ -357,6 +378,7 @@ md-input-container.md-slider-has-label label,
 .jd-floating-toolbar {
   margin-top: 1em;
 }
+
 @media (max-width: 599px) {
   #filter {
     margin-bottom: 76px;
@@ -406,6 +428,8 @@ label {
   position: fixed !important;
   height: 56px;
   font-size: 20px;
+  background-color: rgba(255,255,255,0.75);
+  margin: 8px 16px;
 }
 @media (max-width: 599px) {
   .jd-bottom-right  {
@@ -436,6 +460,52 @@ label {
   opacity: @sleep-screen-opacity;
 }
 
+.jd-loading-screen ~ .jd-sleep-screen {
+  opacity: 0;
+}
+
+.jd-loading-screen {
+  position: fixed;
+  z-index: 10;
+}
+.jd-loading-screen .animated-container {
+  background-color: @material-color-blue;
+  bottom: 0;
+  left: 0;
+  opacity: 1 !important;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 999999;
+}
+/* Used to initialize the ng-leave animation state. */
+.jd-loading-screen .animated-container.ng-leave {
+  opacity: 1.0;
+  transition: all linear 200ms ;
+  -webkit-transition: all linear 200ms ;
+}
+/* Used to set the end properties of the ng-leave animation state. */
+.jd-loading-screen .animated-container.ng-leave-active {
+  opacity: 0 ;
+}
+.jd-loading-screen .messaging {
+  left: 0;
+  color: #ffffff;
+  margin-top: -37px ;
+  position: absolute ;
+  right: 0;
+  text-align: center ;
+  top: 50% ;
+}
+.jd-loading-screen img {
+  height: 100px;
+}
+@media screen and (max-width: 768px) {
+  .jd-loading-screen img {
+    height: 60px;
+  }
+}
+
 .jd-btn-block {
   width: calc(~'100% - 8px');
 }
@@ -445,8 +515,12 @@ label {
 .jd-mobile .jd-show-btn {
   margin-left: 0;
 }
+.jd-job-list-dialog {
+  width: 100%;
+}
 .jd-job-list {
   text-align: left;
+  cursor: pointer;
 }
 .no-scrollbar::-webkit-scrollbar {
    display: none;
@@ -477,11 +551,24 @@ md-toast.md-toast-error-theme .md-toast-content{
   background-color: #E82B2B;
 }
 
-.md-jobs-theme .leaflet-marker-icon.material-icons {
-  color: @material-color-light-blue !important;
+.md-jobs-theme .leaflet-marker-icon.material-icons,
+.md-educations-theme .leaflet-marker-icon.material-icons,
+.md-apprenticeships-theme .leaflet-marker-icon.material-icons{
+  color: @material-color-blue !important;
   margin-left: -(@map-marker-size / 2) !important;
   margin-top: -(@map-marker-size - 2) !important;
   font-size: @map-marker-size;
+}
+
+.md-educations-theme .leaflet-marker-icon.material-icons {
+  color: @material-color-light-green !important;
+}
+.md-apprenticeships-theme .leaflet-marker-icon.material-icons {
+  color: @material-color-cyan !important;
+}
+
+.leaflet-top, .leaflet-bottom {
+  z-index: 10;
 }
 
 .filter-button-container {

@@ -9,9 +9,12 @@
       "travelTime":"Travel time {{value}} hrs",
       "foundJobs":"Courses found	 {{value}}",
       "distanceTypeDistance":"Distance in km",
-      "distanceTypeTravelTime":"Public transport travel time in hrs",
+      "distanceTypeTransport":"Public transport travel time in hrs",
+      "distanceTypeDrive":"[EN] Drive travel time in hrs",
+      "distanceTypeBike":"[EN] Drive travel time in hrs",
       "language":"Course language",
-      "allLanguages":"All languages"
+      "allLanguages":"All languages",
+      "close":"Close"
     },
     "result": {
       "sorting":"Sorting",
