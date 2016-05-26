@@ -513,6 +513,16 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "          <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong> :\n" +
     "          <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />\n" +
     "\n" +
+    "          <!-- Sprachen -->\n" +
+    "          <div ng-if=\"jobDetail._source.languages.length > 0\">\n" +
+    "            <strong class=\"fake-label\" translate=\"language.title\"></strong>\n" +
+    "            <ul>\n" +
+    "              <div ng-repeat=\"language in jobDetail._source.languages\" ng-if=\"language.languageCode\">\n" +
+    "                <li><span translate=\"language.jobs.{{::language.languageCode}}\"></span></li>\n" +
+    "              </div>\n" +
+    "            </ul>\n" +
+    "          </div>\n" +
+    "\n" +
     "          <strong>{{::jobDetail._source.company.name}}</strong>\n" +
     "        </div>\n" +
     "\n" +
