@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="job-desk">
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1" />
@@ -226,6 +226,17 @@
       <md-button ng-click="closeTour()" translate="global.tour.close" class="md-raised" aria-label="global.tour.close"></md-button>
     </div>
   </div>
+</script>
+<script>
+  angular.element(document).ready(function () {
+    if (window.cordova) {
+      document.addEventListener('deviceready', function () {
+        angular.bootstrap(document.body, ['job-desk']);
+      }, false);
+    } else {
+      angular.bootstrap(document.body, ['job-desk']);
+    }
+  });
 </script>
 
 </body>

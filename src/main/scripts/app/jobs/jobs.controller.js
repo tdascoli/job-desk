@@ -9,9 +9,12 @@
       $scope.searchParams = JobsService.params;
       $scope.searchParams.from = 0;
 
-      $scope.distanceOptions = {min: 10, max: 150, step: 10, value: 30};
-      $scope.transportOptions = {min: 10, max: 120, step: 5, value: 30};
-      $scope.driveOptions = {min: 10, max: 60, step: 5, value: 30};
+      $scope.sliderOptions = {
+        distance: {min: 10, max: 150, step: 10, value: 30},
+        transport: {min: 10, max: 120, step: 5, value: 30},
+        drive: {min: 10, max: 60, step: 5, value: 30},
+        bike: {min: 10, max: 60, step: 5, value: 30}
+      };
 
       $scope.iscoMajorGroup = [
         {text: 'isco.majorGroups.9', code: '9', img: 'jobs/isco9.png'},
@@ -116,9 +119,9 @@
       };
 
       function findByTravelTime() {
-        ArrleeService.getHeatmap($scope.searchParams.currentZip, $scope.searchParams.travelTime).success(function (result) {
+        ArrleeService.getHeatmap($scope.searchParams.currentZip, $scope.searchParams.transport).success(function (result) {
             $scope.searchValues.heatmap = result.heatmap;
-            ArrleeService.getZips($scope.searchParams.travelTime).success(function (result) {
+            ArrleeService.getZips($scope.searchParams.transport).success(function (result) {
                 // todo trackjs!! error
                 $scope.searchParams.zips = lodash.map(result.POI, 'name');
                 //** find Jobs with searchParams
@@ -134,7 +137,11 @@
       }
 
       function findByDriveTime() {
-        TravelTimeService.getTravelTimePolygon($scope.searchParams.currentCoords,$scope.searchParams.travelTime,$scope.searchParams.distanceType).success(function (result) {
+        var travelTime = $scope.searchParams.drive;
+        if ($scope.searchParams.distanceType==='bike'){
+          travelTime = $scope.searchParams.bike;
+        }
+        TravelTimeService.getTravelTimePolygon($scope.searchParams.currentCoords,travelTime,$scope.searchParams.distanceType).success(function (result) {
           $scope.searchValues.heatmap = result;
           $scope.searchParams.shape=result.response.geometry.coordinates;
           find(false);

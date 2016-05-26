@@ -40,6 +40,7 @@ body {
 
 .jd-categories .category-title {
   align-items: center;
+  background: #e5e5e5;
   background: rgba(0, 0, 0, 0.18);
   height: 64px;
 
@@ -63,6 +64,7 @@ body {
 .md-square {
   min-width: 36px;
   width: 36px;
+  background: #e5e5e5;
   background: rgba(0, 0, 0, 0.18) !important;
 }
 .jd-categories .category-title span {
@@ -105,38 +107,7 @@ body {
   stroke-opacity: 1;
   stroke-width: 1;
 }
-.country-boundaries {
-  fill: #fff;
-  fill-opacity: 0.75;
-  stroke: transparent;
-  stroke-opacity: 1;
-  stroke-width: 1;
-}
-.city-boundaries {
-  fill: @topo-city-boundaries-fill;
-  fill-opacity: 1;
-  stroke: @topo-city-boundaries-stroke;
-  stroke-opacity: 1;
-  stroke-width: 1.5;
-}
-.city-text.leaflet-label{
-  font-family: @font-family-base;
-  border: none;
-  background: transparent;
-  padding: 6px 0 0 0;
-  cursor: pointer;
-}
-.city-text.leaflet-label-right{
-  margin-left: -4px;
-}
-.city-text.leaflet-label-left{
-  margin-left: 6px;
-}
-.city-text.leaflet-label:before,
-.city-text.leaflet-label:after{
-  border: none;
-  left: 0;
-}
+
 .my-location {
   fill: @map-my-location-fill;
   fill-opacity: 1;
@@ -223,13 +194,13 @@ body {
 }
 
 .ui-keyboard:after {
-  border-color: rgba(238, 238, 238, 0);
+  border-color: rgb(238, 238, 238);
   border-left-color: @keyboard-border;
   border-width: 15px;
   margin-top: -15px;
 }
 .ui-keyboard:before {
-  border-color: rgba(238, 238, 238, 0);
+  border-color: rgb(238, 238, 238);
   border-left-color: @keyboard-border;
   border-width: 21px;
   margin-top: -21px;
@@ -360,9 +331,12 @@ md-input-container > md-slider {
   margin: 5px;
 }
 
-md-input-container.md-slider-has-label label,
+.md-slider-has-label label,
 .md-slider-label {
   -webkit-transform: translate3d(0, 1em, 0) scale(0.75);
+  -moz-transform: translate3d(0, 1em, 0) scale(0.75);
+  -ms-transform: translate3d(0, 1em, 0) scale(0.75);
+  -o-transform: translate3d(0, 1em, 0) scale(0.75);
   transform: translate3d(0, 1em, 0) scale(0.75);
   color: rgba(0,0,0,1);
   width: 100%;
@@ -482,7 +456,9 @@ label {
 .jd-loading-screen .animated-container.ng-leave {
   opacity: 1.0;
   transition: all linear 200ms ;
-  -webkit-transition: all linear 200ms ;
+  -webkit-transition: all linear 200ms;
+  -moz-transition: all linear 200ms ;
+  -o-transition: all linear 200ms ;
 }
 /* Used to set the end properties of the ng-leave animation state. */
 .jd-loading-screen .animated-container.ng-leave-active {

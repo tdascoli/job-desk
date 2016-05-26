@@ -1,5 +1,41 @@
 {
   "config": {
-    "title": "Job-Desk - CONFIG"
+    "title": "Job-Desk - CONFIG",
+    "location": {
+      "title":"[EN] Standort",
+      "address":"[EN] Adresse",
+      "zip":"[EN] Postleitzahl",
+      "lon":"[EN] Koordinaten / Longitude",
+      "lat":"[EN] Koordinaten / Latitude"
+    },
+    "offer": {
+      "title": "[EN] Angebot",
+      "apprenticeships": "[EN] Lehrstellen",
+      "educations": "[EN] Weiterbildungen",
+      "jobs": "[EN] Jobs"
+    },
+    "map": {
+      "title":"Map",
+      "swisstopo": "[EN] swisstopo Karte",
+      "openstreetmap": "[EN] OpenStreetMap Karte"
+    },
+    "circumSearch": {
+      "title": "[EN] Umkreissuche",
+      "offer":"[EN] Angebot",
+      "configuration":"[EN] Standardeinstellung",
+      "values":"[EN] Standardwerte",
+      "type": {
+        "distance":"Distance in km",
+        "transport":"Public transport travel time in hrs",
+        "drive":"[EN] Drive travel time in hrs",
+        "bike":"[EN] Drive travel time in hrs"
+      },
+      "label" : {
+        "distance":"Distance {{value}} km",
+        "transport":"Travel time {{value}} hrs",
+        "drive":"Travel time {{value}} hrs",
+        "bike":"Travel time {{value}} hrs"
+      }
+    }
   }
 }

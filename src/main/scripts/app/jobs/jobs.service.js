@@ -13,8 +13,10 @@
         params.from = 0;
         params.size = 20;
         params.distanceType = ConfigService.init().distanceType;
-        params.distance = 30;
-        params.travelTime = 30;
+        params.distance =  ConfigService.init().initialDistance.distance;
+        params.transport =  ConfigService.init().initialDistance.transport;
+        params.drive =  ConfigService.init().initialDistance.drive;
+        params.bike =  ConfigService.init().initialDistance.bike;
         params.fulltime = 1;
         params.iscoMajorGroup = '';
         params.iscoGroupLevel2 = '';

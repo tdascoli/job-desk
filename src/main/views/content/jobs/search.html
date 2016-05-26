@@ -33,27 +33,17 @@
 
     <div flex="15" id="distanceType">
       <md-radio-group hide-xs ng-model="searchParams.distanceType" ng-change="countJobs()" ng-init="searchParams.distanceType=searchParams.distanceType || appConfig.distanceType || 'distance'">
-        <md-radio-button value="distance" class="md-primary" aria-label="distance" ng-if="appConfig.availableDistanceType.distance"><span translate="jobs.search.distanceTypeDistance"></span></md-radio-button>
-        <md-radio-button value="transport" class="md-primary" aria-label="travel time" ng-if="appConfig.availableDistanceType.transport"><span translate="jobs.search.distanceTypeTransport"></span></md-radio-button>
-        <md-radio-button value="drive" class="md-primary" aria-label="travel time" ng-if="appConfig.availableDistanceType.drive"><span translate="jobs.search.distanceTypeDrive"></span></md-radio-button>
-        <md-radio-button value="bike" class="md-primary" aria-label="travel time" ng-if="appConfig.availableDistanceType.bike"><span translate="jobs.search.distanceTypeBike"></span></md-radio-button>
+        <md-radio-button value="distance" class="md-primary" aria-label="distance" ng-if="appConfig.availableDistanceType.distance"><span translate="jobs.search.circumSearch.type.distance"></span></md-radio-button>
+        <md-radio-button value="transport" class="md-primary" aria-label="travel time" ng-if="appConfig.availableDistanceType.transport"><span translate="jobs.search.circumSearch.type.transport"></span></md-radio-button>
+        <md-radio-button value="drive" class="md-primary" aria-label="travel time" ng-if="appConfig.availableDistanceType.drive"><span translate="jobs.search.circumSearch.type.drive"></span></md-radio-button>
+        <md-radio-button value="bike" class="md-primary" aria-label="travel time" ng-if="appConfig.availableDistanceType.bike"><span translate="jobs.search.circumSearch.type.bike"></span></md-radio-button>
       </md-radio-group>
     </div>
 
     <div flex="15" id="distanceTypeParameter">
-      <div flex ng-if="searchParams.distanceType==='distance'">
-        <label class="md-slider-label" translate="jobs.search.distance" translate-values="{value:searchParams.distance}"></label>
-        <md-slider ng-model="searchParams.distance" step="{{distanceOptions.step}}" min="{{distanceOptions.min}}" max="{{distanceOptions.max}}" aria-label="distance" ng-change="countJobs()" class="md-primary"></md-slider>
-      </div>
-
-      <div flex ng-if="searchParams.distanceType==='transport'">
-        <label class="md-slider-label" translate="jobs.search.travelTime" translate-values="{value:showTimeInH(searchParams.travelTime)}"></label>
-        <md-slider ng-model="searchParams.travelTime" step="{{transportOptions.step}}" min="{{transportOptions.min}}" max="{{transportOptions.max}}" aria-label="travelTime" ng-change="countJobs()" class="md-primary"></md-slider>
-      </div>
-
-      <div flex ng-if="searchParams.distanceType==='drive' || searchParams.distanceType==='bike'">
-        <label class="md-slider-label" translate="jobs.search.travelTime" translate-values="{value:showTimeInH(searchParams.travelTime)}"></label>
-        <md-slider ng-model="searchParams.travelTime" step="{{driveOptions.step}}" min="{{driveOptions.min}}" max="{{driveOptions.max}}" aria-label="drive" ng-change="countJobs()" class="md-primary"></md-slider>
+      <div flex>
+        <label class="md-slider-label" translate="jobs.search.circumSearch.label.{{searchParams.distanceType}}" translate-values="{value:searchParams.{{searchParams.distanceType}}}"></label>
+        <md-slider ng-model="searchParams[searchParams.distanceType]" step="{{sliderOptions[searchParams.distanceType].step}}" min="{{sliderOptions[searchParams.distanceType].min}}" max="{{sliderOptions[searchParams.distanceType].max}}" aria-label="distance" ng-change="countJobs()" class="md-primary"></md-slider>
       </div>
     </div>
 

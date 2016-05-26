@@ -5,12 +5,20 @@
       "allSubGroups":"Tutte le categorie",
       "disableGroup":"Altre categoria professionale",
       "location":"Dove (NPA)",
-      "distance":"Distanza {{value}} km",
-      "travelTime":"Durata del viaggio {{value}} h",
-      "distanceTypeDistance":"Distanza in km",
-      "distanceTypeTransport":"Durata del viaggio in TP in ore",
-      "distanceTypeDrive":"Durata del viaggio in automobile",
-      "distanceTypeBike":"Durata del viaggio in bicicletta",
+      "circumSearch": {
+        "type": {
+          "distance":"Distanza in km",
+          "transport":"Durata del viaggio in TP in ore",
+          "drive":"Durata del viaggio in automobile",
+          "bike":"Durata del viaggio in bicicletta"
+        },
+        "label" : {
+          "distance":"Distanza {{value}} km",
+          "transport":"Durata del viaggio {{value}} h",
+          "drive":"Durata del viaggio in automobile",
+          "bike":"Durata del viaggio in bicicletta"
+        }
+      },
       "onlineSince":"Online da {{value}} giorni",
       "onlineSinceOneDay":"Online da 1 giorno",
       "allJobs":"Tutti gli impieghi",
