@@ -5,7 +5,7 @@ Job-Desk
 
 Job search frontend made for internet terminals.
 
-pilot: http://jobdesk.job-room.ch and soon: http://pilot.job-desk.ch
+pilot: http://pilot.job-desk.ch
 
 development: http://dev.job-desk.ch
 

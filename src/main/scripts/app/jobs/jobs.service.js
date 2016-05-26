@@ -10,13 +10,23 @@
       var visitedJobs = [];
 
       function resetSearchParams() {
+        var distance =  30;
+        var transport =  30;
+        var drive =  30;
+        var bike =  30;
+        if (ConfigService.init().initialDistance!==undefined){
+          distance =  ConfigService.init().initialDistance.distance;
+          transport =  ConfigService.init().initialDistance.transport;
+          drive =  ConfigService.init().initialDistance.drive;
+          bike =  ConfigService.init().initialDistance.bike;
+        }
         params.from = 0;
         params.size = 20;
         params.distanceType = ConfigService.init().distanceType;
-        params.distance =  ConfigService.init().initialDistance.distance;
-        params.transport =  ConfigService.init().initialDistance.transport;
-        params.drive =  ConfigService.init().initialDistance.drive;
-        params.bike =  ConfigService.init().initialDistance.bike;
+        params.distance =  distance;
+        params.transport =  transport;
+        params.drive =  drive;
+        params.bike =  bike;
         params.fulltime = 1;
         params.iscoMajorGroup = '';
         params.iscoGroupLevel2 = '';
