@@ -60,6 +60,10 @@ http://geojson.org/
 Techstack
 ---------
 
+### Travis > Exoscale
+* https://community.exoscale.ch/documentation/apps/quick-start/
+* https://docs.travis-ci.com/user/deployment/exoscale
+
 ### Angular Material
 https://material.angularjs.org
 
