@@ -104,19 +104,22 @@
     </md-button>
     <span flex></span>
     <language-switcher></language-switcher>
-    <md-menu md-position-mode="target-right target" hide-gt-xs ng-hide="!appConfig.educations && !appConfig.apprenticeships">
+    <md-menu md-position-mode="target-right target" hide-gt-xs ng-hide="!appConfig.educations && !appConfig.apprenticeships && appConfig.localInfo===''">
       <md-button aria-label="Open Menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu,$event)">
         <md-icon md-menu-origin>more_vert</md-icon>
       </md-button>
       <md-menu-content width="3">
-        <md-menu-item ng-hide="searchType==='jobs'">
-          <md-button aria-label="jobs" ng-click="closeMenu('jobs')"><span translate="global.jobs"></span></md-button>
+        <md-menu-item ng-hide="appConfig.localInfo===''">
+          <md-button aria-label="information" ng-click="closeMenu('information')"><md-icon>info_outline</md-icon> <span translate="global.information"></span></md-button>
         </md-menu-item>
-        <md-menu-item ng-hide="searchType==='educations' ||  !appConfig.educations">
-          <md-button aria-label="educations" ng-click="closeMenu('educations')"><span translate="global.educations"></span></md-button>
+        <md-menu-item>
+          <md-button class="jd-mobile-menu" ng-class="{ 'active': searchType==='jobs' && searchState() }" aria-label="jobs" ng-click="closeMenu('jobs')"><span translate="global.jobs"></span></md-button>
         </md-menu-item>
-        <md-menu-item ng-hide="searchType==='apprenticeships' || !appConfig.apprenticeships">
-          <md-button aria-label="apprenticeships" ng-click="closeMenu('apprenticeships')"><span translate="global.apprenticeships"></span></md-button>
+        <md-menu-item ng-hide="!appConfig.educations">
+          <md-button class="jd-mobile-menu" ng-class="{ 'active': searchType==='educations' && searchState() }" aria-label="educations" ng-click="closeMenu('educations')"><span translate="global.educations"></span></md-button>
+        </md-menu-item>
+        <md-menu-item ng-hide="!appConfig.apprenticeships">
+          <md-button class="jd-mobile-menu" ng-class="{ 'active': searchType==='apprenticeships' && searchState() }" aria-label="apprenticeships" ng-click="closeMenu('apprenticeships')"><span translate="global.apprenticeships"></span></md-button>
         </md-menu-item>
       </md-menu-content>
     </md-menu>
