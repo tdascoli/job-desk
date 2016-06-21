@@ -5,6 +5,7 @@
 
     <strong class="md-title" flex="100" translate="config.location.title"></strong>
 
+    <!-- Standort -->
     <md-input-container flex="40">
       <label translate="config.location.address"></label>
       <input ng-model="config.address" type="text" />
@@ -34,7 +35,9 @@
       <label translate="config.location.lat"></label>
       <input ng-model="config.coords.lat" ng-disabled="true" type="text" />
     </md-input-container>
+    <!-- /Standort -->
 
+    <!-- Angebot, Karte, Information -->
     <div flex="33">
       <p><strong class="md-title" translate="config.offer.title"></strong></p>
       <md-checkbox ng-model="config.educations" class="md-primary" aria-label="Weiterbildungsangebote">
@@ -46,7 +49,7 @@
       </md-checkbox>
     </div>
 
-    <div flex="66">
+    <div flex="33">
       <p><strong class="md-title" translate="config.map.title"></strong></p>
       <md-radio-group ng-model="config.mapType">
         <md-radio-button value="swisstopo" class="md-primary"><span translate="config.map.swisstopo"></span></md-radio-button>
@@ -54,6 +57,22 @@
       </md-radio-group>
     </div>
 
+    <div flex="33" class="form-block">
+      <p><strong class="md-title" translate="config.information.title"></strong></p>
+      <md-checkbox ng-model="configInformation" class="md-primary" aria-label="Information">
+        <span translate="config.information.activate"></span>
+      </md-checkbox>
+      <br />
+
+      <md-input-container>
+        <label translate="config.information.link"></label>
+        <input ng-model="config.localInfo" ng-disabled="!configInformation" type="text" />
+      </md-input-container>
+    </div>
+    <!-- /Angebot, Karte, Information -->
+
+
+    <!-- Umkreissuche -->
     <div flex="33">
       <p><strong class="md-title"><span translate="config.circumSearch.title"></span> - <span translate="config.circumSearch.offer"></span></strong></p>
       <md-checkbox ng-model="config.availableDistanceType.distance" class="md-primary" ng-disabled="circumSearch(config.availableDistanceType.distance)" aria-label="Umkreissuche nach Distanz">
@@ -100,6 +119,7 @@
         <md-slider flex="55" ng-disabled="!config.availableDistanceType.bike" ng-model="config.initialDistance.bike" step="{{sliderOptions.bike.step}}" min="{{sliderOptions.bike.min}}" max="{{sliderOptions.bike.max}}" aria-label="bikeOptions" class="md-primary"></md-slider>
       </div>
     </div>
+    <!-- /Umkreissuche -->
 
     <div flex="100">
       <md-button ng-disabled="!config.coords" class="md-raised md-primary" ng-click="saveConfig()">save</md-button>

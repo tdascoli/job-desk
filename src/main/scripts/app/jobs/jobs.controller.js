@@ -16,6 +16,10 @@
         bike: {min: 10, max: 60, step: 5, value: 30}
       };
 
+      $scope.onTabSelected=function(tab){
+        console.log(tab);
+      };
+
       $scope.iscoMajorGroup = [
         {text: 'isco.majorGroups.9', code: '9', img: 'jobs/isco9.png'},
         {text: 'isco.majorGroups.8', code: '8', img: 'jobs/isco8.png'},

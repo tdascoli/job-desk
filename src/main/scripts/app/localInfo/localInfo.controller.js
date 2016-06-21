@@ -1,6 +1,10 @@
 'use strict';
 
 angular.module('job-desk')
-  .controller('LocalInfoController', function () {
+  .controller('LocalInfoCtrl', function ($rootScope,$scope,$sce) {
+
+    $scope.getSrc = function() {
+      return $sce.trustAsResourceUrl($rootScope.appConfig.localInfo);
+    };
 
   });

@@ -23,11 +23,14 @@ body {
   width: 25%;
   text-align: left;
 }
+.jd-information-link {
+  margin-left: 1em;
+}
 
 //**** CATEGORIES
 .jd-categories  {
   position: fixed;
-  height: calc(~'100% - 84px');
+  height: calc(~'100% - 134px');
   width: 100%;
 }
 @media (max-width: 599px) {
@@ -102,6 +105,7 @@ body {
 }
 .radius {
   fill: @map-heatmap-fill; //@map-radius-fill;
+  fill-opacity: 0.5;
   opacity: 1;
   stroke: @map-heatmap-fill; //@map-radius-fill;
   stroke-opacity: 1;
@@ -565,4 +569,37 @@ md-toast.md-toast-error-theme .md-toast-content{
 
 .my-location-button {
   text-align: right;
+}
+
+/* tabs */
+.jd-tab {
+  display: block;
+  color: rgba(255,255,255,0.54);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+.jd-tab:hover {
+  color: inherit;
+}
+.jd-tab.jobs:hover {
+  color: inherit;
+  background: @material-color-blue;
+}
+.jd-tab.educations:hover {
+  color: inherit;
+  background: @material-color-light-green;
+}
+.jd-tab.apprenticeships:hover {
+  color: inherit;
+  background: @material-color-cyan;
+}
+
+.jd-tab.active {
+  border-bottom-color: white;
+  color: inherit;
+}
+
+/* localInfo */
+.localInfo {
+  border: none;
 }

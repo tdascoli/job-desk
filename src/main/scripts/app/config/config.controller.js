@@ -8,7 +8,17 @@
       $scope.idle = false;
 
       $scope.config = ConfigService.init();
-      
+      $scope.configInformation=false;
+
+      $scope.$watch('configInformation', function () {
+        if ($scope.config.localInfo!==''){
+          $scope.configInformation=true;
+        }
+        else if (!$scope.configInformation){
+          $scope.config.localInfo='';
+        }
+      });
+
       $scope.sliderOptions = {
         distance: {min: 10, max: 150, step: 10, value: 30},
         transport: {min: 10, max: 120, step: 5, value: 30},

@@ -17,9 +17,12 @@ body {
   width: 25%;
   text-align: left;
 }
+.jd-information-link {
+  margin-left: 1em;
+}
 .jd-categories {
   position: fixed;
-  height: calc(100% - 84px);
+  height: calc(100% - 134px);
   width: 100%;
 }
 @media (max-width: 599px) {
@@ -90,6 +93,7 @@ body {
 }
 .radius {
   fill: #f2d600;
+  fill-opacity: 0.5;
   opacity: 1;
   stroke: #f2d600;
   stroke-opacity: 1;
@@ -504,6 +508,36 @@ md-toast.md-toast-error-theme .md-toast-content {
 }
 .my-location-button {
   text-align: right;
+}
+/* tabs */
+.jd-tab {
+  display: block;
+  color: rgba(255, 255, 255, 0.54);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+.jd-tab:hover {
+  color: inherit;
+}
+.jd-tab.jobs:hover {
+  color: inherit;
+  background: #1976d2;
+}
+.jd-tab.educations:hover {
+  color: inherit;
+  background: #689f38;
+}
+.jd-tab.apprenticeships:hover {
+  color: inherit;
+  background: #0097a7;
+}
+.jd-tab.active {
+  border-bottom-color: white;
+  color: inherit;
+}
+/* localInfo */
+.localInfo {
+  border: none;
 }
 .tour-tip {
   display: none;

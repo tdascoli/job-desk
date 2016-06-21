@@ -91,12 +91,13 @@
         },
         hidden: true
       })
-      .state('frontpage', {
+      .state('information', {
         parent: 'site',
-        url: '/frontpage',
+        url: '/information',
         views: {
           'content@': {
-            templateUrl: 'views/content/localInfo/localInfo.html'
+            templateUrl: 'views/content/localInfo/localInfo.html',
+            controller: 'LocalInfoCtrl'
           }
         }
       });
@@ -107,11 +108,11 @@
     $rootScope.mobile = $.browser.mobile;
     $rootScope.searchType = 'jobs';
 
-    $rootScope.current = function () {
+    $rootScope.searchState = function () {
       if ($state.$current.url.source === '/' || $state.$current.url.source === '/jobs' || $state.$current.url.source === '/apprenticeships' || $state.$current.url.source === '/educations') {
-        return 'info_outline';
+        return true;
       }
-      return 'home';
+      return false;
     };
 
     var menuEv;
