@@ -4,19 +4,6 @@
 
   var module = angular.module('job-desk');
 
-  module.directive('help', function () {
-    return {
-      priority: 10,
-      restrict: 'E',
-      replace: true,
-      templateUrl: 'template/help.html',
-      link: function (scope, element) {
-        element.addClass('example');
-
-      }
-    };
-  });
-
   module.directive('jobDetail', ['$translate', '$sce', '$mdDialog', '$timeout', 'JobsService', function ($translate, $sce, $mdDialog, $timeout, JobsService) {
     return {
       priority: 10,

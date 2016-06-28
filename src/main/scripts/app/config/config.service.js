@@ -22,6 +22,12 @@
           drive:false,
           bike:false
         };
+        config.initialDistance={
+          distance:30,
+          transport:30,
+          drive:30,
+          bike:30
+        };
         config.mapType = 'osm';
       }
 

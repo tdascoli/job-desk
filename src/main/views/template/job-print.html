@@ -80,6 +80,16 @@
           <strong class="fake-label" translate="jobs.result.jobLocation"></strong> :
           <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />
 
+          <!-- Sprachen -->
+          <div ng-if="jobDetail._source.languages.length > 0">
+            <strong class="fake-label" translate="language.title"></strong>
+            <ul>
+              <div ng-repeat="language in jobDetail._source.languages" ng-if="language.languageCode">
+                <li><span translate="language.jobs.{{::language.languageCode}}"></span></li>
+              </div>
+            </ul>
+          </div>
+
           <strong>{{::jobDetail._source.company.name}}</strong>
         </div>
 

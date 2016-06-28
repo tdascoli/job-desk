@@ -5,7 +5,7 @@ Job-Desk
 
 Job search frontend made for internet terminals.
 
-pilot: http://jobdesk.job-room.ch and soon: http://pilot.job-desk.ch
+pilot: http://pilot.job-desk.ch
 
 development: http://dev.job-desk.ch
 
@@ -59,6 +59,10 @@ http://geojson.org/
 
 Techstack
 ---------
+
+### Travis > Exoscale
+* https://community.exoscale.ch/documentation/apps/quick-start/
+* https://docs.travis-ci.com/user/deployment/exoscale
 
 ### Angular Material
 https://material.angularjs.org

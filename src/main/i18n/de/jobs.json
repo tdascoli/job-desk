@@ -5,12 +5,20 @@
       "allSubGroups":"Alle Untergruppen",
       "disableGroup":"Andere Berufsgruppe",
       "location":"Wo (PLZ)",
-      "distance":"Distanz {{value}} km",
-      "travelTime":"Reisedauer {{value}} h",
-      "distanceTypeDistance":"Distanz in km",
-      "distanceTypeTransport":"Reisedauer ÖV in Stunden",
-      "distanceTypeDrive":"Reisedauer PKW in Stunden",
-      "distanceTypeBike":"Reisedauer Fahrrad in Stunden",
+      "circumSearch": {
+        "type": {
+          "distance":"Distanz in km",
+          "transport":"Reisedauer ÖV in Stunden",
+          "drive":"Reisedauer PKW in Stunden",
+          "bike":"Reisedauer Fahrrad in Stunden"
+        },
+        "label" : {
+          "distance":"Distanz {{value}} km",
+          "transport":"Reisedauer {{value}} h",
+          "drive":"Reisedauer {{value}} h",
+          "bike":"Reisedauer {{value}} h"
+        }
+      },
       "onlineSince":"Online seit {{value}} Tagen",
       "onlineSinceOneDay":"Online seit 1 Tag",
       "allJobs":"Alle Jobs",

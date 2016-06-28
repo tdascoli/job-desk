@@ -5,12 +5,20 @@
       "allSubGroups":"Tous les sous-groupes",
       "disableGroup":"Autre catégorie professionnelle",
       "location":"Où (NPA)",
-      "distance":"Distance {{value}} km",
-      "travelTime":"Durée du trajet {{value}} h",
-      "distanceTypeDistance":"Distance en km",
-      "distanceTypeTransport":"Durée du trajet en TP en heures",
-      "distanceTypeDrive":"Durée du trajet en voiture (heures)",
-      "distanceTypeBike":"Durée du trajet à vélo (heures)",
+      "circumSearch": {
+        "type": {
+          "distance":"Distance en km",
+          "transport":"Durée du trajet en TP en heures",
+          "drive":"Durée du trajet en voiture (heures)",
+          "bike":"Durée du trajet à vélo (heures)"
+        },
+        "label" : {
+          "distance":"Distance {{value}} km",
+          "transport":"Durée du trajet {{value}} h",
+          "drive":"Durée du trajet {{value}} h",
+          "bike":"Durée du trajet {{value}} h"
+        }
+      },
       "onlineSince":"En ligne depuis {{value}} jours",
       "onlineSinceOneDay":"En ligne depuis 1 jour",
       "allJobs":"Tous les emplois",

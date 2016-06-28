@@ -5,12 +5,20 @@
       "allSubGroups":"All subgroups",
       "disableGroup":"Other vocational group",
       "location":"Where (postal code)",
-      "distance":"Distance {{value}} km",
-      "travelTime":"Travel time {{value}} hrs",
-      "distanceTypeDistance":"Distance in km",
-      "distanceTypeTransport":"Public transport travel time in hrs",
-      "distanceTypeDrive":"[EN] Drive travel time in hrs",
-      "distanceTypeBike":"[EN] Drive travel time in hrs",
+      "circumSearch": {
+        "type": {
+          "distance":"Distance in km",
+          "transport":"Public transport travel time in hrs",
+          "drive":"[EN] Drive travel time in hrs",
+          "bike":"[EN] Drive travel time in hrs"
+        },
+        "label" : {
+          "distance":"Distance {{value}} km",
+          "transport":"Travel time {{value}} hrs",
+          "drive":"Travel time {{value}} hrs",
+          "bike":"Travel time {{value}} hrs"
+        }
+      },
       "onlineSince":"Online since {{value}} days",
       "onlineSinceOneDay":"Online since 1 day ago",
       "allJobs":"All jobs",

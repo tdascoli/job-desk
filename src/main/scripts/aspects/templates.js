@@ -287,12 +287,21 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "          <!--External Jobs-->\n" +
     "          <span ng-switch-when=\"true\">\n" +
     "            <p ng-bind-html=\"formatTextToShow(getMultiLanguageText(jobDetail._source.description))\"></p>\n" +
-    "            <div layout=\"row\" layout-wrap layout-align=\"space-between start\">\n" +
-    "              <div flex=\"25\" flex-xs=\"100\">\n" +
+    "            <div layout=\"row\" layout-wrap layout-align=\"start\">\n" +
+    "              <div flex=\"40\" flex-xs=\"100\">\n" +
     "                <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong><br />\n" +
     "                <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />\n" +
     "\n" +
     "                <strong>{{::jobDetail._source.company.name}}</strong>\n" +
+    "              </div>\n" +
+    "              <!-- Sprachen -->\n" +
+    "              <div flex=\"25\" flex-xs=\"100\" ng-if=\"jobDetail._source.languages.length > 0\">\n" +
+    "                <strong class=\"fake-label\" translate=\"language.title\"></strong>\n" +
+    "                <ul>\n" +
+    "                  <div ng-repeat=\"language in jobDetail._source.languages\" ng-if=\"language.languageCode\">\n" +
+    "                    <li><span translate=\"language.jobs.{{::language.languageCode}}\"></span></li>\n" +
+    "                  </div>\n" +
+    "                </ul>\n" +
     "              </div>\n" +
     "            </div>\n" +
     "          </span>\n" +
@@ -503,6 +512,16 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "          <p ng-bind-html=\"formatTextToPrint(getMultiLanguageText(jobDetail._source.description))\"></p>\n" +
     "          <strong class=\"fake-label\" translate=\"jobs.result.jobLocation\"></strong> :\n" +
     "          <span>{{::getMultiLanguageText(jobDetail._source.location.remarks)}}</span><br />\n" +
+    "\n" +
+    "          <!-- Sprachen -->\n" +
+    "          <div ng-if=\"jobDetail._source.languages.length > 0\">\n" +
+    "            <strong class=\"fake-label\" translate=\"language.title\"></strong>\n" +
+    "            <ul>\n" +
+    "              <div ng-repeat=\"language in jobDetail._source.languages\" ng-if=\"language.languageCode\">\n" +
+    "                <li><span translate=\"language.jobs.{{::language.languageCode}}\"></span></li>\n" +
+    "              </div>\n" +
+    "            </ul>\n" +
+    "          </div>\n" +
     "\n" +
     "          <strong>{{::jobDetail._source.company.name}}</strong>\n" +
     "        </div>\n" +

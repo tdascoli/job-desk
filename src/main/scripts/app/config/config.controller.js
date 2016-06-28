@@ -8,6 +8,32 @@
       $scope.idle = false;
 
       $scope.config = ConfigService.init();
+      $scope.configInformation=false;
+
+      $scope.$watch('configInformation', function () {
+        if ($scope.config.localInfo!==''){
+          $scope.configInformation=true;
+        }
+        else if (!$scope.configInformation){
+          $scope.config.localInfo='';
+        }
+      });
+
+      $scope.sliderOptions = {
+        distance: {min: 10, max: 150, step: 10, value: 30},
+        transport: {min: 10, max: 120, step: 5, value: 30},
+        drive: {min: 10, max: 60, step: 5, value: 30},
+        bike: {min: 10, max: 60, step: 5, value: 30}
+      };
+
+      $scope.showTimeInH = function (time) {
+        var hour = Math.floor(time / 60);
+        var minute = time - (hour * 60);
+        if (minute < 10) {
+          minute = '0' + minute;
+        }
+        return hour + ':' + minute;
+      };
 
       $scope.circumSearch=function(type){
         if (!type){

@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="job-desk">
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1" />
@@ -99,27 +99,36 @@
     <md-button ng-click="back()" class="topnav-title" aria-label="Job-Desk Home">
       <md-icon md-svg-src="assets/images/job-desk.svg" aria-label="Job-Desk" class="job-desk-logo"></md-icon>
     </md-button>
-    <md-button hide-xs class="md-raised md-primary section-button" aria-label="jobs" md-theme="jobs" href="#/jobs" ng-if="searchType!=='jobs'"><md-icon>launch</md-icon> <span translate="global.jobs"></span></md-button>
-    <md-button hide-xs class="md-raised md-primary section-button" aria-label="educations" md-theme="educations" href="#/educations" ng-if="searchType!=='educations' && appConfig.educations "><md-icon>launch</md-icon> <span translate="global.educations"></span></md-button>
-    <md-button hide-xs class="md-raised md-primary section-button" aria-label="apprenticeships" md-theme="apprenticeships" href="#/apprenticeships" ng-if="searchType!=='apprenticeships' && appConfig.apprenticeships"><md-icon>launch</md-icon> <span translate="global.apprenticeships"></span></md-button>
+    <md-button hide-xs ng-hide="appConfig.localInfo===''" class="jd-information-link" aria-label="information" href="#/information">
+      <md-icon>info_outline</md-icon> <span translate="global.information"></span>
+    </md-button>
     <span flex></span>
     <language-switcher></language-switcher>
-    <md-menu md-position-mode="target-right target" hide-gt-xs ng-hide="!appConfig.educations && !appConfig.apprenticeships">
+    <md-menu md-position-mode="target-right target" hide-gt-xs ng-hide="!appConfig.educations && !appConfig.apprenticeships && appConfig.localInfo===''">
       <md-button aria-label="Open Menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu,$event)">
         <md-icon md-menu-origin>more_vert</md-icon>
       </md-button>
       <md-menu-content width="3">
-        <md-menu-item ng-hide="searchType==='jobs'">
-          <md-button aria-label="jobs" ng-click="closeMenu('jobs')"><span translate="global.jobs"></span></md-button>
+        <md-menu-item ng-hide="appConfig.localInfo===''">
+          <md-button aria-label="information" ng-click="closeMenu('information')"><md-icon>info_outline</md-icon> <span translate="global.information"></span></md-button>
         </md-menu-item>
-        <md-menu-item ng-hide="searchType==='educations' ||  !appConfig.educations">
-          <md-button aria-label="educations" ng-click="closeMenu('educations')"><span translate="global.educations"></span></md-button>
+        <md-menu-item>
+          <md-button class="jd-mobile-menu" ng-class="{ 'active': searchType==='jobs' && searchState() }" aria-label="jobs" ng-click="closeMenu('jobs')"><span translate="global.jobs"></span></md-button>
         </md-menu-item>
-        <md-menu-item ng-hide="searchType==='apprenticeships' || !appConfig.apprenticeships">
-          <md-button aria-label="apprenticeships" ng-click="closeMenu('apprenticeships')"><span translate="global.apprenticeships"></span></md-button>
+        <md-menu-item ng-hide="!appConfig.educations">
+          <md-button class="jd-mobile-menu" ng-class="{ 'active': searchType==='educations' && searchState() }" aria-label="educations" ng-click="closeMenu('educations')"><span translate="global.educations"></span></md-button>
+        </md-menu-item>
+        <md-menu-item ng-hide="!appConfig.apprenticeships">
+          <md-button class="jd-mobile-menu" ng-class="{ 'active': searchType==='apprenticeships' && searchState() }" aria-label="apprenticeships" ng-click="closeMenu('apprenticeships')"><span translate="global.apprenticeships"></span></md-button>
         </md-menu-item>
       </md-menu-content>
     </md-menu>
+  </div>
+
+  <div>
+    <a hide-xs ng-hide="!appConfig.educations && !appConfig.apprenticeships" class="jd-tab md-tab jobs" ng-class="{ 'active': searchType==='jobs' && searchState() }" aria-label="jobs" md-theme="jobs" href="#/jobs"><span translate="global.jobs"></span></a>
+    <a hide-xs ng-hide="!appConfig.educations" class="jd-tab md-tab educations" ng-class="{ 'active': searchType==='educations' && searchState() }" aria-label="educations" md-theme="educations" href="#/educations"><span translate="global.educations"></span></a>
+    <a hide-xs ng-hide="!appConfig.apprenticeships" class="jd-tab md-tab apprenticeships" ng-class="{ 'active': searchType==='apprenticeships' && searchState() }" aria-label="apprenticeships" md-theme="apprenticeships" href="#/apprenticeships"><span translate="global.apprenticeships"></span></a>
   </div>
 </md-toolbar>
 
@@ -192,6 +201,7 @@
 <script src="scripts/aspects/directive.js"></script>
 <script src="scripts/app/localInfo/localInfo.js"></script>
 <script src="scripts/app/localInfo/localInfo.controller.js"></script>
+<script src="scripts/app/localInfo/localInfo.directive.js"></script>
 <script src="scripts/app/apprenticeships/apprenticeships.js"></script>
 <script src="scripts/app/apprenticeships/apprenticeships.service.js"></script>
 <script src="scripts/app/apprenticeships/apprenticeships.controller.js"></script>
@@ -226,6 +236,17 @@
       <md-button ng-click="closeTour()" translate="global.tour.close" class="md-raised" aria-label="global.tour.close"></md-button>
     </div>
   </div>
+</script>
+<script>
+  angular.element(document).ready(function () {
+    if (window.cordova) {
+      document.addEventListener('deviceready', function () {
+        angular.bootstrap(document.body, ['job-desk']);
+      }, false);
+    } else {
+      angular.bootstrap(document.body, ['job-desk']);
+    }
+  });
 </script>
 
 </body>
