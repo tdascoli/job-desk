@@ -217,7 +217,7 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "      <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)>1\" translate=\"jobs.result.onlineSince\" translate-values=\"{value: onlineSinceDate(jobDetail._source.publicationDate)}\"></span>\n" +
     "      <span ng-if=\"onlineSinceDate(jobDetail._source.publicationDate)===1\" translate=\"jobs.result.onlineSinceOneDay\"></span>\n" +
     "      &nbsp;\n" +
-    "      <span ng-if=\"sorting==='3' || sorting==='4' && jobDetail.sort[0]<1000\" translate=\"jobs.search.distance\" translate-values=\"{value:formatDistance(jobDetail.sort[0])}\"></span>\n" +
+    "      <span ng-if=\"sorting==='3' || sorting==='4'\" translate=\"jobs.search.circumSearch.label.distance\" translate-values=\"{value:formatDistance(jobDetail.sort[0])}\"></span>\n" +
     "\n" +
     "      <p ng-if=\"!showDetailContent\" ng-text-truncate=\"formatTextToShow(getMultiLanguageText(jobDetail._source.description))\" ng-tt-words-threshold=\"20\" ng-tt-no-toggling></p>\n" +
     "\n" +
