@@ -19,9 +19,8 @@
       function getHeatmap(zip, travelTime) {
         arrleeParams.start_zip = zip;
         arrleeParams.max_travel_time = travelTime;
-        arrleeParams.day=getNextMonday().day; // Next Monday of Week
-        arrleeParams.month=getNextMonday().month; // Month
-        arrleeParams.year=getNextMonday().year; // Month
+
+        doArrleeDateParam();
 
         var arrleeParamsString = '';
         for (var key in arrleeParams) {
@@ -38,9 +37,9 @@
         return $http.get(arrleeUrl + '/poi?poi_types=PLZCH&max_tt=' + travelTime);
       }
 
-      function getNextMonday(){
+      function doArrleeDateParam(){
         var currentDate = moment();
-        var monday = currentDate.add(7, 'd').day(1); // Next Monday Week
+        var monday                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       = currentDate.add(7, 'd').day(1); // Next Monday Week
         var year=parseInt(monday.format('YYYY'));
 
         if (year!==moment().year()){
@@ -58,7 +57,15 @@
         day--;
         month--;
 
-        return {day:day,month:month,year:year};
+        // there is a problem if day === 0 (wrong results > bug in arrlee)
+        if (day===0){
+          day=7;
+        }
+
+        arrleeParams.day=day;
+        arrleeParams.month=month;
+        arrleeParams.year=year;
+        //return {day:day,month:month,year:year};
       }
 
       return {
