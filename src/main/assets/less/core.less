@@ -174,8 +174,10 @@ body {
 .alphakey {
   width: 100% !important;
 }
+
 .ui-keyboard {
   background: @keyboard-border;
+  width: 188px !important;
   border: none !important;
   padding: 0 !important;
   margin-top: 20px;
@@ -185,29 +187,19 @@ body {
 
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
 }
-
-.ui-keyboard:after, .arrow_box:before {
-  left: 100%;
-  top: 25px;
+.ui-keyboard:after {
+  right: -30px;
+  top: 12px;
   border: solid transparent;
   content: " ";
   height: 0;
   width: 0;
   position: absolute;
   pointer-events: none;
-}
-
-.ui-keyboard:after {
-  border-color: rgb(238, 238, 238);
+  border-color: rgba(238, 238, 238, 0);
   border-left-color: @keyboard-border;
   border-width: 15px;
-  margin-top: -15px;
-}
-.ui-keyboard:before {
-  border-color: rgb(238, 238, 238);
-  border-left-color: @keyboard-border;
-  border-width: 21px;
-  margin-top: -21px;
+  margin-left: -15px;
 }
 
 .ui-keyboard-button {

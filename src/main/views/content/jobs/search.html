@@ -42,7 +42,8 @@
 
     <div flex="15" id="distanceTypeParameter">
       <div flex>
-        <label class="md-slider-label" translate="jobs.search.circumSearch.label.{{searchParams.distanceType}}" translate-values="{value:searchParams.{{searchParams.distanceType}}}"></label>
+        <label ng-if="searchParams.distanceType==='distance'" class="md-slider-label" translate="jobs.search.circumSearch.label.{{searchParams.distanceType}}" translate-values="{value:searchParams.{{searchParams.distanceType}}}"></label>
+        <label ng-if="searchParams.distanceType!=='distance'" class="md-slider-label" translate="jobs.search.circumSearch.label.{{searchParams.distanceType}}" translate-values="{value:showTimeInH(searchParams.{{searchParams.distanceType}})}"></label>
         <md-slider ng-model="searchParams[searchParams.distanceType]" step="{{sliderOptions[searchParams.distanceType].step}}" min="{{sliderOptions[searchParams.distanceType].min}}" max="{{sliderOptions[searchParams.distanceType].max}}" aria-label="distance" ng-change="countJobs()" class="md-primary"></md-slider>
       </div>
     </div>
