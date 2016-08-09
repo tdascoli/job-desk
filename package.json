@@ -1,6 +1,6 @@
 {
   "name": "job-desk",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Job search frontend made for internet terminals.",
   "repository": {
     "type": "git",
@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/alv-ch/alv-ch/issues"
   },
-  "homepage": "http://jobdesk.job-room.ch",
+  "homepage": "http://pilot.job-desk.ch",
   "dependencies": {
     "request": "~2.65.0"
   },
