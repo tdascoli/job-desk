@@ -20,6 +20,9 @@ body {
 .jd-information-link {
   margin-left: 1em;
 }
+.jd-language-switcher {
+  font-size: smaller;
+}
 .jd-categories {
   position: fixed;
   height: calc(100% - 134px);

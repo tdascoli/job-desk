@@ -44,6 +44,12 @@
     "tour":{
       "next":"Suivant",
       "close":"Fermer"
+    },
+    "languages": {
+      "de": "deutsch",
+      "en": "english",
+      "fr": "français",
+      "it": "italiano"
     }
   }
 }

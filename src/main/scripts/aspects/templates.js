@@ -63,8 +63,10 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('template/core/language-switcher.html',
-    "<md-select ng-model=\"currentLanguage\" aria-label=\"current language\">\n" +
-    "  <md-option ng-click=\"changeLanguage(language)\" ng-value=\"language\" ng-repeat=\"language in allLanguages\">{{ language }}</md-option>\n" +
+    "<md-select ng-model=\"currentLanguage\" aria-label=\"current language\" class=\"jd-language-switcher\">\n" +
+    "  <md-option ng-click=\"changeLanguage(language)\" ng-value=\"language\" ng-repeat=\"language in allLanguages\">\n" +
+    "    <span translate=\"global.languages.{{ language }}\"></span>\n" +
+    "  </md-option>\n" +
     "</md-select>\n"
   );
 
