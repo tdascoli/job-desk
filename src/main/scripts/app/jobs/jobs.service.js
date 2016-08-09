@@ -80,7 +80,6 @@
       }
 
       function find() {
-
         if (params.currentCoords === undefined) {
           params.currentCoords = $rootScope.myCoords;
         }

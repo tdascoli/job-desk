@@ -144,7 +144,7 @@
 </div>
 <!-- END: App-Loading Screen. -->
 
-<div ng-if="!userActive.active" class="jd-sleep-screen"></div>
+<div ng-if="!userActive.active || geoIdle" class="jd-sleep-screen"></div>
 <!--./container -->
 
 <!-- build:js scripts/vendor.js -->

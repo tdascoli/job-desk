@@ -85,6 +85,11 @@ body {
 .category :focus {
   outline: none;
 }
+@media (max-width: 599px) {
+  #main {
+    height: 100%;
+  }
+}
 #map {
   width: 960px;
   height: 500px;
@@ -504,6 +509,11 @@ md-toast.md-toast-error-theme .md-toast-content {
 /* mobile menu */
 .jd-mobile-menu.active {
   font-weight: 700;
+}
+#mobile-filter {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
 }
 /* tabs */
 .jd-tab {

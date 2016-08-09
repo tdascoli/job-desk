@@ -77,6 +77,7 @@
             }
           });
       };
+
       function iscoDialogController($scope, $mdDialog, level, iscoMinorGroups) {
         $scope.level = level;
         $scope.iscoMinorGroups = iscoMinorGroups;
@@ -183,8 +184,9 @@
       };
 
       function setNewCoords(coords) {
-        $scope.idle = true;
-        LocationsService.getLocation(coords).success(function (nearestZip) {
+        if (coords!==undefined) {
+          $scope.idle = true;
+          LocationsService.getLocation(coords).success(function (nearestZip) {
             if (nearestZip.hits.total > 0) {
               $scope.searchParams.currentCoords = coords;
 
@@ -204,6 +206,7 @@
           .error(function (error) {
             console.error(error);
           });
+        }
       }
 
       $scope.setMyLocation = function () {

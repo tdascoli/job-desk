@@ -85,7 +85,7 @@
         element.css('width', $(document).width());
         element.css('height', ($(window).height() - ($('#topnav').outerHeight() + $('#filter').outerHeight())) - 25);
         if ($rootScope.mobile) {
-          element.css('height', ($(window).height() - ($('#topnav').outerHeight() + $('#mobile-filter').outerHeight())));
+          element.css('height', ($(window).height() - ($('#topnav').outerHeight())));
         }
 
         //*** geo-layer (my-position)

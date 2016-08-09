@@ -126,24 +126,25 @@
     };
 
     $rootScope.appConfig = ConfigService.init();
-
-    $rootScope.myCoords = LocationsService.getDefaultLocation();
+    $rootScope.geoIdle = true;
 
     var config = $cookies.getObject('config');
     if (!angular.isObject(config)) {
       geolocation.getLocation().then(function (data) {
-        // geolocatigon received from browser
-        if ($rootScope.myCoords === undefined) {
-          LocationsService.checkLocation({lat: data.coords.latitude, lon: data.coords.longitude}, function (coords) {
-            $rootScope.myCoords = coords;
-          });
-        }
+        // geolocation received from browser
+        LocationsService.checkLocation({lat: data.coords.latitude, lon: data.coords.longitude}, function (coords) {
+          $rootScope.myCoords = coords;
+          $rootScope.geoIdle = false;
+        });
       }, function () {
         // user blocked geolocation or browser doesn't support it
+        $rootScope.myCoords = LocationsService.getDefaultLocation();
+        $rootScope.geoIdle = false;
       });
     }
     else {
       $rootScope.myCoords = config.coords;
+      $rootScope.geoIdle = false;
     }
 
     $rootScope.back = function () {

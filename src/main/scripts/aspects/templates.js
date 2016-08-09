@@ -401,27 +401,18 @@ angular.module('job-desk').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <md-list-item class=\"md-2-line\">\n" +
     "      <md-select aria-label=\"distance\" flex=\"100\" ng-model=\"searchParams.distanceType\" ng-change=\"countJobs()\" ng-init=\"searchParams.distanceType=searchParams.distanceType || appConfig.distanceType || 'distance'\">\n" +
-    "        <md-option value=\"distance\" class=\"md-primary\" aria-label=\"distance\" ng-if=\"appConfig.availableDistanceType.distance\"><span translate=\"jobs.search.distanceTypeDistance\"></span></md-option>\n" +
-    "        <md-option value=\"transport\" class=\"md-primary\" aria-label=\"travel time\" ng-if=\"appConfig.availableDistanceType.transport\"><span translate=\"jobs.search.distanceTypeTransport\"></span></md-option>\n" +
-    "        <md-option value=\"drive\" class=\"md-primary\" aria-label=\"travel time\" ng-if=\"appConfig.availableDistanceType.drive\"><span translate=\"jobs.search.distanceTypeDrive\"></span></md-option>\n" +
-    "        <md-option value=\"bike\" class=\"md-primary\" aria-label=\"travel time\" ng-if=\"appConfig.availableDistanceType.bike\"><span translate=\"jobs.search.distanceTypeBike\"></span></md-option>\n" +
+    "        <md-option value=\"distance\" class=\"md-primary\" aria-label=\"distance\" ng-if=\"appConfig.availableDistanceType.distance\"><span translate=\"jobs.search.circumSearch.type.distance\"></span></md-option>\n" +
+    "        <md-option value=\"transport\" class=\"md-primary\" aria-label=\"travel time\" ng-if=\"appConfig.availableDistanceType.transport\"><span translate=\"jobs.search.circumSearch.type.transport\"></span></md-option>\n" +
+    "        <md-option value=\"drive\" class=\"md-primary\" aria-label=\"travel time\" ng-if=\"appConfig.availableDistanceType.drive\"><span translate=\"jobs.search.circumSearch.type.drive\"></span></md-option>\n" +
+    "        <md-option value=\"bike\" class=\"md-primary\" aria-label=\"travel time\" ng-if=\"appConfig.availableDistanceType.bike\"><span translate=\"jobs.search.circumSearch.type.bike\"></span></md-option>\n" +
     "      </md-select>\n" +
     "    </md-list-item>\n" +
     "\n" +
     "    <md-list-item class=\"md-2-line\">\n" +
-    "      <div flex=\"100\" ng-if=\"searchParams.distanceType==='distance'\">\n" +
-    "        <label class=\"md-slider-label\" translate=\"jobs.search.distance\" translate-values=\"{value:searchParams.distance}\"></label>\n" +
-    "        <md-slider ng-model=\"searchParams.distance\" step=\"{{distanceOptions.step}}\" min=\"{{distanceOptions.min}}\" max=\"{{distanceOptions.max}}\" aria-label=\"distance\" ng-change=\"countJobs()\" class=\"md-primary\"></md-slider>\n" +
-    "      </div>\n" +
-    "\n" +
-    "      <div flex=\"100\" ng-if=\"searchParams.distanceType==='transport'\">\n" +
-    "        <label class=\"md-slider-label\" translate=\"jobs.search.travelTime\" translate-values=\"{value:showTimeInH(searchParams.travelTime)}\"></label>\n" +
-    "        <md-slider ng-model=\"searchParams.travelTime\" step=\"{{transportOptions.step}}\" min=\"{{transportOptions.min}}\" max=\"{{transportOptions.max}}\" aria-label=\"travelTime\" ng-change=\"countJobs()\" class=\"md-primary\"></md-slider>\n" +
-    "      </div>\n" +
-    "\n" +
-    "      <div flex=\"100\" ng-if=\"searchParams.distanceType==='drive' || searchParams.distanceType==='bike'\">\n" +
-    "        <label class=\"md-slider-label\" translate=\"jobs.search.travelTime\" translate-values=\"{value:showTimeInH(searchParams.travelTime)}\"></label>\n" +
-    "        <md-slider ng-model=\"searchParams.travelTime\" step=\"{{driveOptions.step}}\" min=\"{{driveOptions.min}}\" max=\"{{driveOptions.max}}\" aria-label=\"drive\" ng-change=\"countJobs()\" class=\"md-primary\"></md-slider>\n" +
+    "      <div flex=\"100\">\n" +
+    "        <label ng-if=\"searchParams.distanceType==='distance'\" class=\"md-slider-label\" translate=\"jobs.search.circumSearch.label.{{searchParams.distanceType}}\" translate-values=\"{value:searchParams.{{searchParams.distanceType}}}\"></label>\n" +
+    "        <label ng-if=\"searchParams.distanceType!=='distance'\" class=\"md-slider-label\" translate=\"jobs.search.circumSearch.label.{{searchParams.distanceType}}\" translate-values=\"{value:showTimeInH(searchParams.{{searchParams.distanceType}})}\"></label>\n" +
+    "        <md-slider ng-model=\"searchParams[searchParams.distanceType]\" step=\"{{sliderOptions[searchParams.distanceType].step}}\" min=\"{{sliderOptions[searchParams.distanceType].min}}\" max=\"{{sliderOptions[searchParams.distanceType].max}}\" aria-label=\"distance\" ng-change=\"countJobs()\" class=\"md-primary\"></md-slider>\n" +
     "      </div>\n" +
     "    </md-list-item>\n" +
     "\n" +
