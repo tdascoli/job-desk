@@ -26,7 +26,7 @@ deploy:
     master: alvchegov
     dev: alvch
   app:
-    master: jobdeskpilot
+    master: jobdesk
     dev: jobdeskdev
   on:
     repo: alv-ch/job-desk
