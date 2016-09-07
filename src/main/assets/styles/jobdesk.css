@@ -295,7 +295,8 @@ md-input-container > md-slider {
 .jd-select-reset {
   color: rgba(0, 0, 0, 0.54);
 }
-.jd-floating-toolbar ._md-label {
+.jd-floating-toolbar ._md-label,
+.jd-floating-toolbar .md-label {
   font-size: 0.75em;
   color: #000000;
 }

@@ -60,7 +60,7 @@
           };
 
         //** tiles & zoom
-        var initial_zoom = 9;
+        var initial_zoom = 10;
         var tile_layer = L.tileLayer('http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
           minZoom: 8, maxZoom: 12
         });
@@ -125,6 +125,9 @@
         map
           .addLayer(geo_layer.bringToBack())
           .addLayer(search_layer.bringToFront());
+
+        // Remove Link but add Leaflet
+        map.attributionControl.setPrefix('Leaflet');
 
         geo_layer.addLayer(L.circleMarker(myCoords, {clickable: false, radius: 3, className: 'my-location'}));
         myPosition();
