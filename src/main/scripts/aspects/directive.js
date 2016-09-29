@@ -36,7 +36,10 @@
         // todo attrs - eval??
         var mapId = attrs.id || 'map';
         var tiles = attrs.mapTiles || 'osm';
-        var myCoords = attrs.mapLocation || {lat: $rootScope.myCoords.lat, lng: $rootScope.myCoords.lon};
+        var myCoords = {lat: $rootScope.myCoords.lat, lng: $rootScope.myCoords.lon};
+        if (scope.searchParams.currentCoords!==undefined){
+          myCoords = {lat: scope.searchParams.currentCoords.lat, lng: scope.searchParams.currentCoords.lon};
+        }
 
         var res = [4000, 3750, 3500, 3250, 3000, 2750, 2500, 2250, 2000, 1750, 1500, 1250, 1000, 750, 650, 500, 250, 100, 50, 20, 10, 5, 2.5, 2, 1.5, 1, 0.5];
         proj4.defs('EPSG:21781','+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=600000 +y_0=200000 +ellps=bessel +towgs84=674.4,15.1,405.3,0,0,0,0 +units=m +no_defs');
