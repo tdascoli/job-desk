@@ -81,11 +81,10 @@
         }
         /**** /GEO.ADMIN.CH *****/
 
-        //** height/width -> fullscreen param?!
-        element.css('width', $(document).width());
-        element.css('height', ($(window).height() - ($('#topnav').outerHeight() + $('#filter').outerHeight())) - 25);
+        //** height > full screen
+        element.css('height', ( $(window).height() - ($('#filter').offset().top + $('#filter').outerHeight()) - 25 ));
         if ($rootScope.mobile) {
-          element.css('height', ($(window).height() - ($('#topnav').outerHeight())));
+          element.css('height', ($(window).height() - $('#topnav').outerHeight() - 15) );
         }
 
         //*** geo-layer (my-position)

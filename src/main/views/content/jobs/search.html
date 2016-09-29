@@ -1,6 +1,6 @@
-<div layout-xs="row" layout-wrap class="no-scrollbar" ng-class="{'jd-floating-toolbar':!mobile}">
-  <div id="filter" hide-xs layout="row" layout-wrap layout-margin layout-align="start center" class="md-whiteframe-z2">
+<md-card ng-class="{'jd-floating-toolbar':!mobile}">
 
+  <md-card-actions id="filter" hide-xs layout="row" layout-wrap layout-margin layout-align="start center">
     <div flex="60" layout="row" layout-wrap id="iscoGroup">
       <md-input-container flex="60" class="md-block isco-select" ng-if="!searchParams.iscoMajorGroup">
         <label><span translate="jobs.search.jobgroup"></span></label>
@@ -51,13 +51,11 @@
     <div flex>
       <md-button ng-click="startTour()" class="md-icon-button"><md-icon>help</md-icon></md-button>
     </div>
-  </div>
+  </md-card-actions>
 
-  <div align="center">
-    <div id="map" class="map"></div>
-  </div>
+  <div id="map" class="map md-card-image"></div>
 
-</div>
+</md-card>
 
 <div hide-gt-xs id="mobile-filter">
   <md-button class="md-raised" ng-click="showListBottomSheet()"><md-icon>settings</md-icon> <span translate="jobs.search.filter"></span></md-button>
