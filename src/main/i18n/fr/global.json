@@ -4,6 +4,7 @@
     "apprenticeships": "Places d'apprentissage",
     "educations": "Cours de formation continue",
     "jobs": "Emplois",
+    "information": "Informations",
     "sort": {
       "newest":"Emplois les plus récents d'abord",
       "workload_100":"Taux d'occupation - le plus bas d'abord",

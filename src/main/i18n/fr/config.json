@@ -19,6 +19,11 @@
       "swisstopo": "[FR]  swisstopo Karte",
       "openstreetmap": "[FR]  OpenStreetMap Karte"
     },
+    "information": {
+      "title":"Informationsseite",
+      "activate": "Informationsseite aktivieren",
+      "link": "Informationsseite - Link"
+    },
     "circumSearch": {
       "title": "[FR] Umkreissuche",
       "offer":"[FR] Angebot",
