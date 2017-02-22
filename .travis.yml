@@ -1,51 +1,21 @@
-sudo: false
 language: node_js
+
 node_js:
-- 0.12.7
+- node
+
+before_install:
+- npm install -g grunt-cli
+
 before_script:
-- npm install -g bower grunt-cli
 - bower install
+
+after_script:
+- cat build/coverage/reports/lcov/lcov.info | codeclimate
+
+notifications:
+  slack: alv-ch:tf9xRwey0Crj0qdDxljP5lDX
+
 addons:
   code_climate:
     repo_token:
       secure: Z1Bgklztdj5gNXcKG/ZLhjeu/hwz0Gk0hXwph8i/2l1WGt57gKNv/DPLavip4Ptn1JYgtUmVDVU+ggeB+bbW3eiB69DY8LVrn6h2irPkJf+J1YpcK8dsS2r587nAFz2MJQPJ2BDZ01fJgJFjOowHexYndIe/hknP3FGhf+6rR9U=
-#deploy:
-#  provider: exoscale
-#  email: staatssekretariat-fur-wirtschaft-seco
-#  password:
-#    secure: ovtirD1++VGaZWiv+u8sOO0YmusyXrTPRNGJnTVuj0HlxciT24C3mhcX1pi8PLH8dCJLKs3WgpjCM1U6c1Qft+FTq9N9hGaLj7m/vSmvrYhX4ZbDHi37Rm6tJe2AYuSzL8wROlT7sy3I6IfsNxtYAp7WaAkf4+NDAtY2miLfEx4bla6WpMv+pSi+vyuFdH82GhoQrRXxNyuCxB0QljSwbxvjscVJCXDjV9zPr84O9Wgy77tTeMZBltKMNiwEG35e3IdSn1e/AqMaMcArmajYN3DuaKqjnVFSkDKmeGFKxxNrhzySleCLHwx0XeUdIG/2qh6CGL0SvxhaDUsV7844IGFN40yA7Eg2C16wkLbHj5u9/RVjVPHfbY5zhhU9Ky1z9JewM4aEo0M21k3f/IuUv8AS39TqaiiQ1YkCm3x7bA+LgXh39oPhv5NAPIMO2c2/8mjH1lneU19rvVH+MG/RamSsjy56FKsJAHDuXZ09DgLLho+dcDA9SI3Sr8HWjLPpdWLoUNn4i9+TevaI+zB5F0DwtdHVMFml8AbRDUvd5QNohvVmCj3ypRQlwvlzwsxQ4Hsetrj2ucNxpuI7WWn6lmGIFPVPuxP8tsKCV2JZKTizi1yNp8Ias39Q92r64N0eVwiHR9zuususouY1vfUxeInxcOMYe6RTz1XieY26Wrg=
-#  deployment: jobdesk019/default
-#    on:
-#      all_branches: true
-deploy:
-  provider: openshift
-  user: mediamatik@seco.admin.ch
-  password:
-    secure: plOcc82kJsHZGx9N4aea/IQxZqOZ0qwH6RE4n9Leo4OqcGIlJjdNz1bjS1YfzOkiWn1jNdKqcjAhS/Gw3W2oPb7A1t/xk+7sF/2dLsGpkxod8w8f+2JNwzCDb9C0TCdG5zIFhq7t3V23scfXIe4z6dKrze2wZddQklqa7WsLmKROxSiuJWZSfHrGKuFoAWQLZYvfdHXtlT+SH/CugFub7b5gGdAs03jmq4N53eR/td3zccqOx56gWTI54rro81xKSFGvd/ykQd0H8gCn6EswcWJEeuGvDF3P0KIAlnv+M4OTCsodl7AaaOSph963AhU8dt4NreIFfKzE/vmy4tOSZ6le5EWPdg8zIijxgB007Oz6ZVL7m5TC181E1zxChdcu7TvN+TW+swmXxAO8vGzhrF2fbhaQb480uAOL/p7vMy20C9/+exadTaqfSQ1tIpSoHZWwQBvb5H7yI6JtRA7B8c3fXS15maM/BjIu2h8CInd61kxpndbX6nTnsnQ5VkCr3UaGeeltCS4B4j6MRVBUyIhrPiXwGQ8NyPL6VEKJhxeu16yAfu9qIP2ZeioNmp5DJ4jMqVQspCTt9kkmz73HrFYcDewZ/pWpjDB8Oo2m5iQFaIty5jsAHYBwlCOmMEkzXtLyGYy0yp6uYiCIhYKUAfINgUSQS9oE8FEGf3mBLPc=
-  domain:
-    master: alvchegov
-    dev: alvch
-  app:
-    master: jobdesk
-    dev: jobdeskdev
-  on:
-    repo: alv-ch/job-desk
-after_success:
-- if [ "$TRAVIS_BRANCH" == "master" ]; then grunt build-prod; fi
-- if [ "$TRAVIS_BRANCH" == "dev" ]; then grunt build-staging; fi
-- cp server.js dist/
-- cp package.json dist/
-- cp -r .openshift dist/
-- cd dist
-- git init
-- git config --global user.email "travis@localhost.localdomain"
-- git config --global user.name "Travis CI"
-- ls -a
-- git status
-- git add --all
-- git status
-- git commit -am "Travis change"
-after_script:
-- cat build/coverage/reports/lcov/lcov.info | codeclimate
-notifications:
-  slack: alv-ch:tf9xRwey0Crj0qdDxljP5lDX
