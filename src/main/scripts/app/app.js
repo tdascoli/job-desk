@@ -103,7 +103,7 @@
       });
   });
 
-  app.run(function ($http, geolocation, $rootScope, $state, $cookies, LocationsService, ConfigService, UpdateService, PresenceService, ENV) {
+  app.run(function ($http, geolocation, $rootScope, $state, $cookies, LocationsService, ConfigService, UpdateService, PresenceService) {
 
     $rootScope.mobile = $.browser.mobile;
     $rootScope.searchType = 'jobs';
@@ -154,10 +154,7 @@
     // detection of user inactivity
     $rootScope.userActive = PresenceService.userActive;
 
-    if (ENV !== 'dev') {
-      UpdateService.init();
-    }
-
+    //UpdateService.init();
   });
 
 }());
