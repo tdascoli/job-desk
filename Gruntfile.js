@@ -365,52 +365,37 @@ module.exports = function (grunt) {
           context: '/jobdesk',
           host: 'arrlee.jobarea.ch',
           https: false,
-          changeOrigin: false
-        },
-        {
-          context: '/jobdesk-behind-corporate-proxy',
-          host: 'put.your.proxy.host',
-          port: 8080,
-          https: false,
           changeOrigin: false,
           headers: {
-            Host: 'arrlee.jobarea.ch' // the real host you want to access
+            Host: 'arrlee.jobarea.ch'
           }
-        },
-        {
-          context: '/jobdeskdev',
-          host: 'localhost',
-          port: 9200,
-          https: false,
-          changeOrigin: false
         },
         {
           context: '/arrlee',
           host: 'arrlee.jobarea.ch',
           https: false,
-          changeOrigin: false
-        },
-        {
-          context: '/arrlee-behind-corporate-proxy',
-          host: 'put.your.proxy.host',
-          port: 8080,
-          https: false,
           changeOrigin: false,
           headers: {
-            Host: 'arrlee.jobarea.ch' // the real host you want to access
+            Host: 'arrlee.jobarea.ch'
           }
         },
         {
           context: '/api',
           host: 'api2.walkscore.com',
           https: false,
-          changeOrigin: false
+          changeOrigin: false,
+          headers: {
+            Host: 'api2.walkscore.com'
+          }
         },
         {
           context: '/maps',
           host: 'maps.googleapis.com',
           https: false,
-          changeOrigin: true
+          changeOrigin: true,
+          headers: {
+            Host: 'maps.googleapis.com'
+          }
         }
       ],
       livereload: {
@@ -473,40 +458,10 @@ module.exports = function (grunt) {
           dest: 'src/main/scripts/app/app.constants.js'
         },
         constants: {
-          ENV: 'dev',
-          VERSION: '<%= yeoman.app.version %>',
-          baseUrl: 'http://localhost:9000/jobdesk',
-          arrleeUrl: 'http://localhost:9000/arrlee',
-          travelTimeUrl: 'http://localhost:9000/api',
-          googleAPIUrl: 'http://localhost:9000/maps',
-          supportedLanguages: ['de', 'fr', 'it', 'en']
-        }
-      },
-      prod: {
-        options: {
-          dest: 'src/main/scripts/app/app.constants.js'
-        },
-        constants: {
-          ENV: 'prod',
-          VERSION: '<%= yeoman.app.version %>',
-          baseUrl: 'http://pilot.job-desk.ch/jobdesk',
-          arrleeUrl: 'http://pilot.job-desk.ch/arrlee',
-          travelTimeUrl: 'http://pilot.job-desk.ch/api',
-          googleAPIUrl: 'http://pilot.job-desk.ch/maps',
-          supportedLanguages: ['de', 'fr', 'it', 'en']
-        }
-      },
-      staging: {
-        options: {
-          dest: 'src/main/scripts/app/app.constants.js'
-        },
-        constants: {
-          ENV: 'staging',
-          VERSION: '<%= yeoman.app.version %>',
-          baseUrl: 'http://dev.job-desk.ch/jobdesk',
-          arrleeUrl: 'http://dev.job-desk.ch/arrlee',
-          travelTimeUrl: 'http://dev.job-desk.ch/api',
-          googleAPIUrl: 'http://dev.job-desk.ch/maps',
+          baseUrl: '/jobdesk',
+          arrleeUrl: '/arrlee',
+          travelTimeUrl: '/api',
+          googleAPIUrl: '/maps',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
@@ -566,34 +521,12 @@ module.exports = function (grunt) {
         options: {
           timestamp: Date.now()
         }
-      }
-    },
-    replace: {
-      trackjs_prod: {
-        options: {
-          patterns: [
-            {
-              match: 'app_name',
-              replacement: 'job-desk'
-            }
-          ]
-        },
-        files: [
-          {expand: true, flatten: true, src: ['dist/index.html'], dest: 'dist/'}
-        ]
       },
-      trackjs_staging: {
+      update_local: {
+        dest: 'src/main/update.json',
         options: {
-          patterns: [
-            {
-              match: 'app_name',
-              replacement: 'job-desk-dev'
-            }
-          ]
-        },
-        files: [
-          {expand: true, flatten: true, src: ['dist/index.html'], dest: 'dist/'}
-        ]
+          timestamp: Date.now()
+        }
       }
     }
   });
@@ -605,6 +538,7 @@ module.exports = function (grunt) {
     'ngconstant:dev',
     'ngconstant:i18n',
     'configureProxies',
+    'json_generator:update_local',
     'connect:livereload',
     'watch'
   ]);
@@ -654,23 +588,6 @@ module.exports = function (grunt) {
     'usemin',
     'htmlmin',
     'json_generator:update'
-  ]);
-
-  grunt.registerTask('build-prod', [
-    'ngconstant:prod',
-    'build',
-    'replace:trackjs_prod'
-  ]);
-
-  grunt.registerTask('build-staging', [
-    'ngconstant:staging',
-    'build',
-    'replace:trackjs_staging'
-  ]);
-
-  grunt.registerTask('build-local', [
-    'ngconstant:dev',
-    'build'
   ]);
 
   grunt.registerTask('build-app', [

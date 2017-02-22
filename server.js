@@ -25,7 +25,7 @@ setProxy('http://api2.walkscore.com', '/api');
 // google maps api
 setProxy('http://maps.googleapis.com', '/maps');
 
-app.use(express.static(process.cwd()));
+app.use(express.static(process.cwd() + '/dist'));
 
 http.createServer(app).listen(port, ipaddr);
 
