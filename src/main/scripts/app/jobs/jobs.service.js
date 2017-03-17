@@ -50,7 +50,7 @@
 
       resetSearch();
 
-      function doDriveQuery(filter){
+      function doDriveQuery(){
         var coords=[];
         angular.forEach(params.shape, function(value) {
           if (value.length>1){
@@ -61,21 +61,27 @@
           }
         });
 
-        angular.forEach(coords, function(value) {
-          var query ={
-            'nested': {
-              'path': 'location.locations',
-              'filter': {
-                'geo_polygon': {
-                  'geoLocation': {
-                    'points': value
-                  }
-                }
+        var filter = {
+          'nested': {
+            'path': 'location.locations',
+            'query': {
+              'bool': {
+                'should': []
               }
             }
-          };
-          filter.push(query);
+          }
+        };
+
+        angular.forEach(coords, function(value) {
+          filter.nested.query.bool.should.push({
+            'geo_polygon': {
+              'location.locations.geoLocation': {
+                'points': value
+              }
+            }
+          })
         });
+
         return filter;
       }
 
@@ -89,11 +95,9 @@
             'from': params.from,
             'size': params.size,
             'query': {
-              'filtered': {
-                'query': {'match_all': {}},
-                'filter': {
-                  'and': []
-                }
+              'bool': {
+                'must': {'match_all': {}},
+                'filter': []
               }
             },
             'sort': []
@@ -101,46 +105,54 @@
 
           // QUERY
           if (params.iscoMajorGroup !== '') {
-            filter.query.filtered.query = {'term': {'isco.majorGroup': params.iscoMajorGroup}};
+            filter.query.bool.must = {'term': {'isco.majorGroup': params.iscoMajorGroup}};
           }
           if (params.iscoGroupLevel2 !== '' && params.iscoGroupLevel2 !== 0 && params.iscoGroupLevel2 !== '0') {
-            filter.query.filtered.query = {'term': {'isco.groupLevel2': params.iscoGroupLevel2}};
+            filter.query.bool.must = {'term': {'isco.groupLevel2': params.iscoGroupLevel2}};
           }
           if (params.iscoGroupLevel3 !== '' && params.iscoGroupLevel3 !== 0 && params.iscoGroupLevel3 !== '0') {
-            filter.query.filtered.query = {'term': {'isco.groupLevel3': params.iscoGroupLevel3}};
+            filter.query.bool.must = {'term': {'isco.groupLevel3': params.iscoGroupLevel3}};
           }
           // FILTER
           if (params.distanceType === 'distance') {
-            filter.query.filtered.filter.and.push({
+            filter.query.bool.filter.push({
               'nested': {
                 'path': 'location.locations',
-                'filter': {
-                  'geo_distance': {
-                    'distance': params.distance + 'km',
-                    'location.locations.geoLocation': params.currentCoords
+                'query': {
+                  'bool': {
+                    'must': [{
+                      'geo_distance': {
+                        'distance': params.distance + 'km',
+                        'location.locations.geoLocation': params.currentCoords
+                      }
+                    }]
                   }
+
                 }
               }
             });
           }
           else if (params.distanceType === 'drive' || params.distanceType === 'bike') {
-            var query_filter = [];
-            filter.query.filtered.filter.and.push({or: doDriveQuery(query_filter)});
+            filter.query.bool.filter.push(doDriveQuery());
           }
           else {
-            filter.query.filtered.filter.and.push({
+            filter.query.bool.filter.push({
               'nested': {
                 'path': 'location.locations',
-                'filter': {
-                  'terms': {
-                    'zip': params.zips
+                'query': {
+                  'bool': {
+                    'must': [{
+                      'terms': {
+                        'location.locations.zip': params.zips
+                      }
+                    }]
                   }
                 }
               }
             });
           }
           if (params.fulltime === '2') {
-            filter.query.filtered.filter.and.push({'term': {'fulltime': 'false'}});
+            filter.query.bool.filter.push({'term': {'fulltime': 'false'}});
           }
           // SORT
           var sort = {};

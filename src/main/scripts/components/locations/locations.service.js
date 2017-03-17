@@ -13,8 +13,8 @@
         var filter = {
           'size': 1,
           'query': {
-            'filtered': {
-              'query': {
+            'bool': {
+              'must': {
                 'match_all': {}
               },
               'filter': {
