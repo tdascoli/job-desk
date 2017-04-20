@@ -41,10 +41,18 @@
       }
 
       function getLocationFromZip(zip) {
+
         var filter = {
           'size': 1,
           'query': {
-            'term': {'zip': zip}
+            'bool': {
+              'must': {
+                'match_all': {}
+              },
+              'filter': {
+                'term': {'zip': zip}
+              }
+            }
           },
           'sort': [
             {
@@ -62,7 +70,14 @@
       function getLocationAutocompleter(value, coords) {
         var filter = {
           'size': 6,
-          'query': {},
+          'query': {
+            'bool': {
+              'must': {
+                'match_all': {}
+              },
+              'filter': {}
+            }
+          },
           'sort': [
             {
               '_geo_distance': {
@@ -75,13 +90,13 @@
           ]
         };
         if (!value){
-          filter.query = { 'match_all': {}};
+          // nothing to do, we don't filter
         }
         else if (isInt(value)) {
-          filter.query = { 'match_phrase_prefix': {'zip': { 'query': value}}};
+          filter.query.filter = { 'match_phrase_prefix': {'zip': { 'query': value}}};
         }
         else {
-          filter.query = { 'match_phrase_prefix': {'name': { 'query': value}}};
+          filter.query.filter = { 'match_phrase_prefix': {'name': { 'query': value}}};
         }
         return $http.post(baseUrl + '/location/_search', filter);
       }

@@ -103,31 +103,31 @@
             'sort': []
           };
 
-          // QUERY
+          // isco group
           if (params.iscoMajorGroup !== '') {
-            filter.query.bool.must = {'term': {'isco.majorGroup': params.iscoMajorGroup}};
+            filter.query.bool.filter.push({'term': {'isco.majorGroup': params.iscoMajorGroup}});
           }
           if (params.iscoGroupLevel2 !== '' && params.iscoGroupLevel2 !== 0 && params.iscoGroupLevel2 !== '0') {
-            filter.query.bool.must = {'term': {'isco.groupLevel2': params.iscoGroupLevel2}};
+            filter.query.bool.filter.push({'term': {'isco.groupLevel2': params.iscoGroupLevel2}});
           }
           if (params.iscoGroupLevel3 !== '' && params.iscoGroupLevel3 !== 0 && params.iscoGroupLevel3 !== '0') {
-            filter.query.bool.must = {'term': {'isco.groupLevel3': params.iscoGroupLevel3}};
+            filter.query.bool.filter.push({'term': {'isco.groupLevel3': params.iscoGroupLevel3}});
           }
-          // FILTER
+
+          // distance
           if (params.distanceType === 'distance') {
             filter.query.bool.filter.push({
               'nested': {
                 'path': 'location.locations',
                 'query': {
                   'bool': {
-                    'must': [{
+                    'must': {
                       'geo_distance': {
                         'distance': params.distance + 'km',
                         'location.locations.geoLocation': params.currentCoords
                       }
-                    }]
+                    }
                   }
-
                 }
               }
             });
@@ -141,11 +141,11 @@
                 'path': 'location.locations',
                 'query': {
                   'bool': {
-                    'must': [{
+                    'must': {
                       'terms': {
                         'location.locations.zip': params.zips
                       }
-                    }]
+                    }
                   }
                 }
               }
@@ -154,7 +154,8 @@
           if (params.fulltime === '2') {
             filter.query.bool.filter.push({'term': {'fulltime': 'false'}});
           }
-          // SORT
+
+          // sort
           var sort = {};
           if (params.sort.field === 'distance') {
             sort._geo_distance = {
