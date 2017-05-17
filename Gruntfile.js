@@ -363,11 +363,11 @@ module.exports = function (grunt) {
       proxies: [
         {
           context: '/jobdesk',
-          host: 'arrlee.jobarea.ch',
+          host: 'localhost',
           https: false,
           changeOrigin: false,
           headers: {
-            Host: 'arrlee.jobarea.ch'
+            Host: 'localhost'
           }
         },
         {
