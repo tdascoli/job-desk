@@ -257,9 +257,9 @@
       $scope.sortList = [
         {sort: {field: 'publicationDate', order: 'desc'}, text: 'global.sort.newest'},
         {sort: {field: 'quotaTo', order: 'desc'}, text: 'global.sort.workload_0'},
-        {sort: {field: 'quotaTo', order: 'asc'}, text: 'global.sort.workload_100'}
-        //{sort: {field: 'distance', order: 'asc'}, text: 'global.sort.distanceNearest'},
-        //{sort: {field: 'distance', order: 'desc'}, text: 'global.sort.distanceFarthest'}
+        {sort: {field: 'quotaTo', order: 'asc'}, text: 'global.sort.workload_100'},
+        {sort: {field: 'distance', order: 'asc'}, text: 'global.sort.distanceNearest'},
+        {sort: {field: 'distance', order: 'desc'}, text: 'global.sort.distanceFarthest'}
       ];
       $scope.sortResultList = function () {
         $scope.searchParams.sort = $scope.sortList[$scope.sort].sort;
