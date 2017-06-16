@@ -363,29 +363,20 @@ module.exports = function (grunt) {
       proxies: [
         {
           context: '/jobdesk',
-          host: 'localhost',
+          host: '159.100.252.9',
           https: false,
           changeOrigin: false,
           headers: {
-            Host: 'localhost'
+            Host: '159.100.252.9'
           }
         },
         {
-          context: '/arrlee',
-          host: 'arrlee.jobarea.ch',
+          context: '/ajax',
+          host: '159.100.252.9',
           https: false,
           changeOrigin: false,
           headers: {
-            Host: 'arrlee.jobarea.ch'
-          }
-        },
-        {
-          context: '/api',
-          host: 'api2.walkscore.com',
-          https: false,
-          changeOrigin: false,
-          headers: {
-            Host: 'api2.walkscore.com'
+            Host: '159.100.252.9'
           }
         },
         {
@@ -459,23 +450,8 @@ module.exports = function (grunt) {
         },
         constants: {
           baseUrl: '/jobdesk',
-          arrleeUrl: '/arrlee',
-          travelTimeUrl: '/api',
+          arrleeUrl: '/ajax',
           googleAPIUrl: '/maps',
-          supportedLanguages: ['de', 'fr', 'it', 'en']
-        }
-      },
-      app: {
-        options: {
-          dest: 'src/main/scripts/app/app.constants.js'
-        },
-        constants: {
-          ENV: 'dev',
-          VERSION: '<%= yeoman.app.version %>',
-          baseUrl: 'http://arrlee.jobarea.ch/jobdesk',
-          arrleeUrl: 'http://arrlee.jobarea.ch/arrlee',
-          travelTimeUrl: 'http://arrlee.jobarea.ch/api',
-          googleAPIUrl: 'http://arrlee.jobarea.ch/maps',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },

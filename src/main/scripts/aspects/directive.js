@@ -247,7 +247,7 @@
           }
           else if (scope.searchValues.heatmap !== undefined && (scope.searchParams.distanceType === 'drive' || scope.searchParams.distanceType === 'bike')) {
             traveltime_layer.clearLayers();
-            traveltime_layer.addData(scope.searchValues.heatmap.response.geometry);
+            traveltime_layer.addData(scope.searchValues.heatmap);
           }
         });
       }
