@@ -4,9 +4,7 @@ angular.module('job-desk')
 
 .constant('baseUrl', '/jobdesk')
 
-.constant('arrleeUrl', '/arrlee')
-
-.constant('travelTimeUrl', '/api')
+.constant('arrleeUrl', '/ajax')
 
 .constant('googleAPIUrl', '/maps')
 

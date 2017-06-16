@@ -17,11 +17,10 @@ function setProxy(host, location) {
     req.pipe(request(url)).pipe(res);
   });
 }
-var host = 'http://arrlee.jobarea.ch';
+var host = 'http://159.100.252.9';
 setProxy(host, '/jobdesk');
-setProxy(host, '/arrlee');
-// walkscore api
-setProxy('http://api2.walkscore.com', '/api');
+setProxy(host, '/ajax');
+
 // google maps api
 setProxy('http://maps.googleapis.com', '/maps');
 

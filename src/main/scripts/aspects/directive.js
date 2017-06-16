@@ -101,8 +101,10 @@
           clickable: false
         });
         var traveltime_layer = new L.GeoJSON(null, {
-            className: 'traveltime',
-            clickable: false
+          onEachFeature: function (feature, layer) {
+            layer.setStyle({className: 'heatmap area' + feature.properties.travelTimeRing});
+          },
+          clickable: false
         });
         var radius_layer = new L.circle(null, (scope.searchParams.distance * 1000), {
           clickable: false,
@@ -247,7 +249,7 @@
           }
           else if (scope.searchValues.heatmap !== undefined && (scope.searchParams.distanceType === 'drive' || scope.searchParams.distanceType === 'bike')) {
             traveltime_layer.clearLayers();
-            traveltime_layer.addData(scope.searchValues.heatmap.response.geometry);
+            traveltime_layer.addData(scope.searchValues.heatmap);
           }
         });
       }

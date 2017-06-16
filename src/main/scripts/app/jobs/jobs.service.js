@@ -52,13 +52,15 @@
 
       function doDriveQuery(){
         var coords=[];
-        angular.forEach(params.shape, function(value) {
-          if (value.length>1){
-            coords.push(lodash.flatten(value));
-          }
-          else {
-            coords.push(value[0]);
-          }
+        angular.forEach(params.shape, function(feature) {
+          angular.forEach(feature.geometry.coordinates, function (coordinate) {
+            if (coordinate.length > 1) {
+              coords.push(lodash.flatten(coordinate));
+            }
+            else {
+              coords.push(coordinate[0]);
+            }
+          });
         });
 
         var filter = {

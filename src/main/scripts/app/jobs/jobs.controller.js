@@ -148,7 +148,7 @@
         }
         TravelTimeService.getTravelTimePolygon($scope.searchParams.currentCoords,travelTime,$scope.searchParams.distanceType).success(function (result) {
           $scope.searchValues.heatmap = result;
-          $scope.searchParams.shape=result.response.geometry.coordinates;
+          $scope.searchParams.shape=result.features;
           find(false);
         })
         .error(function (error) {
