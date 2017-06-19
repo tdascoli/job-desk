@@ -10,4 +10,6 @@ angular.module('job-desk')
 
 .constant('supportedLanguages', ['de','fr','it','en'])
 
+.constant('arrleeModes', {publicTransport:'transport',car:'drive',bicycle:'bike'})
+
 ;

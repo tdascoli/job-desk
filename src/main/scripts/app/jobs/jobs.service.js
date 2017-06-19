@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('job-desk')
-    .factory('JobsService', function ($http, $rootScope, baseUrl, ConfigService, lodash) {
+    .factory('JobsService', function ($http, $rootScope, baseUrl, ConfigService, lodash, arrleeModes) {
 
       var search = {};
       var params = {};
@@ -50,7 +50,7 @@
 
       resetSearch();
 
-      function doDriveQuery(){
+      function doArrleeWaysQuery(){
         var coords=[];
         angular.forEach(params.shape, function(feature) {
           angular.forEach(feature.geometry.coordinates, function (coordinate) {
@@ -134,8 +134,8 @@
               }
             });
           }
-          else if (params.distanceType === 'drive' || params.distanceType === 'bike') {
-            filter.query.bool.filter.push(doDriveQuery());
+          else if (params.distanceType === arrleeModes.car || params.distanceType === arrleeModes.bicycle) {
+            filter.query.bool.filter.push(doArrleeWaysQuery());
           }
           else {
             filter.query.bool.filter.push({

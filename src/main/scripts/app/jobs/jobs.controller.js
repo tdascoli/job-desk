@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('job-desk')
-    .controller('JobsCtrl', function ($scope, $rootScope, $state, $filter, $translate, lodash, JobsService, LocationsService, ArrleeService, TravelTimeService, $mdDialog, $mdBottomSheet) {
+    .controller('JobsCtrl', function ($scope, $rootScope, $state, $filter, $translate, lodash, JobsService, LocationsService, ArrleeService, $mdDialog, $mdBottomSheet, arrleeModes) {
       $rootScope.searchType = 'jobs';
       $scope.searchValues = JobsService.search;
       $scope.searchParams = JobsService.params;
@@ -95,13 +95,13 @@
         $scope.idle = true;
         $scope.searchParams.from = 0;
 
-        if ($scope.searchParams.distanceType === 'transport') {
+        if ($scope.searchParams.distanceType === arrleeModes.publicTransport) {
           //** countJobs with travelTime parameter
-          findByTravelTime();
+          findByPublicTransport();
         }
-        else if ($scope.searchParams.distanceType === 'drive' || $scope.searchParams.distanceType === 'bike') {
+        else if ($scope.searchParams.distanceType === arrleeModes.car || $scope.searchParams.distanceType === arrleeModes.bicycle) {
           //** countJobs with travelTime parameter
-          findByDriveTime();
+          findByWays();
         }
         else {
           //** countJobs with distance parameter
@@ -123,8 +123,8 @@
         }
       };
 
-      function findByTravelTime() {
-        ArrleeService.getHeatmap($scope.searchParams.currentZip, $scope.searchParams.transport).success(function (result) {
+      function findByPublicTransport() {
+        ArrleeService.getPublicTransportHeatmap($scope.searchParams.currentZip, $scope.searchParams.transport).success(function (result) {
             $scope.searchValues.heatmap = result.heatmap;
             ArrleeService.getZips($scope.searchParams.transport).success(function (result) {
                 // todo trackjs!! error
@@ -141,12 +141,12 @@
           });
       }
 
-      function findByDriveTime() {
+      function findByWays() {
         var travelTime = $scope.searchParams.drive;
-        if ($scope.searchParams.distanceType==='bike'){
+        if ($scope.searchParams.distanceType === arrleeModes.bicycle) {
           travelTime = $scope.searchParams.bike;
         }
-        TravelTimeService.getTravelTimePolygon($scope.searchParams.currentCoords,travelTime,$scope.searchParams.distanceType).success(function (result) {
+        ArrleeService.getWaysHeatmap($scope.searchParams.currentCoords,travelTime,$scope.searchParams.distanceType).success(function (result) {
           $scope.searchValues.heatmap = result;
           $scope.searchParams.shape=result.features;
           find(false);

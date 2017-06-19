@@ -170,7 +170,7 @@
       };
 
       function findByTravelTime() {
-        ArrleeService.getHeatmap($scope.searchParams.currentZip, $scope.searchParams.travelTime).success(function (result) {
+        ArrleeService.getPublicTransportHeatmap($scope.searchParams.currentZip, $scope.searchParams.travelTime).success(function (result) {
             $scope.searchValues.heatmap = result.heatmap;
             ArrleeService.getZips($scope.searchParams.travelTime).success(function (result) {
                 $scope.searchParams.zips = lodash.map(result.POI, 'name');

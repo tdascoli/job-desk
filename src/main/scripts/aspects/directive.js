@@ -3,7 +3,7 @@
 
   var module = angular.module('job-desk.directive', []);
 
-  module.directive('map', ['$rootScope', function ($rootScope) {
+  module.directive('map', ['$rootScope', 'arrleeModes', function ($rootScope, arrleeModes) {
     return {
       restrict: 'C',
       priority: 50,
@@ -152,13 +152,13 @@
             traveltime_layer.clearLayers();
             doRadius();
           }
-          else if (newValue !== oldValue && scope.searchParams.distanceType === 'transport') {
+          else if (newValue !== oldValue && scope.searchParams.distanceType === arrleeModes.publicTransport) {
             traveltime_layer.clearLayers();
             if (search_layer.hasLayer(radius_layer)) {
               search_layer.removeLayer(radius_layer);
             }
           }
-          else if (newValue !== oldValue && (scope.searchParams.distanceType === 'drive' || scope.searchParams.distanceType === 'bike')) {
+          else if (newValue !== oldValue && (scope.searchParams.distanceType === arrleeModes.car || scope.searchParams.distanceType === arrleeModes.bicycle)) {
             heatmap_layer.clearLayers();
             if (search_layer.hasLayer(radius_layer)) {
               search_layer.removeLayer(radius_layer);
@@ -175,7 +175,7 @@
 
         // Arrlee
         scope.$watchCollection('searchValues.heatmap', function () {
-          if (scope.searchValues.heatmap !== undefined && scope.searchParams.distanceType === 'transport') {
+          if (scope.searchValues.heatmap !== undefined && scope.searchParams.distanceType === arrleeModes.publicTransport) {
             var geometries = [];
             var coordinates = [[], []];
             var type = 'MultiPolygon';
@@ -247,7 +247,7 @@
             heatmap_layer.clearLayers();
             heatmap_layer.addData(geometries);
           }
-          else if (scope.searchValues.heatmap !== undefined && (scope.searchParams.distanceType === 'drive' || scope.searchParams.distanceType === 'bike')) {
+          else if (scope.searchValues.heatmap !== undefined && (scope.searchParams.distanceType === arrleeModes.car || scope.searchParams.distanceType === arrleeModes.bicycle)) {
             traveltime_layer.clearLayers();
             traveltime_layer.addData(scope.searchValues.heatmap);
           }

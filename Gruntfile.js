@@ -452,7 +452,12 @@ module.exports = function (grunt) {
           baseUrl: '/jobdesk',
           arrleeUrl: '/ajax',
           googleAPIUrl: '/maps',
-          supportedLanguages: ['de', 'fr', 'it', 'en']
+          supportedLanguages: ['de', 'fr', 'it', 'en'],
+          arrleeModes: {
+            publicTransport: 'transport',
+            car: 'drive',
+            bicycle: 'bike'
+          }
         }
       },
       i18n: {

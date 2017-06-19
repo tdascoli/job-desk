@@ -3,9 +3,9 @@
   'use strict';
 
   angular.module('job-desk')
-    .factory('ArrleeService', function ($http, arrleeUrl) {
+    .factory('ArrleeService', function ($http, arrleeUrl, arrleeModes) {
 
-      var arrleeParams = {
+      var publicTransportParams = {
         start_zip: '',
         start_country: 'CH',
         'start-time': 7,
@@ -16,25 +16,47 @@
         edgeLength: 2.25
       };
 
-      function getHeatmap(zip, travelTime) {
-        arrleeParams.start_zip = zip;
-        arrleeParams.max_travel_time = travelTime;
+      function getPublicTransportHeatmap(zip, travelTime) {
+        publicTransportParams.start_zip = zip;
+        publicTransportParams.max_travel_time = travelTime;
 
         doArrleeDateParam();
 
-        var arrleeParamsString = '';
-        for (var key in arrleeParams) {
-          if (arrleeParamsString !== '') {
-            arrleeParamsString += '&';
-          }
-          arrleeParamsString += key + '=' + encodeURIComponent(arrleeParams[key]);
+        return $http.get(arrleeUrl + '/heatmap?' + buildParamsString(publicTransportParams));
+      }
+
+      function getWaysHeatmap(coords, time, mode) {
+
+        var way_type = 'car';
+        if (mode == arrleeModes.bicycle) {
+          way_type = 'bicycle'
         }
 
-        return $http.get(arrleeUrl + '/heatmap?' + arrleeParamsString);
+        var waysParams = {
+          lat: coords.lat,
+          lng: coords.lon,
+          max_travel_time: time * 60, // time in this arrlee function is in seconds
+          way_type: way_type,
+          edgeLength: 1
+        }
+
+        return $http.get(arrleeUrl+'/heatmap-ways?' + buildParamsString(waysParams));
       }
 
       function getZips(travelTime) {
         return $http.get(arrleeUrl + '/poi?poi_types=PLZCH&max_tt=' + travelTime);
+      }
+
+      function buildParamsString(params) {
+        var paramsString = '';
+        for (var key in params) {
+          if (paramsString !== '') {
+            paramsString += '&';
+          }
+          paramsString += key + '=' + encodeURIComponent(params[key]);
+        }
+
+        return paramsString;
       }
 
       function doArrleeDateParam(){
@@ -62,14 +84,15 @@
           day=7;
         }
 
-        arrleeParams.day=day;
-        arrleeParams.month=month;
-        arrleeParams.year=year;
+        publicTransportParams.day=day;
+        publicTransportParams.month=month;
+        publicTransportParams.year=year;
         //return {day:day,month:month,year:year};
       }
 
       return {
-        getHeatmap: getHeatmap,
+        getPublicTransportHeatmap: getPublicTransportHeatmap,
+        getWaysHeatmap: getWaysHeatmap,
         getZips: getZips
       };
 
