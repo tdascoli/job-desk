@@ -5,7 +5,7 @@ Job-Desk
 
 Job search frontend made for internet terminals.
 
-pilot: http://pilot.job-desk.ch
+http://www.job-desk.ch
 
 staging: http://staging.job-desk.ch
 
