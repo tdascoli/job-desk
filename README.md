@@ -23,8 +23,6 @@ By default, the project is using the Elasticsearch server running on www.job-des
 
 Hint : It is highly recommended to use `nvm` to install and manage versions of `node` (https://github.com/creationix/nvm/blob/master/README.md)
 
-It is also possible to refer to an online Elasticsearch server by changing the ip address in the proxies section in the `Gruntfile.js` file.
-
 ## Installing
 
 Clone the projet and _cd_ into it. 
