@@ -17,7 +17,9 @@ POC Denmark: http://jobdesk-dascoli.rhcloud.com / github: https://github.com/tda
 
 - `node` v. 5.6.0
 - `npm` v. 3.7.3
-- local Elasticsearch server v. 5.2.2 correctly mapped and containing the data
+- Elasticsearch server v. 5.2.2 correctly mapped and containing the data
+
+By default, the project is using the Elasticsearch server running on www.job-desk.ch. It is possible to change the target (e.g. for a local running instance) in the `Gruntfile.js` file (proxies section).
 
 Hint : It is highly recommended to use `nvm` to install and manage versions of `node` (https://github.com/creationix/nvm/blob/master/README.md)
 
