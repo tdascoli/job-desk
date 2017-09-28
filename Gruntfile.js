@@ -363,20 +363,20 @@ module.exports = function (grunt) {
       proxies: [
         {
           context: '/jobdesk',
-          host: '159.100.252.9',
+          host: 'www.job-desk.ch',
           https: false,
           changeOrigin: false,
           headers: {
-            Host: '159.100.252.9'
+            Host: 'www.job-desk.ch'
           }
         },
         {
           context: '/ajax',
-          host: '159.100.252.9',
+          host: 'www.job-desk.ch',
           https: false,
           changeOrigin: false,
           headers: {
-            Host: '159.100.252.9'
+            Host: 'www.job-desk.ch'
           }
         },
         {
