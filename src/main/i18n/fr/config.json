@@ -2,33 +2,33 @@
   "config": {
     "title": "Job-Desk - CONFIG",
     "location": {
-      "title":"[FR]  Standort",
-      "address":"[FR]  Adresse",
-      "zip":"[FR]  Postleitzahl",
-      "lon":"[FR]  Koordinaten / Longitude",
-      "lat":"[FR]  Koordinaten / Latitude"
+      "title":"Emplacement",
+      "address":"Adresse",
+      "zip":"Code postal",
+      "lon":"Coordonnées / Longitude",
+      "lat":"Coordonnées / Latitude"
     },
     "offer": {
-      "title": "[FR]  Angebot",
-      "apprenticeships": "[FR]  Lehrstellen",
-      "educations": "[FR]  Weiterbildungen",
-      "jobs": "[FR]  Jobs"
+      "title": "Offre",
+      "apprenticeships": "Places d'apprentissages",
+      "educations": "Formations continues",
+      "jobs": "Jobs"
     },
     "map": {
-      "title":"[FR] Karte",
-      "swisstopo": "[FR]  swisstopo Karte",
-      "openstreetmap": "[FR]  OpenStreetMap Karte"
+      "title":"Carte",
+      "swisstopo": "Carte swisstopo",
+      "openstreetmap": "Carte OpenStreetMap"
     },
     "information": {
-      "title":"Informationsseite",
-      "activate": "Informationsseite aktivieren",
-      "link": "Informationsseite - Link"
+      "title":"Page d'information",
+      "activate": "Activer la page d'information",
+      "link": "Page d'information - Lien"
     },
     "circumSearch": {
-      "title": "[FR] Umkreissuche",
-      "offer":"[FR] Angebot",
-      "configuration":"[FR] Standardeinstellung",
-      "values":"[FR] Standardwerte",
+      "title": "Rayon de recherche",
+      "offer":"Offre",
+      "configuration":"Recherche par défaut",
+      "values":"Valeurs par défaut",
       "type": {
         "distance":"Distance en km",
         "transport":"Durée du trajet en TP en heures",

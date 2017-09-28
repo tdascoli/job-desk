@@ -2,28 +2,33 @@
   "config": {
     "title": "Job-Desk - CONFIG",
     "location": {
-      "title":"[IT] Standort",
-      "address":"[IT] Adresse",
-      "zip":"[IT] Postleitzahl",
-      "lon":"[IT] Koordinaten / Longitude",
-      "lat":"[IT] Koordinaten / Latitude"
+      "title":"Ubicazione",
+      "address":"Indirizzo",
+      "zip":"numero postale di avviamento",
+      "lon":"Coordinate / Longitudine",
+      "lat":"Coordinate / Latitudine"
     },
     "offer": {
-      "title": "[IT] Angebot",
-      "apprenticeships": "[IT] Lehrstellen",
-      "educations": "[IT] Weiterbildungen",
-      "jobs": "[IT] Jobs"
+      "title": "Offerta",
+      "apprenticeships": "Posti di tirocinio",
+      "educations": "Formazioni continue",
+      "jobs": "Posti di lavoro"
     },
     "map": {
-      "title":"[IT] Karte",
-      "swisstopo": "[IT] swisstopo Karte",
-      "openstreetmap": "[IT] OpenStreetMap Karte"
+      "title":"Mappa",
+      "swisstopo": "Mappa swisstopo",
+      "openstreetmap": "Mappa OpenStreetMap"
+    },
+    "information": {
+      "title":"Pagina delle informazioni",
+      "activate": "Attiva la pagina delle informazioni",
+      "link": "Pagina delle informazioni - Link"
     },
     "circumSearch": {
-      "title": "[IT] Umkreissuche",
-      "offer":"[IT] Angebot",
-      "configuration":"[IT] Standardeinstellung",
-      "values":"[IT] Standardwerte",
+      "title": "Raggio di ricerca",
+      "offer":"Offerta",
+      "configuration":"Ricerca predefinita",
+      "values":"Valori predefiniti",
       "type": {
         "distance":"Distanza in km",
         "transport":"Durata del viaggio in TP in ore",

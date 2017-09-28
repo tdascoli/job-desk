@@ -9,8 +9,8 @@
         "type": {
           "distance":"Distance in km",
           "transport":"Public transport travel time in hrs",
-          "drive":"[EN] Drive travel time in hrs",
-          "bike":"[EN] Drive travel time in hrs"
+          "drive":"Car travel time in hrs",
+          "bike":"Bike travel time in hrs"
         },
         "label" : {
           "distance":"Distance {{value}} km",
@@ -27,13 +27,13 @@
       "close":"Close",
       "filter":"Refine search",
       "tour":{
-        "jobGroups":"[EN] Falls erwünscht, verfeinern Sie die Suche mit einer Unterrubrik",
-        "location":"[EN] Hier ist Ihr Standort",
-        "distanceType":"[EN] Wählen Sie zwischen Reisedauer mit ÖV in Stunden oder Distanz in Kilometer",
-        "distanceTypeParameter":"[EN] Hier können Sie die Reisedauer / Distanz verlängern oder verkürzen",
-        "changeZip":"[EN] Falls erwünscht, können Sie den Standort verändern (PLZ eingeben oder auf die Karte tippen)",
-        "resetLocation":"[EN] Mit Klick auf dieses Symbol, wird Ihr Standort wieder zurückgesetzt.",
-        "countJobs":"[EN] Anzahl gefundene Jobs mit Ihren Suchkriterien, weiter zur Trefferliste mit der Pfeiltaste"
+        "jobGroups":"You can refine the search with a sub-category",
+        "location":"Your location is here",
+        "distanceType":"Choose between the different travel time options or define a radius in kilometers",
+        "distanceTypeParameter":"You can refine the travel time or the distance",
+        "changeZip":"You can change the current location by giving a zip code in this text area or by clicking on the map",
+        "resetLocation":"By clicking on this button, the current location is set to its default value",
+        "countJobs":""
       }
     },
     "result": {
