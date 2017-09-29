@@ -161,9 +161,8 @@
           var sort = {};
           if (params.sort.field === 'distance') {
             sort._geo_distance = {
-              'location.locations.geoLocation': params.currentCoords,
+              'location.geoPoints': params.currentCoords,
               order: params.sort.order,
-              mode: 'min',
               unit: 'km',
               distance_type: 'sloppy_arc'
             };
