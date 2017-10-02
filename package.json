@@ -1,6 +1,6 @@
 {
   "name": "job-desk",
-  "version": "1.0.0-SNAPSHOT",
+  "version": "1.0.0",
   "description": "Job search frontend made for internet terminals.",
   "repository": {
     "type": "git",
