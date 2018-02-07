@@ -19,8 +19,8 @@
         config.availableDistanceType={
           distance:true,
           transport:true,
-          drive:false,
-          bike:false
+          drive:true,
+          bike:true
         };
         config.initialDistance={
           distance:30,
