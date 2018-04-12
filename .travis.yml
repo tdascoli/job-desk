@@ -1,37 +1,26 @@
 language: node_js
-
 node_js:
 - node
-
 before_install:
 - npm install -g grunt-cli
-
 before_script:
 - bower install
-
 script:
 - grunt build
-
 after_script:
 - cat build/coverage/reports/lcov/lcov.info | codeclimate
-
 before_deploy:
 - tar -zcf $TRAVIS_TAG.tar.gz dist -C $TRAVIS_BUILD_DIR
 - ls $TRAVIS_BUILD_DIR
-
 deploy:
   provider: releases
   api_key:
-    secure: niH1x0A4l6qo+b7Hb6nAvN12aAMa9j9jo4CuOdwoiIBhxIfYnbRUhTPj8aA51dfZm6I6bzlSXSGcILuM0EDPpP/8HsJxbw0h9qo9U7RRqnVvUp1790jd2lLmHx9mkzOBeQBJIDT460JJ/YF+eob3hhkdZhjvd1iXMm/cYNrYqVRQ3aY5fN/JobAmpeao6gxE6dPz1cDyPVy3kW11IMKYVbyM5d6QQ/GTc5zpD6P6STnevcZPJWV5fUE6Dagjs3N3BeqnelWo23chvQWs+O3JKxfgl7q6C/2p37mVLWiAmhIDDe4h9vWNy6HZtNlt2u4moUoOo4UfxlLWPoGiRDnvAgjpkiDKcCCcO3PeiuYuCrDj6fXbs1C2Lv9CtrANfD8LfHdbhWp92XbDhNdw7pIGbV2TNUvvONf5KrUXuVkSlWqS3THXyiAA9Oletz/Y4/JdZgn/iKbMagao2bAKnH0IeotAeNJV62DNasrQY0zEVW37saoD08md9wPD4NP2jBN751sLyIawp+hglDrjD5+ooz4Wz5U03zO9wVIVYfQlqSxDeAwB3lUtmAu8qfSNsTqjAHw84wHFPB088TwkbnwIgZQd0XlmJObwwUvha6HT8M32r3ja3+6qMoEV8GpQd0omD8cYmlm9ts6JPU2xc4mbD8FjWFv/MIimD0zkFWpWn4Y=
+    secure: JNy1kwXdcnNOmtuQ69Sdz+NoPTGUUjCLx523UY8vvYytikIKAXm4FCvaXdw532stPZ9/5JusexUUhQFzds40Ecr8zKQ4tTLHNqPMWb5MsbpbbbmmpIxYNVjfGc7s9AoMlburVd5C03YDPJ9D+5/R7uua/bg03D2vcLu3ful14fARIREXSdEYCi8FqzSjFd5p7oVvqm54ISUHVBB5RBy/3d1bV2WXTS2+Qkltpo+9BmDjYnVWzV/G60n0DceW6TMPsu/9jg7xWcJTcGpC8qG/ePIkjCQP59uO5Xys5Fv6m7wnHNTp0ukL+L4oQGzp7NHHxUpdSzi6PbctIWEgPPwIR6bJRaYHlugtB17lYI2B7G1Z6J965NcY+NomvrTBUxoKVso8kXuarnJ6bYJaRvlz+5PweVcyr6d6KQr2mzUXDt83VSI0cPsPI/4OiAL6eGQRpLMFVVrPUb4RLZaneoe6BZSSsYCXTgjgrhrq+5k7qsADdE8n3VNzsx2txWBvQnjt/pvRE+DOFgAfHL+pfvrpUV+Y48VyhkQgTyZc4N/3FsRQ7FvZ6elXVn2X6rRnAEh/xz+pXNC0U8bqO5fdv8jOM72FuxlVZegaZ2S6juFWtT7FXf1kqbUx7++JTNWcTiINf4wLcEnoVUDizWeCGwHuXNXZiMbyeXU7yJo+6JiTqUk=
   file: $TRAVIS_BUILD_DIR/$TRAVIS_TAG.tar.gz
-  skip_cleanup: true
   on:
     tags: true
 
-notifications:
-  slack: alv-ch:tf9xRwey0Crj0qdDxljP5lDX
 addons:
   code_climate:
     repo_token:
       secure: Z1Bgklztdj5gNXcKG/ZLhjeu/hwz0Gk0hXwph8i/2l1WGt57gKNv/DPLavip4Ptn1JYgtUmVDVU+ggeB+bbW3eiB69DY8LVrn6h2irPkJf+J1YpcK8dsS2r587nAFz2MJQPJ2BDZ01fJgJFjOowHexYndIe/hknP3FGhf+6rR9U=
-
