@@ -1,22 +1,30 @@
 language: node_js
+
 node_js:
 - node
+
 before_install:
 - npm install -g grunt-cli
+
 before_script:
 - bower install
+
 script:
 - grunt build
+
 after_script:
 - cat build/coverage/reports/lcov/lcov.info | codeclimate
+
 before_deploy:
 - tar -zcf $TRAVIS_TAG.tar.gz dist -C $TRAVIS_BUILD_DIR
 - ls $TRAVIS_BUILD_DIR
+
 deploy:
   provider: releases
   api_key:
     secure: JNy1kwXdcnNOmtuQ69Sdz+NoPTGUUjCLx523UY8vvYytikIKAXm4FCvaXdw532stPZ9/5JusexUUhQFzds40Ecr8zKQ4tTLHNqPMWb5MsbpbbbmmpIxYNVjfGc7s9AoMlburVd5C03YDPJ9D+5/R7uua/bg03D2vcLu3ful14fARIREXSdEYCi8FqzSjFd5p7oVvqm54ISUHVBB5RBy/3d1bV2WXTS2+Qkltpo+9BmDjYnVWzV/G60n0DceW6TMPsu/9jg7xWcJTcGpC8qG/ePIkjCQP59uO5Xys5Fv6m7wnHNTp0ukL+L4oQGzp7NHHxUpdSzi6PbctIWEgPPwIR6bJRaYHlugtB17lYI2B7G1Z6J965NcY+NomvrTBUxoKVso8kXuarnJ6bYJaRvlz+5PweVcyr6d6KQr2mzUXDt83VSI0cPsPI/4OiAL6eGQRpLMFVVrPUb4RLZaneoe6BZSSsYCXTgjgrhrq+5k7qsADdE8n3VNzsx2txWBvQnjt/pvRE+DOFgAfHL+pfvrpUV+Y48VyhkQgTyZc4N/3FsRQ7FvZ6elXVn2X6rRnAEh/xz+pXNC0U8bqO5fdv8jOM72FuxlVZegaZ2S6juFWtT7FXf1kqbUx7++JTNWcTiINf4wLcEnoVUDizWeCGwHuXNXZiMbyeXU7yJo+6JiTqUk=
   file: $TRAVIS_BUILD_DIR/$TRAVIS_TAG.tar.gz
+  skip_cleanup: true
   on:
     tags: true
 
@@ -24,3 +32,4 @@ addons:
   code_climate:
     repo_token:
       secure: Z1Bgklztdj5gNXcKG/ZLhjeu/hwz0Gk0hXwph8i/2l1WGt57gKNv/DPLavip4Ptn1JYgtUmVDVU+ggeB+bbW3eiB69DY8LVrn6h2irPkJf+J1YpcK8dsS2r587nAFz2MJQPJ2BDZ01fJgJFjOowHexYndIe/hknP3FGhf+6rR9U=
+
