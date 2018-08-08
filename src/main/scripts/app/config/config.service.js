@@ -15,7 +15,7 @@
         config.educations = false;
         config.apprenticeships = false;
         config.localInfo = '';
-        config.distanceType = 'transport';
+        config.distanceType = 'distance';
         config.availableDistanceType={
           distance:true,
           transport:true,
